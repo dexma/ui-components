@@ -35,7 +35,7 @@ const resolve = {
     config: path.resolve(__dirname, 'src/config/'),
     utils: path.resolve(__dirname, 'src/utils/'),
     styles: path.resolve(__dirname, 'src/styles/'),
-    test: path.resolve(__dirname, 'src/test/'),
+    test: path.resolve(__dirname, 'test/'),
   }
 };
 

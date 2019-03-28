@@ -6,7 +6,7 @@ const resolve = {
     config: path.resolve('src', 'config'),
     utils: path.resolve('src', 'utils'),
     styles: path.resolve('src', 'styles'),
-    test: path.resolve('src', 'test'),
+    test: path.resolve('test', ''),
   }
 };
 
