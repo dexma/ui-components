@@ -3,4 +3,5 @@
 .gitignore
 coverage/
 test/
+src/
 webpack.config.js

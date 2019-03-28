@@ -3,4 +3,7 @@ import Icon from 'components/Icon';
 
 import 'styles/global.scss';
 
-export { Button, Icon };
+export {
+  Button,
+  Icon
+};

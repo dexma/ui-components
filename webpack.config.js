@@ -50,6 +50,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].bundle.js",
+    libraryTarget: 'commonjs2'
   },
   mode: process.env.NODE_ENV || "development",
   devtool: isProduction ? false : "inline-source-map",

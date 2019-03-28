@@ -1,13 +1,8 @@
 {
   "name": "@dexma/ui-components",
-  "version": "0.0.4",
-  "description": "",
-  "main": "index.js",
-  "files": [
-    "LICENSE",
-    "README.md",
-    "lib"
-  ],
+  "version": "0.0.5",
+  "description": "DEXMA UI Components (React)",
+  "main": "dist/main.bundle.js",
   "scripts": {
     "clean-build": "rm -rf build",
     "build:development": "npm run clean-build && webpack --mode development",
@@ -85,17 +80,6 @@
     "react": "*",
     "react-dom": "*"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.{js,css,md}": [
-      "npm run lint-fix && npm run prettier",
-      "git add"
-    ]
-  },
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|svg)$": "test-file-stub",
@@ -124,12 +108,5 @@
     "reporters": [
       "default"
     ]
-  },
-  "release": {
-    "publishDir": "lib"
-  },
-  "directories": {
-    "lib": "lib",
-    "test": "test"
   }
 }
