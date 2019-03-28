@@ -1,5 +1,6 @@
 .babelrc
 .eslintrc
 .gitignore
-src
-coverage
+coverage/
+test/
+webpack.config.js
