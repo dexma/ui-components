@@ -1,0 +1,13 @@
+.dexma-loading{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}

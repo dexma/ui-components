@@ -1,0 +1,42 @@
+.button-group{
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  .button{
+    position: relative;
+    flex: 0 1 auto;
+  }
+  &.vertical{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    .button:not(:last-child){
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .button:not(:first-child){
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .button+.button{
+      margin-top: -1px;
+      margin-left: 0;
+    }
+  }
+  &.horizontal {
+    .button:not(:last-child){
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .button:not(:first-child){
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .button+.button{
+      margin-left: -1px;
+    }
+    .button:not(:disabled){
+      cursor: pointer;
+    }
+  }
+}

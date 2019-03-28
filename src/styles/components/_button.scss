@@ -1,0 +1,49 @@
+%button{
+  padding: $button-padding;
+  margin-bottom: 0;
+  font-size: $button-font-family;
+  font-weight: $button-font-weight;
+  line-height: 13px;
+  color: $primary-color;
+  text-align: center;
+  text-shadow: $text-shadow;
+  vertical-align: middle;
+  cursor: pointer;
+  background: $button-background-color;
+  border: $button-border;
+  border-color: $button-border-color;
+  border-radius: $button-radius;
+  box-shadow: $button-box-shadow;
+  outline: none;
+}
+
+%button-active{
+  outline: 0;
+  color: $white;
+  @include active($background-color-active);
+}
+
+.button{
+  @extend %button;
+  &.active {
+    @extend %button-active;
+  }
+  svg{
+    width: 30px;
+    height: 30px;
+    margin: -10px 0px -10px -10px;
+  }
+  @each $sizeKey, $sizeValue in $sizes {
+    &.#{$sizeKey}{
+      font-size: $sizeValue;
+    }
+  }
+  &.expanded{
+    @each $sizeKey, $sizeValue in $sizes {
+      &.#{$sizeKey}{
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}

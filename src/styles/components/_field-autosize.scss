@@ -1,0 +1,60 @@
+.field-autosize{
+  width: auto;
+  border: none;
+  background-color: $white;
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  transition: box-shadow 150ms ease-in 0ms;
+  border-radius: 2.01px;
+  cursor: text;
+  display: inline-block;
+  box-shadow: 0 0 0 0 transparent;
+  &.hasError {
+    @include error();
+    input{
+      border: 0px;
+      min-width: 30px;
+    }
+  }
+  &.active{
+    padding: 0px;
+    background-color: #f0f0f0;
+    input{
+      margin: 0 1rem;
+    }
+  }
+  .button{
+    box-sizing: border-box;
+    color: #979494;
+    font-size: 11px;
+    cursor: pointer;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 0px 2px 2px 0px;
+    padding: 0.8rem 0.4rem;
+    background: transparent;
+  }
+  .button:last-child {
+    padding-right: 0.8rem;
+  }
+  .button:not(:last-child){
+    border-radius: 0px;
+    padding-left: 0.8rem;
+  }
+  input{
+    height: 30px;
+    color: #333;
+    font-weight: 700;
+    font-size: 15px;
+    border: 0px;
+    outline: none;
+    width: 100%;
+    background: transparent;
+  }
+  .editable{
+    align-items: center;
+  }
+}

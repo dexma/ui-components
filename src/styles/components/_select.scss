@@ -1,0 +1,83 @@
+.dexma-select{
+  .css-1aya2g8 {
+    background: $white;
+    border-radius: $global-radius;
+    border: 1px solid $gray-light;
+    margin: 0;
+    padding: 0;
+    cursor: text;
+    overflow: hidden;
+  }
+  .css-2o5izw,
+  .css-1aya2g8{
+    min-height: 32px;
+    border-radius: $global-radius;
+    border: 1px solid $gray-light;
+  }
+  .css-1aya2g8:hover,
+  .css-1aya2g8:focus,
+  .css-2o5izw:hover{
+    border-color: $gray-light;
+    box-shadow: none;
+  }
+  .css-d8oujb{
+    display: none;
+  }
+  .css-15k3avv {
+    background-color: hsl(0,0%,100%);
+    border-radius: 0px 0px $global-radius $global-radius;
+    border: 1px solid $gray-light;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    margin-bottom: 0px;
+    margin-top: -1px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+  .css-11unzgr{
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .css-1ep9fjw{
+    padding: 5px;
+  }
+  .css-1sjym57,
+  .css-1rtrksz{
+    padding: 0 6px;
+  }
+
+  .css-rsyb7x{
+    margin: 0;
+    padding-bottom: 0px;
+  }
+
+  //Items options
+  .css-z5z6cw,
+  .css-v73v8k,
+  .css-wqgs6e{
+    padding: 6px 6px;
+  }
+
+  // Item selected and intem option background
+  .css-wqgs6e {
+    background-color: $gray-light-secondary;
+  }
+
+  //Item selected
+  .css-xwjg1b{
+    @extend %button-active;
+  }
+
+  .css-10odw4q{
+    color: inherit;
+    font-weight: $global-weight-bold;
+  }
+
+  .css-1alnv5e:hover {
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+}
