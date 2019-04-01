@@ -1,6 +1,9 @@
 .babelrc
 .eslintrc
 .gitignore
+.eslintignore
+.prettierrc
+.idea
 coverage/
 test/
 src/

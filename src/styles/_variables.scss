@@ -3,7 +3,7 @@
 $global-radius: 2px;
 $global-font-size: 12px;
 $global-weight-bold: 700;
-$text-shadow: 0 1px 0 hsla(0,0%,100%,.75);
+$text-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.75);
 
 // Typography
 $sizes: (
@@ -11,6 +11,49 @@ $sizes: (
   medium: $global-font-size * 1.5,
   large: $global-font-size * 2,
   xlarge: $global-font-size * 2.5,
+);
+
+$header-styles: (
+  small: (
+    'h1': (
+      'font-size': 24,
+    ),
+    'h2': (
+      'font-size': 20,
+    ),
+    'h3': (
+      'font-size': 19,
+    ),
+    'h4': (
+      'font-size': 18,
+    ),
+    'h5': (
+      'font-size': 17,
+    ),
+    'h6': (
+      'font-size': 16,
+    ),
+  ),
+  medium: (
+    'h1': (
+      'font-size': 28,
+    ),
+    'h2': (
+      'font-size': 24,
+    ),
+    'h3': (
+      'font-size': 20,
+    ),
+    'h4': (
+      'font-size': 18,
+    ),
+    'h5': (
+      'font-size': 16,
+    ),
+    'h6': (
+      'font-size': 14,
+    ),
+  ),
 );
 
 // Colors
@@ -48,11 +91,18 @@ $box-shadow-color-active-hsl-2: hsl(
   saturation($background-color-active-hex),
   lightness($background-color-active-hex) - 5
 );
-$box-shadow-active: inset 0 1px 0 $box-shadow-color-active-hsl-1, inset 0 0 2px $box-shadow-color-active-hsl-2;
+$box-shadow-active: inset 0 1px 0 $box-shadow-color-active-hsl-1,
+  inset 0 0 2px $box-shadow-color-active-hsl-2;
 
 $error-color: $alert-color;
 
 //----------------------------- Components Styles ------------------------------------ //
+
+//Global
+$header-font-weight: $global-weight-bold;
+$anchor-color: $primary-color;
+$anchor-color-hover: $primary-color;
+$body-font-color: $primary-color;
 
 //Buttons
 $button-background-color: $gray-light-secondary;
@@ -64,10 +114,31 @@ $button-padding: 0.6em 1em;
 $button-margin: 0 0 20px 0 !default;
 $button-fill: solid !default;
 $button-background: $primary-color !default;
-$button-background-hover: scale-color($button-background, $lightness: -15%) !default;
+$button-background-hover: scale-color(
+  $button-background,
+  $lightness: -15%
+) !default;
 $button-color: $white !default;
 $button-color-alt: $black !default;
 $button-border: 1px solid transparent !default;
 $button-border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 $button-hollow-border-width: 1px !default;
 $button-box-shadow: inset 0 1px 0 #f9f9f9, inset 0 0 2px #fff;
+
+//Cards
+$card-background: $gray-light-secondary;
+$card-body-background: $background-color-secondary;
+$card-font-color: $primary-color;
+$card-body-color: $white;
+$card-divider-background: $gray-light;
+$card-border: 1px solid $gray-light;
+
+// Modal
+$modal-padding: 35px;
+
+// Title
+$title-color: $gray-light;
+
+// Error
+$error-font-size: $global-font-size;
+$error-color: $alert-color;
