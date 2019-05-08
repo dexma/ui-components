@@ -118,7 +118,7 @@ export default class Modal extends Component {
 
   render() {
     return (
-      <div>
+      <div className="modal">
         <div
           style={
             this.state.visible

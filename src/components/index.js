@@ -29,5 +29,5 @@ export {
   Pagination,
   Select,
   Spinner,
-  Title
+  Title,
 };
