@@ -1,6 +1,6 @@
 {
   "name": "",
-  "css_prefix_text": "dexma-icon",
+  "css_prefix_text": "dexma-icon-",
   "css_use_suffix": false,
   "hinting": true,
   "units_per_em": 1000,
@@ -379,6 +379,36 @@
       "search": [
         "ratios_cdd"
       ]
+    },
+    {
+      "uid": "a66cdc7278e6b33b8bd44a141f5e1a8d",
+      "css": "plus-circled",
+      "code": 59422,
+      "src": "entypo"
+    },
+    {
+      "uid": "9e1c33b6849ceb08db8acfaf02188b7d",
+      "css": "plus-squared",
+      "code": 59423,
+      "src": "entypo"
+    },
+    {
+      "uid": "4ba33d2607902cf690dd45df09774cb0",
+      "css": "plus-circled-1",
+      "code": 59419,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "44e04715aecbca7f266a17d5a7863c68",
+      "css": "plus",
+      "code": 59420,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "9dd9e835aebe1060ba7190ad2b2ed951",
+      "css": "search-2",
+      "code": 59425,
+      "src": "fontawesome"
     }
   ]
 }
