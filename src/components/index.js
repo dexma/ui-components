@@ -12,6 +12,7 @@ import Pagination from 'components/Pagination';
 import Select from 'components/Select';
 import Spinner from 'components/Spinner';
 import Title from 'components/Title';
+import { DatePicker } from 'components/DatePicker';
 
 import 'styles/global.scss';
 
@@ -30,4 +31,5 @@ export {
   Select,
   Spinner,
   Title,
+  DatePicker
 };
