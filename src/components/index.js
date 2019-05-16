@@ -2,6 +2,7 @@ import Button from 'components/Button';
 import ButtonGroup from 'components/ButtonGroup';
 import Card from 'components/Card';
 import Cell from 'components/Cell';
+import { DatePicker } from 'components/DatePicker';
 import FieldEditable from 'components/FieldEditable';
 import Grid from 'components/Grid';
 import Heading from 'components/Heading';
@@ -12,7 +13,6 @@ import Pagination from 'components/Pagination';
 import Select from 'components/Select';
 import Spinner from 'components/Spinner';
 import Title from 'components/Title';
-import { DatePicker } from 'components/DatePicker';
 
 import 'styles/global.scss';
 
@@ -21,6 +21,7 @@ export {
   ButtonGroup,
   Card,
   Cell,
+  DatePicker,
   FieldEditable,
   Grid,
   Heading,
@@ -30,6 +31,5 @@ export {
   Pagination,
   Select,
   Spinner,
-  Title,
-  DatePicker
+  Title
 };
