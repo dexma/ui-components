@@ -9,7 +9,7 @@ import 'react-dates/lib/css/_datepicker.css';
 
 import { StyledDatePicker } from 'styles/components/StyledDatePicker';
 
-const ISO_FORMAT = 'DD-MM-YYYY';
+const ISO_FORMAT = 'DD/MM/YYYY';
 const NUMBER_OF_MONTHS = 3;
 const START_DATE = 'startDate';
 const END_DATE = 'endDate';
@@ -87,6 +87,7 @@ class DatePicker extends Component {
           hideKeyboardShortcutsPanel={true}
           isOutsideRange={() => false}
           customArrowIcon={<span>-</span>}
+          displayFormat={ISO_FORMAT}
         />
       </StyledDatePicker>
     );

@@ -32,6 +32,10 @@ describe('<DatePicker>', () => {
       END_DATE
     );
   });
+  it('should render correct format', () => {
+    const datePicker = shallow(<DatePicker />);
+    expect(datePicker.find(DateRangePicker).props().displayFormat).toEqual(ISO_FORMAT);
+  });
   it('should render correct day size', () => {
     const datePicker = shallow(<DatePicker />);
     expect(datePicker.find(DateRangePicker).props().daySize).toEqual(DAY_SIZE);
