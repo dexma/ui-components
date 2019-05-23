@@ -1,19 +1,36 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import moment from 'moment';
+import sinon from 'sinon';
 import {
   DatePicker,
-  ISO_FORMAT,
   NUMBER_OF_MONTHS,
   START_DATE,
   END_DATE,
   DAY_SIZE,
 } from 'components/DatePicker';
-import sinon from 'sinon';
-
+import { ISO_FORMAT } from 'utils/dates';
 import { DateRangePicker } from 'react-dates';
 
+const selectDates = [
+  { value: 'custom', label: 'Custom' },
+  { value: 'today', label: 'Today' },
+  { value: 'yesterday', label: 'Yesterday' },
+  { value: 'last_7_days', label: 'Last 7 days' },
+  { value: 'last_30_days', label: 'Last 30 days' },
+  { value: 'current_month', label: 'Current month' },
+  { value: 'last_month', label: 'Last month' },
+  { value: 'year_to_date', label: 'Year to date' },
+  { value: 'previous_year', label: 'Previous year' }
+];
+
 describe('<DatePicker>', () => {
+  it('should render correct number of months', () => {
+    const datePicker = shallow(<DatePicker />);
+    expect(datePicker.find(DateRangePicker).props().numberOfMonths).toEqual(
+      NUMBER_OF_MONTHS
+    );
+  });
   it('should render correct number of months', () => {
     const datePicker = shallow(<DatePicker />);
     expect(datePicker.find(DateRangePicker).props().numberOfMonths).toEqual(
@@ -70,6 +87,7 @@ describe('<DatePicker>', () => {
       startDate: dateFake,
       endDate: null,
     });
+
     expect(parseDateStub.callCount).toEqual(1);
   });
   it('should call stateDateWrapper 2 time to parse date', () => {
@@ -84,6 +102,18 @@ describe('<DatePicker>', () => {
     });
     expect(parseDateStub.callCount).toEqual(2);
   });
+  it('shouldnt call onDatesChangeStub time to pass data', () => {
+    const onDatesChangeStub = sinon.stub();
+    const dateFake = moment('2002-09-11');
+    const datePicker = mount(<DatePicker/>);
+    datePicker
+      .instance()
+      .onDatesChange({
+        startDate: dateFake,
+        endDate: dateFake,
+      });
+    expect(onDatesChangeStub.callCount).toEqual(0);
+  });
   it('should have focusedInput correct passing autoFocus', () => {
     const datePicker = shallow(<DatePicker autoFocus={true} />);
     expect(datePicker.instance().state.focusedInput).toEqual(START_DATE);
@@ -91,5 +121,13 @@ describe('<DatePicker>', () => {
   it('should have focusedInput correct passing autoFocusEndDate', () => {
     const datePicker = shallow(<DatePicker autoFocusEndDate={true} />);
     expect(datePicker.instance().state.focusedInput).toEqual(END_DATE);
+  });
+  it('should render the select component', () => {
+    const datePicker = shallow(<DatePicker selectDates={selectDates} />);
+    expect(datePicker.find('StyledSelect').length).toEqual(1);
+  });
+  it('shouldn´t render the select component', () => {
+    const datePicker = shallow(<DatePicker />);
+    expect(datePicker.find('StyledSelect').length).toEqual(0);
   });
 });

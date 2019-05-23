@@ -1,40 +1,101 @@
 import styled from 'styled-components';
 
 const StyledDatePicker = styled.div`
+  display: inline-block;
+  width: 250px;
+  float: left;
   .DateInput {
-    margin: 0px;
+    width: calc(50% - 25px);
+
+    background: transparent;
   }
 
-  .DateInput,
-  .DateInput_input {
-    width: 100px;
+  .DateRangePickerInput {
+    align-items: center;
+    background-color: hsl(0, 0%, 100%);
+    border-color: hsl(0, 0%, 80%);
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: default;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-height: 40px;
+    outline: 0 !important;
+    position: relative;
+    transition: all 100ms;
+    box-sizing: border-box;
   }
-  .DateInput_input {
-    padding: 0;
+
+  .with-select {
+    .DateRangePickerInput {
+      border-radius: 3px 0px 0px 3px;
+    }
+  }
+
+  .DateRangePickerInput_calendarIcon {
+    background: 0 0;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0px 0px 0px 10px;
+    margin: 0;
+    outline: none;
+    width: 40px;
+  }
+
+  .DateRangePickerInput > div:first-child input {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    margin-right: -0.5px;
+  }
+
+  .DateRangePickerInput > div:last-child input {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    margin-left: -0.5px;
   }
 
   .DateInput_input {
     font-size: 12px;
-    height: 30px;
     font-weight: normal;
     line-height: 12px;
     color: #333333;
+    border: 0px;
     text-align: center;
-    border: 1px solid #ccc;
+    padding: 0;
+    outline: none;
+    width: 100%;
+  }
+
+  .DateRangePickerInput_arrow {
+    display: inline-block;
+    vertical-align: middle;
+    color: #484848;
+    width: 10px;
+    text-align: center;
   }
 
   .DateInput_input__focused {
     outline: 0;
     background: #fff;
   }
-
-  .DateRangePickerInput_arrow {
-    color: #ccc;
-    margin: 0 10px;
+  .DateInput_input + .DateInput_input {
+    margin-top: -1px;
+    margin-left: 0;
   }
 
   .DateInput_fang {
-    margin-top: 1px;
+    margin-top: -8px;
   }
 
   .CalendarDay {
@@ -111,8 +172,12 @@ const StyledDatePicker = styled.div`
     width: 10px;
     height: 10px;
   }
-  DateRangePicker_picker {
-    top: 55px !important;
+  .DayPicker__withBorder {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.07);
+    border-radius: 3px;
+  }
+  .dexma-icon {
+    color: #333;
   }
 `;
 

@@ -45,6 +45,7 @@ const Select = ({ className, classNamePrefix, dataCy, ...props }) => {
     <ReactSelect
       className={classes}
       optionClassName="select-option"
+      classNamePrefix={classNamePrefix}
       components={{
         DropdownIndicator,
         Input: selectProps => SelectInput({ ...selectProps, name: props.name }),
