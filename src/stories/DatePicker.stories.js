@@ -15,7 +15,7 @@ const selectDates = [
   { value: 'current_month', label: 'Current month' },
   { value: 'last_month', label: 'Last month' },
   { value: 'year_to_date', label: 'Year to date' },
-  { value: 'previous_year', label: 'Previous year' }
+  { value: 'previous_year', label: 'Previous year' },
 ];
 
 storiesOf('DatePicker', module)

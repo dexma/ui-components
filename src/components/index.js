@@ -4,6 +4,7 @@ import Card from 'components/Card';
 import Cell from 'components/Cell';
 import { DatePicker } from 'components/DatePicker';
 import FieldEditable from 'components/FieldEditable';
+import FieldGroup from 'components/FieldGroup';
 import Grid from 'components/Grid';
 import Heading from 'components/Heading';
 import Icon from 'components/Icon';
@@ -23,6 +24,7 @@ export {
   Cell,
   DatePicker,
   FieldEditable,
+  FieldGroup,
   Grid,
   Heading,
   Icon,
@@ -31,5 +33,5 @@ export {
   Pagination,
   Select,
   Spinner,
-  Title
+  Title,
 };

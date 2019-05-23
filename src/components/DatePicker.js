@@ -25,7 +25,6 @@ import {
 } from '../utils/dates';
 import 'react-dates/lib/css/_datepicker.css';
 
-
 const NUMBER_OF_MONTHS = 3;
 const START_DATE = 'startDate';
 const END_DATE = 'endDate';
@@ -47,7 +46,7 @@ const withDatePickerFormat = (start, end) => ({
   endDate: end,
 });
 
-const custom = () =>  withDatePickerFormat(null, null);
+const custom = () => withDatePickerFormat(null, null);
 
 const Dates = Object.freeze({
   CUSTOM: 'custom',
@@ -111,7 +110,7 @@ class DatePicker extends PureComponent {
   onSelectChange = ({ value }) => {
     const ranges = this.datePickerRange(value, withDatePickerFormat);
     if (value === 'custom') {
-      this.onFocusChange(START_DATE)
+      this.onFocusChange(START_DATE);
     }
     this.onDatesChange(ranges);
   };
@@ -194,10 +193,4 @@ StyledSelect.displayName = 'StyledSelect';
 DatePicker.propTypes = propTypes;
 DatePicker.defaultProps = defaultProps;
 
-export {
-  DatePicker,
-  NUMBER_OF_MONTHS,
-  START_DATE,
-  END_DATE,
-  DAY_SIZE,
-};
+export { DatePicker, NUMBER_OF_MONTHS, START_DATE, END_DATE, DAY_SIZE };
