@@ -4,7 +4,7 @@ import Highcharts from 'highcharts';
 
 const propTypes = {
   options: PropTypes.object.isRequired,
-  callback: PropTypes.func
+  callback: PropTypes.func,
 };
 
 class Chart extends PureComponent {
@@ -15,7 +15,11 @@ class Chart extends PureComponent {
 
   componentDidMount() {
     const { options, callback } = this.props;
-    this.chart = Highcharts.chart(this.container.current, options, callback ? callback : undefined);
+    this.chart = Highcharts.chart(
+      this.container.current,
+      options,
+      callback || undefined
+    );
   }
 
   componentWillUnmount() {

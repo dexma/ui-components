@@ -16,7 +16,7 @@ const options = {
     },
   ],
   chart: {
-    width: 500
+    width: 500,
   },
 };
 
@@ -26,11 +26,11 @@ const options2 = {
   },
   series: [
     {
-      data: [1, 2, 3, 5 ,6 , 7, 8],
+      data: [1, 2, 3, 5, 6, 7, 8],
     },
   ],
   chart: {
-    width: 700
+    width: 700,
   },
 };
 
