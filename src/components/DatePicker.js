@@ -88,8 +88,11 @@ class DatePicker extends PureComponent {
 
   componentDidMount() {
     const { periodDefault } = this.props;
-    const ranges = periodDefault && periodDefault.value ? this.datePickerRange(periodDefault.value, withDatePickerFormat) : null;
-    if(ranges){
+    const ranges =
+      periodDefault && periodDefault.value
+        ? this.datePickerRange(periodDefault.value, withDatePickerFormat)
+        : null;
+    if (ranges) {
       this.onDatesChange(ranges);
     }
   }
@@ -147,7 +150,7 @@ class DatePicker extends PureComponent {
       'initialEndDate',
       'stateDateWrapper',
       'periodOptions',
-      'periodDefault'
+      'periodDefault',
     ]);
     const { periodOptions, periodDefault } = this.props;
     const classes = classNames(periodOptions && `with-select`);

@@ -21,13 +21,19 @@ const yesterday = parser => {
 const last7Days = parser => {
   const dayStartNumber = 6;
   const dayEndNumber = 0;
-  return parser(day(dayStartNumber).startOf('day'), day(dayEndNumber).endOf('day'));
+  return parser(
+    day(dayStartNumber).startOf('day'),
+    day(dayEndNumber).endOf('day')
+  );
 };
 
 const last28Days = parser => {
   const dayStartNumber = 27;
   const dayEndNumber = 0;
-  return parser(day(dayStartNumber).startOf('day'), day(dayEndNumber).endOf('day'));
+  return parser(
+    day(dayStartNumber).startOf('day'),
+    day(dayEndNumber).endOf('day')
+  );
 };
 
 const currentMonth = parser => {

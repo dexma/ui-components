@@ -38,8 +38,9 @@ storiesOf('DatePicker', module)
         <Title text="DatePicker with selector" line />
       </Cell>
       <Cell medium={12} large={12}>
-        <DatePicker periodOptions={period} periodDefault={
-          {value: 'last_7_days', label: 'Last 7 days'} }
+        <DatePicker
+          periodOptions={period}
+          periodDefault={{ value: 'last_7_days', label: 'Last 7 days' }}
         />
       </Cell>
     </Grid>
