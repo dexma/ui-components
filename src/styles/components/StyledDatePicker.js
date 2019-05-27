@@ -105,7 +105,8 @@ const StyledDatePicker = styled.div`
   }
 
   .CalendarDay__default:hover {
-    background: #b6b6b6;
+    background: #ccc;
+    color: #000000;
   }
 
   .CalendarDay__selected,

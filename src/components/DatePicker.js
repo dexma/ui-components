@@ -4,7 +4,7 @@ import momentPropTypes from 'react-moment-proptypes';
 import { GeneralPropTypes } from 'utils/propTypes';
 import omit from 'lodash/omit';
 import classNames from 'classnames';
-import { DateRangePicker } from 'react-dates';
+import { DateRangePicker, DayPicker } from 'react-dates';
 import styled from 'styled-components';
 
 import Icon from 'components/Icon';
@@ -15,7 +15,7 @@ import { StyledDatePicker } from 'styles/components/StyledDatePicker';
 import {
   ISO_FORMAT,
   currentMonth,
-  last30Days,
+  last28Days,
   last7Days,
   lastMonth,
   previousYear,
@@ -35,7 +35,8 @@ const propTypes = {
   autoFocus: PropTypes.bool,
   autoFocusEndDate: PropTypes.bool,
   stateDateWrapper: PropTypes.func,
-  selectDates: PropTypes.arrayOf(PropTypes.object),
+  periodOptions: PropTypes.arrayOf(PropTypes.object),
+  periodDefault: PropTypes.object,
   initialStartDate: momentPropTypes.momentObj,
   initialEndDate: momentPropTypes.momentObj,
   onDatesChange: PropTypes.func,
@@ -53,7 +54,7 @@ const Dates = Object.freeze({
   TODAY: 'today',
   YESTERDAY: 'yesterday',
   LAST_7_DAYS: 'last_7_days',
-  LAST_30_DAYS: 'last_30_days',
+  LAST_28_DAYS: 'last_28_days',
   CURRENT_MONTH: 'current_month',
   LAST_MONTH: 'last_month',
   YEAR_TO_DATE: 'year_to_date',
@@ -83,6 +84,14 @@ class DatePicker extends PureComponent {
       startDate: props.initialStartDate,
       endDate: props.initialEndDate,
     };
+  }
+
+  componentDidMount() {
+    const { periodDefault } = this.props;
+    const ranges = periodDefault && periodDefault.value ? this.datePickerRange(periodDefault.value, withDatePickerFormat) : null;
+    if(ranges){
+      this.onDatesChange(ranges);
+    }
   }
 
   onDatesChange = ({ startDate, endDate }) => {
@@ -119,7 +128,7 @@ class DatePicker extends PureComponent {
     if (range === Dates.TODAY) return today(parser);
     if (range === Dates.YESTERDAY) return yesterday(parser);
     if (range === Dates.LAST_7_DAYS) return last7Days(parser);
-    if (range === Dates.LAST_30_DAYS) return last30Days(parser);
+    if (range === Dates.LAST_28_DAYS) return last28Days(parser);
     if (range === Dates.CURRENT_MONTH) return currentMonth(parser);
     if (range === Dates.LAST_MONTH) return lastMonth(parser);
     if (range === Dates.YEAR_TO_DATE) return yearToDate(parser);
@@ -137,10 +146,11 @@ class DatePicker extends PureComponent {
       'initialStartDate',
       'initialEndDate',
       'stateDateWrapper',
-      'selectDates',
+      'periodOptions',
+      'periodDefault'
     ]);
-    const { selectDates } = this.props;
-    const classes = classNames(selectDates && `with-select`);
+    const { periodOptions, periodDefault } = this.props;
+    const classes = classNames(periodOptions && `with-select`);
     return (
       <Fragment>
         <StyledDatePicker>
@@ -160,12 +170,17 @@ class DatePicker extends PureComponent {
               isOutsideRange={() => false}
               customArrowIcon={<span>-</span>}
               displayFormat={ISO_FORMAT}
+              minimumNights={0}
               customInputIcon={<Icon name="calendar-small-page" />}
             />
           </div>
         </StyledDatePicker>
-        {selectDates && (
-          <StyledSelect options={selectDates} onChange={this.onSelectChange} />
+        {periodOptions && (
+          <StyledSelect
+            options={periodOptions}
+            defaultValue={periodDefault}
+            onChange={this.onSelectChange}
+          />
         )}
       </Fragment>
     );

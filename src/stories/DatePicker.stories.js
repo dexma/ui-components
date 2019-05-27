@@ -6,15 +6,15 @@ import Grid from 'components/Grid';
 import Cell from 'components/Cell';
 import Title from 'components/Title';
 
-const selectDates = [
+const period = [
   { value: 'custom', label: 'Custom' },
   { value: 'today', label: 'Today' },
   { value: 'yesterday', label: 'Yesterday' },
   { value: 'last_7_days', label: 'Last 7 days' },
-  { value: 'last_30_days', label: 'Last 30 days' },
-  { value: 'current_month', label: 'Current month' },
+  { value: 'last_28_days', label: 'Last 28 days' },
+  { value: 'current_month', label: 'So far this month' },
   { value: 'last_month', label: 'Last month' },
-  { value: 'year_to_date', label: 'Year to date' },
+  { value: 'year_to_date', label: 'So far this year' },
   { value: 'previous_year', label: 'Previous year' },
 ];
 
@@ -38,7 +38,9 @@ storiesOf('DatePicker', module)
         <Title text="DatePicker with selector" line />
       </Cell>
       <Cell medium={12} large={12}>
-        <DatePicker selectDates={selectDates} />
+        <DatePicker periodOptions={period} periodDefault={
+          {value: 'last_7_days', label: 'Last 7 days'} }
+        />
       </Cell>
     </Grid>
   ));
