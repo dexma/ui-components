@@ -16,7 +16,7 @@ describe('<Select>', () => {
   });
   it('Should render the correct Icon component', () => {
     const select = mount(<Select options={options} />);
-    expect(select.find(Icon).length).toEqual(1);
+    expect(select.find('Icon').length).toEqual(1);
   });
   it('Should have the isClearable prop to false', () => {
     const select = shallow(<Select options={options} />);

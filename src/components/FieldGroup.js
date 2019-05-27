@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import find from 'lodash/find';
@@ -20,6 +20,7 @@ const propTypes = {
   name: PropTypes.string,
   vertical: PropTypes.bool,
   onChange: PropTypes.func,
+  onFieldClick: PropTypes.func,
 };
 
 const defaultProps = {
@@ -65,6 +66,7 @@ const FieldGroup = ({
   name,
   vertical,
   onChange,
+  onFieldClick,
 }) => {
   const classes = classNames(
     className,
@@ -88,12 +90,13 @@ const FieldGroup = ({
             key={id}
             data-tooltip={tooltip}
             htmlFor={id}
+            onClick={() => onFieldClick && onFieldClick(item)}
           >
             {!icon && label ? <span>{label}</span> : null}
             {icon ? <Icon name={icon} size={size} /> : null}
             <input
               id={id}
-              onChange={() => onChange(item)}
+              onChange={() => onChange && onChange(item)}
               type={type}
               name={name}
               defaultValue={value}
@@ -109,4 +112,4 @@ const FieldGroup = ({
 FieldGroup.propTypes = propTypes;
 FieldGroup.defaultProps = defaultProps;
 
-export default FieldGroup;
+export default memo(FieldGroup);

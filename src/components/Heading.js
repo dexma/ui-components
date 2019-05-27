@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { GeneralPropTypes } from 'utils/propTypes';
@@ -30,4 +30,4 @@ const Heading = ({ className, classNamePrefix, type, text, line, dataCy }) => {
 Heading.propTypes = propTypes;
 Heading.defaultProps = defaultProps;
 
-export default Heading;
+export default memo(Heading);

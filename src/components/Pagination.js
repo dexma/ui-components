@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classNames from 'classnames';
 import ReactPaginate from 'react-paginate';
 import { GeneralPropTypes } from 'utils/propTypes';
@@ -36,4 +36,4 @@ const Pagination = ({ className, classNamePrefix, dataCy, ...props }) => {
 Pagination.propTypes = propTypes;
 Pagination.defaultProps = defaultProps;
 
-export default Pagination;
+export default memo(Pagination);

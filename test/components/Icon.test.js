@@ -14,7 +14,7 @@ describe('<Icon>', () => {
   });
   it('Should have size prop on the element', () => {
     const testSize = 'small';
-    const icon = mount(<Icon />);
+    const icon = mount(<Icon size={testSize}/>);
     expect(icon.prop('size')).toEqual(testSize);
     expect(icon.find(`.${testSize}`).length).toEqual(1);
     icon.setProps({ size: 'medium' });

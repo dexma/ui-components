@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
@@ -92,4 +92,4 @@ const Button = ({
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
-export default Button;
+export default memo(Button);

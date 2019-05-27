@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { GeneralPropTypes } from 'utils/propTypes';
@@ -39,4 +39,4 @@ const Title = ({ className, classNamePrefix, type, text, dataCy }) => {
 Title.propTypes = propTypes;
 Title.defaultProps = defaultProps;
 
-export default Title;
+export default memo(Title);

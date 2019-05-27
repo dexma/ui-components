@@ -22,6 +22,6 @@ describe('<Modal>', () => {
         </Fragment>
       </Modal>
     );
-    expect(modal.find(Button).length).toEqual(2);
+    expect(modal.find('Button').length).toEqual(2);
   });
 });

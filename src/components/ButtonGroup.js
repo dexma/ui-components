@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { GeneralPropTypes } from 'utils/propTypes';
@@ -37,4 +37,4 @@ const ButtonGroup = ({
 ButtonGroup.propTypes = propTypes;
 ButtonGroup.defaultProps = defaultProps;
 
-export default ButtonGroup;
+export default memo(ButtonGroup);

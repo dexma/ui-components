@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { GeneralPropTypes } from 'utils/propTypes';
@@ -54,4 +54,4 @@ const Cell = ({
 Cell.propTypes = propTypes;
 Cell.defaultProps = defaultProps;
 
-export default Cell;
+export default memo(Cell);

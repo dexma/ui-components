@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { GeneralPropTypes } from 'utils/propTypes';
@@ -32,4 +32,4 @@ const Icon = ({ name, size, className, classNamePrefix, dataCy, children }) => {
 Icon.propTypes = propTypes;
 Icon.defaultProps = defaultProps;
 
-export default Icon;
+export default memo(Icon);

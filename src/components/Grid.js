@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { GeneralPropTypes } from 'utils/propTypes';
@@ -64,4 +64,4 @@ const Grid = ({
 Grid.propTypes = propTypes;
 Grid.defaultProps = defaultProps;
 
-export default Grid;
+export default memo(Grid);

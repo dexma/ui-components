@@ -12,7 +12,7 @@ describe('<Pagination>', () => {
 
   it('Should render the correct icon left', () => {
     const pagination = mount(<Pagination initialPage={0} pageCount={5} />);
-    const icon = pagination.find(Icon);
+    const icon = pagination.find('Icon');
     expect(icon.length).toEqual(2);
     expect(icon.first().prop('name')).toEqual('left_arrow');
     expect(icon.last().prop('name')).toEqual('right_arrow');

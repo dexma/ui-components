@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import Button from 'components/Button';
 import Icon from 'components/Icon';
@@ -36,10 +36,10 @@ describe('<Button>', () => {
   it('Should render icons elements', () => {
     const iconBefore = 'close';
     const iconAfter = 'bar';
-    const button = shallow(<Button iconBefore={iconBefore} />);
-    expect(button.find(Icon).length).toEqual(1);
+    const button = mount(<Button iconBefore={iconBefore} />);
+    expect(button.find('Icon').length).toEqual(1);
     button.setProps({ iconAfter });
-    expect(button.find(Icon).length).toEqual(2);
+    expect(button.find('Icon').length).toEqual(2);
   });
   it('Should click on the button', () => {
     const mockCallBack = jest.fn();

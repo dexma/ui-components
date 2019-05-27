@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -76,4 +76,4 @@ const Card = ({
 Card.propTypes = propTypes;
 Card.defaultProps = defaultProps;
 
-export default Card;
+export default memo(Card);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { GeneralPropTypes } from 'utils/propTypes';
@@ -268,4 +268,4 @@ const Spinner = ({
 Spinner.propTypes = propTypes;
 Spinner.defaultProps = defaultProps;
 
-export default Spinner;
+export default memo(Spinner);

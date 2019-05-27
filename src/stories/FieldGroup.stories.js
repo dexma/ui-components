@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { actions } from '@storybook/addon-actions';
 import {
@@ -14,7 +14,7 @@ import Title from 'components/Title';
 import Grid from 'components/Grid';
 
 const eventsFromObject = actions({
-  onChange: 'onChange input',
+  onFieldClick: 'onFieldClick',
 });
 
 storiesOf('FieldGroup', module)

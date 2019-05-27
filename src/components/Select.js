@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classNames from 'classnames';
 import ReactSelect, { components } from 'react-select';
 import { GeneralPropTypes } from 'utils/propTypes';
@@ -62,4 +62,4 @@ const Select = ({ className, classNamePrefix, dataCy, ...props }) => {
 Select.propTypes = propTypes;
 Select.defaultProps = defaultProps;
 
-export default Select;
+export default memo(Select);

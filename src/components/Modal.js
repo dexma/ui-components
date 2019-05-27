@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 const style = {
   mask: {
@@ -55,7 +55,7 @@ const style = {
   },
 };
 
-export default class Modal extends Component {
+export default class Modal extends PureComponent {
   constructor(props) {
     super(props);
     const effect = props.effect || 'fadeInDown';

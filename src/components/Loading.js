@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { GeneralPropTypes } from 'utils/propTypes';
@@ -42,4 +42,4 @@ const Loading = ({
 Loading.propTypes = propTypes;
 Loading.defaultProps = defaultProps;
 
-export default Loading;
+export default memo(Loading);
