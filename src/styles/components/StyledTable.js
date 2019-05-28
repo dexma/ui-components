@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { borderRadius } from 'polished';
 
 const StyledTable = styled.div`
+.ant-table{
+  color: ${props => props.theme.primaryColor};
+}
 .ant-table-body {
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
@@ -252,7 +255,7 @@ const StyledTable = styled.div`
 }
 .ant-table-thead > tr > th,
 .ant-table-tbody > tr > td {
-  padding: 8px 10px;
+    padding: 6px 8px;
 }
 .ant-table-expand-icon-th,
 .ant-table-row-expand-icon-cell {
@@ -715,7 +718,63 @@ tr.ant-table-expanded-row td > .ant-table-wrapper {
 
 // Pagination
 
+.ant-pagination-next, 
+.ant-pagination-prev,
+.ant-pagination-item,
+.ant-pagination-item-active {
+    min-width: 28px;
+    height: 28px;
+    line-height: 28px;
+    font-family: Arial;
+    text-align: center;
+    list-style: none;
+    background-color: transparent;
+    border: 0px;
+    border-radius: 0px;
+    outline: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.ant-pagination-next .ant-pagination-item-link, 
+.ant-pagination-prev .ant-pagination-item-link,
+.ant-pagination-item a {
+    color: ${props => props.theme.primaryColor};
+    font-size: ${props => props.theme.buttonFontFamily};
+    font-weight: ${props => props.theme.buttonFontWeight};
+    background: ${props => props.theme.buttonBackgroundColor};
+    border: ${props => props.theme.buttonBorder};
+    border-radius: ${props => props.theme.buttonRadius};
+    height: 28px;
+    line-height: 28px;
+}
+
+.ant-pagination-item:focus a, 
+.ant-pagination-item:hover a,
+.ant-pagination-item a{
+    border-color: transparent;
+    transition: all .3s;
+    color: ${props => props.theme.primaryColor};
+}
+
+.ant-pagination-item-active:focus a, 
+.ant-pagination-item-active:hover a {
+    color: ${props => props.theme.white};
+}
+
+.ant-pagination-item-active a{
+  ${props => active(props.theme)};
+}
+
 .ant-pagination-next:focus .ant-pagination-item-link, 
+.ant-pagination-next:hover .ant-pagination-item-link, 
+.ant-pagination-prev:focus .ant-pagination-item-link, 
+.ant-pagination-prev:hover .ant-pagination-item-link {
+    color: ${props => props.theme.primaryColor};
+    border-color: transparent;
+}
+
+/*.ant-pagination-next:focus .ant-pagination-item-link, 
 .ant-pagination-next:hover .ant-pagination-item-link, 
 .ant-pagination-prev:focus .ant-pagination-item-link, 
 .ant-pagination-prev:hover .ant-pagination-item-link,
@@ -739,10 +798,18 @@ tr.ant-table-expanded-row td > .ant-table-wrapper {
 
 .ant-pagination-item:focus, 
 .ant-pagination-item:hover {
-    border-color: ${props => props.theme.primaryBrandColor};
-    transition: all .3s;
-}
+     background-color: $background-color-active;
+  border: 1px solid $border-color-active;
+  box-shadow: $box-shadow-active;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}*/
 
+`;
+
+const active = props => `
+  background-color: ${props.backgroundColorActive};
+  border: 1px solid ${props.backgroundColorActive};
+  color: ${props.white};
 `;
 
 export { StyledTable };
