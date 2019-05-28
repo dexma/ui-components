@@ -67,10 +67,12 @@ $primary-color: #333333;
 $secondary-color: #a0a0a0;
 $alert-color: #cc4b37;
 
+$primary-brand-color: #618916;
+
 //Background
 $background-color: $white;
-$background-color-secondary: #bbb;
-$background-color-active-hex: #618916;
+$background-color-secondary: $gray-light-secondary;
+$background-color-active-hex: $primary-brand-color;
 $background-color-active: hsl(
   hue($background-color-active-hex),
   saturation($background-color-active-hex),
@@ -95,6 +97,9 @@ $box-shadow-active: inset 0 1px 0 $box-shadow-color-active-hsl-1,
   inset 0 0 2px $box-shadow-color-active-hsl-2;
 
 $error-color: $alert-color;
+
+// Borders
+$border-color: $gray-light-secondary;
 
 //----------------------------- Components Styles ------------------------------------ //
 

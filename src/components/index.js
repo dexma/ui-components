@@ -14,6 +14,7 @@ import Modal from 'components/Modal';
 import Pagination from 'components/Pagination';
 import Select from 'components/Select';
 import Spinner from 'components/Spinner';
+import Table from 'components/Table';
 import Title from 'components/Title';
 
 import 'styles/global.scss';
@@ -35,5 +36,6 @@ export {
   Pagination,
   Select,
   Spinner,
+  Table,
   Title,
 };
