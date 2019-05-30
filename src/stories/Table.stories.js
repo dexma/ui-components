@@ -32,7 +32,8 @@ const dataSource = [
     name: 'John',
     age: 42,
     address: '10 Downing Street',
-  },  {
+  },
+  {
     key: '1',
     name: 'Mike',
     age: 32,
@@ -43,7 +44,8 @@ const dataSource = [
     name: 'John',
     age: 42,
     address: '10 Downing Street',
-  },  {
+  },
+  {
     key: '1',
     name: 'Mike',
     age: 32,
@@ -54,7 +56,8 @@ const dataSource = [
     name: 'John',
     age: 42,
     address: '10 Downing Street',
-  },  {
+  },
+  {
     key: '1',
     name: 'Mike',
     age: 32,
@@ -65,7 +68,8 @@ const dataSource = [
     name: 'John',
     age: 42,
     address: '10 Downing Street',
-  },  {
+  },
+  {
     key: '1',
     name: 'Mike',
     age: 32,
@@ -76,7 +80,8 @@ const dataSource = [
     name: 'John',
     age: 42,
     address: '10 Downing Street',
-  },  {
+  },
+  {
     key: '1',
     name: 'Mike',
     age: 32,
