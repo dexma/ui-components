@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { borderRadius } from 'polished';
 
 const StyledTable = styled.div`
 .ant-table{
@@ -15,7 +14,7 @@ const StyledTable = styled.div`
 .ant-table table {
   width: 100%;
   text-align: left;
-  ${props => borderRadius('top', props.theme.globalRadius)};
+  border-radius: ${props => props.theme.globalRadius} ${props => props.theme.globalRadius} 0px 0px;
   border-collapse: collapse;
 }
 .ant-table-thead > tr,

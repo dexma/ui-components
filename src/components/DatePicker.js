@@ -22,7 +22,7 @@ import {
   today,
   yearToDate,
   yesterday,
-} from '../utils/dates';
+} from 'utils/dates';
 import 'react-dates/lib/css/_datepicker.css';
 
 const NUMBER_OF_MONTHS = 3;

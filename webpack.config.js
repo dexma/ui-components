@@ -101,6 +101,14 @@ module.exports = function(env, argv) {
           },
         }),
       ],
+      splitChunks: {
+        chunks: 'all',
+        name: false,
+      },
+      runtimeChunk: true,
+    },
+    performance: {
+      hints: false
     },
     module: {
       rules: [babelLoader, scssLoader],
