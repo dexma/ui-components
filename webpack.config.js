@@ -56,7 +56,7 @@ module.exports = function(env, argv) {
         ? 'source-map'
         : false
       : isEnvDevelopment && 'cheap-module-source-map',
-    entry: path.join(__dirname, 'src/components', 'index.js'),
+    entry: path.join(__dirname, 'src', 'index.js'),
     output: {
       path: path.join(__dirname, 'dist'),
       filename: '[name].bundle.js',

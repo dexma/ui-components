@@ -327,7 +327,7 @@ const StyledTable = styled.div`
   padding: 16px 16px;
   color: rgba(0, 0, 0, 0.25);
   font-size: 14px;
-  text-align: center;
+  text-align: center; 
   background: #fff;
   border-bottom: 1px solid #e8e8e8;
   border-radius: 0 0 4px 4px;

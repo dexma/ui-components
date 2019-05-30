@@ -1,6 +1,6 @@
 {
   "name": "@dexma/ui-components",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "DEXMA UI Components (React)",
   "main": "dist/main.bundle.js",
   "scripts": {
@@ -22,6 +22,7 @@
   "keywords": [
     "ui",
     "components",
+    "utils",
     "react"
   ],
   "author": "Matias Menker",
