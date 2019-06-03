@@ -204,8 +204,8 @@ const StyledSelect = styled(Select)`
   .dexma-select__single-value {
     color: ${props => props.theme.primaryColor};
   }
-  .dexma-select .dexma-select__dropdown-indicator, 
-  .dexma-select .dexma-select__dropdown-indicator:hover{
+  .dexma-select .dexma-select__dropdown-indicator,
+  .dexma-select .dexma-select__dropdown-indicator:hover {
     color: ${props => props.theme.primaryColor};
   }
 `;

@@ -9,7 +9,7 @@ import Icon from 'components/Icon';
 
 const propTypes = {
   ...GeneralPropTypes,
-  icon: PropTypes.string
+  icon: PropTypes.string,
 };
 
 const defaultProps = {
@@ -17,12 +17,12 @@ const defaultProps = {
   icon: 'menu',
 };
 
-const DropdownIndicator = (props) => {
+const DropdownIndicator = props => {
   const { icon } = props;
   return (
     components.DropdownIndicator && (
       <components.DropdownIndicator {...props}>
-        <Icon name={ icon }/>
+        <Icon name={icon} />
       </components.DropdownIndicator>
     )
   );
@@ -54,7 +54,8 @@ const Select = ({ className, classNamePrefix, dataCy, ...props }) => {
       optionClassName="select-option"
       classNamePrefix={classNamePrefix}
       components={{
-        DropdownIndicator: selectProps => DropdownIndicator({ ...selectProps, icon: props.icon }),
+        DropdownIndicator: selectProps =>
+          DropdownIndicator({ ...selectProps, icon: props.icon }),
         Input: selectProps => SelectInput({ ...selectProps, name: props.name }),
         Option: selectProps => Option({ ...selectProps, name: props.name }),
       }}

@@ -71,7 +71,7 @@ const StyledDatePicker = styled.div`
       }
     }
     &:last-of-type {
-          .DateInput_input {
+      .DateInput_input {
       }
     }
   }

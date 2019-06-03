@@ -14,7 +14,8 @@ const StyledTable = styled.div`
 .ant-table table {
   width: 100%;
   text-align: left;
-  border-radius: ${props => props.theme.globalRadius} ${props => props.theme.globalRadius} 0px 0px;
+  border-radius: ${props => props.theme.globalRadius} ${props =>
+  props.theme.globalRadius} 0px 0px;
   border-collapse: collapse;
 }
 .ant-table-thead > tr,

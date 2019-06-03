@@ -1,4 +1,3 @@
-
 // Components
 import Button from 'components/Button';
 import ButtonGroup from 'components/ButtonGroup';
@@ -32,7 +31,7 @@ import {
   currentMonth,
   lastMonth,
   yearToDate,
-  previousYear
+  previousYear,
 } from 'utils/dates';
 
 export {

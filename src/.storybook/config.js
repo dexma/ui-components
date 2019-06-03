@@ -5,9 +5,7 @@ import results from 'test/jest-test-results';
 import 'styles/global.scss';
 
 //https://github.com/storybooks/storybook/tree/master/addons/info
-addDecorator(
-  withInfo
-);
+addDecorator(withInfo);
 
 addDecorator(
   withTests({
