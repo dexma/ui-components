@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 const StyledDatePicker = styled.div`
   display: inline-block;
-  width: 250px;
+  width: 215px;
   float: left;
   .DateInput {
     width: calc(50% - 25px);
-
     background: transparent;
   }
 
@@ -24,11 +23,12 @@ const StyledDatePicker = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    min-height: 40px;
+    min-height: ${props => props.theme.globalHeightElements};
     outline: 0 !important;
     position: relative;
     transition: all 100ms;
     box-sizing: border-box;
+    padding: 0 10px;
   }
 
   .with-select {
@@ -47,10 +47,10 @@ const StyledDatePicker = styled.div`
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
-    padding: 0px 0px 0px 10px;
+    padding: 0px;
     margin: 0;
     outline: none;
-    width: 40px;
+    width: 25px;
   }
 
   .DateRangePickerInput > div:first-child input {
@@ -63,6 +63,17 @@ const StyledDatePicker = styled.div`
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     margin-left: -0.5px;
+  }
+
+  .DateInput {
+    &:first-of-type {
+      .DateInput_input {
+      }
+    }
+    &:last-of-type {
+          .DateInput_input {
+      }
+    }
   }
 
   .DateInput_input {
@@ -95,7 +106,7 @@ const StyledDatePicker = styled.div`
   }
 
   .DateInput_fang {
-    margin-top: -8px;
+    margin-top: -18px;
   }
 
   .CalendarDay {
@@ -131,12 +142,16 @@ const StyledDatePicker = styled.div`
     color: #fff;
   }
 
+  .DateRangePicker_picker {
+    top: 50px !important;
+  }
+
   .DayPickerNavigation_button__horizontalDefault {
     position: absolute;
-    top: 15px;
+    top: 18px;
     line-height: 0.78;
-    border-radius: 50%;
-    padding: 6px;
+    border-radius: 0px;
+    padding: 4px;
     width: 20px;
     height: 20px;
   }
@@ -164,15 +179,6 @@ const StyledDatePicker = styled.div`
     display: block;
   }
 
-  .DayPickerNavigation_button__horizontalDefault {
-    position: absolute;
-    top: 18px;
-    line-height: 0.78;
-    border-radius: 0px;
-    padding: 6px;
-    width: 10px;
-    height: 10px;
-  }
   .DayPicker__withBorder {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.07);
     border-radius: 3px;

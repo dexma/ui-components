@@ -192,10 +192,9 @@ class DatePicker extends PureComponent {
 
 const StyledSelect = styled(Select)`
   display: inline-block;
-  width: 170px;
+  width: 140px;
   float: left;
   .dexma-select__control {
-    min-height: 40px;
     border-radius: 0px 3px 3px 0px;
     border-color: #cccccc;
     border-left: 0px;

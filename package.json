@@ -1,19 +1,19 @@
 {
   "name": "@dexma/ui-components",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "DEXMA UI Components (React)",
   "main": "dist/main.bundle.js",
   "scripts": {
     "clean-build": "rm -rf build",
     "build:development": "npm run clean-build && webpack --mode development",
     "build:production": "npm run clean-build && webpack --mode production",
-    "lint": "eslint src",
-    "lint-fix": "eslint src --fix",
-    "prettier": "prettier --write src/**/*.js",
-    "format": "npm run prettier && npm run lint-fix",
-    "jest": "NODE_ENV=test jest",
+    "prettier": "prettier --write 'src/{,**/{,*.}}*.js'",
+    "eslint": "eslint --write 'src/{,**/{,*.}}*.js'",
+    "eslint:fix": "eslint --fix 'src/{,**/{,*.}}*.js'",
+    "format": "npm run eslint:fix && npm run prettier",
+    "test": "NODE_ENV=test jest",
     "storybook": "start-storybook -p 9999 -c src/.storybook",
-    "storybook:generate-jest": "jest --json --outputFile=test/jest-test-results.json"
+    "storybook:generate-test": "jest --json --outputFile=test/jest-test-results.json"
   },
   "repository": {
     "type": "git",

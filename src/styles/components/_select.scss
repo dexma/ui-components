@@ -90,7 +90,27 @@
     cursor: pointer;
   }
 
-  // Control
+  .dexma-select__control{
+    min-height: $global-height-elements;
+  }
+
+  .dexma-select__value-container,
+  .dexma-select__dropdown-indicator{
+    padding: 0 10px;
+  }
+
+  .dexma-select__menu-list{
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+
+  .dexma-select__option,
+  .dexma-select__option--is-selected{
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+    // Control
   .dexma-select__control,
   .dexma-select__control:hover{
     border-color: $gray-light;

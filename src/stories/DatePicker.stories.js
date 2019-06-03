@@ -1,10 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { ThemeProvider } from 'styled-components';
 
 import { DatePicker } from 'components/DatePicker';
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
 import Title from 'components/Title';
+
+const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!styles/_variables.scss');
 
 const period = [
   { value: 'custom', label: 'Custom' },
@@ -23,25 +26,29 @@ storiesOf('DatePicker', module)
     jest: ['DatePicker'],
   })
   .add('basic', () => (
-    <Grid type="horizontal" horizontalPadding verticalPadding>
-      <Cell size="full">
-        <Title text="DatePicker" line />
-      </Cell>
-      <Cell medium={12} large={12}>
-        <DatePicker />
-      </Cell>
-    </Grid>
+    <ThemeProvider theme={theme}>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Cell size="full">
+          <Title text="DatePicker" line />
+        </Cell>
+        <Cell medium={12} large={12}>
+          <DatePicker />
+        </Cell>
+      </Grid>
+    </ThemeProvider>
   ))
   .add('with selector', () => (
-    <Grid type="horizontal" horizontalPadding verticalPadding>
-      <Cell size="full">
-        <Title text="DatePicker with selector" line />
-      </Cell>
-      <Cell medium={12} large={12}>
-        <DatePicker
-          periodOptions={period}
-          periodDefault={{ value: 'last_7_days', label: 'Last 7 days' }}
-        />
-      </Cell>
-    </Grid>
+    <ThemeProvider theme={theme}>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Cell size="full">
+          <Title text="DatePicker with selector" line />
+        </Cell>
+        <Cell medium={12} large={12}>
+          <DatePicker
+            periodOptions={period}
+            periodDefault={{ value: 'last_7_days', label: 'Last 7 days' }}
+          />
+        </Cell>
+      </Grid>
+    </ThemeProvider>
   ));
