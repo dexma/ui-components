@@ -1,12 +1,9 @@
-//----------------------------- Global Styles ------------------------------------ //
-
 $global-radius: 2px;
 $global-font-size: 12px;
 $global-weight-bold: 700;
 $text-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.75);
 $global-height-elements: 30px;
 
-// Typography
 $sizes: (
   small: $global-font-size,
   medium: $global-font-size * 1.5,
@@ -57,7 +54,6 @@ $header-styles: (
   ),
 );
 
-// Colors
 $white: #fff;
 $black: #000;
 $gray-light: #cccccc;
@@ -70,7 +66,6 @@ $alert-color: #cc4b37;
 
 $primary-brand-color: #618916;
 
-//Background
 $background-color: $white;
 $background-color-secondary: $gray-light-secondary;
 $background-color-active-hex: $primary-brand-color;
@@ -99,18 +94,13 @@ $box-shadow-active: inset 0 1px 0 $box-shadow-color-active-hsl-1,
 
 $error-color: $alert-color;
 
-// Borders
 $border-color: $gray-light-secondary;
 
-//----------------------------- Components Styles ------------------------------------ //
-
-//Global
 $header-font-weight: $global-weight-bold;
 $anchor-color: $primary-color;
 $anchor-color-hover: $primary-color;
 $body-font-color: $primary-color;
 
-//Buttons
 $button-background-color: $gray-light-secondary;
 $button-font-family: $global-font-size;
 $button-font-weight: $global-weight-bold;
@@ -131,7 +121,6 @@ $button-border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 $button-hollow-border-width: 1px !default;
 $button-box-shadow: inset 0 1px 0 #f9f9f9, inset 0 0 2px #fff;
 
-//Cards
 $card-background: $gray-light-secondary;
 $card-body-background: $background-color-secondary;
 $card-font-color: $primary-color;
@@ -139,9 +128,7 @@ $card-body-color: $white;
 $card-divider-background: $gray-light;
 $card-border: 1px solid $gray-light;
 
-// Title
 $title-color: $gray-light;
 
-// Error
 $error-font-size: $global-font-size;
 $error-color: $alert-color;

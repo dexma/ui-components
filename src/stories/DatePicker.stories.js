@@ -1,13 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
 
 import { DatePicker } from 'components/DatePicker';
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
 import Title from 'components/Title';
-
-const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!styles/_variables.scss');
+import Theme from 'components/Theme';
 
 const period = [
   { value: 'custom', label: 'Custom' },
@@ -26,7 +24,7 @@ storiesOf('DatePicker', module)
     jest: ['DatePicker'],
   })
   .add('basic', () => (
-    <ThemeProvider theme={theme}>
+    <Theme>
       <Grid type="horizontal" horizontalPadding verticalPadding>
         <Cell size="full">
           <Title text="DatePicker" line />
@@ -35,10 +33,10 @@ storiesOf('DatePicker', module)
           <DatePicker />
         </Cell>
       </Grid>
-    </ThemeProvider>
+    </Theme>
   ))
   .add('with selector', () => (
-    <ThemeProvider theme={theme}>
+    <Theme>
       <Grid type="horizontal" horizontalPadding verticalPadding>
         <Cell size="full">
           <Title text="DatePicker with selector" line />
@@ -50,5 +48,5 @@ storiesOf('DatePicker', module)
           />
         </Cell>
       </Grid>
-    </ThemeProvider>
+    </Theme>
   ));

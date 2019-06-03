@@ -30,18 +30,6 @@ const START_DATE = 'startDate';
 const END_DATE = 'endDate';
 const DAY_SIZE = 20;
 
-const propTypes = {
-  ...GeneralPropTypes,
-  autoFocus: PropTypes.bool,
-  autoFocusEndDate: PropTypes.bool,
-  stateDateWrapper: PropTypes.func,
-  periodOptions: PropTypes.arrayOf(PropTypes.object),
-  periodDefault: PropTypes.object,
-  initialStartDate: momentPropTypes.momentObj,
-  initialEndDate: momentPropTypes.momentObj,
-  onDatesChange: PropTypes.func,
-};
-
 const withDatePickerFormat = (start, end) => ({
   startDate: start,
   endDate: end,
@@ -60,6 +48,18 @@ const Dates = Object.freeze({
   YEAR_TO_DATE: 'year_to_date',
   PREVIOUS_YEAR: 'previous_year',
 });
+
+const propTypes = {
+  ...GeneralPropTypes,
+  autoFocus: PropTypes.bool,
+  autoFocusEndDate: PropTypes.bool,
+  stateDateWrapper: PropTypes.func,
+  periodOptions: PropTypes.arrayOf(PropTypes.object),
+  periodDefault: PropTypes.object,
+  initialStartDate: momentPropTypes.momentObj,
+  initialEndDate: momentPropTypes.momentObj,
+  onDatesChange: PropTypes.func,
+};
 
 const defaultProps = {
   autoFocus: false,

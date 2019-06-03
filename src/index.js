@@ -16,6 +16,7 @@ import Pagination from 'components/Pagination';
 import Select from 'components/Select';
 import Spinner from 'components/Spinner';
 import Table from 'components/Table';
+import Theme from 'components/Theme';
 import Title from 'components/Title';
 
 import 'styles/global.scss';
@@ -52,6 +53,7 @@ export {
   Select,
   Spinner,
   Table,
+  Theme,
   Title,
   ISO_FORMAT,
   day,
