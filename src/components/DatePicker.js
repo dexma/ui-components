@@ -4,7 +4,7 @@ import momentPropTypes from 'react-moment-proptypes';
 import { GeneralPropTypes } from 'utils/propTypes';
 import omit from 'lodash/omit';
 import classNames from 'classnames';
-import { DateRangePicker, DayPicker } from 'react-dates';
+import { DateRangePicker } from 'react-dates';
 import styled from 'styled-components';
 
 import Icon from 'components/Icon';
@@ -180,6 +180,7 @@ class DatePicker extends PureComponent {
         </StyledDatePicker>
         {periodOptions && (
           <StyledSelect
+            icon="down-dir"
             options={periodOptions}
             defaultValue={periodDefault}
             onChange={this.onSelectChange}
@@ -192,7 +193,7 @@ class DatePicker extends PureComponent {
 
 const StyledSelect = styled(Select)`
   display: inline-block;
-  width: 140px;
+  width: 160px;
   float: left;
   .dexma-select__control {
     border-radius: 0px 3px 3px 0px;
@@ -201,7 +202,11 @@ const StyledSelect = styled(Select)`
     font-size: 12px;
   }
   .dexma-select__single-value {
-    color: #333333;
+    color: ${props => props.theme.primaryColor};
+  }
+  .dexma-select .dexma-select__dropdown-indicator, 
+  .dexma-select .dexma-select__dropdown-indicator:hover{
+    color: ${props => props.theme.primaryColor};
   }
 `;
 

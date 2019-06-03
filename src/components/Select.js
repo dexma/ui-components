@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ReactSelect, { components } from 'react-select';
 import { GeneralPropTypes } from 'utils/propTypes';
@@ -8,18 +9,24 @@ import Icon from 'components/Icon';
 
 const propTypes = {
   ...GeneralPropTypes,
+  icon: PropTypes.string
 };
 
 const defaultProps = {
   classNamePrefix: 'dexma-select',
+  icon: 'menu',
 };
 
-const DropdownIndicator = props =>
-  components.DropdownIndicator && (
-    <components.DropdownIndicator {...props}>
-      <Icon name="menu" />
-    </components.DropdownIndicator>
+const DropdownIndicator = (props) => {
+  const { icon } = props;
+  return (
+    components.DropdownIndicator && (
+      <components.DropdownIndicator {...props}>
+        <Icon name={ icon }/>
+      </components.DropdownIndicator>
+    )
   );
+};
 
 const SelectInput = ({ children, ...props }) => {
   return (
@@ -47,7 +54,7 @@ const Select = ({ className, classNamePrefix, dataCy, ...props }) => {
       optionClassName="select-option"
       classNamePrefix={classNamePrefix}
       components={{
-        DropdownIndicator,
+        DropdownIndicator: selectProps => DropdownIndicator({ ...selectProps, icon: props.icon }),
         Input: selectProps => SelectInput({ ...selectProps, name: props.name }),
         Option: selectProps => Option({ ...selectProps, name: props.name }),
       }}
