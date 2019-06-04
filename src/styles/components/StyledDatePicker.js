@@ -45,12 +45,14 @@ const StyledDatePicker = styled.div`
     line-height: normal;
     overflow: visible;
     cursor: pointer;
-    display: inline-block;
     vertical-align: middle;
     padding: 0px;
     margin: 0;
     outline: none;
     width: 25px;
+    display: flex;
+    align-content: center;
+    align-items: center;
   }
 
   .DateRangePickerInput > div:first-child input {
@@ -86,13 +88,17 @@ const StyledDatePicker = styled.div`
     padding: 0;
     outline: none;
     width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
   }
 
   .DateRangePickerInput_arrow {
-    display: inline-block;
     vertical-align: middle;
     color: #484848;
-    width: 10px;
+    display: flex;
+    align-content: center;
+    align-items: center;
     text-align: center;
   }
 
@@ -106,7 +112,7 @@ const StyledDatePicker = styled.div`
   }
 
   .DateInput_fang {
-    margin-top: -18px;
+    margin-top: -22px;
   }
 
   .CalendarDay {

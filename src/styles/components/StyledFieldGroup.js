@@ -74,27 +74,17 @@ const button = ({
   font-weight: ${buttonFontWeight};
   color: ${primaryColor};
   text-align: center;
-  text-shadow: ${textShadow};
   vertical-align: middle;
   cursor: pointer;
-  background: ${buttonBackgroundColor};
-  border: ${buttonBorder};
-  border-color: ${buttonBorderColor};
+  background: #ececec;
+  border: 1px solid #ccc;
   border-radius: ${buttonRadius};
-  box-shadow: inset 0 1px 0 #f9f9f9, inset 0 0 2px #fff;
   outline: none;
 `;
 
-const active = ({
-  backgroundColorActive,
-  borderColorActive,
-  primaryBrandColor,
-  white,
-}) => `
-  background-color: ${backgroundColorActive};
-  border: 1px solid ${borderColorActive};
-  box-shadow: ${boxShadowActive(primaryBrandColor)};
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+const active = ({ borderColorActive, primaryBrandColor, white }) => `
+  background-color: ${backgroundColorActive(primaryBrandColor)};
+  border: 1px solid ${boxShadowColorActiveHsl2(primaryBrandColor)};
   outline: 0;
   color: ${white};
 `;
