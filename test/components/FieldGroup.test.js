@@ -10,16 +10,6 @@ import {
 import FieldGroup from 'components/FieldGroup';
 
 describe('<FieldGroup>', () => {
-  it('Should render the classNamePrefix component', () => {
-    const fieldGroup = shallow(
-      <FieldGroup
-        values={mockRadioGroup}
-        selectedValues={mockSelectedRadioItem}
-        type="radio"
-      />
-    );
-    expect(fieldGroup.find('.field-group').length).toEqual(1);
-  });
   it('Should render correct input and label elements', () => {
     const fieldGroup = shallow(
       <FieldGroup

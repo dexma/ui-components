@@ -7,6 +7,8 @@ import { GeneralPropTypes } from 'utils/propTypes';
 
 import Icon from 'components/Icon';
 
+import { StyledFieldGroup } from 'styles/components/StyledFieldGroup';
+
 const propTypes = {
   ...GeneralPropTypes,
   type: PropTypes.oneOf(['radio', 'checkbox']).isRequired,
@@ -25,7 +27,6 @@ const propTypes = {
 
 const defaultProps = {
   type: 'radio',
-  classNamePrefix: 'field-group',
   vertical: false,
 };
 
@@ -75,39 +76,43 @@ const FieldGroup = ({
   );
   const selectedField = getSelectedField(type, values, selectedValues, 'value');
   return (
-    <div data-cy={dataCy} className={classes}>
-      {values.map(item => {
-        const { id, value, label, icon, tooltip } = item;
-        const isSelected = isFieldSelected(type, item, selectedField);
-        const classesItem = classNames(
-          'item',
-          `item-${label}`,
-          isSelected && 'active'
-        );
-        return (
-          <label
-            className={classesItem}
-            key={id}
-            data-tooltip={tooltip}
-            htmlFor={id}
-            onClick={() => onFieldClick && onFieldClick(item)}
-          >
-            {!icon && label ? <span>{label}</span> : null}
-            {icon ? <Icon name={icon} size={size} /> : null}
-            <input
-              id={id}
-              onChange={() => onChange && onChange(item)}
-              type={type}
-              name={name}
-              defaultValue={value}
-              defaultChecked={isSelected}
-            />
-          </label>
-        );
-      })}
-    </div>
+    <StyledFieldGroup>
+      <div data-cy={dataCy} className={classes}>
+        {values.map(item => {
+          const { id, value, label, icon, tooltip } = item;
+          const isSelected = isFieldSelected(type, item, selectedField);
+          const classesItem = classNames(
+            'item',
+            `item-${label}`,
+            isSelected && 'active'
+          );
+          return (
+            <label
+              className={classesItem}
+              key={id}
+              data-tooltip={tooltip}
+              htmlFor={id}
+              onClick={() => onFieldClick && onFieldClick(item)}
+            >
+              {!icon && label ? <span>{label}</span> : null}
+              {icon ? <Icon name={icon} size={size} /> : null}
+              <input
+                id={id}
+                onChange={() => onChange && onChange(item)}
+                type={type}
+                name={name}
+                defaultValue={value}
+                defaultChecked={isSelected}
+              />
+            </label>
+          );
+        })}
+      </div>
+    </StyledFieldGroup>
   );
 };
+
+StyledFieldGroup.displayName = 'StyledFieldGroup';
 
 FieldGroup.propTypes = propTypes;
 FieldGroup.defaultProps = defaultProps;

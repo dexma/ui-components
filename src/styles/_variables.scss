@@ -68,26 +68,25 @@ $primary-brand-color: #618916;
 
 $background-color: $white;
 $background-color-secondary: $gray-light-secondary;
-$background-color-active-hex: $primary-brand-color;
 $background-color-active: hsl(
-  hue($background-color-active-hex),
-  saturation($background-color-active-hex),
-  lightness($background-color-active-hex)
+  hue($primary-brand-color),
+  saturation($primary-brand-color),
+  lightness($primary-brand-color)
 );
 $border-color-active: hsl(
-  hue($background-color-active-hex),
-  saturation($background-color-active-hex),
-  lightness($background-color-active-hex) - 10
+  hue($primary-brand-color),
+  saturation($primary-brand-color),
+  lightness($primary-brand-color) - 10
 );
 $box-shadow-color-active-hsl-1: hsl(
-  hue($background-color-active-hex),
-  saturation($background-color-active-hex),
-  lightness($background-color-active-hex) + 25
+  hue($primary-brand-color),
+  saturation($primary-brand-color),
+  lightness($primary-brand-color) + 25
 );
 $box-shadow-color-active-hsl-2: hsl(
-  hue($background-color-active-hex),
-  saturation($background-color-active-hex),
-  lightness($background-color-active-hex) - 5
+  hue($primary-brand-color),
+  saturation($primary-brand-color),
+  lightness($primary-brand-color) - 5
 );
 $box-shadow-active: inset 0 1px 0 $box-shadow-color-active-hsl-1,
   inset 0 0 2px $box-shadow-color-active-hsl-2;

@@ -77,7 +77,7 @@ const StyledDatePicker = styled.div`
   }
 
   .DateInput_input {
-    font-size: 12px;
+    font-size: 11.8px;
     font-weight: normal;
     line-height: 12px;
     color: #333333;
@@ -122,24 +122,14 @@ const StyledDatePicker = styled.div`
 
   .CalendarDay__selected,
   .CalendarDay__selected:active,
-  .CalendarDay__selected:hover {
-    background: #719f1a;
-    border: 1px solid #719f1a;
-    color: #fff;
-  }
-
+  .CalendarDay__selected:hover,
+  .CalendarDay__hovered_span,
   .CalendarDay__selected_span,
   .CalendarDay__selected_span:active,
   .CalendarDay__selected_span:hover {
-    background: #4a840f;
-    border: 1px double #4a840f;
-    color: #fff;
-  }
-
-  .CalendarDay__hovered_span {
-    background: #719f1a;
-    border: 1px solid #719f1a;
-    color: #fff;
+    background: ${props => props.theme.primaryBrandColor};
+    border: 1px solid ${props => props.theme.primaryBrandColor};
+    color: ${props => props.theme.white};
   }
 
   .DateRangePicker_picker {
