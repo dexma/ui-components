@@ -174,7 +174,7 @@ class DatePicker extends PureComponent {
               customArrowIcon={<span>-</span>}
               displayFormat={ISO_FORMAT}
               minimumNights={0}
-              customInputIcon={<Icon name="calendar-small-page" />}
+              customInputIcon={<Icon name="calendar" />}
             />
           </div>
         </StyledDatePicker>

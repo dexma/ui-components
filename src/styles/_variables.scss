@@ -63,11 +63,12 @@ $gray-dark-secondary: #666;
 $primary-color: #333333;
 $secondary-color: #a0a0a0;
 $alert-color: #cc4b37;
-
 $primary-brand-color: #618916;
-
 $background-color: $white;
 $background-color-secondary: $gray-light-secondary;
+$error-color: $alert-color;
+$border-color: $gray-light-secondary;
+
 $background-color-active: hsl(
   hue($primary-brand-color),
   saturation($primary-brand-color),
@@ -91,14 +92,13 @@ $box-shadow-color-active-hsl-2: hsl(
 $box-shadow-active: inset 0 1px 0 $box-shadow-color-active-hsl-1,
   inset 0 0 2px $box-shadow-color-active-hsl-2;
 
-$error-color: $alert-color;
-
-$border-color: $gray-light-secondary;
-
 $header-font-weight: $global-weight-bold;
 $anchor-color: $primary-color;
 $anchor-color-hover: $primary-color;
 $body-font-color: $primary-color;
+$border-elements: $gray-light-secondary;
+$placeholder-color: $gray-dark-secondary;
+$icon-color-elements: $gray-dark-secondary;
 
 $button-background-color: $gray-light-secondary;
 $button-font-family: $global-font-size;

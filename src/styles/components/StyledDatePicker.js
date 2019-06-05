@@ -12,10 +12,8 @@ const StyledDatePicker = styled.div`
   .DateRangePickerInput {
     align-items: center;
     background-color: hsl(0, 0%, 100%);
-    border-color: hsl(0, 0%, 80%);
+    border: 1px solid ${props => props.theme.borderElements};
     border-radius: 3px;
-    border-style: solid;
-    border-width: 1px;
     cursor: default;
     display: -webkit-box;
     display: -webkit-flex;
@@ -40,7 +38,7 @@ const StyledDatePicker = styled.div`
   .DateRangePickerInput_calendarIcon {
     background: 0 0;
     border: 0;
-    color: inherit;
+    color: ${props => props.theme.grayDarkSecondary};
     font: inherit;
     line-height: normal;
     overflow: visible;
@@ -49,7 +47,7 @@ const StyledDatePicker = styled.div`
     padding: 0px;
     margin: 0;
     outline: none;
-    width: 25px;
+    width: 15px;
     display: flex;
     align-content: center;
     align-items: center;
@@ -160,18 +158,18 @@ const StyledDatePicker = styled.div`
 
   .DayPicker_weekHeader {
     top: 50px;
-    color: #000;
   }
 
   .CalendarMonth_caption {
     font-size: 13px;
     padding-bottom: 35px;
+    color: ${props => props.theme.primaryColor};
   }
 
   .DayPickerNavigation_svg__horizontal {
     height: 10px;
     width: 10px;
-    fill: #5e5e5e;
+    fill: ${props => props.theme.iconColorElements};
     display: block;
   }
 
@@ -179,8 +177,15 @@ const StyledDatePicker = styled.div`
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.07);
     border-radius: 3px;
   }
+
+  .DayPickerNavigation_button__default {
+    border: 1px solid ${props => props.theme.borderElements};
+    background-color: #fff;
+  }
+
+  .DayPicker_weekHeader,
   .dexma-icon {
-    color: #333;
+    color: ${props => props.theme.iconColorElements};
   }
 `;
 

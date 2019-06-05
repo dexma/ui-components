@@ -87,15 +87,21 @@
 
   // Start refactoring scss
 
+  .dexma-select__placeholder{
+    color: $placeholder-color;
+    font-size: $global-font-size;
+  }
+
   // Dropdown
   .dexma-select__dropdown-indicator,
   .dexma-select__dropdown-indicator:hover{
-    color: $gray-light;
+    color: $icon-color-elements;
     cursor: pointer;
   }
 
   .dexma-select__control{
     min-height: $global-height-elements;
+    border-radius: $global-radius;
   }
 
   .dexma-select__value-container,
@@ -104,8 +110,8 @@
   }
 
   .dexma-select__menu-list{
-    padding-bottom: 5px;
-    padding-top: 5px;
+    padding-bottom: 0px;
+    padding-top: 0px;
   }
 
   .dexma-select__option,
@@ -117,24 +123,29 @@
     // Control
   .dexma-select__control,
   .dexma-select__control:hover{
-    border-color: $gray-light;
+    border: 1px solid $border-elements;
     box-shadow: none;
+  }
+
+  .dexma-select__indicator-separator{
+    background: $border-elements;
   }
 
   // Menu
   .dexma-select__menu{
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.07);
-    border-radius: 0px 0px $global-radius $global-radius;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+    border-radius: $global-radius;
     margin-bottom: 8px;
-    margin-top: 0px;
+    margin-top: 5px;
   }
-  .dexma-select__option--is-focused,
   .dexma-select__option--is-selected{
-    background-color: $gray-light;
-    color: #000;
+    background-color: $primary-brand-color!important;
+    color: $white;
   }
-  .dexma-select__option:hover{
-    background-color: $gray-light;
+
+  .dexma-select__option:active,
+  .dexma-select__option--is-focused{
+    background-color: $gray-light-secondary;
   }
 
   .dexma-select__menu-list{
@@ -143,6 +154,14 @@
 
   .dexma-select__single-value{
     font-size: $global-font-size;
+  }
+
+  .dexma-select__input{
+    input{
+      box-shadow: none!important;
+      outline: none!important;
+      outline: 0px!important;
+    }
   }
 
 }

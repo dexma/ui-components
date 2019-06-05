@@ -58,10 +58,7 @@ const button = ({
   buttonFontFamily,
   buttonFontWeight,
   primaryColor,
-  textShadow,
-  buttonBackgroundColor,
-  buttonBorder,
-  buttonBorderColor,
+  borderElements,
   buttonRadius,
 }) => `
   min-height: ${globalHeightElements};
@@ -76,13 +73,13 @@ const button = ({
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  background: #ececec;
-  border: 1px solid #ccc;
+  background: #fff;
+  border: 1px solid ${borderElements};
   border-radius: ${buttonRadius};
   outline: none;
 `;
 
-const active = ({ borderColorActive, primaryBrandColor, white }) => `
+const active = ({ primaryBrandColor, white }) => `
   background-color: ${backgroundColorActive(primaryBrandColor)};
   border: 1px solid ${boxShadowColorActiveHsl2(primaryBrandColor)};
   outline: 0;
