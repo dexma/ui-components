@@ -89,9 +89,9 @@ const FieldGroup = ({
           return (
             <label
               className={classesItem}
-              key={id}
               data-tooltip={tooltip}
               htmlFor={id}
+              key={id}
               onClick={() => onFieldClick && onFieldClick(item)}
             >
               {!icon && label ? <span>{label}</span> : null}
@@ -101,8 +101,8 @@ const FieldGroup = ({
                 onChange={() => onChange && onChange(item)}
                 type={type}
                 name={name}
-                defaultValue={value}
-                defaultChecked={isSelected}
+                value={value}
+                checked={isSelected}
               />
             </label>
           );

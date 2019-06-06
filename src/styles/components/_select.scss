@@ -102,6 +102,7 @@
   .dexma-select__control{
     min-height: $global-height-elements;
     border-radius: $global-radius;
+    font-size: $global-font-size;
   }
 
   .dexma-select__value-container,
@@ -152,8 +153,11 @@
     max-height: 315px;
   }
 
+  .dexma-select .dexma-select__dropdown-indicator,
+  .dexma-select .dexma-select__dropdown-indicator:hover,
   .dexma-select__single-value{
     font-size: $global-font-size;
+    color: $primary-color;
   }
 
   .dexma-select__input{

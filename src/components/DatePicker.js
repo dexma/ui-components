@@ -196,17 +196,9 @@ const StyledSelect = styled(Select)`
   width: 160px;
   float: left;
   .dexma-select__control {
-    border-radius: 0px 3px 3px 0px;
-    border-color: #cccccc;
-    border-left: 0px;
-    font-size: 12px;
-  }
-  .dexma-select__single-value {
-    color: ${props => props.theme.primaryColor};
-  }
-  .dexma-select .dexma-select__dropdown-indicator,
-  .dexma-select .dexma-select__dropdown-indicator:hover {
-    color: ${props => props.theme.primaryColor};
+    border-radius: 0px ${props => props.theme.globalRadius}
+      ${props => props.theme.globalRadius} 0px;
+    margin-left: -1px;
   }
 `;
 

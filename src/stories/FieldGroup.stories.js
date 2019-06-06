@@ -6,6 +6,7 @@ import {
   mockCheckboxGroup,
   mockSelectedRadioItem,
   mockSelectedCheckboxItem,
+  mockCheckboxGroupHtml,
 } from 'test/mock/FieldGroup';
 
 import FieldGroup from 'components/FieldGroup';
@@ -19,6 +20,32 @@ const eventsFromObject = actions({
   onFieldClick: 'onFieldClick',
 });
 
+class Test extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: mockSelectedRadioItem,
+    };
+  }
+
+  handleChange = ({ value }) => {
+    this.setState({
+      value: value,
+    });
+  };
+
+  render() {
+    return (
+      <FieldGroup
+        values={mockRadioGroup}
+        selectedValues={this.state.value}
+        type="radio"
+        onChange={this.handleChange}
+      />
+    );
+  }
+}
+
 storiesOf('FieldGroup', module)
   .addParameters({
     jest: ['FieldGroup'],
@@ -30,12 +57,7 @@ storiesOf('FieldGroup', module)
           <Title text="FieldGroup type radio" line />
         </Cell>
         <Cell>
-          <FieldGroup
-            values={mockRadioGroup}
-            selectedValues={mockSelectedRadioItem}
-            type="radio"
-            {...eventsFromObject}
-          />
+          <Test />
         </Cell>
         <Cell size="full">
           <Title text="FieldGroup type checkbox" line />
@@ -43,6 +65,19 @@ storiesOf('FieldGroup', module)
         <Cell>
           <FieldGroup
             values={mockCheckboxGroup}
+            selectedValues={mockSelectedCheckboxItem}
+            type="checkbox"
+            {...eventsFromObject}
+            size="large"
+          />
+        </Cell>
+
+        <Cell size="full">
+          <Title text="FieldGroup with html" line />
+        </Cell>
+        <Cell>
+          <FieldGroup
+            values={mockCheckboxGroupHtml}
             selectedValues={mockSelectedCheckboxItem}
             type="checkbox"
             {...eventsFromObject}

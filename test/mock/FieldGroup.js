@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const mockRadioGroup = [
   {
     value: "segundos",
@@ -94,5 +96,19 @@ export const mockCheckboxGroup = [
     tooltip: "Star",
     icon: "ratios_star",
   },
+];
+export const mockCheckboxGroupHtml = [
+  {
+    value: "hdd",
+    label: <div><span>Previous year</span><span>22/05/19 - 22/05/18</span></div>,
+    id: "hdd",
+    name: "hdd"
+  },
+  {
+    value: "occupancy",
+    label: <div><span>Previous year</span><span>22/05/19 - 22/05/18</span></div>,
+    id: "occupancy",
+    name: "occupancy"
+  }
 ];
 export const mockSelectedCheckboxItem = ["star", "surface", "occupancy"];
