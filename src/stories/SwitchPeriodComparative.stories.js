@@ -12,15 +12,15 @@ const endDate = '2019-06-06T23:59:59+02:00';
 const previousPriodText = 'Previous period';
 const samePriodLastYearText = 'Same period last year';
 
-storiesOf('Button', module)
+storiesOf('SwitchPeriodComparative', module)
   .addParameters({
-    jest: ['Button'],
+    jest: ['SwitchPeriodComparative'],
   })
-  .add('with text', () => (
+  .add('basic', () => (
     <Theme>
       <Grid type="horizontal" horizontalPadding verticalPadding>
         <Cell size="full">
-          <Title text="Basic cards with text:" line />
+          <Title text="Basic SwitchPeriodComparative:" line />
         </Cell>
         <Cell size="auto" medium={12}>
           <SwitchPeriodComparative
