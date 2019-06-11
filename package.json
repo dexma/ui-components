@@ -1,6 +1,6 @@
 {
   "name": "@dexma/ui-components",
-  "version": "0.2.18",
+  "version": "0.2.20",
   "description": "DEXMA UI Components (React)",
   "main": "dist/main.bundle.js",
   "scripts": {
@@ -12,8 +12,7 @@
     "eslint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "eslint:fix": "eslint --fix 'src/{,**/{,*.}}*.js'",
     "format": "npm run eslint:fix && npm run prettier",
-    "test": "NODE_ENV=test jest --json --outputFile=test/jest-test-results.json",
-    "publish": "npm run build:production && npm publish --access public"
+    "test": "NODE_ENV=test jest --json --outputFile=test/jest-test-results.json"
   },
   "lint-staged": {
     "src/{,**/{,*.}}*.js": [
