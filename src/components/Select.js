@@ -10,6 +10,7 @@ import Icon from 'components/Icon';
 const propTypes = {
   ...GeneralPropTypes,
   icon: PropTypes.string,
+  children: PropTypes.node,
 };
 
 const defaultProps = {

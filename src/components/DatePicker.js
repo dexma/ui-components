@@ -55,7 +55,7 @@ const propTypes = {
   autoFocusEndDate: PropTypes.bool,
   stateDateWrapper: PropTypes.func,
   periodOptions: PropTypes.arrayOf(PropTypes.object),
-  periodDefault: PropTypes.object,
+  periodDefault: PropTypes.objectOf(PropTypes.object),
   initialStartDate: momentPropTypes.momentObj,
   initialEndDate: momentPropTypes.momentObj,
   onDatesChange: PropTypes.func,

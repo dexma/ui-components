@@ -1,5 +1,5 @@
 import React from 'react';
-import { default as TableAntd } from 'antd/lib/table';
+import { default as TableAntDesign } from 'antd/lib/table';
 import 'antd/lib/table/style/css';
 
 import { StyledTable } from 'styles/components/StyledTable';
@@ -8,7 +8,7 @@ import { StyledTable } from 'styles/components/StyledTable';
 const Table = props => {
   return (
     <StyledTable>
-      <TableAntd {...props} />
+      <TableAntDesign {...props} />
     </StyledTable>
   );
 };

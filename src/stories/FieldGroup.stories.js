@@ -30,7 +30,7 @@ class Test extends Component {
 
   handleChange = ({ value }) => {
     this.setState({
-      value: value,
+      value,
     });
   };
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import SwitchPeriodComparative from 'components/SwitchPeriodComparative';
@@ -30,6 +30,7 @@ storiesOf('SwitchPeriodComparative', module)
             endDate={endDate}
             previousPriodText={previousPriodText}
             samePriodLastYearText={samePriodLastYearText}
+            onPeriodSelect={a => console.log(a)}
           />
         </Cell>
       </Grid>

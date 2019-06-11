@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+const active = props => `
+  background-color: ${props.backgroundColorActive};
+  border: 1px solid ${props.backgroundColorActive};
+  color: ${props.white};
+`;
+
 const StyledTable = styled.div`
   .ant-table {
     color: ${props => props.theme.primaryColor};
@@ -1305,12 +1311,6 @@ const StyledTable = styled.div`
     color: ${props => props.theme.primaryColor};
     border-color: transparent;
   }
-`;
-
-const active = props => `
-  background-color: ${props.backgroundColorActive};
-  border: 1px solid ${props.backgroundColorActive};
-  color: ${props.white};
 `;
 
 export { StyledTable };

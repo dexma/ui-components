@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Highcharts from 'highcharts';
 
 const propTypes = {
-  options: PropTypes.object.isRequired,
+  options: PropTypes.objectOf(PropTypes.any),
   callback: PropTypes.func,
 };
 

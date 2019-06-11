@@ -19,8 +19,8 @@ const getButtons = (
     <Cell size="full">
       <Title text={title} line />
     </Cell>
-    {Sizes.map(size => (
-      <Cell medium={2}>
+    {Sizes.map((size, index) => (
+      <Cell key={index} medium={2}>
         <Button
           size={size}
           text={withText ? 'Button text' : null}

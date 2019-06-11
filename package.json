@@ -4,16 +4,26 @@
   "description": "DEXMA UI Components (React)",
   "main": "dist/main.bundle.js",
   "scripts": {
-    "clean-build": "rm -rf build",
+    "clean-build": "rm -rf dist",
     "build:development": "npm run clean-build && webpack --mode development",
     "build:production": "npm run clean-build && webpack --mode production",
+    "storybook": "start-storybook -p 9999 -c src/.storybook",
     "prettier": "prettier --write 'src/{,**/{,*.}}*.js'",
-    "eslint": "eslint --write 'src/{,**/{,*.}}*.js'",
+    "eslint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "eslint:fix": "eslint --fix 'src/{,**/{,*.}}*.js'",
     "format": "npm run eslint:fix && npm run prettier",
-    "test": "NODE_ENV=test jest",
-    "storybook": "start-storybook -p 9999 -c src/.storybook",
-    "storybook:generate-test": "jest --json --outputFile=test/jest-test-results.json"
+    "test": "NODE_ENV=test jest --json --outputFile=test/jest-test-results.json",
+    "publish": "npm run build:production && npm publish --access public"
+  },
+  "lint-staged": {
+    "src/{,**/{,*.}}*.js": [
+      "npm run format"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && git update-index --again && npm run test"
+    }
   },
   "repository": {
     "type": "git",
@@ -63,8 +73,10 @@
     "file-loader": "^3.0.1",
     "foundation-sites": "^6.5.3",
     "highcharts": "^7.1.1",
+    "husky": "^2.4.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.5.0",
+    "lint-staged": "^8.2.0",
     "lodash": "^4.17.11",
     "mini-css-extract-plugin": "^0.5.0",
     "moment": "^2.24.0",

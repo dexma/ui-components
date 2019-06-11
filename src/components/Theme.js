@@ -1,23 +1,26 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
 
-const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!styles/_variables.scss');
+const themeSass = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!styles/_variables.scss');
 
 const propTypes = {
-  config: PropTypes.object,
-};
-
-const defaultProps = {
-  config: theme,
+  config: PropTypes.objectOf(PropTypes.object),
 };
 
 const Theme = ({ children, config }) => {
   if (!children) return null;
-  return <ThemeProvider theme={config}>{children}</ThemeProvider>;
+
+  let themeProviderOptions;
+  if (isEmpty(config)) {
+    themeProviderOptions = themeSass;
+  } else {
+    themeProviderOptions = Object.assign(themeSass, config);
+  }
+  return <ThemeProvider theme={themeProviderOptions}>{children}</ThemeProvider>;
 };
 
 Theme.propTypes = propTypes;
-Theme.defaultProps = defaultProps;
 
 export default Theme;

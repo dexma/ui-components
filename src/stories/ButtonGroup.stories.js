@@ -29,8 +29,9 @@ const getButtonsGroup = (
     </Cell>
     <Cell medium={6}>
       <ButtonGroup vertical={isVertical}>
-        {buttonGroup.map(button => (
+        {buttonGroup.map((button, index) => (
           <Button
+            key={index}
             size="medium"
             text={withText ? 'Button text' : null}
             iconBefore={button}

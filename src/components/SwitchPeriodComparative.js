@@ -10,19 +10,6 @@ import { ISO_FORMAT } from 'utils/dates';
 
 import { StyledSwitchPeriodComparative } from 'styles/components/StyledSwitchPeriodComparative';
 
-const PeriodComparativeItem = ({ text, date }) => {
-  return (
-    <Grid type="vertical" className="compare-period-item">
-      <Cell size="full" className="title">
-        {text}
-      </Cell>
-      <Cell size="full" className="dates">
-        {date}
-      </Cell>
-    </Grid>
-  );
-};
-
 const getRangeDaysBetweenTwoDates = (startDate, endDate) => {
   const start = moment(new Date(startDate)).startOf('day');
   const end = moment(new Date(endDate)).startOf('day');
@@ -37,8 +24,8 @@ const getYearBefore = (date, years) =>
 const propTypes = {
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
-  previousPriodText: PropTypes.string.isRequired,
-  samePriodLastYearText: PropTypes.string.isRequired,
+  previousPriodText: PropTypes.string,
+  samePriodLastYearText: PropTypes.string,
   onPeriodSelect: PropTypes.func,
 };
 
@@ -101,6 +88,19 @@ class SwitchPeriodComparative extends PureComponent {
     };
   };
 
+  renderPeriodComparativeItem = (text, date) => {
+    return (
+      <Grid type="vertical" className="compare-period-item">
+        <Cell size="full" className="title">
+          {text}
+        </Cell>
+        <Cell size="full" className="dates">
+          {date}
+        </Cell>
+      </Grid>
+    );
+  };
+
   render() {
     const { activePeriod } = this.state;
     const {
@@ -134,22 +134,18 @@ class SwitchPeriodComparative extends PureComponent {
               values={[
                 {
                   value: 'previous_period',
-                  label: (
-                    <PeriodComparativeItem
-                      text={previousPriodText}
-                      date={previousPriod}
-                    />
+                  label: this.renderPeriodComparativeItem(
+                    previousPriodText,
+                    previousPriod
                   ),
                   id: 'previous_period',
                   name: 'previous_period',
                 },
                 {
                   value: 'last_period',
-                  label: (
-                    <PeriodComparativeItem
-                      text={samePriodLastYearText}
-                      date={samePriodLastYear}
-                    />
+                  label: this.renderPeriodComparativeItem(
+                    samePriodLastYearText,
+                    samePriodLastYear
                   ),
                   id: 'last_period',
                   name: 'last_period',

@@ -1,12 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
 
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
 import Table from 'components/Table';
 
-const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!styles/_variables.scss');
+import Theme from 'components/Theme';
 
 const dataSource = [
   {
@@ -22,78 +21,83 @@ const dataSource = [
     address: '10 Downing Street',
   },
   {
-    key: '1',
+    key: '3',
     name: 'Mike',
     age: 32,
     address: '10 Downing Street',
   },
   {
-    key: '2',
+    key: '4',
     name: 'John',
     age: 42,
     address: '10 Downing Street',
   },
   {
-    key: '1',
+    key: '5',
     name: 'Mike',
     age: 32,
     address: '10 Downing Street',
   },
   {
-    key: '2',
+    key: '6',
     name: 'John',
     age: 42,
     address: '10 Downing Street',
   },
   {
-    key: '1',
+    key: '7',
     name: 'Mike',
     age: 32,
     address: '10 Downing Street',
   },
   {
-    key: '2',
+    key: '8',
     name: 'John',
     age: 42,
     address: '10 Downing Street',
   },
   {
-    key: '1',
+    key: '10',
     name: 'Mike',
     age: 32,
     address: '10 Downing Street',
   },
   {
-    key: '2',
+    key: '21',
     name: 'John',
     age: 42,
     address: '10 Downing Street',
   },
   {
-    key: '1',
+    key: '221',
     name: 'Mike',
     age: 32,
     address: '10 Downing Street',
   },
   {
-    key: '2',
+    key: '2111',
     name: 'John',
     age: 42,
     address: '10 Downing Street',
   },
   {
-    key: '1',
+    key: '13',
     name: 'Mike',
     age: 32,
     address: '10 Downing Street',
   },
   {
-    key: '2',
+    key: '24',
     name: 'John',
     age: 42,
     address: '10 Downing Street',
   },
 ];
+
+/* const dexmaThemeOptions = {
+  primaryBrandColor: "blue",
+  primaryColor: "blue"
+}; */
 
 const columns = [
   {
@@ -119,11 +123,11 @@ storiesOf('Table', module)
     jest: ['Table'],
   })
   .add('with text', () => (
-    <ThemeProvider theme={theme}>
+    <Theme>
       <Grid type="horizontal" horizontalPadding verticalPadding>
         <Cell size="full">
           <Table dataSource={dataSource} columns={columns} />
         </Cell>
       </Grid>
-    </ThemeProvider>
+    </Theme>
   ));
