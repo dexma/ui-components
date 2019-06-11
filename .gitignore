@@ -6,6 +6,7 @@ generated
 coverage
 /docs
 docs-static/**/*.d.ts
+test/jest-test-results.json
 
 #IDE
 .idea/
