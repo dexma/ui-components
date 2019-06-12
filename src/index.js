@@ -15,6 +15,7 @@ import Modal from 'components/Modal';
 import Pagination from 'components/Pagination';
 import Select from 'components/Select';
 import Spinner from 'components/Spinner';
+import SwitchPeriodComparative from 'components/SwitchPeriodComparative';
 import Table from 'components/Table';
 import Theme from 'components/Theme';
 import Title from 'components/Title';
@@ -52,6 +53,7 @@ export {
   Pagination,
   Select,
   Spinner,
+  SwitchPeriodComparative,
   Table,
   Theme,
   Title,
