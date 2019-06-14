@@ -2,14 +2,16 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import moment from 'moment';
 import sinon from 'sinon';
+import DatePicker from 'components/DatePicker';
+
 import {
-  DatePicker,
+  ISO_FORMAT,
   NUMBER_OF_MONTHS,
   START_DATE,
   END_DATE,
-  DAY_SIZE,
-} from 'components/DatePicker';
-import { ISO_FORMAT } from 'utils/dates';
+  DAY_SIZE
+} from 'utils/dates';
+
 import { DateRangePicker } from 'react-dates';
 
 const periodOptions = [

@@ -12,6 +12,7 @@
     "no-use-before-define": 0,
     "no-await-in-loop": 0,
     "no-shadow": 0,
+    "no-plusplus": 0,
     "import/no-named-as-default": 0,
     "import/no-named-as-default-member": 0,
     "import/no-extraneous-dependencies": 0,

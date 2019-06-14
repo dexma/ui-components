@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Highcharts from 'highcharts';
+import boost from 'highcharts/modules/boost';
+
+boost(Highcharts);
 
 const propTypes = {
   options: PropTypes.objectOf(PropTypes.any),

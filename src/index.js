@@ -4,7 +4,7 @@ import ButtonGroup from 'components/ButtonGroup';
 import Card from 'components/Card';
 import Cell from 'components/Cell';
 import Chart from 'components/Chart';
-import { DatePicker } from 'components/DatePicker';
+import DatePicker from 'components/DatePicker';
 import FieldEditable from 'components/FieldEditable';
 import FieldGroup from 'components/FieldGroup';
 import Grid from 'components/Grid';

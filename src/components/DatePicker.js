@@ -10,9 +10,11 @@ import styled from 'styled-components';
 import Icon from 'components/Icon';
 import Select from 'components/Select';
 
-import 'react-dates/initialize';
-import { StyledDatePicker } from 'styles/components/StyledDatePicker';
 import {
+  NUMBER_OF_MONTHS,
+  START_DATE,
+  END_DATE,
+  DAY_SIZE,
   ISO_FORMAT,
   currentMonth,
   last28Days,
@@ -23,12 +25,10 @@ import {
   yearToDate,
   yesterday,
 } from 'utils/dates';
-import 'react-dates/lib/css/_datepicker.css';
 
-const NUMBER_OF_MONTHS = 3;
-const START_DATE = 'startDate';
-const END_DATE = 'endDate';
-const DAY_SIZE = 20;
+import 'react-dates/initialize';
+import { StyledDatePicker } from 'styles/components/StyledDatePicker';
+import 'react-dates/lib/css/_datepicker.css';
 
 const withDatePickerFormat = (start, end) => ({
   startDate: start,
@@ -55,7 +55,7 @@ const propTypes = {
   autoFocusEndDate: PropTypes.bool,
   stateDateWrapper: PropTypes.func,
   periodOptions: PropTypes.arrayOf(PropTypes.object),
-  periodDefault: PropTypes.objectOf(PropTypes.object),
+  periodDefault: PropTypes.objectOf(PropTypes.string),
   initialStartDate: momentPropTypes.momentObj,
   initialEndDate: momentPropTypes.momentObj,
   onDatesChange: PropTypes.func,
@@ -207,4 +207,4 @@ StyledSelect.displayName = 'StyledSelect';
 DatePicker.propTypes = propTypes;
 DatePicker.defaultProps = defaultProps;
 
-export { DatePicker, NUMBER_OF_MONTHS, START_DATE, END_DATE, DAY_SIZE };
+export default DatePicker;

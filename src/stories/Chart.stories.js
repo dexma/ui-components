@@ -7,16 +7,51 @@ import Cell from 'components/Cell';
 import Title from 'components/Title';
 
 const options = {
+  boost: {
+    useGPUTranslations: true,
+  },
   title: {
     text: 'My stock chart',
   },
+  xAxis: {
+    type: 'datetime',
+  },
   series: [
     {
-      data: [1, 2, 3],
+      name: 'series0',
+      data: (function() {
+        const arr = [];
+        for (let i = 0; i < 20000; i++) {
+          arr.push(Math.random() * 100);
+        }
+        return arr;
+      })(),
+      color: 'red',
+    },
+    {
+      name: 'series1',
+      data: (function() {
+        const arr = [];
+        for (let i = 0; i < 20000; i++) {
+          arr.push(Math.random() * 100);
+        }
+        return arr;
+      })(),
+      color: 'blue',
     },
   ],
   chart: {
-    width: 500,
+    width: 800,
+    type: 'column',
+    zoomType: 'x',
+  },
+  plotOptions: {
+    series: {
+      stacking: 'normal',
+      groupPadding: 0,
+      borderWidth: 0,
+      boostThreshold: 20000,
+    },
   },
 };
 
@@ -31,6 +66,15 @@ const options2 = {
   ],
   chart: {
     width: 700,
+    type: 'column',
+    zoomType: 'x',
+  },
+  plotOptions: {
+    series: {
+      stacking: 'normal',
+      groupPadding: 0,
+      borderWidth: 0,
+    },
   },
 };
 
