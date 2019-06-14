@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const safePostCssParser = require('postcss-safe-parser');
-const TerserPlugin = require('terser-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
@@ -65,29 +65,18 @@ module.exports = function(env, argv) {
     optimization: {
       minimize: isEnvProduction,
       minimizer: [
-        new TerserPlugin({
-          terserOptions: {
-            parse: {
-              ecma: 8,
-            },
-            compress: {
-              ecma: 5,
-              warnings: false,
-              comparisons: false,
-              inline: 2,
-            },
-            mangle: {
-              safari10: true,
-            },
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            warnings: false,
             output: {
-              ecma: 5,
-              comments: false,
-              ascii_only: true,
+              comments: false
             },
+            keep_fnames: true,
+            comments: false
           },
-          parallel: true,
           cache: true,
-          sourceMap: shouldUseSourceMap,
+          parallel: true,
+          sourceMap: true
         }),
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {

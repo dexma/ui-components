@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { DatePicker } from 'components/DatePicker';
+import DatePicker from 'components/DatePicker';
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
 import Title from 'components/Title';
