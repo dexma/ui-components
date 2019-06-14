@@ -27,8 +27,8 @@ import {
 } from 'utils/dates';
 
 import 'react-dates/initialize';
-import { StyledDatePicker } from 'styles/components/StyledDatePicker';
 import 'react-dates/lib/css/_datepicker.css';
+import { StyledDatePicker } from 'styles/components/StyledDatePicker';
 
 const withDatePickerFormat = (start, end) => ({
   startDate: start,
@@ -202,7 +202,7 @@ const StyledSelect = styled(Select)`
   }
 `;
 
-StyledSelect.displayName = 'StyledSelect';
+StyledDatePicker.displayName = 'StyledDatePicker';
 
 DatePicker.propTypes = propTypes;
 DatePicker.defaultProps = defaultProps;

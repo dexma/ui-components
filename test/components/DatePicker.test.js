@@ -119,14 +119,6 @@ describe('<DatePicker>', () => {
     const datePicker = shallow(<DatePicker autoFocusEndDate={true} />);
     expect(datePicker.instance().state.focusedInput).toEqual(END_DATE);
   });
-  it('should render the select component', () => {
-    const datePicker = shallow(<DatePicker periodOptions={periodOptions} />);
-    expect(datePicker.find('StyledSelect').length).toEqual(1);
-  });
-  it('shouldn´t render the select component', () => {
-    const datePicker = shallow(<DatePicker />);
-    expect(datePicker.find('StyledSelect').length).toEqual(0);
-  });
   it('passing default select option have valid status date', () => {
     const datePicker = mount(
       <DatePicker
