@@ -6,7 +6,6 @@ import Cell from 'components/Cell';
 import Button from 'components/Button';
 import Modal from 'components/Modal';
 import Title from 'components/Title';
-import Theme from 'components/Theme';
 
 class ModalView extends Component {
   constructor(props) {
@@ -62,9 +61,7 @@ storiesOf('Modal', module)
         <Title text="Basic modal:" line />
       </Cell>
       <Cell size="full">
-        <Theme>
-          <ModalView />
-        </Theme>
+        <ModalView />
       </Cell>
     </Grid>
   ));

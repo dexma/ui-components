@@ -1,11 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { cleanup, render } from '@testing-library/react';
 
 import Modal from 'components/Modal';
+import Theme from 'components/Theme';
 
 describe('<Modal>', () => {
-  it('Should render the classNamePrefix component', () => {
-    const modal = shallow(<Modal />);
-    expect(modal.find('StyledModal').length).toEqual(1);
+  afterEach(cleanup);
+
+  test('render Modal', () => {
+    const { container } = render(
+      <Theme>
+        <Modal />
+      </Theme>,
+    );
+    expect(container.firstChild).toMatchSnapshot()
   });
 });

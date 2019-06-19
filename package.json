@@ -1,6 +1,6 @@
 {
   "name": "@dexma/ui-components",
-  "version": "0.2.26",
+  "version": "0.2.27",
   "description": "DEXMA UI Components (React)",
   "main": "dist/main.bundle.js",
   "scripts": {
@@ -51,6 +51,7 @@
     "@storybook/addon-info": "^5.0.5",
     "@storybook/addon-jest": "^5.0.5",
     "@storybook/react": "^5.0.5",
+    "@testing-library/react": "^8.0.1",
     "antd": "^3.16.1",
     "autoprefixer": "^9.5.0",
     "babel-eslint": "^10.0.1",
@@ -137,5 +138,6 @@
     "reporters": [
       "default"
     ]
-  }
+  },
+  "dependencies": {}
 }

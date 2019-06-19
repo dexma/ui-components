@@ -7,6 +7,7 @@ coverage
 /docs
 docs-static/**/*.d.ts
 test/jest-test-results.json
+test/components/__snapshots_
 
 #IDE
 .idea/

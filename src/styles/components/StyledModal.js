@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { padding, margin, borderRadius } from 'styles/utils';
 
 const StyledModal = styled.div`
   .mask {
@@ -41,7 +42,7 @@ const StyledModal = styled.div`
 
   .panel {
     background-color: #fff;
-    border-radius: ${props => props.theme.globalRadius};
+    border-radius: ${borderRadius};
     box-sizing: border-box;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     transform: translate3d(0, 0, 0);
@@ -49,8 +50,8 @@ const StyledModal = styled.div`
       opacity 500ms cubic-bezier(0, 0, 0.25, 1);
     width: ${props => props.width};
     height: ${props => props.height};
-    padding: ${props => props.theme.globalPadding};
-    margin: ${props => props.theme.globalPadding};
+    padding: ${padding};
+    margin: ${margin};
     z-index: 10002;
   }
 
