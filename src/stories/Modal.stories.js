@@ -6,6 +6,7 @@ import Cell from 'components/Cell';
 import Button from 'components/Button';
 import Modal from 'components/Modal';
 import Title from 'components/Title';
+import Theme from 'components/Theme';
 
 class ModalView extends Component {
   constructor(props) {
@@ -56,12 +57,14 @@ storiesOf('Modal', module)
     jest: ['Modal'],
   })
   .add('basic', () => (
-    <Grid type="vertical" horizontalPadding verticalPadding>
-      <Cell size="full">
-        <Title text="Basic modal:" line />
-      </Cell>
-      <Cell size="full">
-        <ModalView />
-      </Cell>
-    </Grid>
+    <Theme>
+      <Grid type="vertical" horizontalPadding verticalPadding>
+        <Cell size="full">
+          <Title text="Basic modal:" line />
+        </Cell>
+        <Cell size="full">
+          <ModalView />
+        </Cell>
+      </Grid>
+    </Theme>
   ));

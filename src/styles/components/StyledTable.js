@@ -1,14 +1,26 @@
 import styled from 'styled-components';
+import {
+  border,
+  borderRadius,
+  backgroundColor,
+  backgroundColorActive,
+  backgroundColorSelected,
+  fontSize,
+  fontColor,
+  fontColorActive,
+  fontWeightBold,
+  componentHeight,
+} from 'styles/selectors';
 
 const active = props => `
-  background-color: ${props.backgroundColorActive};
-  border: 1px solid ${props.backgroundColorActive};
-  color: ${props.white};
+  background-color: ${backgroundColorActive(props)};
+  border: 1px solid ${backgroundColorActive(props)};
+  color: ${fontColorActive(props)};
 `;
 
 const StyledTable = styled.div`
   .ant-table {
-    color: ${props => props.theme.primaryColor};
+    color: ${fontColor};
   }
   .ant-table-body {
     -webkit-transition: opacity 0.3s;
@@ -20,8 +32,7 @@ const StyledTable = styled.div`
   .ant-table table {
     width: 100%;
     text-align: left;
-    border-radius: ${props => props.theme.globalRadius}
-      ${props => props.theme.globalRadius} 0px 0px;
+    border-radius: ${borderRadius} ${borderRadius} 0px 0px;
     border-collapse: collapse;
   }
   .ant-table-thead > tr,
@@ -38,15 +49,15 @@ const StyledTable = styled.div`
     > tr
     > th.ant-table-column-has-actions.ant-table-column-has-sorters:hover
     .ant-table-filter-icon {
-    background: ${props => props.theme.backgroundColorActive};
+    background: ${backgroundColorActive};
   }
 
   .ant-table-thead > tr > th {
-    color: ${props => props.theme.white};
-    font-weight: 500;
+    color: ${fontColorActive};
+    font-weight: ${fontWeightBold};
     text-align: center;
-    background: ${props => props.theme.backgroundColorActive};
-    border-bottom: 1px solid #e8e8e8;
+    background: ${backgroundColorActive};
+    border-bottom: ${border};
     transition: background 0.3s ease;
   }
   .ant-table-thead > tr > th[colspan] {
@@ -57,10 +68,10 @@ const StyledTable = styled.div`
     position: absolute;
     top: 0;
     right: 0;
-    width: 28px;
+    width: ${componentHeight};
     height: 100%;
     color: #bfbfbf;
-    font-size: 12px;
+    font-size: ${fontSize};
     text-align: center;
     cursor: pointer;
     -webkit-transition: all 0.3s;
@@ -75,7 +86,7 @@ const StyledTable = styled.div`
     margin-left: -6px;
   }
   .ant-table-thead > tr > th .ant-table-filter-selected.anticon-filter {
-    color: ${props => props.theme.backgroundColorActive};
+    color: ${backgroundColorActive};
   }
   .ant-table-thead > tr > th .ant-table-column-sorter {
     display: table-cell;
@@ -108,7 +119,7 @@ const StyledTable = styled.div`
     .ant-table-column-sorter-inner
     .ant-table-column-sorter-down {
     display: inline-block;
-    font-size: 12px;
+    font-size: ${fontSize};
     font-size: 11px \\9;
     -webkit-transform: scale(0.91666667) rotate(0deg);
     -ms-transform: scale(0.91666667) rotate(0deg);
@@ -133,7 +144,7 @@ const StyledTable = styled.div`
     .ant-table-column-sorter
     .ant-table-column-sorter-inner
     .ant-table-column-sorter-down {
-    font-size: 12px;
+    font-size: ${fontSize};
   }
   .ant-table-thead
     > tr
@@ -147,7 +158,7 @@ const StyledTable = styled.div`
     .ant-table-column-sorter
     .ant-table-column-sorter-inner
     .ant-table-column-sorter-down.on {
-    color: ${props => props.theme.backgroundColorActive};
+    color: ${fontColorActive};
   }
   .ant-table-thead
     > tr
@@ -197,7 +208,7 @@ const StyledTable = styled.div`
     > th.ant-table-column-has-actions.ant-table-column-has-filters
     .ant-table-filter-icon.ant-table-filter-open {
     color: rgba(0, 0, 0, 0.45);
-    background: #e5e5e5;
+    background: ${backgroundColorSelected};
   }
   .ant-table-thead
     > tr
@@ -208,7 +219,7 @@ const StyledTable = styled.div`
     > th.ant-table-column-has-actions.ant-table-column-has-filters:hover
     .ant-table-filter-icon:hover {
     color: rgba(0, 0, 0, 0.45);
-    background: #e5e5e5;
+    background: ${backgroundColorSelected};
   }
   .ant-table-thead
     > tr
@@ -293,11 +304,14 @@ const StyledTable = styled.div`
     user-select: none;
   }
   .ant-table-thead > tr:first-child {
-    border-radius: 0px 0px 0px ${props => props.theme.globalRadius};
-    background: ${props => props.theme.backgroundColorActive};
+    border-radius: 0px 0px 0px ${borderRadius};
+    background: ${backgroundColorActive};
+  }
+  .ant-table-thead > tr:first-child > th:first-child {
+    border-top-left-radius: ${borderRadius};
   }
   .ant-table-thead > tr:first-child > th:last-child {
-    border-top-right-radius: 4px;
+    border-top-right-radius: ${borderRadius};
   }
   .ant-table-thead > tr:not(:last-child) > th[colspan] {
     border-bottom: 0;
@@ -314,14 +328,14 @@ const StyledTable = styled.div`
   .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
   .ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td,
   .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
-    background: ${props => props.theme.backgroundColorSecondary};
+    background: ${backgroundColorSelected};
   }
   .ant-table-footer {
     position: relative;
     padding: 16px 16px;
     background: #fafafa;
-    border-top: 1px solid #e8e8e8;
-    border-radius: 0 0 4px 4px;
+    border-top: ${border};
+    border-radius: 0 0 ${borderRadius} ${borderRadius};
   }
   .ant-table-footer::before {
     position: absolute;
@@ -333,23 +347,23 @@ const StyledTable = styled.div`
     content: '';
   }
   .ant-table.ant-table-bordered .ant-table-footer {
-    border: 1px solid #e8e8e8;
+    border: ${border};
   }
   .ant-table-title {
     position: relative;
     top: 1px;
     padding: 16px 0;
-    border-radius: 4px 4px 0 0;
+    border-radius: ${borderRadius} ${borderRadius} 0 0;
   }
   .ant-table.ant-table-bordered .ant-table-title {
     padding-right: 16px;
     padding-left: 16px;
-    border: 1px solid #e8e8e8;
+    border: ${border};
   }
   .ant-table-title + .ant-table-content {
     position: relative;
     overflow: hidden;
-    border-radius: 4px 4px 0 0;
+    border-radius: ${borderRadius} ${borderRadius} 0 0;
   }
   .ant-table-bordered .ant-table-title + .ant-table-content,
   .ant-table-bordered .ant-table-title + .ant-table-content table,
@@ -367,15 +381,15 @@ const StyledTable = styled.div`
   }
   .ant-table-without-column-header.ant-table-bordered.ant-table-empty
     .ant-table-placeholder {
-    border-top: 1px solid #e8e8e8;
-    border-radius: 4px;
+    border-top: ${border};
+    border-radius: ${borderRadius};
   }
   .ant-table-tbody > tr.ant-table-row-selected td {
     color: inherit;
     background: #fafafa;
   }
   .ant-table-tbody > tr > td.ant-table-column-sort {
-    background: rgba(0, 0, 0, 0.01);
+    background: ${backgroundColor};
   }
   .ant-table-thead > tr > th,
   .ant-table-tbody > tr > td {
@@ -389,10 +403,10 @@ const StyledTable = styled.div`
   }
   .ant-table-header {
     overflow: hidden;
-    background: #fafafa;
+    background: ${backgroundColorActive};
   }
   .ant-table-header table {
-    border-radius: 4px 4px 0px 0px;
+    border-radius: ${borderRadius} ${borderRadius} 0px 0px;
   }
   .ant-table-loading {
     position: relative;
@@ -419,13 +433,13 @@ const StyledTable = styled.div`
   .ant-table-bordered .ant-table-body > table,
   .ant-table-bordered .ant-table-fixed-left table,
   .ant-table-bordered .ant-table-fixed-right table {
-    border: 1px solid #e8e8e8;
+    border: ${border};
     border-right: 0;
     border-bottom: 0;
   }
   .ant-table-bordered.ant-table-empty .ant-table-placeholder {
-    border-right: 1px solid #e8e8e8;
-    border-left: 1px solid #e8e8e8;
+    border-right: ${border};
+    border-left: ${border};
   }
   .ant-table-bordered.ant-table-fixed-header .ant-table-header > table {
     border-bottom: 0;
@@ -442,7 +456,7 @@ const StyledTable = styled.div`
     border-top: 0;
   }
   .ant-table-bordered .ant-table-thead > tr:not(:last-child) > th {
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: ${border};
     .ant-table-tbody > tr > td;
   }
   .ant-table-bordered .ant-table-thead > tr > th,
@@ -454,11 +468,11 @@ const StyledTable = styled.div`
     z-index: 1;
     padding: 16px 16px;
     color: rgba(0, 0, 0, 0.25);
-    font-size: 14px;
+    font-size: ${fontSize};
     text-align: center;
     background: #fff;
-    border-bottom: 1px solid #e8e8e8;
-    border-radius: 0 0 4px 4px;
+    border-bottom: ${border};
+    border-radius: 0 0 ${borderRadius} ${borderRadius};
   }
   .ant-table-placeholder .anticon {
     margin-right: 4px;
@@ -472,13 +486,13 @@ const StyledTable = styled.div`
     min-width: 96px;
     margin-left: -8px;
     background: #fff;
-    border-radius: 4px;
+    border-radius: ${borderRadius};
     -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
   .ant-table-filter-dropdown .ant-dropdown-menu {
     border: 0;
-    border-radius: 4px 4px 0 0;
+    border-radius: ${borderRadius} ${borderRadius} 0 0;
     -webkit-box-shadow: none;
     box-shadow: none;
   }
@@ -490,7 +504,7 @@ const StyledTable = styled.div`
     padding-right: 0;
   }
   .ant-table-filter-dropdown .ant-dropdown-menu-sub {
-    border-radius: 4px;
+    border-radius: ${borderRadius};
     -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
@@ -498,7 +512,7 @@ const StyledTable = styled.div`
     .ant-dropdown-menu
     .ant-dropdown-submenu-contain-selected
     .ant-dropdown-menu-submenu-title::after {
-    color: ${props => props.theme.backgroundColorActive};
+    color: ${backgroundColorActive};
     font-weight: bold;
   }
   .ant-table-filter-dropdown .ant-dropdown-menu-item {
@@ -516,12 +530,12 @@ const StyledTable = styled.div`
   .ant-table-filter-dropdown-btns {
     padding: 7px 8px;
     overflow: hidden;
-    border-top: 1px solid #e8e8e8;
+    border-top: ${border};
   }
   .ant-table-filter-dropdown-link:active,
   .ant-table-filter-dropdown-link:hover,
   .ant-table-filter-dropdown-link {
-    color: ${props => props.theme.backgroundColorActive};
+    color: ${backgroundColorActive};
   }
   .ant-table-filter-dropdown-link.confirm {
     float: left;
@@ -544,8 +558,8 @@ const StyledTable = styled.div`
     min-width: 96px;
     margin-top: 5px;
     margin-left: -30px;
-    background: #fff;
-    border-radius: 4px;
+    background: ${backgroundColor};
+    border-radius: ${borderRadius};
     -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
@@ -568,7 +582,7 @@ const StyledTable = styled.div`
     line-height: 14px;
     text-align: center;
     background: #fff;
-    border: 1px solid #e8e8e8;
+    border: ${border};
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -671,7 +685,7 @@ const StyledTable = styled.div`
   }
   .ant-table-fixed-left,
   .ant-table-fixed-left table {
-    border-radius: 4px 0 0 0;
+    border-radius: ${borderRadius} 0 0 0;
   }
   .ant-table-fixed-left .ant-table-thead > tr > th:last-child {
     border-top-right-radius: 0;
@@ -683,7 +697,7 @@ const StyledTable = styled.div`
   }
   .ant-table-fixed-right,
   .ant-table-fixed-right table {
-    border-radius: 0 4px 0 0;
+    border-radius: 0 ${borderRadius} 0 0;
   }
   .ant-table-fixed-right .ant-table-expanded-row {
     color: transparent;
@@ -860,8 +874,8 @@ const StyledTable = styled.div`
     margin: -12px -8px -13px;
   }
   .ant-table-small {
-    border: 1px solid #e8e8e8;
-    border-radius: 4px;
+    border: ${border};
+    border-radius: ${borderRadius};
   }
   .ant-table-small > .ant-table-title,
   .ant-table-small > .ant-table-footer {
@@ -869,7 +883,7 @@ const StyledTable = styled.div`
   }
   .ant-table-small > .ant-table-title {
     top: 0;
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: ${border};
   }
   .ant-table-small > .ant-table-content > .ant-table-body {
     margin: 0 8px;
@@ -1097,7 +1111,7 @@ const StyledTable = styled.div`
     > .ant-table-thead
     > tr {
     background-color: transparent;
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: ${border};
   }
   .ant-table-small
     > .ant-table-content
@@ -1211,16 +1225,16 @@ const StyledTable = styled.div`
   }
   .ant-table-small.ant-table-bordered .ant-table-title {
     border: 0;
-    border-right: 1px solid #e8e8e8;
-    border-bottom: 1px solid #e8e8e8;
+    border-right: ${border};
+    border-bottom: ${border};
   }
   .ant-table-small.ant-table-bordered .ant-table-content {
-    border-right: 1px solid #e8e8e8;
+    border-right: ${border};
   }
   .ant-table-small.ant-table-bordered .ant-table-footer {
     border: 0;
-    border-top: 1px solid #e8e8e8;
-    border-right: 1px solid #e8e8e8;
+    border-top: ${border};
+    border-right: ${border};
   }
   .ant-table-small.ant-table-bordered .ant-table-footer::before {
     display: none;
@@ -1244,11 +1258,11 @@ const StyledTable = styled.div`
     .ant-table-tbody
     > tr
     > td:last-child {
-    border-right: 1px solid #e8e8e8;
+    border-right: ${border};
   }
   .ant-table-small.ant-table-bordered .ant-table-fixed-right {
-    border-right: 1px solid #e8e8e8;
-    border-left: 1px solid #e8e8e8;
+    border-right: ${border};
+    border-left: ${border};
   }
   .ant-table-small tr.ant-table-expanded-row td > .ant-table-wrapper {
     margin: -8px -8px -9px;
@@ -1260,10 +1274,9 @@ const StyledTable = styled.div`
   .ant-pagination-prev,
   .ant-pagination-item,
   .ant-pagination-item-active {
-    min-width: 28px;
-    height: 28px;
-    line-height: 28px;
-    font-family: Arial;
+    min-width: ${componentHeight};
+    height: ${componentHeight};
+    line-height: ${componentHeight};
     text-align: center;
     list-style: none;
     background-color: transparent;
@@ -1277,14 +1290,13 @@ const StyledTable = styled.div`
   .ant-pagination-next .ant-pagination-item-link,
   .ant-pagination-prev .ant-pagination-item-link,
   .ant-pagination-item a {
-    color: ${props => props.theme.primaryColor};
-    font-size: ${props => props.theme.buttonFontFamily};
-    font-weight: ${props => props.theme.buttonFontWeight};
-    background: ${props => props.theme.buttonBackgroundColor};
-    border: ${props => props.theme.buttonBorder};
-    border-radius: ${props => props.theme.buttonRadius};
-    height: 28px;
-    line-height: 28px;
+    color: ${fontColor};
+    font-weight: ${fontWeightBold};
+    background: ${backgroundColorSelected};
+    border: ${border};
+    border-radius: ${borderRadius};
+    height: ${componentHeight};
+    line-height: ${componentHeight};
   }
 
   .ant-pagination-item:focus a,
@@ -1292,23 +1304,23 @@ const StyledTable = styled.div`
   .ant-pagination-item a {
     border-color: transparent;
     transition: all 0.3s;
-    color: ${props => props.theme.primaryColor};
+    color: ${fontColor};
   }
 
   .ant-pagination-item-active:focus a,
   .ant-pagination-item-active:hover a {
-    color: ${props => props.theme.white};
+    color: ${fontColorActive};
   }
 
   .ant-pagination-item-active a {
-    ${props => active(props.theme)};
+    ${props => active(props)}
   }
 
   .ant-pagination-next:focus .ant-pagination-item-link,
   .ant-pagination-next:hover .ant-pagination-item-link,
   .ant-pagination-prev:focus .ant-pagination-item-link,
   .ant-pagination-prev:hover .ant-pagination-item-link {
-    color: ${props => props.theme.primaryColor};
+    color: ${fontColor};
     border-color: transparent;
   }
 `;

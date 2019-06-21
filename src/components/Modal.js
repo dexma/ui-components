@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { withTheme } from 'styled-components';
 
 import theme from 'styles/theme';
 import { StyledModal } from 'styles/components/StyledModal';
-import { withTheme } from 'styled-components';
 
 const propTypes = {
   width: PropTypes.string,

@@ -23,6 +23,7 @@ export const fontSizeType = 'rem';
 export const fontSize = `${fontSizeNumber}${fontSizeType}`;
 export const fontColor = gray600;
 export const fontColorActive = white;
+export const fontFamily = 'Arial';
 
 const getFontSize = (size = fontSizeNumber) => `${size}${fontSizeType}`;
 
@@ -33,7 +34,7 @@ export const iconColorActive = white;
 
 // Background
 export const backgroundColor = white;
-export const backgroundColorSelected = gray300;
+export const backgroundColorSelected = gray100;
 export const backgroundColorActive = brand;
 export const backgroundColorHover = white;
 export const backgroundColorFocused = white;
@@ -43,7 +44,7 @@ export const radius = '3px';
 export const fontWeightBold = 700;
 export const padding = '20px';
 export const borderColor = gray100;
-export const heightElements = '40px';
+export const heightElements = '30px';
 
 export const sizes = {
   small: getFontSize(fontSizeNumber),
@@ -56,24 +57,25 @@ export const sizes = {
 // ==========================================================================
 
 const global = {
+  border: `1px solid ${gray100}`,
+  borderRadius: radius,
+  padding: padding,
+
+  fontFamily: fontFamily,
   fontSize: fontSize,
   fontColor: fontColor,
   fontColorActive: fontColorActive,
-  fontWeightTitle: fontWeightBold,
+  fontWeightBold: fontWeightBold,
 
   iconSize: iconSize,
   iconColor: iconColor,
   iconColorActive: iconColorActive,
 
-  background: backgroundColor,
-  backgroundSelected: backgroundColorSelected,
-  backgroundActive: backgroundColorActive,
-  backgroundHover: backgroundColorHover,
-  backgroundFocused: backgroundColorFocused,
-
-  border: `1px solid ${gray100}`,
-  borderRadius: radius,
-  padding: padding,
+  backgroundColor: backgroundColor,
+  backgroundColorSelected: backgroundColorSelected,
+  backgroundColorActive: backgroundColorActive,
+  backgroundColorHover: backgroundColorHover,
+  backgroundColorFocused: backgroundColorFocused,
 };
 
 // 2. Component
