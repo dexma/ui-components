@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { padding, margin, borderRadius } from 'styles/utils';
+import { padding, margin, borderRadius } from 'styles/selectors';
 
 const StyledModal = styled.div`
   .mask {

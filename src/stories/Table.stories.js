@@ -94,11 +94,6 @@ const dataSource = [
   },
 ];
 
-/* const dexmaThemeOptions = {
-  primaryBrandColor: "blue",
-  primaryColor: "blue"
-}; */
-
 const columns = [
   {
     title: 'Name',
