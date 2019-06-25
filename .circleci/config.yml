@@ -1,8 +1,8 @@
-version: 2 # use CircleCI 2.0
-jobs: # a collection of steps
-  build: # runs not using Workflows must have a `build` job as entry point
-    working_directory: ~/project/repo # directory where steps will run
-    docker: # run the steps with Docker
+version: 2
+jobs:
+  build:
+    working_directory: ~/project/repo
+    docker:
       - image: circleci/node:8
     steps:
       - checkout
@@ -18,3 +18,13 @@ jobs: # a collection of steps
       - run:
           name: Run Tests
           command: npm test
+
+workflows:
+  version: 2
+
+  on-commit:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: gh-pages
