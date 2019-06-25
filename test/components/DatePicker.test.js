@@ -1,8 +1,9 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import moment from 'moment';
 import sinon from 'sinon';
 import DatePicker from 'components/DatePicker';
+import Theme from 'components/Theme';
 
 import {
   ISO_FORMAT,
@@ -28,52 +29,49 @@ const periodOptions = [
 
 describe('<DatePicker>', () => {
   it('should render correct number of months', () => {
-    const datePicker = shallow(<DatePicker />);
-    expect(datePicker.find(DateRangePicker).props().numberOfMonths).toEqual(
-      NUMBER_OF_MONTHS
-    );
-  });
-  it('should render correct number of months', () => {
-    const datePicker = shallow(<DatePicker />);
+    const datePicker = mount(<DatePicker />);
     expect(datePicker.find(DateRangePicker).props().numberOfMonths).toEqual(
       NUMBER_OF_MONTHS
     );
   });
   it('should render correct start date id', () => {
-    const datePicker = shallow(<DatePicker />);
+    const datePicker = mount(<DatePicker />);
     expect(datePicker.find(DateRangePicker).props().startDateId).toEqual(
       START_DATE
     );
   });
   it('should render correct end date id', () => {
-    const datePicker = shallow(<DatePicker />);
+    const datePicker = mount(<DatePicker />);
     expect(datePicker.find(DateRangePicker).props().endDateId).toEqual(
       END_DATE
     );
   });
   it('should render correct format', () => {
-    const datePicker = shallow(<DatePicker />);
+    const datePicker = mount(<DatePicker />);
     expect(datePicker.find(DateRangePicker).props().displayFormat).toEqual(
       ISO_FORMAT
     );
   });
   it('should render correct day size', () => {
-    const datePicker = shallow(<DatePicker />);
+    const datePicker = mount(<DatePicker />);
     expect(datePicker.find(DateRangePicker).props().daySize).toEqual(DAY_SIZE);
   });
   it('should render correct no border', () => {
-    const datePicker = shallow(<DatePicker />);
+    const datePicker = mount(<DatePicker />);
     expect(datePicker.find(DateRangePicker).props().noBorder).toBeTruthy;
   });
   it('should render correct hide keyboard prop', () => {
-    const datePicker = shallow(<DatePicker />);
+    const datePicker = mount(<DatePicker />);
     expect(datePicker.find(DateRangePicker).props().hideKeyboardShortcutsPanel)
       .toBeFalsy;
   });
   it('should not call stateDateWrapper to parse date', () => {
     const parseDateStub = sinon.stub();
-    const dateFake = moment('2002-09-11');
-    const datePicker = mount(<DatePicker stateDateWrapper={parseDateStub} />);
+    const datePicker = mount(
+      <Theme>
+        <DatePicker stateDateWrapper={parseDateStub} />
+      </Theme>
+    ).find('DatePicker');
     datePicker.instance().onDatesChange({
       startDate: null,
       endDate: null,
@@ -83,7 +81,11 @@ describe('<DatePicker>', () => {
   it('should call stateDateWrapper 1 time to parse date', () => {
     const parseDateStub = sinon.stub();
     const dateFake = moment('2002-09-11');
-    const datePicker = mount(<DatePicker stateDateWrapper={parseDateStub} />);
+    const datePicker = mount(
+        <Theme>
+          <DatePicker stateDateWrapper={parseDateStub} />
+        </Theme>
+      ).find('DatePicker');
     datePicker.instance().onDatesChange({
       startDate: dateFake,
       endDate: null,
@@ -94,7 +96,11 @@ describe('<DatePicker>', () => {
   it('should call stateDateWrapper 2 time to parse date', () => {
     const parseDateStub = sinon.stub();
     const dateFake = moment('2002-09-11');
-    const datePicker = mount(<DatePicker stateDateWrapper={parseDateStub} />);
+    const datePicker = mount(
+      <Theme>
+        <DatePicker stateDateWrapper={parseDateStub} />
+      </Theme>
+    ).find('DatePicker');
     datePicker.instance().onDatesChange({
       startDate: dateFake,
       endDate: dateFake,
@@ -104,7 +110,11 @@ describe('<DatePicker>', () => {
   it('shouldnt call onDatesChangeStub time to pass data', () => {
     const onDatesChangeStub = sinon.stub();
     const dateFake = moment('2002-09-11');
-    const datePicker = mount(<DatePicker />);
+    const datePicker = mount(
+      <Theme>
+        <DatePicker/>
+      </Theme>
+    ).find('DatePicker');
     datePicker.instance().onDatesChange({
       startDate: dateFake,
       endDate: dateFake,
@@ -112,20 +122,30 @@ describe('<DatePicker>', () => {
     expect(onDatesChangeStub.callCount).toEqual(0);
   });
   it('should have focusedInput correct passing autoFocus', () => {
-    const datePicker = shallow(<DatePicker autoFocus={true} />);
+    const datePicker = mount(
+      <Theme>
+        <DatePicker autoFocus/>
+      </Theme>
+    ).find('DatePicker');
     expect(datePicker.instance().state.focusedInput).toEqual(START_DATE);
   });
   it('should have focusedInput correct passing autoFocusEndDate', () => {
-    const datePicker = shallow(<DatePicker autoFocusEndDate={true} />);
+    const datePicker = mount(
+      <Theme>
+        <DatePicker autoFocusEndDate/>
+      </Theme>
+    ).find('DatePicker');
     expect(datePicker.instance().state.focusedInput).toEqual(END_DATE);
   });
   it('passing default select option have valid status date', () => {
     const datePicker = mount(
-      <DatePicker
-        periodOptions={periodOptions}
-        periodDefault={{ value: 'last_7_days', label: 'Last 7 days' }}
-      />
-    );
+      <Theme>
+        <DatePicker
+          periodOptions={periodOptions}
+          periodDefault={{ value: 'last_7_days', label: 'Last 7 days' }}
+        />
+      </Theme>
+    ).find('DatePicker');
     expect(datePicker.instance().state.startDate.isValid()).toBeTruthy;
     expect(datePicker.instance().state.endDate.isValid()).toBeTruthy;
   });
