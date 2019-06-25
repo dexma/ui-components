@@ -10,7 +10,7 @@ const propTypes = {
   height: PropTypes.string,
   onClickAway: PropTypes.func,
   visible: PropTypes.bool,
-  theme: PropTypes.objectOf(PropTypes.any),
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
