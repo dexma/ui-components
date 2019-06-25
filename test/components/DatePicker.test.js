@@ -10,21 +10,22 @@ import {
   NUMBER_OF_MONTHS,
   START_DATE,
   END_DATE,
-  DAY_SIZE
+  DAY_SIZE,
+  DATE_RANGE
 } from 'utils/dates';
 
 import { DateRangePicker } from 'react-dates';
 
 const periodOptions = [
   { value: 'custom', label: 'Custom' },
-  { value: 'today', label: 'Today' },
-  { value: 'yesterday', label: 'Yesterday' },
-  { value: 'last_7_days', label: 'Last 7 days' },
-  { value: 'last_28_days', label: 'Last 28 days' },
-  { value: 'current_month', label: 'Current month' },
-  { value: 'last_month', label: 'Last month' },
-  { value: 'year_to_date', label: 'Year to date' },
-  { value: 'previous_year', label: 'Previous year' },
+  { value: DATE_RANGE.TODAY, label: 'Today' },
+  { value: DATE_RANGE.YESTERDAY, label: 'Yesterday' },
+  { value: DATE_RANGE.LAST_7_DAYS, label: 'Last 7 days' },
+  { value: DATE_RANGE.LAST_28_DAYS, label: 'Last 28 days' },
+  { value: DATE_RANGE.CURRENT_MONTH, label: 'Current month' },
+  { value: DATE_RANGE.LAST_MONTH, label: 'Last month' },
+  { value: DATE_RANGE.YEAR_TO_DATE, label: 'Year to date' },
+  { value: DATE_RANGE.PREVIOUS_YEAR, label: 'Previous year' },
 ];
 
 describe('<DatePicker>', () => {
