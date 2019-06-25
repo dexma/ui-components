@@ -1,11 +1,11 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { DateRangePicker } from 'react-dates';
+import { withTheme } from 'styled-components';
+
 import momentPropTypes from 'react-moment-proptypes';
-import { GeneralPropTypes } from 'utils/propTypes';
 import omit from 'lodash/omit';
 import classNames from 'classnames';
-import { DateRangePicker } from 'react-dates';
-import styled from 'styled-components';
 
 import Icon from 'components/Icon';
 import Select from 'components/Select';
@@ -16,6 +16,7 @@ import {
   END_DATE,
   DAY_SIZE,
   ISO_FORMAT,
+  DATE_RANGE,
   currentMonth,
   last28Days,
   last7Days,
@@ -28,6 +29,7 @@ import {
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import theme from 'styles/theme';
 import { StyledDatePicker } from 'styles/components/StyledDatePicker';
 
 const withDatePickerFormat = (start, end) => ({
@@ -37,20 +39,7 @@ const withDatePickerFormat = (start, end) => ({
 
 const custom = () => withDatePickerFormat(null, null);
 
-const Dates = Object.freeze({
-  CUSTOM: 'custom',
-  TODAY: 'today',
-  YESTERDAY: 'yesterday',
-  LAST_7_DAYS: 'last_7_days',
-  LAST_28_DAYS: 'last_28_days',
-  CURRENT_MONTH: 'current_month',
-  LAST_MONTH: 'last_month',
-  YEAR_TO_DATE: 'year_to_date',
-  PREVIOUS_YEAR: 'previous_year',
-});
-
 const propTypes = {
-  ...GeneralPropTypes,
   autoFocus: PropTypes.bool,
   autoFocusEndDate: PropTypes.bool,
   stateDateWrapper: PropTypes.func,
@@ -59,6 +48,7 @@ const propTypes = {
   initialStartDate: momentPropTypes.momentObj,
   initialEndDate: momentPropTypes.momentObj,
   onDatesChange: PropTypes.func,
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -68,6 +58,7 @@ const defaultProps = {
   startDateId: START_DATE,
   endDateId: END_DATE,
   numberOfMonths: NUMBER_OF_MONTHS,
+  theme: theme,
 };
 
 class DatePicker extends PureComponent {
@@ -128,15 +119,15 @@ class DatePicker extends PureComponent {
   };
 
   datePickerRange = (range, parser = date => date) => {
-    if (range === Dates.TODAY) return today(parser);
-    if (range === Dates.YESTERDAY) return yesterday(parser);
-    if (range === Dates.LAST_7_DAYS) return last7Days(parser);
-    if (range === Dates.LAST_28_DAYS) return last28Days(parser);
-    if (range === Dates.CURRENT_MONTH) return currentMonth(parser);
-    if (range === Dates.LAST_MONTH) return lastMonth(parser);
-    if (range === Dates.YEAR_TO_DATE) return yearToDate(parser);
-    if (range === Dates.PREVIOUS_YEAR) return previousYear(parser);
-    if (range === Dates.CUSTOM) return custom();
+    if (range === DATE_RANGE.TODAY) return today(parser);
+    if (range === DATE_RANGE.YESTERDAY) return yesterday(parser);
+    if (range === DATE_RANGE.LAST_7_DAYS) return last7Days(parser);
+    if (range === DATE_RANGE.LAST_28_DAYS) return last28Days(parser);
+    if (range === DATE_RANGE.CURRENT_MONTH) return currentMonth(parser);
+    if (range === DATE_RANGE.LAST_MONTH) return lastMonth(parser);
+    if (range === DATE_RANGE.YEAR_TO_DATE) return yearToDate(parser);
+    if (range === DATE_RANGE.PREVIOUS_YEAR) return previousYear(parser);
+    if (range === DATE_RANGE.CUSTOM) return custom();
     return null;
   };
 
@@ -153,58 +144,47 @@ class DatePicker extends PureComponent {
       'periodDefault',
     ]);
     const { periodOptions, periodDefault } = this.props;
-    const classes = classNames(periodOptions && `with-select`);
+    const classes = classNames('date-range', periodOptions && `with-select`);
     return (
-      <Fragment>
-        <StyledDatePicker>
-          <div className={classes}>
-            <DateRangePicker
-              {...dateRangePickerProps}
-              startDate={startDate}
-              endDate={endDate}
-              focusedInput={focusedInput}
-              onDatesChange={this.onDatesChange}
-              onFocusChange={this.onFocusChange}
-              noBorder
-              daySize={DAY_SIZE}
-              horizontalMonthPadding={10}
-              transitionDuration={0}
-              hideKeyboardShortcutsPanel
-              isOutsideRange={() => false}
-              customArrowIcon={<span>-</span>}
-              displayFormat={ISO_FORMAT}
-              minimumNights={0}
-              customInputIcon={<Icon name="calendar" />}
+      <StyledDatePicker>
+        <div className={classes}>
+          <DateRangePicker
+            {...dateRangePickerProps}
+            startDate={startDate}
+            endDate={endDate}
+            focusedInput={focusedInput}
+            onDatesChange={this.onDatesChange}
+            onFocusChange={this.onFocusChange}
+            noBorder
+            daySize={DAY_SIZE}
+            horizontalMonthPadding={10}
+            transitionDuration={0}
+            hideKeyboardShortcutsPanel
+            isOutsideRange={() => false}
+            customArrowIcon={<span>-</span>}
+            displayFormat={ISO_FORMAT}
+            minimumNights={0}
+            customInputIcon={<Icon name="calendar" />}
+          />
+        </div>
+        {periodOptions && (
+          <div className="select">
+            <Select
+              icon="down-dir"
+              options={periodOptions}
+              defaultValue={periodDefault}
+              onChange={this.onSelectChange}
             />
           </div>
-        </StyledDatePicker>
-        {periodOptions && (
-          <StyledSelect
-            icon="down-dir"
-            options={periodOptions}
-            defaultValue={periodDefault}
-            onChange={this.onSelectChange}
-          />
         )}
-      </Fragment>
+      </StyledDatePicker>
     );
   }
 }
-
-const StyledSelect = styled(Select)`
-  display: inline-block;
-  width: 160px;
-  float: left;
-  .dexma-select__control {
-    border-radius: 0px ${props => props.theme.globalRadius}
-      ${props => props.theme.globalRadius} 0px;
-    margin-left: -1px;
-  }
-`;
 
 StyledDatePicker.displayName = 'StyledDatePicker';
 
 DatePicker.propTypes = propTypes;
 DatePicker.defaultProps = defaultProps;
 
-export default DatePicker;
+export default withTheme(DatePicker);

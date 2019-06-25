@@ -25,6 +25,7 @@ import 'styles/global.scss';
 // Utils
 import {
   ISO_FORMAT,
+  DATE_RANGE,
   day,
   today,
   yesterday,
@@ -58,6 +59,7 @@ export {
   Theme,
   Title,
   ISO_FORMAT,
+  DATE_RANGE,
   day,
   today,
   yesterday,

@@ -18,8 +18,8 @@ export const gray500 = '#666666';
 export const gray600 = '#333333';
 
 // Font
-export const fontSizeNumber = 1;
-export const fontSizeType = 'rem';
+export const fontSizeNumber = 0.85;
+export const fontSizeType = 'em';
 export const fontSize = `${fontSizeNumber}${fontSizeType}`;
 export const fontColor = gray600;
 export const fontColorActive = white;
