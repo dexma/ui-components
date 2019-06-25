@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
@@ -9,7 +9,7 @@ import theme from 'styles/theme';
 import { StyledTable } from 'styles/components/StyledTable';
 
 const propTypes = {
-  theme: PropTypes.objectOf(PropTypes.any),
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -30,4 +30,4 @@ StyledTable.displayName = 'StyledTable';
 Table.propTypes = propTypes;
 Table.defaultProps = defaultProps;
 
-export default withTheme(Table);
+export default withTheme(memo(Table));

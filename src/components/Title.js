@@ -1,42 +1,39 @@
-import React, { Fragment, memo } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { withTheme } from 'styled-components';
+
+import theme from 'styles/theme';
+import { StyledTitle } from 'styles/components/StyledTitle';
 
 import Heading from 'components/Heading';
 import Cell from 'components/Cell';
 
 const propTypes = {
-  ...GeneralPropTypes,
-  type: PropTypes.string,
-  text: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  classNamePrefix: 'title',
   type: 'h6',
   text: 'Title',
+  theme: theme,
 };
 
-const Title = ({ className, classNamePrefix, type, text, dataCy }) => {
-  const classes = classNames(className, classNamePrefix);
+const Title = ({ type, text, theme, dataCy }) => {
   return (
-    <Fragment>
+    <StyledTitle theme={theme}>
       <Cell size="shrink">
-        <Heading
-          type={type}
-          text={text}
-          data-cy={dataCy}
-          className={classes}
-          line={false}
-        />
+        <Heading type={type} text={text} data-cy={dataCy} line={false} />
       </Cell>
       <Cell size="auto" className="line" />
-    </Fragment>
+    </StyledTitle>
   );
 };
+
+StyledTitle.displayName = 'StyledTitle';
 
 Title.propTypes = propTypes;
 Title.defaultProps = defaultProps;
 
-export default memo(Title);
+export default memo(withTheme(Title));

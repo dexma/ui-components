@@ -1,33 +1,40 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { withTheme } from 'styled-components';
+
+import theme from 'styles/theme';
+import { StyledHeading } from 'styles/components/StyledHeading';
 
 const propTypes = {
-  ...GeneralPropTypes,
-  type: PropTypes.string,
-  text: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
   line: PropTypes.bool,
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  classNamePrefix: 'heading',
   type: 'h3',
-  text: 'Title component',
+  text: 'Heading',
   line: false,
+  theme: theme,
 };
 
-const Heading = ({ className, classNamePrefix, type, text, line, dataCy }) => {
-  const classes = classNames(className, classNamePrefix, line && 'line-bottom');
+const Heading = ({ type, text, line, theme, dataCy }) => {
+  const classes = classNames(line && 'line-bottom');
   const TitleElement = type;
   return (
-    <TitleElement data-cy={dataCy} className={classes}>
-      {text}
-    </TitleElement>
+    <StyledHeading theme={theme}>
+      <TitleElement data-cy={dataCy} className={classes}>
+        {text}
+      </TitleElement>
+    </StyledHeading>
   );
 };
+
+StyledHeading.displayName = 'StyledHeading';
 
 Heading.propTypes = propTypes;
 Heading.defaultProps = defaultProps;
 
-export default memo(Heading);
+export default memo(withTheme(Heading));
