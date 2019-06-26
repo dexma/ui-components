@@ -1,44 +1,48 @@
+import { css } from 'styled-components';
 import { hsl, parseToHsl } from 'polished';
 
-const button = ({
-  globalHeightElements,
-  buttonFontFamily,
-  buttonFontWeight,
-  primaryColor,
-  borderElements,
-  buttonRadius,
-}) => `
-  min-height: ${globalHeightElements};
+import {
+  border,
+  borderRadius,
+  backgroundColor,
+  backgroundColorActive,
+  fontSize,
+  fontColor,
+  fontWeightBold,
+  componentHeight,
+} from 'styles/selectors';
+
+const button = () => css`
+  min-height: ${componentHeight};
   align-items: center;
   align-content: center;
   display: flex;
   padding: 0 10px;
   margin-bottom: 0;
-  font-size: ${buttonFontFamily};
-  font-weight: ${buttonFontWeight};
-  color: ${primaryColor};
+  font-size: ${fontSize};
+  font-weight: ${fontWeightBold};
+  color: ${fontColor};
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  background: #fff;
-  border: 1px solid ${borderElements};
-  border-radius: ${buttonRadius};
+  background: ${backgroundColor};
+  border: ${border};
+  border-radius: ${borderRadius};
   outline: none;
 `;
 
-const active = ({ primaryBrandColor, white }) => `
-  background-color: ${backgroundColorActive(primaryBrandColor)};
-  border: 1px solid ${boxShadowColorActiveHsl2(primaryBrandColor)};
+const active = () => css`
+  background-color: ${backgroundColorActive};
+  border: 1px solid
+    ${props => {
+      const colorActive = backgroundColorActive(props);
+      return colorBorderActive(colorActive);
+    }};
   outline: 0;
-  color: ${white};
+  color: ${backgroundColor};
 `;
 
-const boxShadowActive = primaryBrandColor => {
-  return `inset 0 1px 0 ${boxShadowColorActiveHsl1(primaryBrandColor)},
-  inset 0 1px 0 ${boxShadowColorActiveHsl2(primaryBrandColor)}`;
-};
-
-const backgroundColorActive = primaryBrandColor => {
+/* const getBackgroundColorActive = primaryBrandColor => {
   const { hue, saturation, lightness } = parseToHsl(primaryBrandColor);
   return hsl({ hue, saturation, lightness });
 };
@@ -51,17 +55,11 @@ const borderColorActive = primaryBrandColor => {
 const boxShadowColorActiveHsl1 = primaryBrandColor => {
   const { hue, saturation, lightness } = parseToHsl(primaryBrandColor);
   return hsl({ hue, saturation, lightness: lightness + 0.25 });
-};
+}; */
 
-const boxShadowColorActiveHsl2 = primaryBrandColor => {
+const colorBorderActive = primaryBrandColor => {
   const { hue, saturation, lightness } = parseToHsl(primaryBrandColor);
   return hsl({ hue, saturation, lightness: lightness - 0.05 });
 };
 
-export {
-  button,
-  active,
-  boxShadowActive,
-  borderColorActive,
-  backgroundColorActive,
-};
+export { button, active };

@@ -22,7 +22,7 @@ const defaultProps = {
   theme: theme,
 };
 
-const getStyles = () => {
+const StyledChart = () => {
   const {
     backgroundColor,
     /*    backgroundColorActive,
@@ -88,7 +88,7 @@ class Chart extends PureComponent {
       options,
       callback || undefined
     );
-    this.chart.update(getStyles());
+    this.chart.update(StyledChart());
   }
 
   componentDidUpdate(prevProps) {
