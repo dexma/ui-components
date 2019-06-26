@@ -4,15 +4,13 @@ import deepEqual from 'deep-equal';
 import { withTheme } from 'styled-components';
 
 import Highcharts from 'highcharts';
-import addHeatmapModule from 'highcharts/modules/heatmap';
-import addTreemapModule from 'highcharts/modules/treemap';
+import addSankeyModule from 'highcharts/modules/sankey';
 import boost from 'highcharts/modules/boost';
 
 import theme from 'styles/theme';
 
 boost(Highcharts);
-addHeatmapModule(Highcharts);
-addTreemapModule(Highcharts);
+addSankeyModule(Highcharts);
 
 const propTypes = {
   options: PropTypes.objectOf(PropTypes.any),
