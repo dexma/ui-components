@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import Chart from 'components/Chart';
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
 import Title from 'components/Title';
+import Button from 'components/Button';
 
 const options = {
   boost: {
@@ -42,7 +43,7 @@ const options = {
   ],
   chart: {
     width: 800,
-    type: 'column',
+    type: 'line',
     zoomType: 'x',
   },
   plotOptions: {
@@ -55,28 +56,50 @@ const options = {
   },
 };
 
-const options2 = {
-  title: {
-    text: 'My stock chart 2',
-  },
-  series: [
-    {
-      data: [1, 2, 3, 5, 6, 7, 8],
-    },
-  ],
-  chart: {
-    width: 700,
-    type: 'column',
-    zoomType: 'x',
-  },
-  plotOptions: {
-    series: {
-      stacking: 'normal',
-      groupPadding: 0,
-      borderWidth: 0,
-    },
-  },
-};
+class ViewChart extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      typeActive: 'line',
+    };
+  }
+
+  changeButtonActive = type => {
+    this.setState({
+      typeActive: type,
+    });
+  };
+
+  getOptions = () => {
+    const newType = this.state.typeActive;
+    const newTypeChart = Object.assign({}, this.props.options.chart, {
+      type: newType,
+    });
+    const newOptions = Object.assign({}, this.props.options, {
+      chart: newTypeChart,
+    });
+    return newOptions;
+  };
+
+  render() {
+    const newOptions = this.getOptions();
+    return (
+      <div>
+        <Cell size="full">
+          <Button
+            text="Line"
+            onClick={() => this.changeButtonActive('line')}
+          ></Button>
+          <Button
+            text="Column"
+            onClick={() => this.changeButtonActive('column')}
+          ></Button>
+          <Chart options={newOptions} />
+        </Cell>
+      </div>
+    );
+  }
+}
 
 storiesOf('Chart', module)
   .addParameters({
@@ -88,10 +111,7 @@ storiesOf('Chart', module)
         <Title text="Basic cards with text:" line />
       </Cell>
       <Cell size="auto" medium={12}>
-        <Chart options={options} />
-      </Cell>
-      <Cell size="auto" medium={12}>
-        <Chart options={options2} />
+        <ViewChart options={options} />
       </Cell>
     </Grid>
   ));
