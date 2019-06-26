@@ -34,7 +34,7 @@ const getStyles = () => {
     component,
     fontColor,
     fontColorActive,
-    fontFamily, */
+    fontFamily, 
     fontSize,
     /*    fontWeightBold,
     iconColor,
@@ -57,15 +57,11 @@ const getStyles = () => {
     },
     legend: {
       backgroundColor: backgroundColor,
-      itemStyle: {
-        fontSize: fontSize,
-      },
+      itemStyle: {},
     },
     xAxis: {
       labels: {
-        style: {
-          fontSize: fontSize,
-        },
+        style: {},
       },
     },
     yAxis: {
@@ -73,9 +69,7 @@ const getStyles = () => {
         style: {},
       },
       labels: {
-        style: {
-          fontSize: fontSize,
-        },
+        style: {},
       },
     },
   };
