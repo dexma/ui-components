@@ -7,7 +7,7 @@ import Cell from 'components/Cell';
 import Title from 'components/Title';
 import Button from 'components/Button';
 
-const options = {
+const configChart = {
   boost: {
     useGPUTranslations: true,
   },
@@ -39,6 +39,26 @@ const options = {
         return arr;
       })(),
       color: 'blue',
+    },
+  ],
+};
+
+const configSankey = {
+  title: {
+    text: 'Highcharts Sankey Diagram',
+  },
+  series: [
+    {
+      keys: ['from', 'to', 'weight'],
+      data: [
+        ['grid', 'microGrid', 4017.5625],
+        ['generation', 'microGrid', 8035.125],
+        ['storage', 'microGrid', 8035.125],
+        ['microGrid', 'load', 4017.5625],
+        ['microGrid', 'storage', 8035.125],
+      ],
+      type: 'sankey',
+      name: 'Sankey demo series',
     },
   ],
 };
@@ -92,13 +112,23 @@ storiesOf('Chart', module)
   .addParameters({
     jest: ['Chart'],
   })
-  .add('with text', () => (
+  .add('basic', () => (
     <Grid type="horizontal" horizontalPadding verticalPadding>
       <Cell size="full">
         <Title text="Basic cards with text:" line />
       </Cell>
       <Cell size="auto" medium={12}>
-        <ViewChart options={options} />
+        <ViewChart options={configChart} />
+      </Cell>
+    </Grid>
+  ))
+  .add('sankey', () => (
+    <Grid type="horizontal" horizontalPadding verticalPadding>
+      <Cell size="full">
+        <Title text="Basic cards with text:" line />
+      </Cell>
+      <Cell size="auto" medium={12}>
+        <Chart options={configSankey} />
       </Cell>
     </Grid>
   ));
