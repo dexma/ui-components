@@ -26,6 +26,11 @@ const backgroundColorHover = props =>
 const backgroundColorFocused = props =>
   propFromTheme(props, 'backgroundColorFocused');
 
+const gray300Color = props => propFromTheme(props, 'gray300');
+const successColor = props => propFromTheme(props, 'success');
+const warningColor = props => propFromTheme(props, 'warning');
+const errorColor = props => propFromTheme(props, 'error');
+
 const componentHeight = props => propFromTheme(props, 'component.height');
 
 export {
@@ -46,4 +51,8 @@ export {
   backgroundColorHover,
   backgroundColorFocused,
   componentHeight,
+  gray300Color,
+  successColor,
+  warningColor,
+  errorColor,
 };
