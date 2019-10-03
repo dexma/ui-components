@@ -37,4 +37,4 @@ StyledHeading.displayName = 'StyledHeading';
 Heading.propTypes = propTypes;
 Heading.defaultProps = defaultProps;
 
-export default memo(withTheme(Heading));
+export default withTheme(memo(Heading));

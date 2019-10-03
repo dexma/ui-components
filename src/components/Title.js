@@ -36,4 +36,4 @@ StyledTitle.displayName = 'StyledTitle';
 Title.propTypes = propTypes;
 Title.defaultProps = defaultProps;
 
-export default memo(withTheme(Title));
+export default withTheme(memo(Title));
