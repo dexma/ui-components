@@ -6,7 +6,7 @@ import isEmpty from 'lodash/isEmpty';
 import theme from 'styles/theme';
 
 const propTypes = {
-  options: PropTypes.objectOf(PropTypes.object),
+  options: PropTypes.objectOf(PropTypes.any),
 };
 
 const Theme = ({ children, options }) => {
