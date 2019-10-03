@@ -60,7 +60,7 @@ export const sizes = {
 // ==========================================================================
 
 const global = {
-  border: `1px solid ${gray100}`,
+  border: `1px solid ${backgroundColorSelected}`,
   borderRadius: radius,
   padding: padding,
 

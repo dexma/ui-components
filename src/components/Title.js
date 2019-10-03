@@ -1,26 +1,26 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-
-import theme from 'styles/theme';
-import { StyledTitle } from 'styles/components/StyledTitle';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import Heading from 'components/Heading';
 import Cell from 'components/Cell';
 
+import { StyledTitle } from 'styles/components/StyledTitle';
+
 const propTypes = {
+  ...GeneralPropTypes,
   type: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
+  ...DefaultGeneralPropTypes,
   type: 'h6',
   text: 'Title',
-  theme: theme,
 };
 
-const Title = ({ type, text, theme, dataCy }) => {
+export const Title = ({ type, text, theme, dataCy }) => {
   return (
     <StyledTitle theme={theme}>
       <Cell size="shrink">
