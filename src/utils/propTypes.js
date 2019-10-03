@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
+import theme from 'styles/theme';
 
-/**
- * Property types for general properties.
- *
- * @returns {Object}
- */
 export const GeneralPropTypes = {
   className: PropTypes.string,
-  classNamePrefix: PropTypes.string,
   dataCy: PropTypes.string,
+  theme: PropTypes.shape({}),
+};
+
+export const DefaultGeneralPropTypes = {
+  theme: theme,
 };

@@ -2,22 +2,22 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withTheme } from 'styled-components';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
-import theme from 'styles/theme';
 import { StyledHeading } from 'styles/components/StyledHeading';
 
 const propTypes = {
+  ...GeneralPropTypes,
   type: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   line: PropTypes.bool,
-  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
+  ...DefaultGeneralPropTypes,
   type: 'h3',
   text: 'Heading',
   line: false,
-  theme: theme,
 };
 
 const Heading = ({ type, text, line, theme, dataCy }) => {
