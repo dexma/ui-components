@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { DateRangePicker } from 'react-dates';
 import { withTheme } from 'styled-components';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import momentPropTypes from 'react-moment-proptypes';
 import omit from 'lodash/omit';
@@ -29,7 +30,7 @@ import {
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import theme from 'styles/theme';
+
 import { StyledDatePicker } from 'styles/components/StyledDatePicker';
 
 const withDatePickerFormat = (start, end) => ({
@@ -40,6 +41,7 @@ const withDatePickerFormat = (start, end) => ({
 const custom = () => withDatePickerFormat(null, null);
 
 const propTypes = {
+  ...GeneralPropTypes,
   autoFocus: PropTypes.bool,
   autoFocusEndDate: PropTypes.bool,
   stateDateWrapper: PropTypes.func,
@@ -48,17 +50,16 @@ const propTypes = {
   initialStartDate: momentPropTypes.momentObj,
   initialEndDate: momentPropTypes.momentObj,
   onDatesChange: PropTypes.func,
-  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
+  ...DefaultGeneralPropTypes,
   autoFocus: false,
   autoFocusEndDate: false,
   stateDateWrapper: date => date,
   startDateId: START_DATE,
   endDateId: END_DATE,
   numberOfMonths: NUMBER_OF_MONTHS,
-  theme: theme,
 };
 
 class DatePicker extends PureComponent {
@@ -143,11 +144,11 @@ class DatePicker extends PureComponent {
       'periodOptions',
       'periodDefault',
     ]);
-    const { periodOptions, periodDefault } = this.props;
+    const { periodOptions, periodDefault, theme, dataCy } = this.props;
     const classes = classNames('date-range', periodOptions && `with-select`);
     return (
-      <StyledDatePicker>
-        <div className={classes}>
+      <StyledDatePicker theme={theme}>
+        <div className={classes} data-cy={dataCy}>
           <DateRangePicker
             {...dateRangePickerProps}
             startDate={startDate}
