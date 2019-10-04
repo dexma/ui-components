@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mountWithTheme, shallowWithTheme } from '../utils/wrapperThemeProvider';
+import FieldGroup from 'components/FieldGroup';
 import {
   mockRadioGroup,
   mockCheckboxGroup,
@@ -7,11 +8,9 @@ import {
   mockSelectedRadioItem,
 } from '../mock/FieldGroup';
 
-import FieldGroup from 'components/FieldGroup';
-
 describe('<FieldGroup>', () => {
   it('Should render correct input and label elements', () => {
-    const fieldGroup = shallow(
+    const fieldGroup = mountWithTheme(
       <FieldGroup
         values={mockRadioGroup}
         selectedValues={mockSelectedRadioItem}
@@ -22,7 +21,7 @@ describe('<FieldGroup>', () => {
     expect(fieldGroup.find('label').length).toEqual(mockRadioGroup.length);
   });
   it('Should render correct input type radio', () => {
-    const fieldGroup = shallow(
+    const fieldGroup = mountWithTheme(
       <FieldGroup
         values={mockRadioGroup}
         selectedValues={mockSelectedRadioItem}
@@ -34,7 +33,7 @@ describe('<FieldGroup>', () => {
     );
   });
   it('Should render correct input type checkbox', () => {
-    const fieldGroup = shallow(
+    const fieldGroup = mountWithTheme(
       <FieldGroup
         values={mockCheckboxGroup}
         selectedValues={mockSelectedCheckboxItem}
@@ -46,7 +45,7 @@ describe('<FieldGroup>', () => {
     );
   });
   it('Should render correct input radio active', () => {
-    const fieldGroup = shallow(
+    const fieldGroup = mountWithTheme(
       <FieldGroup
         values={mockRadioGroup}
         selectedValues={mockSelectedRadioItem}
@@ -56,7 +55,7 @@ describe('<FieldGroup>', () => {
     expect(fieldGroup.find(".active input[type='radio']").length).toEqual(1);
   });
   it('Should render correct input checkbox active', () => {
-    const fieldGroup = shallow(
+    const fieldGroup = mountWithTheme(
       <FieldGroup
         values={mockCheckboxGroup}
         selectedValues={mockSelectedCheckboxItem}
@@ -69,7 +68,7 @@ describe('<FieldGroup>', () => {
   });
   it('Should run changeFunction when change input', () => {
     const mockCallBack = jest.fn();
-    const fieldGroup = shallow(
+    const fieldGroup = mountWithTheme(
       <FieldGroup
         values={mockCheckboxGroup}
         selectedValues={mockSelectedCheckboxItem}
