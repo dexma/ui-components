@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import find from 'lodash/find';
 import set from 'lodash/set';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
+import { withTheme } from 'styled-components';
 
 import Icon from 'components/Icon';
 
@@ -26,6 +27,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  ...DefaultGeneralPropTypes,
   type: 'radio',
   vertical: false,
 };
@@ -57,9 +59,6 @@ const isFieldSelected = (type, item, selectedField) => {
 };
 
 const FieldGroup = ({
-  className,
-  classNamePrefix,
-  dataCy,
   type,
   values,
   selectedValues,
@@ -68,15 +67,13 @@ const FieldGroup = ({
   vertical,
   onChange,
   onFieldClick,
+  dataCy,
+  theme,
 }) => {
-  const classes = classNames(
-    className,
-    classNamePrefix,
-    vertical ? 'vertical' : 'horizontal'
-  );
+  const classes = classNames(vertical ? 'vertical' : 'horizontal');
   const selectedField = getSelectedField(type, values, selectedValues, 'value');
   return (
-    <StyledFieldGroup>
+    <StyledFieldGroup theme={theme}>
       <div data-cy={dataCy} className={classes}>
         {values.map(item => {
           const { id, value, label, icon, tooltip } = item;
@@ -117,4 +114,4 @@ StyledFieldGroup.displayName = 'StyledFieldGroup';
 FieldGroup.propTypes = propTypes;
 FieldGroup.defaultProps = defaultProps;
 
-export default memo(FieldGroup);
+export default withTheme(memo(FieldGroup));
