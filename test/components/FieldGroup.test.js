@@ -1,6 +1,6 @@
 import React from 'react';
 import FieldGroup from 'components/FieldGroup';
-import { mountWithTheme } from '../utils/wrapperThemeProvider';
+import { mount } from 'enzyme';
 import {
   mockRadioGroup,
   mockCheckboxGroup,
@@ -10,7 +10,7 @@ import {
 
 describe('<FieldGroup>', () => {
   it('Should render correct input and label elements', () => {
-    const fieldGroup = mountWithTheme(
+    const fieldGroup = mount(
       <FieldGroup
         values={mockRadioGroup}
         selectedValues={mockSelectedRadioItem}
@@ -21,7 +21,7 @@ describe('<FieldGroup>', () => {
     expect(fieldGroup.find('label').length).toEqual(mockRadioGroup.length);
   });
   it('Should render correct input type radio', () => {
-    const fieldGroup = mountWithTheme(
+    const fieldGroup = mount(
       <FieldGroup
         values={mockRadioGroup}
         selectedValues={mockSelectedRadioItem}
@@ -33,7 +33,7 @@ describe('<FieldGroup>', () => {
     );
   });
   it('Should render correct input type checkbox', () => {
-    const fieldGroup = mountWithTheme(
+    const fieldGroup = mount(
       <FieldGroup
         values={mockCheckboxGroup}
         selectedValues={mockSelectedCheckboxItem}
@@ -45,7 +45,7 @@ describe('<FieldGroup>', () => {
     );
   });
   it('Should render correct input radio active', () => {
-    const fieldGroup = mountWithTheme(
+    const fieldGroup = mount(
       <FieldGroup
         values={mockRadioGroup}
         selectedValues={mockSelectedRadioItem}
@@ -55,7 +55,7 @@ describe('<FieldGroup>', () => {
     expect(fieldGroup.find(".active input[type='radio']").length).toEqual(1);
   });
   it('Should render correct input checkbox active', () => {
-    const fieldGroup = mountWithTheme(
+    const fieldGroup = mount(
       <FieldGroup
         values={mockCheckboxGroup}
         selectedValues={mockSelectedCheckboxItem}
@@ -68,7 +68,7 @@ describe('<FieldGroup>', () => {
   });
   it('Should run changeFunction when change input', () => {
     const mockCallBack = jest.fn();
-    const fieldGroup = mountWithTheme(
+    const fieldGroup = mount(
       <FieldGroup
         values={mockCheckboxGroup}
         selectedValues={mockSelectedCheckboxItem}
