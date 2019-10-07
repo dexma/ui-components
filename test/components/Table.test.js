@@ -1,5 +1,5 @@
 import React from 'react';
-import { mountWithTheme } from '../utils/wrapperThemeProvider';
+import { mount } from 'enzyme';
 
 import Table from 'components/Table';
 
@@ -39,7 +39,7 @@ const columns = [
 
 describe('<Table>', () => {
   it('Should render the correct component', () => {
-    const table = mountWithTheme(<Table dataSource={dataSource} columns={columns}/>);
+    const table = mount(<Table dataSource={dataSource} columns={columns}/>);
     expect(table.find('StyledTable').length).toEqual(1);
   });
 });

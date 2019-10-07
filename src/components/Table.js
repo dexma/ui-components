@@ -30,4 +30,4 @@ StyledTable.displayName = 'StyledTable';
 Table.propTypes = propTypes;
 Table.defaultProps = defaultProps;
 
-export default withTheme(memo(Table));
+export default memo(withTheme(Table));
