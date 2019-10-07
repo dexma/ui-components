@@ -114,4 +114,4 @@ StyledFieldGroup.displayName = 'StyledFieldGroup';
 FieldGroup.propTypes = propTypes;
 FieldGroup.defaultProps = defaultProps;
 
-export default withTheme(memo(FieldGroup));
+export default memo(withTheme(FieldGroup));
