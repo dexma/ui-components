@@ -1,23 +1,23 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
-import theme from 'styles/theme';
 import { StyledModal } from 'styles/components/StyledModal';
 
 const propTypes = {
+  ...GeneralPropTypes,
   width: PropTypes.string,
   height: PropTypes.string,
   onClickAway: PropTypes.func,
   visible: PropTypes.bool,
-  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
+  ...DefaultGeneralPropTypes,
   width: '600px',
   height: 'auto',
   visible: false,
-  theme: theme,
 };
 
 class Modal extends PureComponent {
@@ -28,12 +28,28 @@ class Modal extends PureComponent {
     };
   }
 
+  componentWillMount() {
+    window.addEventListener('keydown', this.keyDown);
+  }
+
   componentWillReceiveProps(nextProps) {
     const { visible } = nextProps;
     this.setState({
       visible,
     });
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.keyDown);
+  }
+
+  keyDown = event => {
+    if (event.key === 'Escape') {
+      this.setState({
+        visible: false,
+      });
+    }
+  };
 
   render() {
     const { visible } = this.state;

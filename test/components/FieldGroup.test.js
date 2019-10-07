@@ -1,6 +1,6 @@
 import React from 'react';
-import { mountWithTheme, shallowWithTheme } from '../utils/wrapperThemeProvider';
 import FieldGroup from 'components/FieldGroup';
+import { mountWithTheme } from '../utils/wrapperThemeProvider';
 import {
   mockRadioGroup,
   mockCheckboxGroup,
