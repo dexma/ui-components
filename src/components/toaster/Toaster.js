@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
@@ -15,31 +15,40 @@ const defaultProps = {
   theme: theme,
 };
 
-const Toaster = props => {
-  const [visible, setVisible] = useState(false);
-  const [toastConfig, setToastConfig] = useState({});
-  const [toastTimeout, setToastTimeout] = useState(null);
+class Toaster extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      toastConfig: {},
+      timeout: null,
+    };
+  }
 
-  const showToast = ({ text, type }) => {
-    setToastConfig({ text: text, type: type });
-    setVisible(true);
-    clearTimeout(toastTimeout);
-    setToastTimeout(
-      setTimeout(() => {
-        setVisible(false);
-      }, 5000)
-    );
+  showToast = ({ text, type }) => {
+    clearTimeout(this.state.timeout);
+    this.setState({
+      visible: true,
+      toastConfig: { text: text, type: type },
+      timeout: setTimeout(() => {
+        this.setState({ visible: false });
+      }, 5000),
+    });
   };
 
-  return (
-    <ToasterProvider value={{ toast: showToast }}>
-      <React.Fragment>
-        <div>{props.children}</div>
-        {visible && <Toast {...props} {...toastConfig} />}
-      </React.Fragment>
-    </ToasterProvider>
-  );
-};
+  render = () => {
+    return (
+      <ToasterProvider value={{ toast: this.showToast }}>
+        <React.Fragment>
+          <div>{this.props.children}</div>
+          {this.state.visible && (
+            <Toast {...this.props} {...this.state.toastConfig} />
+          )}
+        </React.Fragment>
+      </ToasterProvider>
+    );
+  };
+}
 
 Toaster.propTypes = propTypes;
 Toaster.defaultProps = defaultProps;
