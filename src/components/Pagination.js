@@ -1,26 +1,28 @@
 import React, { memo } from 'react';
-import classNames from 'classnames';
 import ReactPaginate from 'react-paginate';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { withTheme } from 'styled-components';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import Icon from 'components/Icon';
+
+import { StyledPagination } from 'styles/components/StyledPagination';
 
 const propTypes = {
   ...GeneralPropTypes,
 };
 
 const defaultProps = {
-  classNamePrefix: 'pagination',
+  ...DefaultGeneralPropTypes,
 };
 
-const Pagination = ({ className, classNamePrefix, dataCy, ...props }) => {
-  const classes = classNames(className, classNamePrefix);
+const Pagination = ({ theme, dataCy, ...props }) => {
   return (
-    <div data-cy={dataCy} className={classes}>
+    <StyledPagination theme={theme}>
       <ReactPaginate
         previousLabel={<Icon name="left_arrow" />}
         nextLabel={<Icon name="right_arrow" />}
-        pageLinkClassName="page"
+        pageClassName="page"
+        pageLinkClassName="link"
         previousClassName="previous"
         nextClassName="next"
         breakClassName="break"
@@ -29,11 +31,13 @@ const Pagination = ({ className, classNamePrefix, dataCy, ...props }) => {
         activeClassName="active"
         {...props}
       />
-    </div>
+    </StyledPagination>
   );
 };
+
+StyledPagination.displayName = 'StyledPagination';
 
 Pagination.propTypes = propTypes;
 Pagination.defaultProps = defaultProps;
 
-export default memo(Pagination);
+export default memo(withTheme(Pagination));
