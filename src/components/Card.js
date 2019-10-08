@@ -1,10 +1,13 @@
 import React, { Fragment, memo } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { withTheme } from 'styled-components';
 import classNames from 'classnames';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import Icon from 'components/Icon';
+
+import { StyledCard } from 'styles/components/StyledCard';
 
 const propTypes = {
   ...GeneralPropTypes,
@@ -18,13 +21,11 @@ const propTypes = {
 };
 
 const defaultProps = {
-  classNamePrefix: 'card',
+  ...DefaultGeneralPropTypes,
   isActive: false,
 };
 
 const Card = ({
-  className,
-  classNamePrefix,
   id,
   link,
   title,
@@ -32,9 +33,10 @@ const Card = ({
   isActive,
   onClick,
   onFocus,
+  theme,
   dataCy,
 }) => {
-  const classes = classNames(className, classNamePrefix, isActive && 'active');
+  const classes = classNames(isActive && 'active');
   const content = (
     <Fragment>
       <div className="card-body card-section">
@@ -61,19 +63,22 @@ const Card = ({
     );
   }
   return (
-    <div
+    <StyledCard
       id={id}
       data-cy={dataCy}
       className={classes}
       onClick={onClick}
       onFocus={onFocus}
+      theme={theme}
     >
       {content}
-    </div>
+    </StyledCard>
   );
 };
+
+StyledCard.displayName = 'StyledCard';
 
 Card.propTypes = propTypes;
 Card.defaultProps = defaultProps;
 
-export default memo(Card);
+export default memo(withTheme(Card));
