@@ -6,8 +6,8 @@ import Icon from 'components/Icon';
 
 describe('<Pagination>', () => {
   it('Should render the correct classNamePrefix component', () => {
-    const pagination = shallow(<Pagination />);
-    expect(pagination.find('.pagination').length).toEqual(1);
+    const pagination = mount(<Pagination />);
+    expect(pagination.find('StyledPagination').length).toEqual(1);
   });
 
   it('Should render the correct icon left', () => {
