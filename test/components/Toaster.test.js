@@ -15,7 +15,7 @@ describe('<Toaster>', () => {
         );
     toastFunction({ text: 'some alert', type: ToastType.INFO });
     toaster.update();
-    expect(toaster.find('.toast').length).toEqual(1);
+    expect(toaster.find('StyledToast').length).toEqual(1);
   });
   it('Should render nothing if toast not called', () => {
     const toaster = mount(

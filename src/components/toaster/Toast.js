@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import theme from 'styles/theme';
 import { StyledToast } from 'styles/components/StyledToast';
@@ -24,7 +23,6 @@ const defaultProps = {
 };
 
 export const Toast = ({ text, type, theme }) => {
-  const classes = classNames('toast', type.toLowerCase());
   const iconName = {
     [ToastType.INFO]: 'info-button',
     [ToastType.SUCCESS]: 'ok-circled',
@@ -33,11 +31,9 @@ export const Toast = ({ text, type, theme }) => {
   }[type];
 
   return (
-    <StyledToast theme={theme}>
-      <div className={classes}>
-        <Icon name={iconName} size="medium" />
-        <span>{text}</span>
-      </div>
+    <StyledToast theme={theme} type={type}>
+      <Icon name={iconName} size="medium" />
+      <span>{text}</span>
     </StyledToast>
   );
 };

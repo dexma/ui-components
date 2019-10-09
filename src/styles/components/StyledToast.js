@@ -6,40 +6,40 @@ import {
   errorColor,
   fontSize,
 } from 'styles/selectors';
+import { ToastType } from 'components/toaster/Toast';
 
 const StyledToast = styled.div`
-  .toast {
-    position: fixed;
-    z-index: 100000;
-    bottom: 0;
-    left: 0;
-    width: 360px;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin: 20px;
-    border-radius: 4px;
-    color: white;
-    font-weight: 500;
-    font-size: ${fontSize};
+  position: fixed;
+  z-index: 100000;
+  top: 0;
+  right: 0;
+  width: 360px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: ${fontSize};
+  color: ${props => {
+    return {
+      [ToastType.INFO]: 'white',
+      [ToastType.SUCCESS]: 'white',
+      [ToastType.WARNING]: 'black',
+      [ToastType.ERROR]: 'white',
+    }[props.type];
+  }};
+  background-color: ${props => {
+    return {
+      [ToastType.INFO]: gray300Color,
+      [ToastType.SUCCESS]: successColor,
+      [ToastType.WARNING]: warningColor,
+      [ToastType.ERROR]: errorColor,
+    }[props.type];
+  }};
 
-    &.info {
-      background-color: ${gray300Color};
-    }
-    &.success {
-      background-color: ${successColor};
-    }
-    &.warning {
-      background-color: ${warningColor};
-      color: black;
-    }
-    &.error {
-      background-color: ${errorColor};
-    }
-
-    span {
-      margin-left: 10px;
-    }
+  span {
+    margin-left: 10px;
   }
 `;
 
