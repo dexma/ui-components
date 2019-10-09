@@ -2,10 +2,12 @@ import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import AutosizeInput from 'react-input-autosize';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import Grid from 'components/Grid';
 import Button from 'components/Button';
+
+import { StyledFieldEditable } from 'styles/components/StyledFieldEditable';
 
 const propTypes = {
   ...GeneralPropTypes,
@@ -21,7 +23,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  classNamePrefix: 'field-autosize',
+  ...DefaultGeneralPropTypes,
   activeClassName: 'active',
   hasError: false,
 };
@@ -93,8 +95,6 @@ class FieldEditable extends PureComponent {
   render() {
     const { isEditable, showEdit } = this.state;
     const {
-      className,
-      classNamePrefix,
       dataCy,
       activeClassName,
       hasError,
@@ -102,21 +102,20 @@ class FieldEditable extends PureComponent {
       onSave,
       onClose,
       disabled,
+      theme,
       ...props
     } = this.props;
     const classes = classNames(
-      className,
-      classNamePrefix,
       isEditable && activeClassName,
       hasError && 'hasError'
     );
     const showButtonEdit = showEdit && !isEditable;
     return (
-      <div
-        className={classes}
-        data-cy={dataCy}
+      <StyledFieldEditable
+        theme={theme}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
+        className={classes}
       >
         <Grid className="editable">
           <AutosizeInput
@@ -156,10 +155,12 @@ class FieldEditable extends PureComponent {
             />
           )}
         </Grid>
-      </div>
+      </StyledFieldEditable>
     );
   }
 }
+
+StyledFieldEditable.displayName = 'StyledFieldEditable';
 
 FieldEditable.propTypes = propTypes;
 FieldEditable.defaultProps = defaultProps;

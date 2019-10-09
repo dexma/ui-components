@@ -1,7 +1,15 @@
-.field-autosize{
+import styled from 'styled-components';
+import {
+  backgroundColor,
+  fontSize,
+  fontColor,
+  fontWeightBold,
+} from 'styles/selectors';
+
+const StyledFieldEditable = styled.div`
   width: auto;
   border: none;
-  background-color: $white;
+  background-color: ${backgroundColor};
   word-wrap: break-word;
   word-break: break-word;
   max-width: 100%;
@@ -13,20 +21,20 @@
   display: inline-block;
   box-shadow: 0 0 0 0 transparent;
   &.hasError {
-    @include error();
-    input{
+    border: 1px solid #cc4b37;
+    input {
       border: 0px;
       min-width: 30px;
     }
   }
-  &.active{
+  &.active {
     padding: 0px;
     background-color: #f0f0f0;
-    input{
+    input {
       margin: 0 1rem;
     }
   }
-  .button{
+  .button {
     box-sizing: border-box;
     color: #979494;
     font-size: 11px;
@@ -40,21 +48,23 @@
   .button:last-child {
     padding-right: 0.8rem;
   }
-  .button:not(:last-child){
+  .button:not(:last-child) {
     border-radius: 0px;
     padding-left: 0.8rem;
   }
-  input{
+  input {
     height: 30px;
-    color: #333;
-    font-weight: 700;
-    font-size: 15px;
+    color: ${fontColor};
+    font-weight: ${fontWeightBold};
+    font-size: ${fontSize};
     border: 0px;
     outline: none;
     width: 100%;
     background: transparent;
   }
-  .editable{
+  .editable {
     align-items: center;
   }
-}
+`;
+
+export { StyledFieldEditable };

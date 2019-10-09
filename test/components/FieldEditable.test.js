@@ -3,23 +3,22 @@ import { shallow, mount } from 'enzyme';
 import AutosizeInput from 'react-input-autosize';
 
 import FieldEditable from 'components/FieldEditable';
-import Button from 'components/Button';
 
 describe('<FieldEditable>', () => {
   it('Should render the classNamePrefix component', () => {
-    const fieldEditable = shallow(<FieldEditable />);
-    expect(fieldEditable.find('.field-autosize').length).toEqual(1);
+    const fieldEditable = mount(<FieldEditable />);
+    expect(fieldEditable.find('StyledFieldEditable').length).toEqual(1);
   });
   it('Should render the buttons with loading active prop', () => {
-    const fieldEditable = shallow(<FieldEditable isLoading={true} />);
-    expect(fieldEditable.find('.loading').length).toEqual(1);
+    const fieldEditable = mount(<FieldEditable isLoading />);
+    expect(fieldEditable.find('button.loading').length).toEqual(1);
   });
   it('Should render correct class error', () => {
-    const fieldEditable = shallow(<FieldEditable hasError />);
-    expect(fieldEditable.find('.hasError').length).toEqual(1);
+    const fieldEditable = mount(<FieldEditable hasError />);
+    expect(fieldEditable.find('div.hasError').length).toEqual(1);
   });
   it("Shouldn't render the buttons with disabled prop", () => {
-    const fieldEditable = shallow(<FieldEditable disabled />);
+    const fieldEditable = mount(<FieldEditable disabled />);
     expect(fieldEditable.find('Button').length).toEqual(0);
   });
   it('Should have correct editable behavior', () => {
