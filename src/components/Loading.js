@@ -1,9 +1,11 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
+import { withTheme } from 'styled-components';
 
 import Spinner from 'components/Spinner';
+
+import { StyledLoading } from 'styles/components/StyledLoading';
 
 const propTypes = {
   ...GeneralPropTypes,
@@ -14,32 +16,25 @@ const propTypes = {
 };
 
 const defaultProps = {
-  classNamePrefix: 'dexma-loading',
+  ...DefaultGeneralPropTypes,
   isLoading: false,
   width: 80,
   height: 80,
 };
 
-const Loading = ({
-  className,
-  classNamePrefix,
-  isLoading,
-  width,
-  height,
-  dataCy,
-  children,
-}) => {
-  const classes = classNames(className, classNamePrefix);
+const Loading = ({ isLoading, width, height, dataCy, theme, children }) => {
   return isLoading ? (
-    <div data-cy={dataCy} className={classes}>
+    <StyledLoading data-cy={dataCy} theme={theme}>
       <Spinner width={width} height={height} />
-    </div>
+    </StyledLoading>
   ) : (
     children
   );
 };
 
+StyledLoading.displayName = 'StyledLoading';
+
 Loading.propTypes = propTypes;
 Loading.defaultProps = defaultProps;
 
-export default memo(Loading);
+export default memo(withTheme(Loading));
