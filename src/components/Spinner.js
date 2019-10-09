@@ -1,7 +1,9 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { withTheme } from 'styled-components';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
+
+import { StyledSpinner } from 'styles/components/StyledSpinner';
 
 const propTypes = {
   ...GeneralPropTypes,
@@ -10,29 +12,20 @@ const propTypes = {
 };
 
 const defaultProps = {
-  classNamePrefix: 'spinner',
+  ...DefaultGeneralPropTypes,
   width: 80,
   height: 80,
 };
 
-const Spinner = ({
-  className,
-  classNamePrefix,
-  width,
-  height,
-  dataCy,
-  ...props
-}) => {
-  const classes = classNames(className, classNamePrefix);
+const Spinner = ({ width, height, theme, dataCy }) => {
   return (
-    <svg
+    <StyledSpinner
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
-      data-cy={dataCy}
-      className={classes}
       width={width}
       height={height}
-      {...props}
+      theme={theme}
+      data-cy={dataCy}
     >
       <rect
         x={47}
@@ -261,11 +254,13 @@ const Spinner = ({
           repeatCount="indefinite"
         />
       </rect>
-    </svg>
+    </StyledSpinner>
   );
 };
+
+StyledSpinner.displayName = 'StyledSpinner';
 
 Spinner.propTypes = propTypes;
 Spinner.defaultProps = defaultProps;
 
-export default memo(Spinner);
+export default memo(withTheme(Spinner));
