@@ -16,7 +16,7 @@ storiesOf('Toaster', module)
       <Grid type="vertical" horizontalPadding verticalPadding>
         <Cell
           medium={2}
-          style={{ height: '500px', backgroundColor: 'cornsilk' }}
+          style={{ height: '1500px', backgroundColor: 'cornsilk' }}
         >
           <ToasterConsumer>
             {context => (

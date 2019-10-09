@@ -9,7 +9,8 @@ import {
 
 const StyledToast = styled.div`
   .toast {
-    position: absolute;
+    position: fixed;
+    z-index: 100000;
     bottom: 0;
     left: 0;
     width: 360px;
