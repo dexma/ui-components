@@ -1,11 +1,12 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import ReactSelect, { components } from 'react-select';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 import capitalize from 'lodash/capitalize';
 
 import Icon from 'components/Icon';
+
+import { StyledSelect } from 'styles/components/StyledSelect';
 
 const propTypes = {
   ...GeneralPropTypes,
@@ -14,7 +15,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  classNamePrefix: 'dexma-select',
+  ...DefaultGeneralPropTypes,
   icon: 'menu',
 };
 
@@ -46,27 +47,29 @@ const Option = props => {
   );
 };
 
-const Select = ({ className, classNamePrefix, dataCy, ...props }) => {
-  const classes = classNames(className, classNamePrefix);
-
+const Select = ({ dataCy, theme, ...props }) => {
   return (
-    <ReactSelect
-      className={classes}
-      optionClassName="select-option"
-      classNamePrefix={classNamePrefix}
-      components={{
-        DropdownIndicator: selectProps =>
-          DropdownIndicator({ ...selectProps, icon: props.icon }),
-        Input: selectProps => SelectInput({ ...selectProps, name: props.name }),
-        Option: selectProps => Option({ ...selectProps, name: props.name }),
-      }}
-      isClearable={false}
-      blurInputOnSelect={false}
-      dataCy={dataCy}
-      {...props}
-    />
+    <StyledSelect theme={theme}>
+      <ReactSelect
+        classNamePrefix="select-styled"
+        optionClassName="select-option"
+        components={{
+          DropdownIndicator: selectProps =>
+            DropdownIndicator({ ...selectProps, icon: props.icon }),
+          Input: selectProps =>
+            SelectInput({ ...selectProps, name: props.name }),
+          Option: selectProps => Option({ ...selectProps, name: props.name }),
+        }}
+        isClearable={false}
+        blurInputOnSelect={false}
+        dataCy={dataCy}
+        {...props}
+      />
+    </StyledSelect>
   );
 };
+
+StyledSelect.displayName = 'StyledSelect';
 
 Select.propTypes = propTypes;
 Select.defaultProps = defaultProps;
