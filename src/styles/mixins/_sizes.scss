@@ -1,7 +1,0 @@
-@mixin fontSizes(){
-  @each $sizeKey, $sizeValue in $sizes {
-    &.#{$sizeKey}{
-      font-size: $sizeValue;
-    }
-  }
-}

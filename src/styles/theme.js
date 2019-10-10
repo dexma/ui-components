@@ -1,8 +1,12 @@
 // Table of Contents:
 //
-//  1. Global
-//  2. Component
+//  1. Base
+//  2. Button
+//  3. Heading
 
+// todo we put export on the vars because we want to split on each fields
+
+// 1.1 Colors
 export const brand = '#618916';
 export const white = '#ffffff';
 export const black = '#000000';
@@ -20,8 +24,8 @@ export const success = '#00C7B4';
 export const warning = '#EDA500';
 export const error = '#C23564';
 
-// Font
-export const fontSizeNumber = 0.75;
+// 1.2 Font
+export const fontSizeNumber = 0.875;
 export const fontSizeType = 'rem';
 export const fontSize = `${fontSizeNumber}${fontSizeType}`;
 export const fontColor = gray600;
@@ -30,38 +34,32 @@ export const fontFamily = 'Arial';
 
 const getFontSize = (size = fontSizeNumber) => `${size}${fontSizeType}`;
 
-// Icon
+// 1.3 Icon
 export const iconSize = fontSize;
 export const iconColor = gray500;
 export const iconColorActive = white;
 
-// Background
+// 1.4 Background
 export const backgroundColor = white;
 export const backgroundColorSelected = gray100;
 export const backgroundColorActive = brand;
 export const backgroundColorHover = white;
 export const backgroundColorFocused = white;
 
-// Others
+// 1.5 Others
 export const radius = '3px';
 export const fontWeightBold = 700;
 export const padding = '20px';
 export const borderColor = gray100;
 export const heightElements = '30px';
+export const spacer = '1rem';
 
-/* export const sizes = {
-  small: getFontSize(fontSizeNumber),
-  medium: getFontSize(fontSizeNumber * 1.5),
-  large: getFontSize(fontSizeNumber * 2),
-  xlarge: getFontSize(fontSizeNumber * 2.5),
-}; */
+export const buttonSizes = ['small', 'medium', 'large', 'xlarge'];
 
-export const sizes = ['small', 'medium', 'large', 'xlarge'];
-
-// 1. Global
+// 1. Base
 // ==========================================================================
 
-const global = {
+const base = {
   border: `1px solid ${borderColor}`,
   borderRadius: radius,
   borderColor: borderColor,
@@ -95,17 +93,41 @@ const global = {
 // ==========================================================================
 
 const button = {
+  sizes: buttonSizes,
   fontSize: {
-    small: getFontSize(fontSizeNumber),
-    medium: getFontSize(0.875),
-    large: getFontSize(1),
-    xlarge: getFontSize(1.125),
+    small: getFontSize(0.875),
+    medium: getFontSize(1),
+    large: getFontSize(1.25),
+    xlarge: getFontSize(1.5),
+  },
+};
+
+// 3. Heading
+// ==========================================================================
+
+const heading = {
+  fontSize: {
+    h1: getFontSize(2.625),
+    h2: getFontSize(2),
+    h3: getFontSize(1.75),
+    h4: getFontSize(1.5),
+    h5: getFontSize(1.25),
+    h6: getFontSize(fontSizeNumber),
+  },
+  lineHeight: {
+    h1: getFontSize(3),
+    h2: getFontSize(2.5),
+    h3: getFontSize(2.25),
+    h4: getFontSize(2),
+    h5: getFontSize(1.75),
+    h6: getFontSize(1.5),
   },
 };
 
 const theme = {
-  ...global,
+  ...base,
   button,
+  heading,
 };
 
 export default theme;

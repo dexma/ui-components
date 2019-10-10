@@ -33,15 +33,10 @@ const warningColor = props => propFromTheme(props, 'warning');
 const errorColor = props => propFromTheme(props, 'error');
 
 const componentHeight = props => propFromTheme(props, 'heightElements');
-
-const buttonFontSizeSmall = props =>
-  propFromTheme(props, 'button.fontSize.small');
-const buttonFontSizeMedium = props =>
-  propFromTheme(props, 'button.fontSize.medium');
-const buttonFontSizeLarge = props =>
-  propFromTheme(props, 'button.fontSize.large');
-const buttonFontSizeXLarge = props =>
-  propFromTheme(props, 'button.fontSize.xlarge');
+const buttonSizes = props => propFromTheme(props, 'button.sizes');
+const buttonFontSize = props => propFromTheme(props, 'button.fontSize');
+const headingFontSize = props => propFromTheme(props, 'heading.fontSize');
+const headingLineHeight = props => propFromTheme(props, 'heading.lineHeight');
 
 export {
   padding,
@@ -62,12 +57,12 @@ export {
   backgroundColorHover,
   backgroundColorFocused,
   componentHeight,
-  gray300Color,
-  successColor,
-  warningColor,
+  buttonSizes,
+  buttonFontSize,
+  headingFontSize,
+  headingLineHeight,
   errorColor,
-  buttonFontSizeSmall,
-  buttonFontSizeMedium,
-  buttonFontSizeLarge,
-  buttonFontSizeXLarge,
+  warningColor,
+  successColor,
+  gray300Color,
 };

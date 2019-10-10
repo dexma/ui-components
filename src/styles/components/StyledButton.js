@@ -1,29 +1,25 @@
-import styled from 'styled-components';
-import { button, active } from 'styles/utils/mixins';
-import {
-  buttonFontSizeSmall,
-  buttonFontSizeMedium,
-  buttonFontSizeLarge,
-  buttonFontSizeXLarge,
-} from 'styles/selectors';
+import styled, { css } from 'styled-components';
+import { button, active } from 'styles/mixins';
+import { buttonSizes, buttonFontSize } from 'styles/selectors';
+
+const getButtons = props => {
+  const sizes = buttonSizes(props);
+  const fontSizes = buttonFontSize(props);
+  return sizes.map(size => {
+    return css`
+      &.${size} {
+        font-size: ${fontSizes[size]};
+      }
+    `;
+  });
+};
 
 const StyledButton = styled.button`
   ${button};
   &.active {
     ${active}
   }
-  &.small {
-    font-size: ${buttonFontSizeSmall};
-  }
-  &.medium {
-    font-size: ${buttonFontSizeMedium};
-  }
-  &.large {
-    font-size: ${buttonFontSizeLarge};
-  }
-  &.xlarge {
-    font-size: ${buttonFontSizeXLarge};
-  }
+  ${props => getButtons(props)}
   &.expanded {
     &.small,
     &.medium,
