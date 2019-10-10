@@ -1,7 +1,10 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { withTheme } from 'styled-components';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
+
+import { StyledIcon } from 'styles/components/StyledIcon';
 
 const propTypes = {
   ...GeneralPropTypes,
@@ -11,25 +14,22 @@ const propTypes = {
 };
 
 const defaultProps = {
+  ...DefaultGeneralPropTypes,
   size: 'small',
-  classNamePrefix: 'dexma-icon',
 };
 
-const Icon = ({ name, size, className, classNamePrefix, dataCy, children }) => {
-  const classes = classNames(
-    className,
-    classNamePrefix,
-    size && size,
-    name && `dexma-icon-${name}`
-  );
+const Icon = ({ name, size, dataCy, theme, children }) => {
+  const classes = classNames(size && size, name && `dexma-icon-${name}`);
   return (
-    <i data-cy={dataCy} className={classes}>
+    <StyledIcon data-cy={dataCy} className={classes} theme={theme}>
       {children || null}
-    </i>
+    </StyledIcon>
   );
 };
+
+StyledIcon.displayName = 'StyledIcon';
 
 Icon.propTypes = propTypes;
 Icon.defaultProps = defaultProps;
 
-export default memo(Icon);
+export default memo(withTheme(Icon));
