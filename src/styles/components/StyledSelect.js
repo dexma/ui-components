@@ -11,13 +11,13 @@ import {
   iconColor,
   iconColorActive,
   componentHeight,
-  radius,
+  borderRadius,
 } from 'styles/selectors';
 
 const StyledSelect = styled.div`
   .css-1aya2g8 {
     background: ${backgroundColor};
-    border-radius: ${radius};
+    border-radius: ${borderRadius};
     border: ${border};
     margin: 0;
     padding: 0;
@@ -27,7 +27,7 @@ const StyledSelect = styled.div`
   .css-2o5izw,
   .css-1aya2g8 {
     min-height: 32px;
-    border-radius: ${radius};
+    border-radius: ${borderRadius};
     border: ${border};
   }
   .css-1aya2g8:hover,
@@ -41,7 +41,7 @@ const StyledSelect = styled.div`
   }
   .css-15k3avv {
     background-color: hsl(0, 0%, 100%);
-    border-radius: 0px 0px ${radius} ${radius};
+    border-radius: 0px 0px ${borderRadius} ${borderRadius};
     border: ${border};
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     margin-bottom: 0px;
@@ -109,7 +109,7 @@ const StyledSelect = styled.div`
   }
   .select-styled__control {
     min-height: ${componentHeight};
-    border-radius: ${radius};
+    border-radius: ${borderRadius};
     font-size: ${fontSize};
   }
   .select-styled__value-container,
@@ -140,7 +140,7 @@ const StyledSelect = styled.div`
   .select-styled__menu {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px,
       rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
-    border-radius: ${radius};
+    border-radius: ${borderRadius};
     margin-bottom: 8px;
     margin-top: 5px;
   }
