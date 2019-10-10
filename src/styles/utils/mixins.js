@@ -17,7 +17,7 @@ const button = () => css`
   align-items: center;
   align-content: center;
   display: flex;
-  padding: 0 10px;
+  padding: 0.5rem 1rem;
   margin-bottom: 0;
   font-size: ${fontSize};
   font-weight: ${fontWeightBold};

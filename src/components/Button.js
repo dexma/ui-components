@@ -3,9 +3,12 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { withTheme } from 'styled-components';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import Icon from 'components/Icon';
+
+import { StyledButton } from 'styles/components/StyledButton';
 
 const propTypes = {
   ...GeneralPropTypes,
@@ -28,7 +31,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  classNamePrefix: 'button',
+  ...DefaultGeneralPropTypes,
   type: 'button',
   isActive: false,
   isDisabled: false,
@@ -41,8 +44,6 @@ const Button = ({
   buttonRef,
   text,
   type,
-  className,
-  classNamePrefix,
   iconBefore,
   iconAfter,
   tooltip,
@@ -55,11 +56,10 @@ const Button = ({
   size,
   debounceTime,
   dataCy,
+  theme,
   children,
 }) => {
   const classes = classNames(
-    className,
-    classNamePrefix,
     isActive && 'active',
     isExpanded && 'expanded',
     size && size
@@ -67,7 +67,7 @@ const Button = ({
   const handleClick =
     debounceTime > 0 ? debounce(onClick, debounceTime) : onClick;
   return (
-    <button
+    <StyledButton
       id={id}
       ref={buttonRef}
       type={type}
@@ -77,6 +77,7 @@ const Button = ({
       disabled={isDisabled}
       className={classes}
       data-cy={dataCy}
+      theme={theme}
     >
       {isLoading ? (
         <Icon className="animate-spin" name="spin5" size={size} />
@@ -85,11 +86,13 @@ const Button = ({
       {text || null}
       {children || null}
       {!isLoading && iconAfter ? <Icon name={iconAfter} size={size} /> : null}
-    </button>
+    </StyledButton>
   );
 };
+
+StyledButton.displayName = 'StyledButton';
 
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
-export default memo(Button);
+export default memo(withTheme(Button));

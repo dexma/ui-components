@@ -6,6 +6,8 @@ import {
   fontWeightBold,
 } from 'styles/selectors';
 
+import { StyledButton } from 'styles/components/StyledButton';
+
 const StyledFieldEditable = styled.div`
   width: auto;
   border: none;
@@ -34,7 +36,7 @@ const StyledFieldEditable = styled.div`
       margin: 0 1rem;
     }
   }
-  .button {
+  ${StyledButton} {
     box-sizing: border-box;
     color: #979494;
     font-size: 11px;
@@ -45,10 +47,10 @@ const StyledFieldEditable = styled.div`
     padding: 0.8rem 0.4rem;
     background: transparent;
   }
-  .button:last-child {
+  ${StyledButton}:last-child {
     padding-right: 0.8rem;
   }
-  .button:not(:last-child) {
+  ${StyledButton}:not (:last-child) {
     border-radius: 0px;
     padding-left: 0.8rem;
   }

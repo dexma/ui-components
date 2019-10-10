@@ -1,7 +1,10 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { GeneralPropTypes } from 'utils/propTypes';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
+import { withTheme } from 'styled-components';
+
+import { StyledButtonGroup } from 'styles/components/StyledButtonGroup';
 
 const propTypes = {
   ...GeneralPropTypes,
@@ -10,31 +13,28 @@ const propTypes = {
 };
 
 const defaultProps = {
-  classNamePrefix: 'button-group',
+  ...DefaultGeneralPropTypes,
   vertical: false,
 };
 
-const ButtonGroup = ({
-  className,
-  classNamePrefix,
-  vertical,
-  dataCy,
-  children,
-  ...props
-}) => {
-  const classes = classNames(
-    className,
-    classNamePrefix,
-    vertical ? 'vertical' : 'horizontal'
-  );
+const ButtonGroup = ({ vertical, dataCy, theme, children, ...props }) => {
+  const classes = classNames(vertical ? 'vertical' : 'horizontal');
   return (
-    <div data-cy={dataCy} className={classes} role="group" {...props}>
+    <StyledButtonGroup
+      data-cy={dataCy}
+      className={classes}
+      role="group"
+      theme={theme}
+      {...props}
+    >
       {children || null}
-    </div>
+    </StyledButtonGroup>
   );
 };
+
+StyledButtonGroup.displayName = 'StyledButtonGroup';
 
 ButtonGroup.propTypes = propTypes;
 ButtonGroup.defaultProps = defaultProps;
 
-export default memo(ButtonGroup);
+export default memo(withTheme(ButtonGroup));

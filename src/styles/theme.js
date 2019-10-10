@@ -21,8 +21,8 @@ export const warning = '#EDA500';
 export const error = '#C23564';
 
 // Font
-export const fontSizeNumber = 0.85;
-export const fontSizeType = 'em';
+export const fontSizeNumber = 0.75;
+export const fontSizeType = 'rem';
 export const fontSize = `${fontSizeNumber}${fontSizeType}`;
 export const fontColor = gray600;
 export const fontColorActive = white;
@@ -49,12 +49,14 @@ export const padding = '20px';
 export const borderColor = gray100;
 export const heightElements = '30px';
 
-export const sizes = {
+/* export const sizes = {
   small: getFontSize(fontSizeNumber),
   medium: getFontSize(fontSizeNumber * 1.5),
   large: getFontSize(fontSizeNumber * 2),
   xlarge: getFontSize(fontSizeNumber * 2.5),
-};
+}; */
+
+export const sizes = ['small', 'medium', 'large', 'xlarge'];
 
 // 1. Global
 // ==========================================================================
@@ -62,6 +64,7 @@ export const sizes = {
 const global = {
   border: `1px solid ${borderColor}`,
   borderRadius: radius,
+  borderColor: borderColor,
   padding: padding,
 
   fontFamily: fontFamily,
@@ -84,18 +87,25 @@ const global = {
   success: success,
   warning: warning,
   error: error,
+
+  heightElements: heightElements,
 };
 
-// 2. Component
+// 2. Button
 // ==========================================================================
 
-const component = {
-  height: heightElements,
+const button = {
+  fontSize: {
+    small: getFontSize(fontSizeNumber),
+    medium: getFontSize(0.875),
+    large: getFontSize(1),
+    xlarge: getFontSize(1.125),
+  },
 };
 
 const theme = {
   ...global,
-  component,
+  button,
 };
 
 export default theme;
