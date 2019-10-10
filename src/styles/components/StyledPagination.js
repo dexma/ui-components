@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { button, active } from 'styles/utils/mixins';
+import { button, active } from 'styles/mixins';
 
 const StyledPagination = styled.div`
   ul {

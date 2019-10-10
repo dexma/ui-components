@@ -1,15 +1,6 @@
 @import '~foundation-sites/scss/foundation';
-@import 'variables';
 
-@include foundation-typography;
 @include foundation-xy-grid-classes;
-@include foundation-card;
 
 @import 'utils/tooltip';
 @import 'utils/animation';
-
-@import 'mixins/active';
-@import 'mixins/error';
-@import 'mixins/sizes';
-
-@import 'components/icon';
