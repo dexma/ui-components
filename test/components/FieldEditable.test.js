@@ -11,7 +11,7 @@ describe('<FieldEditable>', () => {
   });
   it('Should render the buttons with loading active prop', () => {
     const fieldEditable = mount(<FieldEditable isLoading />);
-    expect(fieldEditable.find('button.loading').length).toEqual(1);
+    expect(fieldEditable.find('.loading').length).toBeTruthy();
   });
   it('Should render correct class error', () => {
     const fieldEditable = mount(<FieldEditable hasError />);

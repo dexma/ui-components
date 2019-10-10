@@ -1,12 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import ButtonGroup from 'components/ButtonGroup';
 import Button from 'components/Button';
 
 describe('<ButtonGroup>', () => {
   it('Should render the classNamePrefix component', () => {
-    const buttonGroup = shallow(
+    const buttonGroup = mount(
       <ButtonGroup>
         <Button iconBefore="photo-camera" />
         <Button iconBefore="scatter" />
@@ -16,10 +16,10 @@ describe('<ButtonGroup>', () => {
         <Button iconBefore="config" />
       </ButtonGroup>
     );
-    expect(buttonGroup.find('.button-group').length).toEqual(1);
+    expect(buttonGroup.find('StyledButtonGroup').length).toBeTruthy();
   });
   it('Should render a button element', () => {
-    const buttonGroup = shallow(
+    const buttonGroup = mount(
       <ButtonGroup>
         <Button iconBefore="photo-camera" />
         <Button iconBefore="scatter" />
@@ -32,14 +32,14 @@ describe('<ButtonGroup>', () => {
     expect(buttonGroup.find(Button).length).toEqual(6);
   });
   it('Should have the class for the position', () => {
-    const buttonGroup = shallow(
+    const buttonGroup = mount(
       <ButtonGroup vertical>
         <Button iconBefore="photo-camera" />
         <Button iconBefore="scatter" />
       </ButtonGroup>
     );
-    expect(buttonGroup.find('.vertical').length).toEqual(1);
+    expect(buttonGroup.find('.vertical').length).toBeTruthy();
     buttonGroup.setProps({ vertical: false });
-    expect(buttonGroup.find('.horizontal').length).toEqual(1);
+    expect(buttonGroup.find('.horizontal').length).toBeTruthy();
   });
 });

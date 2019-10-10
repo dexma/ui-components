@@ -6,6 +6,7 @@ const padding = props => propFromTheme(props, 'padding');
 const margin = props => propFromTheme(props, 'padding');
 const border = props => propFromTheme(props, 'border');
 const borderRadius = props => propFromTheme(props, 'borderRadius');
+const borderColor = props => propFromTheme(props, 'borderColor');
 
 const fontSize = props => propFromTheme(props, 'fontSize');
 const fontColor = props => propFromTheme(props, 'fontColor');
@@ -31,13 +32,23 @@ const successColor = props => propFromTheme(props, 'success');
 const warningColor = props => propFromTheme(props, 'warning');
 const errorColor = props => propFromTheme(props, 'error');
 
-const componentHeight = props => propFromTheme(props, 'component.height');
+const componentHeight = props => propFromTheme(props, 'heightElements');
+
+const buttonFontSizeSmall = props =>
+  propFromTheme(props, 'button.fontSize.small');
+const buttonFontSizeMedium = props =>
+  propFromTheme(props, 'button.fontSize.medium');
+const buttonFontSizeLarge = props =>
+  propFromTheme(props, 'button.fontSize.large');
+const buttonFontSizeXLarge = props =>
+  propFromTheme(props, 'button.fontSize.xlarge');
 
 export {
   padding,
   margin,
   border,
   borderRadius,
+  borderColor,
   fontSize,
   fontColor,
   fontColorActive,
@@ -55,4 +66,8 @@ export {
   successColor,
   warningColor,
   errorColor,
+  buttonFontSizeSmall,
+  buttonFontSizeMedium,
+  buttonFontSizeLarge,
+  buttonFontSizeXLarge,
 };

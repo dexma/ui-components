@@ -1,42 +1,47 @@
-.button-group{
+import styled from 'styled-components';
+
+import { StyledButton } from 'styles/components/StyledButton';
+
+const StyledButtonGroup = styled.div`
   position: relative;
   display: inline-flex;
   vertical-align: middle;
-  .button{
+  ${StyledButton} {
     position: relative;
     flex: 0 1 auto;
   }
-  &.vertical{
+  &.vertical {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    .button:not(:last-child){
+    ${StyledButton}:not(:last-child) {
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
     }
-    .button:not(:first-child){
+    ${StyledButton}:not(:first-child) {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
-    .button+.button{
+    ${StyledButton} + ${StyledButton} {
       margin-top: -1px;
       margin-left: 0;
     }
   }
   &.horizontal {
-    .button:not(:last-child){
+    ${StyledButton}:not(:last-child) {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
-    .button:not(:first-child){
+    ${StyledButton}:not(:first-child) {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
-    .button+.button{
+    ${StyledButton} + ${StyledButton} {
       margin-left: -1px;
     }
-    .button:not(:disabled){
+    ${StyledButton}:not(:disabled) {
       cursor: pointer;
     }
   }
-}
+`;
+export { StyledButtonGroup };
