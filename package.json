@@ -21,7 +21,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && git update-index --again && npm run test"
+      "pre-commit": "lint-staged && git update-index --again"
     }
   },
   "repository": {
