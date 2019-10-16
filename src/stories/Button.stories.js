@@ -1,87 +1,189 @@
 import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
-import { Sizes } from 'config/foundation';
 
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
-import Button from 'components/Button';
 import Title from 'components/Title';
-
-const getButtons = (
-  isActive = false,
-  isExpanded = false,
-  withIcon = false,
-  withText = true,
-  withTooltip = false,
-  title
-) => (
-  <Fragment>
-    <Cell size="full">
-      <Title text={title} line />
-    </Cell>
-    {Sizes.map((size, index) => (
-      <Cell key={index} medium={2}>
-        <Button
-          size={size}
-          text={withText ? 'Button text' : null}
-          iconBefore={withIcon ? 'photo-camera' : null}
-          tooltip={withTooltip ? 'Some text' : null}
-          isActive={isActive}
-          isExpanded={isExpanded}
-        />
-      </Cell>
-    ))}
-  </Fragment>
-);
+import Paragraph from 'components/Paragraph';
+import Button from 'components/Button';
 
 storiesOf('Button', module)
   .addParameters({
     jest: ['Button'],
   })
   .add('with text', () => (
-    <Grid type="vertical" horizontalPadding verticalPadding>
-      {getButtons(false, false, false, true, false, 'Basic buttons:')}
-      {getButtons(true, false, false, true, false, 'Basic buttons activated:')}
-      {getButtons(false, true, false, true, false, 'Basic buttons expanded:')}
-      {getButtons(
-        true,
-        true,
-        false,
-        true,
-        false,
-        'Basic buttons expanded activated:'
-      )}
-    </Grid>
-  ))
-  .add('with icon', () => (
-    <Grid type="vertical" horizontalPadding verticalPadding>
-      {getButtons(false, false, true, false, false, 'Buttons icons:')}
-      {getButtons(true, false, true, false, false, 'Buttons icons activated:')}
-    </Grid>
-  ))
-  .add('with text and icon', () => (
-    <Grid type="vertical" horizontalPadding verticalPadding>
-      {getButtons(false, false, true, true, false, 'Buttons with icons:')}
-      {getButtons(true, false, true, true, false, 'Buttons icons activated:')}
-    </Grid>
-  ))
-  .add('with icon and tooltip', () => (
-    <Grid type="vertical" horizontalPadding verticalPadding>
-      {getButtons(
-        false,
-        false,
-        true,
-        false,
-        true,
-        'Buttons with icons and tooltip:'
-      )}
-      {getButtons(
-        true,
-        false,
-        true,
-        false,
-        true,
-        'Buttons with icons and tooltip activated:'
-      )}
-    </Grid>
+    <Fragment>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Cell size="full">
+          <Title text="Button" line={false} type="h4" />
+          <Paragraph>
+            Buttons communicate and trigger actions a user can take in the
+            application. A button should represent an action a user can take,
+            like submitting a form, cancelling a process, or creating a new
+            object. When the user clicks a button, the associated action should
+            be triggered or performed immediately.
+          </Paragraph>
+        </Cell>
+        <Cell size="full">
+          <Title text="Button variants" line={false} type="h4" />
+          <Paragraph>
+            Use different button types to build hierarchy in the application
+            layout.
+          </Paragraph>
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="small"
+            text="Primary"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+          <Button
+            size="small"
+            text="Secondary"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="secondary"
+          />
+          <Button
+            size="small"
+            text="Outline"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="outline"
+          />
+          <Button
+            size="small"
+            text="Destructive"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="destructive"
+          />
+          <Button
+            size="small"
+            text="Link"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="link"
+          />
+        </Cell>
+      </Grid>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Cell size="full">
+          <Title text="Button variants" line={false} type="h4" />
+          <Paragraph>
+            Use different button types to build hierarchy in the application
+            layout.
+          </Paragraph>
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="small"
+            text="Small"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="medium"
+            text="Medium"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="large"
+            text="Large"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="xlarge"
+            text="X Large"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+      </Grid>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Cell size="full">
+          <Title text="Button variants" line={false} type="h4" />
+          <Paragraph>
+            Use different button types to build hierarchy in the application
+            layout.
+          </Paragraph>
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="small"
+            text="Small"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="medium"
+            text="Medium"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="large"
+            text="Large"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="xlarge"
+            text="X Large"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+      </Grid>
+    </Fragment>
   ));

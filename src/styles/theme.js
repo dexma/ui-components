@@ -1,64 +1,63 @@
-// Table of Contents:
-//
-//  1. Base
-//  2. Button
-//  3. Heading
+// Colors (https://dexmatech.atlassian.net/wiki/spaces/design/pages/698253492/Colour)
 
-// todo we put export on the vars because we want to split on each fields
-
-// 1.1 Colors
-export const brand = '#618916';
-export const white = '#ffffff';
+export const white = '#FFFFFF';
 export const black = '#000000';
-export const red = '#cc4b37';
-export const orange = '#FFAA15';
-export const green = '#618916';
-export const grayChateau = '#97a2ac';
-export const gray100 = '#e2e2e2';
-export const gray200 = '#cccccc';
-export const gray300 = '#a0a0a0';
-export const gray400 = '#888888';
-export const gray500 = '#666666';
-export const gray600 = '#333333';
-export const success = '#00C7B4';
-export const warning = '#EDA500';
-export const error = '#C23564';
+export const gray50 = '#F2F5F7';
+export const gray100 = '#F1F2F3';
+export const gray200 = '#D6D8DB';
+export const gray300 = '#adb0b6';
+export const gray400 = '#9FA3AA';
+export const gray500 = '#7E8085';
+export const gray600 = '#606266';
+export const gray700 = '#404145';
+export const gray800 = '#2C2D30';
+export const gray900 = '#141518';
+export const teal = '#13C3A3';
+export const blue = '#003B6F';
+export const red = '#DC3B3C';
+export const amber = '#F6BF26';
+export const green = '#1FB275';
+export const magenta = '#CC035C';
+export const transparent = 'transparent';
 
-// 1.2 Font
-export const fontSizeNumber = 0.875;
+export const primary = teal;
+export const primaryBackground = blue;
+export const success = green;
+export const warning = amber;
+export const error = red;
+
+// Font
+export const fontSizeNumber = 0.75;
 export const fontSizeType = 'rem';
 export const fontSize = `${fontSizeNumber}${fontSizeType}`;
-export const fontColor = gray600;
+export const fontColor = gray900;
 export const fontColorActive = white;
 export const fontFamily = 'Arial';
 
 const getFontSize = (size = fontSizeNumber) => `${size}${fontSizeType}`;
 
-// 1.3 Icon
+// Icon
 export const iconSize = fontSize;
 export const iconColor = gray500;
 export const iconColorActive = white;
 
-// 1.4 Background
+// Background
 export const backgroundColor = white;
 export const backgroundColorSelected = gray100;
-export const backgroundColorActive = brand;
+export const backgroundColorActive = primary;
 export const backgroundColorHover = white;
 export const backgroundColorFocused = white;
 
-// 1.5 Others
-export const radius = '3px';
+// Others
+export const radius = '4px';
 export const fontWeightBold = 700;
 export const padding = '20px';
 export const borderColor = gray100;
 export const heightElements = '30px';
 export const spacer = '1rem';
 
-export const buttonSizes = ['small', 'medium', 'large', 'xlarge'];
-
-// 1. Base
+// Base
 // ==========================================================================
-
 const base = {
   border: `1px solid ${borderColor}`,
   borderRadius: radius,
@@ -80,29 +79,60 @@ const base = {
   backgroundColorActive: backgroundColorActive,
   backgroundColorHover: backgroundColorHover,
   backgroundColorFocused: backgroundColorFocused,
+  backgroundColorDisabled: gray200,
 
+  gray100: gray100,
+  gray200: gray200,
   gray300: gray300,
+  gray400: gray400,
+  gray500: gray500,
+  gray600: gray600,
+  gray700: gray700,
+  gray800: gray800,
+  gray900: gray900,
+  white: white,
+  primary: primary,
   success: success,
   warning: warning,
   error: error,
+  magenta: magenta,
 
   heightElements: heightElements,
 };
 
-// 2. Button
+// Button
 // ==========================================================================
 
+const buttonPaddingY = 0.25;
+const buttonPaddingX = 0.5;
+const buttonFontSize = fontSizeNumber;
+
 const button = {
-  sizes: buttonSizes,
-  fontSize: {
-    small: getFontSize(0.875),
-    medium: getFontSize(1),
-    large: getFontSize(1.25),
-    xlarge: getFontSize(1.5),
+  size: {
+    small: {
+      paddingY: getFontSize(buttonPaddingY),
+      paddingX: getFontSize(buttonPaddingX),
+      fontSize: getFontSize(buttonFontSize),
+    },
+    medium: {
+      paddingY: getFontSize(buttonPaddingY + 0.125),
+      paddingX: getFontSize(buttonPaddingX + 0.25),
+      fontSize: getFontSize(buttonFontSize + 0.25),
+    },
+    large: {
+      paddingY: getFontSize(buttonPaddingY + 0.125 * 3.5),
+      paddingX: getFontSize(buttonPaddingX + 0.25 * 3.5),
+      fontSize: getFontSize(buttonFontSize + 0.25 * 2),
+    },
+    xlarge: {
+      paddingY: getFontSize(buttonPaddingY + 0.125 * 5),
+      paddingX: getFontSize(buttonPaddingX + 0.25 * 5),
+      fontSize: getFontSize(buttonFontSize + 0.25 * 3),
+    },
   },
 };
 
-// 3. Heading
+// Heading
 // ==========================================================================
 
 const heading = {

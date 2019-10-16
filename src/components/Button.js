@@ -10,12 +10,22 @@ import Icon from 'components/Icon';
 
 import { StyledButton } from 'styles/components/StyledButton';
 
+export const BUTTON_TYPE = ['button', 'reset', 'submit', null];
+export const BUTTON_SIZE = ['small', 'medium', 'large', 'xlarge'];
+export const BUTTON_VARIANT = [
+  'primary',
+  'secondary',
+  'outline',
+  'destructive',
+  'link',
+];
+
 const propTypes = {
   ...GeneralPropTypes,
   id: PropTypes.string,
   buttonRef: PropTypes.func,
   text: PropTypes.string,
-  type: PropTypes.oneOf(['button', 'reset', 'submit', null]),
+  type: PropTypes.oneOf(BUTTON_TYPE),
   iconBefore: PropTypes.string,
   iconAfter: PropTypes.string,
   tooltip: PropTypes.string,
@@ -23,7 +33,8 @@ const propTypes = {
   onFocus: PropTypes.func,
   isActive: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge']),
+  size: PropTypes.oneOf(BUTTON_SIZE),
+  variant: PropTypes.oneOf(BUTTON_VARIANT),
   isExpanded: PropTypes.bool,
   isLoading: PropTypes.bool,
   debounceTime: PropTypes.number,
@@ -37,6 +48,7 @@ const defaultProps = {
   isDisabled: false,
   isLoading: false,
   size: 'small',
+  variant: 'secondary',
 };
 
 const Button = ({
@@ -54,6 +66,7 @@ const Button = ({
   isExpanded,
   isLoading,
   size,
+  variant,
   debounceTime,
   dataCy,
   theme,
@@ -62,7 +75,8 @@ const Button = ({
   const classes = classNames(
     isActive && 'active',
     isExpanded && 'expanded',
-    size && size
+    size && size,
+    variant && variant
   );
   const handleClick =
     debounceTime > 0 ? debounce(onClick, debounceTime) : onClick;
@@ -78,6 +92,7 @@ const Button = ({
       className={classes}
       data-cy={dataCy}
       theme={theme}
+      variant={variant}
     >
       {isLoading ? (
         <Icon className="animate-spin" name="spin5" size={size} />
