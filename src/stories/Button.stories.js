@@ -33,7 +33,7 @@ storiesOf('Button', module)
         </Cell>
         <Cell size="full">
           <Button
-            size="small"
+            size="medium"
             text="Primary"
             iconBefore={null}
             tooltip={null}
@@ -42,7 +42,7 @@ storiesOf('Button', module)
             variant="primary"
           />
           <Button
-            size="small"
+            size="medium"
             text="Secondary"
             iconBefore={null}
             tooltip={null}
@@ -51,7 +51,16 @@ storiesOf('Button', module)
             variant="secondary"
           />
           <Button
-            size="small"
+            size="medium"
+            text="Secondary"
+            iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="secondary"
+          />
+          <Button
+            size="medium"
             text="Outline"
             iconBefore={null}
             tooltip={null}
@@ -60,7 +69,7 @@ storiesOf('Button', module)
             variant="outline"
           />
           <Button
-            size="small"
+            size="medium"
             text="Destructive"
             iconBefore={null}
             tooltip={null}
@@ -69,9 +78,65 @@ storiesOf('Button', module)
             variant="destructive"
           />
           <Button
-            size="small"
+            size="medium"
             text="Link"
             iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="link"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="medium"
+            text="Primary"
+            iconBefore="user_edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+          <Button
+            size="medium"
+            text="Secondary"
+            iconBefore="user_edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="secondary"
+          />
+          <Button
+            size="medium"
+            text="Secondary"
+            iconBefore="user_edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="secondary"
+          />
+          <Button
+            size="medium"
+            text="Outline"
+            iconBefore="user_edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="outline"
+          />
+          <Button
+            size="medium"
+            text="Destructive"
+            iconBefore="user_edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="destructive"
+          />
+          <Button
+            size="medium"
+            text="Link"
+            iconBefore="user_edit"
             tooltip={null}
             isActive={false}
             isExpanded={false}
@@ -178,6 +243,156 @@ storiesOf('Button', module)
             size="xlarge"
             text="X Large"
             iconBefore={null}
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+      </Grid>
+    </Fragment>
+  ))
+  .add('with icons', () => (
+    <Fragment>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Cell size="full">
+          <Title text="Button iconBefore variants" line={false} type="h4" />
+          <Paragraph>Use different icon before</Paragraph>
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="small"
+            text="Small"
+            iconBefore="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="medium"
+            text="Medium"
+            iconBefore="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="large"
+            text="Large"
+            iconBefore="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="xlarge"
+            text="X Large"
+            iconBefore="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+      </Grid>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Cell size="full">
+          <Title text="Button iconAfter variants" line={false} type="h4" />
+          <Paragraph>Use different icon after</Paragraph>
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="small"
+            text="Small"
+            iconAfter="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="medium"
+            text="Medium"
+            iconAfter="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="large"
+            text="Large"
+            iconAfter="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="xlarge"
+            text="X Large"
+            iconAfter="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+      </Grid>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Cell size="full">
+          <Title text="Button no text" line={false} type="h4" />
+          <Paragraph>Use without text</Paragraph>
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="small"
+            iconAfter="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="medium"
+            iconAfter="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="large"
+            iconAfter="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="xlarge"
+            iconAfter="edit"
             tooltip={null}
             isActive={false}
             isExpanded={false}
