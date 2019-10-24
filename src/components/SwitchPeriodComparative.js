@@ -80,8 +80,8 @@ class SwitchPeriodComparative extends PureComponent {
   };
 
   formatDate = (start, end) => {
-    const startDate = moment(start, ISO_FORMAT);
-    const endDate = moment(end, ISO_FORMAT);
+    const startDate = moment(start, ISO_FORMAT).startOf('day');
+    const endDate = moment(end, ISO_FORMAT).endOf('day');
     return {
       startDate,
       endDate,
@@ -117,6 +117,10 @@ class SwitchPeriodComparative extends PureComponent {
       startDate,
       endDate
     );
+
+    console.log('startDate', startDate);
+    console.log('endDate', endDate);
+
     this.activePeriodDates =
       activePeriod === 'previous_period'
         ? this.formatDate(previousStartDate, previousEndDate)
