@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {
-  gray300Color,
+  gray300,
   successColor,
   warningColor,
   errorColor,
@@ -31,7 +31,7 @@ const StyledToast = styled.div`
   }};
   background-color: ${props => {
     return {
-      [ToastType.INFO]: gray300Color,
+      [ToastType.INFO]: gray300,
       [ToastType.SUCCESS]: successColor,
       [ToastType.WARNING]: warningColor,
       [ToastType.ERROR]: errorColor,
