@@ -7,7 +7,8 @@
     "clean-build": "rm -rf dist",
     "build:development": "npm run clean-build && webpack --mode development",
     "build:production": "npm run clean-build && webpack --mode production",
-    "storybook": "start-storybook -p 9999 -c src/.storybook",
+    "build:icons": "node scripts/buildIconConfig.js",
+    "storybook": "npm run build:icons && start-storybook -p 9999 -c src/.storybook",
     "prettier": "prettier --write 'src/{,**/{,*.}}*.js'",
     "eslint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "eslint:fix": "eslint --fix 'src/{,**/{,*.}}*.js'",
@@ -140,6 +141,7 @@
     ]
   },
   "dependencies": {
-    "deep-equal": "^1.0.1"
+    "deep-equal": "^1.0.1",
+    "xmldom": "^0.1.27"
   }
 }

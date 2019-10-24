@@ -17,7 +17,7 @@ export const blue = '#003B6F';
 export const red = '#DC3B3C';
 export const amber = '#F6BF26';
 export const green = '#1FB275';
-export const magenta = '#CC035C';
+export const magenta = '#DC3B3C';
 export const transparent = 'transparent';
 
 export const primary = teal;
@@ -103,31 +103,31 @@ const base = {
 // Button
 // ==========================================================================
 
-const buttonPaddingY = 0.25;
-const buttonPaddingX = 0.5;
+const buttonPaddingX = 0.75;
+const heightButton = 2.25;
 const buttonFontSize = fontSizeNumber;
 
 const button = {
   size: {
     small: {
-      paddingY: getFontSize(buttonPaddingY),
       paddingX: getFontSize(buttonPaddingX),
       fontSize: getFontSize(buttonFontSize),
+      height: getFontSize(heightButton),
     },
     medium: {
-      paddingY: getFontSize(buttonPaddingY + 0.125),
       paddingX: getFontSize(buttonPaddingX + 0.25),
       fontSize: getFontSize(buttonFontSize + 0.25),
+      height: getFontSize(heightButton + 0.25),
     },
     large: {
-      paddingY: getFontSize(buttonPaddingY + 0.125 * 3.5),
       paddingX: getFontSize(buttonPaddingX + 0.25 * 3.5),
       fontSize: getFontSize(buttonFontSize + 0.25 * 2),
+      height: getFontSize(heightButton + 0.75),
     },
     xlarge: {
-      paddingY: getFontSize(buttonPaddingY + 0.125 * 5),
       paddingX: getFontSize(buttonPaddingX + 0.25 * 5),
       fontSize: getFontSize(buttonFontSize + 0.25 * 3),
+      height: getFontSize(heightButton + 1.25),
     },
   },
 };
