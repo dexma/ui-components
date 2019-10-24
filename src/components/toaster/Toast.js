@@ -24,15 +24,15 @@ const defaultProps = {
 
 export const Toast = ({ text, type, theme }) => {
   const iconName = {
-    [ToastType.INFO]: 'info-button',
-    [ToastType.SUCCESS]: 'ok-circled',
-    [ToastType.WARNING]: 'attention',
-    [ToastType.ERROR]: 'attention-circled',
+    [ToastType.INFO]: 'circle_info',
+    [ToastType.SUCCESS]: 'circle_check',
+    [ToastType.WARNING]: 'circle_info',
+    [ToastType.ERROR]: 'circle_info',
   }[type];
 
   return (
     <StyledToast theme={theme} type={type}>
-      <Icon name={iconName} size="medium" />
+      <Icon name={iconName} size="large" />
       <span>{text}</span>
     </StyledToast>
   );

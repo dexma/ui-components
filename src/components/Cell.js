@@ -9,9 +9,9 @@ const propTypes = {
   small: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   medium: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   large: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  smallOffset: PropTypes.string,
-  mediumOffset: PropTypes.string,
-  largeOffset: PropTypes.string,
+  smallOffset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  mediumOffset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  largeOffset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   children: PropTypes.node,
 };
 
