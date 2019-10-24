@@ -9,6 +9,14 @@ const StyledButtonGroup = styled.div`
   ${StyledButton} {
     position: relative;
     flex: 0 1 auto;
+    margin: 0;
+    // Bring the hover, focused, and "active" buttons to the front to overlay
+    // the borders properly
+    &:hover,
+    &:focus{
+      z-index: 1;
+    }
+  }
   }
   &.vertical {
     flex-direction: column;

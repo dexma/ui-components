@@ -17,7 +17,7 @@ const defaultProps = {
   vertical: false,
 };
 
-const ButtonGroup = ({ vertical, dataCy, theme, children, ...props }) => {
+const ButtonGroup = ({ vertical, dataCy, theme, children }) => {
   const classes = classNames(vertical ? 'vertical' : 'horizontal');
   return (
     <StyledButtonGroup
@@ -25,7 +25,6 @@ const ButtonGroup = ({ vertical, dataCy, theme, children, ...props }) => {
       className={classes}
       role="group"
       theme={theme}
-      {...props}
     >
       {children || null}
     </StyledButtonGroup>
