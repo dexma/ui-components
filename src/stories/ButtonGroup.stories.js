@@ -8,12 +8,12 @@ import Title from 'components/Title';
 import Grid from 'components/Grid';
 
 const buttonGroup = [
-  'photo-camera',
-  'scatterchart',
-  'barchart',
-  'linechart',
-  'share-user',
-  'config',
+  'chart_bar',
+  'chart_line',
+  'chart_pie',
+  'chart_table',
+  'chart_custom',
+  'chart',
 ];
 
 const getButtonsGroup = (
