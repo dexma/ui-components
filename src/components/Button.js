@@ -51,6 +51,13 @@ const defaultProps = {
   variant: 'secondary',
 };
 
+const getIconSize = size => {
+  if (size === 'small') return 'small';
+  if (size === 'medium') return 'medium';
+  if (size === 'large') return 'large';
+  if (size === 'xlarge') return 'large';
+  return 'small';
+};
 const Button = ({
   id,
   buttonRef,
@@ -80,6 +87,7 @@ const Button = ({
   );
   const handleClick =
     debounceTime > 0 ? debounce(onClick, debounceTime) : onClick;
+  const iconSize = getIconSize(size);
   return (
     <StyledButton
       id={id}
@@ -93,14 +101,22 @@ const Button = ({
       data-cy={dataCy}
       theme={theme}
       variant={variant}
+      buttonSize={size}
+      iconSize={iconSize}
+      iconAfter={iconAfter}
+      text={text}
     >
       {isLoading ? (
-        <Icon className="animate-spin" name="spin5" size={size} />
+        <Icon className="animate-spin" name="spin5" size={4} color="white" />
       ) : null}
-      {!isLoading && iconBefore ? <Icon name={iconBefore} size={size} /> : null}
+      {!isLoading && iconBefore ? (
+        <Icon name={iconBefore} size={iconSize} color="white" />
+      ) : null}
       {text || null}
       {children || null}
-      {!isLoading && iconAfter ? <Icon name={iconAfter} size={size} /> : null}
+      {!isLoading && iconAfter ? (
+        <Icon name={iconAfter} size={iconSize} color="white" />
+      ) : null}
     </StyledButton>
   );
 };
