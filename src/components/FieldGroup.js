@@ -7,6 +7,7 @@ import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 import { withTheme } from 'styled-components';
 
 import Icon from 'components/Icon';
+import { BUTTON_SIZE } from 'components/Button';
 
 import { StyledFieldGroup } from 'styles/components/StyledFieldGroup';
 
@@ -19,7 +20,7 @@ const propTypes = {
     PropTypes.number,
     PropTypes.array,
   ]),
-  size: PropTypes.string,
+  size: PropTypes.oneOf(BUTTON_SIZE),
   name: PropTypes.string,
   vertical: PropTypes.bool,
   onChange: PropTypes.func,
@@ -30,6 +31,7 @@ const defaultProps = {
   ...DefaultGeneralPropTypes,
   type: 'radio',
   vertical: false,
+  size: 'small',
 };
 
 const getSelectedField = (type, values, selectedValues, selectedProp) => {
@@ -73,7 +75,7 @@ const FieldGroup = ({
   const classes = classNames(vertical ? 'vertical' : 'horizontal');
   const selectedField = getSelectedField(type, values, selectedValues, 'value');
   return (
-    <StyledFieldGroup theme={theme}>
+    <StyledFieldGroup theme={theme} size={size}>
       <div data-cy={dataCy} className={classes}>
         {values.map(item => {
           const { id, value, label, icon, tooltip } = item;
@@ -91,8 +93,8 @@ const FieldGroup = ({
               key={id}
               onClick={() => onFieldClick && onFieldClick(item)}
             >
-              {!icon && label ? <span>{label}</span> : null}
-              {icon ? <Icon name={icon} size={size} /> : null}
+              {!icon && label ? label : null}
+              {icon ? <Icon name={icon} size={size} color="white" /> : null}
               <input
                 id={id}
                 onChange={() => onChange && onChange(item)}

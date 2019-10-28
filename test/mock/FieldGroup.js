@@ -49,22 +49,6 @@ export const mockCheckboxGroup = [
     icon: "ratios_hdd",
   },
   {
-    value: "occupancy",
-    label: "occupancy",
-    id: "occupancy",
-    name: "occupancy",
-    tooltip: "Occupancy",
-    icon: "ratios_occupancy",
-  },
-  {
-    value: "temperature_avg",
-    label: "temperature_avg",
-    id: "temperature_avg",
-    name: "temperature_avg",
-    tooltip: "Temperature AVG",
-    icon: "ratios_temperature_avg",
-  },
-  {
     value: "production",
     label: "production",
     id: "production",
@@ -87,15 +71,7 @@ export const mockCheckboxGroup = [
     name: "surface",
     tooltip: "Surface",
     icon: "ratios_surface",
-  },
-  {
-    value: "star",
-    label: "star",
-    id: "star",
-    name: "star",
-    tooltip: "Star",
-    icon: "ratios_star",
-  },
+  }
 ];
 export const mockCheckboxGroupHtml = [
   {
@@ -111,4 +87,4 @@ export const mockCheckboxGroupHtml = [
     name: "occupancy"
   }
 ];
-export const mockSelectedCheckboxItem = ["star", "surface", "occupancy"];
+export const mockSelectedCheckboxItem = ["production", "cdd"];

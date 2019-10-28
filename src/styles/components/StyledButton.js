@@ -10,6 +10,7 @@ import {
   buttonSize,
   borderRadius,
 } from 'styles/selectors';
+import get from 'lodash/get';
 
 import { StyledIcon } from 'styles/components/StyledIcon';
 
@@ -35,22 +36,13 @@ export const getButtonBase = () => css`
   border-radius: ${borderRadius};
 `;
 export const getButtonSize = props => {
-  let sizeCss = ``;
-  const sizeArray = Object.entries(buttonSize(props));
-  sizeArray.forEach(sizeItem => {
-    const [size, sizeProps] = sizeItem;
-    const { paddingX, fontSize, height } = sizeProps;
-    sizeCss += `
-          &.${size} {
-            font-size: ${fontSize};
-            padding: 0 ${paddingX};
-            line-height: ${height};
-            height: ${height};
-          }
-        `;
-  });
+  const sizeProps = get(buttonSize(props), props.size);
+  const { paddingX, fontSize, height } = sizeProps;
   return css`
-    ${sizeCss}
+    font-size: ${fontSize};
+    padding: 0 ${paddingX};
+    line-height: ${height};
+    height: ${height};
   `;
 };
 export const getIconSize = props => {
@@ -96,10 +88,16 @@ export const getButtonVariantPrimary = props => {
     color: ${color};
     border-color: ${primaryColor};
     background-color: ${primaryColor};
+    ${StyledIcon} {
+      fill: ${color};
+    }
     &:hover {
       color: ${color};
       border-color: ${newHoverColor};
       background-color: ${newHoverColor};
+      ${StyledIcon} {
+        fill: ${color};
+      }
     }
     &:focus {
       box-shadow: 0px 0px 0px 2px ${newFocusColor};
@@ -123,7 +121,6 @@ export const getButtonVariantSecondary = props => {
       color: ${colorHover};
       border-color: ${borderColor};
       background-color: ${borderColor};
-      box-shadow: 0px 0px 0px 1px ${borderColor};
       ${StyledIcon} {
         fill: ${colorHover};
       }
@@ -150,7 +147,6 @@ export const getButtonVariantOutline = props => {
       color: ${colorHover};
       border-color: ${borderColor};
       background-color: ${borderColor};
-      box-shadow: 0px 0px 0px 1px ${borderColor};
       ${StyledIcon} {
         fill: ${colorHover};
       }
@@ -210,10 +206,9 @@ export const getButtonExpanded = () => {
     }
   `;
 };
-
 const StyledButton = styled.button`
   ${getButtonBase};
-  ${getButtonSize};
+  ${props => props.size && getButtonSize}
   ${getIconSize};
   ${props => props.variant === 'primary' && getButtonVariantPrimary};
   ${props => props.variant === 'secondary' && getButtonVariantSecondary};
