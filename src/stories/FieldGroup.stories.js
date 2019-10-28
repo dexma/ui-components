@@ -68,7 +68,7 @@ storiesOf('FieldGroup', module)
             selectedValues={mockSelectedCheckboxItem}
             type="checkbox"
             {...eventsFromObject}
-            size="large"
+            size="small"
           />
         </Cell>
 
@@ -81,7 +81,7 @@ storiesOf('FieldGroup', module)
             selectedValues={mockSelectedCheckboxItem}
             type="checkbox"
             {...eventsFromObject}
-            size="large"
+            size="small"
           />
         </Cell>
       </Grid>
@@ -111,7 +111,7 @@ storiesOf('FieldGroup', module)
             selectedValues={mockSelectedCheckboxItem}
             type="checkbox"
             {...eventsFromObject}
-            size="large"
+            size="small"
             vertical
           />
         </Cell>
