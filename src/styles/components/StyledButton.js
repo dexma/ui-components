@@ -93,18 +93,16 @@ export const getButtonVariantPrimary = props => {
   const newFocusColor = transparentize(0.3, primaryColor(props));
   const color = white(props);
   return css`
-    &.primary {
+    color: ${color};
+    border-color: ${primaryColor};
+    background-color: ${primaryColor};
+    &:hover {
       color: ${color};
-      border-color: ${primaryColor};
-      background-color: ${primaryColor};
-      &:hover {
-        color: ${color};
-        border-color: ${newHoverColor};
-        background-color: ${newHoverColor};
-      }
-      &:focus {
-        box-shadow: 0px 0px 0px 2px ${newFocusColor};
-      }
+      border-color: ${newHoverColor};
+      background-color: ${newHoverColor};
+    }
+    &:focus {
+      box-shadow: 0px 0px 0px 2px ${newFocusColor};
     }
   `;
 };
@@ -115,25 +113,23 @@ export const getButtonVariantSecondary = props => {
   const background = backgroundColor(props);
   const newFocusColor = transparentize(0.3, borderColor);
   return css`
-    &.secondary {
-      color: ${color};
+    color: ${color};
+    border-color: ${borderColor};
+    background-color: ${background};
+    ${StyledIcon} {
+      fill: ${color};
+    }
+    &:hover {
+      color: ${colorHover};
       border-color: ${borderColor};
-      background-color: ${background};
+      background-color: ${borderColor};
+      box-shadow: 0px 0px 0px 1px ${borderColor};
       ${StyledIcon} {
-        fill: ${color};
+        fill: ${colorHover};
       }
-      &:hover {
-        color: ${colorHover};
-        border-color: ${borderColor};
-        background-color: ${borderColor};
-        box-shadow: 0px 0px 0px 1px ${borderColor};
-        ${StyledIcon} {
-          fill: ${colorHover};
-        }
-      }
-      &:focus {
-        box-shadow: 0px 0px 0px 2px ${newFocusColor};
-      }
+    }
+    &:focus {
+      box-shadow: 0px 0px 0px 2px ${newFocusColor};
     }
   `;
 };
@@ -144,25 +140,23 @@ export const getButtonVariantOutline = props => {
   const background = backgroundColor(props);
   const newFocusColor = transparentize(0.3, borderColor);
   return css`
-    &.outline {
-      color: ${color};
+    color: ${color};
+    border-color: ${borderColor};
+    background-color: ${background};
+    ${StyledIcon} {
+      fill: ${color};
+    }
+    &:hover {
+      color: ${colorHover};
       border-color: ${borderColor};
-      background-color: ${background};
+      background-color: ${borderColor};
+      box-shadow: 0px 0px 0px 1px ${borderColor};
       ${StyledIcon} {
-        fill: ${color};
+        fill: ${colorHover};
       }
-      &:hover {
-        color: ${colorHover};
-        border-color: ${borderColor};
-        background-color: ${borderColor};
-        box-shadow: 0px 0px 0px 1px ${borderColor};
-        ${StyledIcon} {
-          fill: ${colorHover};
-        }
-      }
-      &:focus {
-        box-shadow: 0px 0px 0px 2px ${newFocusColor};
-      }
+    }
+    &:focus {
+      box-shadow: 0px 0px 0px 2px ${newFocusColor};
     }
   `;
 };
@@ -173,37 +167,33 @@ export const getButtonVariantDestructive = props => {
   const backgroundHover = darken(0.1, saturate(0.2, magenta(props)));
   const newFocusColor = transparentize(0.3, backgroundHover);
   return css`
-    &.destructive {
+    color: ${color};
+    border-color: ${borderColor};
+    background-color: ${background};
+    &:hover {
       color: ${color};
-      border-color: ${borderColor};
-      background-color: ${background};
-      &:hover {
-        color: ${color};
-        border-color: ${backgroundHover};
-        background-color: ${backgroundHover};
-      }
-      &:focus {
-        box-shadow: 0px 0px 0px 2px ${newFocusColor};
-      }
+      border-color: ${backgroundHover};
+      background-color: ${backgroundHover};
+    }
+    &:focus {
+      box-shadow: 0px 0px 0px 2px ${newFocusColor};
     }
   `;
 };
 export const getButtonVariantLink = props => {
   const color = primaryColor(props);
   return css`
-    &.link {
+    color: ${color};
+    border-color: transparent;
+    background-color: transparent;
+    ${StyledIcon} {
+      fill: ${color};
+    }
+    &:hover {
       color: ${color};
       border-color: transparent;
       background-color: transparent;
-      ${StyledIcon} {
-        fill: ${color};
-      }
-      &:hover {
-        color: ${color};
-        border-color: transparent;
-        background-color: transparent;
-        text-decoration: underline;
-      }
+      text-decoration: underline;
     }
   `;
 };
@@ -220,15 +210,16 @@ export const getButtonExpanded = () => {
     }
   `;
 };
+
 const StyledButton = styled.button`
   ${getButtonBase};
   ${getButtonSize};
   ${getIconSize};
-  ${getButtonVariantPrimary};
-  ${getButtonVariantSecondary};
-  ${getButtonVariantOutline};
-  ${getButtonVariantDestructive};
-  ${getButtonVariantLink};
+  ${props => props.variant === 'primary' && getButtonVariantPrimary};
+  ${props => props.variant === 'secondary' && getButtonVariantSecondary};
+  ${props => props.variant === 'outline' && getButtonVariantOutline};
+  ${props => props.variant === 'destructive' && getButtonVariantDestructive};
+  ${props => props.variant === 'link' && getButtonVariantLink};
   ${props => !props.isExpanded && getButtonExpanded};
 `;
 export { StyledButton };
