@@ -1,6 +1,5 @@
 // Components
 import Button from 'components/Button';
-import ButtonGroup from 'components/ButtonGroup';
 import Card from 'components/Card';
 import Cell from 'components/Cell';
 import Chart from 'components/Chart';
@@ -40,7 +39,6 @@ import {
 
 export {
   Button,
-  ButtonGroup,
   Card,
   Cell,
   Chart,
