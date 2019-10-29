@@ -4,7 +4,7 @@ const ISO_FORMAT = 'DD/MM/YYYY';
 const NUMBER_OF_MONTHS = 3;
 const START_DATE = 'startDate';
 const END_DATE = 'endDate';
-const DAY_SIZE = 20;
+const DAY_SIZE = 25;
 
 const day = (number = 0) => {
   const date = new Date();

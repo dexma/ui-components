@@ -40,12 +40,23 @@ export const gray900 = props => propFromTheme(props, 'gray900');
 export const white = props => propFromTheme(props, 'white');
 export const magenta = props => propFromTheme(props, 'magenta');
 export const primaryColor = props => propFromTheme(props, 'primary');
+export const primaryColorSvg = props => {
+  const newPrimaryColor = propFromTheme(props, 'primary');
+  return newPrimaryColor.replace('#', '');
+};
 export const successColor = props => propFromTheme(props, 'success');
 export const warningColor = props => propFromTheme(props, 'warning');
 export const errorColor = props => propFromTheme(props, 'error');
 export const componentHeight = props => propFromTheme(props, 'heightElements');
+
 export const headingFontSize = props =>
   propFromTheme(props, 'heading.fontSize');
 export const headingLineHeight = props =>
   propFromTheme(props, 'heading.lineHeight');
 export const buttonSize = props => propFromTheme(props, 'button.size');
+export const dataPickerHeight = props =>
+  propFromTheme(props, 'dataPicker.height');
+export const dataPickerFontSize = props =>
+  propFromTheme(props, 'dataPicker.fontSize');
+export const dataPickerPaddingX = props =>
+  propFromTheme(props, 'dataPicker.paddingX');
