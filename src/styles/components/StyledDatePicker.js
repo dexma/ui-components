@@ -3,13 +3,18 @@ import {
   border,
   borderRadius,
   backgroundColor,
-  backgroundColorActive,
-  backgroundColorSelected,
   fontSize,
   fontColor,
   iconColor,
-  componentHeight,
+  dataPickerHeight,
+  dataPickerFontSize,
+  gray100,
+  primaryColor,
+  primaryColorSvg,
+  white,
 } from 'styles/selectors';
+
+import { transparentize } from 'polished';
 
 const StyledDatePicker = styled.div`
   .date-range {
@@ -31,13 +36,18 @@ const StyledDatePicker = styled.div`
     .DateRangePickerInput {
       align-items: center;
       background-color: hsl(0, 0%, 100%);
-      border: ${border};
+      border: ${props => {
+        if (props.focusedInput) {
+          return `1px solid ${primaryColor(props)}`;
+        }
+        return border(props);
+      }};
       border-radius: ${borderRadius};
       cursor: default;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      min-height: ${componentHeight};
+      min-height: ${dataPickerHeight};
       outline: 0 !important;
       position: relative;
       transition: all 100ms;
@@ -48,7 +58,12 @@ const StyledDatePicker = styled.div`
     .DateRangePickerInput_calendarIcon {
       background: 0 0;
       border: 0;
-      color: ${iconColor};
+         color: ${props => {
+           if (props.focusedInput) {
+             return primaryColor(props);
+           }
+           return iconColor(props);
+         }};
       font: inherit;
       line-height: normal;
       overflow: visible;
@@ -57,7 +72,7 @@ const StyledDatePicker = styled.div`
       padding: 0px;
       margin: 0;
       outline: none;
-      width: 15px;
+      width: 20px;
       display: flex;
       align-content: center;
       align-items: center;
@@ -87,7 +102,7 @@ const StyledDatePicker = styled.div`
     }
 
     .DateInput_input {
-      font-size: ${fontSize};
+      font-size: ${dataPickerFontSize};
       font-weight: normal;
       line-height: ${fontSize};
       color: ${fontColor};
@@ -120,50 +135,93 @@ const StyledDatePicker = styled.div`
     }
 
     .DateInput_fang {
-      margin-top: -21px;
+      display: none;
     }
 
     .CalendarDay {
       border: 0px !important;
       text-align: center;
-      font-size: ${fontSize};
+      font-size: ${dataPickerFontSize};
     }
 
     .CalendarDay__default:hover {
-      background: ${backgroundColorSelected};
+      background-color: ${backgroundColor};
+      border: 1px solid ${white};
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' width='25'%3E%3Ccircle cx='12' cy='12' r='11.715' stroke='%23${primaryColorSvg}' stroke-width='1' fill='white' /%3E%3C/svg%3E");
+      color: ${fontColor};
+    }
+
+    .CalendarDay__selected:hover,
+    .CalendarDay__selected_span:hover {
+      background-color: ${props => transparentize(0.7, primaryColor(props))};
+      border: 1px solid ${white};
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' width='25'%3E%3Ccircle cx='12' cy='12' r='11.715' stroke='%23${primaryColorSvg}' stroke-width='1' fill='white' /%3E%3C/svg%3E");
       color: ${fontColor};
     }
 
     .CalendarDay__selected,
     .CalendarDay__selected:active,
-    .CalendarDay__selected:hover,
-    .CalendarDay__hovered_span,
     .CalendarDay__selected_span,
-    .CalendarDay__selected_span:active,
-    .CalendarDay__selected_span:hover {
-      background: ${backgroundColorActive};
-      border: 1px solid ${backgroundColorActive};
-      color: ${backgroundColor};
+    .CalendarDay__hovered_span,
+    .CalendarDay__selected_span:active {
+      background: ${props => transparentize(0.7, primaryColor(props))};
+      border: 1px solid ${props => transparentize(0.7, primaryColor(props))};
+      color: ${fontColor};
+    }
+
+    .CalendarDay__selected_start,
+    .CalendarDay__selected_end {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' width='25'%3E%3Ccircle cx='12' cy='12' r='11.715' stroke='black' stroke-width='0' fill='%23${primaryColorSvg}' /%3E%3C/svg%3E");
+      border-radius: 50%;
+      background-color: ${props => transparentize(0.7, primaryColor(props))};
+      color: ${white};
+    }
+
+    .CalendarDay__selected_start {
+      &.CalendarDay__selected_end {
+        background-color: ${backgroundColor};
+      }
+    }
+
+    .CalendarDay__selected_end {
+      &.CalendarDay__selected_start {
+        background-color: ${backgroundColor};
+      }
+    }
+
+    .CalendarDay__selected_start {
+      border-radius: 50% 0 0 50%;
+    }
+
+    .CalendarDay__selected_end {
+      border-radius: 0 50% 50% 0;
     }
 
     .DateRangePicker_picker {
-      top: 50px !important;
+      top: ${dataPickerHeight}!important;
     }
 
-    .DayPickerNavigation_button__horizontalDefault {
+    .DayPickerNavigation_button__horizontal {
       position: absolute;
       top: 18px;
       line-height: 0.78;
-      border-radius: 0px;
-      padding: 4px;
-      width: 20px;
-      height: 20px;
-    }
-    .DayPickerNavigation_leftButton__horizontalDefault {
-      left: 15px;
-    }
-    .DayPickerNavigation_rightButton__horizontalDefault {
-      right: 15px;
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 50%;
+      padding: 0;
+      background-color: ${gray100};
+      text-align: center;
+      display: flex;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+      &:first-child {
+        left: 15px;
+      }
+      &:last-child {
+        right: 15px;
+      }
     }
 
     .DayPicker_weekHeader {
@@ -171,7 +229,7 @@ const StyledDatePicker = styled.div`
     }
 
     .CalendarMonth_caption {
-      font-size: ${fontSize};
+      font-size: ${dataPickerFontSize};
       padding-bottom: 35px;
       color: ${fontColor};
     }
@@ -189,8 +247,10 @@ const StyledDatePicker = styled.div`
     }
 
     .DayPickerNavigation_button__default {
-      border: ${border};
-      background-color: ${backgroundColor};
+      border: none;
+      border-radius: 50%;
+      padding: 0;
+      background-color: ${gray100};
     }
 
     .DayPicker_weekHeader,

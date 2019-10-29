@@ -147,7 +147,7 @@ class DatePicker extends PureComponent {
     const { periodOptions, periodDefault, theme, dataCy } = this.props;
     const classes = classNames('date-range', periodOptions && `with-select`);
     return (
-      <StyledDatePicker theme={theme}>
+      <StyledDatePicker theme={theme} focusedInput={focusedInput}>
         <div className={classes} data-cy={dataCy}>
           <DateRangePicker
             {...dateRangePickerProps}
@@ -165,7 +165,9 @@ class DatePicker extends PureComponent {
             customArrowIcon={<span>-</span>}
             displayFormat={ISO_FORMAT}
             minimumNights={0}
-            customInputIcon={<Icon name="calendar" />}
+            customInputIcon={<Icon name="calendar_range" size={30} />}
+            navPrev={<Icon name="chevron_left_l" size={10} color="gray600" />}
+            navNext={<Icon name="chevron_right_l" size={10} color="gray600" />}
           />
         </div>
         {periodOptions && (

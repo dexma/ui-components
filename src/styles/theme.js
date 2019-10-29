@@ -54,6 +54,7 @@ export const fontWeightBold = 700;
 export const padding = '20px';
 export const borderColor = gray100;
 export const heightElements = '30px';
+export const heightComponents = 2.25;
 export const spacer = '1rem';
 
 // Base
@@ -97,6 +98,7 @@ const base = {
   error: error,
   magenta: magenta,
 
+  heightComponents: heightComponents,
   heightElements: heightElements,
 };
 
@@ -104,7 +106,7 @@ const base = {
 // ==========================================================================
 
 const buttonPaddingX = 0.75;
-const heightButton = 2.25;
+const heightButton = heightComponents;
 const buttonFontSize = fontSizeNumber;
 
 const button = {
@@ -154,10 +156,24 @@ const heading = {
   },
 };
 
+// DatePicker
+// ==========================================================================
+
+const datePickerPaddingX = 0.75;
+const heightDatePicker = heightComponents;
+const datePickerFontSize = fontSizeNumber;
+
+const dataPicker = {
+  paddingX: getFontSize(datePickerPaddingX),
+  fontSize: getFontSize(datePickerFontSize),
+  height: getFontSize(heightDatePicker),
+};
+
 const theme = {
   ...base,
   button,
   heading,
+  dataPicker,
 };
 
 export default theme;
