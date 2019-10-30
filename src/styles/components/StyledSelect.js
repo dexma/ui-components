@@ -5,14 +5,18 @@ import {
   backgroundColor,
   backgroundColorActive,
   backgroundColorSelected,
-  fontSize,
+  boxShadow,
   fontColor,
   fontWeightBold,
   iconColor,
-  iconColorActive,
-  componentHeight,
   borderRadius,
+  selectFontSize,
+  selectHeight,
+  primaryColor,
 } from 'styles/selectors';
+import { transparentize } from 'polished';
+
+import { getButtonSize } from 'styles/components/StyledButton';
 
 const StyledSelect = styled.div`
   .css-1aya2g8 {
@@ -26,7 +30,7 @@ const StyledSelect = styled.div`
   }
   .css-2o5izw,
   .css-1aya2g8 {
-    min-height: 32px;
+    min-height: ${selectHeight};
     border-radius: ${borderRadius};
     border: ${border};
   }
@@ -98,7 +102,7 @@ const StyledSelect = styled.div`
 
   .select-styled__placeholder {
     color: ${iconColor};
-    font-size: ${fontSize};
+    font-size: ${selectFontSize};
   }
 
   // Dropdown
@@ -107,23 +111,23 @@ const StyledSelect = styled.div`
     color: ${iconColor};
     cursor: pointer;
   }
-  .select-styled__control {
-    min-height: ${componentHeight};
-    border-radius: ${borderRadius};
-    font-size: ${fontSize};
-  }
   .select-styled__value-container,
   .select-styled__dropdown-indicator {
     padding: 0 10px;
   }
+
+  .select-styled__menu {
+    box-shadow: ${boxShadow};
+  }
+
   .select-styled__menu-list {
     padding-bottom: 0px;
     padding-top: 0px;
   }
+
   .select-styled__option,
   .select-styled__option--is-selected {
-    padding: 5px 10px;
-    font-size: 12px;
+    ${props => props.size && getButtonSize}
   }
 
   // Control
@@ -132,8 +136,13 @@ const StyledSelect = styled.div`
     border: ${border};
     box-shadow: none;
   }
+  .select-styled__control {
+    min-height: ${selectHeight};
+    border-radius: ${borderRadius};
+    font-size: ${selectFontSize};
+  }
   .select-styled__indicator-separator {
-    background: ${backgroundColorSelected};
+    display: none;
   }
 
   // Menu
@@ -141,24 +150,28 @@ const StyledSelect = styled.div`
     box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px,
       rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
     border-radius: ${borderRadius};
-    margin-bottom: 8px;
-    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-top: 0px;
   }
   .select-styled__option--is-selected {
-    background-color: ${backgroundColorActive}!important;
-    color: ${iconColorActive};
+    background-color: ${props =>
+      transparentize(0.6, backgroundColorActive(props))}!important;
+    color: ${fontColor};
+  }
+  .select-styled__control--menu-is-open {
+    border-color: ${primaryColor}!important;
   }
   .select-styled__option:active,
   .select-styled__option--is-focused {
     background-color: ${backgroundColorSelected};
   }
   .select-styled__menu-list {
-    max-height: 315px;
+    max-height: fit-content; //315
   }
   .select-styled .select-styled__dropdown-indicator,
   .select-styled .select-styled__dropdown-indicator:hover,
   .select-styled__single-value {
-    font-size: ${fontSize};
+    font-size: ${selectFontSize};
     color: ${fontColor};
   }
   .select-styled__input {
