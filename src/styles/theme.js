@@ -30,7 +30,7 @@ export const error = red;
 export const fontSizeNumber = 0.75;
 export const fontSizeType = 'rem';
 export const fontSize = `${fontSizeNumber}${fontSizeType}`;
-export const fontColor = gray900;
+export const fontColor = gray700;
 export const fontColorActive = white;
 export const fontFamily = 'Arial';
 
@@ -52,11 +52,11 @@ export const backgroundColorFocused = white;
 export const radius = '4px';
 export const fontWeightBold = 700;
 export const padding = '20px';
-export const borderColor = gray100;
+export const borderColor = gray200;
 export const heightElements = '30px';
 export const heightComponents = 2.25;
 export const spacer = '1rem';
-
+export const boxShadow = '0 1px 5px 0 rgba(0,0,0,0.1)';
 // Base
 // ==========================================================================
 const base = {
@@ -81,6 +81,8 @@ const base = {
   backgroundColorHover: backgroundColorHover,
   backgroundColorFocused: backgroundColorFocused,
   backgroundColorDisabled: gray200,
+
+  boxShadow: boxShadow,
 
   gray100: gray100,
   gray200: gray200,
@@ -160,13 +162,26 @@ const heading = {
 // ==========================================================================
 
 const datePickerPaddingX = 0.75;
-const heightDatePicker = heightComponents;
+const datePickerHeight = heightComponents;
 const datePickerFontSize = fontSizeNumber;
 
 const dataPicker = {
   paddingX: getFontSize(datePickerPaddingX),
   fontSize: getFontSize(datePickerFontSize),
-  height: getFontSize(heightDatePicker),
+  height: getFontSize(datePickerHeight),
+};
+
+// Select
+// ==========================================================================
+
+const selectPaddingX = 0.75;
+const selectHeight = heightComponents;
+const selectFontSize = fontSizeNumber;
+
+const select = {
+  paddingX: getFontSize(selectPaddingX),
+  fontSize: getFontSize(selectFontSize),
+  height: getFontSize(selectHeight),
 };
 
 const theme = {
@@ -174,6 +189,7 @@ const theme = {
   button,
   heading,
   dataPicker,
+  select,
 };
 
 export default theme;

@@ -3,7 +3,7 @@ import {
   border,
   borderRadius,
   backgroundColor,
-  fontSize,
+  boxShadow,
   fontColor,
   iconColor,
   dataPickerHeight,
@@ -12,22 +12,31 @@ import {
   primaryColor,
   primaryColorSvg,
   white,
+  backgroundColorActive,
 } from 'styles/selectors';
 
 import { transparentize } from 'polished';
 
+import { StyledSelect } from 'styles/components/StyledSelect';
+
 const StyledDatePicker = styled.div`
+
+  ${StyledSelect}{
+    .select-styled__control{
+      border-radius: ${props => {
+        if (props.withSelect) {
+          return `0 ${borderRadius(props)} ${borderRadius(props)} 0`;
+        }
+        return borderRadius(props);
+      }};    
+    }
+  }
+
   .date-range {
     display: inline-block;
     width: 215px;
     float: left;
-
-    &.with-select {
-      .DateRangePickerInput {
-        border-radius: ${borderRadius} 0px 0px ${borderRadius};
-      }
-    }
-
+    margin-right: -1px;
     .DateInput {
       width: calc(50% - 25px);
       background: transparent;
@@ -36,18 +45,18 @@ const StyledDatePicker = styled.div`
     .DateRangePickerInput {
       align-items: center;
       background-color: hsl(0, 0%, 100%);
-      border: ${props => {
-        if (props.focusedInput) {
-          return `1px solid ${primaryColor(props)}`;
+      border: ${border};
+      border-radius: ${props => {
+        if (props.withSelect) {
+          return `${borderRadius(props)} 0 0 ${borderRadius(props)}`;
         }
-        return border(props);
-      }};
-      border-radius: ${borderRadius};
-      cursor: default;
+        return borderRadius(props);
+      }}; 
+     cursor: default;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      min-height: ${dataPickerHeight};
+      height: ${dataPickerHeight};
       outline: 0 !important;
       position: relative;
       transition: all 100ms;
@@ -58,12 +67,12 @@ const StyledDatePicker = styled.div`
     .DateRangePickerInput_calendarIcon {
       background: 0 0;
       border: 0;
-         color: ${props => {
-           if (props.focusedInput) {
-             return primaryColor(props);
-           }
-           return iconColor(props);
-         }};
+       color: ${props => {
+         if (props.focusedInput) {
+           return primaryColor(props);
+         }
+         return iconColor(props);
+       }};
       font: inherit;
       line-height: normal;
       overflow: visible;
@@ -90,23 +99,12 @@ const StyledDatePicker = styled.div`
       margin-left: -0.5px;
     }
 
-    .DateInput {
-      &:first-of-type {
-        .DateInput_input {
-        }
-      }
-      &:last-of-type {
-        .DateInput_input {
-        }
-      }
-    }
-
     .DateInput_input {
       font-size: ${dataPickerFontSize};
-      font-weight: normal;
-      line-height: ${fontSize};
+      line-height: ${dataPickerHeight};
+      height: calc(${dataPickerHeight} - 1px);
+      border-bottom: ${border};
       color: ${fontColor};
-      border: 0px;
       text-align: center;
       padding: 0;
       outline: none;
@@ -114,6 +112,7 @@ const StyledDatePicker = styled.div`
       display: flex;
       align-content: center;
       align-items: center;
+      font-weight: normal;
     }
 
     .DateRangePickerInput_arrow {
@@ -128,6 +127,11 @@ const StyledDatePicker = styled.div`
     .DateInput_input__focused {
       outline: 0;
       background: ${backgroundColor};
+      border-bottom: 1px solid ${primaryColor};
+      < div {
+   
+          background: red;
+      }
     }
     .DateInput_input + .DateInput_input {
       margin-top: -1px;
@@ -153,7 +157,8 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
     .CalendarDay__selected:hover,
     .CalendarDay__selected_span:hover {
-      background-color: ${props => transparentize(0.7, primaryColor(props))};
+      background-color: ${props =>
+        transparentize(0.7, backgroundColorActive(props))};
       border: 1px solid ${white};
 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' width='25'%3E%3Ccircle cx='12' cy='12' r='11.715' stroke='%23${primaryColorSvg}' stroke-width='1' fill='white' /%3E%3C/svg%3E");
       color: ${fontColor};
@@ -164,8 +169,9 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     .CalendarDay__selected_span,
     .CalendarDay__hovered_span,
     .CalendarDay__selected_span:active {
-      background: ${props => transparentize(0.7, primaryColor(props))};
-      border: 1px solid ${props => transparentize(0.7, primaryColor(props))};
+      background: ${props => transparentize(0.7, backgroundColorActive(props))};
+      border: 1px solid ${props =>
+        transparentize(0.7, backgroundColorActive(props))};
       color: ${fontColor};
     }
 
@@ -173,7 +179,8 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     .CalendarDay__selected_end {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' width='25'%3E%3Ccircle cx='12' cy='12' r='11.715' stroke='black' stroke-width='0' fill='%23${primaryColorSvg}' /%3E%3C/svg%3E");
       border-radius: 50%;
-      background-color: ${props => transparentize(0.7, primaryColor(props))};
+      background-color: ${props =>
+        transparentize(0.7, backgroundColorActive(props))};
       color: ${white};
     }
 
@@ -199,6 +206,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
     .DateRangePicker_picker {
       top: ${dataPickerHeight}!important;
+      margin-top: -1px;
     }
 
     .DayPickerNavigation_button__horizontal {
@@ -242,7 +250,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     }
 
     .DayPicker__withBorder {
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.07);
+      box-shadow: ${boxShadow};
       border-radius: 3px;
     }
 

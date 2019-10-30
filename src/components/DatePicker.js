@@ -147,7 +147,11 @@ class DatePicker extends PureComponent {
     const { periodOptions, periodDefault, theme, dataCy } = this.props;
     const classes = classNames('date-range', periodOptions && `with-select`);
     return (
-      <StyledDatePicker theme={theme} focusedInput={focusedInput}>
+      <StyledDatePicker
+        theme={theme}
+        focusedInput={focusedInput}
+        withSelect={periodOptions}
+      >
         <div className={classes} data-cy={dataCy}>
           <DateRangePicker
             {...dateRangePickerProps}
@@ -173,10 +177,10 @@ class DatePicker extends PureComponent {
         {periodOptions && (
           <div className="select">
             <Select
-              icon="down-dir"
               options={periodOptions}
               defaultValue={periodDefault}
               onChange={this.onSelectChange}
+              isSearchable={false}
             />
           </div>
         )}

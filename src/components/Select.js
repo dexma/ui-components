@@ -5,26 +5,27 @@ import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 import capitalize from 'lodash/capitalize';
 
 import Icon from 'components/Icon';
+import { BUTTON_SIZE } from 'components/Button';
 
 import { StyledSelect } from 'styles/components/StyledSelect';
 
 const propTypes = {
   ...GeneralPropTypes,
-  icon: PropTypes.string,
+  size: PropTypes.oneOf(BUTTON_SIZE),
   children: PropTypes.node,
 };
 
 const defaultProps = {
   ...DefaultGeneralPropTypes,
-  icon: 'menu',
+  size: 'small',
 };
 
 const DropdownIndicator = props => {
-  const { icon } = props;
+  const iconName = props.selectProps.menuIsOpen ? 'chevron_up' : 'chevron_down';
   return (
     components.DropdownIndicator && (
       <components.DropdownIndicator {...props}>
-        <Icon name={icon} />
+        <Icon name={iconName} size="medium" />
       </components.DropdownIndicator>
     )
   );
@@ -48,14 +49,15 @@ const Option = props => {
 };
 
 const Select = ({ dataCy, theme, ...props }) => {
+  const { size } = props;
   return (
-    <StyledSelect theme={theme}>
+    <StyledSelect theme={theme} size={size}>
       <ReactSelect
         classNamePrefix="select-styled"
         optionClassName="select-option"
         components={{
           DropdownIndicator: selectProps =>
-            DropdownIndicator({ ...selectProps, icon: props.icon }),
+            DropdownIndicator({ ...selectProps }),
           Input: selectProps =>
             SelectInput({ ...selectProps, name: props.name }),
           Option: selectProps => Option({ ...selectProps, name: props.name }),

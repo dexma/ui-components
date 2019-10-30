@@ -28,6 +28,7 @@ export const backgroundColorFocused = props =>
   propFromTheme(props, 'backgroundColorFocused');
 export const backgroundColorDisabled = props =>
   propFromTheme(props, 'backgroundColorDisabled');
+export const boxShadow = props => propFromTheme(props, 'boxShadow');
 export const gray100 = props => propFromTheme(props, 'gray100');
 export const gray200 = props => propFromTheme(props, 'gray200');
 export const gray300 = props => propFromTheme(props, 'gray300');
@@ -60,3 +61,6 @@ export const dataPickerFontSize = props =>
   propFromTheme(props, 'dataPicker.fontSize');
 export const dataPickerPaddingX = props =>
   propFromTheme(props, 'dataPicker.paddingX');
+export const selectHeight = props => propFromTheme(props, 'select.height');
+export const selectFontSize = props => propFromTheme(props, 'select.fontSize');
+export const selectPaddingX = props => propFromTheme(props, 'select.paddingX');
