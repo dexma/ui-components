@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { darken, saturate, transparentize } from 'polished';
 import {
   white,
+  gray200,
   gray300,
   gray400,
   gray900,
@@ -133,6 +134,32 @@ export const getButtonVariantSecondary = props => {
 };
 export const getButtonVariantSecondary300 = props => {
   const borderColor = gray300(props);
+  const color = gray900(props);
+  const colorHover = white(props);
+  const background = backgroundColor(props);
+  const newFocusColor = transparentize(0.3, borderColor);
+  return css`
+    color: ${color};
+    border-color: ${borderColor};
+    background-color: ${background};
+    ${StyledIcon} {
+      fill: ${color};
+    }
+    &:hover {
+      color: ${colorHover};
+      border-color: ${borderColor};
+      background-color: ${borderColor};
+      ${StyledIcon} {
+        fill: ${colorHover};
+      }
+    }
+    &:focus {
+      box-shadow: 0px 0px 0px 2px ${newFocusColor};
+    }
+  `;
+};
+export const getButtonVariantSecondary200 = props => {
+  const borderColor = gray200(props);
   const color = gray900(props);
   const colorHover = white(props);
   const background = backgroundColor(props);

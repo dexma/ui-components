@@ -127,7 +127,7 @@ class SwitchPeriodComparative extends PureComponent {
       <StyledSwitchPeriodComparative>
         <div className="compare-period">
           <span className="calendar-icon">
-            <Icon name="calendar" size="medium" />
+            <Icon name="calendar_range" size="medium" />
           </span>
           <div className="compare-period">
             <FieldGroup
