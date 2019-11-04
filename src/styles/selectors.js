@@ -64,3 +64,6 @@ export const dataPickerPaddingX = props =>
 export const selectHeight = props => propFromTheme(props, 'select.height');
 export const selectFontSize = props => propFromTheme(props, 'select.fontSize');
 export const selectPaddingX = props => propFromTheme(props, 'select.paddingX');
+export const cardPaddingX = props => propFromTheme(props, 'card.paddingX');
+export const cardPaddingY = props => propFromTheme(props, 'card.paddingY');
+export const cardFontSize = props => propFromTheme(props, 'card.fontSize');

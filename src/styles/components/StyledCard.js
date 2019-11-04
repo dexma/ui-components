@@ -2,44 +2,65 @@ import styled from 'styled-components';
 import {
   borderRadius,
   backgroundColor,
-  backgroundColorActive,
-  backgroundColorSelected,
-  iconColorActive,
+  boxShadow,
+  fontSize,
+  fontColor,
+  cardPaddingX,
+  cardPaddingY,
+  cardFontSize,
+  gray700,
+  gray900,
 } from 'styles/selectors';
 
 const StyledCard = styled.div`
-  max-width: 180px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  //height: $card-height;
+  word-wrap: break-word;
+  background-color: ${backgroundColor};
+  background-clip: border-box;
   border-radius: ${borderRadius};
-  background: ${backgroundColorSelected};
-  box-shadow: inset 0 1px 0 #f9f9f9, inset 0 0 2px #fff;
-  border-bottom-color: #b3b3b3;
-  &:hover {
-    opacity: 0.8;
+  box-shadow: ${boxShadow};
+
+  > hr {
+    margin-right: 0;
+    margin-left: 0;
   }
-  &.active {
-    background-color: ${backgroundColorActive};
-    border: 1px solid ${iconColorActive};
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-    color: ${backgroundColor};
-  }
+
   .card-body {
-    margin: 1rem;
-    background: ${backgroundColorSelected};
-    text-align: center;
-    width: 154px;
-    height: 154px;
-    .dexma-icon-device_wifi::before {
-      padding-top: 0.2em;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: ${cardPaddingX};
+    color: ${fontColor};
+    .card-title {
+      margin-bottom: ${cardPaddingY};
+      font-weight: 900;
+      font-size: ${cardFontSize};
+      color: ${gray900};
     }
-    i {
-      color: ${iconColorActive};
-      font-size: 8em;
+
+    .card-subtitle {
+      margin-top: -${cardPaddingY} / 2;
+      margin-bottom: 0;
+      font-size: ${fontSize};
+      color: ${gray700};
     }
-  }
-  .card-title {
-    padding-top: 0;
-    text-align: center;
-    text-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.75);
+
+    .card-text:last-child {
+      margin-bottom: 0;
+    }
+
+    .card-link {
+      &:hover {
+        text-decoration: none;
+      }
+
+      + .card-link {
+        margin-left: ${cardPaddingX};
+      }
+    }
   }
 `;
 export { StyledCard };

@@ -184,12 +184,26 @@ const select = {
   height: getFontSize(selectHeight),
 };
 
+// Card
+// ==========================================================================
+
+const cardPaddingX = 1.25;
+const cardPaddingY = 0.75;
+const cardFontSize = 1;
+
+const card = {
+  paddingX: getFontSize(cardPaddingX),
+  paddingY: getFontSize(cardPaddingY),
+  fontSize: getFontSize(cardFontSize),
+};
+
 const theme = {
   ...base,
   button,
   heading,
   dataPicker,
   select,
+  card,
 };
 
 export default theme;

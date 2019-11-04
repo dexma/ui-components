@@ -6,7 +6,7 @@ import {
   getButtonSize,
   getIconSize,
   getButtonVariantPrimary,
-  getButtonVariantSecondary300,
+  getButtonVariantSecondary200,
 } from 'styles/components/StyledButton';
 
 export const getVertical = () => css`
@@ -60,7 +60,7 @@ const StyledFieldGroup = styled.div`
     ${getButtonBase};
     ${props => props.size && getButtonSize}
     ${getIconSize};
-    ${getButtonVariantSecondary300};
+    ${getButtonVariantSecondary200};
     margin: 0;
     &.active {
       ${getButtonVariantPrimary};

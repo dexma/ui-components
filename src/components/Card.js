@@ -14,6 +14,7 @@ const propTypes = {
   id: PropTypes.string,
   link: PropTypes.string,
   title: PropTypes.string,
+  subtitle: PropTypes.string,
   icon: PropTypes.string,
   isActive: PropTypes.bool,
   onClick: PropTypes.func,
@@ -29,6 +30,7 @@ const Card = ({
   id,
   link,
   title,
+  subtitle,
   icon,
   isActive,
   onClick,
@@ -71,7 +73,10 @@ const Card = ({
       onFocus={onFocus}
       theme={theme}
     >
-      {content}
+      <div className="card-body">
+        <h5 className="card-title">{title}</h5>
+        <h6 className="card-subtitle">{subtitle}</h6>
+      </div>
     </StyledCard>
   );
 };

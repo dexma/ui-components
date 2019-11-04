@@ -16,19 +16,24 @@ storiesOf('Card', module)
         <Title text="Basic cards with text:" line />
       </Cell>
       <Cell size="auto" medium={2}>
-        <Card icon="advancedanalytics" title="Test card" isActive />
+        <Card
+          icon="advancedanalytics"
+          title="Test card"
+          subtitle="byline"
+          isActive
+        />
       </Cell>
       <Cell size="auto" medium={2}>
-        <Card icon="advancedanalytics" title="Test card" />
+        <Card icon="advancedanalytics" title="Test card" subtitle="byline" />
       </Cell>
       <Cell size="auto" medium={2}>
-        <Card icon="advancedanalytics" title="Test card" />
+        <Card icon="advancedanalytics" title="Test card" subtitle="byline" />
       </Cell>
       <Cell size="auto" medium={2}>
-        <Card icon="advancedanalytics" title="Test card" />
+        <Card icon="advancedanalytics" title="Test card" subtitle="byline" />
       </Cell>
       <Cell size="auto" medium={2}>
-        <Card icon="advancedanalytics" title="Test card" />
+        <Card icon="advancedanalytics" title="Test card" subtitle="byline" />
       </Cell>
     </Grid>
   ))
