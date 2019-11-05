@@ -33,6 +33,10 @@ export const fontSize = `${fontSizeNumber}${fontSizeType}`;
 export const fontColor = gray700;
 export const fontColorActive = white;
 export const fontFamily = 'Arial';
+export const fontWeightLight = 300;
+export const fontWeightNormal = 400;
+export const fontWeightSemiBold = 600;
+export const fontWeightBold = 700;
 
 const getFontSize = (size = fontSizeNumber) => `${size}${fontSizeType}`;
 
@@ -50,13 +54,13 @@ export const backgroundColorFocused = white;
 
 // Others
 export const radius = '4px';
-export const fontWeightBold = 700;
 export const padding = '20px';
 export const borderColor = gray200;
 export const heightElements = '30px';
 export const heightComponents = 2.25;
 export const spacer = '1rem';
-export const boxShadow = '0 1px 5px 0 rgba(0,0,0,0.1)';
+export const boxShadow = '0 1px 5px 0 rgba(0,0,0,0.2)';
+export const boxShadowHover = '0 4px 8px 0 rgba(0, 0, 0, 0.2)';
 // Base
 // ==========================================================================
 const base = {
@@ -69,6 +73,9 @@ const base = {
   fontSize: fontSize,
   fontColor: fontColor,
   fontColorActive: fontColorActive,
+  fontWeightLight: fontWeightLight,
+  fontWeightNormal: fontWeightNormal,
+  fontWeightSemiBold: fontWeightSemiBold,
   fontWeightBold: fontWeightBold,
 
   iconSize: iconSize,
@@ -83,7 +90,9 @@ const base = {
   backgroundColorDisabled: gray200,
 
   boxShadow: boxShadow,
+  boxShadowHover: boxShadowHover,
 
+  gray50: gray50,
   gray100: gray100,
   gray200: gray200,
   gray300: gray300,
@@ -93,6 +102,7 @@ const base = {
   gray700: gray700,
   gray800: gray800,
   gray900: gray900,
+
   white: white,
   primary: primary,
   success: success,
@@ -188,7 +198,7 @@ const select = {
 // ==========================================================================
 
 const cardPaddingX = 1.25;
-const cardPaddingY = 0.75;
+const cardPaddingY = 0.5;
 const cardFontSize = 1;
 
 const card = {
