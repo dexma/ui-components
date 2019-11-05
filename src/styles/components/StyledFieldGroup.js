@@ -10,7 +10,7 @@ import {
 } from 'styles/components/StyledButton';
 
 export const getVertical = () => css`
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
@@ -48,7 +48,6 @@ export const getHorizontal = () => css`
 
 const StyledFieldGroup = styled.div`
   position: relative;
-  display: inline-flex;
   vertical-align: middle;
   .vertical {
     ${getVertical}

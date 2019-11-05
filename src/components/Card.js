@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import Icon from 'components/Icon';
+import Paragraph from 'components/Paragraph';
 
 import { StyledCard } from 'styles/components/StyledCard';
 
@@ -15,8 +16,12 @@ const propTypes = {
   link: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  description: PropTypes.string,
   icon: PropTypes.string,
+  image: PropTypes.string,
+  footer: PropTypes.node,
   isActive: PropTypes.bool,
+  isHorizontal: PropTypes.bool,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
 };
@@ -24,6 +29,36 @@ const propTypes = {
 const defaultProps = {
   ...DefaultGeneralPropTypes,
   isActive: false,
+  isWhite: false,
+  isHorizontal: false,
+};
+
+export const CardHeader = ({ image, icon }) => {
+  if (!image && !icon) return null;
+  return (
+    <div className="card-header">
+      {image && !icon && (
+        <img alt="card-header" src={image} className="card-img card-img-top" />
+      )}
+      {icon && !image && <Icon name={icon} color="gray300" />}
+    </div>
+  );
+};
+
+export const CardBody = ({ title, subtitle, description }) => {
+  if (!title && !subtitle && !description) return null;
+  return (
+    <div className="card-body">
+      {title && <h5 className="card-title">{title}</h5>}
+      {subtitle && <h6 className="card-subtitle">{subtitle}</h6>}
+      {description && <Paragraph>{description}</Paragraph>}
+    </div>
+  );
+};
+
+export const CardFooter = ({ footer }) => {
+  if (!footer) return null;
+  return <div className="card-footer">{footer}</div>;
 };
 
 const Card = ({
@@ -31,7 +66,11 @@ const Card = ({
   link,
   title,
   subtitle,
+  description,
   icon,
+  image,
+  footer,
+  isHorizontal,
   isActive,
   onClick,
   onFocus,
@@ -71,12 +110,15 @@ const Card = ({
       className={classes}
       onClick={onClick}
       onFocus={onFocus}
+      image={image}
+      hasFooter={footer}
+      isHorizontal={isHorizontal}
+      isActive={isActive}
       theme={theme}
     >
-      <div className="card-body">
-        <h5 className="card-title">{title}</h5>
-        <h6 className="card-subtitle">{subtitle}</h6>
-      </div>
+      <CardHeader image={image} icon={icon} />
+      <CardBody title={title} subtitle={subtitle} description={description} />
+      <CardFooter footer={footer} />
     </StyledCard>
   );
 };

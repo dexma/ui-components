@@ -11,6 +11,11 @@ export const borderColor = props => propFromTheme(props, 'borderColor');
 export const fontSize = props => propFromTheme(props, 'fontSize');
 export const fontColor = props => propFromTheme(props, 'fontColor');
 export const fontColorActive = props => propFromTheme(props, 'fontColorActive');
+export const fontWeightLight = props => propFromTheme(props, 'fontWeightLight');
+export const fontWeightNormal = props =>
+  propFromTheme(props, 'fontWeightNormal');
+export const fontWeightSemiBold = props =>
+  propFromTheme(props, 'fontWeightSemiBold');
 export const fontWeightBold = props => propFromTheme(props, 'fontWeightBold');
 
 export const iconSize = props => propFromTheme(props, 'iconSize');
@@ -29,6 +34,8 @@ export const backgroundColorFocused = props =>
 export const backgroundColorDisabled = props =>
   propFromTheme(props, 'backgroundColorDisabled');
 export const boxShadow = props => propFromTheme(props, 'boxShadow');
+export const boxShadowHover = props => propFromTheme(props, 'boxShadowHover');
+export const gray50 = props => propFromTheme(props, 'gray50');
 export const gray100 = props => propFromTheme(props, 'gray100');
 export const gray200 = props => propFromTheme(props, 'gray200');
 export const gray300 = props => propFromTheme(props, 'gray300');
