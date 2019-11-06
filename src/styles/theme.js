@@ -200,11 +200,13 @@ const select = {
 const cardPaddingX = 1.25;
 const cardPaddingY = 0.5;
 const cardFontSize = 1;
+const cardLineHeight = 1.25;
 
 const card = {
   paddingX: getFontSize(cardPaddingX),
   paddingY: getFontSize(cardPaddingY),
   fontSize: getFontSize(cardFontSize),
+  lineHeight: getFontSize(cardLineHeight),
 };
 
 const theme = {

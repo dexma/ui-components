@@ -11,6 +11,7 @@ import {
   cardPaddingX,
   cardPaddingY,
   cardFontSize,
+  cardLineHeight,
   gray100,
   gray500,
   gray700,
@@ -32,6 +33,22 @@ export const getHorizontal = () => {
     }
   `;
 };
+
+export const getFlexRowWrap = () => css`
+  > .grid {
+    > .cell {
+      display: flex;
+      flex-flow: row wrap;
+    }
+  }
+`;
+
+export const getTextTruncate = () => css`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
 const StyledCard = styled.div`
   position: relative;
   display: flex;
@@ -44,7 +61,7 @@ const StyledCard = styled.div`
   border-radius: ${borderRadius};
   box-shadow: ${boxShadow};
   overflow: hidden;
-
+  width: 100%;
   &:hover {
     box-shadow: ${boxShadowHover};
     .card-body,
@@ -85,6 +102,7 @@ const StyledCard = styled.div`
       font-weight: ${fontWeightSemiBold};
       font-size: ${cardFontSize};
       color: ${gray900};
+      line-height: ${cardLineHeight};
     }
 
     .card-subtitle {
@@ -122,7 +140,31 @@ const StyledCard = styled.div`
       margin: 0;
     }
   }
-
-  ${props => props.isHorizontal && getHorizontal}
 `;
-export { StyledCard };
+
+const StyledCardLayoutEquals = styled.div`
+  ${getFlexRowWrap};
+`;
+
+const StyledCardLayoutTruncate = styled.div`
+  ${getFlexRowWrap};
+  ${StyledCard} {
+    .card-title {
+      ${getTextTruncate};
+    }
+  }
+`;
+
+const StyledCardLayoutHorizontal = styled.div`
+  ${getFlexRowWrap};
+  ${StyledCard} {
+    ${getHorizontal}
+  }
+`;
+
+export {
+  StyledCard,
+  StyledCardLayoutEquals,
+  StyledCardLayoutTruncate,
+  StyledCardLayoutHorizontal,
+};

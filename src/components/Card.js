@@ -7,8 +7,15 @@ import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
+import Grid from 'components/Grid';
+import Cell from 'components/Cell';
 
-import { StyledCard } from 'styles/components/StyledCard';
+import {
+  StyledCard,
+  StyledCardLayoutEquals,
+  StyledCardLayoutTruncate,
+  StyledCardLayoutHorizontal,
+} from 'styles/components/StyledCard';
 
 const propTypes = {
   ...GeneralPropTypes,
@@ -21,7 +28,7 @@ const propTypes = {
   image: PropTypes.string,
   footer: PropTypes.node,
   isActive: PropTypes.bool,
-  isHorizontal: PropTypes.bool,
+  isLoading: PropTypes.bool,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
 };
@@ -30,7 +37,61 @@ const defaultProps = {
   ...DefaultGeneralPropTypes,
   isActive: false,
   isWhite: false,
-  isHorizontal: false,
+  isLoading: false,
+};
+
+export const CardLayoutHorizontal = ({ children }) => {
+  return (
+    <StyledCardLayoutHorizontal>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Fragment>
+          {React.Children.map(children || null, (child, i) => {
+            return (
+              <Cell size="auto" small={12} medium={6}>
+                <child.type {...child.props} key={i} />
+              </Cell>
+            );
+          })}
+        </Fragment>
+      </Grid>
+    </StyledCardLayoutHorizontal>
+  );
+};
+
+export const CardLayoutEquals = ({ children }) => {
+  return (
+    <StyledCardLayoutEquals>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Fragment>
+          {React.Children.map(children || null, (child, i) => {
+            return (
+              <Cell size="auto" small={12} medium={4} large={3}>
+                <child.type {...child.props} key={i} />
+              </Cell>
+            );
+          })}
+        </Fragment>{' '}
+      </Grid>
+    </StyledCardLayoutEquals>
+  );
+};
+
+export const CardLayoutTruncate = ({ children }) => {
+  return (
+    <StyledCardLayoutTruncate>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Fragment>
+          {React.Children.map(children || null, (child, i) => {
+            return (
+              <Cell size="auto" small={12} medium={4} large={3}>
+                <child.type {...child.props} key={i} />
+              </Cell>
+            );
+          })}
+        </Fragment>{' '}
+      </Grid>
+    </StyledCardLayoutTruncate>
+  );
 };
 
 export const CardHeader = ({ image, icon }) => {
@@ -70,8 +131,8 @@ const Card = ({
   icon,
   image,
   footer,
-  isHorizontal,
   isActive,
+  isLoading,
   onClick,
   onFocus,
   theme,
@@ -112,8 +173,8 @@ const Card = ({
       onFocus={onFocus}
       image={image}
       hasFooter={footer}
-      isHorizontal={isHorizontal}
       isActive={isActive}
+      isLoading={isLoading}
       theme={theme}
     >
       <CardHeader image={image} icon={icon} />
