@@ -96,7 +96,7 @@ storiesOf('Card', module)
       </Cell>
     </Grid>
   ))
-  .add('with image and text', () => (
+  .add('with link, image and text', () => (
     <Grid type="horizontal" horizontalPadding verticalPadding>
       <Cell size="full">
         <Title text="Basic cards with not text activated:" line />
@@ -104,6 +104,7 @@ storiesOf('Card', module)
       <Cell size="auto" medium={6}>
         <Card
           image={IMAGES[0]}
+          link={IMAGES[0]}
           title="The title"
           subtitle="With supporting text below as a natural lead-in to additional content."
         />
@@ -111,6 +112,7 @@ storiesOf('Card', module)
       <Cell size="auto" medium={6}>
         <Card
           image={IMAGES[1]}
+          link={IMAGES[1]}
           title="The title"
           subtitle="With supporting text below as a natural lead-in to additional content."
         />
@@ -118,6 +120,7 @@ storiesOf('Card', module)
       <Cell size="auto" medium={6}>
         <Card
           image={IMAGES[2]}
+          link={IMAGES[2]}
           title="The title"
           subtitle="With supporting text below as a natural lead-in to additional content."
         />
@@ -125,6 +128,7 @@ storiesOf('Card', module)
       <Cell size="auto" medium={6}>
         <Card
           image={IMAGES[3]}
+          link={IMAGES[3]}
           title="The title"
           subtitle="With supporting text below as a natural lead-in to additional content."
         />

@@ -142,6 +142,7 @@
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
+    "react-content-loader": "^4.3.2",
     "xmldom": "^0.1.27"
   }
 }
