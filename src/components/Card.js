@@ -1,5 +1,4 @@
 import React, { Fragment, memo } from 'react';
-import { Link as ReactLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import classNames from 'classnames';
@@ -12,6 +11,7 @@ import Cell from 'components/Cell';
 
 import {
   StyledCard,
+  StyledCardLink,
   StyledCardLayoutEquals,
   StyledCardLayoutTruncate,
   StyledCardLayoutHorizontal,
@@ -139,33 +139,9 @@ const Card = ({
   dataCy,
 }) => {
   const classes = classNames(isActive && 'active');
-  const content = (
-    <Fragment>
-      <div className="card-body card-section">
-        <Icon name={icon} />
-      </div>
-      {title ? (
-        <div className="card-title card-section">
-          <h6>{title}</h6>
-        </div>
-      ) : null}
-    </Fragment>
-  );
-  if (link) {
-    return (
-      <ReactLink
-        id={id}
-        to={link}
-        data-cy={dataCy}
-        className={classes}
-        onFocus={onFocus}
-      >
-        {content}
-      </ReactLink>
-    );
-  }
+  const TagComponent = link ? StyledCardLink : StyledCard;
   return (
-    <StyledCard
+    <TagComponent
       id={id}
       data-cy={dataCy}
       className={classes}
@@ -176,11 +152,12 @@ const Card = ({
       isActive={isActive}
       isLoading={isLoading}
       theme={theme}
+      href={link}
     >
       <CardHeader image={image} icon={icon} />
       <CardBody title={title} subtitle={subtitle} description={description} />
       <CardFooter footer={footer} />
-    </StyledCard>
+    </TagComponent>
   );
 };
 

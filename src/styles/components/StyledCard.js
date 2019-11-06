@@ -49,7 +49,7 @@ export const getTextTruncate = () => css`
   text-overflow: ellipsis;
 `;
 
-const StyledCard = styled.div`
+const getStyleCard = css`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -142,6 +142,14 @@ const StyledCard = styled.div`
   }
 `;
 
+const StyledCard = styled.div`
+  ${getStyleCard};
+`;
+
+const StyledCardLink = styled.a`
+  ${getStyleCard};
+`;
+
 const StyledCardLayoutEquals = styled.div`
   ${getFlexRowWrap};
 `;
@@ -164,6 +172,7 @@ const StyledCardLayoutHorizontal = styled.div`
 
 export {
   StyledCard,
+  StyledCardLink,
   StyledCardLayoutEquals,
   StyledCardLayoutTruncate,
   StyledCardLayoutHorizontal,
