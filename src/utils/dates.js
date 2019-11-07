@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-const ISO_FORMAT = 'DD/MM/YYYY';
+const ISO_FORMAT = 'DD/MM/YY';
 const NUMBER_OF_MONTHS = 3;
 const START_DATE = 'startDate';
 const END_DATE = 'endDate';
