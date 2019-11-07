@@ -209,6 +209,15 @@ const card = {
   lineHeight: getFontSize(cardLineHeight),
 };
 
+// SwitchPeriodComparative
+// ==========================================================================
+
+const switchPeriodComparativeFontSize = 0.875;
+
+const switchPeriodComparative = {
+  fontSize: getFontSize(switchPeriodComparativeFontSize),
+};
+
 const theme = {
   ...base,
   button,
@@ -216,6 +225,7 @@ const theme = {
   dataPicker,
   select,
   card,
+  switchPeriodComparative,
 };
 
 export default theme;

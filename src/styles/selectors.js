@@ -75,3 +75,5 @@ export const cardPaddingX = props => propFromTheme(props, 'card.paddingX');
 export const cardPaddingY = props => propFromTheme(props, 'card.paddingY');
 export const cardFontSize = props => propFromTheme(props, 'card.fontSize');
 export const cardLineHeight = props => propFromTheme(props, 'card.lineHeight');
+export const switchPeriodComparativeFontSize = props =>
+  propFromTheme(props, 'switchPeriodComparative.fontSize');

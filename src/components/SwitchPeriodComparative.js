@@ -5,7 +5,6 @@ import moment from 'moment';
 import Cell from 'components/Cell';
 import FieldGroup from 'components/FieldGroup';
 import Grid from 'components/Grid';
-import Icon from 'components/Icon';
 import { ISO_FORMAT } from 'utils/dates';
 
 import { StyledSwitchPeriodComparative } from 'styles/components/StyledSwitchPeriodComparative';
@@ -126,10 +125,7 @@ class SwitchPeriodComparative extends PureComponent {
     return (
       <StyledSwitchPeriodComparative>
         <div className="compare-period">
-          <span className="calendar-icon">
-            <Icon name="calendar_range" size="medium" />
-          </span>
-          <div className="compare-period">
+          <div className="compare-period-container">
             <FieldGroup
               values={[
                 {
