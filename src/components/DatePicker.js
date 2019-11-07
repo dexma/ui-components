@@ -166,10 +166,12 @@ class DatePicker extends PureComponent {
             transitionDuration={0}
             hideKeyboardShortcutsPanel
             isOutsideRange={() => false}
-            customArrowIcon={<span>-</span>}
+            customArrowIcon={<Icon name="arrow_left" size="small" />}
             displayFormat={ISO_FORMAT}
             minimumNights={0}
-            customInputIcon={<Icon name="calendar_range" size={30} />}
+            customInputIcon={
+              <Icon name="calendar_range" size="xlarge" color="gray500" />
+            }
             navPrev={<Icon name="chevron_left_l" size={10} color="gray600" />}
             navNext={<Icon name="chevron_right_l" size={10} color="gray600" />}
           />
