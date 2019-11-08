@@ -400,5 +400,55 @@ storiesOf('Button', module)
           />
         </Cell>
       </Grid>
+      <Grid type="horizontal" horizontalPadding verticalPadding>
+        <Cell size="full">
+          <Title text="Button circle with icon" line={false} type="h4" />
+          <Paragraph>Use without text</Paragraph>
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="small"
+            iconAfter="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+            isCircle
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="medium"
+            iconAfter="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+            isCircle
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="large"
+            iconAfter="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+            isCircle
+          />
+        </Cell>
+        <Cell size="full">
+          <Button
+            size="xlarge"
+            iconAfter="edit"
+            tooltip={null}
+            isActive={false}
+            isExpanded={false}
+            variant="primary"
+            isCircle
+          />
+        </Cell>
+      </Grid>
     </Fragment>
   ));

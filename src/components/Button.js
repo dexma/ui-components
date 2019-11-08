@@ -33,6 +33,7 @@ const propTypes = {
   onFocus: PropTypes.func,
   isActive: PropTypes.bool,
   isDisabled: PropTypes.bool,
+  isCircle: PropTypes.bool,
   size: PropTypes.oneOf(BUTTON_SIZE),
   variant: PropTypes.oneOf(BUTTON_VARIANT),
   isExpanded: PropTypes.bool,
@@ -72,6 +73,7 @@ const Button = ({
   isDisabled,
   isExpanded,
   isLoading,
+  isCircle,
   size,
   variant,
   debounceTime,
@@ -104,6 +106,7 @@ const Button = ({
       size={size}
       iconSize={iconSize}
       iconAfter={iconAfter}
+      isCircle={isCircle}
       text={text}
     >
       {isLoading ? (

@@ -260,6 +260,18 @@ export const getButtonExpanded = () => {
     }
   `;
 };
+export const getButtonCircle = props => {
+  const sizeProps = get(buttonSize(props), props.size);
+  const { height } = sizeProps;
+  return css`
+    width: ${height};
+    border-radius: 50%;
+    padding: 0;
+    ${StyledIcon} {
+      margin: 0 auto;
+    }
+  `;
+};
 const StyledButton = styled.button`
   ${getButtonBase};
   ${props => props.size && getButtonSize}
@@ -269,6 +281,7 @@ const StyledButton = styled.button`
   ${props => props.variant === 'outline' && getButtonVariantOutline};
   ${props => props.variant === 'destructive' && getButtonVariantDestructive};
   ${props => props.variant === 'link' && getButtonVariantLink};
+  ${props => props.isCircle && getButtonCircle};
   ${props => !props.isExpanded && getButtonExpanded};
 `;
 export { StyledButton };
