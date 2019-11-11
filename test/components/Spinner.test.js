@@ -8,10 +8,6 @@ describe('<Spinner>', () => {
     const spinner = mount(<Spinner />);
     expect(spinner.find('StyledSpinner').length).toEqual(1);
   });
-  it('Should render the correct type', () => {
-    const title = mount(<Spinner />);
-    expect(title.find('svg').length).toEqual(1);
-  });
   it('Should render the correct prop width', () => {
     const title = mount(<Spinner width={100} />);
     expect(title.prop('width')).toEqual(100);

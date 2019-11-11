@@ -43,10 +43,10 @@ storiesOf('Button', module)
           />
           <Button
             size="medium"
-            text="Secondary"
+            text="Loading"
             iconBefore={null}
             tooltip={null}
-            isActive={false}
+            isLoading
             isExpanded={false}
             variant="secondary"
           />

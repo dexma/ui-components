@@ -7,21 +7,18 @@ import { StyledSpinner } from 'styles/components/StyledSpinner';
 
 const propTypes = {
   ...GeneralPropTypes,
-  width: PropTypes.number,
-  height: PropTypes.number,
+  size: PropTypes.number,
 };
 
 const defaultProps = {
   ...DefaultGeneralPropTypes,
-  width: 24,
-  height: 24,
+  size: 24,
 };
 
-const Spinner = ({ width, height, variant, theme, dataCy }) => {
+const Spinner = ({ size, variant, theme, dataCy }) => {
   return (
     <StyledSpinner
-      width={width}
-      height={height}
+      size={size}
       variant={variant}
       data-cy={dataCy}
       theme={theme}

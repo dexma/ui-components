@@ -12,10 +12,10 @@ const StyledSpinner = styled.div`
   vertical-align: middle;
   top: 50%;
   left: 50%;
-  //margin-top: -${props => props.width / 2}px;
-  margin-left: -${props => props.width / 2}px;
-  height: ${props => props.height}px;
-  width: ${props => props.width}px;
+  //margin-top: -${props => props.size / 2}px;
+  margin-left: -${props => props.size / 2}px;
+  height: ${props => props.size}px;
+  width: ${props => props.size}px;
   animation: ${rotate360} 0.7s linear infinite;
   border-width: 2px;
   border-style: solid;

@@ -6,8 +6,8 @@ import debounce from 'lodash/debounce';
 import { withTheme } from 'styled-components';
 import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
-import Icon from 'components/Icon';
-import Loading from 'components/Loading';
+import Icon, { getIconSize } from 'components/Icon';
+import Spinner from 'components/Spinner';
 
 import { StyledButton } from 'styles/components/StyledButton';
 
@@ -53,7 +53,7 @@ const defaultProps = {
   variant: 'secondary',
 };
 
-const getIconSize = size => {
+const getButtonIconSize = size => {
   if (size === 'small') return 'small';
   if (size === 'medium') return 'medium';
   if (size === 'large') return 'large';
@@ -90,7 +90,8 @@ const Button = ({
   );
   const handleClick =
     debounceTime > 0 ? debounce(onClick, debounceTime) : onClick;
-  const iconSize = getIconSize(size);
+  const spinnerSize = getIconSize(size);
+  const iconSize = getButtonIconSize(size);
   return (
     <StyledButton
       id={id}
@@ -110,11 +111,11 @@ const Button = ({
       isCircle={isCircle}
       text={text}
     >
-      {isLoading ? <Loading size={4} isLoading /> : null}
+      {isLoading ? <Spinner size={spinnerSize} /> : null}
       {!isLoading && iconBefore ? (
         <Icon name={iconBefore} size={iconSize} color="white" />
       ) : null}
-      {text || null}
+      {!isLoading && text ? text : null}
       {children || null}
       {!isLoading && iconAfter ? (
         <Icon name={iconAfter} size={iconSize} color="white" />
