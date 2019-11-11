@@ -13,11 +13,6 @@ describe('<Card>', () => {
     const card = mount(<Card icon="advancedanalytics" />);
     expect(card.find(Icon).length).toEqual(1);
   });
-  it('Should set correct title', () => {
-    const testTitle = 'title';
-    const card = mount(<Card icon="advancedanalytics" title={testTitle} />);
-    expect(card.find('.card-title h6').text()).toEqual(testTitle);
-  });
   it('Should click on the card', () => {
     const mockCallBack = jest.fn();
     const card = mount(
