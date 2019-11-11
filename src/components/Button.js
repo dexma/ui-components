@@ -7,6 +7,7 @@ import { withTheme } from 'styled-components';
 import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import Icon from 'components/Icon';
+import Loading from 'components/Loading';
 
 import { StyledButton } from 'styles/components/StyledButton';
 
@@ -109,9 +110,7 @@ const Button = ({
       isCircle={isCircle}
       text={text}
     >
-      {isLoading ? (
-        <Icon className="animate-spin" name="spin5" size={4} color="white" />
-      ) : null}
+      {isLoading ? <Loading size={4} isLoading /> : null}
       {!isLoading && iconBefore ? (
         <Icon name={iconBefore} size={iconSize} color="white" />
       ) : null}
