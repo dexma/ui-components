@@ -10,22 +10,18 @@ import { StyledLoading } from 'styles/components/StyledLoading';
 const propTypes = {
   ...GeneralPropTypes,
   isLoading: PropTypes.bool,
-  width: PropTypes.number,
-  height: PropTypes.number,
   children: PropTypes.node,
 };
 
 const defaultProps = {
   ...DefaultGeneralPropTypes,
   isLoading: false,
-  width: 80,
-  height: 80,
 };
 
-const Loading = ({ isLoading, width, height, dataCy, theme, children }) => {
+const Loading = ({ isLoading, dataCy, theme, children }) => {
   return isLoading ? (
     <StyledLoading data-cy={dataCy} theme={theme}>
-      <Spinner width={width} height={height} />
+      <Spinner width={24} height={24} />
     </StyledLoading>
   ) : (
     children
