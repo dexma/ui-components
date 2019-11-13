@@ -20,8 +20,6 @@ import Theme from 'components/Theme';
 import Title from 'components/Title';
 import { Toaster, ToasterConsumer, ToastType } from 'components/toaster';
 
-import 'styles/global.scss';
-
 // Utils
 import {
   ISO_FORMAT,

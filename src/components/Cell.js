@@ -1,57 +1,71 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { GeneralPropTypes } from 'utils/propTypes';
+import {
+  DefaultGeneralPropTypes,
+  GeneralPropTypes,
+  BreakpointsPropTypes,
+  ColumnSizePropTypes,
+} from 'utils/propTypes';
+import { withTheme } from 'styled-components';
+import { StyledCell } from 'styles/components/StyledCell';
 
 const propTypes = {
   ...GeneralPropTypes,
-  size: PropTypes.oneOf(['full', 'auto', 'shrink']),
-  small: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  medium: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  large: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  smallOffset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  mediumOffset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  largeOffset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  xs: ColumnSizePropTypes,
+  sm: ColumnSizePropTypes,
+  md: ColumnSizePropTypes,
+  lg: ColumnSizePropTypes,
+  xsOffset: PropTypes.number,
+  smOffset: PropTypes.number,
+  mdOffset: PropTypes.number,
+  lgOffset: PropTypes.number,
+  first: BreakpointsPropTypes,
+  last: BreakpointsPropTypes,
   children: PropTypes.node,
 };
 
 const defaultProps = {
-  classNamePrefix: 'cell',
+  ...DefaultGeneralPropTypes,
 };
 
 const Cell = ({
-  className,
-  classNamePrefix,
-  size,
-  small,
-  medium,
-  large,
-  smallOffset,
-  mediumOffset,
-  largeOffset,
+  xs,
+  sm,
+  md,
+  lg,
+  xsOffset,
+  smOffset,
+  mdOffset,
+  lgOffset,
+  first,
+  last,
   dataCy,
   children,
-  ...props
+  theme,
 }) => {
-  const classes = classNames(
-    className,
-    classNamePrefix,
-    size && size,
-    small && `small-${small}`,
-    medium && `medium-${medium}`,
-    large && `large-${large}`,
-    smallOffset && `small-offset-${smallOffset}`,
-    mediumOffset && `medium-offset-${mediumOffset}`,
-    largeOffset && `large-offset-${largeOffset}`
-  );
   return (
-    <div data-cy={dataCy} className={classes} {...props}>
+    <StyledCell
+      xs={xs}
+      sm={sm}
+      md={md}
+      lg={lg}
+      xsOffset={xsOffset}
+      smOffset={smOffset}
+      mdOffset={mdOffset}
+      lgOffset={lgOffset}
+      first={first}
+      last={last}
+      data-cy={dataCy}
+      theme={theme}
+    >
       {children || null}
-    </div>
+    </StyledCell>
   );
 };
+
+StyledCell.displayName = 'StyledCell';
 
 Cell.propTypes = propTypes;
 Cell.defaultProps = defaultProps;
 
-export default memo(Cell);
+export default memo(withTheme(Cell));

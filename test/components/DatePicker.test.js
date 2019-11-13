@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import moment from 'moment';
-import sinon from 'sinon';
 import DatePicker from 'components/DatePicker';
 
 import {
@@ -66,7 +65,7 @@ describe('<DatePicker>', () => {
       .toBeFalsy;
   });
   it('should not call stateDateWrapper to parse date', () => {
-    const parseDateStub = sinon.stub();
+    const parseDateStub = jest.fn();
     const datePicker = mount(
         <DatePicker stateDateWrapper={parseDateStub} />
     ).find('DatePicker');
@@ -74,10 +73,10 @@ describe('<DatePicker>', () => {
       startDate: null,
       endDate: null,
     });
-    expect(parseDateStub.callCount).toEqual(0);
+    expect(parseDateStub.mock.calls.length).toEqual(0);
   });
   it('should call stateDateWrapper 1 time to parse date', () => {
-    const parseDateStub = sinon.stub();
+    const parseDateStub = jest.fn();
     const dateFake = moment('2002-09-11');
     const datePicker = mount(
       <DatePicker stateDateWrapper={parseDateStub} />
@@ -87,10 +86,10 @@ describe('<DatePicker>', () => {
       endDate: null,
     });
 
-    expect(parseDateStub.callCount).toEqual(1);
+    expect(parseDateStub.mock.calls.length).toEqual(1);
   });
   it('should call stateDateWrapper 2 time to parse date', () => {
-    const parseDateStub = sinon.stub();
+    const parseDateStub = jest.fn();
     const dateFake = moment('2002-09-11');
     const datePicker = mount(
       <DatePicker stateDateWrapper={parseDateStub} />
@@ -99,17 +98,17 @@ describe('<DatePicker>', () => {
       startDate: dateFake,
       endDate: dateFake,
     });
-    expect(parseDateStub.callCount).toEqual(2);
+    expect(parseDateStub.mock.calls.length).toEqual(2);
   });
   it('shouldnt call onDatesChangeStub time to pass data', () => {
-    const onDatesChangeStub = sinon.stub();
+    const onDatesChangeStub = jest.fn();
     const dateFake = moment('2002-09-11');
     const datePicker = mount(<DatePicker />).find('DatePicker');
     datePicker.instance().onDatesChange({
       startDate: dateFake,
       endDate: dateFake,
     });
-    expect(onDatesChangeStub.callCount).toEqual(0);
+    expect(onDatesChangeStub.mock.calls.length).toEqual(0);
   });
   it('should have focusedInput correct passing autoFocus', () => {
     const datePicker = mount(<DatePicker autoFocus />).find('DatePicker');
