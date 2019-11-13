@@ -38,7 +38,8 @@ export const fontWeightNormal = 400;
 export const fontWeightSemiBold = 600;
 export const fontWeightBold = 700;
 
-const getFontSize = (size = fontSizeNumber) => `${size}${fontSizeType}`;
+const getSize = (size = fontSizeNumber, type = fontSizeType) =>
+  `${size}${type}`;
 
 // Icon
 export const iconSize = fontSize;
@@ -124,24 +125,24 @@ const buttonFontSize = fontSizeNumber;
 const button = {
   size: {
     small: {
-      paddingX: getFontSize(buttonPaddingX),
-      fontSize: getFontSize(buttonFontSize),
-      height: getFontSize(heightButton),
+      paddingX: getSize(buttonPaddingX),
+      fontSize: getSize(buttonFontSize),
+      height: getSize(heightButton),
     },
     medium: {
-      paddingX: getFontSize(buttonPaddingX + 0.25),
-      fontSize: getFontSize(buttonFontSize + 0.25),
-      height: getFontSize(heightButton + 0.25),
+      paddingX: getSize(buttonPaddingX + 0.25),
+      fontSize: getSize(buttonFontSize + 0.25),
+      height: getSize(heightButton + 0.25),
     },
     large: {
-      paddingX: getFontSize(buttonPaddingX + 0.25 * 3.5),
-      fontSize: getFontSize(buttonFontSize + 0.25 * 2),
-      height: getFontSize(heightButton + 0.75),
+      paddingX: getSize(buttonPaddingX + 0.25 * 3.5),
+      fontSize: getSize(buttonFontSize + 0.25 * 2),
+      height: getSize(heightButton + 0.75),
     },
     xlarge: {
-      paddingX: getFontSize(buttonPaddingX + 0.25 * 5),
-      fontSize: getFontSize(buttonFontSize + 0.25 * 3),
-      height: getFontSize(heightButton + 1.25),
+      paddingX: getSize(buttonPaddingX + 0.25 * 5),
+      fontSize: getSize(buttonFontSize + 0.25 * 3),
+      height: getSize(heightButton + 1.25),
     },
   },
 };
@@ -151,20 +152,20 @@ const button = {
 
 const heading = {
   fontSize: {
-    h1: getFontSize(2.625),
-    h2: getFontSize(2),
-    h3: getFontSize(1.75),
-    h4: getFontSize(1.5),
-    h5: getFontSize(1.25),
-    h6: getFontSize(fontSizeNumber),
+    h1: getSize(2.625),
+    h2: getSize(2),
+    h3: getSize(1.75),
+    h4: getSize(1.5),
+    h5: getSize(1.25),
+    h6: getSize(fontSizeNumber),
   },
   lineHeight: {
-    h1: getFontSize(3),
-    h2: getFontSize(2.5),
-    h3: getFontSize(2.25),
-    h4: getFontSize(2),
-    h5: getFontSize(1.75),
-    h6: getFontSize(1.5),
+    h1: getSize(3),
+    h2: getSize(2.5),
+    h3: getSize(2.25),
+    h4: getSize(2),
+    h5: getSize(1.75),
+    h6: getSize(1.5),
   },
 };
 
@@ -176,9 +177,9 @@ const datePickerHeight = heightComponents;
 const datePickerFontSize = fontSizeNumber;
 
 const dataPicker = {
-  paddingX: getFontSize(datePickerPaddingX),
-  fontSize: getFontSize(datePickerFontSize),
-  height: getFontSize(datePickerHeight),
+  paddingX: getSize(datePickerPaddingX),
+  fontSize: getSize(datePickerFontSize),
+  height: getSize(datePickerHeight),
 };
 
 // Select
@@ -189,9 +190,9 @@ const selectHeight = heightComponents;
 const selectFontSize = fontSizeNumber;
 
 const select = {
-  paddingX: getFontSize(selectPaddingX),
-  fontSize: getFontSize(selectFontSize),
-  height: getFontSize(selectHeight),
+  paddingX: getSize(selectPaddingX),
+  fontSize: getSize(selectFontSize),
+  height: getSize(selectHeight),
 };
 
 // Card
@@ -203,10 +204,10 @@ const cardFontSize = 1;
 const cardLineHeight = 1.25;
 
 const card = {
-  paddingX: getFontSize(cardPaddingX),
-  paddingY: getFontSize(cardPaddingY),
-  fontSize: getFontSize(cardFontSize),
-  lineHeight: getFontSize(cardLineHeight),
+  paddingX: getSize(cardPaddingX),
+  paddingY: getSize(cardPaddingY),
+  fontSize: getSize(cardFontSize),
+  lineHeight: getSize(cardLineHeight),
 };
 
 // SwitchPeriodComparative
@@ -215,7 +216,40 @@ const card = {
 const switchPeriodComparativeFontSize = 0.875;
 
 const switchPeriodComparative = {
-  fontSize: getFontSize(switchPeriodComparativeFontSize),
+  fontSize: getSize(switchPeriodComparativeFontSize),
+};
+
+// Grid
+// ==========================================================================
+
+const columns = 12;
+const gridGutterWidth = 1;
+const gridOuterMargin = 2;
+const gridOuterPadding = 2;
+const gridXS = 30;
+const gridSM = 48;
+const gridMD = 64;
+const gridLG = 75;
+
+const grid = {
+  outerPadding: getSize(gridOuterPadding),
+  outerMargin: getSize(gridOuterMargin),
+  gutterWidth: getSize(gridGutterWidth),
+  gutterCompensation: getSize(gridGutterWidth * 0.5 * -1),
+  halfGutterWidth: getSize(gridGutterWidth * 0.5),
+  breakpoints: {
+    xs: getSize(gridXS),
+    sm: getSize(gridSM),
+    md: getSize(gridMD),
+    lg: getSize(gridLG),
+  },
+  columns: columns,
+  screenSm: getSize(gridSM, 'em'),
+  screenMd: getSize(gridMD, 'em'),
+  screenLg: getSize(gridLG, 'em'),
+  containerSm: getSize(gridSM + gridGutterWidth),
+  containerMd: getSize(gridMD + gridGutterWidth),
+  containerLg: getSize(gridLG + gridGutterWidth),
 };
 
 const theme = {
@@ -226,6 +260,7 @@ const theme = {
   select,
   card,
   switchPeriodComparative,
+  grid,
 };
 
 export default theme;

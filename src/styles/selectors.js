@@ -77,3 +77,18 @@ export const cardFontSize = props => propFromTheme(props, 'card.fontSize');
 export const cardLineHeight = props => propFromTheme(props, 'card.lineHeight');
 export const switchPeriodComparativeFontSize = props =>
   propFromTheme(props, 'switchPeriodComparative.fontSize');
+export const gridOuterPadding = props =>
+  propFromTheme(props, 'grid.outerPadding');
+export const gridOuterMargin = props =>
+  propFromTheme(props, 'grid.outerMargin');
+export const gridGutterWidth = props =>
+  propFromTheme(props, 'grid.gutterWidth');
+export const gridBreakpoints = props =>
+  propFromTheme(props, 'grid.breakpoints');
+export const gridColumns = props => propFromTheme(props, 'grid.columns');
+export const gridContainerSm = props =>
+  propFromTheme(props, 'grid.containerSm');
+export const gridContainerMd = props =>
+  propFromTheme(props, 'grid.containerMd');
+export const gridContainerLg = props =>
+  propFromTheme(props, 'grid.containerLg');

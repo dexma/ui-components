@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
-import { default as TableAntDesign } from 'antd/lib/table';
+import { Table as TableAntDesign } from 'antd';
 import 'antd/lib/table/style/css';
 
 import theme from 'styles/theme';

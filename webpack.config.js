@@ -16,12 +16,11 @@ module.exports = function(env, argv) {
     exclude: /node_modules/,
     use: ['babel-loader'],
   };
-  const scssLoader = {
-    test: /\.(sa|sc|c)ss$/,
+  const cssLoader = {
+    test: /\.css$/,
     use: [
       isEnvDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
       'css-loader',
-      'sass-loader',
       {
         loader: 'postcss-loader',
         options: {
@@ -69,14 +68,14 @@ module.exports = function(env, argv) {
           uglifyOptions: {
             warnings: false,
             output: {
-              comments: false
+              comments: false,
             },
             keep_fnames: true,
-            comments: false
+            comments: false,
           },
           cache: true,
           parallel: true,
-          sourceMap: true
+          sourceMap: true,
         }),
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
@@ -92,7 +91,7 @@ module.exports = function(env, argv) {
       ],
     },
     module: {
-      rules: [babelLoader, scssLoader],
+      rules: [babelLoader, cssLoader],
     },
     resolve,
     plugins,
