@@ -2,9 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import Cell from 'components/Cell';
 import FieldGroup from 'components/FieldGroup';
-import Grid from 'components/Grid';
 import { ISO_FORMAT } from 'utils/dates';
 
 import { StyledSwitchPeriodComparative } from 'styles/components/StyledSwitchPeriodComparative';
@@ -89,14 +87,10 @@ class SwitchPeriodComparative extends PureComponent {
 
   renderPeriodComparativeItem = (text, date) => {
     return (
-      <Grid type="vertical" className="compare-period-item">
-        <Cell size="full" className="title">
-          {text}
-        </Cell>
-        <Cell size="full" className="dates">
-          {date}
-        </Cell>
-      </Grid>
+      <div className="compare-period-item">
+        <div className="title">{text}</div>
+        <div className="dates">{date}</div>
+      </div>
     );
   };
 
