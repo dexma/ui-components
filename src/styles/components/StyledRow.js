@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { gridGutterCompensation } from 'styles/selectors';
 
 const StyledRow = styled.div`
   box-sizing: border-box;
@@ -6,8 +7,8 @@ const StyledRow = styled.div`
   flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
+  margin-right: ${gridGutterCompensation};
+  margin-left: ${gridGutterCompensation};
   ${props =>
     props.reverse &&
     css`
