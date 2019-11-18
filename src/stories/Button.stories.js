@@ -409,7 +409,7 @@ storiesOf('Button', module)
           <Button
             size="small"
             iconAfter="edit"
-            tooltip={null}
+            tooltip="Edit"
             isActive={false}
             isExpanded={false}
             variant="primary"
@@ -420,7 +420,7 @@ storiesOf('Button', module)
           <Button
             size="medium"
             iconAfter="edit"
-            tooltip={null}
+            tooltip="Edit"
             isActive={false}
             isExpanded={false}
             variant="primary"
@@ -431,7 +431,7 @@ storiesOf('Button', module)
           <Button
             size="large"
             iconAfter="edit"
-            tooltip={null}
+            tooltip="Edit"
             isActive={false}
             isExpanded={false}
             variant="primary"
@@ -442,7 +442,7 @@ storiesOf('Button', module)
           <Button
             size="xlarge"
             iconAfter="edit"
-            tooltip={null}
+            tooltip="Edit"
             isActive={false}
             isExpanded={false}
             variant="primary"

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
 import { withTheme } from 'styled-components';
+import { withTooltip } from 'hoc/withTooltip';
 import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import Icon, { getIconSize } from 'components/Icon';
@@ -60,6 +61,7 @@ const getButtonIconSize = size => {
   if (size === 'xlarge') return 'large';
   return 'small';
 };
+
 const Button = ({
   id,
   buttonRef,
@@ -129,4 +131,4 @@ StyledButton.displayName = 'StyledButton';
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
-export default memo(withTheme(Button));
+export default memo(withTheme(withTooltip(Button)));

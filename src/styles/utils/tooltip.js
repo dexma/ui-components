@@ -1,5 +1,16 @@
 // Handy CSS animations for micro-interactions
 import { css } from 'styled-components';
+import get from 'lodash/get';
+import { buttonSize } from '../selectors';
+
+export const getTooltipSize = props => {
+  const sizeProps = get(buttonSize(props), props.size);
+  const { paddingX, fontSize } = sizeProps;
+  return css`
+    font-size: ${fontSize};
+    padding: 0 ${paddingX};
+  `;
+};
 
 const getTooltip = css`
   &[data-tooltip] {
@@ -30,10 +41,7 @@ const getTooltip = css`
       background: rgba(0, 0, 0, 0.8);
       text-align: center;
       color: #fff;
-      padding: 8px 8px 10px 8px;
-      font-size: 11px;
-      min-width: 110px;
-      border-radius: 2px;
+      border-radius: 4px;
       pointer-events: none;
       display: flex;
       flex-direction: row;
@@ -42,6 +50,7 @@ const getTooltip = css`
       align-items: center;
       align-content: center;
       z-index: 99999;
+      ${props => props.size && getTooltipSize}
     }
   }
 `;
