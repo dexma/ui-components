@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { padding, margin, borderRadius } from 'styles/selectors';
+import { padding, margin, borderRadius, boxShadow } from 'styles/selectors';
 
 const StyledModal = styled.div`
   .mask {
@@ -8,7 +8,7 @@ const StyledModal = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.2);
     z-index: 10001;
   }
 
@@ -44,7 +44,7 @@ const StyledModal = styled.div`
     background-color: #fff;
     border-radius: ${borderRadius};
     box-sizing: border-box;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: ${boxShadow};
     transform: translate3d(0, 0, 0);
     transition: transform 500ms cubic-bezier(0, 0, 0.25, 1),
       opacity 500ms cubic-bezier(0, 0, 0.25, 1);

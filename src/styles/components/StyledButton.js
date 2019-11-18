@@ -34,7 +34,6 @@ export const getButtonBase = () => css`
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   border-width: 1px;
   border-style: solid;
-  margin: 0.375rem;
   border-radius: ${borderRadius};
 `;
 export const getButtonSize = props => {
