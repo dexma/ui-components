@@ -83,6 +83,10 @@ export const gridOuterMargin = props =>
   propFromTheme(props, 'grid.outerMargin');
 export const gridGutterWidth = props =>
   propFromTheme(props, 'grid.gutterWidth');
+export const gridGutterCompensation = props =>
+  propFromTheme(props, 'grid.gutterCompensation');
+export const gridHalfGutterWidth = props =>
+  propFromTheme(props, 'grid.halfGutterWidth');
 export const gridBreakpoints = props =>
   propFromTheme(props, 'grid.breakpoints');
 export const gridColumns = props => propFromTheme(props, 'grid.columns');

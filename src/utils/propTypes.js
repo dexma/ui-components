@@ -15,4 +15,5 @@ export const ColumnSizePropTypes = PropTypes.oneOfType([
   PropTypes.number,
   PropTypes.bool,
 ]);
+
 export const BreakpointsPropTypes = PropTypes.oneOf(['xs', 'sm', 'md', 'lg']);
