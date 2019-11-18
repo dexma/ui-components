@@ -1,4 +1,4 @@
-import React, { Fragment, memo } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import classNames from 'classnames';
@@ -7,6 +7,7 @@ import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
 import Grid from 'components/Grid';
+import Row from 'components/Row';
 import Cell from 'components/Cell';
 
 import {
@@ -43,16 +44,16 @@ const defaultProps = {
 export const CardLayoutHorizontal = ({ children }) => {
   return (
     <StyledCardLayoutHorizontal>
-      <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Fragment>
+      <Grid>
+        <Row>
           {React.Children.map(children || null, (child, i) => {
             return (
-              <Cell size="auto" small={12} medium={6}>
+              <Cell xs={12} md={6}>
                 <child.type {...child.props} key={i} />
               </Cell>
             );
           })}
-        </Fragment>
+        </Row>
       </Grid>
     </StyledCardLayoutHorizontal>
   );
@@ -61,16 +62,23 @@ export const CardLayoutHorizontal = ({ children }) => {
 export const CardLayoutEquals = ({ children }) => {
   return (
     <StyledCardLayoutEquals>
-      <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Fragment>
+      <Grid>
+        <Row>
           {React.Children.map(children || null, (child, i) => {
             return (
-              <Cell size="auto" small={12} medium={4} large={3}>
+              <Cell xs={12} md={4} xl={3}>
                 <child.type {...child.props} key={i} />
               </Cell>
             );
           })}
-        </Fragment>{' '}
+          {React.Children.map(children || null, (child, i) => {
+            return (
+              <Cell xs={12} md={4} xl={3}>
+                <child.type {...child.props} key={i} />
+              </Cell>
+            );
+          })}
+        </Row>
       </Grid>
     </StyledCardLayoutEquals>
   );
@@ -79,16 +87,23 @@ export const CardLayoutEquals = ({ children }) => {
 export const CardLayoutTruncate = ({ children }) => {
   return (
     <StyledCardLayoutTruncate>
-      <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Fragment>
+      <Grid>
+        <Row>
           {React.Children.map(children || null, (child, i) => {
             return (
-              <Cell size="auto" small={12} medium={4} large={3}>
+              <Cell xs={12} md={4} lg={3}>
+                <child.type {...child.props} key={i} />
+              </Cell>
+            );
+          })}{' '}
+          {React.Children.map(children || null, (child, i) => {
+            return (
+              <Cell xs={12} md={4} lg={3}>
                 <child.type {...child.props} key={i} />
               </Cell>
             );
           })}
-        </Fragment>{' '}
+        </Row>
       </Grid>
     </StyledCardLayoutTruncate>
   );

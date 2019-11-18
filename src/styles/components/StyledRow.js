@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-import { gridGutterCompensation } from 'styles/selectors';
+import { gridGutterCompensation, gridGutterWidth } from 'styles/selectors';
+import { StyledCell } from 'styles/components/StyledCell';
 
 const StyledRow = styled.div`
   box-sizing: border-box;
@@ -14,6 +15,9 @@ const StyledRow = styled.div`
     css`
       flex-direction: row-reverse;
     `};
+  ${StyledCell} {
+    margin-bottom: ${gridGutterWidth};
+  }
 `;
 
 export { StyledRow };
