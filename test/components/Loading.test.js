@@ -11,7 +11,7 @@ describe('<Loading>', () => {
   });
   it('Should render the Spinner component', () => {
     const loading = mount(<Loading isLoading />);
-    expect(loading.find(Spinner).length).toEqual(1);
+    expect(loading.find('StyledSpinner').length).toEqual(1);
   });
   it('Should not render the Spinner and show children', () => {
     const loadDiv = <div>someText</div>;

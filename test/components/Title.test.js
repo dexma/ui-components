@@ -25,6 +25,6 @@ describe('<Title>', () => {
   });
   it('Should render Heading component', () => {
     const title = mount(<Title text={text} type={type} />);
-    expect(title.find(Heading).length).toEqual(1);
+    expect(title.find('StyledHeading').length).toEqual(1);
   });
 });
