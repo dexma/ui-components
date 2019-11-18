@@ -3,6 +3,7 @@ const path = require('path');
 const resolve = {
   alias: {
     components: path.resolve('src', 'components'),
+    hoc: path.resolve('src', 'hoc'),
     config: path.resolve('src', 'config'),
     utils: path.resolve('src', 'utils'),
     styles: path.resolve('src', 'styles'),

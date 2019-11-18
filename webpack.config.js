@@ -35,6 +35,7 @@ module.exports = function(env, argv) {
   const resolve = {
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
+      hoc: path.resolve(__dirname, 'src/hoc/'),
       config: path.resolve(__dirname, 'src/config/'),
       utils: path.resolve(__dirname, 'src/utils/'),
       styles: path.resolve(__dirname, 'src/styles/'),

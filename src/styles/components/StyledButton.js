@@ -14,8 +14,6 @@ import {
 } from 'styles/selectors';
 import get from 'lodash/get';
 
-import { getTooltip } from 'styles/utils/tooltip';
-
 import { StyledIcon } from 'styles/components/StyledIcon';
 
 export const getButtonBase = () => css`
@@ -285,6 +283,5 @@ const StyledButton = styled.button`
   ${props => props.variant === 'link' && getButtonVariantLink};
   ${props => props.isCircle && getButtonCircle};
   ${props => !props.isExpanded && getButtonExpanded};
-  ${getTooltip};
 `;
 export { StyledButton };
