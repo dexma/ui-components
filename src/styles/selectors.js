@@ -68,6 +68,14 @@ export const dataPickerFontSize = props =>
   propFromTheme(props, 'dataPicker.fontSize');
 export const dataPickerPaddingX = props =>
   propFromTheme(props, 'dataPicker.paddingX');
+
+export const paginationHeight = props =>
+  propFromTheme(props, 'pagination.height');
+export const paginationFontSize = props =>
+  propFromTheme(props, 'pagination.fontSize');
+export const paginationPaddingX = props =>
+  propFromTheme(props, 'pagination.paddingX');
+
 export const selectHeight = props => propFromTheme(props, 'select.height');
 export const selectFontSize = props => propFromTheme(props, 'select.fontSize');
 export const selectPaddingX = props => propFromTheme(props, 'select.paddingX');

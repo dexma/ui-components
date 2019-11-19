@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
-import ReactPaginate from 'react-paginate';
+import { Pagination as PaginationAntDesign } from 'antd';
+
 import { withTheme } from 'styled-components';
 import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
@@ -15,22 +16,20 @@ const defaultProps = {
   ...DefaultGeneralPropTypes,
 };
 
+const itemRender = (current, type, originalElement) => {
+  if (type === 'prev') {
+    return <Icon name="chevron_left_l" color="gray900" size={12} />;
+  }
+  if (type === 'next') {
+    return <Icon name="chevron_right_l" color="gray900" size={12} />;
+  }
+  return originalElement;
+};
+
 const Pagination = ({ theme, dataCy, ...props }) => {
   return (
     <StyledPagination theme={theme}>
-      <ReactPaginate
-        previousLabel={<Icon name="left_arrow" />}
-        nextLabel={<Icon name="right_arrow" />}
-        pageClassName="page"
-        pageLinkClassName="link"
-        previousClassName="previous"
-        nextClassName="next"
-        breakClassName="break"
-        containerClassName="container"
-        subContainerClassName="pages pagination"
-        activeClassName="active"
-        {...props}
-      />
+      <PaginationAntDesign itemRender={itemRender} {...props} />
     </StyledPagination>
   );
 };

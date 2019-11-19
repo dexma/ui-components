@@ -252,6 +252,19 @@ const grid = {
   containerLg: getSize(gridLG + gridGutterWidth),
 };
 
+// Pagination
+// ==========================================================================
+
+const paginationPaddingX = 0.75;
+const paginationHeight = heightComponents;
+const paginationFontSize = fontSizeNumber;
+
+const pagination = {
+  paddingX: getSize(paginationPaddingX),
+  fontSize: getSize(paginationFontSize),
+  height: getSize(paginationHeight),
+};
+
 const theme = {
   ...base,
   button,
@@ -261,6 +274,7 @@ const theme = {
   card,
   switchPeriodComparative,
   grid,
+  pagination,
 };
 
 export default theme;

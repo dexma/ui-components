@@ -16,7 +16,7 @@ storiesOf('Pagination', module)
         <Title text="Basic pagination:" line />
       </Cell>
       <Cell size="auto">
-        <Pagination initialPage={0} pageCount={5} />
+        <Pagination total={100} pageSize={10} defaultCurrent={6} />
       </Cell>
     </Grid>
   ));
