@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
 import { Table as TableAntDesign } from 'antd';
-import 'antd/lib/table/style/css';
 
 import theme from 'styles/theme';
 import { StyledTable } from 'styles/components/StyledTable';

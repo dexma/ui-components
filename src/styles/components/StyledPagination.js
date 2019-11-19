@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   gray300,
   backgroundColor,
@@ -11,7 +11,7 @@ import {
 
 import { StyledIcon } from 'styles/components/StyledIcon';
 
-const StyledPagination = styled.div`
+export const getStyledPagination = () => css`
   .ant-pagination {
     box-sizing: border-box;
     color: ${fontColor};
@@ -315,6 +315,10 @@ const StyledPagination = styled.div`
       display: none;
     }
   }
+`;
+
+const StyledPagination = styled.div`
+  ${getStyledPagination}
 `;
 
 export { StyledPagination };
