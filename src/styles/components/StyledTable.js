@@ -12,11 +12,7 @@ import {
   componentHeight,
 } from 'styles/selectors';
 
-const active = props => `
-  background-color: ${backgroundColorActive(props)};
-  border: 1px solid ${backgroundColorActive(props)};
-  color: ${fontColorActive(props)};
-`;
+import { getStyledPagination } from 'styles/components/StyledPagination';
 
 const StyledTable = styled.div`
   .ant-table {
@@ -1268,61 +1264,7 @@ const StyledTable = styled.div`
     margin: -8px -8px -9px;
   }
 
-  // Pagination
-
-  .ant-pagination-next,
-  .ant-pagination-prev,
-  .ant-pagination-item,
-  .ant-pagination-item-active {
-    min-width: ${componentHeight};
-    height: ${componentHeight};
-    line-height: ${componentHeight};
-    text-align: center;
-    list-style: none;
-    background-color: transparent;
-    border: 0px;
-    border-radius: 0px;
-    outline: 0;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .ant-pagination-next .ant-pagination-item-link,
-  .ant-pagination-prev .ant-pagination-item-link,
-  .ant-pagination-item a {
-    color: ${fontColor};
-    font-weight: ${fontWeightBold};
-    background: ${backgroundColorSelected};
-    border: ${border};
-    border-radius: ${borderRadius};
-    height: ${componentHeight};
-    line-height: ${componentHeight};
-  }
-
-  .ant-pagination-item:focus a,
-  .ant-pagination-item:hover a,
-  .ant-pagination-item a {
-    border-color: transparent;
-    transition: all 0.3s;
-    color: ${fontColor};
-  }
-
-  .ant-pagination-item-active:focus a,
-  .ant-pagination-item-active:hover a {
-    color: ${fontColorActive};
-  }
-
-  .ant-pagination-item-active a {
-    ${props => active(props)}
-  }
-
-  .ant-pagination-next:focus .ant-pagination-item-link,
-  .ant-pagination-next:hover .ant-pagination-item-link,
-  .ant-pagination-prev:focus .ant-pagination-item-link,
-  .ant-pagination-prev:hover .ant-pagination-item-link {
-    color: ${fontColor};
-    border-color: transparent;
-  }
+  ${getStyledPagination};
 `;
 
 export { StyledTable };

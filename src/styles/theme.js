@@ -265,6 +265,19 @@ const pagination = {
   height: getSize(paginationHeight),
 };
 
+// Tag
+// ==========================================================================
+
+const tagPaddingX = 0.5;
+const tagHeight = 1.25;
+const tagFontSize = fontSizeNumber;
+
+const tag = {
+  paddingX: getSize(tagPaddingX),
+  fontSize: getSize(tagFontSize),
+  height: getSize(tagHeight),
+};
+
 const theme = {
   ...base,
   button,
@@ -275,6 +288,7 @@ const theme = {
   switchPeriodComparative,
   grid,
   pagination,
+  tag,
 };
 
 export default theme;
