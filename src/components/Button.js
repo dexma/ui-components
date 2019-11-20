@@ -24,7 +24,6 @@ export const BUTTON_VARIANT = [
 
 const propTypes = {
   ...GeneralPropTypes,
-  id: PropTypes.string,
   buttonRef: PropTypes.func,
   text: PropTypes.string,
   type: PropTypes.oneOf(BUTTON_TYPE),
@@ -62,8 +61,7 @@ const getButtonIconSize = size => {
   return 'small';
 };
 
-const Button = ({
-  id,
+export const Button = ({
   buttonRef,
   text,
   type,
@@ -96,7 +94,6 @@ const Button = ({
   const iconSize = getButtonIconSize(size);
   return (
     <StyledButton
-      id={id}
       ref={buttonRef}
       type={type}
       data-tooltip={tooltip}

@@ -1,6 +1,8 @@
 import { createGlobalStyle, css } from 'styled-components';
 
-export const getGlobalStyles = css`
+import { StyledButton } from 'styles/components/StyledButton';
+
+const getGlobalStyles = css`
   html,
   body {
     width: 100%;
@@ -42,7 +44,7 @@ export const getGlobalStyles = css`
   }
   body {
     margin: 0;
-    font-size: 14px;
+    font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
       'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial,
       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
@@ -312,7 +314,16 @@ export const getGlobalStyles = css`
     clear: both;
   }
 `;
+const getStorybookStyles = css`
+  ${StyledButton} {
+    margin-right: 5px;
+  }
+`;
 
 export const GlobalStyle = createGlobalStyle`
   ${getGlobalStyles};
+`;
+
+export const StorybookStyles = createGlobalStyle`
+  ${getStorybookStyles};
 `;
