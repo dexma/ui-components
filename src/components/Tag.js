@@ -8,8 +8,17 @@ import { StyledTag } from 'styles/components/StyledTag';
 
 const propTypes = {
   ...GeneralPropTypes,
+  /**
+   When a button is in the loading state you can supply custom text
+   */
   color: PropTypes.string,
+  /**
+   When a button is in the loading state you can supply custom text
+   */
   icon: PropTypes.string,
+  /**
+   When a button is in the loading state you can supply custom text
+   */
   type: PropTypes.oneOf(['normal', 'rounded']),
   variant: PropTypes.oneOf(['primary', 'outline']),
 };
@@ -20,7 +29,7 @@ const defaultProps = {
   variant: 'primary',
 };
 
-const Tag = ({ theme, color, icon, type, variant, children }) => {
+export const Tag = ({ theme, color, icon, type, variant, children }) => {
   return (
     <StyledTag theme={theme} color={color} type={type} variant={variant}>
       {icon && <Icon name={icon} size="small" />}

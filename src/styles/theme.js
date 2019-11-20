@@ -12,16 +12,21 @@ export const gray600 = '#606266';
 export const gray700 = '#404145';
 export const gray800 = '#2C2D30';
 export const gray900 = '#141518';
-export const teal = '#13C3A3';
+export const turquoise = '#13C3A3';
 export const blue = '#003B6F';
-export const red = '#DC3B3C';
-export const amber = '#F6BF26';
+export const blueLight = '#56A6F1';
+export const red = '#F65B5B';
+export const amber = '#FFC400';
+export const orange = '#F7863B';
+export const brown = '#9C755F';
+export const grey = gray400;
 export const green = '#1FB275';
 export const magenta = '#DC3B3C';
+export const purple = '#9230B0';
+
 export const transparent = 'transparent';
 
-export const primary = teal;
-export const primaryBackground = blue;
+export const primary = turquoise;
 export const success = green;
 export const warning = amber;
 export const error = red;
@@ -256,7 +261,7 @@ const grid = {
 // ==========================================================================
 
 const paginationPaddingX = 0.75;
-const paginationHeight = heightComponents;
+const paginationHeight = 1.9;
 const paginationFontSize = fontSizeNumber;
 
 const pagination = {

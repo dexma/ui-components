@@ -46,6 +46,7 @@ export const gray700 = props => propFromTheme(props, 'gray700');
 export const gray800 = props => propFromTheme(props, 'gray800');
 export const gray900 = props => propFromTheme(props, 'gray900');
 export const white = props => propFromTheme(props, 'white');
+export const error = props => propFromTheme(props, 'error');
 export const magenta = props => propFromTheme(props, 'magenta');
 export const primaryColor = props => propFromTheme(props, 'primary');
 export const primaryColorSvg = props => {

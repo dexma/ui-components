@@ -1,21 +1,19 @@
 import React, { memo } from 'react';
-import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import { Table as TableAntDesign } from 'antd';
 
-import theme from 'styles/theme';
 import { StyledTable } from 'styles/components/StyledTable';
 
 const propTypes = {
-  theme: PropTypes.shape({}),
+  ...GeneralPropTypes,
 };
 
 const defaultProps = {
-  theme: theme,
+  ...DefaultGeneralPropTypes,
 };
 
-// https://ant.design/components/table/
 const Table = props => {
   return (
     <StyledTable>
