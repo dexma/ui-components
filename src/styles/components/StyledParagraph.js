@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const StyledParagraph = styled.p`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: ${props => props.margin};
+  color: #404145;
 `;
 
 export { StyledParagraph };

@@ -15,6 +15,7 @@ import {
 import get from 'lodash/get';
 
 import { StyledIcon } from 'styles/components/StyledIcon';
+import { StyledSpinner } from 'styles/components/StyledSpinner';
 
 export const getButtonBase = () => css`
   align-items: center;
@@ -259,6 +260,19 @@ export const getButtonExpanded = () => {
     }
   `;
 };
+export const getButtonDisabled = () => {
+  return css`
+    cursor: not-allowed;
+    opacity: 0.65;
+  `;
+};
+export const getButtonLoading = props => {
+  return css`
+    ${StyledSpinner} {
+      ${props.text && `margin-right: .25rem`};
+    }
+  `;
+};
 export const getButtonCircle = props => {
   const sizeProps = get(buttonSize(props), props.size);
   const { height } = sizeProps;
@@ -281,6 +295,8 @@ const StyledButton = styled.button`
   ${props => props.variant === 'destructive' && getButtonVariantDestructive};
   ${props => props.variant === 'link' && getButtonVariantLink};
   ${props => props.isCircle && getButtonCircle};
+  ${props => props.isDisabled && getButtonDisabled};
+  ${props => props.isLoading && getButtonLoading};
   ${props => !props.isExpanded && getButtonExpanded};
 `;
 export { StyledButton };
