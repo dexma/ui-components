@@ -213,6 +213,7 @@ const getGlobalStyles = css`
     font-size: inherit;
     font-family: inherit;
     line-height: inherit;
+    outline: none;
   }
   button,
   input {

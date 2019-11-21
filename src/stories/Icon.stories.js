@@ -1,22 +1,73 @@
-import React, { Component, Fragment } from 'react';
-import { storiesOf } from '@storybook/react';
-import icon from 'config/icon';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-
+import { Icon } from 'components/Icon';
 import Grid from 'components/Grid';
+import Row from 'components/Row';
 import Cell from 'components/Cell';
-import Title from 'components/Title';
 import Paragraph from 'components/Paragraph';
-import Icon from 'components/Icon';
+import icon from 'config/icon';
 
-const StyledFragment = styled.div`
+export default {
+  title: 'Icon',
+  component: Icon,
+};
+
+export const sizes = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          An icon is a svg used to represent something else you can set the size
+          and color
+        </Paragraph>
+      </Cell>
+      <Cell>
+        <Icon size={70} color="gray800" />
+      </Cell>
+      <Cell>
+        <Icon size={60} color="gray700" />
+      </Cell>
+      <Cell>
+        <Icon size={50} color="gray600" />
+      </Cell>
+      <Cell>
+        <Icon size={40} color="gray500" />
+      </Cell>
+      <Cell>
+        <Icon size={30} color="gray400" />
+      </Cell>
+      <Cell>
+        <Icon size={20} color="gray300" />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const icons = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          An icon is a svg used to represent something else.
+        </Paragraph>
+      </Cell>
+      <SearchIcons />
+    </Row>
+  </Grid>
+);
+
+const StyledBoxSearch = styled.div`
+  width: 100%;
   .search {
     padding: 13px 25px;
-    border: 1px solid grey;
+    border: 1px solid #d6d8db;
     border-radius: 4px;
-    width: 400px;
+    width: 100%;
     display: block;
     margin: 25px auto 50px auto;
+  }
+  .box-icon {
+    text-align: center;
   }
 `;
 
@@ -37,9 +88,9 @@ class SearchIcons extends Component {
   getIcons = searchValue => {
     const iconsFilter = icon.filter(i => i.name.includes(searchValue));
     return iconsFilter.map(iconItem => (
-      <Cell medium={3}>
-        <Icon name={iconItem.name} size="large" color="gray500" />
-        {iconItem.name}
+      <Cell xs={2} className="box-icon">
+        <Icon name={iconItem.name} size={40} color="gray500" />
+        <Paragraph size=".6rem">{iconItem.name}</Paragraph>
       </Cell>
     ));
   };
@@ -47,36 +98,19 @@ class SearchIcons extends Component {
   render() {
     const { value } = this.state;
     return (
-      <Fragment>
-        <Grid type="container">
-          <Cell size="full">
+      <StyledBoxSearch>
+        <Row>
+          <Cell xs={12}>
             <input
               className="search"
               type="text"
+              placeholder="Search icon"
               onChange={this.handleChange}
             />
           </Cell>
-          <Cell size="full">
-            <Grid type="horizontal">{this.getIcons(value)}</Grid>
-          </Cell>
-        </Grid>
-      </Fragment>
+          {this.getIcons(value)}
+        </Row>
+      </StyledBoxSearch>
     );
   }
 }
-
-storiesOf('Icon', module)
-  .addParameters({
-    jest: ['Icon'],
-  })
-  .add('basic', () => (
-    <StyledFragment>
-      <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Cell size="full">
-          <Title text="Icons" line={false} type="h4" />
-          <Paragraph>Icons with svg</Paragraph>
-        </Cell>
-        <SearchIcons />
-      </Grid>
-    </StyledFragment>
-  ));
