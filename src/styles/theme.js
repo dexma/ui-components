@@ -1,43 +1,42 @@
 // Colors (https://dexmatech.atlassian.net/wiki/spaces/design/pages/698253492/Colour)
-
-export const white = '#FFFFFF';
-export const black = '#000000';
-export const gray50 = '#F2F5F7';
-export const gray100 = '#F1F2F3';
-export const gray200 = '#D6D8DB';
-export const gray300 = '#adb0b6';
-export const gray400 = '#9FA3AA';
-export const gray500 = '#7E8085';
-export const gray600 = '#606266';
-export const gray700 = '#404145';
-export const gray800 = '#2C2D30';
-export const gray900 = '#141518';
-export const turquoise = '#13C3A3';
-export const blue = '#003B6F';
-export const blueLight = '#56A6F1';
-export const red = '#F65B5B';
-export const amber = '#FFC400';
-export const orange = '#F7863B';
-export const brown = '#9C755F';
-export const grey = gray400;
-export const green = '#1FB275';
-export const magenta = '#DC3B3C';
-export const purple = '#9230B0';
+export const colors = {
+  white: '#FFFFFF',
+  black: '#000000',
+  gray50: '#F2F5F7',
+  gray100: '#F1F2F3',
+  gray200: '#D6D8DB',
+  gray300: '#adb0b6',
+  gray400: '#9FA3AA',
+  gray500: '#7E8085',
+  gray600: '#606266',
+  gray700: '#404145',
+  gray800: '#2C2D30',
+  gray900: '#141518',
+  turquoise: '#13C3A3',
+  blue: '#003B6F',
+  blueLight: '#56A6F1',
+  red: '#F65B5B',
+  amber: '#FFC400',
+  orange: '#F7863B',
+  brown: '#9C755F',
+  grey: '#9FA3AA',
+  green: '#1FB275',
+  magenta: '#DC3B3C',
+  purple: '#9230B0',
+};
 
 export const transparent = 'transparent';
-
-export const primary = turquoise;
-export const success = green;
-export const warning = amber;
-export const error = red;
+export const primary = colors.turquoise;
+export const success = colors.green;
+export const warning = colors.amber;
+export const error = colors.red;
 
 // Font
 export const fontSizeNumber = 0.75;
 export const fontSizeType = 'rem';
 export const fontSize = `${fontSizeNumber}${fontSizeType}`;
-export const fontColor = gray700;
-export const fontColorActive = white;
-export const fontFamily = 'Arial';
+export const fontColor = colors.gray700;
+export const fontColorActive = colors.white;
 export const fontWeightLight = 300;
 export const fontWeightNormal = 400;
 export const fontWeightSemiBold = 600;
@@ -48,25 +47,26 @@ const getSize = (size = fontSizeNumber, type = fontSizeType) =>
 
 // Icon
 export const iconSize = fontSize;
-export const iconColor = gray500;
-export const iconColorActive = white;
+export const iconColor = colors.gray500;
+export const iconColorActive = colors.white;
 
 // Background
-export const backgroundColor = white;
-export const backgroundColorSelected = gray100;
+export const backgroundColor = colors.white;
+export const backgroundColorSelected = colors.gray100;
 export const backgroundColorActive = primary;
-export const backgroundColorHover = white;
-export const backgroundColorFocused = white;
+export const backgroundColorHover = colors.white;
+export const backgroundColorFocused = colors.white;
 
 // Others
 export const radius = '4px';
 export const padding = '20px';
-export const borderColor = gray200;
+export const borderColor = colors.gray200;
 export const heightElements = '30px';
 export const heightComponents = 2.25;
 export const spacer = '1rem';
 export const boxShadow = '0 1px 5px 0 rgba(0,0,0,0.2)';
 export const boxShadowHover = '0 4px 8px 0 rgba(0, 0, 0, 0.2)';
+
 // Base
 // ==========================================================================
 const base = {
@@ -75,7 +75,6 @@ const base = {
   borderColor: borderColor,
   padding: padding,
 
-  fontFamily: fontFamily,
   fontSize: fontSize,
   fontColor: fontColor,
   fontColorActive: fontColorActive,
@@ -93,28 +92,18 @@ const base = {
   backgroundColorActive: backgroundColorActive,
   backgroundColorHover: backgroundColorHover,
   backgroundColorFocused: backgroundColorFocused,
-  backgroundColorDisabled: gray200,
+  backgroundColorDisabled: colors.gray200,
 
   boxShadow: boxShadow,
   boxShadowHover: boxShadowHover,
 
-  gray50: gray50,
-  gray100: gray100,
-  gray200: gray200,
-  gray300: gray300,
-  gray400: gray400,
-  gray500: gray500,
-  gray600: gray600,
-  gray700: gray700,
-  gray800: gray800,
-  gray900: gray900,
+  // Colors
+  ...colors,
 
-  white: white,
   primary: primary,
   success: success,
   warning: warning,
   error: error,
-  magenta: magenta,
 
   heightComponents: heightComponents,
   heightElements: heightElements,
