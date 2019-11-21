@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-
-import FieldGroup from 'components/FieldGroup';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 import { ISO_FORMAT } from 'utils/dates';
+import FieldGroup from 'components/FieldGroup';
 
 import { StyledSwitchPeriodComparative } from 'styles/components/StyledSwitchPeriodComparative';
 
@@ -19,6 +19,7 @@ const getYearBefore = (date, years) =>
   moment(new Date(date)).subtract(years, 'y');
 
 const propTypes = {
+  ...GeneralPropTypes,
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
   previousPriodText: PropTypes.string,
@@ -26,7 +27,11 @@ const propTypes = {
   onPeriodSelect: PropTypes.func,
 };
 
-class SwitchPeriodComparative extends PureComponent {
+const defaultProps = {
+  ...DefaultGeneralPropTypes,
+};
+
+export class SwitchPeriodComparative extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,6 +106,7 @@ class SwitchPeriodComparative extends PureComponent {
       endDate,
       previousPriodText,
       samePriodLastYearText,
+      theme,
     } = this.props;
     const [previousStartDate, previousEndDate] = this.previousDate(
       startDate,
@@ -117,7 +123,7 @@ class SwitchPeriodComparative extends PureComponent {
     const previousPriod = `${previousStartDate} - ${previousEndDate}`;
     const samePriodLastYear = `${lastYearStartDate} - ${lastYearEndDate}`;
     return (
-      <StyledSwitchPeriodComparative>
+      <StyledSwitchPeriodComparative theme={theme}>
         <div className="compare-period">
           <div className="compare-period-container">
             <FieldGroup
@@ -155,5 +161,6 @@ class SwitchPeriodComparative extends PureComponent {
 StyledSwitchPeriodComparative.displayName = 'StyledSwitchPeriodComparative';
 
 SwitchPeriodComparative.propTypes = propTypes;
+SwitchPeriodComparative.defaultProps = defaultProps;
 
 export default SwitchPeriodComparative;

@@ -1,11 +1,8 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import SwitchPeriodComparative from 'components/SwitchPeriodComparative';
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
-import Title from 'components/Title';
-import Theme from 'components/Theme';
 
 import {
   startDate,
@@ -13,38 +10,32 @@ import {
   previousPriodText,
   samePriodLastYearText,
 } from 'test/mock/SwitchPeriodComparative';
+import Row from '../components/Row';
+import Paragraph from '../components/Paragraph';
 
-storiesOf('SwitchPeriodComparative', module)
-  .addParameters({
-    jest: ['SwitchPeriodComparative'],
-  })
-  .add('basic', () => (
-    <Theme>
-      <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Cell size="full">
-          <Title text="Basic SwitchPeriodComparative:" line />
-        </Cell>
-        <Cell size="auto" medium={12}>
-          <SwitchPeriodComparative
-            startDate={startDate}
-            endDate={endDate}
-            previousPriodText={previousPriodText}
-            samePriodLastYearText={samePriodLastYearText}
-            onPeriodSelect={a => console.log(a)}
-          />
-        </Cell>
-      </Grid>
-    </Theme>
-  ))
-  .add('without text', () => (
-    <Theme>
-      <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Cell size="full">
-          <Title text="Basic SwitchPeriodComparative:" line />
-        </Cell>
-        <Cell size="auto" medium={12}>
-          <SwitchPeriodComparative startDate={startDate} endDate={endDate} />
-        </Cell>
-      </Grid>
-    </Theme>
-  ));
+export default {
+  title: 'SwitchPeriodComparative',
+  component: SwitchPeriodComparative,
+};
+
+export const switchPeriodComparative = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          A switch period comparative between two dates start and end, the text
+          its optional so if you dont put nothing its ok
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <SwitchPeriodComparative
+          startDate={startDate}
+          endDate={endDate}
+          previousPriodText={previousPriodText}
+          samePriodLastYearText={samePriodLastYearText}
+          onPeriodSelect={a => console.log(a)}
+        />
+      </Cell>
+    </Row>
+  </Grid>
+);
