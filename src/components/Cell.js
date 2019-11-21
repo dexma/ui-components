@@ -41,6 +41,7 @@ const Cell = ({
   last,
   dataCy,
   children,
+  className,
   theme,
 }) => {
   return (
@@ -57,6 +58,7 @@ const Cell = ({
       last={last}
       data-cy={dataCy}
       theme={theme}
+      className={className}
     >
       {children || null}
     </StyledCell>

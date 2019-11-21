@@ -12,6 +12,9 @@ import { BUTTON_SIZE } from 'components/Button';
 const propTypes = {
   ...GeneralPropTypes,
   name: PropTypes.string.isRequired,
+  /**
+   A color that are set on the theme for example: gray200
+   */
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.oneOf(BUTTON_SIZE), PropTypes.number]),
 };
@@ -19,7 +22,7 @@ const propTypes = {
 const defaultProps = {
   ...DefaultGeneralPropTypes,
   name: 'vader',
-  style: 'primary',
+  color: 'iconColor',
   size: 'large',
 };
 
@@ -53,7 +56,7 @@ const getIconPaths = name => {
   });
 };
 
-const Icon = ({ name, color, size, dataCy, theme }) => {
+export const Icon = ({ name, color, size, dataCy, theme }) => {
   const fillColor = get(theme, color);
   const pathElements = getIconPaths(name);
   const iconSize = getIconSize(size);
