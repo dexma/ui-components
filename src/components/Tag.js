@@ -5,6 +5,7 @@ import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 import Icon from 'components/Icon';
 
 import { StyledTag } from 'styles/components/StyledTag';
+import get from 'lodash/get';
 
 const propTypes = {
   ...GeneralPropTypes,
@@ -30,8 +31,9 @@ const defaultProps = {
 };
 
 export const Tag = ({ theme, color, icon, type, variant, children }) => {
+  const tagColor = get(theme, color) || color;
   return (
-    <StyledTag theme={theme} color={color} type={type} variant={variant}>
+    <StyledTag theme={theme} color={tagColor} type={type} variant={variant}>
       {icon && <Icon name={icon} size="small" />}
       <span>{children && children}</span>
     </StyledTag>

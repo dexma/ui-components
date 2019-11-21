@@ -48,6 +48,15 @@ export const gray900 = props => propFromTheme(props, 'gray900');
 export const white = props => propFromTheme(props, 'white');
 export const error = props => propFromTheme(props, 'error');
 export const magenta = props => propFromTheme(props, 'magenta');
+export const blue = props => propFromTheme(props, 'blue');
+export const blueLight = props => propFromTheme(props, 'blueLight');
+export const orange = props => propFromTheme(props, 'orange');
+export const red = props => propFromTheme(props, 'red');
+export const amber = props => propFromTheme(props, 'amber');
+export const brown = props => propFromTheme(props, 'brown');
+export const grey = props => propFromTheme(props, 'grey');
+export const green = props => propFromTheme(props, 'green');
+export const purple = props => propFromTheme(props, 'purple');
 export const primaryColor = props => propFromTheme(props, 'primary');
 export const primaryColorSvg = props => {
   const newPrimaryColor = propFromTheme(props, 'primary');
