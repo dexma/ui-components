@@ -4,16 +4,11 @@ import { rotate360 } from 'styles/utils/animation';
 
 const StyledSpinner = styled.div`
   border-radius: 3em;
-  cursor: progress;
   display: inline-block;
   overflow: hidden;
   position: relative;
   transition: all 200ms ease-out;
   vertical-align: middle;
-  top: 50%;
-  left: 50%;
-  //margin-top: -${props => props.size / 2}px;
-  margin-left: -${props => props.size / 2}px;
   height: ${props => props.size}px;
   width: ${props => props.size}px;
   animation: ${rotate360} 0.7s linear infinite;
@@ -21,6 +16,7 @@ const StyledSpinner = styled.div`
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.03);
   border-top-color: rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
 `;
 
 export { StyledSpinner };

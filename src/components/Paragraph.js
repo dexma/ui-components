@@ -7,16 +7,18 @@ import { StyledParagraph } from 'styles/components/StyledParagraph';
 
 const propTypes = {
   ...GeneralPropTypes,
+  m: PropTypes.string,
   children: PropTypes.node,
 };
 
 const defaultProps = {
   ...DefaultGeneralPropTypes,
+  m: '0 0 0 0',
 };
 
-const Paragraph = ({ dataCy, theme, children }) => {
+const Paragraph = ({ dataCy, theme, m, children }) => {
   return (
-    <StyledParagraph data-cy={dataCy} theme={theme}>
+    <StyledParagraph margin={m} data-cy={dataCy} theme={theme}>
       {children || null}
     </StyledParagraph>
   );

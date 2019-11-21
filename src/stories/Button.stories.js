@@ -3,6 +3,7 @@ import { Button } from 'components/Button';
 import Grid from 'components/Grid';
 import Row from 'components/Row';
 import Cell from 'components/Cell';
+import Paragraph from 'components/Paragraph';
 
 export default {
   title: 'Button',
@@ -12,6 +13,12 @@ export default {
 export const buttons = () => (
   <Grid fluid>
     <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          Use different button variant to build hierarchy in the application
+          layout.
+        </Paragraph>
+      </Cell>
       <Cell xs={12}>
         <Button text="Primary" variant="primary" />
         <Button text="Secondary" variant="secondary" />
@@ -27,6 +34,11 @@ export const buttons = () => (
 export const sizes = () => (
   <Grid fluid>
     <Row>
+      <Cell xs={12}>
+        <Paragraph m="1.5rem 0 1rem 0">
+          We have 4 different sizes for our buttons
+        </Paragraph>
+      </Cell>
       <Cell xs={12}>
         <Button variant="primary" size="small" text="Small" />
         <Button variant="primary" size="medium" text="Medium" />
@@ -49,18 +61,98 @@ export const icons = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Button text="Primary" variant="primary" iconBefore="delete" />
-        <Button text="Secondary" variant="secondary" iconBefore="delete" />
-        <Button text="Outline" variant="outline" iconBefore="delete" />
-        <Button text="Destructive" variant="destructive" iconBefore="delete" />
-        <Button text="Link" variant="link" iconBefore="delete" />
+        <Paragraph m="1.5rem 0 1rem 0">
+          We can add icon before and after by setting the iconBefore or
+          iconAfter property and isCircle to set a circle button
+        </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Button variant="primary" size="medium" iconBefore="delete" isCircle />
-        <Button variant="secondary" iconBefore="delete" isCircle />
-        <Button variant="outline" size="medium" iconBefore="delete" isCircle />
+        <Button text="Primary" variant="primary" iconBefore="add" />
+        <Button text="Secondary" variant="secondary" iconBefore="image" />
+        <Button text="Outline" variant="outline" iconAfter="gas" />
+        <Button text="Destructive" variant="destructive" iconBefore="delete" />
+        <Button text="Link" variant="link" iconBefore="world" />
+      </Cell>
+      <Cell xs={12}>
+        <Button variant="primary" iconBefore="add" isCircle />
+        <Button variant="secondary" iconBefore="image" isCircle />
+        <Button variant="outline" iconBefore="gas" isCircle />
         <Button variant="destructive" iconBefore="delete" isCircle />
-        <Button variant="link" iconBefore="delete" isCircle />
+        <Button variant="link" iconBefore="world" isCircle />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const loading = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1.5rem 0 1rem 0">
+          A loading indicator can be added to a button by setting the isLoading
+          property on the Button.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Button text="Primary" variant="primary" iconBefore="add" isLoading />
+        <Button
+          text="Secondary"
+          variant="secondary"
+          iconBefore="image"
+          isLoading
+        />
+        <Button text="Outline" variant="outline" iconAfter="gas" isLoading />
+        <Button
+          text="Destructive"
+          variant="destructive"
+          iconBefore="delete"
+          isLoading
+        />
+        <Button text="Link" variant="link" iconBefore="world" isLoading />
+      </Cell>
+      <Cell xs={12}>
+        <Button variant="primary" iconBefore="add" isCircle isLoading />
+        <Button variant="secondary" iconBefore="image" isCircle isLoading />
+        <Button variant="outline" iconBefore="gas" isCircle isLoading />
+        <Button variant="destructive" iconBefore="delete" isCircle isLoading />
+        <Button variant="link" iconBefore="world" isCircle isLoading />
+      </Cell>
+      <Cell xs={12}>
+        <Button
+          variant="primary"
+          iconBefore="add"
+          isCircle
+          isLoading
+          isDisabled
+        />
+        <Button
+          variant="secondary"
+          iconBefore="image"
+          isCircle
+          isLoading
+          isDisabled
+        />
+        <Button
+          variant="outline"
+          iconBefore="gas"
+          isCircle
+          isLoading
+          isDisabled
+        />
+        <Button
+          variant="destructive"
+          iconBefore="delete"
+          isCircle
+          isLoading
+          isDisabled
+        />
+        <Button
+          variant="link"
+          iconBefore="world"
+          isCircle
+          isLoading
+          isDisabled
+        />
       </Cell>
     </Row>
   </Grid>

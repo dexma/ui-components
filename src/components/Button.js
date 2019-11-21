@@ -27,18 +27,17 @@ const propTypes = {
   buttonRef: PropTypes.func,
   text: PropTypes.string,
   type: PropTypes.oneOf(BUTTON_TYPE),
+  size: PropTypes.oneOf(BUTTON_SIZE).isRequired,
+  variant: PropTypes.oneOf(BUTTON_VARIANT).isRequired,
   iconBefore: PropTypes.string,
   iconAfter: PropTypes.string,
   tooltip: PropTypes.string,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
-  isActive: PropTypes.bool,
+  isLoading: PropTypes.bool,
   isDisabled: PropTypes.bool,
   isCircle: PropTypes.bool,
-  size: PropTypes.oneOf(BUTTON_SIZE),
-  variant: PropTypes.oneOf(BUTTON_VARIANT),
   isExpanded: PropTypes.bool,
-  isLoading: PropTypes.bool,
   debounceTime: PropTypes.number,
   children: PropTypes.node,
 };
@@ -46,11 +45,11 @@ const propTypes = {
 const defaultProps = {
   ...DefaultGeneralPropTypes,
   type: 'button',
-  isActive: false,
-  isDisabled: false,
-  isLoading: false,
   size: 'small',
   variant: 'secondary',
+  isDisabled: false,
+  isLoading: false,
+  isExpanded: false,
 };
 
 const getButtonIconSize = size => {
@@ -70,7 +69,6 @@ export const Button = ({
   tooltip,
   onClick,
   onFocus,
-  isActive,
   isDisabled,
   isExpanded,
   isLoading,
@@ -82,12 +80,7 @@ export const Button = ({
   theme,
   children,
 }) => {
-  const classes = classNames(
-    isActive && 'active',
-    isExpanded && 'expanded',
-    size && size,
-    variant && variant
-  );
+  const classes = classNames(isExpanded && 'expanded', size && size);
   const handleClick =
     debounceTime > 0 ? debounce(onClick, debounceTime) : onClick;
   const spinnerSize = getIconSize(size);
@@ -109,12 +102,14 @@ export const Button = ({
       iconAfter={iconAfter}
       isCircle={isCircle}
       text={text}
+      isDisabled={isDisabled}
+      isLoading={isLoading}
     >
       {isLoading ? <Spinner size={spinnerSize} /> : null}
       {!isLoading && iconBefore ? (
         <Icon name={iconBefore} size={iconSize} color="white" />
       ) : null}
-      {!isLoading && text ? text : null}
+      {text || null}
       {children || null}
       {!isLoading && iconAfter ? (
         <Icon name={iconAfter} size={iconSize} color="white" />

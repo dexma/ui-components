@@ -8,6 +8,7 @@ const StyledLoading = styled.div`
   z-index: 999999999;
   display: flex;
   align-items: center;
+  justify-content: center;
   ${StyledSpinner} {
     align-self: center;
   }
