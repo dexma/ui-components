@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { padding, margin, borderRadius, boxShadow } from 'styles/selectors';
+import { margin, borderRadius, boxShadow } from 'styles/selectors';
 
 const StyledModal = styled.div`
   .mask {
@@ -50,7 +50,7 @@ const StyledModal = styled.div`
       opacity 500ms cubic-bezier(0, 0, 0.25, 1);
     width: ${props => props.width};
     height: ${props => props.height};
-    padding: ${padding};
+    padding: 1.25rem 0 0.5rem 0;
     margin: ${margin};
     z-index: 10002;
   }
@@ -61,6 +61,14 @@ const StyledModal = styled.div`
     height: 0;
     width: 0;
     overflow: hidden;
+  }
+
+  .close-icon {
+    border: 0px;
+    float: right;
+    position: absolute;
+    top: 10px;
+    right: 5px;
   }
 `;
 

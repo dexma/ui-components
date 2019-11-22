@@ -46,7 +46,7 @@ const defaultProps = {
   ...DefaultGeneralPropTypes,
   type: 'button',
   size: 'small',
-  variant: 'secondary',
+  variant: 'primary',
   isDisabled: false,
   isLoading: false,
   isExpanded: false,

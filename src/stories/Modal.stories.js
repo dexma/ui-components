@@ -17,9 +17,14 @@ class ModalView extends Component {
   }
 
   showModal = () => {
-    const { showModal } = this.state;
     this.setState({
-      showModal: !showModal,
+      showModal: true,
+    });
+  };
+
+  hideModal = () => {
+    this.setState({
+      showModal: false,
     });
   };
 
@@ -29,8 +34,8 @@ class ModalView extends Component {
         <Button text="Open modal" onClick={() => this.showModal()} />
         <Modal
           visible={this.state.showModal}
-          width="700px"
-          onClickAway={() => this.showModal()}
+          width="440px"
+          onClickAway={() => this.hideModal()}
         >
           <div className="modal-uninstall">
             <Grid fluid>
@@ -39,14 +44,14 @@ class ModalView extends Component {
                   <Heading text="Basic modal" />
                   <Paragraph>The body of the basic modal</Paragraph>
                 </Cell>
-                <Cell xs={12}>
-                  <Button variant="primary" onClick={() => this.showModal()}>
-                    Ok
-                  </Button>{' '}
+                <Cell xs>
                   <Button
                     variant="destructive"
-                    onClick={() => this.showModal()}
+                    onClick={() => this.hideModal()}
                   >
+                    Yes, delete project
+                  </Button>
+                  <Button variant="secondary" onClick={() => this.hideModal()}>
                     Cancel
                   </Button>
                 </Cell>
@@ -68,7 +73,11 @@ export const modals = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Basic pagination</Paragraph>
+        <Paragraph m="1rem 0 1rem 0">
+          Basic modal dialogs see
+          <a href="https://ant.design/components/modal/">this link</a>
+          for more information about the props
+        </Paragraph>
       </Cell>
       <Cell xs={12}>
         <ModalView />
