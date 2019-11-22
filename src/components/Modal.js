@@ -20,7 +20,7 @@ const defaultProps = {
   visible: false,
 };
 
-class Modal extends PureComponent {
+export class Modal extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

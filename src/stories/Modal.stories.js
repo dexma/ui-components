@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { storiesOf } from '@storybook/react';
 
+import { Modal } from 'components/Modal';
 import Grid from 'components/Grid';
 import Row from 'components/Row';
 import Cell from 'components/Cell';
 import Button from 'components/Button';
-import Modal from 'components/Modal';
-import Theme from 'components/Theme';
+import Paragraph from 'components/Paragraph';
+import Heading from 'components/Heading';
 
 class ModalView extends Component {
   constructor(props) {
@@ -36,9 +36,8 @@ class ModalView extends Component {
             <Grid fluid>
               <Row>
                 <Cell xs={12}>
-                  <p className="confirm-uninstall">
-                    Are you sure that want uninstall this market application?
-                  </p>
+                  <Heading text="Basic modal" />
+                  <Paragraph>The body of the basic modal</Paragraph>
                 </Cell>
                 <Cell xs={12}>
                   <Button variant="primary" onClick={() => this.showModal()}>
@@ -60,17 +59,20 @@ class ModalView extends Component {
   }
 }
 
-storiesOf('Modal', module)
-  .addParameters({
-    jest: ['Modal'],
-  })
-  .add('basic', () => (
-    <Theme>
-      <Grid type="vertical" horizontalPadding verticalPadding>
-        <Cell size="full"></Cell>
-        <Cell size="full">
-          <ModalView />
-        </Cell>
-      </Grid>
-    </Theme>
-  ));
+export default {
+  title: 'Modal',
+  component: Modal,
+};
+
+export const modals = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">Basic pagination</Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <ModalView />
+      </Cell>
+    </Row>
+  </Grid>
+);
