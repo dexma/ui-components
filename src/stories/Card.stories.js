@@ -8,7 +8,6 @@ import Card, {
 } from 'components/Card';
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
-import Title from 'components/Title';
 import Button from 'components/Button';
 
 const IMAGES = [
@@ -24,9 +23,7 @@ storiesOf('Card', module)
   })
   .add('with text', () => (
     <Grid type="horizontal" horizontalPadding verticalPadding>
-      <Cell size="full">
-        <Title text="Basic cards with icons:" line />
-      </Cell>
+      <Cell size="full"></Cell>
       <Cell size="auto" medium={6}>
         <Card
           title="The title"
@@ -59,9 +56,7 @@ storiesOf('Card', module)
   ))
   .add('with icon and text', () => (
     <Grid type="horizontal" horizontalPadding verticalPadding>
-      <Cell size="full">
-        <Title text="Basic cards with icons:" line />
-      </Cell>
+      <Cell size="full"></Cell>
       <Cell size="auto" medium={3}>
         <Card
           icon="r2d2"
@@ -98,9 +93,7 @@ storiesOf('Card', module)
   ))
   .add('with link, image and text', () => (
     <Grid type="horizontal" horizontalPadding verticalPadding>
-      <Cell size="full">
-        <Title text="Basic cards with not text activated:" line />
-      </Cell>
+      <Cell size="full"></Cell>
       <Cell size="auto" medium={6}>
         <Card
           image={IMAGES[0]}
@@ -138,9 +131,7 @@ storiesOf('Card', module)
   .add('with image, text and footer', () => (
     <Fragment>
       <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Cell size="full">
-          <Title text="Cards image horizontal:" line />
-        </Cell>
+        <Cell size="full"></Cell>
       </Grid>
       <CardLayoutEquals>
         <Card
@@ -174,9 +165,7 @@ storiesOf('Card', module)
   .add('with image', () => (
     <Fragment>
       <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Cell size="full">
-          <Title text="Basic cards with not text activated:" line />
-        </Cell>
+        <Cell size="full"></Cell>
       </Grid>
       <CardLayoutEquals>
         <Card image={IMAGES[0]} />
@@ -189,9 +178,7 @@ storiesOf('Card', module)
   .add('with layout horizontal', () => (
     <Fragment>
       <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Cell size="full">
-          <Title text="Cards image horizontal:" line />
-        </Cell>
+        <Cell size="full"></Cell>
       </Grid>
       <CardLayoutHorizontal>
         <Card

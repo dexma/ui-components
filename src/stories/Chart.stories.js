@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 import Chart from 'components/Chart';
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
-import Title from 'components/Title';
 import Button from 'components/Button';
 
 const configChart = {
@@ -114,9 +113,7 @@ storiesOf('Chart', module)
   })
   .add('basic', () => (
     <Grid type="horizontal" horizontalPadding verticalPadding>
-      <Cell size="full">
-        <Title text="Basic cards with text:" line />
-      </Cell>
+      <Cell size="full"></Cell>
       <Cell size="auto" medium={12}>
         <ViewChart options={configChart} />
       </Cell>
@@ -124,9 +121,7 @@ storiesOf('Chart', module)
   ))
   .add('sankey', () => (
     <Grid type="horizontal" horizontalPadding verticalPadding>
-      <Cell size="full">
-        <Title text="Basic cards with text:" line />
-      </Cell>
+      <Cell size="full"></Cell>
       <Cell size="auto" medium={12}>
         <Chart options={configSankey} />
       </Cell>

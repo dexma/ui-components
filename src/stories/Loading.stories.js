@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 import Loading from 'components/Loading';
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
-import Title from 'components/Title';
 
 storiesOf('Loading', module)
   .addParameters({
@@ -12,9 +11,7 @@ storiesOf('Loading', module)
   })
   .add('basic', () => (
     <Grid type="vertical" horizontalPadding verticalPadding>
-      <Cell size="full">
-        <Title text="Basic loading:" line />
-      </Cell>
+      <Cell size="full"></Cell>
       <Cell size="auto">
         <div
           style={{ background: '#eee', padding: '1.5em', position: 'relative' }}

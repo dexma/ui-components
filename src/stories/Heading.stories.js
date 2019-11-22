@@ -1,57 +1,74 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-
-import Title from 'components/Title';
-import Heading from 'components/Heading';
+import { Heading } from 'components/Heading';
+import { Button } from 'components/Button';
+import { Divider } from 'components/Divider';
 import Grid from 'components/Grid';
+import Row from 'components/Row';
 import Cell from 'components/Cell';
-import Theme from 'components/Theme';
+import Paragraph from 'components/Paragraph';
+import styled from 'styled-components';
 
-storiesOf('Heading', module)
-  .addParameters({
-    jest: ['Heading'],
-  })
-  .add('basic', () => (
-    <Theme>
-      <Grid type="vertical" horizontalPadding verticalPadding>
-        <Cell size="full">
-          <Title text="Basic Headings:" line />
+const StyledBox = styled.div`
+  width: 100%;
+  button {
+    float: right;
+  }
+`;
+
+export default {
+  title: 'Heading',
+  component: Heading,
+};
+
+export const headings = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          All HTML headings, h1 through h6, are available.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Heading type="h1" text="Some Heading" line={false} />
+        <Heading type="h2" text="Some Heading" line={false} />
+        <Heading type="h3" text="Some Heading" line={false} />
+        <Heading type="h4" text="Some Heading" line={false} />
+        <Heading type="h5" text="Some Heading" line={false} />
+        <Heading type="h6" text="Some Heading" line={false} />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const childrens = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          All HTML headings, h1 through h6, are available.
+        </Paragraph>
+      </Cell>
+      <StyledBox>
+        <Cell xs={12}>
+          <Heading text="Some Heading" line>
+            <Button size="small" variant="primary" iconAfter="add" isCircle />
+          </Heading>
+          <Divider />
         </Cell>
-        <Cell size="full">
-          <Heading type="h1" text="Some Heading" line={false} />
-          <br />
-          <Heading type="h2" text="Some Heading" line={false} />
-          <br />
-          <Heading type="h3" text="Some Heading" line={false} />
-          <br />
-          <Heading type="h4" text="Some Heading" line={false} />
-          <br />
-          <Heading type="h5" text="Some Heading" line={false} />
-          <br />
-          <Heading type="h6" text="Some Heading" line={false} />
+        <Cell xs={12}>
+          <Heading text="Some Heading" line>
+            <Button size="small" variant="link" iconAfter="delete" />
+            <Button
+              size="small"
+              variant="primary"
+              text="Settings"
+              iconBefore="settings"
+            />
+            <Button size="small" variant="primary" iconAfter="add" isCircle />
+          </Heading>
+          <Divider />
         </Cell>
-      </Grid>
-    </Theme>
-  ))
-  .add('with line', () => (
-    <Theme>
-      <Grid type="vertical" horizontalPadding verticalPadding>
-        <Cell size="full">
-          <Title text="Basic Headings:" line />
-        </Cell>
-        <Cell size="full">
-          <Heading type="h1" text="Some Heading" line />
-          <br />
-          <Heading type="h2" text="Some Heading" line />
-          <br />
-          <Heading type="h3" text="Some Heading" line />
-          <br />
-          <Heading type="h4" text="Some Heading" line />
-          <br />
-          <Heading type="h5" text="Some Heading" line />
-          <br />
-          <Heading type="h6" text="Some Heading" line />
-        </Cell>
-      </Grid>
-    </Theme>
-  ));
+      </StyledBox>
+    </Row>
+  </Grid>
+);
