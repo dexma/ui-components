@@ -7,6 +7,21 @@ import Cell from 'components/Cell';
 import Paragraph from 'components/Paragraph';
 import icon from 'config/icon';
 
+const StyledBoxSearch = styled.div`
+  width: 100%;
+  .search {
+    padding: 13px 25px;
+    border: 1px solid #d6d8db;
+    border-radius: 4px;
+    width: 100%;
+    display: block;
+    margin: 25px auto 50px auto;
+  }
+  .box-icon {
+    text-align: center;
+  }
+`;
+
 export default {
   title: 'Icon',
   component: Icon,
@@ -55,21 +70,6 @@ export const icons = () => (
     </Row>
   </Grid>
 );
-
-const StyledBoxSearch = styled.div`
-  width: 100%;
-  .search {
-    padding: 13px 25px;
-    border: 1px solid #d6d8db;
-    border-radius: 4px;
-    width: 100%;
-    display: block;
-    margin: 25px auto 50px auto;
-  }
-  .box-icon {
-    text-align: center;
-  }
-`;
 
 class SearchIcons extends Component {
   constructor(props) {

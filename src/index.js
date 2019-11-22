@@ -17,7 +17,6 @@ import Spinner from 'components/Spinner';
 import SwitchPeriodComparative from 'components/SwitchPeriodComparative';
 import Table from 'components/Table';
 import Theme from 'components/Theme';
-import Title from 'components/Title';
 import { Toaster, ToasterConsumer, ToastType } from 'components/toaster';
 
 // Utils
@@ -57,7 +56,6 @@ export {
   ToasterConsumer,
   ToastType,
   Theme,
-  Title,
   ISO_FORMAT,
   DATE_RANGE,
   day,

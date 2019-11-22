@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 import DatePicker from 'components/DatePicker';
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
-import Title from 'components/Title';
 import Theme from 'components/Theme';
 
 const period = [
@@ -26,9 +25,7 @@ storiesOf('DatePicker', module)
   .add('basic', () => (
     <Theme>
       <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Cell size="full">
-          <Title text="DatePicker" line />
-        </Cell>
+        <Cell size="full"></Cell>
         <Cell medium={12} large={12}>
           <DatePicker />
         </Cell>
@@ -38,9 +35,7 @@ storiesOf('DatePicker', module)
   .add('with selector', () => (
     <Theme>
       <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Cell size="full">
-          <Title text="DatePicker with selector" line />
-        </Cell>
+        <Cell size="full"></Cell>
         <Cell medium={12} large={12}>
           <DatePicker
             periodOptions={period}

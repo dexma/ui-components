@@ -10,15 +10,15 @@ import {
 const getWidthContainer = props => {
   return css`
     @media only screen and (min-width: 48em) {
-      width: ${gridContainerSm(props)};
+      max-width: ${gridContainerSm(props)};
     }
 
     @media only screen and (min-width: 64em) {
-      width: ${gridContainerMd(props)};
+      max-width: ${gridContainerMd(props)};
     }
 
     @media only screen and (min-width: 75em) {
-      width: ${gridContainerLg(props)};
+      max-width: ${gridContainerLg(props)};
     }
   `;
 };
@@ -26,6 +26,7 @@ const getWidthContainer = props => {
 const StyledGrid = styled.div`
   margin-right: auto;
   margin-left: auto;
+  width: 100%;
   ${props =>
     props.fluid
       ? css`

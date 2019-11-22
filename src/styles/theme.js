@@ -62,7 +62,7 @@ export const radius = '4px';
 export const padding = '20px';
 export const borderColor = colors.gray200;
 export const heightElements = '30px';
-export const heightComponents = 2.25;
+export const heightComponents = 2;
 export const spacer = '1rem';
 export const boxShadow = '0 1px 5px 0 rgba(0,0,0,0.2)';
 export const boxShadowHover = '0 4px 8px 0 rgba(0, 0, 0, 0.2)';
@@ -250,7 +250,7 @@ const grid = {
 // ==========================================================================
 
 const paginationPaddingX = 0.75;
-const paginationHeight = 1.9;
+const paginationHeight = heightComponents;
 const paginationFontSize = fontSizeNumber;
 
 const pagination = {
