@@ -29,12 +29,12 @@ export const headings = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Heading type="h1" text="Some Heading" line={false} />
-        <Heading type="h2" text="Some Heading" line={false} />
-        <Heading type="h3" text="Some Heading" line={false} />
-        <Heading type="h4" text="Some Heading" line={false} />
-        <Heading type="h5" text="Some Heading" line={false} />
-        <Heading type="h6" text="Some Heading" line={false} />
+        <Heading type="h1" text="Heading" line={false} />
+        <Heading type="h2" text="Heading" line={false} />
+        <Heading type="h3" text="Heading" line={false} />
+        <Heading type="h4" text="Heading" line={false} />
+        <Heading type="h5" text="Heading" line={false} />
+        <Heading type="h6" text="Heading" line={false} />
       </Cell>
     </Row>
   </Grid>
@@ -45,19 +45,18 @@ export const childrens = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph m="1rem 0 1rem 0">
-          All HTML headings, h1 through h6, are available.
+          You can customize the heading sending children component{' '}
         </Paragraph>
       </Cell>
       <StyledBox>
         <Cell xs={12}>
-          <Heading text="Some Heading" line>
+          <Heading text="Heading" line>
             <Button size="small" variant="primary" iconAfter="add" isCircle />
           </Heading>
           <Divider />
         </Cell>
         <Cell xs={12}>
-          <Heading text="Some Heading" line>
-            <Button size="small" variant="link" iconAfter="delete" />
+          <Heading text="Heading" line>
             <Button
               size="small"
               variant="primary"

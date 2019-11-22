@@ -26,7 +26,7 @@ const itemRender = (current, type, originalElement) => {
   return originalElement;
 };
 
-const Pagination = ({ theme, dataCy, ...props }) => {
+export const Pagination = ({ theme, dataCy, ...props }) => {
   return (
     <StyledPagination theme={theme}>
       <PaginationAntDesign itemRender={itemRender} {...props} />
