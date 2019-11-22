@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
+import Icon from 'components/Icon';
 
 import { StyledModal } from 'styles/components/StyledModal';
 
@@ -10,6 +11,7 @@ const propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   onClickAway: PropTypes.func,
+  closeIcon: PropTypes.bool,
   visible: PropTypes.bool,
 };
 
@@ -17,6 +19,7 @@ const defaultProps = {
   ...DefaultGeneralPropTypes,
   width: '600px',
   height: 'auto',
+  closeIcon: true,
   visible: false,
 };
 
@@ -43,24 +46,42 @@ export class Modal extends PureComponent {
     window.removeEventListener('keydown', this.keyDown);
   }
 
+  hideModal = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
   keyDown = event => {
     if (event.key === 'Escape') {
-      this.setState({
-        visible: false,
-      });
+      this.hideModal();
     }
   };
 
   render() {
     const { visible } = this.state;
-    const { width, height, theme, onClickAway, children } = this.props;
+    const {
+      width,
+      height,
+      theme,
+      onClickAway,
+      closeIcon,
+      children,
+    } = this.props;
     const containerClass = visible ? 'container' : 'containerHidden';
     const panelClass = visible ? 'panel' : 'panelHidden';
     const maskClass = visible ? 'mask' : 'maskHidden';
     return (
       <StyledModal width={width} height={height} theme={theme}>
         <div className={containerClass}>
-          <div className={panelClass}>{children}</div>
+          <div className={panelClass}>
+            {closeIcon && (
+              <button onClick={this.hideModal} className="close-icon">
+                <Icon name="close" color="gray300" size="medium" />
+              </button>
+            )}
+            {children}
+          </div>
           <div className={maskClass} onClick={onClickAway} />
         </div>
       </StyledModal>
