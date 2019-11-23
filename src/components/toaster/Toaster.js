@@ -15,7 +15,7 @@ const defaultProps = {
   theme: theme,
 };
 
-class Toaster extends PureComponent {
+export class Toaster extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

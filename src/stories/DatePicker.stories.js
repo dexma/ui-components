@@ -1,10 +1,10 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
-import DatePicker from 'components/DatePicker';
+import { DatePicker } from 'components/DatePicker';
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
-import Theme from 'components/Theme';
+import Row from '../components/Row';
+import Paragraph from '../components/Paragraph';
 
 const period = [
   { value: 'custom', label: 'Custom' },
@@ -18,30 +18,44 @@ const period = [
   { value: 'previous_year', label: 'Previous year' },
 ];
 
-storiesOf('DatePicker', module)
-  .addParameters({
-    jest: ['DatePicker'],
-  })
-  .add('basic', () => (
-    <Theme>
-      <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Cell size="full"></Cell>
-        <Cell medium={12} large={12}>
-          <DatePicker />
-        </Cell>
-      </Grid>
-    </Theme>
-  ))
-  .add('with selector', () => (
-    <Theme>
-      <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Cell size="full"></Cell>
-        <Cell medium={12} large={12}>
-          <DatePicker
-            periodOptions={period}
-            periodDefault={{ value: 'last_7_days', label: 'Last 7 days' }}
-          />
-        </Cell>
-      </Grid>
-    </Theme>
-  ));
+export default {
+  title: 'DatePicker',
+  component: DatePicker,
+};
+
+export const datePicker = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          We preset a series of colorful tag styles for use in different
+          situations. You can also set it to a hex color string for custom
+          color.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <DatePicker />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const preiod = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          We preset a series of colorful tag styles for use in different
+          situations. You can also set it to a hex color string for custom
+          color.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <DatePicker
+          periodOptions={period}
+          periodDefault={{ value: 'last_7_days', label: 'Last 7 days' }}
+        />
+      </Cell>
+    </Row>
+  </Grid>
+);

@@ -32,7 +32,7 @@ export const Toast = ({ text, type, theme }) => {
 
   return (
     <StyledToast theme={theme} type={type}>
-      <Icon name={iconName} size="large" />
+      <Icon name={iconName} size="large" color="white" />
       <span>{text}</span>
     </StyledToast>
   );
