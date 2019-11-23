@@ -48,7 +48,7 @@ const Option = props => {
   );
 };
 
-const Select = ({ dataCy, theme, ...props }) => {
+export const Select = ({ dataCy, theme, ...props }) => {
   const { size } = props;
   return (
     <StyledSelect theme={theme} size={size}>
