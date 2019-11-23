@@ -319,6 +319,10 @@ const getStorybookStyles = css`
   ${StyledButton} {
     margin-right: 5px;
   }
+  .css-1tb5rpz,
+  .css-h1ypda {
+    overflow: visible !important;
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`

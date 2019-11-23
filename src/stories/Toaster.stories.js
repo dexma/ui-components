@@ -1,29 +1,32 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-
 import { Toaster, ToasterConsumer, ToastType } from 'components/toaster';
 import Grid from 'components/Grid';
+import Row from 'components/Row';
 import Cell from 'components/Cell';
-import { Sizes } from 'config/foundation';
-import Button from 'components/Button';
+import Paragraph from 'components/Paragraph';
+import { Button } from 'components/Button';
 
-storiesOf('Toaster', module)
-  .addParameters({
-    jest: ['Toaster'],
-  })
-  .add('basic', () => (
-    <Toaster>
-      <Grid type="vertical" horizontalPadding verticalPadding>
-        <Cell
-          medium={2}
-          style={{ height: '1500px', backgroundColor: 'cornsilk' }}
-        >
+export default {
+  title: 'Toaster',
+  component: Toaster,
+};
+
+export const toaster = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          We preset a series of toaster that appear on the top of the view
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Toaster>
           <ToasterConsumer>
             {context => (
-              <React.Fragment>
+              <>
                 <Button
-                  size={Sizes[1]}
-                  text="INFO"
+                  variant="outline"
+                  text="Information"
                   onClick={() => {
                     context.toast({
                       text:
@@ -33,8 +36,8 @@ storiesOf('Toaster', module)
                   }}
                 />
                 <Button
-                  size={Sizes[1]}
-                  text="SUCCESS"
+                  variant="outline"
+                  text="Success"
                   onClick={() => {
                     context.toast({
                       text:
@@ -44,8 +47,8 @@ storiesOf('Toaster', module)
                   }}
                 />
                 <Button
-                  size={Sizes[1]}
-                  text="WARNING"
+                  variant="outline"
+                  text="Warning"
                   onClick={() => {
                     context.toast({
                       text:
@@ -55,8 +58,8 @@ storiesOf('Toaster', module)
                   }}
                 />
                 <Button
-                  size={Sizes[1]}
-                  text="ERROR"
+                  variant="outline"
+                  text="Error"
                   onClick={() => {
                     context.toast({
                       text:
@@ -65,10 +68,11 @@ storiesOf('Toaster', module)
                     });
                   }}
                 />
-              </React.Fragment>
+              </>
             )}
           </ToasterConsumer>
-        </Cell>
-      </Grid>
-    </Toaster>
-  ));
+        </Toaster>
+      </Cell>
+    </Row>
+  </Grid>
+);

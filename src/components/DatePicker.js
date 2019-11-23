@@ -62,7 +62,7 @@ const defaultProps = {
   numberOfMonths: NUMBER_OF_MONTHS,
 };
 
-class DatePicker extends PureComponent {
+export class DatePicker extends PureComponent {
   constructor(props) {
     super(props);
     let focusedInput = null;
