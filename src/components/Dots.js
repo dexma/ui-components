@@ -17,7 +17,7 @@ const defaultProps = {
   size: 4,
 };
 
-const Dots = ({ steps, size, theme, dataCy }) => {
+export const Dots = ({ steps, size, theme, dataCy }) => {
   const dots = [];
   for (let i = 0; i < steps; i += 1) {
     dots.push(<StyledDot key={i} size={size} theme={theme} />);
