@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   border,
   borderColor,
@@ -7,16 +7,30 @@ import {
   backgroundColorSelected,
   boxShadow,
   fontColor,
+  gray100,
   fontWeightBold,
   iconColor,
   borderRadius,
   selectFontSize,
   selectHeight,
+  selectPaddingX,
   primaryColor,
+  fontWeightSemiBold,
+  boxShadowHover,
+  tagFontSize,
+  tagHeight,
 } from 'styles/selectors';
 import { transparentize } from 'polished';
 
-import { getButtonSize } from 'styles/components/StyledButton';
+export const getSelectSize = () => {
+  return css`
+    font-size: ${selectFontSize};
+    padding: 0 ${selectPaddingX};
+    min-height: calc(${selectHeight} - 2px);
+    line-height: calc(${selectHeight} - 2px);
+    height: auto;
+  `;
+};
 
 const StyledSelect = styled.div`
   .css-1aya2g8 {
@@ -30,7 +44,8 @@ const StyledSelect = styled.div`
   }
   .css-2o5izw,
   .css-1aya2g8 {
-    min-height: ${selectHeight};
+    min-height: calc(${selectHeight} - 2px);
+    line-height: calc(${selectHeight} - 2px);
     border-radius: ${borderRadius};
     border: ${border};
   }
@@ -47,7 +62,7 @@ const StyledSelect = styled.div`
     background-color: hsl(0, 0%, 100%);
     border-radius: 0px 0px ${borderRadius} ${borderRadius};
     border: ${border};
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: ${boxShadowHover};
     margin-bottom: 0px;
     margin-top: -1px;
     position: absolute;
@@ -65,9 +80,6 @@ const StyledSelect = styled.div`
   .css-1sjym57,
   .css-1rtrksz {
     padding: 0 6px;
-  }
-  .css-1g6gooi {
-    margin: 0;
   }
   .css-rsyb7x {
     margin: 0;
@@ -111,9 +123,10 @@ const StyledSelect = styled.div`
     color: ${iconColor};
     cursor: pointer;
   }
-  .select-styled__value-container,
-  .select-styled__dropdown-indicator {
-    padding: 0 10px;
+
+  .css-1g6gooi {
+    padding: 0px;
+    margin: 0px;
   }
 
   .select-styled__menu {
@@ -127,7 +140,7 @@ const StyledSelect = styled.div`
 
   .select-styled__option,
   .select-styled__option--is-selected {
-    ${props => props.size && getButtonSize}
+    ${getSelectSize};
   }
 
   // Control
@@ -137,12 +150,39 @@ const StyledSelect = styled.div`
     box-shadow: none;
   }
   .select-styled__control {
-    min-height: ${selectHeight};
     border-radius: ${borderRadius};
-    font-size: ${selectFontSize};
+    ${getSelectSize};
   }
   .select-styled__indicator-separator {
     display: none;
+  }
+
+  .select-styled__value-container {
+    padding: 0;
+  }
+
+  // Multiple
+  .select-styled__value-container--is-multi {
+    padding: 2px 0;
+    .css-1g6gooi {
+      height: ${tagHeight};
+      line-height: ${tagHeight};
+    }
+  }
+
+  .select-styled__multi-value {
+    color: ${fontColor};
+    font-size: ${tagFontSize};
+    font-weight: ${fontWeightSemiBold};
+    border: 0px;
+    background: ${gray100};
+    margin: 2px;
+    height: ${tagHeight};
+    line-height: ${tagHeight};
+  }
+
+  .select-styled__multi-value__label {
+    padding: 0px 0px 0px 6px;
   }
 
   // Menu
@@ -168,11 +208,12 @@ const StyledSelect = styled.div`
   .select-styled__menu-list {
     max-height: fit-content; //315
   }
-  .select-styled .select-styled__dropdown-indicator,
-  .select-styled .select-styled__dropdown-indicator:hover,
+  .select-styled__dropdown-indicator,
+  .select-styled__dropdown-indicator:hover,
   .select-styled__single-value {
     font-size: ${selectFontSize};
     color: ${fontColor};
+    padding: 0px;
   }
   .select-styled__input {
     input {
@@ -180,6 +221,11 @@ const StyledSelect = styled.div`
       outline: none !important;
       outline: 0px !important;
     }
+  }
+
+  .select-styled__clear-indicator {
+    padding: 0px 2px 0px 0px;
+    cursor: pointer;
   }
 `;
 
