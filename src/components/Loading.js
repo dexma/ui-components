@@ -18,7 +18,7 @@ const defaultProps = {
   isLoading: false,
 };
 
-const Loading = ({ isLoading, dataCy, theme, children }) => {
+export const Loading = ({ isLoading, dataCy, theme, children }) => {
   return isLoading ? (
     <StyledLoading data-cy={dataCy} theme={theme}>
       <Spinner width={24} height={24} />
