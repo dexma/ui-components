@@ -7,7 +7,6 @@ import Row from 'components/Row';
 import Paragraph from 'components/Paragraph';
 
 const options = [
-  { value: '0', label: 'None' },
   { value: '1', label: '1st Floor [01. Luxemburg Building]' },
   { value: '2', label: '1st Floor [02. Luxemburg Building]' },
   { value: '3', label: '1st Floor [03. Luxemburg Building]' },
@@ -30,8 +29,8 @@ export const select = () => (
           multiselect, autocomplete, async and creatable support.
         </Paragraph>
       </Cell>
-      <Cell xs={4}>
-        <Select options={options} />
+      <Cell xs={12}>
+        <Select options={options} size="small" />
       </Cell>
     </Row>
   </Grid>
@@ -45,8 +44,8 @@ export const multi = () => (
           Support multiple selected options
         </Paragraph>
       </Cell>
-      <Cell xs={4}>
-        <Select options={options} isMulti />
+      <Cell xs={12}>
+        <Select options={options} isMulti isClearable />
       </Cell>
     </Row>
   </Grid>
@@ -60,7 +59,7 @@ export const noSearch = () => (
           Whether to enable search functionality
         </Paragraph>
       </Cell>
-      <Cell xs={4}>
+      <Cell xs={12}>
         <Select
           defaultValue={options[0]}
           options={options}
@@ -77,7 +76,7 @@ export const noClear = () => (
       <Cell xs={12}>
         <Paragraph m="1rem 0 1rem 0">Is the select value clearable</Paragraph>
       </Cell>
-      <Cell xs={4}>
+      <Cell xs={12}>
         <Select
           defaultValue={options[0]}
           options={options}

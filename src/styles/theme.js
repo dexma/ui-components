@@ -113,7 +113,7 @@ const base = {
 // ==========================================================================
 
 const buttonPaddingX = 0.75;
-const heightButton = heightComponents;
+const buttonHeight = heightComponents;
 const buttonFontSize = fontSizeNumber;
 
 const button = {
@@ -121,22 +121,22 @@ const button = {
     small: {
       paddingX: getSize(buttonPaddingX),
       fontSize: getSize(buttonFontSize),
-      height: getSize(heightButton),
+      height: getSize(buttonHeight),
     },
     medium: {
       paddingX: getSize(buttonPaddingX + 0.25),
       fontSize: getSize(buttonFontSize + 0.25),
-      height: getSize(heightButton + 0.25),
+      height: getSize(buttonHeight + 0.25),
     },
     large: {
       paddingX: getSize(buttonPaddingX + 0.25 * 3.5),
       fontSize: getSize(buttonFontSize + 0.25 * 2),
-      height: getSize(heightButton + 0.75),
+      height: getSize(buttonHeight + 0.75),
     },
     xlarge: {
       paddingX: getSize(buttonPaddingX + 0.25 * 5),
       fontSize: getSize(buttonFontSize + 0.25 * 3),
-      height: getSize(heightButton + 1.25),
+      height: getSize(buttonHeight + 1.25),
     },
   },
 };
