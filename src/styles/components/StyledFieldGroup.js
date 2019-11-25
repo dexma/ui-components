@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { primaryColor } from 'styles/selectors';
+import { gray300, primaryColor } from 'styles/selectors';
 import { darken, saturate } from 'polished';
 import {
   getButtonBase,
@@ -63,6 +63,10 @@ const StyledFieldGroup = styled.div`
     margin: 0;
     &.active {
       ${getButtonVariantPrimary};
+    }
+    &:hover {
+      border-color: ${gray300};
+      background-color: ${gray300};
     }
   }
   .active + .active {

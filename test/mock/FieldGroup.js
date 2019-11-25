@@ -2,15 +2,15 @@ import React from 'react';
 
 export const mockRadioGroup = [
   {
-    value: "segundos",
-    label: "s",
-    id: "segundos",
+    value: "15min",
+    label: "15min",
+    id: "15min",
     name: "parameters",
   },
   {
-    value: "minutos",
-    label: "m",
-    id: "minutos",
+    value: "30min",
+    label: "30min",
+    id: "30min",
     name: "parameters",
   },
   {
@@ -27,13 +27,13 @@ export const mockRadioGroup = [
   },
   {
     value: "semanas",
-    label: "sem",
+    label: "s",
     id: "semanas",
     name: "parameters",
   },
   {
     value: "meses",
-    label: "mes",
+    label: "m",
     id: "meses",
     name: "parameters",
   },

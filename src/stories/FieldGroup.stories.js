@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
-import { storiesOf } from '@storybook/react';
-import { actions } from '@storybook/addon-actions';
 import {
   mockRadioGroup,
   mockCheckboxGroup,
   mockSelectedRadioItem,
   mockSelectedCheckboxItem,
-  mockCheckboxGroupHtml,
 } from 'test/mock/FieldGroup';
 
-import FieldGroup from 'components/FieldGroup';
+import { FieldGroup } from 'components/FieldGroup';
 import Cell from 'components/Cell';
 import Grid from 'components/Grid';
+import Row from 'components/Row';
+import Paragraph from 'components/Paragraph';
 
-import Theme from 'components/Theme';
-
-const eventsFromObject = actions({
-  onFieldClick: 'onFieldClick',
-});
-
-class Test extends Component {
+class RadioGroup extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,65 +38,70 @@ class Test extends Component {
   }
 }
 
-storiesOf('FieldGroup', module)
-  .addParameters({
-    jest: ['FieldGroup'],
-  })
-  .add('horizontal', () => (
-    <Theme>
-      <Grid type="vertical" horizontalPadding verticalPadding>
-        <Cell size="full"></Cell>
-        <Cell>
-          <Test />
-        </Cell>
-        <Cell size="full"></Cell>
-        <Cell>
-          <FieldGroup
-            values={mockCheckboxGroup}
-            selectedValues={mockSelectedCheckboxItem}
-            type="checkbox"
-            {...eventsFromObject}
-            size="small"
-          />
-        </Cell>
+class CheckboxGroup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: mockSelectedCheckboxItem,
+    };
+  }
 
-        <Cell size="full"></Cell>
-        <Cell>
-          <FieldGroup
-            values={mockCheckboxGroupHtml}
-            selectedValues={mockSelectedCheckboxItem}
-            type="checkbox"
-            {...eventsFromObject}
-            size="small"
-          />
-        </Cell>
-      </Grid>
-    </Theme>
-  ))
-  .add('vertical', () => (
-    <Theme>
-      <Grid type="vertical" horizontalPadding verticalPadding>
-        <Cell size="full"></Cell>
-        <Cell>
-          <FieldGroup
-            values={mockRadioGroup}
-            selectedValues={mockSelectedRadioItem}
-            type="radio"
-            {...eventsFromObject}
-            vertical
-          />
-        </Cell>
-        <Cell size="full"></Cell>
-        <Cell>
-          <FieldGroup
-            values={mockCheckboxGroup}
-            selectedValues={mockSelectedCheckboxItem}
-            type="checkbox"
-            {...eventsFromObject}
-            size="small"
-            vertical
-          />
-        </Cell>
-      </Grid>
-    </Theme>
-  ));
+  handleChange = ({ value }) => {
+    this.setState(state => {
+      const cloneValues = state.value;
+      const indexValue = cloneValues.indexOf(value);
+      if (indexValue >= 0) {
+        delete cloneValues[indexValue];
+      } else {
+        cloneValues.push(value);
+      }
+      return { cloneValues };
+    });
+  };
+
+  render() {
+    return (
+      <FieldGroup
+        values={mockCheckboxGroup}
+        selectedValues={this.state.value}
+        type="checkbox"
+        onChange={this.handleChange}
+      />
+    );
+  }
+}
+
+export default {
+  title: 'FieldGroup',
+  component: FieldGroup,
+};
+
+export const fieldGroupRadio = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          Create group of input with type radio
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <RadioGroup />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const fieldGroupCheckbox = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          Create group of input with type checkbox
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <CheckboxGroup />
+      </Cell>
+    </Row>
+  </Grid>
+);

@@ -60,7 +60,7 @@ const isFieldSelected = (type, item, selectedField) => {
   return isEqual;
 };
 
-const FieldGroup = ({
+export const FieldGroup = ({
   type,
   values,
   selectedValues,
