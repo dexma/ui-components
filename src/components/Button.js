@@ -11,6 +11,7 @@ import Icon, { getIconSize } from 'components/Icon';
 import Spinner from 'components/Spinner';
 
 import { StyledButton } from 'styles/components/StyledButton';
+import { StyledButtonGroup } from 'styles/components/StyledButtonGroup';
 
 export const BUTTON_TYPE = ['button', 'reset', 'submit', null];
 export const BUTTON_SIZE = ['small', 'medium', 'large', 'xlarge'];
@@ -58,6 +59,10 @@ const getButtonIconSize = size => {
   if (size === 'large') return 'large';
   if (size === 'xlarge') return 'large';
   return 'small';
+};
+
+export const ButtonGroup = props => {
+  return <StyledButtonGroup {...props} />;
 };
 
 export const Button = ({

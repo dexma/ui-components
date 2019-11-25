@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'components/Button';
+import { Button, ButtonGroup } from 'components/Button';
 import Grid from 'components/Grid';
 import Row from 'components/Row';
 import Cell from 'components/Cell';
@@ -153,6 +153,28 @@ export const loading = () => (
           isLoading
           isDisabled
         />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const group = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1.5rem 0 1rem 0">
+          A group of buttons you can customize as you want
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <ButtonGroup>
+          <Button text="Button 1" variant="primary" />
+          <Button text="Button 2" variant="secondary" />
+          <Button text="Button 3" variant="secondary" />
+          <Button text="Button 4" variant="secondary" />
+          <Button text="Button 5" variant="secondary" />
+          <Button text="Button 6" variant="secondary" />
+        </ButtonGroup>
       </Cell>
     </Row>
   </Grid>
