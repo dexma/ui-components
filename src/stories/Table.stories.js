@@ -1,128 +1,29 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-
 import Grid from 'components/Grid';
 import Cell from 'components/Cell';
-import Table from 'components/Table';
+import Row from 'components/Row';
+import Paragraph from 'components/Paragraph';
 
-import Theme from 'components/Theme';
+import { columnsTable, dataTable } from 'test/mock/Table';
+import { Table } from 'components/Table';
 
-const dataSource = [
-  {
-    key: '1',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-  },
-  {
-    key: '2',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
-  },
-  {
-    key: '3',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-  },
-  {
-    key: '4',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
-  },
-  {
-    key: '5',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-  },
-  {
-    key: '6',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
-  },
-  {
-    key: '7',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-  },
-  {
-    key: '8',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
-  },
-  {
-    key: '10',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-  },
-  {
-    key: '21',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
-  },
-  {
-    key: '221',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-  },
-  {
-    key: '2111',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
-  },
-  {
-    key: '13',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-  },
-  {
-    key: '24',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
-  },
-];
+export default {
+  title: 'Table',
+  component: Table,
+};
 
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    sorter: (a, b) => a.name.length - b.name.length,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-];
-
-storiesOf('Table', module)
-  .addParameters({
-    jest: ['Table'],
-  })
-  .add('with text', () => (
-    <Theme>
-      <Grid type="horizontal" horizontalPadding verticalPadding>
-        <Cell size="full">
-          <Table dataSource={dataSource} columns={columns} />
-        </Cell>
-      </Grid>
-    </Theme>
-  ));
+export const table = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          Here we have dots for show loading part of the UI you can customize
+          with 2, 3 or 4 dot
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Table dataSource={dataTable} columns={columnsTable} />
+      </Cell>
+    </Row>
+  </Grid>
+);

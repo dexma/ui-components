@@ -1,23 +1,28 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import { Table as TableAntDesign } from 'antd';
 
+import theme from 'styles/theme';
 import { StyledTable } from 'styles/components/StyledTable';
+import { itemRender } from 'components/Pagination';
 
 const propTypes = {
-  ...GeneralPropTypes,
+  className: PropTypes.string,
+  dataCy: PropTypes.string,
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
+  theme: theme,
 };
 
 export const Table = props => {
+  const { theme, dataCy } = props;
   return (
-    <StyledTable>
-      <TableAntDesign {...props} />
+    <StyledTable theme={theme} dataCy={dataCy}>
+      <TableAntDesign pagination={{ itemRender: itemRender }} {...props} />
     </StyledTable>
   );
 };
