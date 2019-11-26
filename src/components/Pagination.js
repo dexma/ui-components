@@ -16,7 +16,7 @@ const defaultProps = {
   ...DefaultGeneralPropTypes,
 };
 
-const itemRender = (current, type, originalElement) => {
+export const itemRender = (current, type, originalElement) => {
   if (type === 'prev') {
     return <Icon name="chevron_left_l" color="gray900" size={12} />;
   }
