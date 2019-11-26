@@ -28,7 +28,7 @@ const defaultProps = {
   ...DefaultGeneralPropTypes,
 };
 
-const Cell = ({
+export const Cell = ({
   xs,
   sm,
   md,

@@ -9,7 +9,7 @@ const propTypes = {
   options: PropTypes.objectOf(PropTypes.any),
 };
 
-const Theme = ({ children, options }) => {
+export const Theme = ({ children, options }) => {
   if (!children) return null;
   const defaultTheme = theme;
   let themeProviderOptions;

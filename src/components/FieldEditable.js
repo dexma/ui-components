@@ -28,7 +28,7 @@ const defaultProps = {
   hasError: false,
 };
 
-class FieldEditable extends PureComponent {
+export class FieldEditable extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

@@ -137,7 +137,7 @@ export const CardFooter = ({ footer }) => {
   return <div className="card-footer">{footer}</div>;
 };
 
-const Card = ({
+export const Card = ({
   id,
   link,
   title,
