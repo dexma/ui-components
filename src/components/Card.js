@@ -6,23 +6,14 @@ import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
 import Icon from 'components/Icon';
 import Paragraph from 'components/Paragraph';
-import Grid from 'components/Grid';
-import Row from 'components/Row';
-import Cell from 'components/Cell';
 
-import {
-  StyledCard,
-  StyledCardLink,
-  StyledCardLayoutEquals,
-  StyledCardLayoutTruncate,
-  StyledCardLayoutHorizontal,
-} from 'styles/components/StyledCard';
+import { StyledCard, StyledCardLink } from 'styles/components/StyledCard';
 
 const propTypes = {
   ...GeneralPropTypes,
-  id: PropTypes.string,
   link: PropTypes.string,
   title: PropTypes.string,
+  titleTruncated: PropTypes.bool,
   subtitle: PropTypes.string,
   description: PropTypes.string,
   icon: PropTypes.string,
@@ -30,83 +21,18 @@ const propTypes = {
   footer: PropTypes.node,
   isActive: PropTypes.bool,
   isLoading: PropTypes.bool,
+  isHorizontal: PropTypes.bool,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
 };
 
 const defaultProps = {
   ...DefaultGeneralPropTypes,
+  titleTruncated: false,
   isActive: false,
   isWhite: false,
   isLoading: false,
-};
-
-export const CardLayoutHorizontal = ({ children }) => {
-  return (
-    <StyledCardLayoutHorizontal>
-      <Grid>
-        <Row>
-          {React.Children.map(children || null, (child, i) => {
-            return (
-              <Cell xs={12} md={6}>
-                <child.type {...child.props} key={i} />
-              </Cell>
-            );
-          })}
-        </Row>
-      </Grid>
-    </StyledCardLayoutHorizontal>
-  );
-};
-
-export const CardLayoutEquals = ({ children }) => {
-  return (
-    <StyledCardLayoutEquals>
-      <Grid>
-        <Row>
-          {React.Children.map(children || null, (child, i) => {
-            return (
-              <Cell xs={12} md={4} xl={3}>
-                <child.type {...child.props} key={i} />
-              </Cell>
-            );
-          })}
-          {React.Children.map(children || null, (child, i) => {
-            return (
-              <Cell xs={12} md={4} xl={3}>
-                <child.type {...child.props} key={i} />
-              </Cell>
-            );
-          })}
-        </Row>
-      </Grid>
-    </StyledCardLayoutEquals>
-  );
-};
-
-export const CardLayoutTruncate = ({ children }) => {
-  return (
-    <StyledCardLayoutTruncate>
-      <Grid>
-        <Row>
-          {React.Children.map(children || null, (child, i) => {
-            return (
-              <Cell xs={12} md={4} lg={3}>
-                <child.type {...child.props} key={i} />
-              </Cell>
-            );
-          })}{' '}
-          {React.Children.map(children || null, (child, i) => {
-            return (
-              <Cell xs={12} md={4} lg={3}>
-                <child.type {...child.props} key={i} />
-              </Cell>
-            );
-          })}
-        </Row>
-      </Grid>
-    </StyledCardLayoutTruncate>
-  );
+  isHorizontal: false,
 };
 
 export const CardHeader = ({ image, icon }) => {
@@ -138,7 +64,7 @@ export const CardFooter = ({ footer }) => {
 };
 
 export const Card = ({
-  id,
+  titleTruncated,
   link,
   title,
   subtitle,
@@ -148,16 +74,17 @@ export const Card = ({
   footer,
   isActive,
   isLoading,
+  isHorizontal,
   onClick,
   onFocus,
   theme,
   dataCy,
 }) => {
   const classes = classNames(isActive && 'active');
-  const TagComponent = link ? StyledCardLink : StyledCard;
+  const CardComponent = link ? StyledCardLink : StyledCard;
   return (
-    <TagComponent
-      id={id}
+    <CardComponent
+      titleTruncated={titleTruncated}
       data-cy={dataCy}
       className={classes}
       onClick={onClick}
@@ -166,13 +93,31 @@ export const Card = ({
       hasFooter={footer}
       isActive={isActive}
       isLoading={isLoading}
+      isHorizontal={isHorizontal}
       theme={theme}
       href={link}
     >
       <CardHeader image={image} icon={icon} />
-      <CardBody title={title} subtitle={subtitle} description={description} />
-      <CardFooter footer={footer} />
-    </TagComponent>
+      {isHorizontal ? (
+        <div className="horizontal">
+          <CardBody
+            title={title}
+            subtitle={subtitle}
+            description={description}
+          />
+          <CardFooter footer={footer} />
+        </div>
+      ) : (
+        <>
+          <CardBody
+            title={title}
+            subtitle={subtitle}
+            description={description}
+          />
+          <CardFooter footer={footer} />
+        </>
+      )}
+    </CardComponent>
   );
 };
 

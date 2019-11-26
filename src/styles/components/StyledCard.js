@@ -28,20 +28,26 @@ export const getHorizontal = () => {
     .card-header {
       width: 33.33333333%;
     }
-    .card-body {
+    .horizontal {
+      flex-direction: column;
       width: 66.66666667%;
+      display: flex;
+      .card-body {
+        flex: 1 1 100%;
+        align-items: flex-start;
+        justify-content: center;
+        /* align-self: center; */
+        display: flex;
+        flex-direction: column;
+        padding: 1.25rem;
+      }
+      .card-footer {
+        width: 100%;
+        flex: auto;
+      }
     }
   `;
 };
-
-export const getFlexRowWrap = () => css`
-  > .grid {
-    > .cell {
-      display: flex;
-      flex-flow: row wrap;
-    }
-  }
-`;
 
 export const getTextTruncate = () => css`
   white-space: nowrap;
@@ -88,7 +94,6 @@ const getStyleCard = css`
       height: 100%;
     }
   }
-
   .card-body {
     flex: 1 1 auto;
     min-height: 1px;
@@ -131,7 +136,6 @@ const getStyleCard = css`
       }
     }
   }
-
   .card-footer {
     padding: 0 ${cardPaddingX} ${cardPaddingX} ${cardPaddingX};
     a,
@@ -140,6 +144,7 @@ const getStyleCard = css`
       margin: 0;
     }
   }
+  ${props => props.isHorizontal && getHorizontal};
 `;
 
 const StyledCard = styled.div`
@@ -150,30 +155,4 @@ const StyledCardLink = styled.a`
   ${getStyleCard};
 `;
 
-const StyledCardLayoutEquals = styled.div`
-  ${getFlexRowWrap};
-`;
-
-const StyledCardLayoutTruncate = styled.div`
-  ${getFlexRowWrap};
-  ${StyledCard} {
-    .card-title {
-      ${getTextTruncate};
-    }
-  }
-`;
-
-const StyledCardLayoutHorizontal = styled.div`
-  ${getFlexRowWrap};
-  ${StyledCard} {
-    ${getHorizontal}
-  }
-`;
-
-export {
-  StyledCard,
-  StyledCardLink,
-  StyledCardLayoutEquals,
-  StyledCardLayoutTruncate,
-  StyledCardLayoutHorizontal,
-};
+export { StyledCard, StyledCardLink };
