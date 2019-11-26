@@ -18,7 +18,7 @@ const defaultProps = {
   size: '1rem',
 };
 
-const Paragraph = ({ dataCy, theme, m, size, children }) => {
+export const Paragraph = ({ dataCy, theme, m, size, children }) => {
   return (
     <StyledParagraph margin={m} size={size} data-cy={dataCy} theme={theme}>
       {children || null}

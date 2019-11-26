@@ -30,7 +30,7 @@ const defaultProps = {
   reverse: false,
 };
 
-const Row = ({
+export const Row = ({
   reverse,
   start,
   center,

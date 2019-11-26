@@ -14,7 +14,7 @@ const defaultProps = {
   ...DefaultGeneralPropTypes,
 };
 
-const Table = props => {
+export const Table = props => {
   return (
     <StyledTable>
       <TableAntDesign {...props} />

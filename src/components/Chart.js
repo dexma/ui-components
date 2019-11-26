@@ -75,7 +75,7 @@ const StyledChart = () => {
   };
 };
 
-class Chart extends PureComponent {
+export class Chart extends PureComponent {
   constructor(props) {
     super(props);
     this.container = React.createRef();

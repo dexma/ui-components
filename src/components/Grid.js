@@ -16,7 +16,7 @@ const defaultProps = {
   fluid: false,
 };
 
-const Grid = ({ fluid, dataCy, children, theme }) => {
+export const Grid = ({ fluid, dataCy, children, theme }) => {
   return (
     <StyledGrid data-cy={dataCy} fluid={fluid} theme={theme}>
       {children || null}

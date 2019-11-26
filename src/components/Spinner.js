@@ -15,7 +15,7 @@ const defaultProps = {
   size: 24,
 };
 
-const Spinner = ({ size, variant, theme, dataCy }) => {
+export const Spinner = ({ size, variant, theme, dataCy }) => {
   return (
     <StyledSpinner
       size={size}
