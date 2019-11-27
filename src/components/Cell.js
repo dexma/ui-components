@@ -4,17 +4,28 @@ import {
   DefaultGeneralPropTypes,
   GeneralPropTypes,
   BreakpointsPropTypes,
-  ColumnSizePropTypes,
 } from 'utils/propTypes';
 import { withTheme } from 'styled-components';
 import { StyledCell } from 'styles/components/StyledCell';
 
 const propTypes = {
   ...GeneralPropTypes,
-  xs: ColumnSizePropTypes,
-  sm: ColumnSizePropTypes,
-  md: ColumnSizePropTypes,
-  lg: ColumnSizePropTypes,
+  /**
+   * Responsive extra small size
+   */
+  xs: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+  /**
+   * Responsive small size
+   */
+  sm: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+  /**
+   * Responsive medium size
+   */
+  md: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+  /**
+   * Responsive large size
+   */
+  lg: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
   xsOffset: PropTypes.number,
   smOffset: PropTypes.number,
   mdOffset: PropTypes.number,

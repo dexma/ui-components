@@ -181,7 +181,7 @@ const dataPicker = {
 
 const selectPaddingX = 0.75;
 const selectHeight = heightComponents;
-const selectFontSize = fontSizeNumber;
+const selectFontSize = 0.875;
 
 const select = {
   paddingX: getSize(selectPaddingX),
@@ -277,12 +277,25 @@ const tag = {
 
 const tabPaddingX = 0.5;
 const tabHeight = 1.25;
-const tabFontSize = fontSizeNumber + 0.125;
+const tabFontSize = 0.875;
 
 const tab = {
   paddingX: getSize(tabPaddingX),
   fontSize: getSize(tabFontSize),
   height: getSize(tabHeight),
+};
+
+// Input
+// ==========================================================================
+
+const inputPaddingX = 0.75;
+const inputHeight = heightComponents;
+const inputFontSize = 0.875;
+
+const input = {
+  paddingX: getSize(inputPaddingX),
+  fontSize: getSize(inputFontSize),
+  height: getSize(inputHeight),
 };
 
 const theme = {
@@ -297,6 +310,7 @@ const theme = {
   pagination,
   tag,
   tab,
+  input,
 };
 
 export default theme;
