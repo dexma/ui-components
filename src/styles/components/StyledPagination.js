@@ -187,7 +187,7 @@ export const getStyledPagination = () => css`
   .ant-pagination-prev {
     outline: 0;
     ${StyledIcon} {
-      margin-top: 0.75rem;
+      margin-top: 0.7rem;
     }
     &:hover {
       ${StyledIcon} {
