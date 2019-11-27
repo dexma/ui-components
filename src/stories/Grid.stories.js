@@ -39,7 +39,6 @@ const FullCells = () => {
     </Fragment>
   );
 };
-
 const OffsetCells = () => {
   return (
     <Fragment>

@@ -90,6 +90,10 @@ export const tagHeight = props => propFromTheme(props, 'tag.height');
 export const tagFontSize = props => propFromTheme(props, 'tag.fontSize');
 export const tagPaddingX = props => propFromTheme(props, 'tag.paddingX');
 
+export const tabHeight = props => propFromTheme(props, 'tab.height');
+export const tabFontSize = props => propFromTheme(props, 'tab.fontSize');
+export const tabPaddingX = props => propFromTheme(props, 'tab.paddingX');
+
 export const selectHeight = props => propFromTheme(props, 'select.height');
 export const selectFontSize = props => propFromTheme(props, 'select.fontSize');
 export const selectPaddingX = props => propFromTheme(props, 'select.paddingX');
