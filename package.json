@@ -139,6 +139,7 @@
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
+    "rc-tabs": "^9.7.0",
     "xmldom": "^0.1.27"
   }
 }

@@ -272,6 +272,19 @@ const tag = {
   height: getSize(tagHeight),
 };
 
+// Tabs
+// ==========================================================================
+
+const tabPaddingX = 0.5;
+const tabHeight = 1.25;
+const tabFontSize = fontSizeNumber + 0.125;
+
+const tab = {
+  paddingX: getSize(tabPaddingX),
+  fontSize: getSize(tabFontSize),
+  height: getSize(tabHeight),
+};
+
 const theme = {
   ...base,
   button,
@@ -283,6 +296,7 @@ const theme = {
   grid,
   pagination,
   tag,
+  tab,
 };
 
 export default theme;
