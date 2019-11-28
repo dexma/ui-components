@@ -1,28 +1,38 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 import { withTheme } from 'styled-components';
+import theme from 'styles/theme';
 
 import { StyledGrid } from 'styles/components/StyledGrid';
 
 const propTypes = {
-  ...GeneralPropTypes,
+  /**
+   * Fluid grid means full grid
+   */
   fluid: PropTypes.bool,
+  /**
+   * Component class
+   */
+  className: PropTypes.string,
+  /**
+   * The cypress identifier
+   */
+  dataCy: PropTypes.string,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
+  /**
+   * Children node
+   */
   children: PropTypes.node,
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
-  fluid: false,
+  theme: theme,
 };
 
-export const Grid = ({ fluid, dataCy, children, theme }) => {
-  return (
-    <StyledGrid data-cy={dataCy} fluid={fluid} theme={theme}>
-      {children || null}
-    </StyledGrid>
-  );
-};
+export const Grid = props => <StyledGrid {...props} />;
 
 StyledGrid.displayName = 'StyledGrid';
 

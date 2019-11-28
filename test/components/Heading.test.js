@@ -17,9 +17,4 @@ describe('<Heading>', () => {
     const heading = mount(<Heading type="h3" text={text} />);
     expect(heading.find('h3').text()).toEqual(text);
   });
-  it('Should render the correct line className', () => {
-    const text = 'Some text';
-    const heading = mount(<Heading type="h3" text={text} line />);
-    expect(heading.find('.line-bottom').length).toEqual(1);
-  });
 });

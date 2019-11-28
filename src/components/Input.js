@@ -69,11 +69,11 @@ const propTypes = {
    */
   helper: PropTypes.string,
   /**
-   * Input class
+   * Component class
    */
   className: PropTypes.string,
   /**
-   * The identifier for cypress element
+   * The cypress identifier
    */
   dataCy: PropTypes.string,
   /**

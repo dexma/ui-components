@@ -43,6 +43,10 @@ const StyledCell = styled.div`
   padding-right: ${gridHalfGutterWidth};
   padding-left: ${gridHalfGutterWidth};
 
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+
   ${props => props.reverse && `flex-direction: column-reverse;`}
   ${props => props.xs && getColumns(props, props.xs)};
   ${props => props.xsOffset && getColumnsOffset(props, props.xsOffset)};
