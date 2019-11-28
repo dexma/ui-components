@@ -1,71 +1,46 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import {
-  GeneralPropTypes,
-  DefaultGeneralPropTypes,
-  BreakpointsPropTypes,
-} from 'utils/propTypes';
 import { withTheme } from 'styled-components';
 
+import theme from 'styles/theme';
 import { StyledRow } from 'styles/components/StyledRow';
 
 const propTypes = {
-  ...GeneralPropTypes,
   reverse: PropTypes.bool,
-  start: BreakpointsPropTypes,
-  center: BreakpointsPropTypes,
-  end: BreakpointsPropTypes,
-  top: BreakpointsPropTypes,
-  middle: BreakpointsPropTypes,
-  bottom: BreakpointsPropTypes,
-  around: BreakpointsPropTypes,
-  between: BreakpointsPropTypes,
-  first: BreakpointsPropTypes,
-  last: BreakpointsPropTypes,
+  start: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  center: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  end: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  top: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  middle: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  bottom: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  around: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  between: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  first: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  last: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  /**
+   * Component class
+   */
+  className: PropTypes.string,
+  /**
+   * The cypress identifier
+   */
+  dataCy: PropTypes.string,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
+  /**
+   * Children node
+   */
   children: PropTypes.node,
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
+  theme: theme,
   reverse: false,
 };
 
-export const Row = ({
-  reverse,
-  start,
-  center,
-  end,
-  top,
-  middle,
-  bottom,
-  around,
-  between,
-  first,
-  last,
-  dataCy,
-  children,
-  theme,
-}) => {
-  return (
-    <StyledRow
-      reverse={reverse}
-      start={start}
-      center={center}
-      end={end}
-      top={top}
-      middle={middle}
-      bottom={bottom}
-      around={around}
-      between={between}
-      first={first}
-      last={last}
-      theme={theme}
-      data-cy={dataCy}
-    >
-      {children || null}
-    </StyledRow>
-  );
-};
+export const Row = props => <StyledRow {...props} />;
 
 StyledRow.displayName = 'StyledRow';
 

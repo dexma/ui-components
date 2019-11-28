@@ -1,15 +1,11 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import {
-  DefaultGeneralPropTypes,
-  GeneralPropTypes,
-  BreakpointsPropTypes,
-} from 'utils/propTypes';
 import { withTheme } from 'styled-components';
+import theme from 'styles/theme';
+
 import { StyledCell } from 'styles/components/StyledCell';
 
 const propTypes = {
-  ...GeneralPropTypes,
   /**
    * Responsive extra small size
    */
@@ -30,51 +26,31 @@ const propTypes = {
   smOffset: PropTypes.number,
   mdOffset: PropTypes.number,
   lgOffset: PropTypes.number,
-  first: BreakpointsPropTypes,
-  last: BreakpointsPropTypes,
+  first: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  last: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
+  /**
+   * Component class
+   */
+  className: PropTypes.string,
+  /**
+   * The cypress identifier
+   */
+  dataCy: PropTypes.string,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
+  /**
+   * Children node
+   */
   children: PropTypes.node,
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
+  theme: theme,
 };
 
-export const Cell = ({
-  xs,
-  sm,
-  md,
-  lg,
-  xsOffset,
-  smOffset,
-  mdOffset,
-  lgOffset,
-  first,
-  last,
-  dataCy,
-  children,
-  className,
-  theme,
-}) => {
-  return (
-    <StyledCell
-      xs={xs}
-      sm={sm}
-      md={md}
-      lg={lg}
-      xsOffset={xsOffset}
-      smOffset={smOffset}
-      mdOffset={mdOffset}
-      lgOffset={lgOffset}
-      first={first}
-      last={last}
-      data-cy={dataCy}
-      theme={theme}
-      className={className}
-    >
-      {children || null}
-    </StyledCell>
-  );
-};
+export const Cell = props => <StyledCell {...props} />;
 
 StyledCell.displayName = 'StyledCell';
 
