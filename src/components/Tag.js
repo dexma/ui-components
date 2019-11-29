@@ -10,15 +10,15 @@ import get from 'lodash/get';
 const propTypes = {
   ...GeneralPropTypes,
   /**
-   When a button is in the loading state you can supply custom text
+   Color related with theme
    */
   color: PropTypes.string,
   /**
-   When a button is in the loading state you can supply custom text
+   Icon name that need to be able on the assets/icons
    */
   icon: PropTypes.string,
   /**
-   When a button is in the loading state you can supply custom text
+   The type of the element
    */
   type: PropTypes.oneOf(['normal', 'rounded']),
   variant: PropTypes.oneOf(['primary', 'outline']),
@@ -35,7 +35,7 @@ export const Tag = ({ theme, color, icon, type, variant, children }) => {
   return (
     <StyledTag theme={theme} color={tagColor} type={type} variant={variant}>
       {icon && <Icon name={icon} size="small" />}
-      <span>{children && children}</span>
+      {children && <span>children</span>}
     </StyledTag>
   );
 };
