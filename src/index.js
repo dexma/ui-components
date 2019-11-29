@@ -19,7 +19,7 @@ import Select from 'components/Select';
 import Spinner from 'components/Spinner';
 import SwitchPeriodComparative from 'components/SwitchPeriodComparative';
 import Table from 'components/Table';
-import Tabs from 'components/Tabs';
+import { Tabs, TabPane } from 'components/Tabs';
 import Tag from 'components/Tag';
 import Theme from 'components/Theme';
 import { Toaster, ToasterConsumer, ToastType } from 'components/toaster';
@@ -61,6 +61,7 @@ export {
   SwitchPeriodComparative,
   Table,
   Tabs,
+  TabPane,
   Tag,
   Theme,
   Toaster,
