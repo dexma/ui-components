@@ -9,6 +9,7 @@ install:
   - travis_retry npm install
 script:
   - npm run test
+  - npm run build:icons
   - npm run build:production
 jobs:
   include:
