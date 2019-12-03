@@ -8,13 +8,14 @@
     "build:development": "npm run clean-build && webpack --mode development",
     "build:production": "npm run clean-build && webpack --mode production",
     "build:icons": "node scripts/buildIconConfig.js",
+    "build-storybook": "build-storybook -c src/.storybook",
     "storybook": "npm run build:icons && start-storybook -p 9999 -c src/.storybook --docs",
     "prettier": "prettier --write 'src/{,**/{,*.}}*.js'",
     "eslint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "eslint:fix": "eslint --fix 'src/{,**/{,*.}}*.js'",
     "format": "npm run eslint:fix && npm run prettier",
     "test": "NODE_ENV=test jest --json --outputFile=test/jest-test-results.json",
-    "semantic-release": "semantic-release "
+    "semantic-release": "semantic-release"
   },
   "publishConfig": {
     "tag": "next"
