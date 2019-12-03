@@ -1,6 +1,5 @@
-language: node_js
-node_js:
-  - 'stable'
+language: 'node_js'
+node_js: '8'
 cache:
   directories:
     - node_modules
@@ -9,28 +8,25 @@ install:
 script:
   - npm run test
   - npm run build:icons
-  - npm run build-storybook
   - npm run build:production
 jobs:
   include:
+    - stage: storybooks
+      script: echo "Deploying to storybooks ..."
+      deploy:
+        provider: pages # Tell Travis we want to deploy to Github Pages
+        skip-cleanup: true
+        github-token: $GH_TOKEN # Will take the environment variable you created on step 5
+        local_dir: storybook-static # The folder that needs to be deployed
+        repo: dexma/ui-components # Add your username/project_name here
+        target_branch: gh-pages # Tell Travis to deploy on the gh-pages branch
+        on:
+          branch: master # Tell Travis to trigger a deploy only when we push to master
     - stage: release
+      script: echo "Deploying to GitHub releases ..."
       node_js: lts/*
       deploy:
         provider: script
         skip_cleanup: true
         script:
           - npx semantic-release
-branches:
-  only:
-    - master
-
-# Deployment information
-deploy:
-  provider: pages # Tell Travis we want to deploy to Github Pages
-  skip-cleanup: true
-  github-token: $GH_TOKEN # Will take the environment variable you created on step 5
-  local_dir: storybook-static # The folder that needs to be deployed
-  repo: dexma/ui-components # Add your username/project_name here
-  target_branch: gh-pages # Tell Travis to deploy on the gh-pages branch
-  on:
-    branch: master # Tell Travis to trigger a deploy only when we push to master
