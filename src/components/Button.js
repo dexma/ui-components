@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import debounce from 'lodash/debounce';
 import { withTheme } from 'styled-components';
 import { withTooltip } from 'hoc/withTooltip';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
+import theme from 'styles/theme';
 
 import Icon, { getIconSize } from 'components/Icon';
 import Spinner from 'components/Spinner';
@@ -24,7 +24,7 @@ export const BUTTON_VARIANT = [
 ];
 
 const propTypes = {
-  ...GeneralPropTypes,
+  id: PropTypes.string,
   buttonRef: PropTypes.func,
   text: PropTypes.string,
   type: PropTypes.oneOf(BUTTON_TYPE),
@@ -41,16 +41,18 @@ const propTypes = {
   isExpanded: PropTypes.bool,
   debounceTime: PropTypes.number,
   children: PropTypes.node,
+  dataCy: PropTypes.string,
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
   type: 'button',
   size: 'small',
   variant: 'primary',
   isDisabled: false,
   isLoading: false,
   isExpanded: false,
+  theme: theme,
 };
 
 const getButtonIconSize = size => {
@@ -66,6 +68,7 @@ export const ButtonGroup = props => {
 };
 
 export const Button = ({
+  id,
   buttonRef,
   text,
   type,
@@ -92,6 +95,7 @@ export const Button = ({
   const iconSize = getButtonIconSize(size);
   return (
     <StyledButton
+      id={id}
       ref={buttonRef}
       type={type}
       data-tooltip={tooltip}
