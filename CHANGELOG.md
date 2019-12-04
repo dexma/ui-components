@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/dexma/ui-components/compare/v1.1.3...v1.1.4) (2019-12-04)
+
+
+### Bug Fixes
+
+* **modal:** update the events ([85a4c6d](https://github.com/dexma/ui-components/commit/85a4c6db58229511d95b5101dbd1f723b618e6bf))
+
 ## [1.1.3](https://github.com/dexma/ui-components/compare/v1.1.2...v1.1.3) (2019-12-04)
 
 
