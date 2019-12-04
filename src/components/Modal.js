@@ -12,7 +12,7 @@ const propTypes = {
   height: PropTypes.string,
   onClickAway: PropTypes.func,
   onClose: PropTypes.func,
-  closeIcon: PropTypes.bool,
+  onEscape: PropTypes.func,
   visible: PropTypes.bool,
 };
 
@@ -20,7 +20,6 @@ const defaultProps = {
   ...DefaultGeneralPropTypes,
   width: '600px',
   height: 'auto',
-  closeIcon: false,
   visible: false,
 };
 
@@ -48,7 +47,6 @@ export class Modal extends PureComponent {
       theme,
       onClickAway,
       onClose,
-      closeIcon,
       children,
     } = this.props;
     const containerClass = visible ? 'container' : 'containerHidden';
@@ -58,11 +56,9 @@ export class Modal extends PureComponent {
       <StyledModal width={width} height={height} theme={theme}>
         <div className={containerClass}>
           <div className={panelClass}>
-            {closeIcon && (
-              <span onClick={onClose} className="close-icon">
-                <Icon name="close" color="gray300" size="medium" />
-              </span>
-            )}
+            <span onClick={onClose} className="close-icon">
+              <Icon name="close" color="gray300" size="medium" />
+            </span>
             {children}
           </div>
           <div className={maskClass} onClick={onClickAway} />
