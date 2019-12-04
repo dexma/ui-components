@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/dexma/ui-components/compare/v1.1.2...v1.1.3) (2019-12-04)
+
+
+### Bug Fixes
+
+* **modal:** remove state visible ([4ce460a](https://github.com/dexma/ui-components/commit/4ce460a96d21ae8e20264b5404ad3f5b389721f2))
+
 ## [1.1.2](https://github.com/dexma/ui-components/compare/v1.1.1...v1.1.2) (2019-12-04)
 
 
