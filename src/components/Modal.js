@@ -56,15 +56,8 @@ export class Modal extends PureComponent {
   keyDown = e => {
     const { onClose } = this.props;
     if (e.key === 'Escape') {
-      onClose(e);
+      onClose();
       this.hideModal();
-    }
-  };
-
-  handleClickClose = e => {
-    const { closeIcon, onClose } = this.props;
-    if (closeIcon && onClose) {
-      onClose(e);
     }
   };
 
@@ -75,6 +68,7 @@ export class Modal extends PureComponent {
       height,
       theme,
       onClickAway,
+      onClose,
       closeIcon,
       children,
     } = this.props;
@@ -86,7 +80,7 @@ export class Modal extends PureComponent {
         <div className={containerClass}>
           <div className={panelClass}>
             {closeIcon && (
-              <button onClick={this.handleClickClose} className="close-icon">
+              <button onClick={onClose} className="close-icon">
                 <Icon name="close" color="gray300" size="medium" />
               </button>
             )}
