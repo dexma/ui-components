@@ -25,45 +25,24 @@ const defaultProps = {
 };
 
 export class Modal extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: props.visible,
-    };
-  }
-
   componentWillMount() {
     window.addEventListener('keydown', this.keyDown);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { visible } = nextProps;
-    this.setState({
-      visible,
-    });
   }
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.keyDown);
   }
 
-  hideModal = () => {
-    this.setState({
-      visible: false,
-    });
-  };
-
   keyDown = e => {
-    const { onClose } = this.props;
+    const { onEscape } = this.props;
     if (e.key === 'Escape') {
-      onClose();
-      this.hideModal();
+      onEscape(e);
     }
   };
 
   render() {
-    const { visible } = this.state;
     const {
+      visible,
       width,
       height,
       theme,
@@ -80,9 +59,9 @@ export class Modal extends PureComponent {
         <div className={containerClass}>
           <div className={panelClass}>
             {closeIcon && (
-              <button onClick={onClose} className="close-icon">
+              <span onClick={onClose} className="close-icon">
                 <Icon name="close" color="gray300" size="medium" />
-              </button>
+              </span>
             )}
             {children}
           </div>

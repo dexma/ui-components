@@ -69,6 +69,7 @@ const StyledModal = styled.div`
     position: absolute;
     top: 10px;
     right: 5px;
+    cursor: pointer;
   }
 `;
 
