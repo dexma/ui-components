@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/dexma/ui-components/compare/v1.1.1...v1.1.2) (2019-12-04)
+
+
+### Bug Fixes
+
+* **modal:** update onClose event ([bb69bf2](https://github.com/dexma/ui-components/commit/bb69bf2c818c32c005f1f1722c70c8159bdc8cb6))
+
 ## [1.1.1](https://github.com/dexma/ui-components/compare/v1.1.0...v1.1.1) (2019-12-04)
 
 
