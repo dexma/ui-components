@@ -86,6 +86,7 @@ export const FieldGroup = ({
             isSelected && 'active'
           );
           return (
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
             <label
               className={classesItem}
               data-tooltip={tooltip}

@@ -11,6 +11,7 @@ const propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   onClickAway: PropTypes.func,
+  onClose: PropTypes.func,
   closeIcon: PropTypes.bool,
   visible: PropTypes.bool,
 };
@@ -19,7 +20,7 @@ const defaultProps = {
   ...DefaultGeneralPropTypes,
   width: '600px',
   height: 'auto',
-  closeIcon: true,
+  closeIcon: false,
   visible: false,
 };
 
@@ -52,9 +53,18 @@ export class Modal extends PureComponent {
     });
   };
 
-  keyDown = event => {
-    if (event.key === 'Escape') {
+  keyDown = e => {
+    const { onClose } = this.props;
+    if (e.key === 'Escape') {
+      onClose(e);
       this.hideModal();
+    }
+  };
+
+  handleClickClose = e => {
+    const { closeIcon, onClose } = this.props;
+    if (closeIcon && onClose) {
+      onClose(e);
     }
   };
 
@@ -76,7 +86,7 @@ export class Modal extends PureComponent {
         <div className={containerClass}>
           <div className={panelClass}>
             {closeIcon && (
-              <button onClick={this.hideModal} className="close-icon">
+              <button onClick={this.handleClickClose} className="close-icon">
                 <Icon name="close" color="gray300" size="medium" />
               </button>
             )}
