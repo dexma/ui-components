@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/dexma/ui-components/compare/v1.1.5...v1.1.6) (2019-12-05)
+
+
+### Bug Fixes
+
+* **button:** export button group ([d2088a0](https://github.com/dexma/ui-components/commit/d2088a05e58b37708418125564f670b83c01c2aa))
+
 ## [1.1.5](https://github.com/dexma/ui-components/compare/v1.1.4...v1.1.5) (2019-12-05)
 
 
