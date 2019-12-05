@@ -1,76 +1,155 @@
-import styled from 'styled-components';
-import { margin, borderRadius, boxShadow } from 'styles/selectors';
+import styled, { createGlobalStyle } from 'styled-components';
+import {
+  backgroundColor,
+  borderRadius,
+  boxShadow,
+  fontColor,
+  fontSize,
+  fontWeightSemiBold,
+  gray900,
+} from 'styles/selectors';
+import { Modal as ModalAntDesign } from 'antd';
 
-const StyledModal = styled.div`
-  .mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    z-index: 10001;
+const StyledModal = styled(ModalAntDesign)`
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: ${fontColor};
+  font-size: ${fontSize};
+  font-variant: tabular-nums;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: relative;
+  top: 100px;
+  width: auto;
+  margin: 0 auto;
+  padding-bottom: 24px;
+  pointer-events: none;
+  .ant-modal-title {
+    margin: 0;
+    color: ${gray900};
+    font-weight: ${fontWeightSemiBold};
+    font-size: 20px;
+    line-height: 22px;
+    word-wrap: break-word;
   }
-
-  .maskHidden {
-    display: none;
-  }
-
-  .container {
-    position: fixed;
-    top: 120px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    z-index: 10000;
-  }
-
-  .containerHidden {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: -1;
-  }
-
-  .panel {
-    background-color: #fff;
+  .ant-modal-content {
+    position: relative;
+    background-color: ${backgroundColor};
+    background-clip: padding-box;
+    border: 0;
     border-radius: ${borderRadius};
-    box-sizing: border-box;
     box-shadow: ${boxShadow};
-    transform: translate3d(0, 0, 0);
-    transition: transform 500ms cubic-bezier(0, 0, 0.25, 1),
-      opacity 500ms cubic-bezier(0, 0, 0.25, 1);
-    width: ${props => props.width};
-    height: ${props => props.height};
-    padding: 1.25rem 0 0.5rem 0;
-    margin: ${margin};
-    z-index: 10002;
+    pointer-events: auto;
   }
-
-  .panelHidden {
+  .ant-modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    padding: 0;
+    color: ${fontColor};
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  .ant-modal-close-x {
+    display: block;
+    width: 56px;
+    height: 56px;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 56px;
+    text-align: center;
+    text-transform: none;
+    text-rendering: auto;
+  }
+  .ant-modal-close:focus,
+  .ant-modal-close:hover {
+    color: ${fontColor};
+    text-decoration: none;
+  }
+  .ant-modal-header {
+    padding: 24px 24px 16px 24px;
+    color: ${fontColor};
+    background: ${backgroundColor};
+    border-radius: ${borderRadius} ${borderRadius} 0 0;
+  }
+  .ant-modal-body {
+    padding: 0 24px 24px 24px;
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    color: ${fontColor};
+  }
+  .ant-modal-footer {
+    padding: 10px 16px 24px 16px;
+    text-align: right;
+    background: transparent;
+    border-radius: 0 0 ${borderRadius} ${borderRadius};
+  }
+  .ant-modal-footer button + button {
+    margin-bottom: 0;
+    margin-left: 8px;
+  }
+  .ant-modal.zoom-enter,
+  .ant-modal.zoom-appear {
+    transform: none;
     opacity: 0;
-    z-index: -1;
-    height: 0;
-    width: 0;
+    animation-duration: 0.3s;
+    user-select: none;
+  }
+  .ant-modal-open {
     overflow: hidden;
   }
-
-  .close-icon {
-    border: 0px;
-    float: right;
-    position: absolute;
-    top: 10px;
-    right: 5px;
-    cursor: pointer;
+  .ant-modal-centered {
+    text-align: center;
+  }
+  .ant-modal-centered::before {
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+    content: '';
+  }
+  .ant-modal-centered .ant-modal {
+    top: 0;
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
   }
 `;
 
-export { StyledModal };
+const StyledModalGlobal = createGlobalStyle`
+  .ant-modal-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    filter: alpha(opacity=50);
+  }
+  .ant-modal-mask-hidden {
+    display: none;
+  }
+  .ant-modal-wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: auto;
+    outline: 0;
+  }
+`;
+
+export { StyledModal, StyledModalGlobal };
