@@ -35,9 +35,9 @@ class ModalView extends Component {
         <Modal
           visible={this.state.showModal}
           width="440px"
-          onClickAway={() => this.hideModal()}
+          onMaskClick={() => this.hideModal()}
           onClose={() => this.hideModal()}
-          closeIcon
+          closable
         >
           <div className="modal-uninstall">
             <Grid fluid>

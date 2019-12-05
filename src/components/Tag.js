@@ -35,7 +35,7 @@ export const Tag = ({ theme, color, icon, type, variant, children }) => {
   return (
     <StyledTag theme={theme} color={tagColor} type={type} variant={variant}>
       {icon && <Icon name={icon} size="small" />}
-      {children && <span>children</span>}
+      {children && <span> {children} </span>}
     </StyledTag>
   );
 };

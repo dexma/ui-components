@@ -10,10 +10,11 @@ const propTypes = {
   ...GeneralPropTypes,
   width: PropTypes.string,
   height: PropTypes.string,
-  onClickAway: PropTypes.func,
+  onMaskClick: PropTypes.func,
   onClose: PropTypes.func,
   onEscape: PropTypes.func,
   visible: PropTypes.bool,
+  closable: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -21,6 +22,7 @@ const defaultProps = {
   width: '600px',
   height: 'auto',
   visible: false,
+  closable: true,
 };
 
 export class Modal extends PureComponent {
@@ -39,14 +41,21 @@ export class Modal extends PureComponent {
     }
   };
 
+  close = e => {
+    const { onClose } = this.props;
+    if (onClose) {
+      onClose(e);
+    }
+  };
+
   render() {
     const {
       visible,
       width,
       height,
       theme,
-      onClickAway,
-      onClose,
+      closable,
+      onMaskClick,
       children,
     } = this.props;
     const containerClass = visible ? 'container' : 'containerHidden';
@@ -56,12 +65,14 @@ export class Modal extends PureComponent {
       <StyledModal width={width} height={height} theme={theme}>
         <div className={containerClass}>
           <div className={panelClass}>
-            <span onClick={onClose} className="close-icon">
-              <Icon name="close" color="gray300" size="medium" />
-            </span>
+            {closable && (
+              <button type="button" onClick={this.close} className="close-icon">
+                <Icon name="close" color="gray300" size="medium" />
+              </button>
+            )}
             {children}
           </div>
-          <div className={maskClass} onClick={onClickAway} />
+          <div className={maskClass} onClick={onMaskClick} />
         </div>
       </StyledModal>
     );
