@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/dexma/ui-components/compare/v1.1.4...v1.1.5) (2019-12-05)
+
+
+### Bug Fixes
+
+* **tag-modal:** modal prop and tag children ([7d7dfe7](https://github.com/dexma/ui-components/commit/7d7dfe739545ef7e9c1f1377ecbb8b37b7d2bab0))
+
 ## [1.1.4](https://github.com/dexma/ui-components/compare/v1.1.3...v1.1.4) (2019-12-04)
 
 
