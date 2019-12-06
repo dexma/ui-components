@@ -1,3 +1,10 @@
+## [2.0.8](https://github.com/dexma/ui-components/compare/v2.0.7...v2.0.8) (2019-12-06)
+
+
+### Bug Fixes
+
+* **npm:** commit the dist folder ([0c38440](https://github.com/dexma/ui-components/commit/0c384405de285e74a5a128a86e906a4d81b6e43d))
+
 ## [2.0.7](https://github.com/dexma/ui-components/compare/v2.0.6...v2.0.7) (2019-12-06)
 
 
