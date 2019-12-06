@@ -18,7 +18,7 @@
     "semantic-release": "semantic-release"
   },
   "publishConfig": {
-    "tag": "next"
+    "tag": "latest"
   },
   "release": {
     "branch": "master",
@@ -39,7 +39,7 @@
             "package-lock.json",
             "npm-shrinkwrap.json"
           ],
-          "message": "chore(release): ${nextRelease.version}"
+          "message": "release (${nextRelease.version})"
         }
       ]
     ]
