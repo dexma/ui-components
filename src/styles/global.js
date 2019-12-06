@@ -21,10 +21,6 @@ const getGlobalStyles = css`
   html {
     font-family: sans-serif;
     line-height: 1.15;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    -ms-overflow-style: scrollbar;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
   @-ms-viewport {
     width: device-width;
@@ -142,9 +138,7 @@ const getGlobalStyles = css`
     background-color: transparent;
     outline: none;
     cursor: pointer;
-    -webkit-transition: color 0.3s;
     transition: color 0.3s;
-    -webkit-text-decoration-skip: objects;
   }
   a:active,
   a:hover {
@@ -152,7 +146,6 @@ const getGlobalStyles = css`
     outline: 0;
   }
   a[disabled] {
-    color: rgba(0, 0, 0, 0.25);
     cursor: not-allowed;
     pointer-events: none;
   }
@@ -160,17 +153,16 @@ const getGlobalStyles = css`
   code,
   kbd,
   samp {
-    font-size: 1em;
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier,
       monospace;
   }
   pre {
     margin-top: 0;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     overflow: auto;
   }
   figure {
-    margin: 0 0 1em;
+    margin: 0 0 1rem;
   }
   img {
     vertical-align: middle;
@@ -195,8 +187,8 @@ const getGlobalStyles = css`
     border-collapse: collapse;
   }
   caption {
-    padding-top: 0.75em;
-    padding-bottom: 0.3em;
+    padding-top: 0.75rem;
+    padding-bottom: 0.3rem;
     text-align: left;
     caption-side: bottom;
   }
@@ -262,7 +254,7 @@ const getGlobalStyles = css`
     display: block;
     width: 100%;
     max-width: 100%;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5rem;
     padding: 0;
     color: inherit;
     font-size: 1.5em;
@@ -301,18 +293,7 @@ const getGlobalStyles = css`
     display: none !important;
   }
   mark {
-    padding: 0.2em;
-  }
-  .clearfix {
-    zoom: 1;
-  }
-  .clearfix::before,
-  .clearfix::after {
-    display: table;
-    content: '';
-  }
-  .clearfix::after {
-    clear: both;
+    padding: 0.2rem;
   }
 `;
 const getStorybookStyles = css`

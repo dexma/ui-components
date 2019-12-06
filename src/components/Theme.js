@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 
+import { GlobalStyle } from 'styles/global';
 import theme from 'styles/theme';
 
 const propTypes = {
@@ -18,7 +19,12 @@ export const Theme = ({ children, options }) => {
   } else {
     themeProviderOptions = Object.assign(defaultTheme, options);
   }
-  return <ThemeProvider theme={themeProviderOptions}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={themeProviderOptions}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
+  );
 };
 
 Theme.propTypes = propTypes;

@@ -24,8 +24,6 @@ import Tag from 'components/Tag';
 import Theme from 'components/Theme';
 import { Toaster, ToasterConsumer, ToastType } from 'components/toaster';
 
-import { GlobalStyle } from 'styles/global';
-
 import {
   ISO_FORMAT,
   DATE_RANGE,
@@ -81,5 +79,4 @@ export {
   lastMonth,
   yearToDate,
   previousYear,
-  GlobalStyle,
 };
