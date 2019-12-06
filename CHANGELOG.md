@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/dexma/ui-components/compare/v1.1.6...v2.0.0) (2019-12-06)
+
+
+### Code Refactoring
+
+* **modal:** refactor modal component ([b853de3](https://github.com/dexma/ui-components/commit/b853de395a3f79dc5051311b14cfc2a0369a2f3d))
+
+
+### BREAKING CHANGES
+
+* **modal:** Add the modal ant component and create our styles, the contract changed for more information about the API read https://ant.design/components/modal/
+
 ## [1.1.6](https://github.com/dexma/ui-components/compare/v1.1.5...v1.1.6) (2019-12-05)
 
 
