@@ -1,3 +1,10 @@
+## [2.0.6](https://github.com/dexma/ui-components/compare/v2.0.5...v2.0.6) (2019-12-06)
+
+
+### Bug Fixes
+
+* **dist:** remove the dist from the gh ([1c6aa5c](https://github.com/dexma/ui-components/commit/1c6aa5ce554aa5e27cc7ccb33f622af9fb491437))
+
 ## [2.0.5](https://github.com/dexma/ui-components/compare/v2.0.4...v2.0.5) (2019-12-06)
 
 
