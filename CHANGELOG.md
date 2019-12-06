@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/dexma/ui-components/compare/v2.0.2...v2.0.3) (2019-12-06)
+
+
+### Bug Fixes
+
+* **theme:** default use global system ([15843aa](https://github.com/dexma/ui-components/commit/15843aa5cf9b9824ba707b4cfaa784d32ef7a872))
+
 ## [2.0.2](https://github.com/dexma/ui-components/compare/v2.0.1...v2.0.2) (2019-12-06)
 
 
