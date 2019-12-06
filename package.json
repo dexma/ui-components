@@ -26,25 +26,12 @@
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": true,
-          "pkgRoot": "dist"
-        }
-      ],
+      "@semantic-release/npm",
       "@semantic-release/github",
       "@semantic-release/changelog",
       [
         "@semantic-release/git",
         {
-          "assets": [
-            "dist/*.{js,css}",
-            "CHANGELOG.md",
-            "package.json",
-            "package-lock.json",
-            "npm-shrinkwrap.json"
-          ],
           "message": "release (${nextRelease.version})"
         }
       ]
