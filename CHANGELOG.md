@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/dexma/ui-components/compare/v2.0.3...v2.0.4) (2019-12-06)
+
+
+### Bug Fixes
+
+* **select:** fix select style and globaly ([e91a9f6](https://github.com/dexma/ui-components/commit/e91a9f658555f706859b3bac7a0931263bef8201))
+
 ## [2.0.3](https://github.com/dexma/ui-components/compare/v2.0.2...v2.0.3) (2019-12-06)
 
 
