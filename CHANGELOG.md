@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/dexma/ui-components/compare/v2.0.0...v2.0.1) (2019-12-06)
+
+
+### Bug Fixes
+
+* **webpack:** fix config ([f42517c](https://github.com/dexma/ui-components/commit/f42517c842ea8ec93ddf588520d045bb2cdc8562))
+
 # [2.0.0](https://github.com/dexma/ui-components/compare/v1.1.6...v2.0.0) (2019-12-06)
 
 
