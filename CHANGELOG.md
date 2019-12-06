@@ -1,3 +1,11 @@
+## [2.0.7](https://github.com/dexma/ui-components/compare/v2.0.6...v2.0.7) (2019-12-06)
+
+
+### Bug Fixes
+
+* **npm:** fix dist folder npm config ([d974b4a](https://github.com/dexma/ui-components/commit/d974b4a02796353ec75a37d96b65748e1dc07758))
+* **npm:** fix npm config ([98bcfb7](https://github.com/dexma/ui-components/commit/98bcfb7d79118c8ff73234b3d33f607060001aff))
+
 ## [2.0.6](https://github.com/dexma/ui-components/compare/v2.0.5...v2.0.6) (2019-12-06)
 
 
