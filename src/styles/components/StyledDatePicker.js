@@ -103,9 +103,8 @@ const StyledDatePicker = styled.div`
 
     .DateInput_input {
       font-size: ${dataPickerFontSize};
-      height: ${dataPickerHeight};
       color: ${fontColor};
-                box-sizing: border-box;
+      box-sizing: border-box;
       text-align: center;
       padding: 0;
       outline: none;
@@ -132,6 +131,7 @@ const StyledDatePicker = styled.div`
       color: ${primaryColor};
       font-weight: ${fontWeightSemiBold};
     margin-top: 1px;
+    border-color: ${primaryColor};
     }
     .DateInput_input + .DateInput_input {
       margin-top: -1px;
