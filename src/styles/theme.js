@@ -181,7 +181,7 @@ const dataPicker = {
 
 const selectPaddingX = 0.75;
 const selectHeight = heightComponents;
-const selectFontSize = 0.875;
+const selectFontSize = fontSizeNumber;
 
 const select = {
   paddingX: getSize(selectPaddingX),

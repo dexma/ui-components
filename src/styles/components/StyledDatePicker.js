@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import {
   border,
   borderRadius,
-  borderColor,
   backgroundColor,
   boxShadow,
   fontColor,
@@ -41,6 +40,7 @@ const StyledDatePicker = styled.div`
     margin-right: -1px;
     .DateInput {
       width: calc(50% - 25px);
+      height: 100%;
       background: transparent;
     }
 
@@ -103,13 +103,14 @@ const StyledDatePicker = styled.div`
 
     .DateInput_input {
       font-size: ${dataPickerFontSize};
-      height: calc(${dataPickerHeight} - 1px);
-      border-bottom: 1px solid ${borderColor};
+      height: ${dataPickerHeight};
       color: ${fontColor};
+                box-sizing: border-box;
       text-align: center;
       padding: 0;
       outline: none;
       width: 100%;
+      height: 100%;
       display: flex;
       align-content: center;
       align-items: center;
@@ -128,10 +129,9 @@ const StyledDatePicker = styled.div`
     .DateInput_input__focused {
       outline: 0;
       background: ${backgroundColor};
-      border-bottom: 2px solid ${primaryColor};
       color: ${primaryColor};
       font-weight: ${fontWeightSemiBold};
-      padding-top: 1px;
+    margin-top: 1px;
     }
     .DateInput_input + .DateInput_input {
       margin-top: -1px;

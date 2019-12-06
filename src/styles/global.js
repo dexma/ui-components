@@ -293,7 +293,7 @@ const getGlobalStyles = css`
     display: none !important;
   }
   mark {
-    padding: 0.2rem;
+    padding: 0.2em;
   }
 `;
 const getStorybookStyles = css`

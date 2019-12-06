@@ -26,8 +26,7 @@ export const getSelectSize = () => {
   return css`
     font-size: ${selectFontSize};
     padding: 0 ${selectPaddingX};
-    min-height: calc(${selectHeight} - 2px);
-    line-height: calc(${selectHeight} - 2px);
+    min-height: ${selectHeight};
     height: auto;
   `;
 };
@@ -138,9 +137,18 @@ const StyledSelect = styled.div`
     padding-top: 0px;
   }
 
+  .select-styled__option {
+    color: ${fontColor};
+    font-size: ${selectFontSize};
+    text-align: left;
+  }
+
   .select-styled__option,
   .select-styled__option--is-selected {
-    ${getSelectSize};
+    font-size: ${selectFontSize};
+    padding: 0 ${selectPaddingX};
+    height: ${selectHeight};
+    line-height: ${selectHeight};
   }
 
   // Control
