@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/dexma/ui-components/compare/v2.0.1...v2.0.2) (2019-12-06)
+
+
+### Bug Fixes
+
+* **theme:** export our global styles ([9173846](https://github.com/dexma/ui-components/commit/91738461be18ccbda1b05900523659380b78f4ef))
+
 ## [2.0.1](https://github.com/dexma/ui-components/compare/v2.0.0...v2.0.1) (2019-12-06)
 
 
