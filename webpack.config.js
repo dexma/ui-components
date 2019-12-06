@@ -60,7 +60,8 @@ module.exports = function(env, argv) {
     output: {
       path: path.join(__dirname, 'dist'),
       filename: '[name].bundle.js',
-      libraryTarget: 'commonjs2',
+      library: '@dexma/ui-components',
+      libraryTarget: 'umd',
     },
     optimization: {
       minimize: isEnvProduction,
