@@ -1,3 +1,10 @@
+## [2.0.10](https://github.com/dexma/ui-components/compare/v2.0.9...v2.0.10) (2019-12-06)
+
+
+### Bug Fixes
+
+* **dist:** update dist on the repo ([b80bec1](https://github.com/dexma/ui-components/commit/b80bec13cdd105340ca8efb84f5bcaefb36b9dcf))
+
 ## [2.0.9](https://github.com/dexma/ui-components/compare/v2.0.8...v2.0.9) (2019-12-06)
 
 
