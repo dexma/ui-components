@@ -1,7 +1,4 @@
 # DEXMA
-build
-dist
-lib
 generated
 coverage
 /docs
