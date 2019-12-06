@@ -1,3 +1,10 @@
+## [2.0.5](https://github.com/dexma/ui-components/compare/v2.0.4...v2.0.5) (2019-12-06)
+
+
+### Bug Fixes
+
+* **date-picker:** color border not correct ([10c8a16](https://github.com/dexma/ui-components/commit/10c8a16a7c400c6c58c05ca2153424e322926278))
+
 ## [2.0.4](https://github.com/dexma/ui-components/compare/v2.0.3...v2.0.4) (2019-12-06)
 
 
