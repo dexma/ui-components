@@ -1,3 +1,10 @@
+## [2.0.12](https://github.com/dexma/ui-components/compare/v2.0.11...v2.0.12) (2019-12-09)
+
+
+### Bug Fixes
+
+* **travis:** update pipeline stages ([8efd6d2](https://github.com/dexma/ui-components/commit/8efd6d2cd12bd139dec5e524d52c150f837c58e4))
+
 ## [2.0.11](https://github.com/dexma/ui-components/compare/v2.0.10...v2.0.11) (2019-12-09)
 
 
