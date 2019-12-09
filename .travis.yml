@@ -1,10 +1,5 @@
 language: node_js
 
-# Blocklist
-branches:
-  except:
-    - gh-pages # will be deployed to, no need to build it
-
 before_install:
   - npm install -g npm
   - npm --version || echo npm not installed
@@ -14,8 +9,8 @@ before_install:
 stages:
   - build
   - test
+  - pages
   - release
-  - deploy
 
 jobs:
   include:
@@ -27,6 +22,21 @@ jobs:
         - '8'
       script:
         - npm run build
+
+    # Job: Storybooks
+    - stage: pages
+      before_script:
+        - travis_retry npm install
+      node_js:
+        - 'lts/*'
+        - '10'
+        - '8'
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npm run build-storybook
+
     # Job: Test
     - stage: test
       node_js:

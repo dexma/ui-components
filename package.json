@@ -8,7 +8,7 @@
     "build:development": "npm run clean-build && webpack --mode development",
     "build:icons": "node scripts/buildIconConfig.js",
     "build": "npm run build:icons && npm run clean-build && webpack --mode production",
-    "build-storybook": "build-storybook -c src/.storybook",
+    "build-storybook": "build-storybook -c src/.storybook -o docs",
     "storybook": "npm run build:icons && start-storybook -p 9999 -c src/.storybook --docs",
     "prettier": "prettier --write 'src/{,**/{,*.}}*.js'",
     "eslint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
@@ -27,7 +27,21 @@
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/npm",
-      "@semantic-release/github",
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "dist/main.css",
+              "label": "CSS distribution"
+            },
+            {
+              "path": "dist/main.bundle.js",
+              "label": "JS distribution"
+            }
+          ]
+        }
+      ],
       "@semantic-release/changelog",
       [
         "@semantic-release/git",
