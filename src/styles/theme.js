@@ -1,5 +1,5 @@
 // Colors (https://dexmatech.atlassian.net/wiki/spaces/design/pages/698253492/Colour)
-export const colors = {
+export const color = {
   white: '#FFFFFF',
   black: '#000000',
   gray50: '#F2F5F7',
@@ -26,17 +26,17 @@ export const colors = {
 };
 
 export const transparent = 'transparent';
-export const primary = colors.turquoise;
-export const success = colors.green;
-export const warning = colors.amber;
-export const error = colors.red;
+export const primary = color.turquoise;
+export const success = color.green;
+export const warning = color.amber;
+export const error = color.red;
 
 // Font
 export const fontSizeNumber = 0.75;
 export const fontSizeType = 'rem';
 export const fontSize = `${fontSizeNumber}${fontSizeType}`;
-export const fontColor = colors.gray700;
-export const fontColorActive = colors.white;
+export const fontColor = color.gray700;
+export const fontColorActive = color.white;
 export const fontWeightLight = 300;
 export const fontWeightNormal = 400;
 export const fontWeightSemiBold = 600;
@@ -47,20 +47,20 @@ const getSize = (size = fontSizeNumber, type = fontSizeType) =>
 
 // Icon
 export const iconSize = fontSize;
-export const iconColor = colors.gray500;
-export const iconColorActive = colors.white;
+export const iconColor = color.gray500;
+export const iconColorActive = color.white;
 
 // Background
-export const backgroundColor = colors.white;
-export const backgroundColorSelected = colors.gray100;
+export const backgroundColor = color.white;
+export const backgroundColorSelected = color.gray100;
 export const backgroundColorActive = primary;
-export const backgroundColorHover = colors.white;
-export const backgroundColorFocused = colors.white;
+export const backgroundColorHover = color.white;
+export const backgroundColorFocused = color.white;
 
 // Others
 export const radius = '4px';
 export const padding = '20px';
-export const borderColor = colors.gray200;
+export const borderColor = color.gray200;
 export const heightElements = '30px';
 export const heightComponents = 2;
 export const spacer = '1rem';
@@ -92,13 +92,13 @@ const base = {
   backgroundColorActive: backgroundColorActive,
   backgroundColorHover: backgroundColorHover,
   backgroundColorFocused: backgroundColorFocused,
-  backgroundColorDisabled: colors.gray200,
+  backgroundColorDisabled: color.gray200,
 
   boxShadow: boxShadow,
   boxShadowHover: boxShadowHover,
 
   // Colors
-  ...colors,
+  color: color,
 
   primary: primary,
   success: success,
@@ -312,5 +312,21 @@ const theme = {
   tab,
   input,
 };
+
+console.log('theme', {
+  button,
+  heading,
+  dataPicker,
+  select,
+  card,
+  switchPeriodComparative,
+  grid,
+  pagination,
+  tag,
+  tab,
+  input,
+});
+
+console.log('theme keys', Object.keys(theme));
 
 export default theme;

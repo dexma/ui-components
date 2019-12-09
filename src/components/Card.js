@@ -42,7 +42,7 @@ export const CardHeader = ({ image, icon }) => {
       {image && !icon && (
         <img alt="card-header" src={image} className="card-img card-img-top" />
       )}
-      {icon && !image && <Icon name={icon} color="gray300" />}
+      {icon && !image && <Icon name={icon} color="iconColor" />}
     </div>
   );
 };

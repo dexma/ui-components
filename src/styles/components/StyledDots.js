@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import { gray400 } from 'styles/selectors';
+import { iconColor } from 'styles/selectors';
 
 import { glow } from 'styles/utils/animation';
 
 const StyledDot = styled.div`
-  background: ${gray400};
+  background: ${iconColor};
   display: inline-block;
   vertical-align: top;
   width: ${props => props.size}px;

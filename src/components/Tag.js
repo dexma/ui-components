@@ -31,7 +31,7 @@ const defaultProps = {
 };
 
 export const Tag = ({ theme, color, icon, type, variant, children }) => {
-  const tagColor = get(theme, color) || color;
+  const tagColor = get(theme.color, color);
   return (
     <StyledTag theme={theme} color={tagColor} type={type} variant={variant}>
       {icon && <Icon name={icon} size="small" />}

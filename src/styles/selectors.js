@@ -35,28 +35,30 @@ export const backgroundColorDisabled = props =>
   propFromTheme(props, 'backgroundColorDisabled');
 export const boxShadow = props => propFromTheme(props, 'boxShadow');
 export const boxShadowHover = props => propFromTheme(props, 'boxShadowHover');
-export const gray50 = props => propFromTheme(props, 'gray50');
-export const gray100 = props => propFromTheme(props, 'gray100');
-export const gray200 = props => propFromTheme(props, 'gray200');
-export const gray300 = props => propFromTheme(props, 'gray300');
-export const gray400 = props => propFromTheme(props, 'gray400');
-export const gray500 = props => propFromTheme(props, 'gray500');
-export const gray600 = props => propFromTheme(props, 'gray600');
-export const gray700 = props => propFromTheme(props, 'gray700');
-export const gray800 = props => propFromTheme(props, 'gray800');
-export const gray900 = props => propFromTheme(props, 'gray900');
-export const white = props => propFromTheme(props, 'white');
-export const error = props => propFromTheme(props, 'error');
-export const magenta = props => propFromTheme(props, 'magenta');
-export const blue = props => propFromTheme(props, 'blue');
-export const blueLight = props => propFromTheme(props, 'blueLight');
-export const orange = props => propFromTheme(props, 'orange');
-export const red = props => propFromTheme(props, 'red');
-export const amber = props => propFromTheme(props, 'amber');
-export const brown = props => propFromTheme(props, 'brown');
-export const grey = props => propFromTheme(props, 'grey');
-export const green = props => propFromTheme(props, 'green');
-export const purple = props => propFromTheme(props, 'purple');
+
+export const gray50 = props => propFromTheme(props, 'color.gray50');
+export const gray100 = props => propFromTheme(props, 'color.gray100');
+export const gray200 = props => propFromTheme(props, 'color.gray200');
+export const gray300 = props => propFromTheme(props, 'color.gray300');
+export const gray400 = props => propFromTheme(props, 'color.gray400');
+export const gray500 = props => propFromTheme(props, 'color.gray500');
+export const gray600 = props => propFromTheme(props, 'color.gray600');
+export const gray700 = props => propFromTheme(props, 'color.gray700');
+export const gray800 = props => propFromTheme(props, 'color.gray800');
+export const gray900 = props => propFromTheme(props, 'color.gray900');
+export const white = props => propFromTheme(props, 'color.white');
+export const error = props => propFromTheme(props, 'color.error');
+export const magenta = props => propFromTheme(props, 'color.magenta');
+export const blue = props => propFromTheme(props, 'color.blue');
+export const blueLight = props => propFromTheme(props, 'color.blueLight');
+export const orange = props => propFromTheme(props, 'color.orange');
+export const red = props => propFromTheme(props, 'color.red');
+export const amber = props => propFromTheme(props, 'color.amber');
+export const brown = props => propFromTheme(props, 'color.brown');
+export const grey = props => propFromTheme(props, 'color.grey');
+export const green = props => propFromTheme(props, 'color.green');
+export const purple = props => propFromTheme(props, 'color.purple');
+
 export const primaryColor = props => propFromTheme(props, 'primary');
 export const primaryColorSvg = props => {
   const newPrimaryColor = propFromTheme(props, 'primary');
@@ -65,6 +67,7 @@ export const primaryColorSvg = props => {
 export const successColor = props => propFromTheme(props, 'success');
 export const warningColor = props => propFromTheme(props, 'warning');
 export const errorColor = props => propFromTheme(props, 'error');
+
 export const componentHeight = props => propFromTheme(props, 'heightElements');
 
 export const headingFontSize = props =>

@@ -27,7 +27,31 @@
 
 ## Usage
 
-- Install with [npm](https://www.npmjs.com): `npm install --save @dexma/ui-components`
+1) Install with [npm](https://www.npmjs.com): `npm install --save @dexma/ui-components`
+
+2) Import the css and put inside our main app like the example:
+
+```javascript
+import "@dexma/ui-components/dist/main.css";
+```
+
+3) Now you can use the component importing from the library
+
+```javascript
+import { Button } from "@dexma/ui-components";
+<Button text="Some text" variant="primary" size="medium"/>
+```
+
+4) Optional: You can set the Theme with your personal variables, we provide the Theme component and you only need to set the options:
+
+```javascript
+import { Theme, Button } from "@dexma/ui-components";
+<Theme options={{
+    primary: "#aa0800"
+}}>
+    <Button text="Some text" variant="primary" size="medium"/>
+</Theme>
+```
 
 ## Installation
 
