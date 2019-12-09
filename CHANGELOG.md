@@ -1,3 +1,10 @@
+## [2.0.11](https://github.com/dexma/ui-components/compare/v2.0.10...v2.0.11) (2019-12-09)
+
+
+### Bug Fixes
+
+* **theme:** fix the color on theme ([c6987c8](https://github.com/dexma/ui-components/commit/c6987c8c79aa075b86d82b0e6f576b0542042750))
+
 ## [2.0.10](https://github.com/dexma/ui-components/compare/v2.0.9...v2.0.10) (2019-12-06)
 
 
