@@ -2,28 +2,19 @@ language: node_js
 
 before_install:
   - npm install -g npm
+  - travis_retry npm install
+  - npm run build-storybook
   - npm --version || echo npm not installed
   - node --version || echo node not installed
   - echo "package version $PACKAGE_VERSION"
 
 stages:
-  - install
   - test
   - build
-  - storybook
   - release
 
 jobs:
   include:
-    # Job: Install
-    - stage: install
-      node_js:
-        - 'lts/*'
-        - '10'
-        - '8'
-      script:
-        - travis_retry npm install
-
     # Job: Test
     - stage: test
       node_js:
@@ -41,18 +32,6 @@ jobs:
         - '8'
       script:
         - npm run build
-
-    # Job: Storybook
-    - stage: storybook
-      node_js:
-        - 'lts/*'
-        - '10'
-        - '8'
-      deploy:
-        provider: script
-        skip_cleanup: true
-        script:
-          - npm run build-storybook
 
     # Job: Release
     - stage: release
