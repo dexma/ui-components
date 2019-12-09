@@ -313,20 +313,6 @@ const theme = {
   input,
 };
 
-console.log('theme', {
-  button,
-  heading,
-  dataPicker,
-  select,
-  card,
-  switchPeriodComparative,
-  grid,
-  pagination,
-  tag,
-  tab,
-  input,
-});
-
-console.log('theme keys', Object.keys(theme));
+console.log('works');
 
 export default theme;

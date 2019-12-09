@@ -117,9 +117,6 @@ export class SwitchPeriodComparative extends PureComponent {
       endDate
     );
 
-    console.log('startDate', startDate);
-    console.log('endDate', endDate);
-
     this.activePeriodDates =
       activePeriod === 'previous_period'
         ? this.formatDate(previousStartDate, previousEndDate)

@@ -6,8 +6,8 @@
   "scripts": {
     "clean-build": "rm -rf dist",
     "build:development": "npm run clean-build && webpack --mode development",
-    "build:production": "npm run build-storybook && npm run clean-build && webpack --mode production",
     "build:icons": "node scripts/buildIconConfig.js",
+    "build": "npm run build:icons && npm run clean-build && webpack --mode production",
     "build-storybook": "build-storybook -c src/.storybook",
     "storybook": "npm run build:icons && start-storybook -p 9999 -c src/.storybook --docs",
     "prettier": "prettier --write 'src/{,**/{,*.}}*.js'",

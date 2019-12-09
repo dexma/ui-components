@@ -1,18 +1,44 @@
-language: 'node_js'
-node_js: '8'
-cache:
-  directories:
-    - node_modules
-install:
-  - travis_retry npm install
-script:
-  - npm run test
-  - npm run build:icons
-  - npm run build:production
+language: node_js
+
+# Blocklist
+branches:
+  except:
+    - gh-pages # will be deployed to, no need to build it
+
+before_install:
+  - npm install -g npm
+  - npm --version || echo npm not installed
+  - node --version || echo node not installed
+  - echo "package version $PACKAGE_VERSION"
+
+stages:
+  - build
+  - test
+  - release
+  - deploy
+
 jobs:
   include:
+    # Job: Build
+    - stage: build
+      node_js:
+        - 'lts/*'
+        - '10'
+        - '8'
+      script:
+        - npm run build
+    # Job: Test
+    - stage: test
+      node_js:
+        - 'lts/*'
+        - '10'
+        - '8'
+      script:
+        - npm run test
+
+    # Job: Release
     - stage: release
-      script: echo "Deploying release on GitHub ..."
+      script: ls
       node_js: lts/*
       deploy:
         provider: script
