@@ -7,35 +7,22 @@ before_install:
   - echo "package version $PACKAGE_VERSION"
 
 stages:
-  - build
+  - install
   - test
-  - pages
+  - build
+  - storybook
   - release
 
 jobs:
   include:
-    # Job: Build
-    - stage: build
+    # Job: Install
+    - stage: install
       node_js:
         - 'lts/*'
         - '10'
         - '8'
       script:
-        - npm run build
-
-    # Job: Storybooks
-    - stage: pages
-      before_script:
         - travis_retry npm install
-      node_js:
-        - 'lts/*'
-        - '10'
-        - '8'
-      deploy:
-        provider: script
-        skip_cleanup: true
-        script:
-          - npm run build-storybook
 
     # Job: Test
     - stage: test
@@ -45,6 +32,27 @@ jobs:
         - '8'
       script:
         - npm run test
+
+    # Job: Build
+    - stage: build
+      node_js:
+        - 'lts/*'
+        - '10'
+        - '8'
+      script:
+        - npm run build
+
+    # Job: Storybook
+    - stage: storybook
+      node_js:
+        - 'lts/*'
+        - '10'
+        - '8'
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npm run build-storybook
 
     # Job: Release
     - stage: release
