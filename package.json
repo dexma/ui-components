@@ -31,6 +31,7 @@
         "@semantic-release/github",
         {
           "assets": [
+            "docs/",
             {
               "path": "dist/main.css",
               "label": "CSS distribution"
@@ -47,6 +48,7 @@
         "@semantic-release/git",
         {
           "assets": [
+            "docs/",
             "dist/**/*.{js,css}",
             "package.json",
             "package-lock.json",
