@@ -1,3 +1,10 @@
+## [2.0.23](https://github.com/dexma/ui-components/compare/v2.0.22...v2.0.23) (2019-12-11)
+
+
+### Bug Fixes
+
+* **docs:** update docs config upload ([fc2361c](https://github.com/dexma/ui-components/commit/fc2361c620e761a5119fd4149c62c4704def3516))
+
 ## [2.0.22](https://github.com/dexma/ui-components/compare/v2.0.21...v2.0.22) (2019-12-11)
 
 
