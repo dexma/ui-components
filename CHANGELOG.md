@@ -1,3 +1,13 @@
+## [2.0.15](https://github.com/dexma/ui-components/compare/v2.0.14...v2.0.15) (2019-12-11)
+
+
+### Bug Fixes
+
+* **CONTRIBUTING:** create doc ([1821df3](https://github.com/dexma/ui-components/commit/1821df332eb81d5ba19860fad1d7dd00a9db7074))
+* **tag:** add onClick event tag ([4536181](https://github.com/dexma/ui-components/commit/45361818bd286cd3d2443dfe6dbc5157ff6d4622))
+* **travis:** add docs on the gitignore ([8861b11](https://github.com/dexma/ui-components/commit/8861b11abc724992fe0a297592ef49e5e55b7b84))
+* **travis:** change the travis conf ([ff92839](https://github.com/dexma/ui-components/commit/ff9283971b75067cbb455f23a12e90f486efdb8d))
+
 ## [2.0.14](https://github.com/dexma/ui-components/compare/v2.0.13...v2.0.14) (2019-12-09)
 
 
