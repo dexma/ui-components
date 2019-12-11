@@ -21,7 +21,9 @@ export const tags = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Tag color="turquoise">Tag</Tag>
+        <Tag color="turquoise" onClick={() => console.log('click')}>
+          Tag click
+        </Tag>
         <Tag color="blue">Tag</Tag>
         <Tag color="blueLight">Tag</Tag>
         <Tag color="red">Tag</Tag>

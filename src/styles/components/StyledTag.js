@@ -48,6 +48,7 @@ const StyledTag = styled.div`
   border: 1px solid;
   background: ${props => props.color && props.color};
   border-radius: ${props => (props.type === 'rounded' ? 16 : 4)}px;
+  ${props => props.onClick && 'cursor: pointer'};
   ${props => props.variant === 'primary' && getTagPrimary};
   ${props => props.variant === 'outline' && getTagOutline};
   ${StyledIcon} {

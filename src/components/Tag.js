@@ -1,14 +1,13 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 import Icon from 'components/Icon';
+import theme from 'styles/theme';
 
 import { StyledTag } from 'styles/components/StyledTag';
 import get from 'lodash/get';
 
 const propTypes = {
-  ...GeneralPropTypes,
   /**
    Color related with theme
    */
@@ -18,24 +17,59 @@ const propTypes = {
    */
   icon: PropTypes.string,
   /**
-   The type of the element
+   Click event
+   */
+  onClick: PropTypes.func,
+  /**
+   Type of a tag
    */
   type: PropTypes.oneOf(['normal', 'rounded']),
+  /**
+   Variant style
+   */
   variant: PropTypes.oneOf(['primary', 'outline']),
+  /**
+   * The cypress identifier
+   */
+  dataCy: PropTypes.string,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
+  /**
+   * Children node
+   */
+  children: PropTypes.node,
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
+  theme: theme,
   type: 'normal',
   variant: 'primary',
 };
 
-export const Tag = ({ theme, color, icon, type, variant, children }) => {
+export const Tag = ({
+  theme,
+  color,
+  icon,
+  onClick,
+  type,
+  variant,
+  dataCy,
+  children,
+}) => {
   const tagColor = get(theme.color, color);
   return (
-    <StyledTag theme={theme} color={tagColor} type={type} variant={variant}>
+    <StyledTag
+      theme={theme}
+      color={tagColor}
+      type={type}
+      variant={variant}
+      onClick={onClick}
+      dataCy={dataCy}
+    >
       {icon && <Icon name={icon} size="small" />}
-      {children && <span> {children} </span>}
+      {children && children}
     </StyledTag>
   );
 };
