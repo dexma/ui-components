@@ -27,33 +27,11 @@
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/npm",
-      [
-        "@semantic-release/github",
-        {
-          "assets": [
-            "docs/",
-            {
-              "path": "dist/main.css",
-              "label": "CSS distribution"
-            },
-            {
-              "path": "dist/main.bundle.js",
-              "label": "JS distribution"
-            }
-          ]
-        }
-      ],
+      "@semantic-release/github",
       "@semantic-release/changelog",
       [
         "@semantic-release/git",
         {
-          "assets": [
-            "docs/",
-            "dist/**/*.{js,css}",
-            "package.json",
-            "package-lock.json",
-            "CHANGELOG.md"
-          ],
           "message": "release (${nextRelease.version})"
         }
       ]

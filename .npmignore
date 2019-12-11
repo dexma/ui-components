@@ -1,0 +1,13 @@
+.babelrc
+.eslintrc
+.gitignore
+.eslintignore
+.prettierrc
+.travis.yml
+.idea
+coverage/
+test/
+src/
+docs/
+scripts/
+webpack.config.js
