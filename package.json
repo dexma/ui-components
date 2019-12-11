@@ -31,7 +31,7 @@
         "@semantic-release/github",
         {
           "assets": [
-            "dist/*.{js,css,html,ico}"
+            "docs/*.{js,css,html,ico}"
           ]
         }
       ],
