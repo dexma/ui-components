@@ -1,3 +1,10 @@
+## [2.0.20](https://github.com/dexma/ui-components/compare/v2.0.19...v2.0.20) (2019-12-11)
+
+
+### Bug Fixes
+
+* **travis:** add build docs storybooks ([9862df8](https://github.com/dexma/ui-components/commit/9862df84aa4781ae8be4651402ad4043fb940a76))
+
 ## [2.0.19](https://github.com/dexma/ui-components/compare/v2.0.18...v2.0.19) (2019-12-11)
 
 
