@@ -1,3 +1,10 @@
+## [2.0.18](https://github.com/dexma/ui-components/compare/v2.0.17...v2.0.18) (2019-12-11)
+
+
+### Bug Fixes
+
+* **dist:** problem related with dist folder ([df775b1](https://github.com/dexma/ui-components/commit/df775b1fa4a2d933819c686a465727439466bebd))
+
 ## [2.0.17](https://github.com/dexma/ui-components/compare/v2.0.16...v2.0.17) (2019-12-11)
 
 
