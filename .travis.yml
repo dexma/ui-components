@@ -1,39 +1,17 @@
 language: node_js
 
-before_install:
-  - npm install -g npm
-  - npm ci
-  - npm --version || echo npm not installed
-  - node --version || echo node not installed
-  - echo "package version $PACKAGE_VERSION"
-
-stages:
-  - test
-  - build
-  - release
+node_js:
+  - lts/*
 
 jobs:
   include:
-    # Job: Test
-    - stage: test
-      node_js:
-        - 'lts/*'
-      script:
-        - npm run test
-
-    # Job: Build
-    - stage: build
-      node_js:
-        - 'lts/*'
-      script:
-        - npm run build
-
-    # Job: Release
+    # Define the release stage that runs semantic-release
     - stage: release
-      script: ls
       node_js: lts/*
+      # Advanced: optionally overwrite your default `script` step to skip the tests
+      # script: skip
       deploy:
         provider: script
         skip_cleanup: true
         script:
-          - npx semantic-release
+          - npm run build && npx semantic-release
