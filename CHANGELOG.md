@@ -1,3 +1,10 @@
+## [2.0.19](https://github.com/dexma/ui-components/compare/v2.0.18...v2.0.19) (2019-12-11)
+
+
+### Bug Fixes
+
+* **package:** update npm config semantic release ([06d6342](https://github.com/dexma/ui-components/commit/06d6342c20c51bcd0dc6a4528662cd4890edee32))
+
 ## [2.0.18](https://github.com/dexma/ui-components/compare/v2.0.17...v2.0.18) (2019-12-11)
 
 
