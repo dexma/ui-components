@@ -1,3 +1,10 @@
+## [2.0.17](https://github.com/dexma/ui-components/compare/v2.0.16...v2.0.17) (2019-12-11)
+
+
+### Bug Fixes
+
+* **travis:** update travis config ([8cbb9a6](https://github.com/dexma/ui-components/commit/8cbb9a68c6702f2c75eb4d2ad07238494d2a14c6))
+
 ## [2.0.15](https://github.com/dexma/ui-components/compare/v2.0.14...v2.0.15) (2019-12-11)
 
 
