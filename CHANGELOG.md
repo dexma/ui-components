@@ -1,3 +1,10 @@
+## [2.0.22](https://github.com/dexma/ui-components/compare/v2.0.21...v2.0.22) (2019-12-11)
+
+
+### Bug Fixes
+
+* **docs:** update asset stories ([83c999a](https://github.com/dexma/ui-components/commit/83c999a2f614767432932f6a871cc4a25a0fa08c))
+
 ## [2.0.21](https://github.com/dexma/ui-components/compare/v2.0.20...v2.0.21) (2019-12-11)
 
 
