@@ -1,3 +1,10 @@
+## [2.0.21](https://github.com/dexma/ui-components/compare/v2.0.20...v2.0.21) (2019-12-11)
+
+
+### Bug Fixes
+
+* **stories:** add automatic deploy stories ([e1c75d3](https://github.com/dexma/ui-components/commit/e1c75d3c6c4a0bfb03cf84eec01c484eb38decc8))
+
 ## [2.0.20](https://github.com/dexma/ui-components/compare/v2.0.19...v2.0.20) (2019-12-11)
 
 
