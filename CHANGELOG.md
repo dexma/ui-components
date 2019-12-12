@@ -1,3 +1,10 @@
+## [2.0.27](https://github.com/dexma/ui-components/compare/v2.0.26...v2.0.27) (2019-12-12)
+
+
+### Bug Fixes
+
+* **docs:** remove docs from the relase ([bdf0ef9](https://github.com/dexma/ui-components/commit/bdf0ef9937314ec8ccb25b56a65e9da792626650))
+
 ## [2.0.26](https://github.com/dexma/ui-components/compare/v2.0.25...v2.0.26) (2019-12-12)
 
 
