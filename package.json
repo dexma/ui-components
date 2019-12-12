@@ -27,14 +27,9 @@
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/npm",
-      [
-        "@semantic-release/github",
-        {
-          "assets": [
-            "docs/*.{js,css,html,ico}"
-          ]
-        }
-      ],
+      ["@semantic-release/github", {
+        "assets": ["docs/**"]
+      }],
       "@semantic-release/changelog",
       [
         "@semantic-release/git",
