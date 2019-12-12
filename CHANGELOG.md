@@ -1,3 +1,10 @@
+## [2.0.25](https://github.com/dexma/ui-components/compare/v2.0.24...v2.0.25) (2019-12-12)
+
+
+### Bug Fixes
+
+* **travis:** add stage for deploy ghpages ([1ab9559](https://github.com/dexma/ui-components/commit/1ab9559d905b626a29686718f3725fec2895ef73))
+
 ## [2.0.24](https://github.com/dexma/ui-components/compare/v2.0.23...v2.0.24) (2019-12-12)
 
 
