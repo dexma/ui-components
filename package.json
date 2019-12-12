@@ -1,6 +1,6 @@
 {
   "name": "@dexma/ui-components",
-  "version": "2.0.23",
+  "version": "2.0.24",
   "description": "DEXMA UI Components (React)",
   "main": "dist/main.bundle.js",
   "scripts": {
@@ -27,9 +27,14 @@
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/npm",
-      ["@semantic-release/github", {
-        "assets": ["docs/**"]
-      }],
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            "docs/**"
+          ]
+        }
+      ],
       "@semantic-release/changelog",
       [
         "@semantic-release/git",
