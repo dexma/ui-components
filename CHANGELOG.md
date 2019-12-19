@@ -1,3 +1,10 @@
+## [2.0.29](https://github.com/dexma/ui-components/compare/v2.0.28...v2.0.29) (2019-12-19)
+
+
+### Bug Fixes
+
+* **chart:** add export modules highcharts ([725f8d8](https://github.com/dexma/ui-components/commit/725f8d82d5212aacb136c16d0b3ac913d4aa3113))
+
 ## [2.0.28](https://github.com/dexma/ui-components/compare/v2.0.27...v2.0.28) (2019-12-13)
 
 
