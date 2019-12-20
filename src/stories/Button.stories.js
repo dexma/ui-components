@@ -16,7 +16,7 @@ export const buttons = () => (
       <Cell xs={12}>
         <Paragraph m="1rem 0 1rem 0">
           Use different button variant to build hierarchy in the application
-          layout.
+          layout
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -90,7 +90,7 @@ export const loading = () => (
       <Cell xs={12}>
         <Paragraph m="1.5rem 0 1rem 0">
           A loading indicator can be added to a button by setting the isLoading
-          property on the Button.
+          property on the Button
         </Paragraph>
       </Cell>
       <Cell xs={12}>

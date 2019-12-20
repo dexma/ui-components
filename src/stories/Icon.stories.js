@@ -63,7 +63,7 @@ export const icons = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph m="1rem 0 1rem 0">
-          An icon is a svg used to represent something else.
+          An icon is a svg used to represent something else
         </Paragraph>
       </Cell>
       <SearchIcons />

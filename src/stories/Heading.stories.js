@@ -25,7 +25,7 @@ export const headings = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph m="1rem 0 1rem 0">
-          All HTML headings, h1 through h6, are available.
+          All HTML headings, h1 through h6, are available
         </Paragraph>
       </Cell>
       <Cell xs={12}>

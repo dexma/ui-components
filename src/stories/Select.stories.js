@@ -26,7 +26,7 @@ export const select = () => (
       <Cell xs={12}>
         <Paragraph m="1rem 0 1rem 0">
           A flexible and beautiful Select Input control for ReactJS with
-          multiselect, autocomplete, async and creatable support.
+          multiselect, autocomplete, async and creatable support
         </Paragraph>
       </Cell>
       <Cell xs={12}>

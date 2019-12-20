@@ -27,7 +27,7 @@ export const grid = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph m="1rem 0 1rem 0">
-          A grid system based on the flex display property.
+          A grid system based on the flex display property
         </Paragraph>
       </Cell>
       <Grid fluid>

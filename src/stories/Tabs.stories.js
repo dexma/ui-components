@@ -21,7 +21,7 @@ export const tabs = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph m="1rem 0 1rem 0">
-          Tabs make it easy to switch between different views.
+          Tabs make it easy to switch between different views
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -53,7 +53,7 @@ export const extraAction = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph m="1rem 0 1rem 0">
-          You can add extra actions to the right of Tabs.
+          You can add extra actions to the right of Tabs
         </Paragraph>
       </Cell>
       <Cell xs={12}>
