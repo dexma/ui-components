@@ -1,3 +1,10 @@
+## [2.0.30](https://github.com/dexma/ui-components/compare/v2.0.29...v2.0.30) (2019-12-20)
+
+
+### Bug Fixes
+
+* **storybook:** remove explanation endline dots when single line ([4c88460](https://github.com/dexma/ui-components/commit/4c88460523d7905e68dfabf9939a29b1166d6a78))
+
 ## [2.0.29](https://github.com/dexma/ui-components/compare/v2.0.28...v2.0.29) (2019-12-19)
 
 
