@@ -1,3 +1,10 @@
+## [2.0.31](https://github.com/dexma/ui-components/compare/v2.0.30...v2.0.31) (2020-01-21)
+
+
+### Bug Fixes
+
+* **input:** update the width ([7aedd42](https://github.com/dexma/ui-components/commit/7aedd427fdc9412d106057a9e7c47a820deeed6f))
+
 ## [2.0.30](https://github.com/dexma/ui-components/compare/v2.0.29...v2.0.30) (2019-12-20)
 
 
