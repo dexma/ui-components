@@ -56,7 +56,7 @@ const StyledInput = styled.div`
     font-size: ${inputFontSize};
     display: inline-flex;
     flex: 1 1 auto;
-    width: auto;
+    width: 100%;
     color: ${gray500};
   }
   ${props => props.icon && getIcon};
