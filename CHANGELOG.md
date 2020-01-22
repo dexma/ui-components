@@ -1,3 +1,10 @@
+## [2.0.32](https://github.com/dexma/ui-components/compare/v2.0.31...v2.0.32) (2020-01-22)
+
+
+### Bug Fixes
+
+* **button:** add className from props ([eaea9ba](https://github.com/dexma/ui-components/commit/eaea9ba64c51e3136696f23b53db56cf62fda950))
+
 ## [2.0.31](https://github.com/dexma/ui-components/compare/v2.0.30...v2.0.31) (2020-01-21)
 
 
