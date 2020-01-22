@@ -26,6 +26,7 @@ export const BUTTON_VARIANT = [
 const propTypes = {
   id: PropTypes.string,
   buttonRef: PropTypes.func,
+  className: PropTypes.string,
   text: PropTypes.string,
   type: PropTypes.oneOf(BUTTON_TYPE),
   size: PropTypes.oneOf(BUTTON_SIZE).isRequired,
@@ -70,6 +71,7 @@ export const ButtonGroup = props => {
 export const Button = ({
   id,
   buttonRef,
+  className,
   text,
   type,
   iconBefore,
@@ -88,7 +90,7 @@ export const Button = ({
   theme,
   children,
 }) => {
-  const classes = classNames(isExpanded && 'expanded', size && size);
+  const classes = classNames(isExpanded && 'expanded', size && size, className);
   const handleClick =
     debounceTime > 0 ? debounce(onClick, debounceTime) : onClick;
   const spinnerSize = getIconSize(size);
