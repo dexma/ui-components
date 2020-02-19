@@ -1,3 +1,10 @@
+## [2.0.33](https://github.com/dexma/ui-components/compare/v2.0.32...v2.0.33) (2020-02-19)
+
+
+### Bug Fixes
+
+* **input:** remove children from prop and font size ([5a43d65](https://github.com/dexma/ui-components/commit/5a43d65a35ad132bf45966e57e2b1cdffb78f262))
+
 ## [2.0.32](https://github.com/dexma/ui-components/compare/v2.0.31...v2.0.32) (2020-01-22)
 
 
