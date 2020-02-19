@@ -17,16 +17,7 @@ const defaultProps = {
   vertical: false,
 };
 
-export const Divider = ({ vertical, type, theme, dataCy }) => {
-  return (
-    <StyledDivider
-      vertical={vertical}
-      theme={theme}
-      dataCy={dataCy}
-      as={type}
-    />
-  );
-};
+export const Divider = props => <StyledDivider {...props} />;
 
 StyledDivider.displayName = 'StyledDivider';
 

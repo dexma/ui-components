@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import Icon from 'components/Icon';
+import omit from 'lodash/omit';
 
 import { StyledInput } from 'styles/components/StyledInput';
 import theme from 'styles/theme';
@@ -92,6 +93,7 @@ const defaultProps = {
 
 export const Input = props => {
   const { icon, isLoading, theme, children } = props;
+  const newProps = omit(props, ['children']);
   return (
     <StyledInput icon={icon} isLoading={isLoading} theme={theme}>
       {icon && (
@@ -99,7 +101,7 @@ export const Input = props => {
           <Icon name={icon} size={20} color="gray500" />
         </div>
       )}
-      <input {...props} />
+      <input {...newProps} />
       {isLoading && <Spinner size={20} />}
       {children && children}
     </StyledInput>

@@ -290,7 +290,7 @@ const tab = {
 
 const inputPaddingX = 0.75;
 const inputHeight = heightComponents;
-const inputFontSize = 0.875;
+const inputFontSize = fontSizeNumber;
 
 const input = {
   paddingX: getSize(inputPaddingX),
@@ -312,7 +312,5 @@ const theme = {
   tab,
   input,
 };
-
-console.log('works');
 
 export default theme;
