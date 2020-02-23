@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/dexma/ui-components/compare/v2.0.33...v2.1.0) (2020-02-23)
+
+
+### Features
+
+* **alert:** add alert component and update icon className ([8d36437](https://github.com/dexma/ui-components/commit/8d364371c35ebb259cdf1dd2e73a039df2241c4a))
+
 ## [2.0.33](https://github.com/dexma/ui-components/compare/v2.0.32...v2.0.33) (2020-02-19)
 
 
