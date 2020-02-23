@@ -13,7 +13,7 @@ export const color = {
   gray800: '#2C2D30',
   gray900: '#141518',
   turquoise: '#13C3A3',
-  blue: '#003B6F',
+  blue: '#4475A6',
   blueLight: '#56A6F1',
   red: '#F65B5B',
   amber: '#FFC400',
@@ -30,6 +30,7 @@ export const primary = color.turquoise;
 export const success = color.green;
 export const warning = color.amber;
 export const error = color.red;
+export const info = color.blue;
 
 // Font
 export const fontSizeNumber = 0.75;
@@ -104,6 +105,7 @@ const base = {
   success: success,
   warning: warning,
   error: error,
+  info: info,
 
   heightComponents: heightComponents,
   heightElements: heightElements,

@@ -67,6 +67,7 @@ export const primaryColorSvg = props => {
 export const successColor = props => propFromTheme(props, 'success');
 export const warningColor = props => propFromTheme(props, 'warning');
 export const errorColor = props => propFromTheme(props, 'error');
+export const infoColor = props => propFromTheme(props, 'info');
 
 export const componentHeight = props => propFromTheme(props, 'heightElements');
 

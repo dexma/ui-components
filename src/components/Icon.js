@@ -1,29 +1,27 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 import get from 'lodash/get';
 import isNumber from 'lodash/isNumber';
 import icons from 'config/icon';
+import theme from 'styles/theme';
 
 import { StyledIcon } from 'styles/components/StyledIcon';
 import { BUTTON_SIZE } from 'components/Button';
 
 const propTypes = {
-  ...GeneralPropTypes,
   name: PropTypes.string.isRequired,
-  /**
-   A color that are set on the theme for example: gray200
-   */
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.oneOf(BUTTON_SIZE), PropTypes.number]),
+  className: PropTypes.string,
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
   name: 'vader',
   color: 'iconColor',
   size: 'large',
+  theme: theme,
 };
 
 export const getIconSize = size => {
@@ -56,7 +54,8 @@ const getIconPaths = name => {
   });
 };
 
-export const Icon = ({ name, color, size, dataCy, theme }) => {
+export const Icon = props => {
+  const { name, color, size, className, theme } = props;
   const fillColor = get(theme, color);
   const pathElements = getIconPaths(name);
   const iconSize = getIconSize(size);
@@ -70,7 +69,7 @@ export const Icon = ({ name, color, size, dataCy, theme }) => {
       xmlns="http://www.w3.org/2000/svg"
       fillColor={fillColor}
       theme={theme}
-      data-cy={dataCy}
+      className={className}
     >
       {pathElements}
     </StyledIcon>
@@ -82,4 +81,4 @@ StyledIcon.displayName = 'StyledIcon';
 Icon.propTypes = propTypes;
 Icon.defaultProps = defaultProps;
 
-export default memo(withTheme(Icon));
+export default withTheme(Icon);
