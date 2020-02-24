@@ -1,3 +1,4 @@
+import Alert from 'components/Alert';
 import { Button, ButtonGroup } from 'components/Button';
 import Card from 'components/Card';
 import Cell from 'components/Cell';
@@ -41,6 +42,7 @@ import {
 } from 'utils/dates';
 
 export {
+  Alert,
   Button,
   ButtonGroup,
   Card,
