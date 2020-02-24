@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/dexma/ui-components/compare/v2.1.0...v2.1.1) (2020-02-24)
+
+
+### Bug Fixes
+
+* **alert:** export index and storybooks ([ee2c96e](https://github.com/dexma/ui-components/commit/ee2c96e904dd3de92870821999f8cca822517bbd))
+
 # [2.1.0](https://github.com/dexma/ui-components/compare/v2.0.33...v2.1.0) (2020-02-23)
 
 
