@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/dexma/ui-components/compare/v2.1.1...v2.1.2) (2020-03-10)
+
+
+### Bug Fixes
+
+* **row:** remove margin and add alignment center ([20d5ed9](https://github.com/dexma/ui-components/commit/20d5ed95aecf29c1d450247412ed8f3736732fc9))
+
 ## [2.1.1](https://github.com/dexma/ui-components/compare/v2.1.0...v2.1.1) (2020-02-24)
 
 
