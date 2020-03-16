@@ -252,8 +252,8 @@ const grid = {
 // ==========================================================================
 
 const paginationPaddingX = 0.75;
-const paginationHeight = heightComponents;
 const paginationFontSize = fontSizeNumber;
+const paginationHeight = heightComponents;
 
 const pagination = {
   paddingX: getSize(paginationPaddingX),
@@ -265,8 +265,8 @@ const pagination = {
 // ==========================================================================
 
 const tagPaddingX = 0.5;
-const tagHeight = 1.25;
 const tagFontSize = fontSizeNumber;
+const tagHeight = 1.25;
 
 const tag = {
   paddingX: getSize(tagPaddingX),
@@ -278,8 +278,8 @@ const tag = {
 // ==========================================================================
 
 const tabPaddingX = 0.5;
-const tabHeight = 1.25;
 const tabFontSize = 0.875;
+const tabHeight = 1.25;
 
 const tab = {
   paddingX: getSize(tabPaddingX),
@@ -291,13 +291,27 @@ const tab = {
 // ==========================================================================
 
 const inputPaddingX = 0.75;
-const inputHeight = heightComponents;
 const inputFontSize = fontSizeNumber;
+const inputHeight = heightComponents;
 
 const input = {
   paddingX: getSize(inputPaddingX),
   fontSize: getSize(inputFontSize),
   height: getSize(inputHeight),
+};
+
+// Progress
+// ==========================================================================
+
+const progressPaddingX = 0.75;
+const progressFontSize = '8px';
+const progressHeight = '8';
+
+const progress = {
+  paddingX: getSize(progressPaddingX),
+  fontSize: getSize(progressFontSize),
+  height: getSize(progressHeight, 'px'),
+  backgroundColor: color.white,
 };
 
 const theme = {
@@ -313,6 +327,7 @@ const theme = {
   tag,
   tab,
   input,
+  progress,
 };
 
 export default theme;

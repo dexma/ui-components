@@ -14,6 +14,7 @@ import Input from 'components/Input';
 import Loading from 'components/Loading';
 import Modal from 'components/Modal';
 import Pagination from 'components/Pagination';
+import Progress from 'components/Progress';
 import Paragraph from 'components/Paragraph';
 import Row from 'components/Row';
 import Select from 'components/Select';
@@ -60,6 +61,7 @@ export {
   Loading,
   Modal,
   Pagination,
+  Progress,
   Paragraph,
   Select,
   Spinner,
