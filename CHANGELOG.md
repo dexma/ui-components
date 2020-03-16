@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/dexma/ui-components/compare/v2.2.0...v2.2.1) (2020-03-16)
+
+
+### Bug Fixes
+
+* **progress:** fix the array proptypes ([0de8ef7](https://github.com/dexma/ui-components/commit/0de8ef766743cb5a5fe278441fff118909f02d8d))
+
 # [2.2.0](https://github.com/dexma/ui-components/compare/v2.1.2...v2.2.0) (2020-03-16)
 
 
