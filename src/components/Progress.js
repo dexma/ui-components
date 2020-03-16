@@ -6,7 +6,7 @@ import { StyledProgress, StyledMark } from 'styles/components/StyledProgress';
 
 const propTypes = {
   percent: PropTypes.number.isRequired,
-  marks: PropTypes.arrayOf(PropTypes.object()),
+  marks: PropTypes.arrayOf(PropTypes.object),
   text: PropTypes.string,
   isTransparent: PropTypes.boolean,
   color: PropTypes.oneOf(Object.keys(theme.color)),
