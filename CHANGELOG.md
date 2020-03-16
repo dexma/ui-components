@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/dexma/ui-components/compare/v2.1.2...v2.2.0) (2020-03-16)
+
+
+### Features
+
+* **progress:** add progress component and color stories ([6657677](https://github.com/dexma/ui-components/commit/665767780bd52d44c8249fa2faa53e5125d1a32e))
+
 ## [2.1.2](https://github.com/dexma/ui-components/compare/v2.1.1...v2.1.2) (2020-03-10)
 
 
