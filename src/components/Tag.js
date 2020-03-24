@@ -29,10 +29,6 @@ const propTypes = {
    */
   variant: PropTypes.oneOf(['primary', 'outline']),
   /**
-   * The cypress identifier
-   */
-  dataCy: PropTypes.string,
-  /**
    * Theme json based
    */
   theme: PropTypes.shape({}),
@@ -55,7 +51,6 @@ export const Tag = ({
   onClick,
   type,
   variant,
-  dataCy,
   children,
 }) => {
   const tagColor = get(theme.color, color);
@@ -66,7 +61,6 @@ export const Tag = ({
       type={type}
       variant={variant}
       onClick={onClick}
-      dataCy={dataCy}
     >
       {icon && <Icon name={icon} size="small" />}
       {children && children}
