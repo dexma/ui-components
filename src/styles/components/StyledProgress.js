@@ -5,12 +5,11 @@ import get from 'lodash/get';
 const TRANSPARENT = '60';
 
 const StyledProgress = styled.div`
+  display: flex;
+  align-items: center;
   .outer {
-    display: inline-block;
-    width: 100%;
-    margin-right: calc(-10em - 8px);
-    padding-right: calc(10em + 8px);
-    position: relative;
+    flex: 1 1 0px;
+    width: auto;
     .inner {
       position: relative;
       display: inline-block;
@@ -38,16 +37,15 @@ const StyledProgress = styled.div`
     }
   }
   .text {
-    display: inline-block;
-    width: 10em;
     margin-left: 8px;
-    color: rgba(0, 0, 0, 0.45);
     font-size: 0.75rem;
     line-height: 1;
     white-space: nowrap;
     text-align: left;
     vertical-align: middle;
     word-break: normal;
+    flex: 0 0 auto;
+    width: auto;
   }
 `;
 

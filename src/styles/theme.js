@@ -33,7 +33,7 @@ export const error = color.red;
 export const info = color.blue;
 
 // Font
-export const fontSizeNumber = 0.75;
+export const fontSizeNumber = 1;
 export const fontSizeType = 'rem';
 export const fontSize = `${fontSizeNumber}${fontSizeType}`;
 export const fontColor = color.gray700;
@@ -45,6 +45,7 @@ export const fontWeightBold = 700;
 
 const getSize = (size = fontSizeNumber, type = fontSizeType) =>
   `${size}${type}`;
+const pxToRem = px => px / 14;
 
 // Icon
 export const iconSize = fontSize;
@@ -63,8 +64,7 @@ export const radius = '4px';
 export const padding = '20px';
 export const borderColor = color.gray200;
 export const heightElements = '30px';
-export const heightComponents = 2;
-export const spacer = '1rem';
+export const heightComponents = pxToRem(32);
 export const boxShadow = '0 1px 5px 0 rgba(0,0,0,0.2)';
 export const boxShadowHover = '0 4px 8px 0 rgba(0, 0, 0, 0.2)';
 
@@ -114,21 +114,21 @@ const base = {
 // Button
 // ==========================================================================
 
-const buttonPaddingX = 0.75;
+const buttonPaddingX = 1;
 const buttonHeight = heightComponents;
 const buttonFontSize = fontSizeNumber;
 
 const button = {
   size: {
     small: {
+      paddingX: getSize(buttonPaddingX - 0.25),
+      fontSize: getSize(buttonFontSize - 0.25),
+      height: getSize(buttonHeight - 0.25),
+    },
+    medium: {
       paddingX: getSize(buttonPaddingX),
       fontSize: getSize(buttonFontSize),
       height: getSize(buttonHeight),
-    },
-    medium: {
-      paddingX: getSize(buttonPaddingX + 0.25),
-      fontSize: getSize(buttonFontSize + 0.25),
-      height: getSize(buttonHeight + 0.25),
     },
     large: {
       paddingX: getSize(buttonPaddingX + 0.25 * 3.5),
@@ -148,20 +148,12 @@ const button = {
 
 const heading = {
   fontSize: {
-    h1: getSize(2.625),
-    h2: getSize(2),
-    h3: getSize(1.75),
-    h4: getSize(1.5),
-    h5: getSize(1.25),
-    h6: getSize(fontSizeNumber),
-  },
-  lineHeight: {
-    h1: getSize(3),
-    h2: getSize(2.5),
-    h3: getSize(2.25),
-    h4: getSize(2),
-    h5: getSize(1.75),
-    h6: getSize(1.5),
+    h1: getSize(pxToRem(24)), // 24px
+    h2: getSize(pxToRem(20)), // 20px
+    h3: getSize(pxToRem(18)), // 18px
+    h4: getSize(pxToRem(16)), // 16px
+    h5: getSize(pxToRem(14)), // 14px
+    h6: getSize(pxToRem(12)), // 12px
   },
 };
 
@@ -196,7 +188,7 @@ const select = {
 
 const cardPaddingX = 1.25;
 const cardPaddingY = 0.5;
-const cardFontSize = 1;
+const cardFontSize = fontSizeNumber;
 const cardLineHeight = 1.25;
 
 const card = {
@@ -264,9 +256,9 @@ const pagination = {
 // Tag
 // ==========================================================================
 
-const tagPaddingX = 0.5;
-const tagFontSize = fontSizeNumber;
-const tagHeight = 1.25;
+const tagPaddingX = 0.6;
+const tagFontSize = 0.85;
+const tagHeight = 1.5;
 
 const tag = {
   paddingX: getSize(tagPaddingX),
@@ -278,7 +270,7 @@ const tag = {
 // ==========================================================================
 
 const tabPaddingX = 0.5;
-const tabFontSize = 0.875;
+const tabFontSize = fontSizeNumber;
 const tabHeight = 1.25;
 
 const tab = {

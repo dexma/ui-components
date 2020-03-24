@@ -19,6 +19,7 @@ const getGlobalStyles = css`
     box-sizing: border-box;
   }
   html {
+    font-size: 14px;
     font-family: sans-serif;
     line-height: 1.15;
   }
@@ -40,7 +41,6 @@ const getGlobalStyles = css`
   }
   body {
     margin: 0;
-    font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
       'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial,
       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';

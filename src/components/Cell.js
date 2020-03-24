@@ -9,19 +9,19 @@ const propTypes = {
   /**
    * Responsive extra small size
    */
-  xs: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+  xs: PropTypes.oneOfType([PropTypes.number, PropTypes.bool, PropTypes.string]),
   /**
    * Responsive small size
    */
-  sm: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+  sm: PropTypes.oneOfType([PropTypes.number, PropTypes.bool, PropTypes.string]),
   /**
    * Responsive medium size
    */
-  md: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+  md: PropTypes.oneOfType([PropTypes.number, PropTypes.bool, PropTypes.string]),
   /**
    * Responsive large size
    */
-  lg: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+  lg: PropTypes.oneOfType([PropTypes.number, PropTypes.bool, PropTypes.string]),
   xsOffset: PropTypes.number,
   smOffset: PropTypes.number,
   mdOffset: PropTypes.number,

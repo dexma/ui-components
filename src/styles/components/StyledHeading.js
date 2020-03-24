@@ -3,13 +3,10 @@ import { headingFontSize } from 'styles/selectors';
 
 const getSizes = props => {
   const fontSizes = headingFontSize(props);
-  return Object.keys(fontSizes).map(heading => {
-    return css`
-      ${heading} {
-        font-size: ${fontSizes[heading]};
-      }
-    `;
-  });
+  const typeHeading = props.as;
+  return css`
+    font-size: ${fontSizes[typeHeading]};
+  `;
 };
 
 const StyledHeading = styled.div`

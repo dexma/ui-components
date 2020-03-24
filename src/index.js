@@ -28,6 +28,8 @@ import { Toaster, ToasterConsumer, ToastType } from 'components/toaster';
 
 import { GlobalStyle } from 'styles/global';
 
+import { color as colors } from 'styles/theme';
+
 import {
   ISO_FORMAT,
   DATE_RANGE,
@@ -86,4 +88,5 @@ export {
   yearToDate,
   previousYear,
   GlobalStyle,
+  colors,
 };

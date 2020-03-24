@@ -145,7 +145,7 @@ const StyledDatePicker = styled.div`
     .CalendarDay {
       border: 0px !important;
       text-align: center;
-      font-size: ${dataPickerFontSize};
+      font-size: 0.75rem;
     }
 
     .CalendarDay__default:hover {

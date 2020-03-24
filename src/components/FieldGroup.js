@@ -31,7 +31,7 @@ const defaultProps = {
   ...DefaultGeneralPropTypes,
   type: 'radio',
   vertical: false,
-  size: 'small',
+  size: 'medium',
 };
 
 const getSelectedField = (type, values, selectedValues, selectedProp) => {

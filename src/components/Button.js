@@ -48,7 +48,7 @@ const propTypes = {
 
 const defaultProps = {
   type: 'button',
-  size: 'small',
+  size: 'medium',
   variant: 'primary',
   isDisabled: false,
   isLoading: false,
