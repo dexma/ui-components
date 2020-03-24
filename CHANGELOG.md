@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/dexma/ui-components/compare/v2.2.1...v2.2.2) (2020-03-24)
+
+
+### Bug Fixes
+
+* **tag:** remove datacy prop ([5877034](https://github.com/dexma/ui-components/commit/5877034105358eecd4a57270183a270a84720a4e))
+
 ## [2.2.1](https://github.com/dexma/ui-components/compare/v2.2.0...v2.2.1) (2020-03-24)
 
 
