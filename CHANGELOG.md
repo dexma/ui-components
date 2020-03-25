@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/dexma/ui-components/compare/v2.2.2...v2.2.3) (2020-03-25)
+
+
+### Bug Fixes
+
+* **global:** remove 100% body and html ([ae5228e](https://github.com/dexma/ui-components/commit/ae5228ea028fa29b7832507fd3fb970f9931251e))
+
 ## [2.2.2](https://github.com/dexma/ui-components/compare/v2.2.1...v2.2.2) (2020-03-24)
 
 
