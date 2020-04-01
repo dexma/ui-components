@@ -1,3 +1,10 @@
+## [2.2.4](https://github.com/dexma/ui-components/compare/v2.2.3...v2.2.4) (2020-04-01)
+
+
+### Bug Fixes
+
+* **date-picker:** add placeholder to the select ([e518a2e](https://github.com/dexma/ui-components/commit/e518a2e0e623265ebecfbe1b6a47ce4185c93923))
+
 ## [2.2.3](https://github.com/dexma/ui-components/compare/v2.2.2...v2.2.3) (2020-03-25)
 
 
