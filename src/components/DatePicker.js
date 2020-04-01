@@ -47,6 +47,7 @@ const propTypes = {
   stateDateWrapper: PropTypes.func,
   periodOptions: PropTypes.arrayOf(PropTypes.object),
   periodDefault: PropTypes.objectOf(PropTypes.string),
+  periodLabel: PropTypes.string,
   initialStartDate: momentPropTypes.momentObj,
   initialEndDate: momentPropTypes.momentObj,
   onDatesChange: PropTypes.func,
@@ -144,7 +145,13 @@ export class DatePicker extends PureComponent {
       'periodOptions',
       'periodDefault',
     ]);
-    const { periodOptions, periodDefault, theme, dataCy } = this.props;
+    const {
+      periodOptions,
+      periodDefault,
+      periodLabel,
+      theme,
+      dataCy,
+    } = this.props;
     const classes = classNames('date-range', periodOptions && `with-select`);
     return (
       <StyledDatePicker
@@ -181,6 +188,7 @@ export class DatePicker extends PureComponent {
             <Select
               options={periodOptions}
               defaultValue={periodDefault}
+              placeholder={periodLabel}
               onChange={this.onSelectChange}
               isSearchable={false}
             />
