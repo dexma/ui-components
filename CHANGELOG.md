@@ -1,3 +1,10 @@
+## [2.2.5](https://github.com/dexma/ui-components/compare/v2.2.4...v2.2.5) (2020-04-02)
+
+
+### Bug Fixes
+
+* **tag:** update the sizes and themes ([06825af](https://github.com/dexma/ui-components/commit/06825aff5f2faac084edb2bc81c25a96b82405fd))
+
 ## [2.2.4](https://github.com/dexma/ui-components/compare/v2.2.3...v2.2.4) (2020-04-01)
 
 
