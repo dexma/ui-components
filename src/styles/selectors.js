@@ -93,6 +93,7 @@ export const paginationPaddingX = props =>
 export const tagHeight = props => propFromTheme(props, 'tag.height');
 export const tagFontSize = props => propFromTheme(props, 'tag.fontSize');
 export const tagPaddingX = props => propFromTheme(props, 'tag.paddingX');
+export const tagPaddingY = props => propFromTheme(props, 'tag.paddingY');
 
 export const tabHeight = props => propFromTheme(props, 'tab.height');
 export const tabFontSize = props => propFromTheme(props, 'tab.fontSize');

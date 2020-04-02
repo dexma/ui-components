@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import Icon from 'components/Icon';
 import { Alert as AlertAntDesign } from 'antd';
+import omit from 'lodash/omit';
 
 import theme from 'styles/theme';
 import { StyledAlert } from 'styles/components/StyledAlert';
 
 const propTypes = {
-  className: PropTypes.string,
   theme: PropTypes.shape({}),
+  type: PropTypes.string,
 };
 
 const defaultProps = {
@@ -32,16 +33,30 @@ export const Alert = props => {
   if (type === 'error') {
     renderIcon = 'circle_delete_outline';
   }
+  const alertProps = omit(props, ['theme']);
   return (
     <StyledAlert theme={theme}>
       <AlertAntDesign
-        {...props}
-        icon={<Icon name={renderIcon} size="medium" className="alert-icon" />}
+        {...alertProps}
+        icon={
+          <Icon
+            name={renderIcon}
+            size="medium"
+            className="alert-icon"
+            data-testid="alert-icon"
+          />
+        }
         closeText={
           closable ? (
-            <Icon name="close" size="medium" className="close-icon" />
+            <Icon
+              name="close"
+              size="medium"
+              className="close-icon"
+              data-testid="alert-close-icon"
+            />
           ) : null
         }
+        data-testid="alert"
       />
     </StyledAlert>
   );

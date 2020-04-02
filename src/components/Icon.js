@@ -5,6 +5,7 @@ import get from 'lodash/get';
 import isNumber from 'lodash/isNumber';
 import icons from 'config/icon';
 import theme from 'styles/theme';
+import omit from 'lodash/omit';
 
 import { StyledIcon } from 'styles/components/StyledIcon';
 import { BUTTON_SIZE } from 'components/Button';
@@ -55,10 +56,11 @@ const getIconPaths = name => {
 };
 
 export const Icon = props => {
-  const { name, color, size, className, theme } = props;
+  const { name, color, size, theme } = props;
   const fillColor = get(theme, color);
   const pathElements = getIconPaths(name);
   const iconSize = getIconSize(size);
+  const iconProps = omit(props, ['name', 'color', 'size']);
   return (
     <StyledIcon
       width={iconSize}
@@ -68,8 +70,8 @@ export const Icon = props => {
       preserveAspectRatio="xMidYMid meet"
       xmlns="http://www.w3.org/2000/svg"
       fillColor={fillColor}
-      theme={theme}
-      className={className}
+      data-testid="icon"
+      {...iconProps}
     >
       {pathElements}
     </StyledIcon>

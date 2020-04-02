@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components';
 import { darken, transparentize } from 'polished';
 import {
-  tagHeight,
   tagFontSize,
   tagPaddingX,
+  tagPaddingY,
   white,
   fontWeightSemiBold,
+  border,
+  borderRadius,
 } from 'styles/selectors';
+import get from 'lodash/get';
 
 import { StyledIcon } from 'styles/components/StyledIcon';
 
@@ -20,11 +23,17 @@ export const getTagPrimary = () => {
   `;
 };
 
-export const getTagOutline = ({ color }) => {
-  const tagBackgroundColor = transparentize(0.9, color);
-  const tagColor = darken(0.1, color);
+const getTagColor = props => {
+  const { theme, color } = props;
+  return get(theme.color, color);
+};
+
+export const getTagOutline = props => {
+  const themeColor = getTagColor(props);
+  const tagBackgroundColor = transparentize(0.9, themeColor);
+  const tagColor = darken(0.1, themeColor);
   return css`
-    border-color: ${color};
+    border-color: ${themeColor};
     color: ${tagColor};
     background: ${tagBackgroundColor};
     ${StyledIcon} {
@@ -36,18 +45,16 @@ export const getTagOutline = ({ color }) => {
 const StyledTag = styled.div`
   display: inline-flex;
   align-items: center;
-  height: ${tagHeight};
-  margin-right: ${tagPaddingX};
-  padding: 0 ${tagPaddingX};
+  padding: ${tagPaddingX} ${tagPaddingY};
   font-size: ${tagFontSize};
   font-weight: ${fontWeightSemiBold};
-  line-height: ${tagHeight};
+  line-height: ${tagFontSize};
   white-space: nowrap;
   cursor: default;
   opacity: 1;
-  border: 1px solid;
-  background: ${props => props.color && props.color};
-  border-radius: ${props => (props.type === 'rounded' ? 16 : 4)}px;
+  border: ${border};
+  background: ${props => props.color && getTagColor(props)};
+  border-radius: ${props => (props.type === 'rounded' ? '16px' : borderRadius)};
   ${props => props.onClick && 'cursor: pointer'};
   ${props => props.variant === 'primary' && getTagPrimary};
   ${props => props.variant === 'outline' && getTagOutline};

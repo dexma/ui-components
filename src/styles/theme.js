@@ -256,14 +256,14 @@ const pagination = {
 // Tag
 // ==========================================================================
 
-const tagPaddingX = 0.6;
-const tagFontSize = 0.85;
-const tagHeight = 1.5;
+const tagPaddingX = pxToRem(2);
+const tagPaddingY = pxToRem(8);
+const tagFontSize = fontSizeNumber;
 
 const tag = {
   paddingX: getSize(tagPaddingX),
+  paddingY: getSize(tagPaddingY),
   fontSize: getSize(tagFontSize),
-  height: getSize(tagHeight),
 };
 
 // Tabs
