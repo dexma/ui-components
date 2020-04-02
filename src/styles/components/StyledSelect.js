@@ -141,6 +141,9 @@ const StyledSelect = styled.div`
     color: ${fontColor};
     font-size: ${selectFontSize};
     text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .select-styled__option,
@@ -212,9 +215,6 @@ const StyledSelect = styled.div`
   .select-styled__option:active,
   .select-styled__option--is-focused {
     background-color: ${backgroundColorSelected};
-  }
-  .select-styled__menu-list {
-    max-height: fit-content; //315
   }
   .select-styled__dropdown-indicator,
   .select-styled__dropdown-indicator:hover,

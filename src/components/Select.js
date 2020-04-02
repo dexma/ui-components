@@ -1,20 +1,20 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import ReactSelect, { components } from 'react-select';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
-import capitalize from 'lodash/capitalize';
+import omit from 'lodash/omit';
+import theme from 'styles/theme';
 
 import Icon from 'components/Icon';
 
 import { StyledSelect } from 'styles/components/StyledSelect';
 
 const propTypes = {
-  ...GeneralPropTypes,
+  theme: PropTypes.shape({}),
   children: PropTypes.node,
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
+  theme: theme,
 };
 
 const DropdownIndicator = props => {
@@ -39,26 +39,24 @@ const ClearIndicator = props => {
 };
 
 const SelectInput = ({ children, ...props }) => {
-  return (
-    <components.Input
-      data-cy={`SelectInput-${capitalize(props.name)}`}
-      {...props}
-    />
-  );
+  return <components.Input data-testid="select-input" {...props} />;
 };
 
 const Option = props => {
   return (
-    <div data-cy={`SelectOption-${capitalize(props.name)}`}>
+    <div data-testid="select-option">
       <components.Option {...props}>{props.label}</components.Option>
     </div>
   );
 };
 
-export const Select = ({ dataCy, theme, ...props }) => {
+export const Select = props => {
+  const { theme } = props;
+  const selectProps = omit(props, ['theme']);
   return (
     <StyledSelect theme={theme}>
       <ReactSelect
+        data-testid="select"
         classNamePrefix="select-styled"
         optionClassName="select-option"
         components={{
@@ -70,8 +68,8 @@ export const Select = ({ dataCy, theme, ...props }) => {
           Option: selectProps => Option({ ...selectProps, name: props.name }),
         }}
         blurInputOnSelect={false}
-        dataCy={dataCy}
-        {...props}
+        maxMenuHeight={192}
+        {...selectProps}
       />
     </StyledSelect>
   );
