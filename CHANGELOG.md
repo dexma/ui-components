@@ -1,3 +1,10 @@
+## [2.2.8](https://github.com/dexma/ui-components/compare/v2.2.7...v2.2.8) (2020-04-02)
+
+
+### Bug Fixes
+
+* **colors:** update colors ([92c9734](https://github.com/dexma/ui-components/commit/92c973479289e047cb22695475fba9a59857ed76))
+
 ## [2.2.7](https://github.com/dexma/ui-components/compare/v2.2.6...v2.2.7) (2020-04-02)
 
 
