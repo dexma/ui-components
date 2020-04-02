@@ -1,3 +1,10 @@
+## [2.2.9](https://github.com/dexma/ui-components/compare/v2.2.8...v2.2.9) (2020-04-02)
+
+
+### Bug Fixes
+
+* **button:** the colour of destructive style ([ab6b678](https://github.com/dexma/ui-components/commit/ab6b678217573060bcc455f52fb21e2fec6b4a43))
+
 ## [2.2.8](https://github.com/dexma/ui-components/compare/v2.2.7...v2.2.8) (2020-04-02)
 
 
