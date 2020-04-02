@@ -1,3 +1,10 @@
+## [2.2.7](https://github.com/dexma/ui-components/compare/v2.2.6...v2.2.7) (2020-04-02)
+
+
+### Bug Fixes
+
+* **select:** option limit and force max height ([6dc716b](https://github.com/dexma/ui-components/commit/6dc716be6a21d8b787fac7cc0015f4bc6abe23ca))
+
 ## [2.2.6](https://github.com/dexma/ui-components/compare/v2.2.5...v2.2.6) (2020-04-02)
 
 
