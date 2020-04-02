@@ -1,3 +1,10 @@
+## [2.2.6](https://github.com/dexma/ui-components/compare/v2.2.5...v2.2.6) (2020-04-02)
+
+
+### Bug Fixes
+
+* **date-picker:** add the language as a prop ([cb0ba75](https://github.com/dexma/ui-components/commit/cb0ba75dfddd79ddfdb28090f0eb1c35d6cf687b))
+
 ## [2.2.5](https://github.com/dexma/ui-components/compare/v2.2.4...v2.2.5) (2020-04-02)
 
 
