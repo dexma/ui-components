@@ -6,7 +6,7 @@ import {
   gray300,
   gray400,
   gray900,
-  magenta,
+  red,
   primaryColor,
   backgroundColor,
   buttonSize,
@@ -212,9 +212,9 @@ export const getButtonVariantOutline = props => {
 };
 export const getButtonVariantDestructive = props => {
   const color = white(props);
-  const background = magenta(props);
+  const background = red(props);
   const borderColor = background;
-  const backgroundHover = darken(0.1, saturate(0.2, magenta(props)));
+  const backgroundHover = darken(0.1, saturate(0.2, red(props)));
   const newFocusColor = transparentize(0.3, backgroundHover);
   return css`
     color: ${color};
