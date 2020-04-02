@@ -235,11 +235,16 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     .DayPicker_weekHeader {
       top: 50px;
     }
+    
+    .DayPicker_weekHeader_li{
+          text-transform: capitalize;
+    }
 
     .CalendarMonth_caption {
       font-size: ${dataPickerFontSize};
       padding-bottom: 35px;
       color: ${fontColor};
+      text-transform: capitalize;
     }
 
     .DayPickerNavigation_svg__horizontal {

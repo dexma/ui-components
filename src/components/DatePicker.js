@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { DateRangePicker } from 'react-dates';
 import { withTheme } from 'styled-components';
 import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
-
+import moment from 'moment';
 import momentPropTypes from 'react-moment-proptypes';
 import omit from 'lodash/omit';
 import classNames from 'classnames';
@@ -51,6 +51,7 @@ const propTypes = {
   initialStartDate: momentPropTypes.momentObj,
   initialEndDate: momentPropTypes.momentObj,
   onDatesChange: PropTypes.func,
+  language: PropTypes.string,
 };
 
 const defaultProps = {
@@ -61,6 +62,7 @@ const defaultProps = {
   startDateId: START_DATE,
   endDateId: END_DATE,
   numberOfMonths: NUMBER_OF_MONTHS,
+  language: 'en',
 };
 
 export class DatePicker extends PureComponent {
@@ -80,7 +82,8 @@ export class DatePicker extends PureComponent {
   }
 
   componentDidMount() {
-    const { periodDefault } = this.props;
+    const { periodDefault, language } = this.props;
+    moment.locale(language);
     const ranges =
       periodDefault && periodDefault.value
         ? this.datePickerRange(periodDefault.value, withDatePickerFormat)
