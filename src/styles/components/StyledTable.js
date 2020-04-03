@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {
   fontColor,
-  fontSize,
+  tableFontSize,
   fontWeightNormal,
   gray50,
   gray200,
@@ -29,7 +29,7 @@ const StyledTable = styled.div`
     margin: 0;
     padding: 0;
     color: ${fontColor};
-    font-size: ${fontSize};
+    font-size: ${tableFontSize};
     font-weight: ${fontWeightNormal};
     font-variant: tabular-nums;
     line-height: 1.5;

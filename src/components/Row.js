@@ -13,7 +13,7 @@ const propTypes = {
   /**
    * Align all the items centered
    */
-  alignItemsCenter: PropTypes.bool,
+  alignItems: PropTypes.string,
   /**
    * Component class
    */
@@ -35,7 +35,7 @@ const propTypes = {
 const defaultProps = {
   theme: theme,
   reverse: false,
-  alignItemsCenter: false,
+  alignItemsCenter: 'center',
 };
 
 export const Row = props => <StyledRow {...props} />;

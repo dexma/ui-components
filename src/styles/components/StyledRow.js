@@ -17,7 +17,7 @@ const StyledRow = styled.div`
   ${props =>
     props.alignItemsCenter &&
     css`
-      align-items: center;
+      align-items: ${props.alignItemsCenter};
     `};
 `;
 

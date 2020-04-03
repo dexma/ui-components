@@ -56,10 +56,10 @@ export const getIconSize = props => {
   sizeArray.forEach(sizeItem => {
     const [size] = sizeItem;
 
-    let iconPaddding = 0.3;
-    if (size === 'medium') iconPaddding = 0.5;
-    if (size === 'large') iconPaddding = 0.7;
-    if (size === 'xlarge') iconPaddding = 0.9;
+    let iconPaddding = 0.285;
+    if (size === 'medium') iconPaddding = 0.285;
+    if (size === 'large') iconPaddding = 0.5;
+    if (size === 'xlarge') iconPaddding = 0.7;
 
     let paddingPosition = 'right';
     if (iconAfter) paddingPosition = 'left';

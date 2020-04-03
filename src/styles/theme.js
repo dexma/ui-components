@@ -98,7 +98,6 @@ const base = {
   boxShadow: boxShadow,
   boxShadowHover: boxShadowHover,
 
-  // Colors
   color: color,
 
   primary: primary,
@@ -253,12 +252,20 @@ const pagination = {
   height: getSize(paginationHeight),
 };
 
+// Table
+// ==========================================================================
+
+const tableFontSize = pxToRem(12);
+const table = {
+  fontSize: getSize(tableFontSize),
+};
+
 // Tag
 // ==========================================================================
 
 const tagPaddingX = pxToRem(2);
 const tagPaddingY = pxToRem(8);
-const tagFontSize = fontSizeNumber;
+const tagFontSize = pxToRem(12);
 
 const tag = {
   paddingX: getSize(tagPaddingX),
@@ -316,6 +323,7 @@ const theme = {
   switchPeriodComparative,
   grid,
   pagination,
+  table,
   tag,
   tab,
   input,

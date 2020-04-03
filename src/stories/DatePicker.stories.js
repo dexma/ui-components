@@ -54,6 +54,7 @@ export const preiod = () => (
         <DatePicker
           periodOptions={period}
           periodDefault={{ value: 'last_7_days', label: 'Last 7 days' }}
+          language="fr"
         />
       </Cell>
     </Row>
