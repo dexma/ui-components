@@ -1,3 +1,10 @@
+## [2.2.10](https://github.com/dexma/ui-components/compare/v2.2.9...v2.2.10) (2020-04-03)
+
+
+### Bug Fixes
+
+* **components:** update styles and contracts ([a996e18](https://github.com/dexma/ui-components/commit/a996e182255ee67e00d3487be6b96dfd6c29be05))
+
 ## [2.2.9](https://github.com/dexma/ui-components/compare/v2.2.8...v2.2.9) (2020-04-02)
 
 
