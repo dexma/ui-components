@@ -1,3 +1,10 @@
+## [2.2.11](https://github.com/dexma/ui-components/compare/v2.2.10...v2.2.11) (2020-04-07)
+
+
+### Bug Fixes
+
+* **row:** problem related with align items ([3477665](https://github.com/dexma/ui-components/commit/3477665e255ea659965a67fb82f38e022eb7c6bb))
+
 ## [2.2.10](https://github.com/dexma/ui-components/compare/v2.2.9...v2.2.10) (2020-04-03)
 
 
