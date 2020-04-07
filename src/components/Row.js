@@ -11,31 +11,19 @@ const propTypes = {
    */
   reverse: PropTypes.bool,
   /**
-   * Align all the items centered
+   * Align horizontal items like cell
    */
-  alignItems: PropTypes.string,
-  /**
-   * Component class
-   */
-  className: PropTypes.string,
-  /**
-   * The cypress identifier
-   */
-  dataCy: PropTypes.string,
+  alignItems: PropTypes.oneOf(['start', 'center', 'end']),
   /**
    * Theme json based
    */
   theme: PropTypes.shape({}),
-  /**
-   * Children node
-   */
-  children: PropTypes.node,
 };
 
 const defaultProps = {
-  theme: theme,
   reverse: false,
-  alignItemsCenter: 'center',
+  alignItems: 'center',
+  theme: theme,
 };
 
 export const Row = props => <StyledRow {...props} />;
