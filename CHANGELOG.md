@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/dexma/ui-components/compare/v2.2.11...v2.3.0) (2020-04-10)
+
+
+### Features
+
+* **chart:** upgrade chart to hooks ([4b4c8bb](https://github.com/dexma/ui-components/commit/4b4c8bb2865eedbffa60ed96eb8d90adc7a94cbe))
+
 ## [2.2.11](https://github.com/dexma/ui-components/compare/v2.2.10...v2.2.11) (2020-04-07)
 
 
