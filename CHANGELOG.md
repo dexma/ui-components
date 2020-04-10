@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/dexma/ui-components/compare/v2.3.0...v2.3.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* **chart:** change the chart component ([63e9de9](https://github.com/dexma/ui-components/commit/63e9de931c4d948888c47ff486ee40df01f76040))
+
 # [2.3.0](https://github.com/dexma/ui-components/compare/v2.2.11...v2.3.0) (2020-04-10)
 
 
