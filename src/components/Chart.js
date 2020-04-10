@@ -1,7 +1,11 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import deepEqual from 'deep-equal';
-import { withTheme } from 'styled-components';
+import React, {
+  forwardRef,
+  memo,
+  useEffect,
+  useImperativeHandle,
+  useLayoutEffect,
+  useRef,
+} from 'react';
 
 import Highcharts from 'highcharts';
 import addSankeyModule from 'highcharts/modules/sankey';
@@ -11,116 +15,85 @@ import addExportData from 'highcharts/modules/export-data';
 
 import boost from 'highcharts/modules/boost';
 
-import theme from 'styles/theme';
-
 boost(Highcharts);
 addSankeyModule(Highcharts);
 addExportingModule(Highcharts);
 addOfflineExportingModule(Highcharts);
 addExportData(Highcharts);
 
-const propTypes = {
-  options: PropTypes.objectOf(PropTypes.any),
-  callback: PropTypes.func,
-  theme: PropTypes.shape({}),
-};
+// React currently throws a warning when using `useLayoutEffect` on the server.
+// To get around it, we can conditionally `useEffect` on the server (no-op) and
+// `useLayoutEffect` in the browser. We need `useLayoutEffect` to ensure the
+// `Highcharts` ref is available in the layout phase. This makes it available
+// in a parent component's `componentDidMount`.
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-const defaultProps = {
-  theme: theme,
-};
+export const Chart = forwardRef(function Chart(props, ref) {
+  const containerRef = useRef();
+  const chartRef = useRef();
 
-const StyledChart = () => {
-  const {
-    backgroundColor,
-    /*    backgroundColorActive,
-    backgroundColorFocused,
-    backgroundColorHover,
-    backgroundColorSelected,
-    border,
-    borderRadius,
-    component,
-    fontColor,
-    fontColorActive,
-    fontFamily, 
-    fontSize,
-    /*    fontWeightBold,
-    iconColor,
-    iconColorActive,
-    iconSize,
-    padding, */
-  } = theme;
-  return {
-    chart: {
-      backgroundColor: backgroundColor,
-      style: {
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-      },
-    },
-    title: {
-      style: {
-        fontWeight: 'bold',
-      },
-    },
-    tooltip: {
-      backgroundColor: backgroundColor,
-      shadow: false,
-    },
-    legend: {
-      backgroundColor: backgroundColor,
-      itemStyle: {},
-    },
-    xAxis: {
-      labels: {
-        style: {},
-      },
-    },
-    yAxis: {
-      title: {
-        style: {},
-      },
-      labels: {
-        style: {},
-      },
-    },
-  };
-};
+  useIsomorphicLayoutEffect(() => {
+    function createChart() {
+      const H = Highcharts;
+      const constructorType = props.constructorType || 'chart';
 
-export class Chart extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.container = React.createRef();
-  }
-
-  componentDidMount() {
-    const { options, callback } = this.props;
-    this.chart = Highcharts.chart(
-      this.container.current,
-      options,
-      callback || undefined
-    );
-    this.chart.update(StyledChart());
-  }
-
-  componentDidUpdate(prevProps) {
-    if (!deepEqual(this.props.options, prevProps.options)) {
-      this.chart.update(this.props.options);
+      if (!H) {
+        console.warn('The "highcharts" property was not passed.');
+      } else if (!H[constructorType]) {
+        console.warn(
+          'The "constructorType" property is incorrect or some ' +
+            'required module is not imported.'
+        );
+      } else if (!props.options) {
+        console.warn('The "options" property was not passed.');
+      } else {
+        // Create a chart
+        chartRef.current = H[constructorType](
+          containerRef.current,
+          props.options,
+          props.callback ? props.callback : undefined
+        );
+      }
     }
-  }
 
-  componentWillUnmount() {
-    if (this.chart) {
-      this.chart.destroy();
-      this.chart = null;
+    if (!chartRef.current) {
+      createChart();
+    } else if (props.allowChartUpdate !== false) {
+      if (!props.immutable && chartRef.current) {
+        chartRef.current.update(
+          props.options,
+          ...(props.updateArgs || [true, true])
+        );
+      } else {
+        createChart();
+      }
     }
-  }
+  });
 
-  render() {
-    return <div ref={this.container} />;
-  }
-}
+  useIsomorphicLayoutEffect(() => {
+    return () => {
+      // Destroy chart only if unmounting.
+      if (chartRef.current) {
+        chartRef.current.destroy();
+        chartRef.current = null;
+      }
+    };
+  }, []);
 
-Chart.propTypes = propTypes;
-Chart.defaultProps = defaultProps;
+  useImperativeHandle(
+    ref,
+    () => ({
+      get chart() {
+        return chartRef.current;
+      },
+      container: containerRef,
+    }),
+    []
+  );
 
-export default withTheme(Chart);
+  // Create container for the chart
+  return <div {...props.containerProps} ref={containerRef} />;
+});
+
+export default memo(Chart);
