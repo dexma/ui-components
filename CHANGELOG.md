@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/dexma/ui-components/compare/v2.3.1...v2.3.2) (2020-04-14)
+
+
+### Bug Fixes
+
+* **progress:** opacity background bar ([2339623](https://github.com/dexma/ui-components/commit/2339623c4fcea14fa829a22258a44e8bd3ebb7e4))
+
 ## [2.3.1](https://github.com/dexma/ui-components/compare/v2.3.0...v2.3.1) (2020-04-10)
 
 
