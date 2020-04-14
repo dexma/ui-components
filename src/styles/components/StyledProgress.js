@@ -1,8 +1,13 @@
 import styled from 'styled-components';
-import { progressHeight, progressBackgroundColor } from 'styles/selectors';
+import {
+  progressHeight,
+  progressFontSize,
+  progressBackgroundColor,
+} from 'styles/selectors';
 import get from 'lodash/get';
+import { transparentize } from 'polished';
 
-const TRANSPARENT = '60';
+const TRANSPARENT = '0.4';
 
 const StyledProgress = styled.div`
   display: flex;
@@ -24,7 +29,7 @@ const StyledProgress = styled.div`
         background-color: ${props => {
           const bgColor = get(props.theme.color, props.color);
           if (props.isTransparent) {
-            return `${bgColor}${TRANSPARENT}`;
+            return `${transparentize(TRANSPARENT, bgColor)}`;
           }
           return bgColor;
         }};
@@ -38,7 +43,7 @@ const StyledProgress = styled.div`
   }
   .text {
     margin-left: 8px;
-    font-size: 0.75rem;
+    font-size: ${progressFontSize};
     line-height: 1;
     white-space: nowrap;
     text-align: left;

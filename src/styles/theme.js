@@ -45,7 +45,7 @@ export const fontWeightBold = 700;
 
 const getSize = (size = fontSizeNumber, type = fontSizeType) =>
   `${size}${type}`;
-const pxToRem = px => px / 14;
+export const pxToRem = px => px / 14;
 
 // Icon
 export const iconSize = fontSize;
@@ -303,13 +303,13 @@ const input = {
 // ==========================================================================
 
 const progressPaddingX = 0.75;
-const progressFontSize = '8px';
-const progressHeight = '8';
+const progressFontSize = pxToRem(12);
+const progressHeight = pxToRem(8);
 
 const progress = {
   paddingX: getSize(progressPaddingX),
   fontSize: getSize(progressFontSize),
-  height: getSize(progressHeight, 'px'),
+  height: getSize(progressHeight),
   backgroundColor: color.white,
 };
 

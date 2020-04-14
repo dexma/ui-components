@@ -134,5 +134,7 @@ export const gridContainerMd = props =>
 export const gridContainerLg = props =>
   propFromTheme(props, 'grid.containerLg');
 export const progressHeight = props => propFromTheme(props, 'progress.height');
+export const progressFontSize = props =>
+  propFromTheme(props, 'progress.fontSize');
 export const progressBackgroundColor = props =>
   propFromTheme(props, 'progress.backgroundColor');
