@@ -96,6 +96,9 @@ const defaultOptions = {
   credits: {
     enabled: false,
   },
+  exporting: {
+    enabled: false,
+  },
 };
 
 export class Chart extends PureComponent {
