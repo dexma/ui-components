@@ -1,3 +1,10 @@
+## [2.3.3](https://github.com/dexma/ui-components/compare/v2.3.2...v2.3.3) (2020-04-14)
+
+
+### Bug Fixes
+
+* remove export options ([9e94db7](https://github.com/dexma/ui-components/commit/9e94db71007719bcaae889c5697f8724569d9d67))
+
 ## [2.3.2](https://github.com/dexma/ui-components/compare/v2.3.1...v2.3.2) (2020-04-14)
 
 
