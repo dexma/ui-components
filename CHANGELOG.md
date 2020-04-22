@@ -1,3 +1,10 @@
+## [2.3.4](https://github.com/dexma/ui-components/compare/v2.3.3...v2.3.4) (2020-04-22)
+
+
+### Bug Fixes
+
+* **ie11:** fix styles related with ie11 ([43c9f0a](https://github.com/dexma/ui-components/commit/43c9f0a54d668d8f2b617ba5950a3661fd1dd3e3))
+
 ## [2.3.3](https://github.com/dexma/ui-components/compare/v2.3.2...v2.3.3) (2020-04-14)
 
 
