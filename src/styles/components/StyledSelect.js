@@ -27,7 +27,7 @@ export const getSelectSize = () => {
     font-size: ${selectFontSize};
     padding: 0 ${selectPaddingX};
     min-height: ${selectHeight};
-    height: auto;
+    height: ${selectHeight};
   `;
 };
 
@@ -43,7 +43,7 @@ const StyledSelect = styled.div`
   }
   .css-2o5izw,
   .css-1aya2g8 {
-    min-height: calc(${selectHeight} - 2px);
+    height: calc(${selectHeight} - 2px);
     line-height: calc(${selectHeight} - 2px);
     border-radius: ${borderRadius};
     border: ${border};

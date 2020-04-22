@@ -76,8 +76,7 @@ const StyledFieldGroup = styled.div`
 
   input {
     opacity: 0;
-    -moz-appearance: none;
-    -webkit-appearance: none;
+    width: 0px;
   }
 `;
 export { StyledFieldGroup };

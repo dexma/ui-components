@@ -22,6 +22,9 @@ import { StyledSelect } from 'styles/components/StyledSelect';
 
 const StyledDatePicker = styled.div`
 
+    display: inline-flex;
+    flex-direction: row;
+
   ${StyledSelect}{
     .select-styled__control{
       border-radius: ${props => {
@@ -34,14 +37,16 @@ const StyledDatePicker = styled.div`
   }
 
   .date-range {
-    display: inline-block;
     width: 215px;
-    float: left;
     margin-right: -1px;
     .DateInput {
       width: calc(50% - 25px);
       height: 100%;
       background: transparent;
+    }
+    
+    .DateRangePicker{
+      display: block;
     }
 
     .DateRangePickerInput {
@@ -273,9 +278,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   }
 
   .select {
-    display: inline-block;
     width: 160px;
-    float: left;
     .dexma-select__control {
       border-radius: 0px ${borderRadius} ${borderRadius} 0px;
       margin-left: -1px;

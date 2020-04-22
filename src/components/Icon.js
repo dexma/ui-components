@@ -64,6 +64,7 @@ export const Icon = props => {
   return (
     <StyledIcon
       width={iconSize}
+      height={iconSize}
       viewBox="0 0 24 24"
       strokeWidth="0"
       fill="currentColor"

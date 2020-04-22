@@ -23,7 +23,7 @@ const StyledProgress = styled.div`
       background-color: ${progressBackgroundColor};
       border-radius: 0;
       border-bottom: 1px solid ${props => get(props.theme.color, props.color)};
-      height: 9px;
+      height: 8px;
       .background {
         position: relative;
         background-color: ${props => {
