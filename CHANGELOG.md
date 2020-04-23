@@ -1,3 +1,10 @@
+## [2.3.5](https://github.com/dexma/ui-components/compare/v2.3.4...v2.3.5) (2020-04-23)
+
+
+### Bug Fixes
+
+* **date-picker:** update the size on ie ([a4ea587](https://github.com/dexma/ui-components/commit/a4ea587f13868b072b521296e5998856db4a9fbb))
+
 ## [2.3.4](https://github.com/dexma/ui-components/compare/v2.3.3...v2.3.4) (2020-04-22)
 
 
