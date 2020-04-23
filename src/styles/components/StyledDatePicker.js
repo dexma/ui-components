@@ -21,10 +21,7 @@ import { transparentize } from 'polished';
 import { StyledSelect } from 'styles/components/StyledSelect';
 
 const StyledDatePicker = styled.div`
-
-    display: inline-flex;
-    flex-direction: row;
-
+  display: flex;
   ${StyledSelect}{
     .select-styled__control{
       border-radius: ${props => {
