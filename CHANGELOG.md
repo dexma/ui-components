@@ -1,3 +1,10 @@
+## [2.3.7](https://github.com/dexma/ui-components/compare/v2.3.6...v2.3.7) (2020-04-23)
+
+
+### Bug Fixes
+
+* **date-picker:** ie fix set flex ([e9e3790](https://github.com/dexma/ui-components/commit/e9e3790786d938e0c19c171d920796db462b04cf))
+
 ## [2.3.6](https://github.com/dexma/ui-components/compare/v2.3.5...v2.3.6) (2020-04-23)
 
 
