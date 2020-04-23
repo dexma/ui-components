@@ -19,6 +19,7 @@ export const getLoading = () => {
     ${StyledSpinner} {
       position: absolute;
       right: 10px;
+      top: 6.5px;
     }
   `;
 };
@@ -37,6 +38,8 @@ export const getIcon = () => {
       display: inline-flex;
       border-radius: ${borderRadius} 0 0 ${borderRadius};
       padding: 0 0.5rem;
+      display: flex;
+      align-items: center;
     }
   `;
 };
