@@ -1,3 +1,10 @@
+## [2.3.6](https://github.com/dexma/ui-components/compare/v2.3.5...v2.3.6) (2020-04-23)
+
+
+### Bug Fixes
+
+* **input:** icons inside the input like search and loading ([6a61558](https://github.com/dexma/ui-components/commit/6a61558be7f2ef4e85648eab6cfdfc1d585330a5))
+
 ## [2.3.5](https://github.com/dexma/ui-components/compare/v2.3.4...v2.3.5) (2020-04-23)
 
 
