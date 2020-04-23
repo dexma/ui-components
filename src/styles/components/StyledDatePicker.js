@@ -58,7 +58,7 @@ const StyledDatePicker = styled.div`
           return `${borderRadius(props)} 0 0 ${borderRadius(props)}`;
         }
         return borderRadius(props);
-      }}; 
+      }};
      cursor: default;
       display: flex;
       flex-wrap: wrap;
@@ -119,7 +119,8 @@ const StyledDatePicker = styled.div`
       align-content: center;
       align-items: center;
       font-weight: normal;
-    }
+    background-color: transparent;
+        }
 
     .DateRangePickerInput_arrow {
       vertical-align: middle;
@@ -135,11 +136,9 @@ const StyledDatePicker = styled.div`
       background: ${backgroundColor};
       color: ${primaryColor};
       font-weight: ${fontWeightSemiBold};
-    margin-top: 1px;
-    border-color: ${primaryColor};
+      border-color: ${primaryColor};
     }
     .DateInput_input + .DateInput_input {
-      margin-top: -1px;
       margin-left: 0;
     }
 
@@ -211,7 +210,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
     .DateRangePicker_picker {
       top: ${dataPickerHeight}!important;
-      margin-top: -1px;
+      margin-top: 0px;
     }
 
     .DayPickerNavigation_button__horizontal {
