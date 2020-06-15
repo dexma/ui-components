@@ -22,12 +22,13 @@ import {
 } from 'styles/selectors';
 import { transparentize } from 'polished';
 
-export const getSelectSize = () => {
+export const getSelectSize = props => {
   return css`
     font-size: ${selectFontSize};
+    line-height: ${selectFontSize};
     padding: 0 ${selectPaddingX};
     min-height: ${selectHeight};
-    height: ${selectHeight};
+    height: ${props.isMulti ? 'auto' : selectHeight(props)};
   `;
 };
 

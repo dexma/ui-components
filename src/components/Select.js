@@ -51,10 +51,10 @@ const Option = props => {
 };
 
 export const Select = props => {
-  const { theme } = props;
+  const { theme, isMulti } = props;
   const selectProps = omit(props, ['theme']);
   return (
-    <StyledSelect theme={theme}>
+    <StyledSelect theme={theme} isMulti={isMulti}>
       <ReactSelect
         data-testid="select"
         classNamePrefix="select-styled"
