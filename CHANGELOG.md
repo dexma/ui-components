@@ -1,3 +1,10 @@
+## [2.3.8](https://github.com/dexma/ui-components/compare/v2.3.7...v2.3.8) (2020-06-15)
+
+
+### Bug Fixes
+
+* **select:** isMulti options and styles ([00d3e12](https://github.com/dexma/ui-components/commit/00d3e1252e3ffdd4327afcc270791ba63a945fc6))
+
 ## [2.3.7](https://github.com/dexma/ui-components/compare/v2.3.6...v2.3.7) (2020-04-23)
 
 
