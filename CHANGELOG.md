@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/dexma/ui-components/compare/v2.3.8...v2.4.0) (2020-06-22)
+
+
+### Features
+
+* **dropdown:** add dropdown component ([b93a4e5](https://github.com/dexma/ui-components/commit/b93a4e57e510c43dbe2c098b44ae4ddd57b49a66))
+
 ## [2.3.8](https://github.com/dexma/ui-components/compare/v2.3.7...v2.3.8) (2020-06-15)
 
 
