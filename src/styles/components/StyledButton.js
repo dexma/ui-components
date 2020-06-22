@@ -2,9 +2,11 @@ import styled, { css } from 'styled-components';
 import { darken, saturate, transparentize } from 'polished';
 import {
   white,
+  gray100,
   gray200,
   gray300,
   gray400,
+  gray500,
   gray900,
   red,
   primaryColor,
@@ -247,6 +249,60 @@ export const getButtonVariantLink = props => {
     }
   `;
 };
+export const getButtonVariantIcon = props => {
+  const color = gray500(props);
+  return css`
+    color: ${color};
+    border-color: transparent;
+    background-color: transparent;
+    ${StyledIcon} {
+      fill: ${color};
+    }
+    &:hover {
+      color: ${color};
+      border-color: transparent;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+  `;
+};
+
+export const getButtonVariantIconSecondary = props => {
+  const color = gray500(props);
+  const bgColor = gray100(props);
+  return css`
+    color: ${color};
+    border-color: transparent;
+    background-color: transparent;
+    ${StyledIcon} {
+      fill: ${color};
+    }
+    &:focus,
+    &:hover {
+      color: ${color};
+      border-color: transparent;
+      background-color: ${bgColor};
+      text-decoration: underline;
+    }
+  `;
+};
+export const getButtonVariantIconOutline = props => {
+  const color = gray500(props);
+  return css`
+    color: ${color};
+    border-color: transparent;
+    background-color: transparent;
+    ${StyledIcon} {
+      fill: ${color};
+    }
+    &:hover {
+      color: ${color};
+      border-color: ${color};
+      background-color: transparent;
+      text-decoration: underline;
+    }
+  `;
+};
 export const getButtonExpanded = () => {
   return css`
     &.expanded {
@@ -294,6 +350,10 @@ const StyledButton = styled.button`
   ${props => props.variant === 'outline' && getButtonVariantOutline};
   ${props => props.variant === 'destructive' && getButtonVariantDestructive};
   ${props => props.variant === 'link' && getButtonVariantLink};
+  ${props => props.variant === 'icon' && getButtonVariantIcon};
+  ${props =>
+    props.variant === 'icon-secondary' && getButtonVariantIconSecondary};
+  ${props => props.variant === 'icon-outline' && getButtonVariantIconOutline};
   ${props => props.isCircle && getButtonCircle};
   ${props => props.isDisabled && getButtonDisabled};
   ${props => props.isLoading && getButtonLoading};

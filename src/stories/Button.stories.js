@@ -79,6 +79,9 @@ export const icons = () => (
         <Button variant="outline" iconBefore="gas" isCircle />
         <Button variant="destructive" iconBefore="delete" isCircle />
         <Button variant="link" iconBefore="world" isCircle />
+        <Button iconAfter="circle_add" variant="icon" isCircle />
+        <Button iconAfter="menu_24px" variant="icon-secondary" isCircle />
+        <Button iconAfter="search" variant="icon-outline" isCircle />
       </Cell>
     </Row>
   </Grid>

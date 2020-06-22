@@ -21,6 +21,9 @@ export const BUTTON_VARIANT = [
   'outline',
   'destructive',
   'link',
+  'icon',
+  'icon-secondary',
+  'icon-outline',
 ];
 
 const propTypes = {

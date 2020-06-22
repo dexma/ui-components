@@ -1,11 +1,11 @@
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0)">
-<path d="M6 2H18C19.1 2 20 2.9 20 4V18C20 19.1 19.1 20 18 20H6C4.9 20 4 19.1 4 18V4C4 2.9 4.9 2 6 2ZM12 5C9.8 5 8 6.8 8 9H11.3L10.9 6.2L12.9 9H16C16 6.8 14.2 5 12 5ZM6 11V18H18V11H6Z" fill="#7E8085"/>
-<path d="M13 19.3H11V22.1H13V19.3Z" fill="#7E8085"/>
-<path d="M10 19.3H8V22.1H10V19.3Z" fill="#7E8085"/>
-<path d="M16 19.3H14V22.1H16V19.3Z" fill="#7E8085"/>
-<circle cx="8.5" cy="15.5" r="0.5" fill="#7E8085"/>
-<circle cx="15.5" cy="15.5" r="0.5" fill="#7E8085"/>
+<path d="M6 2H18C19.1 2 20 2.9 20 4V18C20 19.1 19.1 20 18 20H6C4.9 20 4 19.1 4 18V4C4 2.9 4.9 2 6 2ZM12 5C9.8 5 8 6.8 8 9H11.3L10.9 6.2L12.9 9H16C16 6.8 14.2 5 12 5ZM6 11V18H18V11H6Z" fill="#7E8084"/>
+<path d="M13 19.3H11V22.1H13V19.3Z" fill="#7E8084"/>
+<path d="M10 19.3H8V22.1H10V19.3Z" fill="#7E8084"/>
+<path d="M16 19.3H14V22.1H16V19.3Z" fill="#7E8084"/>
+<circle cx="8.5" cy="15.5" r="0.5" fill="#7E8084"/>
+<circle cx="15.5" cy="15.5" r="0.5" fill="#7E8084"/>
 </g>
 <defs>
 <clipPath id="clip0">

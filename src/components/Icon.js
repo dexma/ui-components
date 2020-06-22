@@ -35,23 +35,32 @@ export const getIconSize = size => {
 };
 
 const getIconPaths = name => {
-  let paths = [];
+  let config = [];
   icons.forEach(item => {
     if (item.name === name) {
-      paths = item.icon;
+      config = item.icon;
     }
   });
-  return paths.map((path, i) => {
-    const { d, opacity, clipRule, fillRule } = path;
-    return (
-      <path
-        key={i}
-        d={d}
-        opacity={opacity}
-        clipRule={clipRule}
-        fillRule={fillRule}
-      />
-    );
+  return config.map((itemConfig, i) => {
+    const { tag } = itemConfig;
+    switch (tag) {
+      case 'path':
+        const { d, opacity, clipRule, fillRule } = itemConfig;
+        return (
+          <path
+            key={i}
+            d={d}
+            opacity={opacity}
+            clipRule={clipRule}
+            fillRule={fillRule}
+          />
+        );
+      case 'circle':
+        const { cx, cy, r, transform } = itemConfig;
+        return <circle key={i} cx={cx} cy={cy} r={r} transform={transform} />;
+      default:
+        return null;
+    }
   });
 };
 
