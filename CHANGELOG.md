@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/dexma/ui-components/compare/v2.4.0...v2.4.1) (2020-06-22)
+
+
+### Bug Fixes
+
+* **dropdown:** export index ([3a661bc](https://github.com/dexma/ui-components/commit/3a661bc168350339295d326c44db9ea2773a5b28))
+
 # [2.4.0](https://github.com/dexma/ui-components/compare/v2.3.8...v2.4.0) (2020-06-22)
 
 
