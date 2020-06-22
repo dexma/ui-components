@@ -5,6 +5,7 @@ import Cell from 'components/Cell';
 import Chart from 'components/Chart';
 import DatePicker from 'components/DatePicker';
 import Divider from 'components/Divider';
+import Dropdown from 'components/Dropdown';
 import Dots from 'components/Dots';
 import FieldGroup from 'components/FieldGroup';
 import Grid from 'components/Grid';
@@ -53,6 +54,7 @@ export {
   Chart,
   DatePicker,
   Divider,
+  Dropdown,
   Dots,
   FieldGroup,
   Grid,
