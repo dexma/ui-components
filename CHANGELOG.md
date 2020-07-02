@@ -1,3 +1,10 @@
+## [2.4.2](https://github.com/dexma/ui-components/compare/v2.4.1...v2.4.2) (2020-07-02)
+
+
+### Bug Fixes
+
+* **components:** button and select ([f0b4d0d](https://github.com/dexma/ui-components/commit/f0b4d0d8199c20798031ad15532778f3579c6ac3))
+
 ## [2.4.1](https://github.com/dexma/ui-components/compare/v2.4.0...v2.4.1) (2020-06-22)
 
 
