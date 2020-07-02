@@ -10,7 +10,7 @@ const resolve = {
     test: path.resolve('test', ''),
   },
 };
-module.exports = ['@storybook/addon-docs/react/preset'];
+module.exports = ['@storybook/addon-docs/preset'];
 
 module.exports = {
   module: {

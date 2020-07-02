@@ -44,7 +44,7 @@ const SelectInput = ({ children, ...props }) => {
 
 const Option = props => {
   return (
-    <div data-testid="select-option">
+    <div data-testid="select-option" title={props.label}>
       <components.Option {...props}>{props.label}</components.Option>
     </div>
   );
@@ -53,8 +53,10 @@ const Option = props => {
 export const Select = props => {
   const { theme, isMulti } = props;
   const selectProps = omit(props, ['theme']);
+  const titleSelect =
+    props.defaultValue && props.defaultValue ? props.defaultValue.label : null;
   return (
-    <StyledSelect theme={theme} isMulti={isMulti}>
+    <StyledSelect theme={theme} isMulti={isMulti} title={titleSelect}>
       <ReactSelect
         data-testid="select"
         classNamePrefix="select-styled"

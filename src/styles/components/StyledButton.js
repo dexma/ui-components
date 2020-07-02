@@ -7,6 +7,7 @@ import {
   gray300,
   gray400,
   gray500,
+  gray700,
   gray900,
   red,
   primaryColor,
@@ -251,6 +252,7 @@ export const getButtonVariantLink = props => {
 };
 export const getButtonVariantIcon = props => {
   const color = gray500(props);
+  const hoverColor = gray700(props);
   return css`
     color: ${color};
     border-color: transparent;
@@ -259,7 +261,10 @@ export const getButtonVariantIcon = props => {
       fill: ${color};
     }
     &:hover {
-      color: ${color};
+      ${StyledIcon} {
+        fill: ${hoverColor};
+      }
+      color: ${hoverColor};
       border-color: transparent;
       background-color: transparent;
       text-decoration: underline;
@@ -269,6 +274,7 @@ export const getButtonVariantIcon = props => {
 
 export const getButtonVariantIconSecondary = props => {
   const color = gray500(props);
+  const hoverColor = gray700(props);
   const bgColor = gray100(props);
   return css`
     color: ${color};
@@ -279,7 +285,10 @@ export const getButtonVariantIconSecondary = props => {
     }
     &:focus,
     &:hover {
-      color: ${color};
+      ${StyledIcon} {
+        fill: ${hoverColor};
+      }
+      color: ${hoverColor};
       border-color: transparent;
       background-color: ${bgColor};
       text-decoration: underline;
@@ -288,6 +297,7 @@ export const getButtonVariantIconSecondary = props => {
 };
 export const getButtonVariantIconOutline = props => {
   const color = gray500(props);
+  const hoverColor = gray700(props);
   return css`
     color: ${color};
     border-color: transparent;
@@ -296,7 +306,10 @@ export const getButtonVariantIconOutline = props => {
       fill: ${color};
     }
     &:hover {
-      color: ${color};
+      ${StyledIcon} {
+        fill: ${hoverColor};
+      }
+      color: ${hoverColor};
       border-color: ${color};
       background-color: transparent;
       text-decoration: underline;
