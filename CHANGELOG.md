@@ -1,3 +1,10 @@
+## [2.4.3](https://github.com/dexma/ui-components/compare/v2.4.2...v2.4.3) (2020-07-02)
+
+
+### Bug Fixes
+
+* **select:** add title when no default is get and put the value ([c724422](https://github.com/dexma/ui-components/commit/c724422065cc5e69894b75966d2cd4ceb10a71ac))
+
 ## [2.4.2](https://github.com/dexma/ui-components/compare/v2.4.1...v2.4.2) (2020-07-02)
 
 
