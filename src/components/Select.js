@@ -53,8 +53,11 @@ const Option = props => {
 export const Select = props => {
   const { theme, isMulti } = props;
   const selectProps = omit(props, ['theme']);
+  const defaultValueSelect = props.defaultValue
+    ? props.defaultValue.label
+    : null;
   const titleSelect =
-    props.defaultValue && props.defaultValue ? props.defaultValue.label : null;
+    !defaultValueSelect && props.value ? props.value.label : null;
   return (
     <StyledSelect theme={theme} isMulti={isMulti} title={titleSelect}>
       <ReactSelect

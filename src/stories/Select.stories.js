@@ -74,14 +74,12 @@ export const noClear = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Is the select value clearable</Paragraph>
+        <Paragraph m="1rem 0 1rem 0">
+          Is the select value clearable with value option
+        </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Select
-          defaultValue={options[0]}
-          options={options}
-          isClearable={false}
-        />
+        <Select value={options[0]} options={options} isClearable={false} />
       </Cell>
     </Row>
   </Grid>
