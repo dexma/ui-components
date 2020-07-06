@@ -1,3 +1,10 @@
+## [2.4.4](https://github.com/dexma/ui-components/compare/v2.4.3...v2.4.4) (2020-07-06)
+
+
+### Bug Fixes
+
+* **grid:** the grid number and bg button icon ([9eab441](https://github.com/dexma/ui-components/commit/9eab441b5856ee3b3de317df4b3e3bdc3f1872c7))
+
 ## [2.4.3](https://github.com/dexma/ui-components/compare/v2.4.2...v2.4.3) (2020-07-02)
 
 
