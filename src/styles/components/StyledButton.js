@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { darken, saturate, transparentize } from 'polished';
 import {
   white,
-  gray100,
   gray200,
   gray300,
   gray400,
@@ -275,7 +274,7 @@ export const getButtonVariantIcon = props => {
 export const getButtonVariantIconSecondary = props => {
   const color = gray500(props);
   const hoverColor = gray700(props);
-  const bgColor = gray100(props);
+  const bgColorHover = transparentize(0.95, hoverColor);
   return css`
     color: ${color};
     border-color: transparent;
@@ -290,7 +289,7 @@ export const getButtonVariantIconSecondary = props => {
       }
       color: ${hoverColor};
       border-color: transparent;
-      background-color: ${bgColor};
+      background-color: ${bgColorHover};
       text-decoration: underline;
     }
   `;

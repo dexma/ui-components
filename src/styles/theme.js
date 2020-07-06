@@ -213,10 +213,10 @@ const columns = 12;
 const gridGutterWidth = 1;
 const gridOuterMargin = 2;
 const gridOuterPadding = 2;
-const gridXS = 30;
-const gridSM = 48;
-const gridMD = 64;
-const gridLG = 75;
+const gridXS = 34.286;
+const gridSM = 54.857;
+const gridMD = 73.143;
+const gridLG = 85.714;
 
 const grid = {
   outerPadding: getSize(gridOuterPadding),
