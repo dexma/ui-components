@@ -1,3 +1,26 @@
+# [3.0.0](https://github.com/dexma/ui-components/compare/v2.4.4...v3.0.0) (2020-10-19)
+
+
+### Code Refactoring
+
+* change dependencies, build, stories, and import/export ([ad74a39](https://github.com/dexma/ui-components/commit/ad74a398513da0adc00cdacb64c59dc3b0dbb63c))
+
+
+### BREAKING CHANGES
+
+* update dependencies, build, stories, and import/export
+
+- Update React from 16.8.4 to 16.13.1
+- Update styled-components from v4 to v5
+- Update Storybook from v5 to v6
+- Remove webpack
+- Update the way we build the library using pure babel
+- Update script on the package.json
+- Update all stories
+- Update all the import to have relative paths, we remove all the absolute paths
+- Update the config icon builder, we change the json file to
+- Change name of toaster context
+
 ## [2.4.4](https://github.com/dexma/ui-components/compare/v2.4.3...v2.4.4) (2020-07-06)
 
 
