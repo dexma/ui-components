@@ -11,3 +11,4 @@ src/
 docs/
 scripts/
 webpack.config.js
+node_modules
