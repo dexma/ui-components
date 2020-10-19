@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/dexma/ui-components/compare/v3.0.0...v3.0.1) (2020-10-19)
+
+
+### Bug Fixes
+
+* **package:** update the webpack bundle ([bbdc84d](https://github.com/dexma/ui-components/commit/bbdc84dc69ed8a4e56b8139cd9c8f7c9f2c2adf6))
+
 # [3.0.0](https://github.com/dexma/ui-components/compare/v2.4.4...v3.0.0) (2020-10-19)
 
 
