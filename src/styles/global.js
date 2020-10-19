@@ -1,6 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
 
-import { StyledButton } from 'styles/components/StyledButton';
+import { StyledButton } from './components/StyledButton';
 
 const getGlobalStyles = css`
   input::-ms-clear,

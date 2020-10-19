@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import { Modal } from 'components/Modal';
-import Grid from 'components/Grid';
-import Row from 'components/Row';
-import Cell from 'components/Cell';
-import Button from 'components/Button';
-import Paragraph from 'components/Paragraph';
+import { Modal } from '../components/Modal';
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Cell from '../components/Cell';
+import Button from '../components/Button';
+import Paragraph from '../components/Paragraph';
 
 class ModalView extends Component {
   constructor(props) {
@@ -67,8 +67,8 @@ export const modals = () => (
       <Cell xs={12}>
         <Paragraph m="1rem 0 1rem 0">
           Basic modal dialogs with a footer{' '}
-          <a href="https://ant.design/components/modal/">this link</a> for more
-          information about the props
+          <a href="https://ant.design/../components/modal/">this link</a> for
+          more information about the props
         </Paragraph>
       </Cell>
       <Cell xs={12}>

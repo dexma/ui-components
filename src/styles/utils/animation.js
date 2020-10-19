@@ -1,6 +1,6 @@
 // Handy CSS animations for micro-interactions
 import { css, keyframes } from 'styled-components';
-import { backgroundColor } from 'styles/selectors';
+import { backgroundColor } from '../selectors';
 
 export const easing = {
   rubber: 'cubic-bezier(0.175, 0.885, 0.335, 1.05)',

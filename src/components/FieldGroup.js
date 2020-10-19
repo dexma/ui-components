@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import find from 'lodash/find';
 import set from 'lodash/set';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 import { withTheme } from 'styled-components';
 
-import Icon from 'components/Icon';
-import { BUTTON_SIZE } from 'components/Button';
-
-import { StyledFieldGroup } from 'styles/components/StyledFieldGroup';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
+import Icon from './Icon';
+import { BUTTON_SIZE } from './Button';
+import { StyledFieldGroup } from '../styles/components/StyledFieldGroup';
 
 const propTypes = {
   ...GeneralPropTypes,

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Icon } from 'components/Icon';
-import Grid from 'components/Grid';
-import Row from 'components/Row';
-import Cell from 'components/Cell';
-import Paragraph from 'components/Paragraph';
-import icon from 'config/icon';
+import { Icon } from '../components/Icon';
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Cell from '../components/Cell';
+import Paragraph from '../components/Paragraph';
+import icon from '../config/icon';
 
 const StyledBoxSearch = styled.div`
   width: 100%;

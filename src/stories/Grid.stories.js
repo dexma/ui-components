@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Grid } from 'components/Grid';
-import { Row } from 'components/Row';
-import { Cell } from 'components/Cell';
-import Paragraph from 'components/Paragraph';
+import { Grid } from '../components/Grid';
+import { Row } from '../components/Row';
+import { Cell } from '../components/Cell';
+import Paragraph from '../components/Paragraph';
 
 export default {
   title: 'Grid',

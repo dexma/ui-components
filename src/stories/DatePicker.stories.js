@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { DatePicker } from 'components/DatePicker';
-import Grid from 'components/Grid';
-import Cell from 'components/Cell';
+import { DatePicker } from '../components/DatePicker';
+import Grid from '../components/Grid';
+import Cell from '../components/Cell';
 import Row from '../components/Row';
 import Paragraph from '../components/Paragraph';
 

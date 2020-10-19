@@ -1,8 +1,8 @@
 import React from 'react';
-import { Dots } from 'components/Dots';
-import Grid from 'components/Grid';
-import Row from 'components/Row';
-import Cell from 'components/Cell';
+import { Dots } from '../components/Dots';
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Cell from '../components/Cell';
 import Paragraph from '../components/Paragraph';
 
 export default {

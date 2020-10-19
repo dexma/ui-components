@@ -7,9 +7,9 @@ import {
   borderRadius,
   paginationHeight,
   paginationFontSize,
-} from 'styles/selectors';
+} from '../selectors';
 
-import { StyledIcon } from 'styles/components/StyledIcon';
+import { StyledIcon } from './StyledIcon';
 
 export const getStyledPagination = () => css`
   .ant-pagination {

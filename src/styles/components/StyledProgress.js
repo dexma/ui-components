@@ -1,11 +1,11 @@
 import styled from 'styled-components';
+import get from 'lodash/get';
+import { transparentize } from 'polished';
 import {
   progressHeight,
   progressFontSize,
   progressBackgroundColor,
-} from 'styles/selectors';
-import get from 'lodash/get';
-import { transparentize } from 'polished';
+} from '../selectors';
 
 const TRANSPARENT = '0.4';
 

@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import theme from 'styles/theme';
-import { StyledProgress, StyledMark } from 'styles/components/StyledProgress';
+
+import theme from '../styles/theme';
+import {
+  StyledProgress,
+  StyledMark,
+} from '../styles/components/StyledProgress';
 
 const propTypes = {
   percent: PropTypes.number.isRequired,

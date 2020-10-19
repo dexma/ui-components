@@ -3,10 +3,10 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { Popover } from 'antd';
-import theme from 'styles/theme';
-import Button from 'components/Button';
 
-import { StyledGlobalDropdown } from 'styles/components/StyledDropdown';
+import theme from '../styles/theme';
+import Button from './Button';
+import { StyledGlobalDropdown } from '../styles/components/StyledDropdown';
 
 const propTypes = {
   placement: PropTypes.string,

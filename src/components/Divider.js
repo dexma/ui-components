@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
-import { StyledDivider } from 'styles/components/StyledDivider';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
+import { StyledDivider } from '../styles/components/StyledDivider';
 
 const propTypes = {
   ...GeneralPropTypes,

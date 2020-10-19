@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import Icon from 'components/Icon';
 import { Alert as AlertAntDesign } from 'antd';
 import omit from 'lodash/omit';
 
-import theme from 'styles/theme';
-import { StyledAlert } from 'styles/components/StyledAlert';
+import theme from '../styles/theme';
+import { StyledAlert } from '../styles/components/StyledAlert';
 
 const propTypes = {
   theme: PropTypes.shape({}),
@@ -39,7 +38,7 @@ export const Alert = props => {
       <AlertAntDesign
         {...alertProps}
         icon={
-          <Icon
+          <div
             name={renderIcon}
             size="medium"
             className="alert-icon"
@@ -48,7 +47,7 @@ export const Alert = props => {
         }
         closeText={
           closable ? (
-            <Icon
+            <div
               name="close"
               size="medium"
               className="close-icon"

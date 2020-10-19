@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Grid from 'components/Grid';
-import Row from 'components/Row';
-import Cell from 'components/Cell';
-import Paragraph from 'components/Paragraph';
-import { color } from 'styles/theme';
 import get from 'lodash/get';
+
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Cell from '../components/Cell';
+import Paragraph from '../components/Paragraph';
+import { color } from '../styles/theme';
 
 export default {
   title: 'Colors',

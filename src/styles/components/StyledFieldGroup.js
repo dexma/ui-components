@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { gray300, primaryColor } from 'styles/selectors';
 import { darken, saturate } from 'polished';
 import {
   getButtonBase,
@@ -7,7 +6,8 @@ import {
   getIconSize,
   getButtonVariantPrimary,
   getButtonVariantSecondary200,
-} from 'styles/components/StyledButton';
+} from './StyledButton';
+import { gray300, primaryColor } from '../selectors';
 
 export const getVertical = () => css`
   display: inline-flex;

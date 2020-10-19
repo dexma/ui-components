@@ -1,16 +1,19 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { Toaster, ToasterConsumer, ToastType } from 'components/toaster';
+import { Toaster } from 'components/Toaster/Toaster';
+import ToasterContext from 'components/Toaster/ToasterContext';
+import { ToastType } from 'components/Toaster/Toast';
+
 
 describe('<Toaster>', () => {
   it('Should render a toast element when call toast', () => {
     let toastFunction = null;
     const toaster = mount(
       <Toaster>
-        <ToasterConsumer>
+        <ToasterContext.Consumer>
           { context => toastFunction = context.toast }
-        </ToasterConsumer>
+        </ToasterContext.Consumer>
       </Toaster>
         );
     toastFunction({ text: 'some alert', type: ToastType.INFO });
@@ -20,9 +23,9 @@ describe('<Toaster>', () => {
   it('Should render nothing if toast not called', () => {
     const toaster = mount(
       <Toaster>
-        <ToasterConsumer>
+        <ToasterContext.Consumer>
           { () => {} }
-        </ToasterConsumer>
+        </ToasterContext.Consumer>
       </Toaster>
     );
     expect(toaster.find('.toast').length).toEqual(0);
@@ -31,9 +34,9 @@ describe('<Toaster>', () => {
     let toastFunction = null;
     const toaster = mount(
       <Toaster>
-        <ToasterConsumer>
+        <ToasterContext.Consumer>
           { context => toastFunction = context.toast }
-        </ToasterConsumer>
+        </ToasterContext.Consumer>
       </Toaster>
     );
     toastFunction({ text: 'expected text', type: ToastType.ERROR });

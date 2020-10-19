@@ -1,35 +1,5 @@
-import Alert from 'components/Alert';
-import { Button, ButtonGroup } from 'components/Button';
-import Card from 'components/Card';
-import Cell from 'components/Cell';
-import Chart from 'components/Chart';
-import DatePicker from 'components/DatePicker';
-import Divider from 'components/Divider';
-import Dropdown from 'components/Dropdown';
-import Dots from 'components/Dots';
-import FieldGroup from 'components/FieldGroup';
-import Grid from 'components/Grid';
-import Heading from 'components/Heading';
-import Icon from 'components/Icon';
-import Input from 'components/Input';
-import Loading from 'components/Loading';
-import Modal from 'components/Modal';
-import Pagination from 'components/Pagination';
-import Progress from 'components/Progress';
-import Paragraph from 'components/Paragraph';
-import Row from 'components/Row';
-import Select from 'components/Select';
-import Spinner from 'components/Spinner';
-import SwitchPeriodComparative from 'components/SwitchPeriodComparative';
-import Table from 'components/Table';
-import { Tabs, TabPane } from 'components/Tabs';
-import Tag from 'components/Tag';
-import Theme from 'components/Theme';
-import { Toaster, ToasterConsumer, ToastType } from 'components/toaster';
-
-import { GlobalStyle } from 'styles/global';
-
-import { color as colors } from 'styles/theme';
+import { GlobalStyle } from './styles/global';
+import { color as colors } from './styles/theme';
 
 import {
   ISO_FORMAT,
@@ -43,41 +13,42 @@ import {
   lastMonth,
   yearToDate,
   previousYear,
-} from 'utils/dates';
+} from './utils/dates';
+
+export { default as Alert } from './components/Alert';
+export { default as Button } from './components/Button';
+export { default as ButtonGroup } from './components/Button';
+export { default as Card } from './components/Card';
+export { default as Cell } from './components/Cell';
+export { default as Chart } from './components/Chart';
+export { default as DatePicker } from './components/DatePicker';
+export { default as Divider } from './components/Divider';
+export { default as Dots } from './components/Dots';
+export { default as Dropdown } from './components/Dropdown';
+export { default as FieldGroup } from './components/FieldGroup';
+export { default as Grid } from './components/Grid';
+export { default as Heading } from './components/Heading';
+export { default as Icon } from './components/Icon';
+export { default as Input } from './components/Input';
+export { default as Loading } from './components/Loading';
+export { default as Modal } from './components/Modal';
+export { default as Pagination } from './components/Pagination';
+export { default as Paragraph } from './components/Paragraph';
+export { default as Progress } from './components/Progress';
+export { default as Row } from './components/Row';
+export { default as Select } from './components/Select';
+export { default as Spinner } from './components/Spinner';
+export { default as SwitchPeriodComparative } from './components/SwitchPeriodComparative';
+export { default as Table } from './components/Table';
+export { default as Tabs } from './components/Tabs';
+export { default as TabPane } from './components/Tabs';
+export { default as Tag } from './components/Tag';
+export { default as Theme } from './components/Theme';
+export { default as Toaster } from './components/Toaster/Toaster';
+export { default as ToasterContext } from './components/Toaster/ToasterContext';
+export { default as ToastType } from './components/Toaster/Toast';
 
 export {
-  Alert,
-  Button,
-  ButtonGroup,
-  Card,
-  Cell,
-  Chart,
-  DatePicker,
-  Divider,
-  Dropdown,
-  Dots,
-  FieldGroup,
-  Grid,
-  Row,
-  Heading,
-  Icon,
-  Input,
-  Loading,
-  Modal,
-  Pagination,
-  Progress,
-  Paragraph,
-  Select,
-  Spinner,
-  SwitchPeriodComparative,
-  Table,
-  Tabs,
-  TabPane,
-  Tag,
-  Theme,
-  Toaster,
-  ToasterConsumer,
-  ToastType,
   ISO_FORMAT,
   DATE_RANGE,
   day,

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { headingFontSize } from 'styles/selectors';
+import { headingFontSize } from '../selectors';
 
 const getSizes = props => {
   const fontSizes = headingFontSize(props);

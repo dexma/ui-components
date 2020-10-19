@@ -4,13 +4,13 @@ import {
   mockCheckboxGroup,
   mockSelectedRadioItem,
   mockSelectedCheckboxItem,
-} from 'test/mock/FieldGroup';
+} from '../../test/mock/FieldGroup';
 
-import { FieldGroup } from 'components/FieldGroup';
-import Cell from 'components/Cell';
-import Grid from 'components/Grid';
-import Row from 'components/Row';
-import Paragraph from 'components/Paragraph';
+import { FieldGroup } from '../components/FieldGroup';
+import Cell from '../components/Cell';
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Paragraph from '../components/Paragraph';
 
 class RadioGroup extends Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { gridGutterCompensation } from 'styles/selectors';
+import { gridGutterCompensation } from '../selectors';
 
 const getAlignItems = align => {
   let newAlign = '';

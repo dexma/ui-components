@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
-import { ISO_FORMAT } from 'utils/dates';
-import FieldGroup from 'components/FieldGroup';
 
-import { StyledSwitchPeriodComparative } from 'styles/components/StyledSwitchPeriodComparative';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
+import { ISO_FORMAT } from '../utils/dates';
+import { StyledSwitchPeriodComparative } from '../styles/components/StyledSwitchPeriodComparative';
+import FieldGroup from './FieldGroup';
 
 const getRangeDaysBetweenTwoDates = (startDate, endDate) => {
   const start = moment(new Date(startDate)).startOf('day');

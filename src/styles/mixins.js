@@ -8,7 +8,7 @@ import {
   fontSize,
   fontColor,
   componentHeight,
-} from 'styles/selectors';
+} from './selectors';
 
 const button = () => css`
   min-height: ${componentHeight};

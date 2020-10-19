@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import Icon from 'components/Icon';
+import Icon from './Icon';
 
-import theme from 'styles/theme';
-import { StyledModal, StyledModalGlobal } from 'styles/components/StyledModal';
+import theme from '../styles/theme';
+import {
+  StyledModal,
+  StyledModalGlobal,
+} from '../styles/components/StyledModal';
 
 const propTypes = {
   className: PropTypes.string,

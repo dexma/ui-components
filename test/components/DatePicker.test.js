@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import moment from 'moment';
-import DatePicker from 'components/DatePicker';
+import DatePicker from '../../src/components/DatePicker';
 
 import {
   ISO_FORMAT,

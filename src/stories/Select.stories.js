@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Select } from 'components/Select';
-import Grid from 'components/Grid';
-import Cell from 'components/Cell';
-import Row from 'components/Row';
-import Paragraph from 'components/Paragraph';
+import { Select } from '../components/Select';
+import Grid from '../components/Grid';
+import Cell from '../components/Cell';
+import Row from '../components/Row';
+import Paragraph from '../components/Paragraph';
 
 const options = [
   { value: '1', label: '1st Floor [01. Luxemburg Building]' },

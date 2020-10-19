@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
-import { StyledHeading } from 'styles/components/StyledHeading';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
+import { StyledHeading } from '../styles/components/StyledHeading';
 
 const propTypes = {
   ...GeneralPropTypes,

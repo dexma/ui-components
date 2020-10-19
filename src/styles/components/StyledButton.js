@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 import { darken, saturate, transparentize } from 'polished';
+import get from 'lodash/get';
+
 import {
   white,
   gray200,
@@ -13,11 +15,9 @@ import {
   backgroundColor,
   buttonSize,
   borderRadius,
-} from 'styles/selectors';
-import get from 'lodash/get';
-
-import { StyledIcon } from 'styles/components/StyledIcon';
-import { StyledSpinner } from 'styles/components/StyledSpinner';
+} from '../selectors';
+import { StyledIcon } from './StyledIcon';
+import { StyledSpinner } from './StyledSpinner';
 
 export const getButtonBase = () => css`
   align-items: center;

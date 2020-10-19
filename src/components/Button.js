@@ -1,17 +1,17 @@
-/* eslint-disable react/button-has-type */
-import React, { memo } from 'react';
+/* eslint-disable import/no-cycle */
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
 import { withTheme } from 'styled-components';
-import { withTooltip } from 'hoc/withTooltip';
-import theme from 'styles/theme';
 
-import Icon, { getIconSize } from 'components/Icon';
-import Spinner from 'components/Spinner';
+import { withTooltip } from '../hoc/withTooltip';
+import theme from '../styles/theme';
+import Icon, { getIconSize } from './Icon';
+import Spinner from './Spinner';
 
-import { StyledButton } from 'styles/components/StyledButton';
-import { StyledButtonGroup } from 'styles/components/StyledButtonGroup';
+import { StyledButton } from '../styles/components/StyledButton';
+import { StyledButtonGroup } from '../styles/components/StyledButtonGroup';
 
 export const BUTTON_TYPE = ['button', 'reset', 'submit', null];
 export const BUTTON_SIZE = ['small', 'medium', 'large', 'xlarge'];
@@ -137,4 +137,4 @@ StyledButton.displayName = 'StyledButton';
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
-export default memo(withTheme(withTooltip(Button)));
+export default withTheme(withTooltip(Button));

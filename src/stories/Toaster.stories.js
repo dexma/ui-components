@@ -1,10 +1,12 @@
 import React from 'react';
-import { Toaster, ToasterConsumer, ToastType } from 'components/toaster';
-import Grid from 'components/Grid';
-import Row from 'components/Row';
-import Cell from 'components/Cell';
-import Paragraph from 'components/Paragraph';
-import { Button } from 'components/Button';
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Cell from '../components/Cell';
+import Paragraph from '../components/Paragraph';
+import { Button } from '../components/Button';
+import { Toaster } from '../components/Toaster/Toaster';
+import ToasterContext from '../components/Toaster/ToasterContext';
+import { ToastType } from '../components/Toaster/Toast';
 
 export default {
   title: 'Toaster',
@@ -21,7 +23,7 @@ export const toaster = () => (
       </Cell>
       <Cell xs={12}>
         <Toaster>
-          <ToasterConsumer>
+          <ToasterContext.Consumer>
             {context => (
               <>
                 <Button
@@ -70,7 +72,7 @@ export const toaster = () => (
                 />
               </>
             )}
-          </ToasterConsumer>
+          </ToasterContext.Consumer>
         </Toaster>
       </Cell>
     </Row>

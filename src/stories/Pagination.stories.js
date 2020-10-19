@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Pagination } from 'components/Pagination';
-import Grid from 'components/Grid';
-import Row from 'components/Row';
-import Cell from 'components/Cell';
-import Paragraph from 'components/Paragraph';
+import { Pagination } from '../components/Pagination';
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Cell from '../components/Cell';
+import Paragraph from '../components/Paragraph';
 
 export default {
   title: 'Pagination',

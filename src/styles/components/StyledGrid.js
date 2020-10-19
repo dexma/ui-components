@@ -5,7 +5,7 @@ import {
   gridContainerSm,
   gridContainerMd,
   gridContainerLg,
-} from 'styles/selectors';
+} from '../selectors';
 
 const getWidthContainer = props => {
   return css`

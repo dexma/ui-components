@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import Icon from 'components/Icon';
 import omit from 'lodash/omit';
 
-import { StyledInput } from 'styles/components/StyledInput';
-import theme from 'styles/theme';
+import { StyledInput } from '../styles/components/StyledInput';
+import theme from '../styles/theme';
+import Icon from './Icon';
 import Spinner from './Spinner';
 
 const propTypes = {

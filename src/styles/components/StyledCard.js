@@ -16,11 +16,11 @@ import {
   gray500,
   gray700,
   gray900,
-} from 'styles/selectors';
+} from '../selectors';
 
-import { StyledIcon } from 'styles/components/StyledIcon';
-import { StyledParagraph } from 'styles/components/StyledParagraph';
-import { StyledButton } from 'styles/components/StyledButton';
+import { StyledIcon } from './StyledIcon';
+import { StyledParagraph } from './StyledParagraph';
+import { StyledButton } from './StyledButton';
 
 export const getHorizontal = () => {
   return css`

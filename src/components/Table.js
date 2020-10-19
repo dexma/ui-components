@@ -4,9 +4,9 @@ import { withTheme } from 'styled-components';
 
 import { Table as TableAntDesign } from 'antd';
 
-import theme from 'styles/theme';
-import { StyledTable } from 'styles/components/StyledTable';
-import { itemRender } from 'components/Pagination';
+import theme from '../styles/theme';
+import { StyledTable } from '../styles/components/StyledTable';
+import { itemRender } from './Pagination';
 
 const propTypes = {
   className: PropTypes.string,

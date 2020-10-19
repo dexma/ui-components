@@ -1,17 +1,17 @@
 import React from 'react';
 
-import Grid from 'components/Grid';
-import Row from 'components/Row';
-import Paragraph from 'components/Paragraph';
-import Cell from 'components/Cell';
-import { Chart } from 'components/Chart';
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Paragraph from '../components/Paragraph';
+import Cell from '../components/Cell';
+import { Chart } from '../components/Chart';
 
 import {
   mockBasicArea,
   mockStackedBar,
   mockStackedBarNegative,
   mockMixed,
-} from 'test/mock/Chart';
+} from '../../test/mock/Chart';
 
 export default {
   title: 'Chart',

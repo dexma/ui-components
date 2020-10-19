@@ -2,11 +2,10 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import ReactSelect, { components } from 'react-select';
 import omit from 'lodash/omit';
-import theme from 'styles/theme';
 
-import Icon from 'components/Icon';
-
-import { StyledSelect } from 'styles/components/StyledSelect';
+import theme from '../styles/theme';
+import { StyledSelect } from '../styles/components/StyledSelect';
+import Icon from './Icon';
 
 const propTypes = {
   theme: PropTypes.shape({}),

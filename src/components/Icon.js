@@ -1,14 +1,15 @@
+/* eslint-disable import/no-cycle */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import get from 'lodash/get';
 import isNumber from 'lodash/isNumber';
-import icons from 'config/icon';
-import theme from 'styles/theme';
 import omit from 'lodash/omit';
 
-import { StyledIcon } from 'styles/components/StyledIcon';
-import { BUTTON_SIZE } from 'components/Button';
+import icons from '../config/icon';
+import theme from '../styles/theme';
+import { StyledIcon } from '../styles/components/StyledIcon';
+import { BUTTON_SIZE } from './Button';
 
 const propTypes = {
   name: PropTypes.string.isRequired,

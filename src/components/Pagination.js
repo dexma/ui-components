@@ -1,12 +1,10 @@
 import React, { memo } from 'react';
 import { Pagination as PaginationAntDesign } from 'antd';
-
 import { withTheme } from 'styled-components';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
-import Icon from 'components/Icon';
-
-import { StyledPagination } from 'styles/components/StyledPagination';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
+import Icon from './Icon';
+import { StyledPagination } from '../styles/components/StyledPagination';
 
 const propTypes = {
   ...GeneralPropTypes,

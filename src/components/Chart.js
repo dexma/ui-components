@@ -8,10 +8,9 @@ import addSankeyModule from 'highcharts/modules/sankey';
 import addExportingModule from 'highcharts/modules/exporting';
 import addOfflineExportingModule from 'highcharts/modules/offline-exporting';
 import addExportData from 'highcharts/modules/export-data';
-
 import boost from 'highcharts/modules/boost';
 
-import theme from 'styles/theme';
+import theme from '../styles/theme';
 
 boost(Highcharts);
 addSankeyModule(Highcharts);

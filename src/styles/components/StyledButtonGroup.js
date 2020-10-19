@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { StyledButton } from 'styles/components/StyledButton';
+import { StyledButton } from './StyledButton';
 
 export const getButtonGroupBase = () => css`
   ${StyledButton} {

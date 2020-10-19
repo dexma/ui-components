@@ -2,12 +2,11 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import classNames from 'classnames';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 
-import Icon from 'components/Icon';
-import Paragraph from 'components/Paragraph';
-
-import { StyledCard, StyledCardLink } from 'styles/components/StyledCard';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
+import Icon from './Icon';
+import Paragraph from './Paragraph';
+import { StyledCard, StyledCardLink } from '../styles/components/StyledCard';
 
 const propTypes = {
   ...GeneralPropTypes,

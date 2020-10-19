@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { transparentize } from 'polished';
 import {
   border,
   borderColor,
@@ -19,8 +20,7 @@ import {
   boxShadowHover,
   tagFontSize,
   tagHeight,
-} from 'styles/selectors';
-import { transparentize } from 'polished';
+} from '../selectors';
 
 export const getSelectSize = props => {
   return css`

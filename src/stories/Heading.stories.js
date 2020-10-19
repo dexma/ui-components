@@ -1,12 +1,12 @@
 import React from 'react';
-import { Heading } from 'components/Heading';
-import { Button } from 'components/Button';
-import { Divider } from 'components/Divider';
-import Grid from 'components/Grid';
-import Row from 'components/Row';
-import Cell from 'components/Cell';
-import Paragraph from 'components/Paragraph';
 import styled from 'styled-components';
+import { Heading } from '../components/Heading';
+import { Button } from '../components/Button';
+import { Divider } from '../components/Divider';
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Cell from '../components/Cell';
+import Paragraph from '../components/Paragraph';
 
 const StyledBox = styled.div`
   width: 100%;

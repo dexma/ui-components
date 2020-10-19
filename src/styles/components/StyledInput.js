@@ -6,7 +6,7 @@ import {
   inputHeight,
   inputFontSize,
   inputPaddingX,
-} from 'styles/selectors';
+} from '../selectors';
 import { StyledSpinner } from './StyledSpinner';
 
 export const getLoading = () => {

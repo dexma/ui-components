@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { Modal as ModalAntDesign } from 'antd';
 import {
   backgroundColor,
   borderRadius,
@@ -7,8 +8,7 @@ import {
   fontSize,
   fontWeightSemiBold,
   gray900,
-} from 'styles/selectors';
-import { Modal as ModalAntDesign } from 'antd';
+} from '../selectors';
 
 const StyledModal = styled(ModalAntDesign)`
   box-sizing: border-box;

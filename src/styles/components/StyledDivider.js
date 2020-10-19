@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { gray200 } from 'styles/selectors';
+import { gray200 } from '../selectors';
 
 const StyledDivider = styled.hr`
   border: none;

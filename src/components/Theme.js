@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 
-import theme from 'styles/theme';
+import theme from '../styles/theme';
 
 const propTypes = {
   options: PropTypes.objectOf(PropTypes.any),

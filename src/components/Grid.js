@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import theme from 'styles/theme';
 
-import { StyledGrid } from 'styles/components/StyledGrid';
+import theme from '../styles/theme';
+import { StyledGrid } from '../styles/components/StyledGrid';
 
 const propTypes = {
   /**

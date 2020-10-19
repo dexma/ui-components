@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { rotate360 } from 'styles/utils/animation';
+import { rotate360 } from '../utils/animation';
 
 const StyledSpinner = styled.div`
   border-radius: 3em;

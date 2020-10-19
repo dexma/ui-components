@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledIcon } from 'styles/components/StyledIcon';
+import { StyledIcon } from './StyledIcon';
 
 import {
   fontSize,
@@ -10,7 +10,7 @@ import {
   infoColor,
   fontWeightSemiBold,
   borderRadius,
-} from 'styles/selectors';
+} from '../selectors';
 
 const StyledAlert = styled.div`
   .ant-alert {

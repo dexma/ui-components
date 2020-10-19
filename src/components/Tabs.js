@@ -1,11 +1,10 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-
 import { Tabs as TabsAntDesign } from 'antd';
 
-import theme from 'styles/theme';
-import { StyledTabs } from 'styles/components/StyledTabs';
+import theme from '../styles/theme';
+import { StyledTabs } from '../styles/components/StyledTabs';
 
 const propTypes = {
   className: PropTypes.string,

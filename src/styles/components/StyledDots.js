@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { iconColor } from 'styles/selectors';
+import { iconColor } from '../selectors';
 
-import { glow } from 'styles/utils/animation';
+import { glow } from '../utils/animation';
 
 const StyledDot = styled.div`
   background: ${iconColor};

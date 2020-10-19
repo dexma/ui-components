@@ -11,10 +11,10 @@ import {
   switchPeriodComparativeFontSize,
   borderRadius,
   backgroundColor,
-} from 'styles/selectors';
+} from '../selectors';
 
-import { StyledFieldGroup } from 'styles/components/StyledFieldGroup';
-import { StyledIcon } from 'styles/components/StyledIcon';
+import { StyledFieldGroup } from './StyledFieldGroup';
+import { StyledIcon } from './StyledIcon';
 
 const StyledSwitchPeriodComparative = styled.div`
   display: flex;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { transparentize } from 'polished';
 import {
   border,
   borderRadius,
@@ -14,11 +15,9 @@ import {
   primaryColorSvg,
   white,
   backgroundColorActive,
-} from 'styles/selectors';
+} from '../selectors';
 
-import { transparentize } from 'polished';
-
-import { StyledSelect } from 'styles/components/StyledSelect';
+import { StyledSelect } from './StyledSelect';
 
 const StyledDatePicker = styled.div`
   display: flex;

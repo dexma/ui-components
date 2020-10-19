@@ -1,17 +1,16 @@
 import React from 'react';
 
-import SwitchPeriodComparative from 'components/SwitchPeriodComparative';
-import Grid from 'components/Grid';
-import Cell from 'components/Cell';
-
+import SwitchPeriodComparative from '../components/SwitchPeriodComparative';
+import Grid from '../components/Grid';
+import Cell from '../components/Cell';
+import Row from '../components/Row';
+import Paragraph from '../components/Paragraph';
 import {
   startDate,
   endDate,
   previousPriodText,
   samePriodLastYearText,
-} from 'test/mock/SwitchPeriodComparative';
-import Row from '../components/Row';
-import Paragraph from '../components/Paragraph';
+} from '../../test/mock/SwitchPeriodComparative';
 
 export default {
   title: 'SwitchPeriodComparative',

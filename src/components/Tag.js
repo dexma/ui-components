@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import Icon from 'components/Icon';
-import theme from 'styles/theme';
 import omit from 'lodash/omit';
 
-import { StyledTag } from 'styles/components/StyledTag';
+import theme from '../styles/theme';
+import { StyledTag } from '../styles/components/StyledTag';
+import Icon from './Icon';
 
 const propTypes = {
   /**

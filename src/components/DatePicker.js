@@ -2,14 +2,14 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { DateRangePicker } from 'react-dates';
 import { withTheme } from 'styled-components';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
 import moment from 'moment';
 import momentPropTypes from 'react-moment-proptypes';
 import omit from 'lodash/omit';
 import classNames from 'classnames';
 
-import Icon from 'components/Icon';
-import Select from 'components/Select';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
+import Icon from './Icon';
+import Select from './Select';
 
 import {
   NUMBER_OF_MONTHS,
@@ -26,12 +26,12 @@ import {
   today,
   yearToDate,
   yesterday,
-} from 'utils/dates';
+} from '../utils/dates';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
-import { StyledDatePicker } from 'styles/components/StyledDatePicker';
+import { StyledDatePicker } from '../styles/components/StyledDatePicker';
 
 const withDatePickerFormat = (start, end) => ({
   startDate: start,

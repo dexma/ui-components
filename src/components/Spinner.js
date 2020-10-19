@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from 'utils/propTypes';
+import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
 
-import { StyledSpinner } from 'styles/components/StyledSpinner';
+import { StyledSpinner } from '../styles/components/StyledSpinner';
 
 const propTypes = {
   ...GeneralPropTypes,

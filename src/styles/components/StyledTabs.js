@@ -8,7 +8,7 @@ import {
   fontWeightNormal,
   fontWeightBold,
   tabFontSize,
-} from 'styles/selectors';
+} from '../selectors';
 
 const StyledTabs = styled.div`
   .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-nav-container {

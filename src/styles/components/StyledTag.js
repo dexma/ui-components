@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { darken, transparentize } from 'polished';
+import get from 'lodash/get';
 import {
   tagFontSize,
   tagPaddingX,
@@ -8,10 +9,9 @@ import {
   fontWeightSemiBold,
   border,
   borderRadius,
-} from 'styles/selectors';
-import get from 'lodash/get';
+} from '../selectors';
 
-import { StyledIcon } from 'styles/components/StyledIcon';
+import { StyledIcon } from './StyledIcon';
 
 export const getTagPrimary = () => {
   return css`

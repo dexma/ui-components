@@ -1,10 +1,9 @@
 import React from 'react';
-import { Select } from 'components/Select';
-import { Button } from 'components/Button';
-
-import Grid from 'components/Grid';
-import Row from 'components/Row';
-import Cell from 'components/Cell';
+import { Select } from '../components/Select';
+import { Button } from '../components/Button';
+import Grid from '../components/Grid';
+import Row from '../components/Row';
+import Cell from '../components/Cell';
 import Paragraph from '../components/Paragraph';
 
 const options = [

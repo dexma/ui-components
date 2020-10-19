@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { gridColumns, gridHalfGutterWidth } from 'styles/selectors';
 import isNumber from 'lodash/isNumber';
+import { gridColumns, gridHalfGutterWidth } from '../selectors';
 
 const precentage = number => number * 100;
 
@@ -47,7 +47,7 @@ const StyledCell = styled.div`
   flex-grow: 1;
   max-width: 100%;
 
-  ${props => props.reverse && `flex-direction: column-reverse;`}
+  ${props => props.direction === 'left' && `left: 0; display: none`}
   ${props => props.xs && getColumns(props, props.xs)};
   ${props => props.xsOffset && getColumnsOffset(props, props.xsOffset)};
 

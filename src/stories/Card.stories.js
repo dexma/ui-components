@@ -1,13 +1,13 @@
 import React from 'react';
-import Grid from 'components/Grid';
-import Cell from 'components/Cell';
-import Button from 'components/Button';
-import Row from 'components/Row';
-import Paragraph from 'components/Paragraph';
+import Grid from '../components/Grid';
+import Cell from '../components/Cell';
+import Button from '../components/Button';
+import Row from '../components/Row';
+import Paragraph from '../components/Paragraph';
 
-import { mockCards } from 'test/mock/Card';
+import { mockCards } from '../../test/mock/Card';
 
-import { Card } from 'components/Card';
+import { Card } from '../components/Card';
 
 export default {
   title: 'Card',

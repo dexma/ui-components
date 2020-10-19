@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import styled from 'styled-components';
 import {
   gray300,
@@ -5,8 +6,8 @@ import {
   warningColor,
   errorColor,
   fontSize,
-} from 'styles/selectors';
-import { ToastType } from 'components/toaster/Toast';
+} from '../selectors';
+import { ToastType } from '../../components/Toaster/Toast';
 
 const StyledToast = styled.div`
   position: fixed;
