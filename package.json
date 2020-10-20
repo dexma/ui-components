@@ -1,6 +1,6 @@
 {
   "name": "@dexma/ui-components",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "DEXMA UI Components (React)",
   "main": "dist/index.js",
   "scripts": {
