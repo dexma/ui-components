@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/dexma/ui-components/compare/v3.0.1...v3.0.2) (2020-10-20)
+
+
+### Bug Fixes
+
+* **webpack:** update the webpack config ([5d9dcbe](https://github.com/dexma/ui-components/commit/5d9dcbe0fd08e574dcafa79dcba7368447be254f))
+
 ## [3.0.1](https://github.com/dexma/ui-components/compare/v3.0.0...v3.0.1) (2020-10-19)
 
 
