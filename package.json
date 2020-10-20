@@ -4,7 +4,6 @@
   "description": "DEXMA UI Components (React)",
   "main": "dist/index.js",
   "scripts": {
-    "clean-build": "rm -rf dist",
     "storybook": "npm run build:icons && start-storybook -p 9999 -c src/.storybook --docs",
     "prettier": "prettier --write 'src/{,**/{,*.}}*.js'",
     "eslint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
@@ -15,9 +14,8 @@
     "clean": "rm -rf dist",
     "build:icons": "node scripts/buildIconConfig.js",
     "build:dist": "webpack --progress --color --mode=production",
-    "create:lib": "babel ./src --ignore=*.test.js,src/stories,src/.storybook,src/assets --out-dir ./lib --copy-files --source-maps",
     "build-storybook": "build-storybook -c src/.storybook -o docs",
-    "build": "npm run clean && npm run build:icons && npm run build:dist && npm run create:lib"
+    "build": "npm run clean && npm run build:icons && npm run build:dist"
   },
   "publishConfig": {
     "tag": "latest"
@@ -120,22 +118,26 @@
     "prettier": "^1.16.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dates": "^20.1.0",
     "react-dom": "^16.13.1",
+    "styled-components": "^5.2.0",
+    "react-dates": "^20.1.0",
     "react-moment-proptypes": "^1.6.0",
     "react-router-dom": "^5.0.0",
     "react-select": "^2.4.2",
     "react-tippy": "^1.3.1",
     "semantic-release": "^15.13.31",
     "style-loader": "^0.23.1",
-    "styled-components": "^5.2.0",
     "uglifyjs-webpack-plugin": "^2.1.3",
     "webpack": "^4.29.6",
-    "webpack-cli": "^4.0.0"
+    "webpack-cli": "^4.0.0",
+    "deep-equal": "^1.0.1",
+    "rc-tabs": "^9.7.0",
+    "xmldom": "^0.1.27"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-dom": "*"
+    "react": ">=16.8.6",
+    "react-dom": ">=16.8.6",
+    "styled-components": ">=5.0.0"
   },
   "jest": {
     "moduleNameMapper": {
@@ -165,10 +167,5 @@
     "reporters": [
       "default"
     ]
-  },
-  "dependencies": {
-    "deep-equal": "^1.0.1",
-    "rc-tabs": "^9.7.0",
-    "xmldom": "^0.1.27"
   }
 }

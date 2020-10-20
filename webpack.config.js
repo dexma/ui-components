@@ -19,7 +19,7 @@ module.exports = function(env, argv) {
   const cssLoader = {
     test: /\.css$/,
     use: [
-      isEnvDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+      'style-loader',
       'css-loader',
       {
         loader: 'postcss-loader',
@@ -33,13 +33,7 @@ module.exports = function(env, argv) {
     ],
   };
   return {
-    mode: 'production',
-    bail: true,
-    devtool: isEnvProduction
-      ? shouldUseSourceMap
-        ? 'source-map'
-        : false
-      : isEnvDevelopment && 'cheap-module-source-map',
+    mode: "production",
     entry: path.join(__dirname, 'src', 'index.js'),
     output: {
       path: path.join(__dirname, 'dist'),
@@ -81,16 +75,10 @@ module.exports = function(env, argv) {
     module: {
       rules: [babelLoader, cssLoader],
     },
-    plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'index.css',
-      }),
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    ],
     externals: {
-      react: 'react',
-      'react-dom': 'react-dom',
-      'prop-types': 'prop-types',
+      react: 'commonjs react',
+      'react-dom': 'commonjs react-dom',
+      "styled-components": "commonjs styled-components"
     }
   };
 };

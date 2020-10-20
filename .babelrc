@@ -6,6 +6,6 @@
   "plugins": [
     "@babel/plugin-proposal-class-properties",
     "babel-plugin-styled-components",
-    ["import", { "libraryName": "antd" }, "antd"]
+    ["babel-plugin-import", { "libraryName": "antd" }]
   ]
 }
