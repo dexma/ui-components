@@ -44,7 +44,6 @@ module.exports = function(env, argv) {
       libraryTarget: 'umd',
     },
     optimization: {
-      minimize: isEnvProduction,
       minimizer: [
         new UglifyJsPlugin({
           uglifyOptions: {
@@ -71,14 +70,18 @@ module.exports = function(env, argv) {
           },
         }),
       ],
+      minimize: true,
+      removeAvailableModules: true,
+      flagIncludedChunks: true,
+      usedExports: true,
+      concatenateModules: true,
+      sideEffects: false,
     },
     module: {
       rules: [babelLoader, cssLoader],
     },
     externals: {
-      react: 'commonjs react',
-      'react-dom': 'commonjs react-dom',
-      "styled-components": "commonjs styled-components"
-    }
+      react: 'react',
+      'react-dom': 'react-dom', }
   };
 };
