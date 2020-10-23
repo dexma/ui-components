@@ -1,62 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { Alert as AlertAntDesign } from 'antd';
-import omit from 'lodash/omit';
 
 import theme from '../styles/theme';
 import { StyledAlert } from '../styles/components/StyledAlert';
+import Icon from './Icon';
 
 const propTypes = {
+  type: PropTypes.oneOf(['warning', 'info', 'success', 'error']).isRequired,
+  message: PropTypes.string.isRequired,
   theme: PropTypes.shape({}),
-  type: PropTypes.string,
+  closable: PropTypes.bool,
+  showIcon: PropTypes.bool,
+  description: PropTypes.string,
+  onClose: PropTypes.func,
 };
 
 const defaultProps = {
   theme: theme,
+  closable: false,
+  showIcon: false,
   type: 'warning',
 };
 
 export const Alert = props => {
-  const { theme, type, closable } = props;
+  const { type, closable, message, description, showIcon, onClose } = props;
+  const [closed, setClosed] = useState(false);
   let renderIcon = null;
-  if (type === 'warning') {
-    renderIcon = 'circle_info_outline';
+  switch (type) {
+    case 'warning':
+      renderIcon = 'circle_info_outline';
+      break;
+    case 'info':
+      renderIcon = 'alert_sign';
+      break;
+    case 'success':
+      renderIcon = 'circle_check_outline';
+      break;
+    case 'error':
+      renderIcon = 'circle_delete_outline';
+      break;
+    default:
+      break;
   }
-  if (type === 'info') {
-    renderIcon = 'alert_sign';
-  }
-  if (type === 'success') {
-    renderIcon = 'circle_check_outline';
-  }
-  if (type === 'error') {
-    renderIcon = 'circle_delete_outline';
-  }
-  const alertProps = omit(props, ['theme']);
-  return (
-    <StyledAlert theme={theme}>
-      <AlertAntDesign
-        {...alertProps}
-        icon={
-          <div
+  const handleClose = e => {
+    setClosed(true);
+    onClose && onClose(e);
+  };
+  return closed ? null : (
+    <StyledAlert role="alert" {...props}>
+      <span className="message">
+        {showIcon && (
+          <Icon
             name={renderIcon}
             size="medium"
-            className="alert-icon"
-            data-testid="alert-icon"
+            className="icon"
+            data-testid="icon"
           />
-        }
-        closeText={
-          closable ? (
-            <div
-              name="close"
-              size="medium"
-              className="close-icon"
-              data-testid="alert-close-icon"
-            />
-          ) : null
-        }
-        data-testid="alert"
-      />
+        )}
+        {message}
+      </span>
+      {description && <span className="description">{description}</span>}
+      {closable ? (
+        <Icon
+          onClick={handleClose}
+          name="close"
+          size="medium"
+          className="icon-close"
+        />
+      ) : null}
     </StyledAlert>
   );
 };
