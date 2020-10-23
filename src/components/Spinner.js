@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
@@ -31,4 +31,4 @@ StyledSpinner.displayName = 'StyledSpinner';
 Spinner.propTypes = propTypes;
 Spinner.defaultProps = defaultProps;
 
-export default memo(withTheme(Spinner));
+export default withTheme(Spinner);

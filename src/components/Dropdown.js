@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { Popover } from 'antd';
@@ -75,4 +75,4 @@ export const Dropdown = props => {
 Dropdown.propTypes = propTypes;
 Dropdown.defaultProps = defaultProps;
 
-export default memo(withTheme(Dropdown));
+export default withTheme(Dropdown);

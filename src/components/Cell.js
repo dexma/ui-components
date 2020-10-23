@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import theme from '../styles/theme';
@@ -57,4 +57,4 @@ StyledCell.displayName = 'StyledCell';
 Cell.propTypes = propTypes;
 Cell.defaultProps = defaultProps;
 
-export default memo(withTheme(Cell));
+export default withTheme(Cell);

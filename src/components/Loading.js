@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
@@ -32,4 +32,4 @@ StyledLoading.displayName = 'StyledLoading';
 Loading.propTypes = propTypes;
 Loading.defaultProps = defaultProps;
 
-export default memo(withTheme(Loading));
+export default withTheme(Loading);

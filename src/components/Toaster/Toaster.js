@@ -1,4 +1,4 @@
-import React, { memo, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
@@ -53,4 +53,4 @@ export class Toaster extends PureComponent {
 Toaster.propTypes = propTypes;
 Toaster.defaultProps = defaultProps;
 
-export default memo(withTheme(Toaster));
+export default withTheme(Toaster);

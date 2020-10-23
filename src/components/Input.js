@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import omit from 'lodash/omit';
@@ -113,4 +113,4 @@ StyledInput.displayName = 'StyledInput';
 Input.propTypes = propTypes;
 Input.defaultProps = defaultProps;
 
-export default memo(withTheme(Input));
+export default withTheme(Input);

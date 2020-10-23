@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ReactSelect, { components } from 'react-select';
 import omit from 'lodash/omit';
@@ -84,4 +84,4 @@ StyledSelect.displayName = 'StyledSelect';
 Select.propTypes = propTypes;
 Select.defaultProps = defaultProps;
 
-export default memo(Select);
+export default Select;

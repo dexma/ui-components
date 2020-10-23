@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { Tabs as TabsAntDesign } from 'antd';
@@ -34,4 +34,4 @@ StyledTabs.displayName = 'StyledTabs';
 Tabs.propTypes = propTypes;
 Tabs.defaultProps = defaultProps;
 
-export default memo(withTheme(Tabs));
+export default withTheme(Tabs);

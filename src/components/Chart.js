@@ -1,4 +1,4 @@
-import React, { memo, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import deepEqual from 'deep-equal';
 import { withTheme } from 'styled-components';
@@ -138,4 +138,4 @@ export class Chart extends PureComponent {
 Chart.propTypes = propTypes;
 Chart.defaultProps = defaultProps;
 
-export default memo(withTheme(Chart));
+export default withTheme(Chart);

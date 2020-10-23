@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { Pagination as PaginationAntDesign } from 'antd';
 import { withTheme } from 'styled-components';
 
@@ -37,4 +37,4 @@ StyledPagination.displayName = 'StyledPagination';
 Pagination.propTypes = propTypes;
 Pagination.defaultProps = defaultProps;
 
-export default memo(withTheme(Pagination));
+export default withTheme(Pagination);

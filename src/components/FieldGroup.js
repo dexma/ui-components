@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import find from 'lodash/find';
@@ -116,4 +116,4 @@ StyledFieldGroup.displayName = 'StyledFieldGroup';
 FieldGroup.propTypes = propTypes;
 FieldGroup.defaultProps = defaultProps;
 
-export default memo(withTheme(FieldGroup));
+export default withTheme(FieldGroup);

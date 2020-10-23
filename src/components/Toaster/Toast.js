@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withTheme } from 'styled-components';
@@ -45,4 +45,4 @@ StyledToast.displayName = 'StyledToast';
 Toast.propTypes = propTypes;
 Toast.defaultProps = defaultProps;
 
-export default memo(withTheme(Toast));
+export default withTheme(Toast);

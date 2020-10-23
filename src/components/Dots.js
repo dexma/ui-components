@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
@@ -34,4 +34,4 @@ StyledDots.displayName = 'StyledDots';
 Dots.propTypes = propTypes;
 Dots.defaultProps = defaultProps;
 
-export default memo(withTheme(Dots));
+export default withTheme(Dots);

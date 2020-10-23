@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
@@ -31,4 +31,4 @@ StyledParagraph.displayName = 'StyledParagraph';
 Paragraph.propTypes = propTypes;
 Paragraph.defaultProps = defaultProps;
 
-export default memo(withTheme(Paragraph));
+export default withTheme(Paragraph);

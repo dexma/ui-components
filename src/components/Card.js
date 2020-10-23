@@ -1,15 +1,14 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import classNames from 'classnames';
 
-import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
 import Icon from './Icon';
 import Paragraph from './Paragraph';
 import { StyledCard, StyledCardLink } from '../styles/components/StyledCard';
+import theme from '../styles/theme';
 
 const propTypes = {
-  ...GeneralPropTypes,
   link: PropTypes.string,
   title: PropTypes.string,
   titleTruncated: PropTypes.bool,
@@ -26,12 +25,12 @@ const propTypes = {
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
   titleTruncated: false,
   isActive: false,
   isWhite: false,
   isLoading: false,
   isHorizontal: false,
+  theme: theme,
 };
 
 export const CardHeader = ({ image, icon }) => {
@@ -125,4 +124,4 @@ StyledCard.displayName = 'StyledCard';
 Card.propTypes = propTypes;
 Card.defaultProps = defaultProps;
 
-export default memo(withTheme(Card));
+export default withTheme(Card);

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
@@ -23,4 +23,4 @@ export const Theme = ({ children, options }) => {
 
 Theme.propTypes = propTypes;
 
-export default memo(Theme);
+export default Theme;

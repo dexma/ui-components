@@ -1,16 +1,11 @@
 const path = require('path');
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-// Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
 module.exports = function(env, argv) {
-  const isEnvDevelopment = argv.mode === 'development';
-  const isEnvProduction = argv.mode === 'production';
   const babelLoader = {
     test: /\.(js|jsx)$/,
     exclude: /node_modules/,
