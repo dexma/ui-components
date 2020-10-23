@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/dexma/ui-components/compare/v3.0.3...v3.0.4) (2020-10-23)
+
+
+### Bug Fixes
+
+* **memo:** remove memo for all the components ([75c56fd](https://github.com/dexma/ui-components/commit/75c56fdb131feb7b2058607d56047fa8649af8ae))
+
 ## [3.0.3](https://github.com/dexma/ui-components/compare/v3.0.2...v3.0.3) (2020-10-20)
 
 
