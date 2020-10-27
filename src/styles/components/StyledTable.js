@@ -653,12 +653,6 @@ const StyledTable = styled.div`
   tr.ant-table-expanded-row:hover {
     background: #fbfbfb;
   }
-  tr.ant-table-expanded-row-level-1 > td:first-child {
-    display: none;
-  }
-  tr.ant-table-expanded-row-level-1 > td {
-    padding: 0px !important;
-  }
   tr.ant-table-expanded-row td > .ant-table-wrapper {
     margin: -16px -16px -17px;
   }
