@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/dexma/ui-components/compare/v3.0.4...v3.0.5) (2020-10-29)
+
+
+### Bug Fixes
+
+* **table:** fix error table styled expanded ([63ab34f](https://github.com/dexma/ui-components/commit/63ab34f6b17eb18b770ec2fb5fc33e080fde7386))
+
 ## [3.0.4](https://github.com/dexma/ui-components/compare/v3.0.3...v3.0.4) (2020-10-23)
 
 
