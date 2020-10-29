@@ -43,7 +43,7 @@ const getIconPaths = name => {
     }
   });
   return config.map((itemConfig, i) => {
-    const { tag } = itemConfig;
+    const { tag, transform } = itemConfig;
     switch (tag) {
       case 'path':
         const { d, opacity, clipRule, fillRule } = itemConfig;
@@ -54,10 +54,11 @@ const getIconPaths = name => {
             opacity={opacity}
             clipRule={clipRule}
             fillRule={fillRule}
+            transform={transform}
           />
         );
       case 'circle':
-        const { cx, cy, r, transform } = itemConfig;
+        const { cx, cy, r } = itemConfig;
         return <circle key={i} cx={cx} cy={cy} r={r} transform={transform} />;
       default:
         return null;

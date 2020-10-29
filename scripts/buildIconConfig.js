@@ -43,7 +43,7 @@ const formatIcon = (icon, name) => {
         cx: cx || {},
         cy: cy || {},
         r: r || {},
-        transform: transform || {},
+        transform: transform || '',
       };
       svgConifg.push(svgPathConfigCircle);
     }

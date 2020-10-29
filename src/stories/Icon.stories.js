@@ -87,8 +87,8 @@ class SearchIcons extends Component {
 
   getIcons = searchValue => {
     const iconsFilter = icon.filter(i => i.name.includes(searchValue));
-    return iconsFilter.map(iconItem => (
-      <Cell xs={2} className="box-icon">
+    return iconsFilter.map((iconItem, i) => (
+      <Cell key={i} xs={2} className="box-icon">
         <Icon name={iconItem.name} size={40} color="iconColor" />
         <Paragraph size=".6rem">{iconItem.name}</Paragraph>
       </Cell>

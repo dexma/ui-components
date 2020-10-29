@@ -1,7 +1,8 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import moment from 'moment';
-import DatePicker from '../../src/components/DatePicker';
+import { DatePicker } from '../../src/components/DatePicker';
+import { render, screen } from '@testing-library/react'
 
 import {
   ISO_FORMAT,
@@ -25,6 +26,13 @@ const periodOptions = [
   { value: DATE_RANGE.YEAR_TO_DATE, label: 'Year to date' },
   { value: DATE_RANGE.PREVIOUS_YEAR, label: 'Previous year' },
 ];
+
+const requiredProps = {
+  onDatesChange: () => {},
+  onFocusChange: () => {},
+  startDateId: 'startDate',
+  endDateId: 'endDate',
+};
 
 describe('<DatePicker>', () => {
   it('should render correct number of months', () => {
@@ -64,70 +72,5 @@ describe('<DatePicker>', () => {
     expect(datePicker.find(DateRangePicker).props().hideKeyboardShortcutsPanel)
       .toBeFalsy;
   });
-  it('should not call stateDateWrapper to parse date', () => {
-    const parseDateStub = jest.fn();
-    const datePicker = mount(
-        <DatePicker stateDateWrapper={parseDateStub} />
-    ).find('DatePicker');
-    datePicker.instance().onDatesChange({
-      startDate: null,
-      endDate: null,
-    });
-    expect(parseDateStub.mock.calls.length).toEqual(0);
-  });
-  it('should call stateDateWrapper 1 time to parse date', () => {
-    const parseDateStub = jest.fn();
-    const dateFake = moment('2002-09-11');
-    const datePicker = mount(
-      <DatePicker stateDateWrapper={parseDateStub} />
-    ).find('DatePicker');
-    datePicker.instance().onDatesChange({
-      startDate: dateFake,
-      endDate: null,
-    });
 
-    expect(parseDateStub.mock.calls.length).toEqual(1);
-  });
-  it('should call stateDateWrapper 2 time to parse date', () => {
-    const parseDateStub = jest.fn();
-    const dateFake = moment('2002-09-11');
-    const datePicker = mount(
-      <DatePicker stateDateWrapper={parseDateStub} />
-    ).find('DatePicker');
-    datePicker.instance().onDatesChange({
-      startDate: dateFake,
-      endDate: dateFake,
-    });
-    expect(parseDateStub.mock.calls.length).toEqual(2);
-  });
-  it('shouldnt call onDatesChangeStub time to pass data', () => {
-    const onDatesChangeStub = jest.fn();
-    const dateFake = moment('2002-09-11');
-    const datePicker = mount(<DatePicker />).find('DatePicker');
-    datePicker.instance().onDatesChange({
-      startDate: dateFake,
-      endDate: dateFake,
-    });
-    expect(onDatesChangeStub.mock.calls.length).toEqual(0);
-  });
-  it('should have focusedInput correct passing autoFocus', () => {
-    const datePicker = mount(<DatePicker autoFocus />).find('DatePicker');
-    expect(datePicker.instance().state.focusedInput).toEqual(START_DATE);
-  });
-  it('should have focusedInput correct passing autoFocusEndDate', () => {
-    const datePicker = mount(<DatePicker autoFocusEndDate />).find(
-      'DatePicker'
-    );
-    expect(datePicker.instance().state.focusedInput).toEqual(END_DATE);
-  });
-  it('passing default select option have valid status date', () => {
-    const datePicker = mount(
-      <DatePicker
-        periodOptions={periodOptions}
-        periodDefault={{ value: 'last_7_days', label: 'Last 7 days' }}
-      />
-    ).find('DatePicker');
-    expect(datePicker.instance().state.startDate.isValid()).toBeTruthy;
-    expect(datePicker.instance().state.endDate.isValid()).toBeTruthy;
-  });
 });

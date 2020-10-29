@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { DateRangePicker } from 'react-dates';
 import { withTheme } from 'styled-components';
@@ -7,9 +7,9 @@ import momentPropTypes from 'react-moment-proptypes';
 import omit from 'lodash/omit';
 import classNames from 'classnames';
 
-import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
 import Icon from './Icon';
 import Select from './Select';
+import theme from '../styles/theme';
 
 import {
   NUMBER_OF_MONTHS,
@@ -29,7 +29,6 @@ import {
 } from '../utils/dates';
 
 import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
 
 import { StyledDatePicker } from '../styles/components/StyledDatePicker';
 
@@ -40,8 +39,20 @@ const withDatePickerFormat = (start, end) => ({
 
 const custom = () => withDatePickerFormat(null, null);
 
+const datePickerRange = (range, parser = date => date) => {
+  if (range === DATE_RANGE.TODAY) return today(parser);
+  if (range === DATE_RANGE.YESTERDAY) return yesterday(parser);
+  if (range === DATE_RANGE.LAST_7_DAYS) return last7Days(parser);
+  if (range === DATE_RANGE.LAST_28_DAYS) return last28Days(parser);
+  if (range === DATE_RANGE.CURRENT_MONTH) return currentMonth(parser);
+  if (range === DATE_RANGE.LAST_MONTH) return lastMonth(parser);
+  if (range === DATE_RANGE.YEAR_TO_DATE) return yearToDate(parser);
+  if (range === DATE_RANGE.PREVIOUS_YEAR) return previousYear(parser);
+  if (range === DATE_RANGE.CUSTOM) return custom();
+  return null;
+};
+
 const propTypes = {
-  ...GeneralPropTypes,
   autoFocus: PropTypes.bool,
   autoFocusEndDate: PropTypes.bool,
   stateDateWrapper: PropTypes.func,
@@ -52,10 +63,10 @@ const propTypes = {
   initialEndDate: momentPropTypes.momentObj,
   onDatesChange: PropTypes.func,
   language: PropTypes.string,
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
   autoFocus: false,
   autoFocusEndDate: false,
   stateDateWrapper: date => date,
@@ -63,144 +74,105 @@ const defaultProps = {
   endDateId: END_DATE,
   numberOfMonths: NUMBER_OF_MONTHS,
   language: 'en',
+  theme: theme,
 };
 
-export class DatePicker extends PureComponent {
-  constructor(props) {
-    super(props);
-    let focusedInput = null;
-    if (props.autoFocus) {
-      focusedInput = START_DATE;
-    } else if (props.autoFocusEndDate) {
-      focusedInput = END_DATE;
-    }
-    this.state = {
-      focusedInput,
-      startDate: props.initialStartDate,
-      endDate: props.initialEndDate,
-    };
+export const DatePicker = props => {
+  let focusedInputInitialState = null;
+  if (props.autoFocus) {
+    focusedInputInitialState = START_DATE;
+  } else if (props.autoFocusEndDate) {
+    focusedInputInitialState = END_DATE;
   }
-
-  componentDidMount() {
-    const { periodDefault, language } = this.props;
+  const [focusedInput, setFocusedInput] = useState(focusedInputInitialState);
+  const [date, setDate] = useState({
+    start: props.initialStartDate,
+    end: props.initialEndDate,
+  });
+  const { periodOptions, periodDefault, periodLabel, language, theme } = props;
+  const dateRangePickerProps = omit(props, [
+    'classNamePrefix',
+    'autoFocus',
+    'autoFocusEndDate',
+    'initialStartDate',
+    'initialEndDate',
+    'stateDateWrapper',
+    'periodOptions',
+    'periodDefault',
+    'language',
+  ]);
+  useEffect(() => {
     moment.locale(language);
     const ranges =
       periodDefault && periodDefault.value
-        ? this.datePickerRange(periodDefault.value, withDatePickerFormat)
+        ? datePickerRange(periodDefault.value, withDatePickerFormat)
         : null;
-    if (ranges) {
-      this.onDatesChange(ranges);
+    ranges && onDatesChange(ranges);
+  }, [periodDefault, language]);
+  const onFocusChange = focusedInput => {
+    setFocusedInput(focusedInput);
+  };
+  const onSelectChange = ({ value }) => {
+    const ranges = datePickerRange(value, withDatePickerFormat);
+    if (value === 'custom') {
+      onFocusChange(START_DATE);
     }
-  }
-
-  onDatesChange = ({ startDate, endDate }) => {
-    const { stateDateWrapper, onDatesChange } = this.props;
+    onDatesChange(ranges);
+  };
+  const onDatesChange = ({ startDate, endDate }) => {
+    const { stateDateWrapper, onDatesChange } = props;
     const start = startDate ? stateDateWrapper(startDate) : null;
     const end = endDate ? stateDateWrapper(endDate) : null;
-    this.setState(
-      {
-        startDate: start,
-        endDate: end,
-      },
-      () =>
-        onDatesChange &&
-        onDatesChange({
-          startDate: start,
-          endDate: end,
-        })
-    );
+    const date = { start, end };
+    setDate(date);
+    onDatesChange && onDatesChange(date);
   };
-
-  onFocusChange = focusedInput => {
-    this.setState({ focusedInput });
-  };
-
-  onSelectChange = ({ value }) => {
-    const ranges = this.datePickerRange(value, withDatePickerFormat);
-    if (value === 'custom') {
-      this.onFocusChange(START_DATE);
-    }
-    this.onDatesChange(ranges);
-  };
-
-  datePickerRange = (range, parser = date => date) => {
-    if (range === DATE_RANGE.TODAY) return today(parser);
-    if (range === DATE_RANGE.YESTERDAY) return yesterday(parser);
-    if (range === DATE_RANGE.LAST_7_DAYS) return last7Days(parser);
-    if (range === DATE_RANGE.LAST_28_DAYS) return last28Days(parser);
-    if (range === DATE_RANGE.CURRENT_MONTH) return currentMonth(parser);
-    if (range === DATE_RANGE.LAST_MONTH) return lastMonth(parser);
-    if (range === DATE_RANGE.YEAR_TO_DATE) return yearToDate(parser);
-    if (range === DATE_RANGE.PREVIOUS_YEAR) return previousYear(parser);
-    if (range === DATE_RANGE.CUSTOM) return custom();
-    return null;
-  };
-
-  render() {
-    const { focusedInput, startDate, endDate } = this.state;
-    const dateRangePickerProps = omit(this.props, [
-      'classNamePrefix',
-      'autoFocus',
-      'autoFocusEndDate',
-      'initialStartDate',
-      'initialEndDate',
-      'stateDateWrapper',
-      'periodOptions',
-      'periodDefault',
-    ]);
-    const {
-      periodOptions,
-      periodDefault,
-      periodLabel,
-      theme,
-      dataCy,
-    } = this.props;
-    const classes = classNames('date-range', periodOptions && `with-select`);
-    return (
-      <StyledDatePicker
-        theme={theme}
-        focusedInput={focusedInput}
-        withSelect={periodOptions}
-      >
-        <div className={classes} data-cy={dataCy}>
-          <DateRangePicker
-            {...dateRangePickerProps}
-            startDate={startDate}
-            endDate={endDate}
-            focusedInput={focusedInput}
-            onDatesChange={this.onDatesChange}
-            onFocusChange={this.onFocusChange}
-            noBorder
-            daySize={DAY_SIZE}
-            horizontalMonthPadding={10}
-            transitionDuration={0}
-            hideKeyboardShortcutsPanel
-            isOutsideRange={() => false}
-            customArrowIcon={<Icon name="arrow_left" size="small" />}
-            displayFormat={ISO_FORMAT}
-            minimumNights={0}
-            customInputIcon={
-              <Icon name="calendar_range" size="xlarge" color="gray500" />
-            }
-            navPrev={<Icon name="chevron_left_l" size={10} color="gray600" />}
-            navNext={<Icon name="chevron_right_l" size={10} color="gray600" />}
+  const classes = classNames('date-range', periodOptions && `with-select`);
+  const { start, end } = date;
+  return (
+    <StyledDatePicker
+      theme={theme}
+      focusedInput={focusedInput}
+      withSelect={periodOptions}
+    >
+      <div className={classes}>
+        <DateRangePicker
+          {...dateRangePickerProps}
+          startDate={start}
+          endDate={end}
+          focusedInput={focusedInput}
+          onDatesChange={onDatesChange}
+          onFocusChange={onFocusChange}
+          noBorder
+          daySize={DAY_SIZE}
+          horizontalMonthPadding={10}
+          transitionDuration={0}
+          hideKeyboardShortcutsPanel
+          isOutsideRange={() => false}
+          customArrowIcon={<Icon name="arrow_left" size="small" />}
+          displayFormat={ISO_FORMAT}
+          minimumNights={0}
+          customInputIcon={
+            <Icon name="calendar_range" size="xlarge" color="gray500" />
+          }
+          navPrev={<Icon name="chevron_left_l" size={10} color="gray600" />}
+          navNext={<Icon name="chevron_right_l" size={10} color="gray600" />}
+        />
+      </div>
+      {periodOptions && (
+        <div className="select">
+          <Select
+            options={periodOptions}
+            defaultValue={periodDefault}
+            placeholder={periodLabel}
+            onChange={onSelectChange}
+            isSearchable={false}
           />
         </div>
-        {periodOptions && (
-          <div className="select">
-            <Select
-              options={periodOptions}
-              defaultValue={periodDefault}
-              placeholder={periodLabel}
-              onChange={this.onSelectChange}
-              isSearchable={false}
-            />
-          </div>
-        )}
-      </StyledDatePicker>
-    );
-  }
-}
+      )}
+    </StyledDatePicker>
+  );
+};
 
 StyledDatePicker.displayName = 'StyledDatePicker';
 
