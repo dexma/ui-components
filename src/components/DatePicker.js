@@ -7,6 +7,8 @@ import momentPropTypes from 'react-moment-proptypes';
 import omit from 'lodash/omit';
 import classNames from 'classnames';
 
+import 'moment/locale/es';
+
 import Icon from './Icon';
 import Select from './Select';
 import theme from '../styles/theme';
@@ -67,7 +69,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  autoFocus: false,
+  autoFocus: true,
   autoFocusEndDate: false,
   stateDateWrapper: date => date,
   startDateId: START_DATE,
@@ -129,6 +131,7 @@ export const DatePicker = props => {
   };
   const classes = classNames('date-range', periodOptions && `with-select`);
   const { start, end } = date;
+  moment.locale(language);
   return (
     <StyledDatePicker
       theme={theme}
