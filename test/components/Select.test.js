@@ -1,20 +1,46 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react'
 
-import Select from 'components/Select';
+import { Select } from '../../src/components/Select';
 
 const options = [
-  { value: '1', label: '1st Floor [01. Luxemburg Building]' },
-  { value: '2', label: '1st Floor [02. Luxemburg Building]' },
+  { value: '1', label: 'First test option' },
+  { value: '2', label: 'Second test option' },
 ];
 
 describe('<Select>', () => {
-  it('Should render the correct classNamePrefix component', () => {
-    const select = mount(<Select options={options} />);
-    expect(select.find('StyledSelect').length).toEqual(1);
+  it('Should have the test id', () => {
+    const { getByTestId } = render(<Select options={options} />);
+    expect(getByTestId("select")).toBeTruthy();
   });
-  it('Should render the correct Icon component', () => {
-    const select = mount(<Select options={options} />);
-    expect(select.find('Icon').length).toEqual(1);
+  it('Should render dropdown icon', () => {
+    const { getByTestId } = render(<Select options={options} />);
+    expect(getByTestId("select-dropdown-icon")).toBeTruthy();
+  });
+  it('Should render select input', () => {
+    const { getByTestId } = render(<Select options={options} />);
+    const selectInput = getByTestId("select-input");
+    expect(selectInput).toBeTruthy();
+  });
+  it('Should render one option when user type matching words', () => {
+    const { getByTestId } = render(<Select options={options} />);
+    const selectInput = getByTestId("select-input");
+    fireEvent.change(selectInput, {target: {value: 'First'}})
+    expect(selectInput.value).toBe('First');
+    const selectOptions = getByTestId("select-option");
+    expect(selectOptions).toBeTruthy();
+  });
+  it('Should render two options when user type matching words', () => {
+    const { getByTestId, getAllByTestId } = render(<Select options={options} />);
+    const selectInput = getByTestId("select-input");
+    fireEvent.change(selectInput, {target: {value: 'test option'}})
+    expect(selectInput.value).toBe('test option');
+    const selectOptions = getAllByTestId("select-option");
+    expect(selectOptions).toHaveLength(2);
+  });
+  it('Should render icon close when isClearable is setter', () => {
+    const { getByTestId } = render(<Select value={options[0]} options={options} isClearable={true}/>);
+    const selectClear = getByTestId("select-clear-icon");
+    expect(selectClear).toBeTruthy();
   });
 });

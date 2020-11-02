@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactSelect, { components } from 'react-select';
 import omit from 'lodash/omit';
-
+import { withTheme } from 'styled-components';
 import theme from '../styles/theme';
 import { StyledSelect } from '../styles/components/StyledSelect';
 import Icon from './Icon';
@@ -21,7 +21,11 @@ const DropdownIndicator = props => {
   return (
     components.DropdownIndicator && (
       <components.DropdownIndicator {...props}>
-        <Icon name={iconName} size="medium" />
+        <Icon
+          name={iconName}
+          size="medium"
+          data-testid="select-dropdown-icon"
+        />
       </components.DropdownIndicator>
     )
   );
@@ -31,7 +35,7 @@ const ClearIndicator = props => {
   return (
     components.ClearIndicator && (
       <components.ClearIndicator {...props}>
-        <Icon name="close" size={17} />
+        <Icon name="close" size={17} data-testid="select-clear-icon" />
       </components.ClearIndicator>
     )
   );
@@ -58,9 +62,13 @@ export const Select = props => {
   const titleSelect =
     !defaultValueSelect && props.value ? props.value.label : null;
   return (
-    <StyledSelect theme={theme} isMulti={isMulti} title={titleSelect}>
+    <StyledSelect
+      theme={theme}
+      isMulti={isMulti}
+      title={titleSelect}
+      data-testid="select"
+    >
       <ReactSelect
-        data-testid="select"
         classNamePrefix="select-styled"
         optionClassName="select-option"
         components={{
@@ -84,4 +92,4 @@ StyledSelect.displayName = 'StyledSelect';
 Select.propTypes = propTypes;
 Select.defaultProps = defaultProps;
 
-export default Select;
+export default withTheme(Select);

@@ -70,6 +70,21 @@ export const noSearch = () => (
   </Grid>
 );
 
+export const clear = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          Is the select value clearable with value option
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Select value={options[0]} options={options} isClearable />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
 export const noClear = () => (
   <Grid fluid>
     <Row>
