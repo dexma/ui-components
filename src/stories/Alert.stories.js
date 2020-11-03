@@ -90,11 +90,7 @@ export const noIcon = () => (
           type="success"
         />
         <br />
-        <Alert
-          message="Informational Notes"
-          description="Additional description and information about copywriting."
-          type="info"
-        />
+        <Alert message="Informational Notes" type="info" />
         <br />
         <Alert
           message="Warning"

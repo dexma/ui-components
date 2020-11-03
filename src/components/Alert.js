@@ -48,25 +48,30 @@ export const Alert = props => {
     onClose && onClose(e);
   };
   return closed ? null : (
-    <StyledAlert role="alert" {...props}>
-      <span className="message">
+    <StyledAlert data-testid="alert" role="alert" {...props}>
+      <span data-testid="alert-message" className="message">
         {showIcon && (
           <Icon
             name={renderIcon}
             size="medium"
             className="icon"
-            data-testid="icon"
+            data-testid={`alert-icon-${type}`}
           />
         )}
         {message}
       </span>
-      {description && <span className="description">{description}</span>}
+      {description && (
+        <span data-testid="alert-description" className="description">
+          {description}
+        </span>
+      )}
       {closable ? (
         <Icon
           onClick={handleClose}
           name="close"
           size="medium"
           className="icon-close"
+          data-testid="alert-icon-close"
         />
       ) : null}
     </StyledAlert>
