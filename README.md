@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://www.dexma.com/wp-content/uploads/2019/07/logo.png" alt="Dexma" width="220">
+    <img src="https://get.dexma.com/hs-fs/hubfs/Logo/New%20DEXMA%20Logo.png?width=350&name=New%20DEXMA%20Logo.png" alt="Dexma" width="220">
 </p>
 
 <h1 align="center">Dexma UI Components</h1>
