@@ -1,10 +1,10 @@
 <p align="center">
-    <img src="/src/assets/voltic_logo.svg" alt="Voltic" width="220">
+    <img src="https://www.dexma.com/wp-content/uploads/2019/07/logo.png" alt="Dexma" width="220">
 </p>
 
-<h1 align="center">Voltic Components</h1>
+<h1 align="center">Dexma UI Components</h1>
 
-<p align="center">React components for the Voltic Design System</p>
+<p align="center">React components library by Dexma</p>
 
 <p align="center">
   <br>
@@ -29,20 +29,14 @@
 
 1) Install with [npm](https://www.npmjs.com): `npm install --save @dexma/ui-components`
 
-2) Import the css and put inside our main app like the example:
-
-```javascript
-import "@dexma/ui-components/dist/main.css";
-```
-
-3) Now you can use the component importing from the library
+2) Use the component importing from the library
 
 ```javascript
 import { Button } from "@dexma/ui-components";
 <Button text="Some text" variant="primary" size="medium"/>
 ```
 
-4) Optional: You can set the Theme with your personal variables, we provide the Theme component and you only need to set the options:
+3) Optional: You can set the Theme with your personal variables, we provide the Theme component and you only need to set the options:
 
 ```javascript
 import { Theme, Button } from "@dexma/ui-components";
@@ -52,6 +46,8 @@ import { Theme, Button } from "@dexma/ui-components";
     <Button text="Some text" variant="primary" size="medium"/>
 </Theme>
 ```
+
+You can find all the configuration in the theme file [theme.js](https://github.com/dexma/ui-components/blob/master/src/styles/theme.js)
 
 ## Installation
 
@@ -74,7 +70,7 @@ For the documentation we use storybook docs that transforms our stories into wor
 For changelogs, check out [the CHANGELOG section of ui-components](https://github.com/dexma/ui-components/blob/master/CHANGELOG.md)
 
 ## Testing
-We use Jest and Enzyme as our testing frameworks and we're trying to write more test suite for our components.
+We use React Testing Library as our testing lib you can check out the [documentation](https://testing-library.com/docs/react-testing-library/intro)
 
 - To run our test: `npm run test`
 
