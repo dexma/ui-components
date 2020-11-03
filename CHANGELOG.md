@@ -1,3 +1,10 @@
+## [3.0.6](https://github.com/dexma/ui-components/compare/v3.0.5...v3.0.6) (2020-11-03)
+
+
+### Bug Fixes
+
+* **README:** update the logo url ([4d46b4d](https://github.com/dexma/ui-components/commit/4d46b4dd3dbfdc6b76206de19b21f8500b467fe5))
+
 ## [3.0.5](https://github.com/dexma/ui-components/compare/v3.0.4...v3.0.5) (2020-10-29)
 
 
