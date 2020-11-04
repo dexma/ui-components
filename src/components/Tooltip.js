@@ -9,17 +9,56 @@ import theme from '../styles/theme';
 
 const propTypes = {
   /**
-   Specifies which direction to position the tooltip
+   * Determines if the tooltip has an arrow.
+   */
+  arrow: PropTypes.bool,
+  /**
+   * Determines the tooltip position.
    */
   position: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
   /**
-   * Theme json based
+   * The content of the tooltip.
    */
-  theme: PropTypes.shape({}),
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /**
+   * Delay in ms once a trigger event is fired before a tooltip shows or hides.
+   */
+  delay: PropTypes.number,
+  /**
+   * Duration in ms of the transition animation.
+   */
+  duration: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
+  /**
+   * Invoked once the tooltip has been created.
+   */
+  onCreate: PropTypes.func,
+  /**
+   * Invoked once the tooltip has been destroyed.
+   */
+  onDestroy: PropTypes.func,
+  /**
+   * Invoked once the tooltip has been fully hidden and unmounted from the DOM.
+   */
+  onHidden: PropTypes.func,
+  /**
+   * Invoked once the tooltip begins to show.
+   */
+  onShow: PropTypes.func,
+  /**
+   * Specifies the role attribute on the tooltip element.
+   */
+  role: PropTypes.string,
+  /**
+   * Determines the events that cause the tooltip to show. Multiple event names are separated by spaces.
+   */
+  trigger: PropTypes.string,
 };
 
 const defaultProps = {
+  arrow: true,
   position: 'bottom',
+  role: 'tooltip',
+  trigger: 'mouseenter',
   theme: theme,
 };
 
@@ -29,7 +68,7 @@ export const Tooltip = forwardRef((props, ref) => {
   return (
     <>
       <StyledTooltip theme={theme} />
-      <Tippy ref={ref} arrow placement={position} {...tooltipProps} />
+      <Tippy ref={ref} placement={position} {...tooltipProps} />
     </>
   );
 });

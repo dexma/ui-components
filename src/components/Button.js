@@ -14,7 +14,6 @@ import { Tooltip } from './Tooltip';
 import { StyledButton } from '../styles/components/StyledButton';
 import { StyledButtonGroup } from '../styles/components/StyledButtonGroup';
 
-export const BUTTON_TYPE = ['button', 'reset', 'submit', null];
 export const BUTTON_SIZE = ['small', 'medium', 'large', 'xlarge'];
 export const BUTTON_VARIANT = [
   'primary',
@@ -28,29 +27,61 @@ export const BUTTON_VARIANT = [
 ];
 
 const propTypes = {
-  id: PropTypes.string,
-  className: PropTypes.string,
+  /**
+   * Set the text of button
+   */
   text: PropTypes.string,
-  type: PropTypes.oneOf(BUTTON_TYPE),
+  /**
+   * Set the size of button
+   */
   size: PropTypes.oneOf(BUTTON_SIZE).isRequired,
+  /**
+   * Set the style variant of the button
+   */
   variant: PropTypes.oneOf(BUTTON_VARIANT).isRequired,
+  /**
+   * Set the icon before the text or children you have to set with our <a href="/?path=/docs/icon--sizes#icons">Icons</a>:
+   */
   iconBefore: PropTypes.string,
+  /**
+   * Set the icon after the text or children you have to set with our <a href="/?path=/docs/icon--sizes#icons">Icons</a>:
+   */
   iconAfter: PropTypes.string,
+  /**
+   * Show tooltip on mouseenter to more info go to <a href="/?path=/docs/tooltip--tooltip">Tooltips section</a>
+   */
   tooltip: PropTypes.string,
+  /**
+   * Invoked once the button has been clicked.
+   */
   onClick: PropTypes.func,
+  /**
+   * Invoked once the button has been focused.
+   */
   onFocus: PropTypes.func,
+  /**
+   * State to set loader icon and status
+   */
   isLoading: PropTypes.bool,
+  /**
+   * State to set the button disabled
+   */
   isDisabled: PropTypes.bool,
+  /**
+   * Set the button with a circle style
+   */
   isCircle: PropTypes.bool,
+  /**
+   * Set the button with a expanded style 100%
+   */
   isExpanded: PropTypes.bool,
+  /**
+   * Set the time that you want to debounce a click
+   */
   debounceTime: PropTypes.number,
-  children: PropTypes.node,
-  dataCy: PropTypes.string,
-  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  type: 'button',
   size: 'medium',
   variant: 'primary',
   isDisabled: false,

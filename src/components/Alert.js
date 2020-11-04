@@ -7,20 +7,37 @@ import { StyledAlert } from '../styles/components/StyledAlert';
 import Icon from './Icon';
 
 const propTypes = {
+  /**
+   * Type of Alert styles
+   */
   type: PropTypes.oneOf(['warning', 'info', 'success', 'error']).isRequired,
+  /**
+   * Content of Alert
+   */
   message: PropTypes.string.isRequired,
-  theme: PropTypes.shape({}),
+  /**
+   * Whether Alert can be closed
+   */
   closable: PropTypes.bool,
+  /**
+   * Show the icon of the type you passed: `success`, `info`, `warning`, `error`
+   */
   showIcon: PropTypes.bool,
+  /**
+   * Additional content description of Alert
+   */
   description: PropTypes.string,
+  /**
+   * Callback when Alert is closed
+   */
   onClose: PropTypes.func,
 };
 
 const defaultProps = {
-  theme: theme,
   closable: false,
   showIcon: false,
   type: 'warning',
+  theme: theme,
 };
 
 export const Alert = props => {

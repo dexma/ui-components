@@ -16,15 +16,24 @@ export const tooltip = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
-          This is the complete tooltip, popover, dropdown, and menu solution for
-          the web, you can check all the props in:
-          https://atomiks.github.io/tippyjs/v6/all-props/
-        </Paragraph>
+        <Paragraph m="1rem 0 1rem 0">A simple text popup tip.</Paragraph>
       </Cell>
-      <Cell xs={12}>
+      <Cell>
+        <Tooltip content="Tooltip" trigger="click">
+          <Button text="Click me"></Button>
+        </Tooltip>
         <Tooltip content="Tooltip">
           <Button text="Test" iconBefore="vader"></Button>
+        </Tooltip>
+        <Tooltip content="Tooltip top" position="top">
+          <Button
+            text="Test top"
+            iconBefore="vader"
+            variant="secondary"
+          ></Button>
+        </Tooltip>
+        <Tooltip content="Tooltip right" position="right">
+          <Button iconBefore="help" isCircle></Button>
         </Tooltip>
       </Cell>
     </Row>
