@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/dexma/ui-components/compare/v3.1.0...v3.1.1) (2020-11-04)
+
+
+### Bug Fixes
+
+* **tooltip:** update button and icon to have ref ([707dc98](https://github.com/dexma/ui-components/commit/707dc984851e2d8761787efda340c1e6714ea8c2))
+
 # [3.1.0](https://github.com/dexma/ui-components/compare/v3.0.6...v3.1.0) (2020-11-04)
 
 
