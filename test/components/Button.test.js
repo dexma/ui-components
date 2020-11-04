@@ -25,10 +25,4 @@ describe('<Button>', () => {
     const { getByTestId } = render(<Button iconAfter="vader">{testDiv}</Button>);
     expect(getByTestId('button-icon-after')).toBeTruthy();
   });
-
-  it('Should render the tooltip correctly', () => {
-    const testDiv = <div data-testid="test">test</div>
-    const { getByTestId, container } = render(<Button iconAfter="vader">{testDiv}</Button>);
-    console.log(container.querySelector('button'))
-  });
 });
