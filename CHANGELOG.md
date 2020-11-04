@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/dexma/ui-components/compare/v3.0.6...v3.1.0) (2020-11-04)
+
+
+### Features
+
+* **tooltip:** build new tooltip component ([62890f4](https://github.com/dexma/ui-components/commit/62890f441062a8529ad722f60c5528b95dc0a337))
+
 ## [3.0.6](https://github.com/dexma/ui-components/compare/v3.0.5...v3.0.6) (2020-11-03)
 
 
