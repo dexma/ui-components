@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import get from 'lodash/get';
@@ -65,7 +65,7 @@ const getIconPaths = name => {
   });
 };
 
-export const Icon = props => {
+export const Icon = forwardRef((props, ref) => {
   const { name, color, size, theme } = props;
   const fillColor = get(theme, color);
   const pathElements = getIconPaths(name);
@@ -73,6 +73,7 @@ export const Icon = props => {
   const iconProps = omit(props, ['name', 'color', 'size']);
   return (
     <StyledIcon
+      ref={ref}
       width={iconSize}
       height={iconSize}
       viewBox="0 0 24 24"
@@ -87,7 +88,7 @@ export const Icon = props => {
       {pathElements}
     </StyledIcon>
   );
-};
+});
 
 StyledIcon.displayName = 'StyledIcon';
 

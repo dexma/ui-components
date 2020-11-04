@@ -17,12 +17,14 @@ export const tooltip = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph m="1rem 0 1rem 0">
-          Alert component used when you need to show messages to users.
+          This is the complete tooltip, popover, dropdown, and menu solution for
+          the web, you can check all the props in:
+          https://atomiks.github.io/tippyjs/v6/all-props/
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Tooltip title="test" size="medium">
-          <Button content="tooltip" />
+        <Tooltip content="Tooltip">
+          <Button text="Test" iconBefore="vader"></Button>
         </Tooltip>
       </Cell>
     </Row>

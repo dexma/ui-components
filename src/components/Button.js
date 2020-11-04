@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
@@ -29,7 +29,6 @@ export const BUTTON_VARIANT = [
 
 const propTypes = {
   id: PropTypes.string,
-  buttonRef: PropTypes.func,
   className: PropTypes.string,
   text: PropTypes.string,
   type: PropTypes.oneOf(BUTTON_TYPE),
@@ -72,9 +71,8 @@ export const ButtonGroup = props => {
   return <StyledButtonGroup {...props} />;
 };
 
-export const Button = props => {
+export const Button = forwardRef((props, ref) => {
   const {
-    buttonRef,
     className,
     text,
     iconBefore,
@@ -102,7 +100,7 @@ export const Button = props => {
   ]);
   const getStyledButton = () => (
     <StyledButton
-      ref={buttonRef}
+      ref={ref}
       onClick={handleClick}
       disabled={isDisabled}
       className={classes}
@@ -134,13 +132,11 @@ export const Button = props => {
     </StyledButton>
   );
   return tooltip ? (
-    <Tooltip content={tooltip} size={size}>
-      {getStyledButton()}
-    </Tooltip>
+    <Tooltip content={tooltip}>{getStyledButton()}</Tooltip>
   ) : (
     getStyledButton()
   );
-};
+});
 
 StyledButton.displayName = 'StyledButton';
 

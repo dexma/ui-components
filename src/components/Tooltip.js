@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import Tippy from '@tippyjs/react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
@@ -19,22 +19,20 @@ const propTypes = {
 };
 
 const defaultProps = {
-  placement: 'bottom',
+  position: 'bottom',
   theme: theme,
 };
 
-export const Tooltip = props => {
-  const { children, theme, position } = props;
-  const tooltipProps = omit(props, ['theme']);
+export const Tooltip = forwardRef((props, ref) => {
+  const { theme, position } = props;
+  const tooltipProps = omit(props, ['theme', 'position']);
   return (
     <>
       <StyledTooltip theme={theme} />
-      <Tippy arrow placement={position} {...tooltipProps}>
-        {children}
-      </Tippy>
+      <Tippy ref={ref} arrow placement={position} {...tooltipProps} />
     </>
   );
-};
+});
 
 Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;
