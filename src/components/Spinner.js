@@ -15,16 +15,9 @@ const defaultProps = {
   size: 24,
 };
 
-export const Spinner = ({ size, variant, theme, dataCy }) => {
-  return (
-    <StyledSpinner
-      size={size}
-      variant={variant}
-      data-cy={dataCy}
-      theme={theme}
-    />
-  );
-};
+export const Spinner = props => (
+  <StyledSpinner data-testid="spinner" {...props} />
+);
 
 StyledSpinner.displayName = 'StyledSpinner';
 

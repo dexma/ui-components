@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
 import { withTheme } from 'styled-components';
+import omit from 'lodash/omit';
 
-import { withTooltip } from '../hoc/withTooltip';
 import theme from '../styles/theme';
 import Icon, { getIconSize } from './Icon';
 import Spinner from './Spinner';
+import { Tooltip } from './Tooltip';
 
 import { StyledButton } from '../styles/components/StyledButton';
 import { StyledButtonGroup } from '../styles/components/StyledButtonGroup';
@@ -71,64 +72,73 @@ export const ButtonGroup = props => {
   return <StyledButtonGroup {...props} />;
 };
 
-export const Button = ({
-  id,
-  buttonRef,
-  className,
-  text,
-  type,
-  iconBefore,
-  iconAfter,
-  tooltip,
-  onClick,
-  onFocus,
-  isDisabled,
-  isExpanded,
-  isLoading,
-  isCircle,
-  size,
-  variant,
-  debounceTime,
-  dataCy,
-  theme,
-  children,
-}) => {
+export const Button = props => {
+  const {
+    buttonRef,
+    className,
+    text,
+    iconBefore,
+    iconAfter,
+    tooltip,
+    onClick,
+    isDisabled,
+    isExpanded,
+    isLoading,
+    size,
+    debounceTime,
+    children,
+  } = props;
   const classes = classNames(isExpanded && 'expanded', size && size, className);
   const handleClick =
     debounceTime > 0 ? debounce(onClick, debounceTime) : onClick;
   const spinnerSize = getIconSize(size);
   const iconSize = getButtonIconSize(size);
-  return (
+  const buttonProps = omit(props, [
+    'buttonRef',
+    'iconBefore',
+    'iconAfter',
+    'debounceTime',
+    'text',
+  ]);
+  const getStyledButton = () => (
     <StyledButton
-      id={id}
       ref={buttonRef}
-      type={type}
-      data-tooltip={tooltip}
       onClick={handleClick}
-      onFocus={onFocus}
       disabled={isDisabled}
       className={classes}
-      data-cy={dataCy}
-      theme={theme}
-      variant={variant}
-      size={size}
-      iconSize={iconSize}
-      iconAfter={iconAfter}
-      isCircle={isCircle}
-      text={text}
-      isDisabled={isDisabled}
-      isLoading={isLoading}
+      data-testid="button"
+      role="button"
+      {...buttonProps}
     >
-      {isLoading ? <Spinner size={spinnerSize} /> : null}
+      {isLoading ? (
+        <Spinner size={spinnerSize} data-testid="button-loading" />
+      ) : null}
       {!isLoading && iconBefore ? (
-        <Icon name={iconBefore} size={iconSize} color="white" />
+        <Icon
+          name={iconBefore}
+          size={iconSize}
+          color="white"
+          data-testid="button-icon-before"
+        />
       ) : null}
       {text || null}
       {children || null}
       {!isLoading && iconAfter ? (
-        <Icon name={iconAfter} size={iconSize} color="white" />
+        <Icon
+          name={iconAfter}
+          size={iconSize}
+          color="white"
+          data-testid="button-icon-after"
+        />
       ) : null}
     </StyledButton>
+  );
+  return tooltip ? (
+    <Tooltip content={tooltip} size={size}>
+      {getStyledButton()}
+    </Tooltip>
+  ) : (
+    getStyledButton()
   );
 };
 
@@ -137,4 +147,4 @@ StyledButton.displayName = 'StyledButton';
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
-export default withTheme(withTooltip(Button));
+export default withTheme(Button);

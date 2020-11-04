@@ -1,49 +1,34 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import Button from 'components/Button';
 
 describe('<Button>', () => {
-  it('Should render the classNamePrefix component', () => {
-    const button = mount(<Button />);
-    expect(button.find('StyledButton').length).toEqual(1);
+  it('Should render the button component', () => {
+    const { getByRole } = render(<Button />);
+    expect(getByRole('button')).toBeTruthy();
   });
-  it('Should render a button element', () => {
-    const button = mount(<Button />);
-    expect(button.find('button')).toBeTruthy();
+  it('Should render the spinner if isLoading is passed', () => {
+    const { getByTestId } = render(<Button isLoading/>);
+    expect(getByTestId('button-loading')).toBeTruthy();
   });
-  it('Should pass additional classes', () => {
-    const testClass = 'classTest';
-    const button = mount(<Button className={testClass} />);
-    expect(button.find(`.${testClass}`).length).toBeTruthy();
+  it('Should render the icon before', () => {
+    const { getByTestId } = render(<Button iconBefore="vader" />);
+    expect(getByTestId('button-icon-before')).toBeTruthy();
   });
-  it('Should render correct text passing by props', () => {
-    const testText = 'Some text';
-    const button = mount(<Button text={testText} />);
-    expect(button.text()).toEqual(testText);
+  it('Should render the icon after', () => {
+    const { getByTestId } = render(<Button iconAfter="vader" />);
+    expect(getByTestId('button-icon-after')).toBeTruthy();
   });
-  it('Should render correct id passing by props', () => {
-    const testId = '2312';
-    const button = mount(<Button id={testId} />);
-    expect(button.prop('id')).toEqual(testId);
+  it('Should render the children correctly', () => {
+    const testDiv = <div data-testid="test">test</div>
+    const { getByTestId } = render(<Button iconAfter="vader">{testDiv}</Button>);
+    expect(getByTestId('button-icon-after')).toBeTruthy();
   });
-  it('Should disabled the button', () => {
-    const isDisabled = true;
-    const button = mount(<Button isDisabled={isDisabled} />);
-    expect(button.find('StyledButton').prop('disabled')).toEqual(isDisabled);
-  });
-  it('Should render icons elements', () => {
-    const iconBefore = 'close';
-    const iconAfter = 'bar';
-    const button = mount(<Button iconBefore={iconBefore} />);
-    expect(button.find('Icon').length).toEqual(1);
-    button.setProps({ iconAfter });
-    expect(button.find('Icon').length).toEqual(2);
-  });
-  it('Should click on the button', () => {
-    const mockCallBack = jest.fn();
-    const button = mount(<Button onClick={mockCallBack} />);
-    button.simulate('click');
-    expect(mockCallBack.mock.calls.length).toEqual(1);
+
+  it('Should render the tooltip correctly', () => {
+    const testDiv = <div data-testid="test">test</div>
+    const { getByTestId, container } = render(<Button iconAfter="vader">{testDiv}</Button>);
+    console.log(container.querySelector('button'))
   });
 });

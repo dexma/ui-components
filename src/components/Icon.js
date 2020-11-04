@@ -9,12 +9,11 @@ import omit from 'lodash/omit';
 import icons from '../config/icon';
 import theme from '../styles/theme';
 import { StyledIcon } from '../styles/components/StyledIcon';
-import { BUTTON_SIZE } from './Button';
 
 const propTypes = {
   name: PropTypes.string.isRequired,
   color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.oneOf(BUTTON_SIZE), PropTypes.number]),
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   className: PropTypes.string,
   theme: PropTypes.shape({}),
 };
