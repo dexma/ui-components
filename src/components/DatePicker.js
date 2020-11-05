@@ -128,6 +128,7 @@ export const DatePicker = props => {
     'periodOptions',
     'periodDefault',
     'language',
+    'periodLabel',
   ]);
   useEffect(() => {
     moment.locale(language);

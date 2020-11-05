@@ -58,7 +58,6 @@ const defaultProps = {
   arrow: true,
   position: 'bottom',
   role: 'tooltip',
-  trigger: 'mouseenter',
   theme: theme,
 };
 

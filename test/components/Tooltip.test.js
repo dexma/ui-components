@@ -56,42 +56,6 @@ describe('<Tooltip>', () => {
     );
   });
 
-  it('Should props.visible uses hideOnClick: false by default', () => {
-    const {rerender} = render(
-      <TooltipInstance content="tooltip" visible={true}>
-        <button />
-      </TooltipInstance>,
-    );
-
-    jest.runAllTimers();
-
-    expect(instance.props.hideOnClick).toBe(false);
-
-    rerender(
-      <TooltipInstance content="tooltip" visible={false}>
-        <button />
-      </TooltipInstance>,
-    );
-
-    expect(instance.props.hideOnClick).toBe(false);
-
-    rerender(
-      <TooltipInstance content="tooltip" visible={false} hideOnClick={true}>
-        <button />
-      </TooltipInstance>,
-    );
-
-    expect(instance.props.hideOnClick).toBe(false);
-
-    rerender(
-      <TooltipInstance content="tooltip" hideOnClick="toggle">
-        <button />
-      </TooltipInstance>,
-    );
-
-    expect(instance.props.hideOnClick).toBe('toggle');
-  });
-
   it('Should render 3 nesting tooltips', () => {
     const { getAllByText } = render(
       <Tooltip content="tooltip" placement="bottom" visible>

@@ -12,7 +12,8 @@ describe('<Alert>', () => {
   });
   it('Should render the description passed as a prop', () => {
     const descriptionText = "Success Tips";
-    const { getByTestId } = render(<Alert description={descriptionText} type="success"/>);
+    const messageText = "Success Tips";
+    const { getByTestId } = render(<Alert message={messageText} description={descriptionText} type="success"/>);
     const description = getByTestId('alert-description');
     expect(description.textContent).toEqual(descriptionText);
   });
