@@ -57,4 +57,14 @@ describe('<Alert>', () => {
     fireEvent.click(buttonClose);
     expect(container.firstChild).toBeNull();
   });
+  it('Should call onClose event', () => {
+    const mockCallBack = jest.fn();
+    const messageText = "Warning Tips";
+    const { getByTestId } = render(
+      <Alert message={messageText} type="warning" closable onClose={mockCallBack}/>
+      );
+    const buttonClose = getByTestId('alert-icon-close');
+    fireEvent.click(buttonClose);
+    expect(mockCallBack).toHaveBeenCalled();
+  });
 });
