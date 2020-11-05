@@ -1,3 +1,10 @@
+## [3.1.4](https://github.com/dexma/ui-components/compare/v3.1.3...v3.1.4) (2020-11-05)
+
+
+### Bug Fixes
+
+* **storybooks:** update deploy travis ([5c8cd69](https://github.com/dexma/ui-components/commit/5c8cd698430cd45de029019862776a01b8b8be4c))
+
 ## [3.1.3](https://github.com/dexma/ui-components/compare/v3.1.2...v3.1.3) (2020-11-05)
 
 
