@@ -1,11 +1,11 @@
 import React from 'react';
 import moment from 'moment';
-import { currentMonth, lastMonth, ISO_FORMAT, NUMBER_OF_MONTHS } from '../../src/utils/dates';
-import { DatePicker } from '../../src/components/DatePicker';
-import { mockPeriodOptions } from '../mock/DatePicker';
-
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+
+import { today, currentMonth, lastMonth, ISO_FORMAT, NUMBER_OF_MONTHS } from '../../src/utils/dates';
+import { DatePicker } from '../../src/components/DatePicker';
+import { mockPeriodOptions } from '../mock/DatePicker';
 
 const parseDate = (start, end) => ({
   startDate: start,
@@ -169,5 +169,23 @@ describe('<DatePicker>', () => {
     const { getByText } = render(<DatePicker periodOptions={mockPeriodOptions} periodLabel={periodLabel}/>);
     const selectWithLabel = getByText(periodLabel);
     expect(selectWithLabel).toBeInTheDocument();
+  });
+  it('Should call onDatesChange when some date change', () => {
+    const mockCallBack = jest.fn();
+    const { container, getByText } = render(
+      <DatePicker periodOptions={mockPeriodOptions} onDatesChange={mockCallBack}/>
+      );
+    fireEvent.mouseDown(container.querySelector('.select-styled__control'));
+    fireEvent.click(getByText(currentMonthLabel));
+    expect(mockCallBack).toHaveBeenCalled();
+  });
+  it('Should call stateDateWrapper when some date change', () => {
+    const mockStateDateWrapper = jest.fn();
+    const { container, getByText } = render(
+      <DatePicker periodOptions={mockPeriodOptions} stateDateWrapper={mockStateDateWrapper}/>
+    );
+    fireEvent.mouseDown(container.querySelector('.select-styled__control'));
+    fireEvent.click(getByText(currentMonthLabel));
+    expect(mockStateDateWrapper).toHaveBeenCalled();
   });
 });
