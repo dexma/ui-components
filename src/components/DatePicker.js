@@ -55,17 +55,46 @@ const datePickerRange = (range, parser = date => date) => {
 };
 
 const propTypes = {
+  /**
+   * Set the input auto focused
+   */
   autoFocus: PropTypes.bool,
+  /**
+   * Set the input end date auto focused
+   */
   autoFocusEndDate: PropTypes.bool,
+  /**
+   * Function to mapper the start date when date change
+   */
   stateDateWrapper: PropTypes.func,
+  /**
+   * The period option default selected, we use a select so please check the <a href="/?path=/docs/select--select">Select section</a>
+   */
   periodOptions: PropTypes.arrayOf(PropTypes.object),
+  /**
+   * The period option default selected, we use a select so please check the <a href="/?path=/docs/select--select">Select section</a>
+   */
   periodDefault: PropTypes.objectOf(PropTypes.string),
+  /**
+   * The period label we use on the select
+   */
   periodLabel: PropTypes.string,
+  /**
+   * Set the start date
+   */
   initialStartDate: momentPropTypes.momentObj,
+  /**
+   * Set the end date
+   */
   initialEndDate: momentPropTypes.momentObj,
+  /**
+   * Function called when a date change
+   */
   onDatesChange: PropTypes.func,
+  /**
+   * Language for set all the dates inside component we use moment.locale(language) so please see the <a href="https://momentjs.com/docs/#/i18n/changing-locale/">moment documentation</a>
+   */
   language: PropTypes.string,
-  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -93,7 +122,6 @@ export const DatePicker = props => {
   });
   const { periodOptions, periodDefault, periodLabel, language, theme } = props;
   const dateRangePickerProps = omit(props, [
-    'classNamePrefix',
     'autoFocus',
     'autoFocusEndDate',
     'initialStartDate',
