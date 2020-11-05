@@ -1,3 +1,10 @@
+## [3.1.3](https://github.com/dexma/ui-components/compare/v3.1.2...v3.1.3) (2020-11-05)
+
+
+### Bug Fixes
+
+* **storybook:** improve storybook pages deploy ([3fc9840](https://github.com/dexma/ui-components/commit/3fc9840942659c0a23424a8c2c25e472ade9303c))
+
 ## [3.1.2](https://github.com/dexma/ui-components/compare/v3.1.1...v3.1.2) (2020-11-05)
 
 
