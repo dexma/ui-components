@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/dexma/ui-components/compare/v3.1.1...v3.1.2) (2020-11-05)
+
+
+### Bug Fixes
+
+* **docs:** update gh-pages ([08868cf](https://github.com/dexma/ui-components/commit/08868cf7d37321db9d8e82a93d48975f7d94d443))
+
 ## [3.1.1](https://github.com/dexma/ui-components/compare/v3.1.0...v3.1.1) (2020-11-04)
 
 
