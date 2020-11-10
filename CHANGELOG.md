@@ -1,3 +1,10 @@
+## [3.1.5](https://github.com/dexma/ui-components/compare/v3.1.4...v3.1.5) (2020-11-10)
+
+
+### Bug Fixes
+
+* **date-picker:** the state have wrong keys when call onDateChange and autofocus false ([621a131](https://github.com/dexma/ui-components/commit/621a13192e8320910d9a13d3865af6dc3893bdf6))
+
 ## [3.1.4](https://github.com/dexma/ui-components/compare/v3.1.3...v3.1.4) (2020-11-05)
 
 
