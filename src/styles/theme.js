@@ -42,6 +42,8 @@ export const fontWeightLight = 300;
 export const fontWeightNormal = 400;
 export const fontWeightSemiBold = 600;
 export const fontWeightBold = 700;
+export const fontFamily =
+  '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
 const getSize = (size = fontSizeNumber, type = fontSizeType) =>
   `${size}${type}`;
@@ -83,6 +85,7 @@ const base = {
   fontWeightNormal: fontWeightNormal,
   fontWeightSemiBold: fontWeightSemiBold,
   fontWeightBold: fontWeightBold,
+  fontFamily: fontFamily,
 
   iconSize: iconSize,
   iconColor: iconColor,

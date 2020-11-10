@@ -142,12 +142,12 @@ describe('<DatePicker>', () => {
     expect(endDate.placeholder).toEqual(endDatePlaceholderText);
   });
   it('Should render NUMBER_OF_MONTHS * 7 days day of week', () => {
-    const { container } = render(<DatePicker periodOptions={mockPeriodOptions}/>);
+    const { container } = render(<DatePicker periodOptions={mockPeriodOptions} autoFocus/>);
     const DayPickerWeekHeader = container.querySelectorAll(".DayPicker_weekHeader_li");
     expect(Array.from(DayPickerWeekHeader)).toHaveLength(NUMBER_OF_MONTHS * 7);
   });
   it('Should render End Date correct inside input text', () => {
-    const { container } = render(<DatePicker periodOptions={mockPeriodOptions} language="es"/>);
+    const { container } = render(<DatePicker periodOptions={mockPeriodOptions} language="es" autoFocus/>);
     const DayPickerWeekHeader = container.querySelectorAll(".DayPicker_weekHeader_li");
     const lunes = DayPickerWeekHeader[0];
     const martes = DayPickerWeekHeader[1];

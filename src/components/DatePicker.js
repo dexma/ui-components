@@ -96,7 +96,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  autoFocus: true,
+  autoFocus: false,
   autoFocusEndDate: false,
   stateDateWrapper: date => date,
   startDateId: START_DATE,
@@ -115,8 +115,8 @@ export const DatePicker = props => {
   }
   const [focusedInput, setFocusedInput] = useState(focusedInputInitialState);
   const [date, setDate] = useState({
-    start: props.initialStartDate,
-    end: props.initialEndDate,
+    startDate: props.initialStartDate,
+    endDate: props.initialEndDate,
   });
   const { periodOptions, periodDefault, periodLabel, language, theme } = props;
   const dateRangePickerProps = omit(props, [
@@ -136,7 +136,7 @@ export const DatePicker = props => {
       periodDefault && periodDefault.value
         ? datePickerRange(periodDefault.value, withDatePickerFormat)
         : null;
-    ranges && onDatesChange(ranges);
+    ranges && handleDatesChange(ranges);
   }, [periodDefault, language]);
   const onFocusChange = focusedInput => {
     setFocusedInput(focusedInput);
@@ -146,18 +146,18 @@ export const DatePicker = props => {
     if (value === 'custom') {
       onFocusChange(START_DATE);
     }
-    onDatesChange(ranges);
+    handleDatesChange(ranges);
   };
-  const onDatesChange = ({ startDate, endDate }) => {
+  const handleDatesChange = ({ startDate, endDate }) => {
     const { stateDateWrapper, onDatesChange } = props;
     const start = startDate ? stateDateWrapper(startDate) : null;
     const end = endDate ? stateDateWrapper(endDate) : null;
-    const date = { start, end };
+    const date = { startDate: start, endDate: end };
     setDate(date);
     onDatesChange && onDatesChange(date);
   };
   const classes = classNames('date-range', periodOptions && `with-select`);
-  const { start, end } = date;
+  const { startDate, endDate } = date;
   moment.locale(language);
   return (
     <StyledDatePicker
@@ -168,10 +168,10 @@ export const DatePicker = props => {
       <div className={classes}>
         <DateRangePicker
           {...dateRangePickerProps}
-          startDate={start}
-          endDate={end}
+          startDate={startDate}
+          endDate={endDate}
           focusedInput={focusedInput}
-          onDatesChange={onDatesChange}
+          onDatesChange={handleDatesChange}
           onFocusChange={onFocusChange}
           noBorder
           daySize={DAY_SIZE}
