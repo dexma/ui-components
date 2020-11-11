@@ -4,10 +4,11 @@ const path = require('path');
 module.exports = {
   stories: ['../stories/*.@(js|md)'],
   addons: [
-    '@storybook/addon-jest/register',
-    '@storybook/addon-actions/register',
-    '@storybook/addon-knobs/register',
-    '@storybook/addon-a11y/register',
-    '@storybook/addon-docs/preset',
+    '@storybook/addon-jest',
+    '@storybook/addon-actions',
+    '@storybook/addon-knobs',
+    '@storybook/addon-a11y',
+    '@storybook/addon-docs',
+    '@storybook/addon-links',
   ],
 };

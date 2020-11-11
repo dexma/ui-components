@@ -66,11 +66,11 @@ const propTypes = {
    */
   stateDateWrapper: PropTypes.func,
   /**
-   * The period option default selected, we use a select so please check the <a href="/?path=/docs/select--select">Select section</a>
+   * The period option default selected, we use a select so please check the <a href="https://dexma.github.io/ui-components/?path=/docs/select--select">Select section</a>
    */
   periodOptions: PropTypes.arrayOf(PropTypes.object),
   /**
-   * The period option default selected, we use a select so please check the <a href="/?path=/docs/select--select">Select section</a>
+   * The period option default selected, we use a select so please check the <a href="https://dexma.github.io/ui-components/?path=/docs/select--select">Select section</a>
    */
   periodDefault: PropTypes.objectOf(PropTypes.string),
   /**

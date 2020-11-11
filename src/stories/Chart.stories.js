@@ -4,7 +4,7 @@ import Grid from '../components/Grid';
 import Row from '../components/Row';
 import Paragraph from '../components/Paragraph';
 import Cell from '../components/Cell';
-import { Chart } from '../components/Chart';
+import Chart from '../components/Chart';
 
 import {
   mockBasicArea,
@@ -13,10 +13,42 @@ import {
   mockMixed,
 } from '../../test/mock/Chart';
 
+import mvConsumptionDiscreteChart from '../../test/mock/mvConsumptionDiscreteChart';
+import mvConsumptionAccumulatedTotalChart from '../../test/mock/mvConsumptionAccumulatedTotalChart';
+import mvSavingsAccumulatedPercentageChart from '../../test/mock/mvSavingsAccumulatedPercentageChart';
+
 export default {
   title: 'Chart',
   component: Chart,
 };
+
+export const mvExample = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">M&V Chart</Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          Consumo real vs referencia - Electricidad
+        </Paragraph>
+        <Chart options={mvConsumptionDiscreteChart} />
+      </Cell>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          Consumo acumulado real vs referencia - Electricidad
+        </Paragraph>
+        <Chart options={mvConsumptionAccumulatedTotalChart} />
+      </Cell>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          Ahorros porcentuales acumulados vs objetivo - Electricidad
+        </Paragraph>
+        <Chart options={mvSavingsAccumulatedPercentageChart} />
+      </Cell>
+    </Row>
+  </Grid>
+);
 
 export const basicArea = () => (
   <Grid fluid>

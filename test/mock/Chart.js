@@ -1,3 +1,5 @@
+import Highcharts from 'highcharts';
+
 export const mockBasicArea = {
   chart: {
     type: 'area',
@@ -29,7 +31,7 @@ export const mockBasicArea = {
     },
     labels: {
       formatter: function() {
-        return this.value / 1000 + 'k';
+        return `${this.value / 1000}k`;
       },
     },
   },
@@ -455,7 +457,7 @@ export const mockMixed = {
   plotOptions: {
     column: {
       borderRadius: 4,
-    }
+    },
   },
   series: [
     {

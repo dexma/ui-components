@@ -40,15 +40,15 @@ const propTypes = {
    */
   variant: PropTypes.oneOf(BUTTON_VARIANT).isRequired,
   /**
-   * Set the icon before the text or children you have to set with our <a href="/?path=/docs/icon--sizes#icons">Icons</a>:
+   * Set the icon before the text or children you have to set with our <a href="https://dexma.github.io/ui-components/?path=/docs/icon--sizes#icons">Icons</a>:
    */
   iconBefore: PropTypes.string,
   /**
-   * Set the icon after the text or children you have to set with our <a href="/?path=/docs/icon--sizes#icons">Icons</a>:
+   * Set the icon after the text or children you have to set with our <a href="https://dexma.github.io/ui-components/?path=/docs/icon--sizes#icons">Icons</a>:
    */
   iconAfter: PropTypes.string,
   /**
-   * Show tooltip on mouseenter to more info go to <a href="/?path=/docs/tooltip--tooltip">Tooltips section</a>
+   * Show tooltip on mouseenter to more info go to <a href="https://dexma.github.io/ui-components/?path=/docs/tooltip--tooltip">Tooltips section</a>
    */
   tooltip: PropTypes.string,
   /**

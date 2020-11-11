@@ -19,3 +19,4 @@ node_modules
 npm-debug.log*
 lerna-debug.log
 yarn-error.log
+src/components/.DS_Store
