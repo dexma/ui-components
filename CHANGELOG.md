@@ -1,3 +1,10 @@
+## [3.1.6](https://github.com/dexma/ui-components/compare/v3.1.5...v3.1.6) (2020-11-11)
+
+
+### Bug Fixes
+
+* **travis:** update the travis deploy ([4fcea6f](https://github.com/dexma/ui-components/commit/4fcea6fc1ba3aac1f818154a6a70bdbd37365ffe))
+
 ## [3.1.5](https://github.com/dexma/ui-components/compare/v3.1.4...v3.1.5) (2020-11-10)
 
 
