@@ -11,11 +11,10 @@
     "format": "npm run eslint:fix && npm run prettier",
     "test": "NODE_ENV=test jest --json --outputFile=test/jest-test-results.json",
     "semantic-release": "semantic-release",
-    "clean": "rm -rf dist",
+    "build:docs": "rm -rf dist && npm run build:icons && build-storybook -c src/.storybook -o docs",
     "build:icons": "node scripts/buildIconConfig.js",
     "build:dist": "webpack --progress --color --mode=production",
-    "build-storybook": "build-storybook -c src/.storybook -o docs",
-    "build": "npm run clean && npm run build:icons && build-storybook && npm run build:dist"
+    "build": "rm -rf dist && npm run build:icons && npm run build:dist"
   },
   "publishConfig": {
     "tag": "latest"
