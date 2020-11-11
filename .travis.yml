@@ -22,7 +22,5 @@ jobs:
         github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
         local_dir: docs
         target_branch: gh-pages
-        script:
-          - npm run build:docs
         on:
           branch: master
