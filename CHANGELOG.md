@@ -1,3 +1,10 @@
+## [3.1.8](https://github.com/dexma/ui-components/compare/v3.1.7...v3.1.8) (2020-11-12)
+
+
+### Bug Fixes
+
+* **storybooks:** set mode docs cli ([93a5f98](https://github.com/dexma/ui-components/commit/93a5f984499694167bb4e9e796b4a6e2bab563ea))
+
 ## [3.1.7](https://github.com/dexma/ui-components/compare/v3.1.6...v3.1.7) (2020-11-12)
 
 
