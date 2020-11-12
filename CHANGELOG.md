@@ -1,3 +1,12 @@
+## [3.1.7](https://github.com/dexma/ui-components/compare/v3.1.6...v3.1.7) (2020-11-12)
+
+
+### Bug Fixes
+
+* **storybooks:** deploy storybooks ([0cc2f0c](https://github.com/dexma/ui-components/commit/0cc2f0cc2fbc3b088874de7a5f6e5121a3a667d1))
+* **travis:** update travis deploy ([1215293](https://github.com/dexma/ui-components/commit/12152933375f878feb625e54a84474f0baac6a9d))
+* **travis:** update travis deploy ([e26c2d7](https://github.com/dexma/ui-components/commit/e26c2d7c9ed1351cd55a8f07c9af438137937fea))
+
 ## [3.1.6](https://github.com/dexma/ui-components/compare/v3.1.5...v3.1.6) (2020-11-11)
 
 
