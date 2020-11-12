@@ -15,12 +15,3 @@ jobs:
         skip_cleanup: true
         script:
           - npm run build && npx semantic-release
-    - stage: gh-pages
-      deploy:
-        provider: pages
-        skip_cleanup: true
-        github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
-        local_dir: docs
-        target_branch: gh-pages
-        on:
-          branch: master

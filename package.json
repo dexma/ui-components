@@ -14,7 +14,7 @@
     "build:docs": "rm -rf docs && build-storybook -c src/.storybook -o docs",
     "build:icons": "node scripts/buildIconConfig.js",
     "build:dist": "webpack --progress --color --mode=production",
-    "build": "rm -rf dist && npm run build:icons && npm run build:docs && npm run build:dist"
+    "build": "rm -rf dist && npm run build:icons && npm run build:dist"
   },
   "publishConfig": {
     "tag": "latest"
