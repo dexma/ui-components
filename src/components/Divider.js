@@ -2,22 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
-import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
 import { StyledDivider } from '../styles/components/StyledDivider';
+import theme from '../styles/theme';
 
 const propTypes = {
-  ...GeneralPropTypes,
-  type: PropTypes.string.isRequired,
+  /**
+   * Show the divider vertical
+   */
   vertical: PropTypes.bool,
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
-  type: 'hr',
+  theme: theme,
   vertical: false,
 };
 
-export const Divider = props => <StyledDivider {...props} />;
+export const Divider = props => (
+  <StyledDivider data-testid="divider" {...props} />
+);
 
 StyledDivider.displayName = 'StyledDivider';
 

@@ -4,17 +4,42 @@ import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { Popover } from 'antd';
 
-import theme from '../styles/theme';
 import Button from './Button';
+
+import theme from '../styles/theme';
 import { StyledGlobalDropdown } from '../styles/components/StyledDropdown';
 
 const propTypes = {
-  placement: PropTypes.string,
-  trigger: PropTypes.string,
-  content: PropTypes.func,
-  children: PropTypes.node,
+  /**
+   * The position of the dropdown relative to the target
+   */
+  placement: PropTypes.oneOf([
+    'top',
+    'left',
+    'right',
+    'bottom',
+    'topLeft',
+    'topRight',
+    'bottomLeft',
+    'bottomRight',
+    'leftTop',
+    'leftBottom',
+    'rightTop',
+    'rightBottom',
+  ]),
+  /**
+   * Tooltip trigger mode. Could be multiple by passing an array
+   */
+  trigger: PropTypes.oneOf(['hover', 'focus', 'click']),
+  /**
+   * Array of objects, each object represents the button contract for example `{text: 'Edit',
+    iconBefore: 'edit'}` so please check the <a href="https://dexma.github.io/ui-components/?path=/docs/button--buttons">buttons</a>
+   */
+  content: PropTypes.arrayOf(PropTypes.object),
+  /**
+   * Set the text of the dropdown button
+   */
   text: PropTypes.string,
-  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -26,15 +51,13 @@ const defaultProps = {
 };
 
 const getContent = content => {
-  return content.map(itemContent => {
-    const { icon, text, onClick } = itemContent;
+  return content.map((props, i) => {
     return (
       <Button
+        key={i}
         className="dropdown-button-item"
         variant="icon"
-        onClick={onClick}
-        iconBefore={icon}
-        text={text}
+        {...props}
       />
     );
   });
@@ -51,16 +74,17 @@ export const Dropdown = props => {
       placement={placement}
     >
       <StyledGlobalDropdown {...props} />
-      {text && (
+      {text ? (
         <Button
+          data-testid="dropdown-button-text"
           className="dropdown-button"
           variant="icon"
           iconBefore={icon}
           text={text}
         ></Button>
-      )}
-      {!text && (
+      ) : (
         <Button
+          data-testid="dropdown-button-icon"
           className="dropdown-button"
           variant="icon-secondary"
           iconBefore={icon}

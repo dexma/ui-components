@@ -20,10 +20,13 @@ export const dots = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Dots steps={4} />
+        <Dots steps={4} size={15} />
       </Cell>
       <Cell xs={12}>
-        <Dots steps={3} />
+        <Dots steps={3} size={12} />
+      </Cell>
+      <Cell xs={12}>
+        <Dots steps={2} size={10} />
       </Cell>
     </Row>
   </Grid>

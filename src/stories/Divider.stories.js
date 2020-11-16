@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider } from '../components/Divider';
+import Divider from '../components/Divider';
 import Grid from '../components/Grid';
 import Row from '../components/Row';
 import Cell from '../components/Cell';
@@ -10,7 +10,7 @@ export default {
   component: Divider,
 };
 
-export const titles = () => (
+export const divider = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>

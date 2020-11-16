@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import Button from 'components/Button';
 
@@ -24,5 +24,12 @@ describe('<Button>', () => {
     const testDiv = <div data-testid="test">test</div>
     const { getByTestId } = render(<Button iconAfter="vader">{testDiv}</Button>);
     expect(getByTestId('button-icon-after')).toBeTruthy();
+  });
+  it('Should call mock function on click', () => {
+    const mockCallBack = jest.fn();
+    const testDiv = <div data-testid="test">test</div>
+    const { getByRole } = render(<Button iconAfter="vader" onClick={mockCallBack}>{testDiv}</Button>);
+    fireEvent.click(getByRole('button'));
+    expect(mockCallBack).toBeCalled();
   });
 });

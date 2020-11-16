@@ -13,14 +13,14 @@ export default {
 const content = [
   {
     text: 'Edit',
-    icon: 'edit',
+    iconBefore: 'edit',
     onClick: e => {
       console.log('click edit', e);
     },
   },
   {
     text: 'Delete',
-    icon: 'delete',
+    iconBefore: 'delete',
     onClick: e => {
       console.log('click delete', e);
     },
@@ -52,7 +52,59 @@ export const dropdownWithText = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Dropdown icon="add" content={content} text="Dropdown" />
+        <Dropdown
+          icon="add"
+          content={content}
+          text="Dropdown"
+          trigger="click"
+        />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const dropdownWithPlacement = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph m="1rem 0 1rem 0">
+          A simple dropdown that provide action elements like links and buttons.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Dropdown
+          icon="settings"
+          content={content}
+          text="Bottom"
+          placement="bottom"
+        />
+      </Cell>
+      <br />
+      <Cell xs={12}>
+        <Dropdown
+          icon="settings"
+          content={content}
+          text="Top"
+          placement="top"
+        />
+      </Cell>
+      <br />
+      <Cell xs={12}>
+        <Dropdown
+          icon="settings"
+          content={content}
+          text="Left"
+          placement="left"
+        />
+      </Cell>
+      <br />
+      <Cell xs={12}>
+        <Dropdown
+          icon="settings"
+          content={content}
+          text="Right"
+          placement="right"
+        />
       </Cell>
     </Row>
   </Grid>
