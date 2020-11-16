@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ReactSelect, { components } from 'react-select';
 import omit from 'lodash/omit';
 import { withTheme } from 'styled-components';
@@ -7,12 +6,9 @@ import theme from '../styles/theme';
 import { StyledSelect } from '../styles/components/StyledSelect';
 import Icon from './Icon';
 
-const propTypes = {
-  theme: PropTypes.shape({}),
-  children: PropTypes.node,
-};
-
 const defaultProps = {
+  blurInputOnSelect: false,
+  maxMenuHeight: 192,
   theme: theme,
 };
 
@@ -55,12 +51,12 @@ const Option = props => {
 
 export const Select = props => {
   const { theme, isMulti } = props;
-  const selectProps = omit(props, ['theme']);
   const defaultValueSelect = props.defaultValue
     ? props.defaultValue.label
     : null;
   const titleSelect =
     !defaultValueSelect && props.value ? props.value.label : null;
+  const selectProps = omit(props, ['theme']);
   return (
     <StyledSelect
       theme={theme}
@@ -79,8 +75,6 @@ export const Select = props => {
             SelectInput({ ...selectProps, name: props.name }),
           Option: selectProps => Option({ ...selectProps, name: props.name }),
         }}
-        blurInputOnSelect={false}
-        maxMenuHeight={192}
         {...selectProps}
       />
     </StyledSelect>
@@ -89,7 +83,6 @@ export const Select = props => {
 
 StyledSelect.displayName = 'StyledSelect';
 
-Select.propTypes = propTypes;
 Select.defaultProps = defaultProps;
 
 export default withTheme(Select);

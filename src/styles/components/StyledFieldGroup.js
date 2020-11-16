@@ -49,12 +49,7 @@ export const getHorizontal = () => css`
 const StyledFieldGroup = styled.div`
   position: relative;
   vertical-align: middle;
-  .vertical {
-    ${getVertical}
-  }
-  .horizontal {
-    ${getHorizontal}
-  }
+  ${props => (props.vertical ? getVertical(props) : getHorizontal(props))}
   label {
     ${getButtonBase};
     ${props => props.size && getButtonSize}

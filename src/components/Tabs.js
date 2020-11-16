@@ -1,26 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { Tabs as TabsAntDesign } from 'antd';
+import omit from 'lodash/omit';
 
 import theme from '../styles/theme';
 import { StyledTabs } from '../styles/components/StyledTabs';
-
-const propTypes = {
-  className: PropTypes.string,
-  dataCy: PropTypes.string,
-  theme: PropTypes.shape({}),
-};
 
 const defaultProps = {
   theme: theme,
 };
 
 export const Tabs = props => {
-  const { theme, dataCy } = props;
+  const { theme } = props;
+  const tabsProps = omit(props, ['theme']);
   return (
-    <StyledTabs theme={theme} dataCy={dataCy}>
-      <TabsAntDesign {...props} />
+    <StyledTabs data-testid="tabs" theme={theme}>
+      <TabsAntDesign {...tabsProps} />
     </StyledTabs>
   );
 };
@@ -31,7 +26,6 @@ export const TabPane = props => {
 
 StyledTabs.displayName = 'StyledTabs';
 
-Tabs.propTypes = propTypes;
 Tabs.defaultProps = defaultProps;
 
 export default withTheme(Tabs);

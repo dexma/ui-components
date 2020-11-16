@@ -24,17 +24,17 @@ export const headings = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           All HTML headings, h1 through h6, are available
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Heading type="h1" text="Heading" line={false} />
-        <Heading type="h2" text="Heading" line={false} />
-        <Heading type="h3" text="Heading" line={false} />
-        <Heading type="h4" text="Heading" line={false} />
-        <Heading type="h5" text="Heading" line={false} />
-        <Heading type="h6" text="Heading" line={false} />
+        <Heading type="h1" text="Heading" />
+        <Heading type="h2" text="Heading" />
+        <Heading type="h3" text="Heading" />
+        <Heading type="h4" text="Heading" />
+        <Heading type="h5" text="Heading" />
+        <Heading type="h6" text="Heading" />
       </Cell>
     </Row>
   </Grid>
@@ -44,19 +44,20 @@ export const childrens = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           You can customize the heading sending children component{' '}
         </Paragraph>
       </Cell>
       <StyledBox>
         <Cell xs={12}>
-          <Heading text="Heading" line>
+          <Heading text="Heading">
             <Button size="small" variant="primary" iconAfter="add" isCircle />
           </Heading>
           <Divider />
         </Cell>
+        <br />
         <Cell xs={12}>
-          <Heading text="Heading" line>
+          <Heading text="Heading">
             <Button
               size="small"
               variant="primary"

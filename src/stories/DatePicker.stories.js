@@ -16,7 +16,7 @@ export const datePicker = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           An easily datepicker library for the web.
         </Paragraph>
       </Cell>
@@ -31,7 +31,7 @@ export const preiod = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           An easily datepicker library for the web with a period selectable
         </Paragraph>
       </Cell>
@@ -46,7 +46,9 @@ export const datePickerEs = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">DatePicker with ES language</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">
+          DatePicker with ES language
+        </Paragraph>
       </Cell>
       <Cell xs={12}>
         <DatePicker periodOptions={mockPeriodOptions} language="es" />

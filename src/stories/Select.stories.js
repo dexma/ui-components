@@ -24,7 +24,7 @@ export const select = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           A flexible and beautiful Select Input control for ReactJS with
           multiselect, autocomplete, async and creatable support
         </Paragraph>
@@ -40,7 +40,7 @@ export const multi = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Support multiple selected options
         </Paragraph>
       </Cell>
@@ -55,7 +55,7 @@ export const noSearch = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Whether to enable search functionality
         </Paragraph>
       </Cell>
@@ -74,7 +74,7 @@ export const clear = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Is the select value clearable with value option
         </Paragraph>
       </Cell>
@@ -89,7 +89,7 @@ export const noClear = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Is the select value clearable with value option
         </Paragraph>
       </Cell>

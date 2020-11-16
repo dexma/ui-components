@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Pagination from 'components/Pagination';
+import Pagination from '../../src/components/Pagination';
 
 describe('<Pagination>', () => {
   it('Should render the correct classNamePrefix component', () => {

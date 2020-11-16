@@ -31,7 +31,7 @@ export const dropdown = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           A simple dropdown that provide action elements like links and buttons.
         </Paragraph>
       </Cell>
@@ -47,7 +47,7 @@ export const dropdownWithText = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           A simple dropdown that provide action elements like links and buttons.
         </Paragraph>
       </Cell>
@@ -67,7 +67,7 @@ export const dropdownWithPlacement = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           A simple dropdown that provide action elements like links and buttons.
         </Paragraph>
       </Cell>

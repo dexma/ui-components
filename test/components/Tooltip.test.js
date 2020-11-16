@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { Tooltip } from 'components/Tooltip';
+import { Tooltip } from '../../src/components/Tooltip';
 
 jest.useFakeTimers();
 

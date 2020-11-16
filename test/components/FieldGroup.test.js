@@ -1,5 +1,4 @@
 import React from 'react';
-import FieldGroup from 'components/FieldGroup';
 import { mount } from 'enzyme';
 import {
   mockRadioGroup,
@@ -7,6 +6,8 @@ import {
   mockSelectedCheckboxItem,
   mockSelectedRadioItem,
 } from '../mock/FieldGroup';
+
+import FieldGroup from '../../src/components/FieldGroup';
 
 describe('<FieldGroup>', () => {
   it('Should render correct input and label elements', () => {

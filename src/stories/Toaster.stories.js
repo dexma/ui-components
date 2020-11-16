@@ -17,7 +17,7 @@ export const toaster = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           We preset a series of toaster that appear on the top of the view
         </Paragraph>
       </Cell>

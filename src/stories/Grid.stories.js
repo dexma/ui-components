@@ -26,7 +26,7 @@ export const grid = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           A grid system based on the flex display property
         </Paragraph>
       </Cell>
@@ -60,7 +60,7 @@ export const auto = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           We can set auto width if you dont pass any prop
         </Paragraph>
       </Cell>
@@ -85,7 +85,7 @@ export const offset = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Offset a column</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Offset a column</Paragraph>
       </Cell>
       <Grid fluid>
         <Row>

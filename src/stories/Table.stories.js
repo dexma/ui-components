@@ -43,7 +43,7 @@ export const table = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Here we have dots for show loading part of the UI you can customize
           with 2, 3 or 4 dot
         </Paragraph>
@@ -59,7 +59,7 @@ export const selection = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Here we have dots for show loading part of the UI you can customize
           with 2, 3 or 4 dot
         </Paragraph>
@@ -134,7 +134,7 @@ export const nestedTable = () => {
     <Grid fluid>
       <Row>
         <Cell xs={12}>
-          <Paragraph m="1rem 0 1rem 0">
+          <Paragraph margin="1rem 0 1rem 0">
             Here we have dots for show loading part of the UI you can customize
             with 2, 3 or 4 dot
           </Paragraph>

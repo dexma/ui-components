@@ -3,7 +3,7 @@ import moment from 'moment';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { today, currentMonth, lastMonth, ISO_FORMAT, NUMBER_OF_MONTHS } from '../../src/utils/dates';
+import { currentMonth, lastMonth, ISO_FORMAT, NUMBER_OF_MONTHS } from '../../src/utils/dates';
 import { DatePicker } from '../../src/components/DatePicker';
 import { mockPeriodOptions } from '../mock/DatePicker';
 

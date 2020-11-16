@@ -5,6 +5,7 @@ import Grid from '../components/Grid';
 import Row from '../components/Row';
 import Cell from '../components/Cell';
 import Paragraph from '../components/Paragraph';
+import Input from '../components/Input';
 import icon from '../config/icon';
 
 const StyledBoxSearch = styled.div`
@@ -31,7 +32,7 @@ export const sizes = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           An icon is a svg used to represent something else you can set the size
           and color
         </Paragraph>
@@ -62,7 +63,7 @@ export const icons = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           An icon is a svg used to represent something else
         </Paragraph>
       </Cell>
@@ -100,12 +101,12 @@ class SearchIcons extends Component {
     return (
       <StyledBoxSearch>
         <Row>
-          <Cell xs={12}>
-            <input
-              className="search"
+          <Cell xs={12} className="search">
+            <Input
               type="text"
               placeholder="Search icon"
               onChange={this.handleChange}
+              icon="search"
             />
           </Cell>
           {this.getIcons(value)}

@@ -14,7 +14,7 @@ export const buttons = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Use different button variant to build hierarchy in the application
           layout
         </Paragraph>
@@ -35,7 +35,7 @@ export const sizes = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1.5rem 0 1rem 0">
+        <Paragraph margin="1.5rem 0 1rem 0">
           We have 4 different sizes for our buttons
         </Paragraph>
       </Cell>
@@ -61,7 +61,7 @@ export const icons = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1.5rem 0 1rem 0">
+        <Paragraph margin="1.5rem 0 1rem 0">
           We can add icon before and after by setting the iconBefore or
           iconAfter property and isCircle to set a circle button
         </Paragraph>
@@ -91,7 +91,7 @@ export const loading = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1.5rem 0 1rem 0">
+        <Paragraph margin="1.5rem 0 1rem 0">
           A loading indicator can be added to a button by setting the isLoading
           property on the Button
         </Paragraph>
@@ -165,7 +165,7 @@ export const group = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1.5rem 0 1rem 0">
+        <Paragraph margin="1.5rem 0 1rem 0">
           A group of buttons you can customize as you want
         </Paragraph>
       </Cell>
@@ -187,7 +187,7 @@ export const withTooltips = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1.5rem 0 1rem 0">
+        <Paragraph margin="1.5rem 0 1rem 0">
           A group of buttons you can customize as you want
         </Paragraph>
       </Cell>

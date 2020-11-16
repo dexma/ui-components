@@ -21,7 +21,7 @@ export const switchPeriodComparative = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           A switch period comparative between two dates start and end, the text
           its optional so if you dont put nothing its ok
         </Paragraph>

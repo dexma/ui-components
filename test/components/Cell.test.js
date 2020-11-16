@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Cell from 'components/Cell';
+import Cell from '../../src/components/Cell';
 
 describe('<Cell>', () => {
   it('Should render the correct component', () => {

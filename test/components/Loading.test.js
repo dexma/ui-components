@@ -1,8 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Loading from 'components/Loading';
-import Spinner from 'components/Spinner';
+import Loading from '../../src/components/Loading';
 
 describe('<Loading>', () => {
   it('Should render the classNamePrefix component', () => {

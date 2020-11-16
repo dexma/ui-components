@@ -26,33 +26,13 @@ const propTypes = {
    */
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
-   * Input initial value
-   */
-  defaultValue: PropTypes.string,
-  /**
    * Input value
    */
   value: PropTypes.string,
   /**
-   * Add "valid" validation styles to the input
+   * Add loader spinner to the input
    */
-  isValid: PropTypes.bool,
-  /**
-   * Add "error" validation styles to the input
-   */
-  hasError: PropTypes.bool,
-  /**
-   * Disabled input
-   */
-  isDisabled: PropTypes.bool,
-  /**
-   * Custom success message
-   */
-  success: PropTypes.string,
-  /**
-   * Custom error message
-   */
-  error: PropTypes.string,
+  isLoading: PropTypes.bool,
   /**
    * Override type="text"
    */
@@ -66,25 +46,9 @@ const propTypes = {
    */
   onChange: PropTypes.func,
   /**
-   * Helper text
-   */
-  helper: PropTypes.string,
-  /**
-   * Component class
-   */
-  className: PropTypes.string,
-  /**
-   * The cypress identifier
-   */
-  dataCy: PropTypes.string,
-  /**
    * Theme json based
    */
   theme: PropTypes.shape({}),
-  /**
-   * Children node
-   */
-  children: PropTypes.node,
 };
 
 const defaultProps = {
@@ -92,16 +56,25 @@ const defaultProps = {
 };
 
 export const Input = props => {
-  const { icon, isLoading, theme, children } = props;
-  const newProps = omit(props, ['children']);
+  const { icon, isLoading, children } = props;
+  const newProps = omit(props, [
+    'placeholder',
+    'id',
+    'label',
+    'value',
+    'type',
+    'name',
+    'onChange',
+  ]);
+  const inputProps = omit(props, ['icon', 'isLoading', 'theme', 'children']);
   return (
-    <StyledInput icon={icon} isLoading={isLoading} theme={theme}>
+    <StyledInput data-testid="input" {...newProps}>
       {icon && (
         <div className="icon-container">
           <Icon name={icon} size={20} color="gray500" />
         </div>
       )}
-      <input {...newProps} />
+      <input {...inputProps} />
       {isLoading && <Spinner size={20} />}
       {children && children}
     </StyledInput>

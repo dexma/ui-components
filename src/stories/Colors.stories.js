@@ -50,7 +50,7 @@ export const colors = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           The components like Tags, Progress and more that use this string to
           get the color prop
         </Paragraph>

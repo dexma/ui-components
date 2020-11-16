@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Spinner from 'components/Spinner';
+import Spinner from '../../src/components/Spinner';
 
 describe('<Spinner>', () => {
   it('Should render the correct classNamePrefix component', () => {

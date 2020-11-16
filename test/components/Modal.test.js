@@ -1,6 +1,7 @@
 import React from 'react';
-import Modal from 'components/Modal';
 import { mount } from 'enzyme';
+
+import Modal from '../../src/components/Modal';
 
 describe('<Modal>', () => {
   it('Should render', () => {

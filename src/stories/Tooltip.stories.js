@@ -16,7 +16,7 @@ export const tooltip = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">A simple text popup tip.</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">A simple text popup tip.</Paragraph>
       </Cell>
       <Cell>
         <Tooltip content="Tooltip" trigger="click">

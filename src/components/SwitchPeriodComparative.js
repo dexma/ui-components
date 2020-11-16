@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { withTheme } from 'styled-components';
 
-import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
 import { ISO_FORMAT } from '../utils/dates';
 import { StyledSwitchPeriodComparative } from '../styles/components/StyledSwitchPeriodComparative';
 import FieldGroup from './FieldGroup';
+import theme from '../styles/theme';
 
 const getRangeDaysBetweenTwoDates = (startDate, endDate) => {
   const start = moment(new Date(startDate)).startOf('day');
@@ -19,16 +20,30 @@ const getYearBefore = (date, years) =>
   moment(new Date(date)).subtract(years, 'y');
 
 const propTypes = {
-  ...GeneralPropTypes,
-  startDate: PropTypes.string.isRequired,
-  endDate: PropTypes.string.isRequired,
+  /**
+   * Set start date
+   */
+  startDate: PropTypes.string,
+  /**
+   * Set end date
+   */
+  endDate: PropTypes.string,
+  /**
+   * Set text previous
+   */
   previousPriodText: PropTypes.string,
+  /**
+   * Set text same period
+   */
   samePriodLastYearText: PropTypes.string,
+  /**
+   * Call this function after a period is selected
+   */
   onPeriodSelect: PropTypes.func,
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
+  theme: theme,
 };
 
 export class SwitchPeriodComparative extends PureComponent {
@@ -164,4 +179,4 @@ StyledSwitchPeriodComparative.displayName = 'StyledSwitchPeriodComparative';
 SwitchPeriodComparative.propTypes = propTypes;
 SwitchPeriodComparative.defaultProps = defaultProps;
 
-export default SwitchPeriodComparative;
+export default withTheme(SwitchPeriodComparative);

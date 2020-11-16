@@ -1,25 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
+import omit from 'lodash/omit';
 
 import Spinner from './Spinner';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
 import { StyledLoading } from '../styles/components/StyledLoading';
+import theme from '../styles/theme';
 
 const propTypes = {
-  ...GeneralPropTypes,
+  /**
+   * The status of the loading
+   */
   isLoading: PropTypes.bool,
-  children: PropTypes.node,
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
   isLoading: false,
+  theme: theme,
 };
 
-export const Loading = ({ isLoading, dataCy, theme, children }) => {
+export const Loading = props => {
+  const { isLoading, children } = props;
+  const loadingProps = omit(props, ['isLoading', 'children']);
   return isLoading ? (
-    <StyledLoading data-cy={dataCy} theme={theme}>
+    <StyledLoading data-testid="loading" {...loadingProps}>
       <Spinner width={24} height={24} />
     </StyledLoading>
   ) : (

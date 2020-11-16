@@ -20,7 +20,7 @@ export const tabs = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Tabs make it easy to switch between different views
         </Paragraph>
       </Cell>
@@ -52,7 +52,7 @@ export const extraAction = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           You can add extra actions to the right of Tabs
         </Paragraph>
       </Cell>

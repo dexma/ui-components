@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
 
 import { StyledSpinner } from '../styles/components/StyledSpinner';
+import theme from '../styles/theme';
 
 const propTypes = {
-  ...GeneralPropTypes,
+  /**
+   * Set the size of spinner
+   */
   size: PropTypes.number,
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
   size: 24,
+  theme: theme,
 };
 
 export const Spinner = props => (

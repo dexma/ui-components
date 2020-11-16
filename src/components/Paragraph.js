@@ -1,30 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
 
 import { StyledParagraph } from '../styles/components/StyledParagraph';
+import theme from '../styles/theme';
 
 const propTypes = {
-  ...GeneralPropTypes,
-  m: PropTypes.string,
+  /**
+   * Set margin like css
+   */
+  margin: PropTypes.string,
+  /**
+   * Set the size, it be like a font-size prop
+   */
   size: PropTypes.string,
-  children: PropTypes.node,
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
-  m: '0 0 0 0',
+  margin: '0 0 0 0',
   size: '1rem',
+  theme: theme,
 };
 
-export const Paragraph = ({ dataCy, theme, m, size, children }) => {
-  return (
-    <StyledParagraph margin={m} size={size} data-cy={dataCy} theme={theme}>
-      {children || null}
-    </StyledParagraph>
-  );
-};
+export const Paragraph = props => <StyledParagraph {...props} />;
 
 StyledParagraph.displayName = 'StyledParagraph';
 

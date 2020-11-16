@@ -26,7 +26,7 @@ export const cards = () => (
   <StyledCustomGrid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           We present our simple and custom cards
         </Paragraph>
       </Cell>
@@ -47,7 +47,7 @@ export const image = () => (
   <StyledCustomGrid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Here we have cards but we pass a image prop
         </Paragraph>
       </Cell>
@@ -64,7 +64,7 @@ export const icons = () => (
   <StyledCustomGrid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Here we have cards but we pass a icon name
         </Paragraph>
       </Cell>
@@ -85,7 +85,7 @@ export const footer = () => (
   <StyledCustomGrid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Here we have cards and custom footer
         </Paragraph>
       </Cell>
@@ -112,7 +112,7 @@ export const link = () => (
   <StyledCustomGrid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           This is an example of the a link (image) with a card
         </Paragraph>
       </Cell>
@@ -134,7 +134,9 @@ export const horizontal = () => (
   <StyledCustomGrid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Here we have horizontal cards</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">
+          Here we have horizontal cards
+        </Paragraph>
       </Cell>
       {mockCards.map((card, i) => (
         <Cell xs={6} key={i}>
@@ -154,7 +156,7 @@ export const horizontalFooter = () => (
   <StyledCustomGrid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Here we have horizontal cards and we can customize the footer
         </Paragraph>
       </Cell>

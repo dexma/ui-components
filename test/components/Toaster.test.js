@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { Toaster } from 'components/Toaster/Toaster';
-import ToasterContext from 'components/Toaster/ToasterContext';
-import { ToastType } from 'components/Toaster/Toast';
+import { Toaster } from '../../src/components/Toaster/Toaster';
+import ToasterContext from '../../src/components/Toaster/ToasterContext';
+import { ToastType } from '../../src/components/Toaster/Toast';
 
 
 describe('<Toaster>', () => {

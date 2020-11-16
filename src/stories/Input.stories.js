@@ -14,7 +14,7 @@ export const input = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Basic input text</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic input text</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Input type="text" placeholder="Input text" />
@@ -27,7 +27,7 @@ export const search = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Input search in two cell</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Input search in two cell</Paragraph>
       </Cell>
       <Cell xs={6}>
         <Input type="text" placeholder="Search text" icon="search" />
@@ -43,7 +43,9 @@ export const loading = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Input search with loading prop</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">
+          Input search with loading prop
+        </Paragraph>
       </Cell>
       <Cell xs={8} xsOffset={2}>
         <Input type="text" placeholder="Search text" icon="search" isLoading />

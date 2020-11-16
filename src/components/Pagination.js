@@ -2,16 +2,12 @@ import React from 'react';
 import { Pagination as PaginationAntDesign } from 'antd';
 import { withTheme } from 'styled-components';
 
-import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
 import Icon from './Icon';
 import { StyledPagination } from '../styles/components/StyledPagination';
-
-const propTypes = {
-  ...GeneralPropTypes,
-};
+import theme from '../styles/theme';
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
+  theme: theme,
 };
 
 export const itemRender = (current, type, originalElement) => {
@@ -26,7 +22,7 @@ export const itemRender = (current, type, originalElement) => {
 
 export const Pagination = ({ theme, dataCy, ...props }) => {
   return (
-    <StyledPagination theme={theme}>
+    <StyledPagination data-testid="pagination" theme={theme}>
       <PaginationAntDesign itemRender={itemRender} {...props} />
     </StyledPagination>
   );
@@ -34,7 +30,6 @@ export const Pagination = ({ theme, dataCy, ...props }) => {
 
 StyledPagination.displayName = 'StyledPagination';
 
-Pagination.propTypes = propTypes;
 Pagination.defaultProps = defaultProps;
 
 export default withTheme(Pagination);

@@ -14,7 +14,7 @@ export const progress = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Display the current progress of an operation flow.
         </Paragraph>
       </Cell>
@@ -32,7 +32,7 @@ export const progressTransparent = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Display the current progress of an operation flow.
         </Paragraph>
       </Cell>
@@ -56,7 +56,7 @@ export const marks = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Display the current progress of an operation flow.
         </Paragraph>
       </Cell>
@@ -72,7 +72,7 @@ export const noText = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Display the current progress without text
         </Paragraph>
       </Cell>

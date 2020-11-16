@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Table from 'components/Table';
+import Table from '../../src/components/Table';
 
 const dataSource = [
   {

@@ -15,7 +15,7 @@ export const paginations = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Basic pagination</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic pagination</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Pagination total={100} pageSize={10} defaultCurrent={6} />

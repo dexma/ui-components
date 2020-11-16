@@ -14,7 +14,7 @@ export const loading = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Render loading spinner for the UI views
         </Paragraph>
       </Cell>

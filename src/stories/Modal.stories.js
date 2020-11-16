@@ -65,7 +65,7 @@ export const modals = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Basic modal dialogs with a footer{' '}
           <a href="https://ant.design/../components/modal/">this link</a> for
           more information about the props
@@ -82,7 +82,7 @@ export const footer = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Basic modal dialogs with a footer
         </Paragraph>
       </Cell>

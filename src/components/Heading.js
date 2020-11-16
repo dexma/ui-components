@@ -1,28 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
+import omit from 'lodash/omit';
 
-import { GeneralPropTypes, DefaultGeneralPropTypes } from '../utils/propTypes';
 import { StyledHeading } from '../styles/components/StyledHeading';
+import theme from '../styles/theme';
 
 const propTypes = {
-  ...GeneralPropTypes,
-  type: PropTypes.string.isRequired,
+  /**
+   * Set the type of heading
+   */
+  type: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+  /**
+   * Set the text of heading
+   */
   text: PropTypes.string.isRequired,
-  children: PropTypes.node,
 };
 
 const defaultProps = {
-  ...DefaultGeneralPropTypes,
   type: 'h3',
-  text: 'Heading',
+  theme: theme,
 };
 
-export const Heading = ({ type, text, theme, children, dataCy }) => {
+export const Heading = props => {
+  const { type, text, children } = props;
+  const headingProps = omit(props, ['type', 'text', 'children']);
   return (
-    <StyledHeading theme={theme} as={type} dataCy={dataCy}>
+    <StyledHeading data-testid="heading" as={type} {...headingProps}>
       {text}
-      {children || null}
+      {children && children}
     </StyledHeading>
   );
 };

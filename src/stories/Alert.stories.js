@@ -15,7 +15,7 @@ export const alert = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Alert component used when you need to show messages to users.
         </Paragraph>
       </Cell>
@@ -36,7 +36,7 @@ export const description = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           You can add description to the body of the alert
         </Paragraph>
       </Cell>
@@ -79,7 +79,7 @@ export const noIcon = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           A option without the icon on the title alert
         </Paragraph>
       </Cell>

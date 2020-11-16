@@ -24,7 +24,7 @@ export const layouts = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           We preset a series of colorful tag styles for use in different
           situations. You can also set it to a hex color string for custom
           color.

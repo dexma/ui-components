@@ -10,8 +10,6 @@ import {
 } from '../styles/components/StyledModal';
 
 const propTypes = {
-  className: PropTypes.string,
-  dataCy: PropTypes.string,
   theme: PropTypes.shape({}),
 };
 
@@ -24,8 +22,8 @@ export const Modal = props => {
   return (
     <>
       <StyledModal
+        data-testid="modal"
         closeIcon={<Icon name="close" color="gray300" size="medium" />}
-        theme={theme}
         footer={false}
         {...props}
       />

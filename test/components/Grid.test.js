@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Grid from 'components/Grid';
+import Grid from '../../src/components/Grid';
 
 describe('<Grid>', () => {
   it('Should render the correct classNamePrefix component', () => {

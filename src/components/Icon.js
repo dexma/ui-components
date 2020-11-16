@@ -11,10 +11,21 @@ import theme from '../styles/theme';
 import { StyledIcon } from '../styles/components/StyledIcon';
 
 const propTypes = {
+  /**
+   * Set the named based on svg icons
+   */
   name: PropTypes.string.isRequired,
+  /**
+   * Color based on the theme
+   */
   color: PropTypes.string,
+  /**
+   * Size base on the theme
+   */
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  className: PropTypes.string,
+  /**
+   * Theme json based
+   */
   theme: PropTypes.shape({}),
 };
 

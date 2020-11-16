@@ -26,22 +26,22 @@ export const mvExample = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">M&V Chart</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">M&V Chart</Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Consumo real vs referencia - Electricidad
         </Paragraph>
         <Chart options={mvConsumptionDiscreteChart} />
       </Cell>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Consumo acumulado real vs referencia - Electricidad
         </Paragraph>
         <Chart options={mvConsumptionAccumulatedTotalChart} />
       </Cell>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">
+        <Paragraph margin="1rem 0 1rem 0">
           Ahorros porcentuales acumulados vs objetivo - Electricidad
         </Paragraph>
         <Chart options={mvSavingsAccumulatedPercentageChart} />
@@ -54,7 +54,7 @@ export const basicArea = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Basic area chart</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic area chart</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Chart options={mockBasicArea} />
@@ -67,7 +67,7 @@ export const stackedBar = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Basic area chart</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic area chart</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Chart options={mockStackedBar} />
@@ -80,7 +80,7 @@ export const stackedBarNegative = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Basic area chart</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic area chart</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Chart options={mockStackedBarNegative} />
@@ -93,7 +93,7 @@ export const mixed = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph m="1rem 0 1rem 0">Basic area chart</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic area chart</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Chart options={mockMixed} />

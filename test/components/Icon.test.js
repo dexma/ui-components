@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Icon, { getIconSize } from 'components/Icon';
-import icons from 'config/icon';
+import Icon, { getIconSize } from '../../src/components/Icon';
+import icons from '../../src/config/icon';
 
 describe('<Icon>', () => {
   it('Should render the classNamePrefix component', () => {
