@@ -52,6 +52,10 @@ const propTypes = {
    * Determines the events that cause the tooltip to show. Multiple event names are separated by spaces.
    */
   trigger: PropTypes.string,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

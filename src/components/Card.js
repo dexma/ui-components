@@ -66,6 +66,10 @@ const propTypes = {
    * Invoked once the button has been focused.
    */
   onFocus: PropTypes.func,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

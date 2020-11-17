@@ -40,6 +40,10 @@ const propTypes = {
    * Set the text of the dropdown button
    */
   text: PropTypes.string,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

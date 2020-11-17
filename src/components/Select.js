@@ -1,10 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactSelect, { components } from 'react-select';
 import omit from 'lodash/omit';
 import { withTheme } from 'styled-components';
-import theme from '../styles/theme';
+
 import { StyledSelect } from '../styles/components/StyledSelect';
+import theme from '../styles/theme';
+
 import Icon from './Icon';
+
+const propTypes = {
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
+};
 
 const defaultProps = {
   blurInputOnSelect: false,
@@ -83,6 +93,7 @@ export const Select = props => {
 
 StyledSelect.displayName = 'StyledSelect';
 
+Select.propTypes = propTypes;
 Select.defaultProps = defaultProps;
 
 export default withTheme(Select);

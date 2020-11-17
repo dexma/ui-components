@@ -10,6 +10,10 @@ const propTypes = {
    * Show the divider vertical
    */
   vertical: PropTypes.bool,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

@@ -14,6 +14,10 @@ const propTypes = {
    * Set the size, it be like a font-size prop
    */
   size: PropTypes.string,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

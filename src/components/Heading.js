@@ -15,6 +15,10 @@ const propTypes = {
    * Set the text of heading
    */
   text: PropTypes.string.isRequired,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

@@ -48,6 +48,10 @@ const propTypes = {
    * Invoked once the field has been clicked.
    */
   onFieldClick: PropTypes.func,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -128,6 +132,7 @@ export const FieldGroup = props => {
             htmlFor={id}
             key={id}
             onClick={() => onFieldClick && onFieldClick(item)}
+            data-testid="field-group-label"
           >
             {!icon && label ? label : null}
             {icon ? <Icon name={icon} size={size} color="white" /> : null}
@@ -138,6 +143,7 @@ export const FieldGroup = props => {
               name={name}
               value={value}
               checked={isSelected}
+              data-testid="field-group-input"
             />
           </label>
         );

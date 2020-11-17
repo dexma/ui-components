@@ -12,6 +12,10 @@ const propTypes = {
    * The status of the loading
    */
   isLoading: PropTypes.bool,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

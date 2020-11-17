@@ -14,6 +14,10 @@ const propTypes = {
    * Size for each dot of step
    */
   size: PropTypes.number,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

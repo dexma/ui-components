@@ -93,6 +93,10 @@ const propTypes = {
    * Language for set all the dates inside component we use moment.locale(language) so please see the <a href="https://momentjs.com/docs/#/i18n/changing-locale/">moment documentation</a>
    */
   language: PropTypes.string,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

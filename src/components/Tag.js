@@ -28,6 +28,10 @@ const propTypes = {
    Variant style
    */
   variant: PropTypes.oneOf(['primary', 'outline']),
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

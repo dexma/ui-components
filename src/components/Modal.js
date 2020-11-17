@@ -10,6 +10,9 @@ import {
 } from '../styles/components/StyledModal';
 
 const propTypes = {
+  /**
+   * Theme json based
+   */
   theme: PropTypes.shape({}),
 };
 

@@ -79,6 +79,10 @@ const propTypes = {
    * Set the time that you want to debounce a click
    */
   debounceTime: PropTypes.number,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

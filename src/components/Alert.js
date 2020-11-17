@@ -31,6 +31,10 @@ const propTypes = {
    * Callback when Alert is closed
    */
   onClose: PropTypes.func,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

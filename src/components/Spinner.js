@@ -10,6 +10,10 @@ const propTypes = {
    * Set the size of spinner
    */
   size: PropTypes.number,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import omit from 'lodash/omit';
 import { Table as TableAntDesign } from 'antd';
@@ -6,6 +7,13 @@ import { Table as TableAntDesign } from 'antd';
 import theme from '../styles/theme';
 import { StyledTable } from '../styles/components/StyledTable';
 import { itemRender } from './Pagination';
+
+const propTypes = {
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
+};
 
 const defaultProps = {
   theme: theme,
@@ -23,6 +31,7 @@ export const Table = props => {
 
 StyledTable.displayName = 'StyledTable';
 
+Table.defaultProps = propTypes;
 Table.defaultProps = defaultProps;
 
 export default withTheme(Table);

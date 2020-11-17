@@ -51,6 +51,10 @@ const propTypes = {
    * Call a function when the charts is mounted, helpful when use multiple ref
    */
   callback: PropTypes.func,
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
