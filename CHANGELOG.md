@@ -1,3 +1,10 @@
+## [3.1.9](https://github.com/dexma/ui-components/compare/v3.1.8...v3.1.9) (2020-11-17)
+
+
+### Bug Fixes
+
+* **components:** fix component props, docs, theme and switch comparative period ([c28fda2](https://github.com/dexma/ui-components/commit/c28fda24c0f918ee5ceff5ba67f8e38484aa23c3))
+
 ## [3.1.8](https://github.com/dexma/ui-components/compare/v3.1.7...v3.1.8) (2020-11-12)
 
 
