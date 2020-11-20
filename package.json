@@ -128,7 +128,7 @@
     "react-moment-proptypes": "^1.6.0",
     "react-router-dom": "^5.0.0",
     "react-select": "^2.4.2",
-    "semantic-release": "^15.13.31",
+    "semantic-release": "^17.2.3",
     "style-loader": "^0.23.1",
     "styled-components": "^4.2.0",
     "uglifyjs-webpack-plugin": "^2.1.3",
