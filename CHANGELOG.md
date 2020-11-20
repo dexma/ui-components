@@ -1,3 +1,10 @@
+## [3.1.10](https://github.com/dexma/ui-components/compare/v3.1.9...v3.1.10) (2020-11-20)
+
+
+### Bug Fixes
+
+* **components:** hover chart and version of react-tippy,  highcharts and styled components dependency ([5667dbc](https://github.com/dexma/ui-components/commit/5667dbcdb04d2a0c8a5da7497b6bd2f76c06df56))
+
 ## [3.1.9](https://github.com/dexma/ui-components/compare/v3.1.8...v3.1.9) (2020-11-17)
 
 
