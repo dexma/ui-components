@@ -140,6 +140,7 @@ export const DatePicker = props => {
       periodDefault && periodDefault.value
         ? datePickerRange(periodDefault.value, withDatePickerFormat)
         : null;
+    // eslint-disable-next-line no-unused-expressions
     ranges && handleDatesChange(ranges);
   }, [periodDefault, language]);
   const onFocusChange = focusedInput => {

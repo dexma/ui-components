@@ -1,5 +1,5 @@
-import React, { forwardRef } from 'react';
-import Tippy from '@tippyjs/react';
+import React from 'react';
+import { Tooltip as TooltipReact } from 'react-tippy';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import omit from 'lodash/omit';
@@ -19,7 +19,7 @@ const propTypes = {
   /**
    * The content of the tooltip.
    */
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  title: PropTypes.string,
   /**
    * Delay in ms once a trigger event is fired before a tooltip shows or hides.
    */
@@ -27,15 +27,7 @@ const propTypes = {
   /**
    * Duration in ms of the transition animation.
    */
-  duration: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
-  /**
-   * Invoked once the tooltip has been created.
-   */
-  onCreate: PropTypes.func,
-  /**
-   * Invoked once the tooltip has been destroyed.
-   */
-  onDestroy: PropTypes.func,
+  duration: PropTypes.number,
   /**
    * Invoked once the tooltip has been fully hidden and unmounted from the DOM.
    */
@@ -65,16 +57,16 @@ const defaultProps = {
   theme: theme,
 };
 
-export const Tooltip = forwardRef((props, ref) => {
-  const { theme, position } = props;
-  const tooltipProps = omit(props, ['theme', 'position']);
+export const Tooltip = props => {
+  const { theme } = props;
+  const tooltipProps = omit(props, ['theme']);
   return (
     <>
       <StyledTooltip theme={theme} />
-      <Tippy ref={ref} placement={position} {...tooltipProps} />
+      <TooltipReact {...tooltipProps} />
     </>
   );
-});
+};
 
 Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;

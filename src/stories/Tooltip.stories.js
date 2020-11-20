@@ -19,20 +19,20 @@ export const tooltip = () => (
         <Paragraph margin="1rem 0 1rem 0">A simple text popup tip.</Paragraph>
       </Cell>
       <Cell>
-        <Tooltip content="Tooltip" trigger="click">
+        <Tooltip title="Tooltip" trigger="click">
           <Button text="Click me"></Button>
         </Tooltip>
-        <Tooltip content="Tooltip">
+        <Tooltip title="Tooltip">
           <Button text="Test" iconBefore="vader"></Button>
         </Tooltip>
-        <Tooltip content="Tooltip top" position="top">
+        <Tooltip title="Tooltip top" position="top">
           <Button
             text="Test top"
             iconBefore="vader"
             variant="secondary"
           ></Button>
         </Tooltip>
-        <Tooltip content="Tooltip right" position="right">
+        <Tooltip title="Tooltip right" position="right">
           <Button iconBefore="help" isCircle></Button>
         </Tooltip>
       </Cell>

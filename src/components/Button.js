@@ -167,7 +167,7 @@ export const Button = forwardRef((props, ref) => {
     </StyledButton>
   );
   return tooltip ? (
-    <Tooltip content={tooltip}>{getStyledButton()}</Tooltip>
+    <Tooltip title={tooltip}>{getStyledButton()}</Tooltip>
   ) : (
     getStyledButton()
   );

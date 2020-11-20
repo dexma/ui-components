@@ -56,11 +56,13 @@ const defaultProps = {
 
 const getContent = content => {
   return content.map((props, i) => {
+    const { icon } = props;
     return (
       <Button
         key={i}
         className="dropdown-button-item"
         variant="icon"
+        iconBefore={icon}
         {...props}
       />
     );
