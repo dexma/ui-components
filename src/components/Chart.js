@@ -1,6 +1,10 @@
-import React, { memo, PureComponent } from 'react';
+import React, {
+  forwardRef,
+  useRef,
+  useEffect,
+  useImperativeHandle,
+} from 'react';
 import PropTypes from 'prop-types';
-import deepEqual from 'deep-equal';
 import { withTheme } from 'styled-components';
 
 import Highcharts from 'highcharts';
@@ -8,7 +12,6 @@ import addSankeyModule from 'highcharts/modules/sankey';
 import addExportingModule from 'highcharts/modules/exporting';
 import addOfflineExportingModule from 'highcharts/modules/offline-exporting';
 import addExportData from 'highcharts/modules/export-data';
-
 import boost from 'highcharts/modules/boost';
 
 import theme from '../styles/theme';
@@ -20,41 +23,86 @@ addOfflineExportingModule(Highcharts);
 addExportData(Highcharts);
 
 const propTypes = {
+  /**
+   * The default thousands separator used in the Highcharts.numberFormat method unless otherwise specified in the function arguments. Defaults to a single space character, which is recommended in ISO 31-0 and works across Anglo-American and continental European languages
+   */
+  thousandsSep: PropTypes.string,
+  /**
+   * Metric prefixes used to shorten high numbers in axis labels. Replacing any of the positions with null causes the full number to be written. Setting numericSymbols to null disables shortening altogether
+   */
+  numericSymbols: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * An array containing the months names. Corresponds to the %B format in Highcharts.dateFormat()
+   */
+  months: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Short week days, starting Sunday. If not specified, Highcharts uses the first three letters of the lang.weekdays option
+   */
+  shortMonths: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * An array containing the weekday names
+   */
+  weekdays: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * All the highcharts options you can see on the <a href="https://api.highcharts.com/highcharts/chart">documentation</a>
+   */
   options: PropTypes.objectOf(PropTypes.any),
+  /**
+   * Call a function when the charts is mounted, helpful when use multiple ref
+   */
   callback: PropTypes.func,
-  theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
+  thousandsSep: ' ',
+  numericSymbols: ['k', 'M', 'G', 'T', 'P', 'E'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
+  shortMonths: [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ],
+  weekdays: [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ],
   theme: theme,
 };
 
-const StyledChart = () => {
-  const {
-    backgroundColor,
-    /*    backgroundColorActive,
-    backgroundColorFocused,
-    backgroundColorHover,
-    backgroundColorSelected,
-    border,
-    borderRadius,
-    component,
-    fontColor,
-    fontColorActive,
-    fontFamily,
-    fontSize,
-    /*    fontWeightBold,
-    iconColor,
-    iconColorActive,
-    iconSize,
-    padding, */
-  } = theme;
+const getStyledChart = () => {
+  const { backgroundColor, fontFamily } = theme;
   return {
     chart: {
       backgroundColor: backgroundColor,
       style: {
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        fontFamily: fontFamily,
       },
     },
     title: {
@@ -86,12 +134,6 @@ const StyledChart = () => {
   };
 };
 
-/*
-  exporting: {
-    enabled: false
-  }
-* */
-
 const defaultOptions = {
   credits: {
     enabled: false,
@@ -101,42 +143,58 @@ const defaultOptions = {
   },
 };
 
-export class Chart extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.container = React.createRef();
-  }
-
-  componentDidMount() {
-    const { options, callback } = this.props;
-    const newOptions = Object.assign(defaultOptions, options);
-    this.chart = Highcharts.chart(
-      this.container.current,
-      newOptions,
-      callback || undefined
-    );
-    this.chart.update(StyledChart());
-  }
-
-  componentDidUpdate(prevProps) {
-    if (!deepEqual(this.props.options, prevProps.options)) {
-      this.chart.update(this.props.options);
+const Chart = forwardRef((props, ref) => {
+  const containerRef = useRef();
+  const chartRef = useRef();
+  useEffect(() => {
+    if (!chartRef.current) {
+      Highcharts.setOptions({
+        lang: {
+          thousandsSep: props.thousandsSep,
+          numericSymbols: props.numericSymbols,
+          months: props.months,
+          shortMonths: props.shortMonths,
+          weekdays: props.weekdays,
+        },
+      });
+      chartRef.current = Highcharts.chart(
+        containerRef.current,
+        {
+          ...defaultOptions,
+          ...props.options,
+        },
+        props.callback ? props.callback : undefined
+      );
+      chartRef.current.update(getStyledChart());
+    } else {
+      chartRef.current.update(props.options);
     }
-  }
+  });
 
-  componentWillUnmount() {
-    if (this.chart) {
-      this.chart.destroy();
-      this.chart = null;
-    }
-  }
+  useEffect(() => {
+    return () => {
+      if (chartRef.current) {
+        chartRef.current.destroy();
+        chartRef.current = null;
+      }
+    };
+  }, []);
 
-  render() {
-    return <div data-testid="chart" ref={this.container} />;
-  }
-}
+  useImperativeHandle(
+    ref,
+    () => ({
+      get chart() {
+        return chartRef.current;
+      },
+      container: containerRef,
+    }),
+    []
+  );
+
+  return <div data-testid="chart" ref={containerRef} />;
+});
 
 Chart.propTypes = propTypes;
 Chart.defaultProps = defaultProps;
 
-export default memo(withTheme(Chart));
+export default withTheme(Chart);
