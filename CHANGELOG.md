@@ -1,3 +1,10 @@
+## [3.1.11](https://github.com/dexma/ui-components/compare/v3.1.10...v3.1.11) (2020-11-23)
+
+
+### Bug Fixes
+
+* **chart:** add language and hooks ([7b98374](https://github.com/dexma/ui-components/commit/7b983749fa97408ffa7819a427a19339a28bec84))
+
 ## [3.1.10](https://github.com/dexma/ui-components/compare/v3.1.9...v3.1.10) (2020-11-20)
 
 
