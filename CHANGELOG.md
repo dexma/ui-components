@@ -1,3 +1,10 @@
+## [3.1.12](https://github.com/dexma/ui-components/compare/v3.1.11...v3.1.12) (2020-11-26)
+
+
+### Bug Fixes
+
+* **datepicker:** set translations for the week days manually ([c977308](https://github.com/dexma/ui-components/commit/c977308acd69ce098c5b95e515cd7c9082e0147b))
+
 ## [3.1.11](https://github.com/dexma/ui-components/compare/v3.1.10...v3.1.11) (2020-11-23)
 
 
