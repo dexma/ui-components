@@ -7,6 +7,10 @@ import momentPropTypes from 'react-moment-proptypes';
 import omit from 'lodash/omit';
 import classNames from 'classnames';
 
+import 'moment/locale/es';
+import 'moment/locale/fr';
+import 'moment/locale/ca';
+
 import Icon from './Icon';
 import Select from './Select';
 import theme from '../styles/theme';
@@ -136,13 +140,15 @@ export const DatePicker = props => {
   ]);
   useEffect(() => {
     moment.locale(language);
+  }, [language]);
+  useEffect(() => {
     const ranges =
       periodDefault && periodDefault.value
         ? datePickerRange(periodDefault.value, withDatePickerFormat)
         : null;
     // eslint-disable-next-line no-unused-expressions
     ranges && handleDatesChange(ranges);
-  }, [periodDefault, language]);
+  }, [periodDefault]);
   const onFocusChange = focusedInput => {
     setFocusedInput(focusedInput);
   };
@@ -161,6 +167,14 @@ export const DatePicker = props => {
     setDate(date);
     onDatesChange && onDatesChange(date);
   };
+  const getWeekHeaderElement = day => (
+    <small>
+      {moment(day)
+        .locale(language)
+        .format('dd')}
+    </small>
+  );
+
   const classes = classNames('date-range', periodOptions && `with-select`);
   const { startDate, endDate } = date;
   moment.locale(language);
@@ -173,6 +187,8 @@ export const DatePicker = props => {
       <div className={classes}>
         <DateRangePicker
           {...dateRangePickerProps}
+          weekDayFormat="YYYY-MM-DD HH:mm:ss" // We set with this format, because we handle manually the week element in renderWeekHeaderElement
+          renderWeekHeaderElement={getWeekHeaderElement}
           startDate={startDate}
           endDate={endDate}
           focusedInput={focusedInput}

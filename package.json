@@ -113,7 +113,7 @@
     "lint-staged": "^8.2.0",
     "lodash": "^4.17.20",
     "mini-css-extract-plugin": "^0.5.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "path": "^0.12.7",
     "polished": "^3.4.0",
