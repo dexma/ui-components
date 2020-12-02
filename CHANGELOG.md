@@ -1,3 +1,20 @@
+# [4.0.0](https://github.com/dexma/ui-components/compare/v3.1.12...v4.0.0) (2020-12-02)
+
+
+### Code Refactoring
+
+* change the name of the colors ([1998cc5](https://github.com/dexma/ui-components/commit/1998cc5f9b885a4b18904639c052489f82084263))
+
+
+### BREAKING CHANGES
+
+* update naming convention for our base colors palette
+
+- Rename turquoise to cyan
+- Rename grey to gray
+- Update primary color from turquoise to teal500
+- Add teal, blue from 50 to 900
+
 ## [3.1.12](https://github.com/dexma/ui-components/compare/v3.1.11...v3.1.12) (2020-11-26)
 
 
