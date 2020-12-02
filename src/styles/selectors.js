@@ -46,18 +46,23 @@ export const gray600 = props => propFromTheme(props, 'color.gray600');
 export const gray700 = props => propFromTheme(props, 'color.gray700');
 export const gray800 = props => propFromTheme(props, 'color.gray800');
 export const gray900 = props => propFromTheme(props, 'color.gray900');
-export const white = props => propFromTheme(props, 'color.white');
-export const error = props => propFromTheme(props, 'color.error');
-export const magenta = props => propFromTheme(props, 'color.magenta');
-export const blue = props => propFromTheme(props, 'color.blue');
-export const blueLight = props => propFromTheme(props, 'color.blueLight');
-export const orange = props => propFromTheme(props, 'color.orange');
+
+export const teal = props => propFromTheme(props, 'color.teal');
 export const red = props => propFromTheme(props, 'color.red');
+export const orange = props => propFromTheme(props, 'color.orange');
 export const amber = props => propFromTheme(props, 'color.amber');
-export const brown = props => propFromTheme(props, 'color.brown');
-export const grey = props => propFromTheme(props, 'color.grey');
 export const green = props => propFromTheme(props, 'color.green');
-export const purple = props => propFromTheme(props, 'color.purple');
+export const cyan = props => propFromTheme(props, 'color.cyan');
+export const blueLight = props => propFromTheme(props, 'color.blueLight');
+export const blue = props => propFromTheme(props, 'color.blue');
+export const violet = props => propFromTheme(props, 'color.violet');
+export const magenta = props => propFromTheme(props, 'color.magenta');
+export const pink = props => propFromTheme(props, 'color.pink');
+export const brown = props => propFromTheme(props, 'color.brown');
+export const gray = props => propFromTheme(props, 'color.gray');
+export const white = props => propFromTheme(props, 'color.white');
+export const black = props => propFromTheme(props, 'color.black');
+export const error = props => propFromTheme(props, 'color.error');
 
 export const primaryColor = props => propFromTheme(props, 'primary');
 export const primaryColorSvg = props => {

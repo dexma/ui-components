@@ -19,7 +19,7 @@ export const progress = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Progress percent={20} text="20%" color="grey" />
+        <Progress percent={20} text="20%" color="gray" />
         <Progress percent={40} text="40%" color="red" />
         <Progress percent={60} text="60%" color="amber" />
         <Progress percent={80} text="80%" color="green" />
@@ -37,7 +37,7 @@ export const progressTransparent = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Progress percent={20} text="20%" color="grey" isTransparent />
+        <Progress percent={20} text="20%" color="gray" isTransparent />
         <Progress percent={40} text="40%" color="red" isTransparent />
         <Progress percent={60} text="60%" color="amber" isTransparent />
         <Progress percent={80} text="80%" color="green" isTransparent />
@@ -77,7 +77,7 @@ export const noText = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Progress percent={20} color="grey" />
+        <Progress percent={20} color="gray" />
         <Progress percent={40} color="red" />
         <Progress percent={60} color="amber" />
         <Progress percent={80} color="green" />

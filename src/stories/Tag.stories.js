@@ -21,7 +21,7 @@ export const tags = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Tag color="turquoise" onClick={() => console.log('click')}>
+        <Tag color="teal" onClick={() => alert('Click')}>
           Tag click
         </Tag>
         <Tag color="blue">Tag</Tag>
@@ -30,13 +30,13 @@ export const tags = () => (
         <Tag color="amber">Tag</Tag>
         <Tag color="orange">Tag</Tag>
         <Tag color="brown">Tag</Tag>
-        <Tag color="grey">Tag</Tag>
+        <Tag color="gray">Tag</Tag>
         <Tag color="green">Tag</Tag>
         <Tag color="magenta">Tag</Tag>
-        <Tag color="purple">Tag</Tag>
+        <Tag color="pink">Tag</Tag>
       </Cell>
       <Cell xs={12}>
-        <Tag color="turquoise" variant="outline">
+        <Tag color="teal" variant="outline">
           Tag
         </Tag>
         <Tag color="blue" variant="outline">
@@ -57,7 +57,7 @@ export const tags = () => (
         <Tag color="brown" variant="outline">
           Tag
         </Tag>
-        <Tag color="grey" variant="outline">
+        <Tag color="gray" variant="outline">
           Tag
         </Tag>
         <Tag color="green" variant="outline">
@@ -66,7 +66,7 @@ export const tags = () => (
         <Tag color="magenta" variant="outline">
           Tag
         </Tag>
-        <Tag color="purple" variant="outline">
+        <Tag color="pink" variant="outline">
           Tag
         </Tag>
       </Cell>
@@ -84,7 +84,7 @@ export const icons = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Tag color="turquoise" type="rounded" icon="alert">
+        <Tag color="teal" type="rounded" icon="alert">
           Tag
         </Tag>
         <Tag color="blue" type="rounded" icon="alert">
@@ -109,7 +109,7 @@ export const icons = () => (
     </Row>
     <Row>
       <Cell xs={12}>
-        <Tag color="turquoise" variant="outline" type="rounded" icon="alert">
+        <Tag color="teal" variant="outline" type="rounded" icon="alert">
           Tag
         </Tag>
         <Tag color="blue" variant="outline" type="rounded" icon="alert">
