@@ -29,21 +29,9 @@ const propTypes = {
   first: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
   last: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
   /**
-   * Component class
-   */
-  className: PropTypes.string,
-  /**
-   * The cypress identifier
-   */
-  dataCy: PropTypes.string,
-  /**
    * Theme json based
    */
   theme: PropTypes.shape({}),
-  /**
-   * Children node
-   */
-  children: PropTypes.node,
 };
 
 const defaultProps = {

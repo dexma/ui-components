@@ -11,21 +11,9 @@ const propTypes = {
    */
   fluid: PropTypes.bool,
   /**
-   * Component class
-   */
-  className: PropTypes.string,
-  /**
-   * The cypress identifier
-   */
-  dataCy: PropTypes.string,
-  /**
    * Theme json based
    */
   theme: PropTypes.shape({}),
-  /**
-   * Children node
-   */
-  children: PropTypes.node,
 };
 
 const defaultProps = {
