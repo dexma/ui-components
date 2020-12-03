@@ -36,6 +36,25 @@
 - Update primary color from turquoise to teal500
 - Add teal, blue from 50 to 900
 
+# [4.0.0](https://github.com/dexma/ui-components/compare/v3.1.12...v4.0.0) (2020-12-03)
+
+
+### Code Refactoring
+
+* change the name of the colors ([cadad80](https://github.com/dexma/ui-components/commit/cadad80f84051ab4078f99b2098b3e5411a70949))
+
+
+### BREAKING CHANGES
+
+* update naming convention for our base colors palette
+
+- Rename turquoise to cyan
+- Remove purple
+- Add pink
+- Rename grey to gray
+- Update primary color from turquoise to teal500
+- Add teal, blue from 50 to 900
+
 # [4.0.0](https://github.com/dexma/ui-components/compare/v3.1.12...v4.0.0) (2020-12-02)
 
 
