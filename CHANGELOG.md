@@ -23,6 +23,31 @@
 - Update primary color from turquoise to teal500
 - Add teal, blue from 50 to 900
 
+# [4.0.0](https://github.com/dexma/ui-components/compare/v3.1.12...v4.0.0) (2020-12-04)
+
+
+### Bug Fixes
+
+* **grid:** remove classes from props ([dcf2f12](https://github.com/dexma/ui-components/commit/dcf2f12c01978d4fd14c8c7f6dc5fa2580295acf))
+* **version:** update version package ([31a98ff](https://github.com/dexma/ui-components/commit/31a98ffb3dadf69e529f2325c872f22a7c5e0781))
+
+
+### Code Refactoring
+
+* change the name of the colors ([cadad80](https://github.com/dexma/ui-components/commit/cadad80f84051ab4078f99b2098b3e5411a70949))
+
+
+### BREAKING CHANGES
+
+* update naming convention for our base colors palette
+
+- Rename turquoise to cyan
+- Remove purple
+- Add pink
+- Rename grey to gray
+- Update primary color from turquoise to teal500
+- Add teal, blue from 50 to 900
+
 # [4.0.0](https://github.com/dexma/ui-components/compare/v3.1.12...v4.0.0) (2020-12-03)
 
 
