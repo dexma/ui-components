@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/dexma/ui-components/compare/v4.0.0...v4.0.1) (2020-12-08)
+
+
+### Bug Fixes
+
+* **loading:** add type, colour and size props to allow sized loader ([0667af1](https://github.com/dexma/ui-components/commit/0667af1df9ce280c58bd492c92cce3bc643b5af0))
+
 # [4.0.0](https://github.com/dexma/ui-components/compare/v3.1.12...v4.0.0) (2020-12-04)
 
 
