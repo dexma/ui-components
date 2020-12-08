@@ -9,6 +9,18 @@ import theme from '../styles/theme';
 
 const propTypes = {
   /**
+   * Color based on the theme
+   */
+  color: PropTypes.string,
+  /**
+   * Size base on the theme
+   */
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /**
+   * The status of the loading
+   */
+  type: PropTypes.oneOf(['spinner']),
+  /**
    * The status of the loading
    */
   isLoading: PropTypes.bool,
@@ -19,16 +31,18 @@ const propTypes = {
 };
 
 const defaultProps = {
+  size: 24,
+  type: 'spinner',
   isLoading: false,
   theme: theme,
 };
 
 export const Loading = props => {
-  const { isLoading, children } = props;
-  const loadingProps = omit(props, ['isLoading', 'children']);
+  const { color, size, type, isLoading, children } = props;
+  const loadingProps = omit(props, ['isLoading', 'children', 'size', 'color']);
   return isLoading ? (
     <StyledLoading data-testid="loading" {...loadingProps}>
-      <Spinner width={24} height={24} />
+      {type === 'spinner' && <Spinner color={color} size={size} />}
     </StyledLoading>
   ) : (
     children

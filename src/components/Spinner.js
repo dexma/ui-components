@@ -7,9 +7,13 @@ import theme from '../styles/theme';
 
 const propTypes = {
   /**
-   * Set the size of spinner
+   * Color based on the theme
    */
-  size: PropTypes.number,
+  color: PropTypes.string,
+  /**
+   * Size base on the theme
+   */
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
    * Theme json based
    */
@@ -17,13 +21,14 @@ const propTypes = {
 };
 
 const defaultProps = {
+  color: 'gray400',
   size: 24,
   theme: theme,
 };
 
-export const Spinner = props => (
-  <StyledSpinner data-testid="spinner" {...props} />
-);
+export const Spinner = props => {
+  return <StyledSpinner data-testid="spinner" {...props} />;
+};
 
 StyledSpinner.displayName = 'StyledSpinner';
 

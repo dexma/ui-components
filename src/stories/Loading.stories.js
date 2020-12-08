@@ -20,9 +20,50 @@ export const loading = () => (
       </Cell>
       <Cell xs={12}>
         <div
-          style={{ background: '#eee', padding: '1.5em', position: 'relative' }}
+          style={{
+            background: '#eee',
+            padding: '1.5em',
+            position: 'relative',
+            marginTop: '30px',
+          }}
         >
-          <Loading isLoading />
+          <Loading isLoading size={50} />
+        </div>
+      </Cell>
+      <Cell xs={12}>
+        <div
+          style={{
+            background: '#eee',
+            padding: '1.5em',
+            position: 'relative',
+            marginTop: '30px',
+          }}
+        >
+          <Loading isLoading color="teal500" size={50} />
+        </div>
+      </Cell>
+      <Cell xs={12}>
+        <div
+          style={{
+            background: '#eee',
+            padding: '1.5em',
+            position: 'relative',
+            marginTop: '30px',
+          }}
+        >
+          <Loading isLoading color="red" size={50} />
+        </div>
+      </Cell>
+      <Cell xs={12}>
+        <div
+          style={{
+            background: '#eee',
+            padding: '1.5em',
+            position: 'relative',
+            marginTop: '30px',
+          }}
+        >
+          <Loading isLoading color="cyan" size={50} />
         </div>
       </Cell>
     </Row>
