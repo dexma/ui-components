@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import get from 'lodash/get';
 import { headingFontSize } from '../selectors';
 
 const getSizes = props => {
@@ -10,7 +11,8 @@ const getSizes = props => {
 };
 
 const StyledHeading = styled.div`
-  ${props => getSizes(props)}
+  ${props => getSizes(props)};
+  color: ${props => get(props.theme.color, props.color)};
 `;
 
 export { StyledHeading };

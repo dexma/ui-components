@@ -8,6 +8,10 @@ import theme from '../styles/theme';
 
 const propTypes = {
   /**
+   * Set the color name for the heading, it will be a <a href="https://dexma.github.io/ui-components/?path=/docs/colors--colors">color</a>
+   */
+  color: PropTypes.string,
+  /**
    * Set the type of heading
    */
   type: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
@@ -22,6 +26,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  color: 'gray900',
   type: 'h3',
   theme: theme,
 };

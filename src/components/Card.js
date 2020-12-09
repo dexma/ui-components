@@ -93,9 +93,7 @@ export const CardHeader = ({ image, icon }) => {
           data-testid="card-image"
         />
       )}
-      {icon && !image && (
-        <Icon name={icon} color="iconColor" data-testid="card-icon" />
-      )}
+      {icon && !image && <Icon name={icon} data-testid="card-icon" />}
     </div>
   );
 };

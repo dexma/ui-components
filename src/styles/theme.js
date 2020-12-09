@@ -280,6 +280,30 @@ const pagination = {
   height: getSize(paginationHeight),
 };
 
+// Paragraph
+// ==========================================================================
+
+const paragraph = {
+  size: {
+    small: {
+      fontSize: getSize(pxToRem(12)),
+      lineHeight: getSize(pxToRem(16)),
+    },
+    medium: {
+      fontSize: getSize(pxToRem(14)),
+      lineHeight: getSize(pxToRem(20)),
+    },
+    large: {
+      fontSize: getSize(pxToRem(16)),
+      lineHeight: getSize(pxToRem(24)),
+    },
+    xlarge: {
+      fontSize: getSize(pxToRem(20)),
+      lineHeight: getSize(pxToRem(32)),
+    },
+  },
+};
+
 // Table
 // ==========================================================================
 
@@ -351,6 +375,7 @@ const theme = {
   switchPeriodComparative,
   grid,
   pagination,
+  paragraph,
   table,
   tag,
   tab,

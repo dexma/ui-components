@@ -7,7 +7,7 @@ import theme from '../styles/theme';
 
 const propTypes = {
   /**
-   * Color based on the theme
+   * Set the color name for the spinner, it will be a <a href="https://dexma.github.io/ui-components/?path=/docs/colors--colors">color</a>
    */
   color: PropTypes.string,
   /**

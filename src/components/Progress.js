@@ -29,7 +29,7 @@ const propTypes = {
   /**
    * Set the color name for the bar, it will be a <a href="https://dexma.github.io/ui-components/?path=/docs/colors--colors">color</a>
    */
-  color: PropTypes.oneOf(Object.keys(theme.color)),
+  color: PropTypes.string,
   /**
    * Theme json based
    */

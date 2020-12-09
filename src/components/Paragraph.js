@@ -7,13 +7,17 @@ import theme from '../styles/theme';
 
 const propTypes = {
   /**
+   * Set the color name for the paragraph, it will be a <a href="https://dexma.github.io/ui-components/?path=/docs/colors--colors">color</a>
+   */
+  color: PropTypes.string,
+  /**
    * Set margin like css
    */
   margin: PropTypes.string,
   /**
-   * Set the size, it be like a font-size prop
+   * Set the size of button
    */
-  size: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge']).isRequired,
   /**
    * Theme json based
    */
@@ -21,8 +25,9 @@ const propTypes = {
 };
 
 const defaultProps = {
+  color: 'gray700',
   margin: '0 0 0 0',
-  size: '1rem',
+  size: 'medium',
   theme: theme,
 };
 

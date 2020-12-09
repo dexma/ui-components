@@ -16,7 +16,7 @@ const propTypes = {
    */
   name: PropTypes.string.isRequired,
   /**
-   * Color based on the theme
+   * Set the color name for the icon, it will be a <a href="https://dexma.github.io/ui-components/?path=/docs/colors--colors">color</a>
    */
   color: PropTypes.string,
   /**
@@ -31,7 +31,7 @@ const propTypes = {
 
 const defaultProps = {
   name: 'vader',
-  color: 'iconColor',
+  color: 'gray500',
   size: 'large',
   theme: theme,
 };

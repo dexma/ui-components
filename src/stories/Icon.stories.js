@@ -38,22 +38,22 @@ export const sizes = () => (
         </Paragraph>
       </Cell>
       <Cell>
-        <Icon size={70} color="iconColor" />
+        <Icon size={70} />
       </Cell>
       <Cell>
-        <Icon size={60} color="iconColor" />
+        <Icon size={60} />
       </Cell>
       <Cell>
-        <Icon size={50} color="iconColor" />
+        <Icon size={50} />
       </Cell>
       <Cell>
-        <Icon size={40} color="iconColor" />
+        <Icon size={40} />
       </Cell>
       <Cell>
-        <Icon size={30} color="iconColor" />
+        <Icon size={30} />
       </Cell>
       <Cell>
-        <Icon size={20} color="iconColor" />
+        <Icon size={20} />
       </Cell>
     </Row>
   </Grid>
@@ -90,7 +90,7 @@ class SearchIcons extends Component {
     const iconsFilter = icon.filter(i => i.name.includes(searchValue));
     return iconsFilter.map((iconItem, i) => (
       <Cell key={i} xs={2} className="box-icon">
-        <Icon name={iconItem.name} size={40} color="iconColor" />
+        <Icon name={iconItem.name} size={40} />
         <Paragraph size=".6rem">{iconItem.name}</Paragraph>
       </Cell>
     ));

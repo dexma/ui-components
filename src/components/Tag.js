@@ -9,7 +9,7 @@ import Icon from './Icon';
 
 const propTypes = {
   /**
-   Color related with theme
+   * Set the color name for the tag, it will be a <a href="https://dexma.github.io/ui-components/?path=/docs/colors--colors">color</a>
    */
   color: PropTypes.string,
   /**

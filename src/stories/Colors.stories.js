@@ -63,7 +63,7 @@ export const colors = () => (
         <Paragraph margin="1rem 0 1rem 0">Base color palette</Paragraph>
       </Cell>
       {Object.keys(color).map(color => (
-        <Cell xs={2}>
+        <Cell xs={2} key={color}>
           <Color color={color} text={color} />{' '}
         </Cell>
       ))}
