@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/dexma/ui-components/compare/v4.0.1...v4.0.2) (2020-12-09)
+
+
+### Bug Fixes
+
+* **colors:** add colors to components props and add sizes Paragraph ([5690b53](https://github.com/dexma/ui-components/commit/5690b539cef4a0ca25524ef82deff61d4cec95a7))
+
 ## [4.0.1](https://github.com/dexma/ui-components/compare/v4.0.0...v4.0.1) (2020-12-08)
 
 
