@@ -20,13 +20,17 @@ export const alert = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Alert message="Success Tips" type="success" showIcon closable />
+        <Alert description="Basic" type="basic" showIcon />
         <br />
-        <Alert message="Informational Notes" type="info" showIcon />
+        <Alert description="Outline" type="outline" showIcon={false} />
         <br />
-        <Alert message="Warning" type="warning" showIcon />
+        <Alert description="Success Tips" type="success" showIcon closable />
         <br />
-        <Alert message="Error" type="error" showIcon />
+        <Alert description="Informational Notes" type="info" showIcon />
+        <br />
+        <Alert description="Warning" type="warning" showIcon />
+        <br />
+        <Alert description="Error" type="error" showIcon />
       </Cell>
     </Row>
   </Grid>
@@ -41,6 +45,22 @@ export const description = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
+        <Alert
+          message="Basic alert"
+          description="Detailed description and advice about successful copywriting."
+          type="basic"
+          showIcon
+          closable
+        />
+        <br />
+        <Alert
+          message="Basic alert"
+          description="Detailed description and advice about successful copywriting."
+          type="outline"
+          showIcon
+          closable
+        />
+        <br />
         <Alert
           message="Success Tips"
           description="Detailed description and advice about successful copywriting."
@@ -103,6 +123,80 @@ export const noIcon = () => (
           description="This is an error message about copywriting."
           type="error"
         />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const customAlert = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Alert component used when you need to show messages to users.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Alert
+          type="info"
+          description={
+            <span>
+              You have <strong>2</strong> Optimise datapoints left in your free
+              trial.{' '}
+              <span
+                style={{
+                  color: '#0054a1',
+                  textDecoration: 'underline',
+                  cursor: 'pointer',
+                }}
+              >
+                How are these calculated?
+              </span>
+            </span>
+          }
+          showIcon
+        />
+        <br />
+        <Alert
+          type="error"
+          description={
+            <span>
+              You have <strong>2</strong> Optimise datapoints left in your free
+              trial.{' '}
+              <span
+                style={{
+                  color: '#ffffff',
+                  textDecoration: 'underline',
+                  cursor: 'pointer',
+                }}
+              >
+                How are these calculated?
+              </span>
+            </span>
+          }
+          showIcon
+        />
+        <br />
+        <Alert
+          type="success"
+          description={
+            <span>
+              You have <strong>2</strong> Optimise datapoints left in your free
+              trial.{' '}
+              <span
+                style={{
+                  color: '#ffffff',
+                  textDecoration: 'underline',
+                  cursor: 'pointer',
+                }}
+              >
+                How are these calculated?
+              </span>
+            </span>
+          }
+          showIcon
+        />
+        <br />
       </Cell>
     </Row>
   </Grid>

@@ -17,6 +17,20 @@ describe('<Alert>', () => {
     const description = getByTestId('alert-description');
     expect(description.textContent).toEqual(descriptionText);
   });
+  it('Should render the icon for basic type', () => {
+    const type = "basic"
+    const messageText = "Basic Tips";
+    const { getByTestId } = render(<Alert message={messageText} type={type} showIcon/>);
+    const icon = getByTestId(`alert-icon-${type}`);
+    expect(icon).toBeTruthy();
+  });
+  it('Should render the icon for outline type', () => {
+    const type = "outline"
+    const messageText = "Outline Tips";
+    const { getByTestId } = render(<Alert message={messageText} type={type} showIcon/>);
+    const icon = getByTestId(`alert-icon-${type}`);
+    expect(icon).toBeTruthy();
+  });
   it('Should render the icon for success type', () => {
     const type = "success"
     const messageText = "Success Tips";

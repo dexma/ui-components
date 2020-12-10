@@ -36,6 +36,17 @@ export const backgroundColorDisabled = props =>
 export const boxShadow = props => propFromTheme(props, 'boxShadow');
 export const boxShadowHover = props => propFromTheme(props, 'boxShadowHover');
 
+export const blue50 = props => propFromTheme(props, 'color.gray50');
+export const blue100 = props => propFromTheme(props, 'color.blue100');
+export const blue200 = props => propFromTheme(props, 'color.blue200');
+export const blue300 = props => propFromTheme(props, 'color.blue300');
+export const blue400 = props => propFromTheme(props, 'color.blue400');
+export const blue500 = props => propFromTheme(props, 'color.blue500');
+export const blue600 = props => propFromTheme(props, 'color.blue600');
+export const blue700 = props => propFromTheme(props, 'color.blue700');
+export const blue800 = props => propFromTheme(props, 'color.blue800');
+export const blue900 = props => propFromTheme(props, 'color.blue900');
+
 export const gray50 = props => propFromTheme(props, 'color.gray50');
 export const gray100 = props => propFromTheme(props, 'color.gray100');
 export const gray200 = props => propFromTheme(props, 'color.gray200');
@@ -75,6 +86,11 @@ export const errorColor = props => propFromTheme(props, 'error');
 export const infoColor = props => propFromTheme(props, 'info');
 
 export const componentHeight = props => propFromTheme(props, 'heightElements');
+
+export const alertMessageFontSize = props =>
+  propFromTheme(props, 'alert.messageFontSize');
+export const alertDescriptionMessageFontSize = props =>
+  propFromTheme(props, 'alert.descriptionFontSize');
 
 export const headingFontSize = props =>
   propFromTheme(props, 'heading.fontSize');

@@ -10,7 +10,14 @@ const propTypes = {
   /**
    * Type of Alert styles
    */
-  type: PropTypes.oneOf(['warning', 'info', 'success', 'error']).isRequired,
+  type: PropTypes.oneOf([
+    'basic',
+    'outline',
+    'warning',
+    'info',
+    'success',
+    'error',
+  ]).isRequired,
   /**
    * Content of Alert
    */
@@ -49,6 +56,12 @@ export const Alert = props => {
   const [closed, setClosed] = useState(false);
   let renderIcon = null;
   switch (type) {
+    case 'basic':
+      renderIcon = 'alert_sign';
+      break;
+    case 'outline':
+      renderIcon = 'alert_sign';
+      break;
     case 'warning':
       renderIcon = 'circle_info_outline';
       break;
@@ -68,6 +81,11 @@ export const Alert = props => {
     setClosed(true);
     onClose && onClose(e);
   };
+  const getDescription = description => (
+    <span data-testid="alert-description" className="description">
+      {description}
+    </span>
+  );
   return closed ? null : (
     <StyledAlert data-testid="alert" role="alert" {...props}>
       <span data-testid="alert-message" className="message">
@@ -80,12 +98,9 @@ export const Alert = props => {
           />
         )}
         {message}
+        {!message && description && getDescription(description)}
       </span>
-      {description && (
-        <span data-testid="alert-description" className="description">
-          {description}
-        </span>
-      )}
+      {message && description && getDescription(description)}
       {closable ? (
         <Icon
           onClick={handleClose}

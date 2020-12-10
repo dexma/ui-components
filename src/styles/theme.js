@@ -55,7 +55,7 @@ export const primary = color.teal500;
 export const success = color.green;
 export const warning = color.amber;
 export const error = color.red;
-export const info = color.blue;
+export const info = color.blue100;
 
 // Font
 export const fontSizeNumber = 1;
@@ -136,6 +136,17 @@ const base = {
 
   heightComponents: heightComponents,
   heightElements: heightElements,
+};
+
+// Alert
+// ==========================================================================
+
+const alertMessageFontSize = pxToRem(16);
+const alertDescriptionFontSize = pxToRem(14);
+
+const alert = {
+  messageFontSize: getSize(alertMessageFontSize),
+  descriptionFontSize: getSize(alertDescriptionFontSize),
 };
 
 // Button
@@ -369,6 +380,7 @@ const progress = {
 
 const theme = {
   ...base,
+  alert,
   button,
   heading,
   dataPicker,
