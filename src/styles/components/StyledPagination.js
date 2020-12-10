@@ -102,6 +102,7 @@ export const getStyledPagination = () => css`
     .ant-pagination-item-link-icon {
     display: inline-block;
     font-size: ${paginationFontSize};
+    margin-top: 2.5px;
     transform: scale(1) rotate(0deg);
     color: ${primaryColor};
     letter-spacing: -1px;
