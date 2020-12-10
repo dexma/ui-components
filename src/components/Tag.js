@@ -17,9 +17,13 @@ const propTypes = {
    */
   icon: PropTypes.string,
   /**
-   Click event
+   * Set the tag as closable you can pass onClose
    */
-  onClick: PropTypes.func,
+  closable: PropTypes.bool,
+  /**
+   Close event you have to set closable true
+   */
+  onClose: PropTypes.func,
   /**
    Type of a tag
    */
@@ -35,18 +39,27 @@ const propTypes = {
 };
 
 const defaultProps = {
+  closable: false,
   type: 'normal',
   variant: 'primary',
   theme: theme,
 };
 
 export const Tag = props => {
-  const { icon, children } = props;
-  const tagProps = omit(props, ['icon', 'children']);
+  const { icon, closable, children, onClose } = props;
+  const tagProps = omit(props, ['children', 'onClose']);
   return (
     <StyledTag data-testid="tag" {...tagProps}>
-      {icon && <Icon name={icon} size="small" />}
+      {icon && <Icon className="icon" name={icon} size="small" />}
       {children && children}
+      {closable && (
+        <Icon
+          className="icon-close"
+          name="close"
+          size="small"
+          onClick={onClose}
+        />
+      )}
     </StyledTag>
   );
 };

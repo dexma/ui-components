@@ -91,7 +91,7 @@ class SearchIcons extends Component {
     return iconsFilter.map((iconItem, i) => (
       <Cell key={i} xs={2} className="box-icon">
         <Icon name={iconItem.name} size={40} />
-        <Paragraph size=".6rem">{iconItem.name}</Paragraph>
+        <Paragraph margin=".6rem">{iconItem.name}</Paragraph>
       </Cell>
     ));
   };

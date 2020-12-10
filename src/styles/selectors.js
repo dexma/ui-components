@@ -100,6 +100,7 @@ export const paragraphSize = props => propFromTheme(props, 'paragraph.size');
 export const tableFontSize = props => propFromTheme(props, 'table.fontSize');
 
 export const tagHeight = props => propFromTheme(props, 'tag.height');
+export const tagLineHeight = props => propFromTheme(props, 'tag.lineHeight');
 export const tagFontSize = props => propFromTheme(props, 'tag.fontSize');
 export const tagPaddingX = props => propFromTheme(props, 'tag.paddingX');
 export const tagPaddingY = props => propFromTheme(props, 'tag.paddingY');

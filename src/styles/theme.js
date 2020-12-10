@@ -318,11 +318,13 @@ const table = {
 const tagPaddingX = pxToRem(2);
 const tagPaddingY = pxToRem(8);
 const tagFontSize = pxToRem(12);
+const tagLineHeight = pxToRem(16);
 
 const tag = {
   paddingX: getSize(tagPaddingX),
   paddingY: getSize(tagPaddingY),
   fontSize: getSize(tagFontSize),
+  lineHeight: getSize(tagLineHeight),
 };
 
 // Tabs

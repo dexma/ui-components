@@ -78,7 +78,7 @@ const getIconPaths = name => {
 
 export const Icon = forwardRef((props, ref) => {
   const { name, color, size, theme } = props;
-  const fillColor = get(theme, color);
+  const fillColor = get(theme.color, color);
   const pathElements = getIconPaths(name);
   const iconSize = getIconSize(size);
   const iconProps = omit(props, ['name', 'color', 'size']);
