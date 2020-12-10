@@ -12,6 +12,7 @@ const TRANSPARENT = '0.4';
 const StyledProgress = styled.div`
   display: flex;
   align-items: center;
+  min-width: 2.857rem;
   .outer {
     flex: 1 1 0px;
     width: auto;
@@ -46,7 +47,7 @@ const StyledProgress = styled.div`
     font-size: ${progressFontSize};
     line-height: 1;
     white-space: nowrap;
-    text-align: left;
+    text-align: right;
     vertical-align: middle;
     word-break: normal;
     flex: 0 0 auto;

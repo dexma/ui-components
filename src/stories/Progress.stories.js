@@ -15,7 +15,8 @@ export const progress = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Display the current progress of an operation flow.
+          A progress bar component communicates to the user the progress of a
+          particular process
         </Paragraph>
       </Cell>
       <Cell xs={12}>
