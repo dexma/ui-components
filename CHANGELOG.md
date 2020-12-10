@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/dexma/ui-components/compare/v4.0.2...v4.1.0) (2020-12-10)
+
+
+### Features
+
+* **tag:** new group feature and closable mode ([eb5afb2](https://github.com/dexma/ui-components/commit/eb5afb23feba569fd4e525bb63061053ce746e94))
+
 ## [4.0.2](https://github.com/dexma/ui-components/compare/v4.0.1...v4.0.2) (2020-12-09)
 
 
