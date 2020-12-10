@@ -23,7 +23,10 @@ export const Tabs = props => {
   const tabsProps = omit(props, ['theme']);
   return (
     <StyledTabs data-testid="tabs" theme={theme}>
-      <TabsAntDesign {...tabsProps} />
+      <TabsAntDesign
+        {...tabsProps}
+        animated={{ inkBar: false, tabPane: false }}
+      />
     </StyledTabs>
   );
 };

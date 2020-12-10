@@ -21,7 +21,7 @@ export const tabs = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Tabs make it easy to switch between different views
+          Tabs make it easy to explore and switch between different views.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
