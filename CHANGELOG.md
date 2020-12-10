@@ -1,3 +1,10 @@
+## [4.2.1](https://github.com/dexma/ui-components/compare/v4.2.0...v4.2.1) (2020-12-10)
+
+
+### Bug Fixes
+
+* **alert:** the styles broken when passing description ([365ea03](https://github.com/dexma/ui-components/commit/365ea0392ea05320cc63ad717aa485b93aaa5e3e))
+
 # [4.2.0](https://github.com/dexma/ui-components/compare/v4.1.0...v4.2.0) (2020-12-10)
 
 
