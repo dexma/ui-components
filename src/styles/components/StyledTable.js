@@ -10,6 +10,7 @@ import {
 } from '../selectors';
 
 import { getStyledPagination } from './StyledPagination';
+import { getStyledCheckBox } from './StyledCheckbox';
 
 const StyledTable = styled.div`
   .ant-table-wrapper {
@@ -493,7 +494,6 @@ const StyledTable = styled.div`
   }
   .ant-table-placeholder {
     position: relative;
-    z-index: 1;
     margin-top: -1px;
     padding: 0.5rem 1rem;
     color: ${fontColor};
@@ -1401,6 +1401,9 @@ const StyledTable = styled.div`
     margin: -8px -8px -9px;
   }
   ${getStyledPagination};
+  .ant-table-selection-column {
+    ${getStyledCheckBox};
+  }
 `;
 
 export { StyledTable };
