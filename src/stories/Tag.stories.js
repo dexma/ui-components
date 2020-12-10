@@ -17,9 +17,8 @@ export const tags = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          We preset a series of colorful tag styles for use in different
-          situations. You can also set it to a hex color string for custom
-          color.
+          Tag is used to label, categorise, or organise items using keywords
+          that describe them.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -83,12 +82,6 @@ export const tags = () => (
 export const icons = () => (
   <Grid fluid>
     <Row>
-      <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">
-          You can pass the icon name as prop to see more icons go to icons
-          section
-        </Paragraph>
-      </Cell>
       <Cell xs={12}>
         <TagGroup>
           <Tag color="teal" type="rounded" icon="alert">

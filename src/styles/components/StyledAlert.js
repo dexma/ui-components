@@ -54,7 +54,6 @@ const StyledAlert = styled.div`
   box-sizing: border-box;
   margin: 0;
   font-variant: tabular-nums;
-  line-height: 1.5;
   list-style: none;
   font-feature-settings: 'tnum';
   position: relative;
@@ -64,7 +63,10 @@ const StyledAlert = styled.div`
   align-content: center;
   align-items: flex-start;
   flex-direction: column;
-  padding: ${props => (props.description ? '15px 20px 5px 20px' : '10px 20px')};
+  padding: 0 20px;
+  height: 40px;
+  line-height: 40px;
+  justify-content: center;
   ${props => {
     let iconColor;
     let textColor;
@@ -111,26 +113,14 @@ const StyledAlert = styled.div`
       }
     `;
   }}
-
   .icon {
     left: 0px;
     margin-right: 10px;
   }
 
-  .description {
-    position: relative;
-    padding: ${props =>
-      props.showIcon ? '10px 15px 10px 30px' : '10px 15px 10px 0px'};
-    line-height: 1.5;
-    border-radius: ${borderRadius};
-    flex-direction: column;
-    align-items: start;
-    font-size: ${alertDescriptionMessageFontSize};
-  }
-
   .icon-close {
     position: absolute;
-    top: 15px;
+    top: 10px;
     right: 20px;
     overflow: hidden;
     background-color: transparent;
@@ -141,29 +131,42 @@ const StyledAlert = styled.div`
 
   .message {
     display: flex;
+    align-items: center;
     font-weight: ${fontWeightSemiBold};
     font-weight: ${props =>
       !props.message && props.description
         ? fontWeightNormal(props)
         : fontWeightSemiBold(props)};
     font-size: ${alertMessageFontSize};
-    .description {
-      position: relative;
-      padding: ${props =>
-        props.showIcon ? '0px 15px 10px 0px' : '0px 0px 10px 0px'};
-      line-height: 1.5;
-      border-radius: ${borderRadius};
-      flex-direction: column;
-      align-items: start;
-      font-size: ${alertDescriptionMessageFontSize};
-    }
   }
 
-  .description .alert-icon {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-  }
+  ${props =>
+    props.description &&
+    css`
+      height: auto;
+      line-height: normal;
+      padding: ${props => (!props.message ? '10px 15px' : '20px 15px')};
+      .description {
+        position: relative;
+        padding: ${props =>
+          props.showIcon ? '0px 0px 0px 30px' : '0px 0px 0px 0px'};
+        padding-left: ${props => !props.message && '0px'};
+        padding-top: ${props => props.message && '10px'};
+        line-height: 1.5;
+        border-radius: ${borderRadius};
+        flex-direction: column;
+        align-items: start;
+        font-size: ${alertDescriptionMessageFontSize};
+        .alert-icon {
+          position: absolute;
+          top: 10px;
+          left: 20px;
+        }
+      }
+      .icon-close {
+        top: 17px;
+      }
+    `}
 `;
 
 export { StyledAlert };

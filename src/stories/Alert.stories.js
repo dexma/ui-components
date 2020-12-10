@@ -16,15 +16,15 @@ export const alert = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Alert component used when you need to show messages to users.
+          Alerts visually highlight important content for the user.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Alert description="Basic" type="basic" showIcon />
+        <Alert message="Basic" type="basic" showIcon />
         <br />
-        <Alert description="Outline" type="outline" showIcon={false} />
+        <Alert message="Outline" type="outline" showIcon={false} />
         <br />
-        <Alert description="Success Tips" type="success" showIcon closable />
+        <Alert message="Success Tips" type="success" showIcon closable />
         <br />
         <Alert description="Informational Notes" type="info" showIcon />
         <br />
@@ -133,14 +133,19 @@ export const customAlert = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Alert component used when you need to show messages to users.
+          Alert component used when you need customs messages
         </Paragraph>
       </Cell>
       <Cell xs={12}>
         <Alert
           type="info"
-          description={
-            <span>
+          message={
+            <span
+              style={{
+                fontWeight: '400',
+                fontSize: '14px',
+              }}
+            >
               You have <strong>2</strong> Optimise datapoints left in your free
               trial.{' '}
               <span
@@ -159,8 +164,13 @@ export const customAlert = () => (
         <br />
         <Alert
           type="error"
-          description={
-            <span>
+          message={
+            <span
+              style={{
+                fontWeight: '400',
+                fontSize: '14px',
+              }}
+            >
               You have <strong>2</strong> Optimise datapoints left in your free
               trial.{' '}
               <span
@@ -179,8 +189,13 @@ export const customAlert = () => (
         <br />
         <Alert
           type="success"
-          description={
-            <span>
+          message={
+            <span
+              style={{
+                fontWeight: '400',
+                fontSize: '14px',
+              }}
+            >
               You have <strong>2</strong> Optimise datapoints left in your free
               trial.{' '}
               <span
