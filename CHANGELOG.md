@@ -1,3 +1,15 @@
+# [4.2.0](https://github.com/dexma/ui-components/compare/v4.1.0...v4.2.0) (2020-12-10)
+
+
+### Bug Fixes
+
+* **table:** z index related with select and fix checkbox styles ([4a2d782](https://github.com/dexma/ui-components/commit/4a2d782ee3f43281df81f0e1a2b6330010413ea3))
+
+
+### Features
+
+* **checkbox:** create the checkbox component ([65ca2ff](https://github.com/dexma/ui-components/commit/65ca2ff7f3b60ec40eedff42720d41e87e84ad0d))
+
 # [4.1.0](https://github.com/dexma/ui-components/compare/v4.0.2...v4.1.0) (2020-12-10)
 
 
