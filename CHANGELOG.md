@@ -1,3 +1,10 @@
+## [4.3.1](https://github.com/dexma/ui-components/compare/v4.3.0...v4.3.1) (2020-12-15)
+
+
+### Bug Fixes
+
+* **table:** add fix for the expanded tables ([b3253c3](https://github.com/dexma/ui-components/commit/b3253c30a907bd8c46365f4985ae33a97f7a2bee))
+
 # [4.3.0](https://github.com/dexma/ui-components/compare/v4.2.1...v4.3.0) (2020-12-15)
 
 
