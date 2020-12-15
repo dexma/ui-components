@@ -14,12 +14,41 @@ import Icon from './Icon';
 
 const propTypes = {
   /**
+   * Is the select disabled
+   */
+  isDisabled: PropTypes.bool,
+  /**
+   * Is the select in a state of loading (async)
+   */
+  isLoading: PropTypes.bool,
+  /**
+   * Whether to enable search functionality
+   */
+  isSearchable: PropTypes.bool,
+  /**
+   * Is the select value clearable
+   */
+  isClearable: PropTypes.bool,
+  /**
+   * Support multiple selected options
+   */
+  isMulti: PropTypes.bool,
+  /**
+   * Remove focus from the input when the user selects an option (handy for dismissing the keyboard on touch devices)
+   */
+  blurInputOnSelect: PropTypes.bool,
+  /**
+   * Maximum height of the menu before scrolling
+   */
+  maxMenuHeight: PropTypes.number,
+  /**
    * Theme json based
    */
   theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
+  isMulti: false,
   blurInputOnSelect: false,
   maxMenuHeight: 192,
   theme: theme,

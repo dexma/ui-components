@@ -364,6 +364,15 @@ const input = {
   height: getSize(inputHeight),
 };
 
+// FormControl
+// ==========================================================================
+
+const messageFontSize = pxToRem(12);
+
+const formControl = {
+  messageFontSize: getSize(messageFontSize),
+};
+
 // Progress
 // ==========================================================================
 
@@ -394,6 +403,7 @@ const theme = {
   tag,
   tab,
   input,
+  formControl,
   progress,
 };
 

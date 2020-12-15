@@ -162,3 +162,6 @@ export const progressFontSize = props =>
   propFromTheme(props, 'progress.fontSize');
 export const progressBackgroundColor = props =>
   propFromTheme(props, 'progress.backgroundColor');
+
+export const formControlMessageFontSize = props =>
+  propFromTheme(props, 'formControl.messageFontSize');
