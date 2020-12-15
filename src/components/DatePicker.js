@@ -128,6 +128,9 @@ export const DatePicker = props => {
   });
   const { periodOptions, periodDefault, periodLabel, language, theme } = props;
   const dateRangePickerProps = omit(props, [
+    'className',
+    'options',
+    'message',
     'autoFocus',
     'autoFocusEndDate',
     'initialStartDate',
