@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import {
   gray500,
   border,
+  primaryColor,
   borderRadius,
   inputHeight,
   inputFontSize,
@@ -13,8 +14,10 @@ export const getLoading = () => {
   return css`
     border: ${border};
     border-radius: ${borderRadius};
+    ${props => props.focused && `border-color: ${primaryColor(props)}`};
     input {
       padding-right: 40px;
+      border: none;
     }
     ${StyledSpinner} {
       position: absolute;
@@ -28,6 +31,7 @@ export const getIcon = () => {
   return css`
     border: ${border};
     border-radius: ${borderRadius};
+    ${props => props.focused && `border-color: ${primaryColor(props)}`};
     input {
       padding-left: 0;
       border: none;
@@ -61,6 +65,7 @@ const StyledInput = styled.div`
     flex: 1 1 auto;
     width: 100%;
     color: ${gray500};
+    ${props => props.focused && `border: 1px solid ${primaryColor(props)}`};
   }
   ${props => props.icon && getIcon};
   ${props => props.isLoading && getLoading};

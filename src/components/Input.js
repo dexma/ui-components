@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import omit from 'lodash/omit';
@@ -42,6 +42,10 @@ const propTypes = {
    */
   name: PropTypes.string,
   /**
+   * Callback onFocus
+   */
+  onFocus: PropTypes.func,
+  /**
    * Callback onChange
    */
   onChange: PropTypes.func,
@@ -55,8 +59,9 @@ const defaultProps = {
   theme: theme,
 };
 
-export const Input = props => {
-  const { icon, isLoading, children } = props;
+export const Input = forwardRef((props, ref) => {
+  const [focused, setFocused] = useState(false);
+  const { icon, isLoading, onFocus, onBlur, children } = props;
   const newProps = omit(props, [
     'placeholder',
     'id',
@@ -65,21 +70,44 @@ export const Input = props => {
     'type',
     'name',
     'onChange',
+    'onFocus',
+    'onBlur',
   ]);
-  const inputProps = omit(props, ['icon', 'isLoading', 'theme', 'children']);
+  const inputProps = omit(props, [
+    'icon',
+    'isLoading',
+    'theme',
+    'children',
+    'onFocus',
+    'onBlur',
+  ]);
+  const handleOnFocus = e => {
+    setFocused(true);
+    onFocus && onFocus(e);
+  };
+  const handleOnBlur = e => {
+    setFocused(false);
+    onBlur && onBlur(e);
+  };
   return (
-    <StyledInput data-testid="input" {...newProps}>
+    <StyledInput data-testid="input" focused={focused} {...newProps}>
       {icon && (
         <div className="icon-container">
           <Icon name={icon} size={20} color="gray500" />
         </div>
       )}
-      <input {...inputProps} />
+      <input
+        onFocus={handleOnFocus}
+        onBlur={handleOnBlur}
+        {...inputProps}
+        ref={ref}
+        data-testid="input-element"
+      />
       {isLoading && <Spinner size={20} />}
       {children && children}
     </StyledInput>
   );
-};
+});
 
 StyledInput.displayName = 'StyledInput';
 
