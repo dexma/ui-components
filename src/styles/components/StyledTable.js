@@ -12,6 +12,10 @@ import {
 import { getStyledPagination } from './StyledPagination';
 import { getStyledCheckBox } from './StyledCheckbox';
 
+import { StyledButton } from './StyledButton';
+
+const iconSize = '50px';
+
 const StyledTable = styled.div`
   .ant-table-wrapper {
     zoom: 1;
@@ -804,7 +808,7 @@ const StyledTable = styled.div`
   }
   .ant-table-middle > .ant-table-title,
   .ant-table-middle > .ant-table-footer {
-    padding: 12px 8px;
+    padding: 0.5rem 1rem;
   }
   .ant-table-middle
     > .ant-table-content
@@ -934,7 +938,7 @@ const StyledTable = styled.div`
     > .ant-table-tbody
     > tr
     > td {
-    padding: 12px 8px;
+    padding: 0.5rem 1rem;
   }
   .ant-table-middle tr.ant-table-expanded-row td > .ant-table-wrapper {
     margin: -12px -8px -13px;
@@ -1403,6 +1407,25 @@ const StyledTable = styled.div`
   ${getStyledPagination};
   .ant-table-selection-column {
     ${getStyledCheckBox};
+  }
+  .expanded-first-column {
+    position: relative;
+    padding-left: ${iconSize}!important;
+  }
+  tr.ant-table-expanded-row {
+    td:first-child:not(.expanded-first-column) {
+      padding: 0px !important;
+    }
+  }
+  ${StyledButton} {
+    position: absolute;
+    left: 10px;
+    padding: 0;
+    top: 0;
+    background: transparent;
+    &.button-expanded {
+      transform: rotate(-90deg);
+    }
   }
 `;
 

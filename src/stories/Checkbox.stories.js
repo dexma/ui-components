@@ -24,7 +24,11 @@ export const basic = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">Checkbox component.</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">
+          Checkboxes are used for a list of options where the user may select
+          multiple options, including all or none. They can be grouped
+          vertically or horizontally.
+        </Paragraph>
       </Cell>
       <Cell xs={12}>
         <CheckboxBasic />

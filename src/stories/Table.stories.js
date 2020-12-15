@@ -44,8 +44,7 @@ export const table = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Here we have dots for show loading part of the UI you can customize
-          with 2, 3 or 4 dot
+          Tables allow arranging and organising data into rows and columns.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -59,12 +58,6 @@ export const selection = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">
-          Here we have dots for show loading part of the UI you can customize
-          with 2, 3 or 4 dot
-        </Paragraph>
-      </Cell>
-      <Cell xs={12}>
         <Selection />
       </Cell>
     </Row>
@@ -77,26 +70,33 @@ const expandedRowRender = () => {
       title: 'Project details',
       dataIndex: 'project_details',
       key: 'project_details',
+      width: '25%',
     },
-    { title: 'Type', dataIndex: 'type', key: 'type' },
-    { title: 'Target', dataIndex: 'target', key: 'target' },
-    { title: 'Saved %', dataIndex: 'saved', key: 'saved' },
-    { title: 'Saved Total', dataIndex: 'saved_total', key: 'saved_total' },
-    { title: '', dataIndex: 'time_savings', key: 'time_savings' },
+    { title: 'Type', dataIndex: 'type', key: 'type', width: '20%' },
+    { title: 'Target', dataIndex: 'target', key: 'target', width: '11%' },
+    { title: 'Saved %', dataIndex: 'saved', key: 'saved', width: '14%' },
+    {
+      title: 'Saved Total',
+      dataIndex: 'saved_total',
+      key: 'saved_total',
+      width: '30%',
+    },
   ];
 
   const data = [];
-  for (let i = 0; i < 4; ++i) {
+  for (let i = 0; i < 6; ++i) {
     data.push({
+      key: i,
       project_details: i,
       type: 'Screem',
+      target: 50,
       saved: 'iOS',
       saved_total: '10.3.4.5654',
-      time_savings: 500,
     });
   }
   return (
     <Table
+      isExpanded
       columns={columns}
       dataSource={data}
       pagination={false}
@@ -116,12 +116,13 @@ export const nestedTable = () => {
     { title: 'Target', dataIndex: 'target', key: 'target' },
     { title: 'Saved %', dataIndex: 'saved', key: 'saved' },
     { title: 'Saved Total', dataIndex: 'saved_total', key: 'saved_total' },
-    { title: '', dataIndex: 'time_savings', key: 'time_savings' },
+    { title: 'Time Savings', dataIndex: 'time_savings', key: 'time_savings' },
   ];
 
   const data = [];
   for (let i = 0; i < 3; ++i) {
     data.push({
+      key: i,
       group_details: 'School',
       projects: i,
       target: '5.0%',
@@ -134,19 +135,13 @@ export const nestedTable = () => {
     <Grid fluid>
       <Row>
         <Cell xs={12}>
-          <Paragraph margin="1rem 0 1rem 0">
-            Here we have dots for show loading part of the UI you can customize
-            with 2, 3 or 4 dot
-          </Paragraph>
-        </Cell>
-        <Cell xs={12}>
           <Table
-            className="../components-table-demo-nested"
+            isExpanded
+            className="components-table-demo-nested"
             columns={columns}
             expandedRowRender={expandedRowRender}
             dataSource={data}
             pagination={false}
-            size="middle"
           />
         </Cell>
       </Row>

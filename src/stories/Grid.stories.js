@@ -8,6 +8,10 @@ import Paragraph from '../components/Paragraph';
 export default {
   title: 'Grid',
   component: Grid,
+  subcomponents: {
+    Row,
+    Cell,
+  },
 };
 
 const CellStyle = {
@@ -41,6 +45,8 @@ export const grid = () => (
           <Cell xs={2}>
             <div style={CellStyle}>2</div>
           </Cell>
+          <br /> <br />
+          <br />
           <Cell xs={3}>
             <div style={CellStyle}>3</div>
           </Cell>
@@ -93,6 +99,7 @@ export const offset = () => (
             <div style={CellStyle}>offset 6 - cell 6</div>
           </Cell>
         </Row>
+        <br />
         <Row>
           <Cell xsOffset={4} xs={8}>
             <div style={CellStyle}>offset 4 - cell 8</div>

@@ -35,8 +35,7 @@ export const select = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          A flexible and beautiful Select Input control for ReactJS with
-          multiselect, autocomplete, async and creatable support
+          Select is a form control for selecting a value from a set of options.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -99,11 +98,6 @@ export const clear = () => (
 export const noClear = () => (
   <Grid fluid>
     <Row>
-      <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">
-          Is the select value clearable with value option
-        </Paragraph>
-      </Cell>
       <Cell xs={12}>
         <Select value={options[0]} options={options} isClearable={false} />
       </Cell>

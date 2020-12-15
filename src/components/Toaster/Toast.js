@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import theme from '../../styles/theme';
 import { StyledToast } from '../../styles/components/StyledToast';
-import Icon from '../Icon';
+import Alert from '../Alert';
 
 export const ToastType = Object.freeze({
   INFO: 'INFO',
@@ -25,17 +25,16 @@ const defaultProps = {
 };
 
 export const Toast = ({ text, type, theme }) => {
-  const iconName = {
-    [ToastType.INFO]: 'circle_info',
-    [ToastType.SUCCESS]: 'circle_check',
-    [ToastType.WARNING]: 'circle_info',
-    [ToastType.ERROR]: 'circle_info',
+  const alertType = {
+    [ToastType.INFO]: 'info',
+    [ToastType.SUCCESS]: 'success',
+    [ToastType.WARNING]: 'warning',
+    [ToastType.ERROR]: 'error',
   }[type];
 
   return (
     <StyledToast theme={theme} type={type}>
-      <Icon name={iconName} size="large" />
-      <span>{text}</span>
+      <Alert type={alertType} description={text} showIcon />
     </StyledToast>
   );
 };
