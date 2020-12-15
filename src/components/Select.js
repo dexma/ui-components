@@ -4,7 +4,10 @@ import ReactSelect, { components } from 'react-select';
 import omit from 'lodash/omit';
 import { withTheme } from 'styled-components';
 
-import { StyledSelect } from '../styles/components/StyledSelect';
+import {
+  StyledSelect,
+  StyledSelectMultiValue,
+} from '../styles/components/StyledSelect';
 import theme from '../styles/theme';
 
 import Icon from './Icon';
@@ -59,6 +62,31 @@ const Option = props => {
   );
 };
 
+const MultiValue = (selectProps, props) => {
+  const background = selectProps.data.background || 'gray400';
+  const color = selectProps.data.color || 'white';
+  return (
+    <StyledSelectMultiValue background={background} color={color} {...props}>
+      <components.MultiValue {...selectProps} />
+    </StyledSelectMultiValue>
+  );
+};
+
+const MultiValueRemove = selectProps => {
+  const color = selectProps.data.color || 'white';
+  return (
+    <components.MultiValueRemove {...selectProps}>
+      <Icon
+        className="icon-close"
+        name="close"
+        size="small"
+        data-testid="select-clear-icon"
+        color={color}
+      />
+    </components.MultiValueRemove>
+  );
+};
+
 export const Select = props => {
   const { theme, isMulti } = props;
   const defaultValueSelect = props.defaultValue
@@ -84,6 +112,8 @@ export const Select = props => {
           Input: selectProps =>
             SelectInput({ ...selectProps, name: props.name }),
           Option: selectProps => Option({ ...selectProps, name: props.name }),
+          MultiValue: selectProps => MultiValue(selectProps, props),
+          MultiValueRemove: selectProps => MultiValueRemove(selectProps),
         }}
         {...selectProps}
       />
