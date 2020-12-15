@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/dexma/ui-components/compare/v4.2.1...v4.3.0) (2020-12-15)
+
+
+### Features
+
+* **form-control:** add form control component ([bf7305f](https://github.com/dexma/ui-components/commit/bf7305f7e9f64bfa79ebd69646844ffcca7622aa))
+
 ## [4.2.1](https://github.com/dexma/ui-components/compare/v4.2.0...v4.2.1) (2020-12-10)
 
 
