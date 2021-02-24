@@ -1,3 +1,10 @@
+## [4.3.2](https://github.com/dexma/ui-components/compare/v4.3.1...v4.3.2) (2021-02-24)
+
+
+### Bug Fixes
+
+* **chart:** add the decimalPoint prop ([abbe134](https://github.com/dexma/ui-components/commit/abbe1348921c1fa7434136e553073aff5818e7aa))
+
 ## [4.3.1](https://github.com/dexma/ui-components/compare/v4.3.0...v4.3.1) (2020-12-15)
 
 
