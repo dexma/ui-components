@@ -24,6 +24,10 @@ addExportData(Highcharts);
 
 const propTypes = {
   /**
+   * The default decimal point used in the Highcharts.numberFormat method unless otherwise specified in the function arguments.
+   */
+  decimalPoint: PropTypes.string,
+  /**
    * The default thousands separator used in the Highcharts.numberFormat method unless otherwise specified in the function arguments. Defaults to a single space character, which is recommended in ISO 31-0 and works across Anglo-American and continental European languages
    */
   thousandsSep: PropTypes.string,
@@ -54,6 +58,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  decimalPoint: '.',
   thousandsSep: ' ',
   numericSymbols: ['k', 'M', 'G', 'T', 'P', 'E'],
   months: [
@@ -150,6 +155,7 @@ const Chart = forwardRef((props, ref) => {
     if (!chartRef.current) {
       Highcharts.setOptions({
         lang: {
+          decimalPoint: props.decimalPoint,
           thousandsSep: props.thousandsSep,
           numericSymbols: props.numericSymbols,
           months: props.months,
