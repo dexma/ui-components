@@ -37,6 +37,7 @@ export { default as Modal } from './components/Modal';
 export { default as Pagination } from './components/Pagination';
 export { default as Paragraph } from './components/Paragraph';
 export { default as Progress } from './components/Progress';
+export { default as Result } from './components/Result';
 export { default as Row } from './components/Row';
 export { default as Select } from './components/Select';
 export { default as Spinner } from './components/Spinner';
