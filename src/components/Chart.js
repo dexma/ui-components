@@ -5,7 +5,7 @@ import React, {
   useImperativeHandle,
 } from 'react';
 import PropTypes from 'prop-types';
-import { withTheme } from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 
 import Highcharts from 'highcharts';
 import addSankeyModule from 'highcharts/modules/sankey';
@@ -15,6 +15,7 @@ import addExportData from 'highcharts/modules/export-data';
 import boost from 'highcharts/modules/boost';
 
 import theme from '../styles/theme';
+import { StyledResult } from '../styles/components/StyledResult';
 
 boost(Highcharts);
 addSankeyModule(Highcharts);
@@ -55,6 +56,18 @@ const propTypes = {
    * Call a function when the charts is mounted, helpful when use multiple ref
    */
   callback: PropTypes.func,
+  /**
+   * State to show/hide loading
+   */
+  isLoading: PropTypes.bool,
+  /**
+   * State to show/hide error
+   */
+  showError: PropTypes.bool,
+  /**
+   * The content of the error normally will be a Result component
+   */
+  errorContent: PropTypes.node,
 };
 
 const defaultProps = {
@@ -98,6 +111,8 @@ const defaultProps = {
     'Friday',
     'Saturday',
   ],
+  showError: false,
+  isLoading: false,
   theme: theme,
 };
 
@@ -148,32 +163,137 @@ const defaultOptions = {
   },
 };
 
+const StyledChartLoading = styled.div`
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  height: 400px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ChartLoading = () => (
+  <StyledChartLoading data-testid="chart-loading">
+    <svg
+      width="210"
+      height="210"
+      preserveAspectRatio="none"
+      viewBox="0 0 210 210"
+    >
+      <rect
+        width="100%"
+        height="100%"
+        fill='url("#fill")'
+        clipPath="url(#clip-path)"
+      ></rect>
+      <defs>
+        <clipPath id="clip-path">
+          <rect width="1" height="1" x="156" y="89" rx="0" ry="0"></rect>
+          <rect width="9" height="27" x="62" y="103" rx="0" ry="0"></rect>
+          <rect width="9" height="72" x="89" y="60" rx="0" ry="0"></rect>
+          <rect width="9" height="43" x="115" y="87" rx="0" ry="0"></rect>
+          <rect width="9" height="60" x="140" y="71" rx="0" ry="0"></rect>
+          <rect width="140" height="9" x="35" y="153" rx="0" ry="0"></rect>
+          <rect width="184" height="9" x="14" y="30" rx="0" ry="0"></rect>
+          <rect width="9" height="154" x="190" y="30" rx="0" ry="0"></rect>
+          <rect width="184" height="9" x="14" y="174" rx="0" ry="0"></rect>
+          <rect width="9" height="154" x="14" y="30" rx="0" ry="0"></rect>
+        </clipPath>
+        <linearGradient id="fill">
+          <stop offset="0.6" stopColor="#f3f3f3">
+            <animate
+              attributeName="offset"
+              dur="2s"
+              keyTimes="0; 0.25; 1"
+              repeatCount="indefinite"
+              values="-2; -2; 1"
+            ></animate>
+          </stop>
+          <stop offset="1.6" stopColor="#ecebeb">
+            <animate
+              attributeName="offset"
+              dur="2s"
+              keyTimes="0; 0.25; 1"
+              repeatCount="indefinite"
+              values="-1; -1; 2"
+            ></animate>
+          </stop>
+          <stop offset="2.6" stopColor="#f3f3f3">
+            <animate
+              attributeName="offset"
+              dur="2s"
+              keyTimes="0; 0.25; 1"
+              repeatCount="indefinite"
+              values="0; 0; 3"
+            ></animate>
+          </stop>
+        </linearGradient>
+      </defs>
+    </svg>
+  </StyledChartLoading>
+);
+
+const StyledChartError = styled.div`
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  height: 400px;
+  align-items: center;
+  justify-content: center;
+  ${StyledResult} {
+    margin: 0;
+  }
+`;
+
+const ChartError = props => (
+  <StyledChartError data-testid="chart-error" {...props} />
+);
+
+const StyledChart = styled.div`
+  .chart {
+    display: ${props => (!props.$loading && !props.$error ? 'block' : 'none')};
+  }
+`;
+
 const Chart = forwardRef((props, ref) => {
+  const {
+    decimalPoint,
+    thousandsSep,
+    numericSymbols,
+    months,
+    shortMonths,
+    weekdays,
+    options,
+    callback,
+    isLoading,
+    showError,
+    errorContent,
+  } = props;
   const containerRef = useRef();
   const chartRef = useRef();
   useEffect(() => {
     if (!chartRef.current) {
       Highcharts.setOptions({
         lang: {
-          decimalPoint: props.decimalPoint,
-          thousandsSep: props.thousandsSep,
-          numericSymbols: props.numericSymbols,
-          months: props.months,
-          shortMonths: props.shortMonths,
-          weekdays: props.weekdays,
+          decimalPoint,
+          thousandsSep,
+          numericSymbols,
+          months,
+          shortMonths,
+          weekdays,
         },
       });
       chartRef.current = Highcharts.chart(
         containerRef.current,
         {
           ...defaultOptions,
-          ...props.options,
+          ...options,
         },
-        props.callback ? props.callback : undefined
+        callback || undefined
       );
       chartRef.current.update(getStyledChart());
     } else {
-      chartRef.current.update(props.options);
+      chartRef.current.update(options);
     }
   });
 
@@ -197,7 +317,16 @@ const Chart = forwardRef((props, ref) => {
     []
   );
 
-  return <div data-testid="chart" ref={containerRef} />;
+  const loading = isLoading && !showError;
+  const error = !isLoading && showError && errorContent;
+
+  return (
+    <StyledChart $loading={loading} $error={error}>
+      {loading && <ChartLoading />}
+      {error && <ChartError>{errorContent}</ChartError>}
+      <div className="chart" data-testid="chart" ref={containerRef} />
+    </StyledChart>
+  );
 });
 
 Chart.propTypes = propTypes;

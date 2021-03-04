@@ -5,6 +5,7 @@ import Row from '../components/Row';
 import Paragraph from '../components/Paragraph';
 import Cell from '../components/Cell';
 import Chart from '../components/Chart';
+import Button from '../components/Button';
 
 import {
   mockBasicArea,
@@ -16,6 +17,7 @@ import {
 import mvConsumptionDiscreteChart from '../../test/mock/mvConsumptionDiscreteChart';
 import mvConsumptionAccumulatedTotalChart from '../../test/mock/mvConsumptionAccumulatedTotalChart';
 import mvSavingsAccumulatedPercentageChart from '../../test/mock/mvSavingsAccumulatedPercentageChart';
+import Result from '../components/Result';
 
 export default {
   title: 'Chart',
@@ -45,6 +47,65 @@ export const mvExample = () => (
           Ahorros porcentuales acumulados vs objetivo - Electricidad
         </Paragraph>
         <Chart options={mvSavingsAccumulatedPercentageChart} />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const chartLoading = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">Basic area chart loading</Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Chart options={mockBasicArea} isLoading />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const chartError = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Basic area chart with Result variant error
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Chart
+          options={mockBasicArea}
+          showError
+          errorContent={
+            <Result
+              variant="error"
+              title="Submission Failed"
+              info="Please check and modify the following information before resubmitting."
+              content={<Button variant="destructive" text="Cancel" />}
+            />
+          }
+        />
+      </Cell>
+    </Row>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Basic area chart with Result variant success
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Chart
+          options={mockBasicArea}
+          showError
+          errorContent={
+            <Result
+              variant="success"
+              title="Submission Success"
+              info="Please check and modify the following information before resubmitting."
+            />
+          }
+        />
       </Cell>
     </Row>
   </Grid>
