@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/dexma/ui-components/compare/v4.3.2...v4.4.0) (2021-03-04)
+
+
+### Features
+
+* **result:** new result component ([4ec9f3a](https://github.com/dexma/ui-components/commit/4ec9f3ad7b6980f068af29420a5aafd2303ff7ce))
+
 ## [4.3.2](https://github.com/dexma/ui-components/compare/v4.3.1...v4.3.2) (2021-02-24)
 
 
