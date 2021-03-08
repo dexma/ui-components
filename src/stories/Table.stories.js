@@ -1,10 +1,12 @@
 import React from 'react';
+
 import Grid from '../components/Grid';
 import Cell from '../components/Cell';
 import Row from '../components/Row';
 import Paragraph from '../components/Paragraph';
 import { Table } from '../components/Table';
 import { columnsTable, dataTable } from '../../test/mock/Table';
+import Result from '../components/Result';
 
 export default {
   title: 'Table',
@@ -49,6 +51,43 @@ export const table = () => (
       </Cell>
       <Cell xs={12}>
         <Table dataSource={dataTable} columns={columnsTable} />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const loading = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">Table loading</Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Table dataSource={dataTable} columns={columnsTable} isLoading />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const error = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">Table error</Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Table
+          dataSource={dataTable}
+          columns={columnsTable}
+          showError
+          errorContent={
+            <Result
+              variant="error"
+              title="Error data"
+              info="Please check and modify the following information before resubmitting."
+            />
+          }
+        />
       </Cell>
     </Row>
   </Grid>

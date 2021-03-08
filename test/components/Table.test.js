@@ -1,7 +1,8 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
 import Table from '../../src/components/Table';
+import Result from '../../src/components/Result';
 
 const dataSource = [
   {
@@ -38,8 +39,32 @@ const columns = [
 ];
 
 describe('<Table>', () => {
-  it('Should render the correct component', () => {
-    const table = mount(<Table dataSource={dataSource} columns={columns}/>);
-    expect(table.find('StyledTable').length).toEqual(1);
+  it('Should render table component', () => {
+    render(<Table dataSource={dataSource} columns={columns} />);
+    expect(screen.getByTestId('table')).toBeTruthy();
+  });
+  it('Should render loading component', () => {
+    render(<Table dataSource={dataSource} columns={columns} isLoading />);
+    expect(screen.getByTestId('table-loading')).toBeTruthy();
+  });
+  it('Should render loading component', () => {
+    render(
+      <Table
+        dataSource={dataSource}
+        columns={columns}
+        showError
+        errorContent={
+          <Result
+            variant="error"
+            title="Error table"
+            info="Test info table error"
+          />
+        }
+      />
+    );
+    expect(screen.getByTestId('result-error')).toBeTruthy();
+    expect(screen.getByTestId('table-error')).toBeTruthy();
+    expect(screen.getByText('Error table')).toBeTruthy();
+    expect(screen.getByText('Test info table error')).toBeTruthy();
   });
 });
