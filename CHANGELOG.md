@@ -1,3 +1,10 @@
+## [4.4.1](https://github.com/dexma/ui-components/compare/v4.4.0...v4.4.1) (2021-03-09)
+
+
+### Bug Fixes
+
+* **select:** add ref hook ([0f6df42](https://github.com/dexma/ui-components/commit/0f6df42642cd8e57a1af41c1e0173e8111f4837f))
+
 # [4.4.0](https://github.com/dexma/ui-components/compare/v4.3.2...v4.4.0) (2021-03-04)
 
 
