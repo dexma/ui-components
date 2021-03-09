@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import ReactSelect, { components } from 'react-select';
 import omit from 'lodash/omit';
@@ -116,7 +116,7 @@ const MultiValueRemove = selectProps => {
   );
 };
 
-export const Select = props => {
+export const Select = forwardRef((props, ref) => {
   const { theme, isMulti } = props;
   const defaultValueSelect = props.defaultValue
     ? props.defaultValue.label
@@ -132,6 +132,7 @@ export const Select = props => {
       data-testid="select"
     >
       <ReactSelect
+        ref={ref}
         classNamePrefix="select-styled"
         optionClassName="select-option"
         components={{
@@ -148,7 +149,7 @@ export const Select = props => {
       />
     </StyledSelect>
   );
-};
+});
 
 StyledSelect.displayName = 'StyledSelect';
 
