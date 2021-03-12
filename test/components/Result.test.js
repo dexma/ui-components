@@ -43,4 +43,9 @@ describe('<Result>', () => {
     render(<Result variant="success" title="Test" content={mockContent}/>);
     expect(screen.getByText("Content test")).toBeTruthy();
   });
+  it('Should render a element passed as icon correct', () => {
+    const mockContent = <Button text="Content test"/>
+    render(<Result variant="success" title="Test" iconElement={mockContent}/>);
+    expect(screen.getByText("Content test")).toBeTruthy();
+  });
 });

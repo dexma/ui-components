@@ -33,6 +33,18 @@ const propTypes = {
    */
   variant: PropTypes.oneOf(Object.keys(RESULT_VARIANT)).isRequired,
   /**
+   * Size of the icon inside result
+   */
+  size: PropTypes.number,
+  /**
+   * Set the icon <a href="https://dexma.github.io/ui-components/?path=/docs/icon--sizes#icons">Icons</a>:
+   */
+  icon: PropTypes.string,
+  /**
+   * Pass an element to render
+   */
+  iconElement: PropTypes.node,
+  /**
    * Theme json based
    */
   theme: PropTypes.shape({}),
@@ -41,6 +53,7 @@ const propTypes = {
 const defaultProps = {
   theme: theme,
   variant: 'success',
+  size: 72,
 };
 
 const getIcon = variant => {
@@ -74,7 +87,7 @@ const getIcon = variant => {
 };
 
 export const Result = props => {
-  const { title, info, variant, content } = props;
+  const { title, info, variant, content, size, icon, iconElement } = props;
   const { iconName, iconColor } = getIcon(variant);
   return (
     <StyledResult
@@ -84,12 +97,14 @@ export const Result = props => {
       {...props}
     >
       <Row className="result-row icon">
-        <Icon
-          name={iconName}
-          size={72}
-          color={iconColor}
-          data-testid={`icon_${iconName}`}
-        />
+        {iconElement || (
+          <Icon
+            name={icon || iconName}
+            size={size}
+            color={iconColor}
+            data-testid={`icon_${iconName}`}
+          />
+        )}
       </Row>
       {title && (
         <Row className="result-row title">
