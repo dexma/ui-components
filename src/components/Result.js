@@ -13,6 +13,7 @@ const RESULT_VARIANT = Object.freeze({
   warning: 'warning',
   error: 'error',
   deleted: 'deleted',
+  default: 'default',
 });
 
 const propTypes = {
@@ -52,7 +53,7 @@ const propTypes = {
 
 const defaultProps = {
   theme: theme,
-  variant: 'success',
+  variant: RESULT_VARIANT.default,
   size: 72,
 };
 
@@ -79,6 +80,10 @@ const getIcon = variant => {
     case RESULT_VARIANT.deleted:
       iconName = 'delete';
       iconColor = 'red';
+      break;
+    case RESULT_VARIANT.default:
+      iconName = 'vader';
+      iconColor = 'gray300';
       break;
     default:
       break;

@@ -19,6 +19,12 @@ export const result = () => (
         <Paragraph margin="1rem 0 1rem 0">Result</Paragraph>
       </Cell>
       <Result
+        variant="default"
+        title="Something went wrong"
+        info="We´ve been notified of the problem and are doing our best to ensure it does not happen again."
+        icon="bot-dead"
+      />
+      <Result
         variant="success"
         title="Successfully Purchased Cloud Server ECS!"
         info="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
@@ -53,6 +59,16 @@ export const content = () => (
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">Result with content</Paragraph>
       </Cell>
+      <Result
+        variant="deleted"
+        title="Are you sure you want to delete?"
+        content={
+          <>
+            <Button variant="destructive" text="Yes" />
+            <Button variant="secondary" text="No" />
+          </>
+        }
+      />
       <Result
         variant="success"
         title="Successfully Purchased Cloud Server ECS!"
