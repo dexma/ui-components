@@ -107,7 +107,7 @@ export const Result = props => {
             name={icon || iconName}
             size={size}
             color={iconColor}
-            data-testid={`icon_${iconName}`}
+            data-testid={`icon_${icon || iconName}`}
           />
         )}
       </Row>
