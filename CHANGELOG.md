@@ -1,3 +1,10 @@
+## [4.4.2](https://github.com/dexma/ui-components/compare/v4.4.1...v4.4.2) (2021-03-14)
+
+
+### Bug Fixes
+
+* **result:** data test id ([437e591](https://github.com/dexma/ui-components/commit/437e591b5ba8bc722b2b50ce6d98e4d46537fb8b))
+
 ## [4.4.1](https://github.com/dexma/ui-components/compare/v4.4.0...v4.4.1) (2021-03-09)
 
 
