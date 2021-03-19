@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/dexma/ui-components/compare/v4.4.2...v4.5.0) (2021-03-19)
+
+
+### Features
+
+* **section:** add section data component ([c252a25](https://github.com/dexma/ui-components/commit/c252a25ea0aaf75f9ffd649c2235aa8ced9af935))
+
 ## [4.4.2](https://github.com/dexma/ui-components/compare/v4.4.1...v4.4.2) (2021-03-14)
 
 
