@@ -51,6 +51,7 @@ export { default as Toaster } from './components/Toaster/Toaster';
 export { default as ToasterContext } from './components/Toaster/ToasterContext';
 export { default as ToastType } from './components/Toaster/Toast';
 export { default as Tooltip } from './components/Tooltip';
+export { default as SectionData } from './components/Section/SectionData';
 
 export {
   ISO_FORMAT,
