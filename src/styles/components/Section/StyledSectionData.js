@@ -19,7 +19,7 @@ const StyledSectionData = styled(Row)`
     }
     .section-buttons {
       text-align: right;
-      flex: ${props => (!props.title ? '0 0' : '1 1 ')} auto;
+      flex: ${props => (!props.title ? '1 1' : '0 0')} auto;
     }
   }
   .loading {
