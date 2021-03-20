@@ -1,3 +1,10 @@
+## [4.5.2](https://github.com/dexma/ui-components/compare/v4.5.1...v4.5.2) (2021-03-20)
+
+
+### Bug Fixes
+
+* **result:** fix style buttons ([7c89b10](https://github.com/dexma/ui-components/commit/7c89b103a07f05b9e87b55f873e9ceb2223af849))
+
 ## [4.5.1](https://github.com/dexma/ui-components/compare/v4.5.0...v4.5.1) (2021-03-20)
 
 
