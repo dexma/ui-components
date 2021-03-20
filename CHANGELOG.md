@@ -1,3 +1,10 @@
+## [4.5.1](https://github.com/dexma/ui-components/compare/v4.5.0...v4.5.1) (2021-03-20)
+
+
+### Bug Fixes
+
+* **section:** fix table and chart flow ([97eac89](https://github.com/dexma/ui-components/commit/97eac8958300d2ee06b8be7d01615b3d650b4f8e))
+
 # [4.5.0](https://github.com/dexma/ui-components/compare/v4.4.2...v4.5.0) (2021-03-19)
 
 
