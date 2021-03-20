@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import omit from 'lodash/omit';
@@ -49,7 +49,7 @@ const defaultProps = {
   theme: theme,
 };
 
-export const SectionData = props => {
+export const SectionData = forwardRef((props, ref) => {
   const {
     type,
     title,
@@ -75,53 +75,56 @@ export const SectionData = props => {
     <StyledSectionData
       theme={theme}
       data-testid={`section-data-${type}`}
-      type={type}
+      title={title}
+      hasButtons={hasButtons}
     >
-      {title && (
-        <Cell className="title">
-          <Heading type="h4" text={title} />
-        </Cell>
-      )}
-      {hasButtons && (
-        <Cell className="buttons">
-          {hasExportExcel && (
-            <Button
-              variant="icon-secondary"
-              iconBefore="export_file"
-              onClick={onExportExcel}
-              isCircle
-              data-testid="excel"
-              isDisabled={isLoading}
-            />
-          )}
-          {hasExportImage && (
-            <Button
-              variant="icon-secondary"
-              iconBefore="image"
-              onClick={onExportImage}
-              isCircle
-              data-testid="image"
-              isDisabled={isLoading}
-            />
-          )}
-          {hasAddReport && (
-            <Button
-              variant="icon-secondary"
-              iconBefore="report_add"
-              onClick={onAddReport}
-              isCircle
-              data-testid="report"
-              isDisabled={isLoading}
-            />
-          )}
-        </Cell>
-      )}
+      <div className="section-top">
+        {title && (
+          <Cell className="section-title">
+            <Heading type="h4" text={title} />
+          </Cell>
+        )}
+        {hasButtons && (
+          <Cell className="section-buttons">
+            {hasExportExcel && (
+              <Button
+                variant="icon-secondary"
+                iconBefore="export_file"
+                onClick={onExportExcel}
+                isCircle
+                data-testid="excel"
+                isDisabled={isLoading}
+              />
+            )}
+            {hasExportImage && (
+              <Button
+                variant="icon-secondary"
+                iconBefore="image"
+                onClick={onExportImage}
+                isCircle
+                data-testid="image"
+                isDisabled={isLoading}
+              />
+            )}
+            {hasAddReport && (
+              <Button
+                variant="icon-secondary"
+                iconBefore="report_add"
+                onClick={onAddReport}
+                isCircle
+                data-testid="report"
+                isDisabled={isLoading}
+              />
+            )}
+          </Cell>
+        )}
+      </div>
       <Cell xs={12}>
-        <LayoutMainComponent {...layoutMainComponentProps} />
+        <LayoutMainComponent ref={ref} {...layoutMainComponentProps} />
       </Cell>
     </StyledSectionData>
   );
-};
+});
 
 StyledSectionData.displayName = 'StyledSectionData';
 

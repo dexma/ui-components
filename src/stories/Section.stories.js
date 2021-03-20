@@ -21,15 +21,37 @@ export const sectionDataChart = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">Section data for chart</Paragraph>
-      </Cell>
-      <Cell xs={12}>
         <SectionData
           type="chart"
           title="Chart layout title"
           onExportExcel={() => console.log('click onExportExcel')}
           onExportImage={() => console.log('click onExportImage')}
           onAddReport={() => console.log('click onAddReport')}
+          options={mockBasicArea}
+        />
+      </Cell>
+    </Row>
+    <Row>
+      <Cell xs={12}>
+        <SectionData
+          type="chart"
+          onExportExcel={() => console.log('click onExportExcel')}
+          onExportImage={() => console.log('click onExportImage')}
+          onAddReport={() => console.log('click onAddReport')}
+          options={mockBasicArea}
+        />
+      </Cell>
+    </Row>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Section data for chart no buttons
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <SectionData
+          type="chart"
+          title="Chart layout title"
           options={mockBasicArea}
         />
       </Cell>

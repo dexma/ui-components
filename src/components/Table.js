@@ -60,10 +60,10 @@ const TableLoading = () => (
         width="100%"
         height="100%"
         fill='url("#fill")'
-        clipPath="url(#clip-path)"
+        clipPath="url(#clip-path-table)"
       ></rect>
       <defs>
-        <clipPath id="clip-path">
+        <clipPath id="clip-path-table">
           <rect width="9" height="158" x="10" y="26" rx="0" ry="0"></rect>
           <rect width="1" height="88" x="107" y="73" rx="0" ry="0"></rect>
           <rect width="190" height="9" x="10" y="26" rx="0" ry="0"></rect>
@@ -130,6 +130,7 @@ export const Table = props => {
     isExpanded,
     expandedRowRender,
     columns,
+    dataSource,
     isLoading,
     showError,
     errorContent,
@@ -162,12 +163,13 @@ export const Table = props => {
 
   const loading = isLoading && !showError;
   const error = !isLoading && showError && errorContent;
+  const showTable = !loading && !error && columns && dataSource;
 
   return (
     <StyledTable data-testid="table" theme={theme}>
       {loading && <TableLoading />}
       {error && <TableError> {errorContent} </TableError>}
-      {!loading && !error && (
+      {showTable && (
         <TableAntDesign
           expandIconAsCell={false}
           expandIcon={expandedRowRender && getExpandedIcon}

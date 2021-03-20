@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
+import omit from 'lodash/omit';
 
 import Highcharts from 'highcharts';
 import addSankeyModule from 'highcharts/modules/sankey';
@@ -184,10 +185,10 @@ const ChartLoading = () => (
         width="100%"
         height="100%"
         fill='url("#fill")'
-        clipPath="url(#clip-path)"
+        clipPath="url(#clip-path-chart)"
       ></rect>
       <defs>
-        <clipPath id="clip-path">
+        <clipPath id="clip-path-chart">
           <rect width="1" height="1" x="156" y="89" rx="0" ry="0"></rect>
           <rect width="9" height="27" x="62" y="103" rx="0" ry="0"></rect>
           <rect width="9" height="72" x="89" y="60" rx="0" ry="0"></rect>
@@ -250,12 +251,12 @@ const ChartError = props => (
 );
 
 const StyledChart = styled.div`
-  .chart {
-    display: ${props => (!props.$loading && !props.$error ? 'block' : 'none')};
+  .highcharts-exporting-group {
+    display: none !important;
   }
 `;
 
-const Chart = forwardRef((props, ref) => {
+const HighchartsReact = forwardRef((props, ref) => {
   const {
     decimalPoint,
     thousandsSep,
@@ -265,9 +266,6 @@ const Chart = forwardRef((props, ref) => {
     weekdays,
     options,
     callback,
-    isLoading,
-    showError,
-    errorContent,
   } = props;
   const containerRef = useRef();
   const chartRef = useRef();
@@ -296,7 +294,6 @@ const Chart = forwardRef((props, ref) => {
       chartRef.current.update(options);
     }
   });
-
   useEffect(() => {
     return () => {
       if (chartRef.current) {
@@ -305,7 +302,6 @@ const Chart = forwardRef((props, ref) => {
       }
     };
   }, []);
-
   useImperativeHandle(
     ref,
     () => ({
@@ -316,15 +312,43 @@ const Chart = forwardRef((props, ref) => {
     }),
     []
   );
+  const chartProps = omit(props, [
+    'decimalPoint',
+    'thousandsSep',
+    'thousandsSeparator',
+    'numericSymbols',
+    'months',
+    'shortMonths',
+    'weekdays',
+    'options',
+    'callback',
+    'theme',
+  ]);
+  return (
+    <div
+      ref={containerRef}
+      className="chart"
+      data-testid="chart"
+      {...chartProps}
+    />
+  );
+});
 
+const Chart = forwardRef((props, ref) => {
+  const { options, isLoading, showError, errorContent } = props;
   const loading = isLoading && !showError;
   const error = !isLoading && showError && errorContent;
-
+  const showChart = !loading && !error && options;
+  const highchartsReactProps = omit(props, [
+    'isLoading',
+    'showError',
+    'errorContent',
+  ]);
   return (
-    <StyledChart $loading={loading} $error={error}>
+    <StyledChart>
       {loading && <ChartLoading />}
       {error && <ChartError>{errorContent}</ChartError>}
-      <div className="chart" data-testid="chart" ref={containerRef} />
+      {showChart && <HighchartsReact ref={ref} {...highchartsReactProps} />}
     </StyledChart>
   );
 });
