@@ -15,7 +15,7 @@ import { StyledSectionData } from '../../styles/components/Section/StyledSection
 
 const propTypes = {
   /**
-   * Type of layout
+   * Type of layout, here are the options for the <a href="https://dexma.github.io/ui-components/?path=/docs/chart">chart</a> and the <a href="https://dexma.github.io/ui-components/?path=/docs/table">table</a> that you can pass into this component
    */
   type: PropTypes.oneOf(['chart', 'table']).isRequired,
   /**
@@ -75,8 +75,8 @@ export const SectionData = forwardRef((props, ref) => {
     <StyledSectionData
       theme={theme}
       data-testid={`section-data-${type}`}
-      title={title}
-      hasButtons={hasButtons}
+      title={!!title}
+      hasButtons={!!hasButtons}
     >
       <div className="section-top">
         {title && (
