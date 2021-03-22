@@ -1,3 +1,10 @@
+## [4.5.3](https://github.com/dexma/ui-components/compare/v4.5.2...v4.5.3) (2021-03-22)
+
+
+### Bug Fixes
+
+* **section:** change the way we render main data component ([1d0f597](https://github.com/dexma/ui-components/commit/1d0f5978ff4417b4f211340399d038a6ea522deb))
+
 ## [4.5.2](https://github.com/dexma/ui-components/compare/v4.5.1...v4.5.2) (2021-03-20)
 
 
