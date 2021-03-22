@@ -1,23 +1,16 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import omit from 'lodash/omit';
 
 import Cell from '../Cell';
 import Heading from '../Heading';
 import Button from '../Button';
-import Chart from '../Chart';
-import Table from '../Table';
 
 import theme from '../../styles/theme';
 
 import { StyledSectionData } from '../../styles/components/Section/StyledSectionData';
 
 const propTypes = {
-  /**
-   * Type of layout, here are the options for the <a href="https://dexma.github.io/ui-components/?path=/docs/chart">chart</a> and the <a href="https://dexma.github.io/ui-components/?path=/docs/table">table</a> that you can pass into this component
-   */
-  type: PropTypes.oneOf(['chart', 'table']).isRequired,
   /**
    * Title of the layout
    */
@@ -41,41 +34,37 @@ const propTypes = {
   /**
    * Theme json based
    */
+  children: PropTypes.node,
+  /**
+   * Theme json based
+   */
   theme: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  type: 'chart',
+  isLoading: false,
   theme: theme,
 };
 
-export const SectionData = forwardRef((props, ref) => {
+export const SectionData = props => {
   const {
-    type,
     title,
     isLoading,
     onExportExcel,
     onExportImage,
     onAddReport,
+    children,
     theme,
   } = props;
   const hasExportExcel = typeof onExportExcel === 'function';
   const hasExportImage = typeof onExportImage === 'function';
   const hasAddReport = typeof onAddReport === 'function';
   const hasButtons = hasExportExcel || hasExportImage || hasAddReport;
-  const LayoutMainComponent = type === 'chart' ? Chart : Table;
-  const layoutMainComponentProps = omit(props, [
-    'type',
-    'title',
-    'onExportExcel',
-    'onExportImage',
-    'onAddReport',
-  ]);
   return (
     <StyledSectionData
       theme={theme}
-      data-testid={`section-data-${type}`}
-      title={!!title}
+      data-testid="section-data"
+      $title={!!title}
       hasButtons={!!hasButtons}
     >
       <div className="section-top">
@@ -119,12 +108,10 @@ export const SectionData = forwardRef((props, ref) => {
           </Cell>
         )}
       </div>
-      <Cell xs={12}>
-        <LayoutMainComponent ref={ref} {...layoutMainComponentProps} />
-      </Cell>
+      <Cell xs={12}>{children && children}</Cell>
     </StyledSectionData>
   );
-});
+};
 
 StyledSectionData.displayName = 'StyledSectionData';
 
