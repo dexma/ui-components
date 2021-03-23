@@ -18,7 +18,7 @@ const defaultProps = {
   theme: theme,
 };
 
-export const Tabs = props => {
+export const Tabs = withTheme(props => {
   const { theme } = props;
   const tabsProps = omit(props, ['theme']);
   return (
@@ -29,7 +29,7 @@ export const Tabs = props => {
       />
     </StyledTabs>
   );
-};
+});
 
 export const TabPane = props => {
   return <TabsAntDesign.TabPane {...props} />;
@@ -39,5 +39,3 @@ StyledTabs.displayName = 'StyledTabs';
 
 Tabs.defaultProps = propTypes;
 Tabs.defaultProps = defaultProps;
-
-export default withTheme(Tabs);
