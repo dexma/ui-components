@@ -1,3 +1,10 @@
+## [4.5.4](https://github.com/dexma/ui-components/compare/v4.5.3...v4.5.4) (2021-03-23)
+
+
+### Bug Fixes
+
+* **tabs:** fix related with export tabs ([099b1a5](https://github.com/dexma/ui-components/commit/099b1a506f68e535b82b3d6a6b381369d29f95dc))
+
 ## [4.5.3](https://github.com/dexma/ui-components/compare/v4.5.2...v4.5.3) (2021-03-22)
 
 
