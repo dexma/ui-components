@@ -17,6 +17,7 @@ import boost from 'highcharts/modules/boost';
 
 import theme from '../styles/theme';
 import { StyledResult } from '../styles/components/StyledResult';
+import withDataId from '../components/DataId/withDataId';
 
 boost(Highcharts);
 addSankeyModule(Highcharts);
@@ -69,6 +70,10 @@ const propTypes = {
    * The content of the error normally will be a Result component
    */
   errorContent: PropTypes.node,
+  /**
+   * data-id attribute to identfy the element in DOM
+   */
+  dataId: PropTypes.string,
 };
 
 const defaultProps = {
@@ -115,6 +120,7 @@ const defaultProps = {
   showError: false,
   isLoading: false,
   theme: theme,
+  dataId: 'chart'
 };
 
 const getStyledChart = () => {
@@ -323,6 +329,7 @@ const HighchartsReact = forwardRef((props, ref) => {
     'options',
     'callback',
     'theme',
+    'dataId',
   ]);
   return (
     <div
@@ -335,7 +342,7 @@ const HighchartsReact = forwardRef((props, ref) => {
 });
 
 const Chart = forwardRef((props, ref) => {
-  const { options, isLoading, showError, errorContent } = props;
+  const { options, isLoading, showError, errorContent, dataId } = props;
   const loading = isLoading && !showError;
   const error = !isLoading && showError && errorContent;
   const showChart = !loading && !error && options;
@@ -343,9 +350,10 @@ const Chart = forwardRef((props, ref) => {
     'isLoading',
     'showError',
     'errorContent',
+    'dataId',
   ]);
   return (
-    <StyledChart>
+    <StyledChart data-id={dataId}>
       {loading && <ChartLoading />}
       {error && <ChartError>{errorContent}</ChartError>}
       {showChart && <HighchartsReact ref={ref} {...highchartsReactProps} />}
@@ -356,4 +364,4 @@ const Chart = forwardRef((props, ref) => {
 Chart.propTypes = propTypes;
 Chart.defaultProps = defaultProps;
 
-export default withTheme(Chart);
+export default withTheme(withDataId(Chart));

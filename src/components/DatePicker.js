@@ -35,6 +35,7 @@ import {
 import 'react-dates/initialize';
 
 import { StyledDatePicker } from '../styles/components/StyledDatePicker';
+import withDataId from '../components/DataId/withDataId';
 
 const withDatePickerFormat = (start, end) => ({
   startDate: start,
@@ -101,6 +102,10 @@ const propTypes = {
    * Theme json based
    */
   theme: PropTypes.shape({}),
+  /**
+   * data-id attribute to identfy the element in DOM
+   */
+   dataId: PropTypes.string,
 };
 
 const defaultProps = {
@@ -112,6 +117,7 @@ const defaultProps = {
   numberOfMonths: NUMBER_OF_MONTHS,
   language: 'en',
   theme: theme,
+  dataId: 'datepicker'
 };
 
 export const DatePicker = props => {
@@ -126,7 +132,7 @@ export const DatePicker = props => {
     startDate: props.initialStartDate,
     endDate: props.initialEndDate,
   });
-  const { periodOptions, periodDefault, periodLabel, language, theme } = props;
+  const { periodOptions, periodDefault, periodLabel, language, theme, dataId } = props;
   const dateRangePickerProps = omit(props, [
     'className',
     'options',
@@ -140,6 +146,7 @@ export const DatePicker = props => {
     'periodDefault',
     'language',
     'periodLabel',
+    'dataId',
   ]);
   useEffect(() => {
     moment.locale(language);
@@ -186,6 +193,7 @@ export const DatePicker = props => {
       theme={theme}
       focusedInput={focusedInput}
       withSelect={periodOptions}
+      data-id={dataId}
     >
       <div className={classes}>
         <DateRangePicker
@@ -233,4 +241,4 @@ StyledDatePicker.displayName = 'StyledDatePicker';
 DatePicker.propTypes = propTypes;
 DatePicker.defaultProps = defaultProps;
 
-export default withTheme(DatePicker);
+export default withTheme(withDataId(DatePicker));
