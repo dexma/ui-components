@@ -80,10 +80,10 @@ describe('<DatePicker>', () => {
     fireEvent.mouseDown(container.querySelector('.select-styled__control'));
     fireEvent.click(getByText(last7Days));
     fireEvent.click(calendarButton);
-    const selectedDayStandAndEnd = container.querySelectorAll(".CalendarDay__selected");
+    const selectedDayStartAndEnd = container.querySelectorAll(".CalendarDay__selected");
     const selectedDayBetweenStartAndEnd = container.querySelectorAll(".CalendarDay__selected_span");
 
-    expect(Array.from(selectedDayStandAndEnd)).toHaveLength(2);
+    expect(Array.from(selectedDayStartAndEnd)).toHaveLength(2);
     expect(Array.from(selectedDayBetweenStartAndEnd)).toHaveLength(5);
   });
   it('Should choose correct date range when click on Last 28 days period', () => {
@@ -92,10 +92,10 @@ describe('<DatePicker>', () => {
     fireEvent.mouseDown(container.querySelector('.select-styled__control'));
     fireEvent.click(getByText(last28Days));
     fireEvent.click(calendarButton);
-    const selectedDayStandAndEnd = container.querySelectorAll(".CalendarDay__selected");
+    const selectedDayStartAndEnd = container.querySelectorAll(".CalendarDay__selected");
     const selectedDayBetweenStartAndEnd = container.querySelectorAll(".CalendarDay__selected_span");
 
-    expect(Array.from(selectedDayStandAndEnd)).toHaveLength(2);
+    expect(Array.from(selectedDayStartAndEnd)).toHaveLength(2);
     expect(Array.from(selectedDayBetweenStartAndEnd)).toHaveLength(26);
   });
   it('Should choose correct date range when click on Current month period', () => {
@@ -104,13 +104,18 @@ describe('<DatePicker>', () => {
     fireEvent.mouseDown(container.querySelector('.select-styled__control'));
     fireEvent.click(getByText(currentMonthLabel));
     fireEvent.click(calendarButton);
-    const selectedDayStandAndEnd = container.querySelectorAll(".CalendarDay__selected");
+    const selectedDayStartAndEnd = container.querySelectorAll(".CalendarDay__selected");
     const selectedDayBetweenStartAndEnd = container.querySelectorAll(".CalendarDay__selected_span");
-    const daysInThisMonth = currentMonth(parseDate); //31
-    const lastDayMonth = moment(daysInThisMonth.endDate, ISO_FORMAT).date();
+    const { endDate } = currentMonth(parseDate); //31
+    const lastDayMonth = moment(endDate, ISO_FORMAT).date();
 
-    expect(Array.from(selectedDayStandAndEnd)).toHaveLength(2);
-    expect(Array.from(selectedDayBetweenStartAndEnd)).toHaveLength(lastDayMonth - 2);
+    if(moment().format(ISO_FORMAT).slice(0, 2) === '01'){
+      expect(Array.from(selectedDayStartAndEnd)).toHaveLength(1);
+      expect(Array.from(selectedDayBetweenStartAndEnd)).toHaveLength(lastDayMonth - 1);
+    } else{
+      expect(Array.from(selectedDayStartAndEnd)).toHaveLength(2);
+      expect(Array.from(selectedDayBetweenStartAndEnd)).toHaveLength(lastDayMonth - 2);
+    }
   });
   it('Should choose correct date range when click on Last month period', () => {
     const { container, getByText } = render(<DatePicker periodOptions={mockPeriodOptions}/>);
@@ -120,12 +125,12 @@ describe('<DatePicker>', () => {
     fireEvent.click(getByText(lastMonthLabel));
     fireEvent.click(calendarButton);
 
-    const selectedDayStandAndEnd = container.querySelectorAll(".CalendarDay__selected");
+    const selectedDayStartAndEnd = container.querySelectorAll(".CalendarDay__selected");
     const selectedDayBetweenStartAndEnd = container.querySelectorAll(".CalendarDay__selected_span");
     const daysInThisMonth = lastMonth(parseDate);
     const lastDayMonth = moment(daysInThisMonth.endDate, ISO_FORMAT).date();
 
-    expect(Array.from(selectedDayStandAndEnd)).toHaveLength(2);
+    expect(Array.from(selectedDayStartAndEnd)).toHaveLength(2);
     expect(Array.from(selectedDayBetweenStartAndEnd)).toHaveLength(lastDayMonth - 2);
   });
   it('Should render correct placeholder', () => {
