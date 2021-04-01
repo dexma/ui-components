@@ -1,3 +1,10 @@
+## [4.5.5](https://github.com/dexma/ui-components/compare/v4.5.4...v4.5.5) (2021-04-01)
+
+
+### Bug Fixes
+
+* **date-picker:** test related with 01 of a moth ([3907e8c](https://github.com/dexma/ui-components/commit/3907e8ceed1a0259cab60a41f08a18ba8c2984ce))
+
 ## [4.5.4](https://github.com/dexma/ui-components/compare/v4.5.3...v4.5.4) (2021-03-23)
 
 
