@@ -1,3 +1,10 @@
+# [4.6.0](https://github.com/dexma/ui-components/compare/v4.5.5...v4.6.0) (2021-04-01)
+
+
+### Features
+
+* **dataid:** add component ([#14](https://github.com/dexma/ui-components/issues/14)) ([1888d68](https://github.com/dexma/ui-components/commit/1888d685051d89b659dc6792be8651354b5d400b))
+
 ## [4.5.5](https://github.com/dexma/ui-components/compare/v4.5.4...v4.5.5) (2021-04-01)
 
 
