@@ -1,3 +1,10 @@
+## [4.6.1](https://github.com/dexma/ui-components/compare/v4.6.0...v4.6.1) (2021-04-01)
+
+
+### Bug Fixes
+
+* **dataid:** integrate dataid with some components ([#16](https://github.com/dexma/ui-components/issues/16)) ([f8824d7](https://github.com/dexma/ui-components/commit/f8824d7c90134ba08719a14861b1ac0187f4c99b))
+
 # [4.6.0](https://github.com/dexma/ui-components/compare/v4.5.5...v4.6.0) (2021-04-01)
 
 
