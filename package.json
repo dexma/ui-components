@@ -106,6 +106,7 @@
     "eslint-plugin-react": "^7.12.4",
     "file-loader": "^3.0.1",
     "highcharts": "^7.1.1",
+    "hoist-non-react-statics": "^3.3.2",
     "husky": "^4.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
@@ -123,6 +124,7 @@
     "prop-types": "^15.7.2",
     "rc-tabs": "^9.7.0",
     "react": "^16.13.1",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dates": "^21.8.0",
     "react-dom": "^16.13.1",
     "react-moment-proptypes": "^1.6.0",
@@ -136,8 +138,7 @@
     "uuid": "^8.3.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^4.0.0",
-    "xmldom": "^0.5.0",
-    "react-copy-to-clipboard": "^5.0.2"
+    "xmldom": "^0.5.0"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
