@@ -9,6 +9,7 @@ import { itemRender } from './Pagination';
 import { Button } from './Button';
 import { StyledResult } from '../styles/components/StyledResult';
 import { StyledTable } from '../styles/components/StyledTable';
+import withDataId from '../components/DataId/withDataId';
 
 const propTypes = {
   /**
@@ -31,11 +32,16 @@ const propTypes = {
    * Theme json based
    */
   theme: PropTypes.shape({}),
+  /**
+   * data-id attribute to identfy the element in DOM
+   */
+  dataId: PropTypes.string,
 };
 
 const defaultProps = {
   isExpanded: false,
   theme: theme,
+  dataId: 'table'
 };
 
 const StyledTableLoading = styled.div`
@@ -134,8 +140,9 @@ export const Table = props => {
     isLoading,
     showError,
     errorContent,
+    dataId,
   } = props;
-  const tableProps = omit(props, ['theme', 'columns']);
+  const tableProps = omit(props, ['theme', 'columns', 'dataId']);
 
   const getColumnsExpanded = () => {
     const newFirstColumn = {
@@ -166,7 +173,7 @@ export const Table = props => {
   const showTable = !loading && !error && columns && dataSource;
 
   return (
-    <StyledTable data-testid="table" theme={theme}>
+    <StyledTable data-testid="table" theme={theme} data-id={dataId}>
       {loading && <TableLoading />}
       {error && <TableError> {errorContent} </TableError>}
       {showTable && (
@@ -187,4 +194,4 @@ StyledTable.displayName = 'StyledTable';
 Table.defaultProps = propTypes;
 Table.defaultProps = defaultProps;
 
-export default withTheme(Table);
+export default withTheme(withDataId(Table));

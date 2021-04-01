@@ -9,6 +9,7 @@ import {
   StyledSelectMultiValue,
 } from '../styles/components/StyledSelect';
 import theme from '../styles/theme';
+import withDataId from '../components/DataId/withDataId';
 
 import Icon from './Icon';
 
@@ -45,6 +46,10 @@ const propTypes = {
    * Theme json based
    */
   theme: PropTypes.shape({}),
+  /**
+   * data-id attribute to identfy the element in DOM
+   */
+  dataId: PropTypes.string,
 };
 
 const defaultProps = {
@@ -52,6 +57,7 @@ const defaultProps = {
   blurInputOnSelect: false,
   maxMenuHeight: 192,
   theme: theme,
+  dataId: 'select'
 };
 
 const DropdownIndicator = props => {
@@ -117,19 +123,20 @@ const MultiValueRemove = selectProps => {
 };
 
 export const Select = forwardRef((props, ref) => {
-  const { theme, isMulti } = props;
+  const { theme, isMulti, dataId } = props;
   const defaultValueSelect = props.defaultValue
     ? props.defaultValue.label
     : null;
   const titleSelect =
     !defaultValueSelect && props.value ? props.value.label : null;
-  const selectProps = omit(props, ['theme']);
+  const selectProps = omit(props, ['theme', 'dataId']);
   return (
     <StyledSelect
       theme={theme}
       isMulti={isMulti}
       title={titleSelect}
       data-testid="select"
+      data-id={dataId}
     >
       <ReactSelect
         ref={ref}
@@ -156,4 +163,4 @@ StyledSelect.displayName = 'StyledSelect';
 Select.propTypes = propTypes;
 Select.defaultProps = defaultProps;
 
-export default withTheme(Select);
+export default withTheme(withDataId(Select));
