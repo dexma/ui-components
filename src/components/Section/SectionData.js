@@ -9,6 +9,7 @@ import Button from '../Button';
 import theme from '../../styles/theme';
 
 import { StyledSectionData } from '../../styles/components/Section/StyledSectionData';
+import withDataId from '../../components/DataId/withDataId';
 
 const propTypes = {
   /**
@@ -39,11 +40,16 @@ const propTypes = {
    * Theme json based
    */
   theme: PropTypes.shape({}),
+  /**
+   * data-id attribute to identfy the element in DOM
+   */
+  dataId: PropTypes.string,
 };
 
 const defaultProps = {
   isLoading: false,
   theme: theme,
+  dataId: 'section-data'
 };
 
 export const SectionData = props => {
@@ -55,6 +61,7 @@ export const SectionData = props => {
     onAddReport,
     children,
     theme,
+    dataId,
   } = props;
   const hasExportExcel = typeof onExportExcel === 'function';
   const hasExportImage = typeof onExportImage === 'function';
@@ -64,6 +71,7 @@ export const SectionData = props => {
     <StyledSectionData
       theme={theme}
       data-testid="section-data"
+      data-id={dataId}
       $title={!!title}
       hasButtons={!!hasButtons}
     >
@@ -118,4 +126,4 @@ StyledSectionData.displayName = 'StyledSectionData';
 SectionData.propTypes = propTypes;
 SectionData.defaultProps = defaultProps;
 
-export default withTheme(SectionData);
+export default withTheme(withDataId(SectionData));

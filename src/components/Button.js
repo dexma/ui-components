@@ -13,6 +13,7 @@ import { Tooltip } from './Tooltip';
 
 import { StyledButton } from '../styles/components/StyledButton';
 import { StyledButtonGroup } from '../styles/components/StyledButtonGroup';
+import withDataId from '../components/DataId/withDataId';
 
 export const BUTTON_SIZE = ['small', 'medium', 'large', 'xlarge'];
 export const BUTTON_VARIANT = [
@@ -83,6 +84,10 @@ const propTypes = {
    * Theme json based
    */
   theme: PropTypes.shape({}),
+  /**
+   * data-id attribute to identfy the element in DOM
+   */
+  dataId: PropTypes.string,
 };
 
 const defaultProps = {
@@ -92,6 +97,7 @@ const defaultProps = {
   isLoading: false,
   isExpanded: false,
   theme: theme,
+  dataId: 'button'
 };
 
 const getButtonIconSize = size => {
@@ -120,6 +126,7 @@ export const Button = forwardRef((props, ref) => {
     size,
     debounceTime,
     children,
+    dataId,
   } = props;
   const classes = classNames(isExpanded && 'expanded', size && size, className);
   const handleClick =
@@ -140,6 +147,7 @@ export const Button = forwardRef((props, ref) => {
       disabled={isDisabled}
       className={classes}
       data-testid="button"
+      data-id={dataId}
       role="button"
       {...buttonProps}
     >
@@ -178,4 +186,4 @@ StyledButton.displayName = 'StyledButton';
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
-export default withTheme(Button);
+export default withTheme(withDataId(Button));
