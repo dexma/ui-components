@@ -7,6 +7,7 @@ import { StyledInput } from '../styles/components/StyledInput';
 import theme from '../styles/theme';
 import Icon from './Icon';
 import Spinner from './Spinner';
+import withDataId from '../components/DataId/withDataId';
 
 const propTypes = {
   /**
@@ -53,15 +54,20 @@ const propTypes = {
    * Theme json based
    */
   theme: PropTypes.shape({}),
+  /**
+   * data-id attribute to identfy the element in DOM
+   */
+   dataId: PropTypes.string,
 };
 
 const defaultProps = {
   theme: theme,
+  dataId: 'input'
 };
 
 export const Input = forwardRef((props, ref) => {
   const [focused, setFocused] = useState(false);
-  const { icon, isLoading, onFocus, onBlur, children } = props;
+  const { icon, isLoading, onFocus, onBlur, children, dataId } = props;
   const newProps = omit(props, [
     'placeholder',
     'id',
@@ -72,6 +78,7 @@ export const Input = forwardRef((props, ref) => {
     'onChange',
     'onFocus',
     'onBlur',
+    'dataId',
   ]);
   const inputProps = omit(props, [
     'icon',
@@ -80,6 +87,7 @@ export const Input = forwardRef((props, ref) => {
     'children',
     'onFocus',
     'onBlur',
+    'dataId',
   ]);
   const handleOnFocus = e => {
     setFocused(true);
@@ -90,7 +98,7 @@ export const Input = forwardRef((props, ref) => {
     onBlur && onBlur(e);
   };
   return (
-    <StyledInput data-testid="input" focused={focused} {...newProps}>
+    <StyledInput data-testid="input" focused={focused} {...newProps} data-id={dataId}>
       {icon && (
         <div className="icon-container">
           <Icon name={icon} size={20} color="gray500" />
@@ -114,4 +122,4 @@ StyledInput.displayName = 'StyledInput';
 Input.propTypes = propTypes;
 Input.defaultProps = defaultProps;
 
-export default withTheme(Input);
+export default withTheme(withDataId(Input));
