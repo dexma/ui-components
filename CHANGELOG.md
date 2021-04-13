@@ -1,3 +1,10 @@
+## [4.6.2](https://github.com/dexma/ui-components/compare/v4.6.1...v4.6.2) (2021-04-13)
+
+
+### Bug Fixes
+
+* **toast:** export of toast type ([5726a53](https://github.com/dexma/ui-components/commit/5726a53226ffce05c8b424c096adfaecb874e817))
+
 ## [4.6.1](https://github.com/dexma/ui-components/compare/v4.6.0...v4.6.1) (2021-04-01)
 
 
