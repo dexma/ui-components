@@ -10,6 +10,7 @@ import Icon from './Icon';
 import { BUTTON_SIZE } from './Button';
 import { StyledFieldGroup } from '../styles/components/StyledFieldGroup';
 import theme from '../styles/theme';
+import withDataId from '../components/DataId/withDataId';
 
 const propTypes = {
   /**
@@ -52,6 +53,10 @@ const propTypes = {
    * Theme json based
    */
   theme: PropTypes.shape({}),
+  /**
+   * data-id attribute to identfy the element in DOM
+   */
+  dataId: PropTypes.string,
 };
 
 const defaultProps = {
@@ -59,6 +64,7 @@ const defaultProps = {
   vertical: false,
   size: 'medium',
   theme: theme,
+  dataId: 'field-group',
 };
 
 const getSelectedField = (type, values, selectedValues, selectedProp) => {
@@ -98,6 +104,7 @@ export const FieldGroup = props => {
     onChange,
     onFieldClick,
     theme,
+    dataId,
   } = props;
   const selectedField = getSelectedField(type, values, selectedValues, 'value');
   const fieldGroupProps = omit(props, [
@@ -107,6 +114,7 @@ export const FieldGroup = props => {
     'name',
     'onChange',
     'onFieldClick',
+    'dataId',
   ]);
   return (
     <StyledFieldGroup
@@ -115,6 +123,7 @@ export const FieldGroup = props => {
       data-testid="field-group"
       vertical={vertical}
       {...fieldGroupProps}
+      data-id={dataId}
     >
       {values.map(item => {
         const { id, value, label, icon, tooltip } = item;
@@ -157,4 +166,4 @@ StyledFieldGroup.displayName = 'StyledFieldGroup';
 FieldGroup.propTypes = propTypes;
 FieldGroup.defaultProps = defaultProps;
 
-export default withTheme(FieldGroup);
+export default withTheme(withDataId(FieldGroup));
