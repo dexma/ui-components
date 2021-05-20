@@ -1,3 +1,10 @@
+# [4.7.0](https://github.com/dexma/ui-components/compare/v4.6.2...v4.7.0) (2021-05-20)
+
+
+### Features
+
+* **field-group:** add data id ([3bab29f](https://github.com/dexma/ui-components/commit/3bab29fef2b65e8153a85ea612d3750c37202033))
+
 ## [4.6.2](https://github.com/dexma/ui-components/compare/v4.6.1...v4.6.2) (2021-04-13)
 
 
