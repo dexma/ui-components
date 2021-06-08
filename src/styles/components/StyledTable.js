@@ -1417,7 +1417,7 @@ const StyledTable = styled.div`
       padding: 0px !important;
     }
   }
-  ${StyledButton} {
+  ${StyledButton}:not (.dropdown-button) {
     position: absolute;
     left: 10px;
     padding: 0;
