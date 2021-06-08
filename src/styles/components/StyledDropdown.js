@@ -82,12 +82,21 @@ const StyledGlobalDropdown = createGlobalStyle(css`
     border-bottom: 1px solid #e8e8e8;
   }
   .ant-popover-inner-content {
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     color: rgba(0, 0, 0, 0.65);
     button {
       display: flex;
       margin: 0;
       width: 100%;
+      border-radius: 0;
+      padding: 0 1.5rem 0 1rem;
+      &:hover {
+        background: #f1f2f3;
+        text-decoration: none;
+      }
+      svg {
+        margin-right: 3px;
+      }
     }
   }
   .ant-popover-open {
