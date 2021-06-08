@@ -1,3 +1,10 @@
+## [4.7.3](https://github.com/dexma/ui-components/compare/v4.7.2...v4.7.3) (2021-06-08)
+
+
+### Bug Fixes
+
+* **icon:** update icon variants ([6af8395](https://github.com/dexma/ui-components/commit/6af83952cbf9bc9fa9b38d073cbfce3bb0836ccf))
+
 ## [4.7.2](https://github.com/dexma/ui-components/compare/v4.7.1...v4.7.2) (2021-06-08)
 
 
