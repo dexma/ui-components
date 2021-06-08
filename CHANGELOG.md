@@ -1,3 +1,10 @@
+## [4.7.1](https://github.com/dexma/ui-components/compare/v4.7.0...v4.7.1) (2021-06-08)
+
+
+### Bug Fixes
+
+* **table:** conflict style with dropdown buttons ([9343c7b](https://github.com/dexma/ui-components/commit/9343c7b42df8e71ab03b45639efa8ce08398b83e))
+
 # [4.7.0](https://github.com/dexma/ui-components/compare/v4.6.2...v4.7.0) (2021-05-20)
 
 
