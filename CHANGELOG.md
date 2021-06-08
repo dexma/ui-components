@@ -1,3 +1,10 @@
+## [4.7.2](https://github.com/dexma/ui-components/compare/v4.7.1...v4.7.2) (2021-06-08)
+
+
+### Bug Fixes
+
+* **dropdown:** style of button inside menu ([ca063fa](https://github.com/dexma/ui-components/commit/ca063faf237b1af683f8e2fc0ac18cb9a7638592))
+
 ## [4.7.1](https://github.com/dexma/ui-components/compare/v4.7.0...v4.7.1) (2021-06-08)
 
 
