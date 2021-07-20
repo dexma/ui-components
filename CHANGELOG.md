@@ -1,3 +1,10 @@
+# [4.8.0](https://github.com/dexma/ui-components/compare/v4.7.4...v4.8.0) (2021-07-20)
+
+
+### Features
+
+* **field-group:** add variant prop and update styles ([acb4fd4](https://github.com/dexma/ui-components/commit/acb4fd4f9e1138f805c0d481571e69692b8a15d1))
+
 ## [4.7.4](https://github.com/dexma/ui-components/compare/v4.7.3...v4.7.4) (2021-06-09)
 
 
