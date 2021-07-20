@@ -49,7 +49,7 @@ const propTypes = {
 const defaultProps = {
   isLoading: false,
   theme: theme,
-  dataId: 'section-data'
+  dataId: 'section-data',
 };
 
 export const SectionData = props => {

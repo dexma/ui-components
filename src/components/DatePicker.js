@@ -105,7 +105,7 @@ const propTypes = {
   /**
    * data-id attribute to identfy the element in DOM
    */
-   dataId: PropTypes.string,
+  dataId: PropTypes.string,
 };
 
 const defaultProps = {
@@ -117,7 +117,7 @@ const defaultProps = {
   numberOfMonths: NUMBER_OF_MONTHS,
   language: 'en',
   theme: theme,
-  dataId: 'datepicker'
+  dataId: 'datepicker',
 };
 
 export const DatePicker = props => {
@@ -132,7 +132,14 @@ export const DatePicker = props => {
     startDate: props.initialStartDate,
     endDate: props.initialEndDate,
   });
-  const { periodOptions, periodDefault, periodLabel, language, theme, dataId } = props;
+  const {
+    periodOptions,
+    periodDefault,
+    periodLabel,
+    language,
+    theme,
+    dataId,
+  } = props;
   const dateRangePickerProps = omit(props, [
     'className',
     'options',

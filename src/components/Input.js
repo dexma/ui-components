@@ -57,12 +57,12 @@ const propTypes = {
   /**
    * data-id attribute to identfy the element in DOM
    */
-   dataId: PropTypes.string,
+  dataId: PropTypes.string,
 };
 
 const defaultProps = {
   theme: theme,
-  dataId: 'input'
+  dataId: 'input',
 };
 
 export const Input = forwardRef((props, ref) => {
@@ -98,7 +98,12 @@ export const Input = forwardRef((props, ref) => {
     onBlur && onBlur(e);
   };
   return (
-    <StyledInput data-testid="input" focused={focused} {...newProps} data-id={dataId}>
+    <StyledInput
+      data-testid="input"
+      focused={focused}
+      {...newProps}
+      data-id={dataId}
+    >
       {icon && (
         <div className="icon-container">
           <Icon name={icon} size={20} color="gray500" />

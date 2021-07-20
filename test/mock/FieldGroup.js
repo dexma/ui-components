@@ -2,89 +2,122 @@ import React from 'react';
 
 export const mockRadioGroup = [
   {
-    value: "15min",
-    label: "15min",
-    id: "15min",
-    name: "parameters",
+    value: '15min',
+    label: '15min',
+    id: '15min',
+    name: 'parameters',
   },
   {
-    value: "30min",
-    label: "30min",
-    id: "30min",
-    name: "parameters",
+    value: '30min',
+    label: '30min',
+    id: '30min',
+    name: 'parameters',
   },
   {
-    value: "horas",
-    label: "h",
-    id: "horas",
-    name: "parameters",
+    value: 'horas',
+    label: 'h',
+    id: 'horas',
+    name: 'parameters',
   },
   {
-    value: "dias",
-    label: "d",
-    id: "dias",
-    name: "parameters",
+    value: 'dias',
+    label: 'd',
+    id: 'dias',
+    name: 'parameters',
   },
   {
-    value: "semanas",
-    label: "s",
-    id: "semanas",
-    name: "parameters",
+    value: 'semanas',
+    label: 's',
+    id: 'semanas',
+    name: 'parameters',
   },
   {
-    value: "meses",
-    label: "m",
-    id: "meses",
-    name: "parameters",
+    value: 'meses',
+    label: 'm',
+    id: 'meses',
+    name: 'parameters',
   },
 ];
-export const mockSelectedRadioItem = "horas";
+export const mockRadioCustomGroup = [
+  {
+    value: '15min',
+    label: '15min',
+    id: '15min',
+    icon: 'widget_single_kpi',
+    name: 'parameters',
+  },
+  {
+    value: '30min',
+    label: '30min',
+    id: '30min',
+    icon: 'widget_gauge',
+    name: 'parameters',
+  },
+  {
+    value: 'horas',
+    label: 'h',
+    id: 'horas',
+    icon: 'widget_percentage',
+    name: 'parameters',
+  }
+];
+export const mockSelectedRadioItem = 'horas';
 export const mockCheckboxGroup = [
   {
-    value: "hdd",
-    label: "hdd",
-    id: "hdd",
-    name: "hdd",
-    tooltip: "HDD",
-    icon: "ratios_hdd",
+    value: 'hdd',
+    label: 'hdd',
+    id: 'hdd',
+    name: 'hdd',
+    tooltip: 'HDD',
+    icon: 'ratios_hdd',
   },
   {
-    value: "production",
-    label: "production",
-    id: "production",
-    name: "production",
-    tooltip: "Production",
-    icon: "ratios_production",
+    value: 'production',
+    label: 'production',
+    id: 'production',
+    name: 'production',
+    tooltip: 'Production',
+    icon: 'ratios_production',
   },
   {
-    value: "cdd",
-    label: "cdd",
-    id: "cdd",
-    name: "cdd",
-    tooltip: "CDD",
-    icon: "ratios_cdd",
+    value: 'cdd',
+    label: 'cdd',
+    id: 'cdd',
+    name: 'cdd',
+    tooltip: 'CDD',
+    icon: 'ratios_cdd',
   },
   {
-    value: "surface",
-    label: "surface",
-    id: "surface",
-    name: "surface",
-    tooltip: "Surface",
-    icon: "ratios_surface",
-  }
+    value: 'surface',
+    label: 'surface',
+    id: 'surface',
+    name: 'surface',
+    tooltip: 'Surface',
+    icon: 'ratios_surface',
+  },
 ];
 export const mockCheckboxGroupHtml = [
   {
-    value: "hdd",
-    label: <div><span>Previous year</span><span>22/05/19 - 22/05/18</span></div>,
-    id: "hdd",
-    name: "hdd"
+    value: 'hdd',
+    label: (
+      <div>
+        <span>Previous year</span>
+        <span>22/05/19 - 22/05/18</span>
+      </div>
+    ),
+    id: 'hdd',
+    name: 'hdd',
   },
   {
-    value: "occupancy",
-    label: <div><span>Previous year</span><span>22/05/19 - 22/05/18</span></div>,
-    id: "occupancy",
-    name: "occupancy"
-  }
+    value: 'occupancy',
+    label: (
+      <div>
+        <span>Previous year</span>
+        <span>22/05/19 - 22/05/18</span>
+      </div>
+    ),
+    id: 'occupancy',
+    name: 'occupancy',
+  },
 ];
-export const mockSelectedCheckboxItem = ["production", "cdd"];
+export const mockSelectedCheckboxItem = ['production', 'cdd'];

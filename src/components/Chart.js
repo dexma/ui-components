@@ -120,7 +120,7 @@ const defaultProps = {
   showError: false,
   isLoading: false,
   theme: theme,
-  dataId: 'chart'
+  dataId: 'chart',
 };
 
 const getStyledChart = () => {

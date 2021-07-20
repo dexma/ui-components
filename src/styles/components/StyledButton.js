@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { darken, saturate, transparentize } from 'polished';
+import { darken, saturate, transparentize, rgba } from 'polished';
 import get from 'lodash/get';
 
 import {
@@ -15,9 +15,17 @@ import {
   backgroundColor,
   buttonSize,
   borderRadius,
+  iconColor,
 } from '../selectors';
 import { StyledIcon } from './StyledIcon';
 import { StyledSpinner } from './StyledSpinner';
+
+export const getSpinnerWhite = () => css`
+  ${StyledSpinner} {
+    border-color: ${rgba(255, 255, 255, 0.1)};
+    border-top-color: ${rgba(255, 255, 255, 1)};
+  }
+`;
 
 export const getButtonBase = () => css`
   align-items: center;
@@ -95,6 +103,7 @@ export const getButtonVariantPrimary = props => {
     ${StyledIcon} {
       fill: ${color};
     }
+    ${getSpinnerWhite()}
     &:hover {
       color: ${color};
       border-color: ${newHoverColor};
@@ -112,6 +121,7 @@ export const getButtonVariantSecondary = props => {
   const borderColor = gray400(props);
   const color = gray900(props);
   const colorHover = white(props);
+  const colorIcon = iconColor(props);
   const background = backgroundColor(props);
   const newFocusColor = transparentize(0.3, borderColor);
   return css`
@@ -119,7 +129,7 @@ export const getButtonVariantSecondary = props => {
     border-color: ${borderColor};
     background-color: ${background};
     ${StyledIcon} {
-      fill: ${color};
+      fill: ${colorIcon};
     }
     &:hover {
       color: ${colorHover};
@@ -128,6 +138,7 @@ export const getButtonVariantSecondary = props => {
       ${StyledIcon} {
         fill: ${colorHover};
       }
+      ${getSpinnerWhite()}
     }
     &:focus {
       box-shadow: 0px 0px 0px 2px ${newFocusColor};
@@ -206,6 +217,7 @@ export const getButtonVariantOutline = props => {
       ${StyledIcon} {
         fill: ${colorHover};
       }
+      ${getSpinnerWhite()}
     }
     &:focus {
       box-shadow: 0px 0px 0px 2px ${newFocusColor};
@@ -222,6 +234,7 @@ export const getButtonVariantDestructive = props => {
     color: ${color};
     border-color: ${borderColor};
     background-color: ${background};
+    ${getSpinnerWhite()}
     &:hover {
       color: ${color};
       border-color: ${backgroundHover};

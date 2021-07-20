@@ -57,7 +57,7 @@ const defaultProps = {
   blurInputOnSelect: false,
   maxMenuHeight: 192,
   theme: theme,
-  dataId: 'select'
+  dataId: 'select',
 };
 
 const DropdownIndicator = props => {

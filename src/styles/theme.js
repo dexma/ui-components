@@ -153,29 +153,28 @@ const alert = {
 // ==========================================================================
 
 const buttonPaddingX = 1;
-const buttonHeight = heightComponents;
 
 const button = {
   size: {
     small: {
       paddingX: getSize(buttonPaddingX - 0.25),
       fontSize: getSize(pxToRem(12)),
-      height: getSize(buttonHeight - 0.25),
+      height: getSize(pxToRem(24)),
     },
     medium: {
       paddingX: getSize(buttonPaddingX),
       fontSize: getSize(pxToRem(14)),
-      height: getSize(buttonHeight),
+      height: getSize(pxToRem(32)),
     },
     large: {
       paddingX: getSize(buttonPaddingX + 0.25 * 3.5),
       fontSize: getSize(pxToRem(16)),
-      height: getSize(buttonHeight + 0.75),
+      height: getSize(pxToRem(40)),
     },
     xlarge: {
       paddingX: getSize(buttonPaddingX + 0.25 * 5),
       fontSize: getSize(pxToRem(24)),
-      height: getSize(buttonHeight + 1.25),
+      height: getSize(pxToRem(48)),
     },
   },
 };

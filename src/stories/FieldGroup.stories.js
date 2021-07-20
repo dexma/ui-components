@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   mockRadioGroup,
+  mockRadioCustomGroup,
   mockCheckboxGroup,
   mockSelectedRadioItem,
   mockSelectedCheckboxItem,
@@ -33,6 +34,44 @@ const RadioGroup = props => {
   );
 };
 
+const RadioCustomGroup = props => {
+  const [selectedValues, setSelectedValue] = useState(mockSelectedRadioItem);
+  const handleChange = ({ value }) => {
+    setSelectedValue(value);
+  };
+  return (
+    <>
+      <FieldGroup
+        variant="custom"
+        values={mockRadioCustomGroup}
+        selectedValues={selectedValues}
+        type="radio"
+        onChange={handleChange}
+        {...props}
+      />
+    </>
+  );
+};
+
+const RadioSplitGroup = props => {
+  const [selectedValues, setSelectedValue] = useState(mockSelectedRadioItem);
+  const handleChange = ({ value }) => {
+    setSelectedValue(value);
+  };
+  return (
+    <>
+      <FieldGroup
+        variant="split"
+        values={mockRadioGroup}
+        selectedValues={selectedValues}
+        type="radio"
+        onChange={handleChange}
+        {...props}
+      />
+    </>
+  );
+};
+
 const CheckboxGroup = props => {
   const [selectedValues, setSelectedValue] = useState(mockSelectedCheckboxItem);
   const handleChange = ({ value }) => {
@@ -56,12 +95,12 @@ const CheckboxGroup = props => {
   );
 };
 
-export const fieldGroupRadio = () => (
+export const fieldJoinedVariantGroupRadio = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Create group of input with type radio
+          Joined variant field group:
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -71,7 +110,46 @@ export const fieldGroupRadio = () => (
   </Grid>
 );
 
-export const fieldGroupCheckbox = () => (
+export const fieldCustomVariantGroupRadio = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12} style={{ marginBottom: '10px' }}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Custom variant field group:
+        </Paragraph>
+      </Cell>
+      <Cell xs={12} style={{ marginBottom: '10px' }}>
+        <RadioCustomGroup size="small" />
+      </Cell>
+      <Cell xs={12} style={{ marginBottom: '10px' }}>
+        <RadioCustomGroup size="medium" />
+      </Cell>
+      <Cell xs={12} style={{ marginBottom: '10px' }}>
+        <RadioCustomGroup size="large" />
+      </Cell>
+      <Cell xs={12}>
+        <RadioCustomGroup size="xlarge" />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const fieldSplitVariantGroupRadio = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12} style={{ marginBottom: '10px' }}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Custom variant field group:
+        </Paragraph>
+      </Cell>
+      <Cell xs={12} style={{ marginBottom: '10px' }}>
+        <RadioSplitGroup />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const fieldGroupCheckboxVertical = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>

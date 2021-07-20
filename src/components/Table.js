@@ -41,7 +41,7 @@ const propTypes = {
 const defaultProps = {
   isExpanded: false,
   theme: theme,
-  dataId: 'table'
+  dataId: 'table',
 };
 
 const StyledTableLoading = styled.div`

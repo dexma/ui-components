@@ -97,7 +97,7 @@ const defaultProps = {
   isLoading: false,
   isExpanded: false,
   theme: theme,
-  dataId: 'button'
+  dataId: 'button',
 };
 
 const getButtonIconSize = size => {
@@ -138,7 +138,6 @@ export const Button = forwardRef((props, ref) => {
     'iconBefore',
     'iconAfter',
     'debounceTime',
-    'text',
   ]);
   const getStyledButton = () => (
     <StyledButton

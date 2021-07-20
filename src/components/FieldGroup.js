@@ -18,6 +18,10 @@ const propTypes = {
    */
   type: PropTypes.oneOf(['radio', 'checkbox']).isRequired,
   /**
+   * Set the style variant of the field group
+   */
+  variant: PropTypes.oneOf(['joined', 'split', 'custom']).isRequired,
+  /**
    * Set values
    */
   values: PropTypes.arrayOf(PropTypes.object),
@@ -60,6 +64,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  variant: 'joined',
   type: 'radio',
   vertical: false,
   size: 'medium',
@@ -96,11 +101,13 @@ const isFieldSelected = (type, item, selectedField) => {
 export const FieldGroup = props => {
   const {
     type,
+    variant,
     values,
     selectedValues,
     size,
     name,
     vertical,
+
     onChange,
     onFieldClick,
     theme,
@@ -108,7 +115,6 @@ export const FieldGroup = props => {
   } = props;
   const selectedField = getSelectedField(type, values, selectedValues, 'value');
   const fieldGroupProps = omit(props, [
-    'type',
     'values',
     'selectedValues',
     'name',
@@ -122,6 +128,7 @@ export const FieldGroup = props => {
       size={size}
       data-testid="field-group"
       vertical={vertical}
+      variant={variant}
       {...fieldGroupProps}
       data-id={dataId}
     >
@@ -144,7 +151,15 @@ export const FieldGroup = props => {
             data-testid="field-group-label"
           >
             {!icon && label ? label : null}
-            {icon ? <Icon name={icon} size={size} color="white" /> : null}
+            {icon ? (
+              <Icon
+                name={icon}
+                size={
+                  variant === 'custom' && size === 'large' ? 'xlarge' : size
+                }
+                color="white"
+              />
+            ) : null}
             <input
               id={id}
               onChange={() => onChange && onChange(item)}

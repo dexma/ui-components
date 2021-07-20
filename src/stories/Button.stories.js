@@ -33,7 +33,7 @@ export const buttons = () => (
 
 export const sizes = () => (
   <Grid fluid>
-    <Row>
+    <Row style={{ marginBottom: '10px' }}>
       <Cell xs={12}>
         <Paragraph margin="1.5rem 0 1rem 0">
           We have 4 different sizes for our buttons
@@ -66,7 +66,7 @@ export const icons = () => (
           iconAfter property and isCircle to set a circle button
         </Paragraph>
       </Cell>
-      <Cell xs={12}>
+      <Cell xs={12} style={{ marginBottom: '10px' }}>
         <Button text="Primary" variant="primary" iconBefore="add" />
         <Button text="Secondary" variant="secondary" iconBefore="image" />
         <Button text="Outline" variant="outline" iconAfter="gas" />
@@ -80,7 +80,7 @@ export const icons = () => (
         <Button variant="destructive" iconBefore="delete" isCircle />
         <Button variant="link" iconBefore="world" isCircle />
         <Button iconAfter="circle_add" variant="icon" isCircle />
-        <Button iconAfter="menu_24px" variant="icon-secondary" isCircle />
+        <Button iconAfter="vader" variant="icon-secondary" isCircle />
         <Button iconAfter="search" variant="icon-outline" isCircle />
       </Cell>
     </Row>
@@ -96,7 +96,7 @@ export const loading = () => (
           property on the Button
         </Paragraph>
       </Cell>
-      <Cell xs={12}>
+      <Cell xs={12} style={{ marginBottom: '10px' }}>
         <Button text="Primary" variant="primary" iconBefore="add" isLoading />
         <Button
           text="Secondary"
@@ -113,7 +113,7 @@ export const loading = () => (
         />
         <Button text="Link" variant="link" iconBefore="world" isLoading />
       </Cell>
-      <Cell xs={12}>
+      <Cell xs={12} style={{ marginBottom: '10px' }}>
         <Button variant="primary" iconBefore="add" isCircle isLoading />
         <Button variant="secondary" iconBefore="image" isCircle isLoading />
         <Button variant="outline" iconBefore="gas" isCircle isLoading />
@@ -171,7 +171,7 @@ export const group = () => (
       </Cell>
       <Cell xs={12}>
         <ButtonGroup>
-          <Button tooltip="Button 1" text="Button 1" variant="primary" />
+          <Button text="Button 1" variant="primary" />
           <Button text="Button 2" variant="secondary" />
           <Button text="Button 3" variant="secondary" />
           <Button text="Button 4" variant="secondary" />
