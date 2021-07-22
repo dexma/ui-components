@@ -8,8 +8,8 @@
 
 <p align="center">
   <br>
-  <a href="https://travis-ci.org/dexma/ui-components">
-    <img src="https://travis-ci.org/dexma/ui-components.svg?branch=master" alt="Travis CI badge">
+  <a href="https://travis-ci.com/dexma/ui-components">
+    <img src="https://travis-ci.com/dexma/ui-components.svg?branch=master" alt="Travis CI badge">
   </a>
   <a href="https://github.com/styled-components/styled-components">
     <img src="https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e" alt="npm version badge">
