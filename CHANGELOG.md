@@ -1,3 +1,20 @@
+# [5.0.0](https://github.com/dexma/ui-components/compare/v4.8.0...v5.0.0) (2021-07-29)
+
+
+### Code Refactoring
+
+* change tooltip and field group component ([fd3bf5e](https://github.com/dexma/ui-components/commit/fd3bf5e834fd72c71edfd30d8021df688dd5755e))
+
+
+### BREAKING CHANGES
+
+* update props tooltip and field group
+
+- Fix styles on the buttons related with the tooltip
+- Add tooltips to the FieldGroup
+- Fix icon size button
+- Add disabled FieldGroup prop and style
+
 # [4.8.0](https://github.com/dexma/ui-components/compare/v4.7.4...v4.8.0) (2021-07-20)
 
 
