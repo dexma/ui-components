@@ -128,7 +128,7 @@ export const Button = forwardRef((props, ref) => {
     children,
     dataId,
   } = props;
-  const classes = classNames(isExpanded && 'expanded', size && size, className);
+  const classes = classNames(isExpanded && 'expanded', className);
   const handleClick =
     debounceTime > 0 ? debounce(onClick, debounceTime) : onClick;
   const spinnerSize = getIconSize(size);

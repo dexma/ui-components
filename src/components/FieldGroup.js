@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import find from 'lodash/find';
 import set from 'lodash/set';
 import { withTheme } from 'styled-components';
-
 import omit from 'lodash/omit';
 import Icon from './Icon';
+import { Tooltip } from './Tooltip';
 import { BUTTON_SIZE } from './Button';
 import { StyledFieldGroup } from '../styles/components/StyledFieldGroup';
 import theme from '../styles/theme';
@@ -107,7 +107,6 @@ export const FieldGroup = props => {
     size,
     name,
     vertical,
-
     onChange,
     onFieldClick,
     theme,
@@ -133,14 +132,15 @@ export const FieldGroup = props => {
       data-id={dataId}
     >
       {values.map(item => {
-        const { id, value, label, icon, tooltip } = item;
+        const { id, value, label, icon, tooltip, isDisabled } = item;
         const isSelected = isFieldSelected(type, item, selectedField);
         const classesItem = classNames(
           'item',
           `item-${label}`,
-          isSelected && 'active'
+          isSelected && 'active',
+          isDisabled && 'disabled'
         );
-        return (
+        const getLabel = () => (
           // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
           <label
             className={classesItem}
@@ -168,8 +168,14 @@ export const FieldGroup = props => {
               value={value}
               checked={isSelected}
               data-testid="field-group-input"
+              disabled={isDisabled}
             />
           </label>
+        );
+        return tooltip ? (
+          <Tooltip title={tooltip}>{getLabel()}</Tooltip>
+        ) : (
+          getLabel()
         );
       })}
     </StyledFieldGroup>

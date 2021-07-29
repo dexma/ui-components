@@ -7,7 +7,14 @@ import {
   getButtonVariantPrimary,
   getButtonVariantSecondary,
 } from './StyledButton';
-import { primaryColor, borderRadius, white } from '../selectors';
+import {
+  gray50,
+  gray200,
+  gray300,
+  primaryColor,
+  borderRadius,
+  white,
+} from '../selectors';
 import { StyledIcon } from './StyledIcon';
 
 export const getSplitVariant = () => css`
@@ -125,6 +132,20 @@ const StyledFieldGroup = styled.div`
     margin: 0;
     &.active {
       ${getButtonVariantPrimary};
+    }
+    &.disabled {
+      cursor: not-allowed;
+      background-color: ${gray50};
+      color: ${gray300};
+      ${StyledIcon} {
+        fill: ${gray300}!important;
+      }
+      &:hover {
+        ${StyledIcon} {
+          fill: ${gray300}!important;
+        }
+      }
+      border-color: ${gray200};
     }
   }
   .active + .active {

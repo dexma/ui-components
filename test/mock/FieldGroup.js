@@ -6,6 +6,7 @@ export const mockRadioGroup = [
     label: '15min',
     id: '15min',
     name: 'parameters',
+    isDisabled: true,
   },
   {
     value: '30min',
@@ -41,24 +42,25 @@ export const mockRadioGroup = [
 export const mockRadioCustomGroup = [
   {
     value: '15min',
-    label: '15min',
     id: '15min',
     icon: 'widget_single_kpi',
     name: 'parameters',
+    tooltip: 'parameters',
+    isDisabled: true,
   },
   {
-    value: '30min',
-    label: '30min',
-    id: '30min',
+    value: 'gauge',
+    id: 'gauge',
     icon: 'widget_gauge',
-    name: 'parameters',
+    name: 'gauge',
+    tooltip: 'gauge'
   },
   {
-    value: 'horas',
-    label: 'h',
-    id: 'horas',
+    value: 'percentage',
+    id: 'percentage',
     icon: 'widget_percentage',
-    name: 'parameters',
+    name: 'percentage',
+    tooltip: 'percentage'
   }
 ];
 export const mockSelectedRadioItem = 'horas';
@@ -70,6 +72,7 @@ export const mockCheckboxGroup = [
     name: 'hdd',
     tooltip: 'HDD',
     icon: 'ratios_hdd',
+    isDisabled: true,
   },
   {
     value: 'production',

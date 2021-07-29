@@ -1,6 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
-
 import { StyledButton } from './components/StyledButton';
+import { StyledTooltip } from './components/StyledTooltip';
 
 const getGlobalStyles = css`
   input::-ms-clear,
@@ -290,6 +290,7 @@ const getGlobalStyles = css`
   mark {
     padding: 0.2em;
   }
+  ${StyledTooltip};
 `;
 const getStorybookStyles = css`
   ${StyledButton} {

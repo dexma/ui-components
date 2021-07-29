@@ -58,38 +58,27 @@ export const getButtonSize = props => {
   `;
 };
 export const getIconSize = props => {
-  let sizeCss = ``;
-  const sizeArray = Object.entries(buttonSize(props));
   const iconAfter = props.iconAfter;
   const text = props.text;
 
-  sizeArray.forEach(sizeItem => {
-    const [size] = sizeItem;
+  let iconPaddding = 0.285;
+  if (props.size === 'medium') iconPaddding = 0.285;
+  if (props.size === 'large') iconPaddding = 0.5;
+  if (props.size === 'xlarge') iconPaddding = 0.7;
 
-    let iconPaddding = 0.285;
-    if (size === 'medium') iconPaddding = 0.285;
-    if (size === 'large') iconPaddding = 0.5;
-    if (size === 'xlarge') iconPaddding = 0.7;
+  let paddingPosition = 'right';
+  if (iconAfter) paddingPosition = 'left';
 
-    let paddingPosition = 'right';
-    if (iconAfter) paddingPosition = 'left';
+  let marginPosition = 'left';
+  if (iconAfter) marginPosition = 'right';
 
-    let marginPosition = 'left';
-    if (iconAfter) marginPosition = 'right';
-
-    sizeCss += `
-          &.${size} {
-            ${StyledIcon} {
-              display: inline-flex;
-              ${text &&
-                `margin-${paddingPosition}: ${iconPaddding}rem !important;
-              margin-${marginPosition}: -2px;`}
-            }
-          }
-        `;
-  });
   return css`
-    ${sizeCss}
+    ${StyledIcon} {
+      display: inline-flex;
+      ${text &&
+        `margin-${paddingPosition}: ${iconPaddding}rem !important;
+              margin-${marginPosition}: -2px;`}
+    }
   `;
 };
 export const getButtonVariantPrimary = props => {
@@ -330,15 +319,8 @@ export const getButtonVariantIconOutline = props => {
 };
 export const getButtonExpanded = () => {
   return css`
-    &.expanded {
-      &.small,
-      &.medium,
-      &.large,
-      &.xlarge {
-        display: block;
-        width: 100%;
-      }
-    }
+    display: block;
+    width: 100%;
   `;
 };
 export const getButtonDisabled = () => {
@@ -382,6 +364,6 @@ const StyledButton = styled.button`
   ${props => props.isCircle && getButtonCircle};
   ${props => props.isDisabled && getButtonDisabled};
   ${props => props.isLoading && getButtonLoading};
-  ${props => !props.isExpanded && getButtonExpanded};
+  ${props => props.isExpanded && getButtonExpanded};
 `;
 export { StyledButton };
