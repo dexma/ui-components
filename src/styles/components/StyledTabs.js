@@ -4,6 +4,7 @@ import {
   primaryColor,
   gray200,
   gray500,
+  gray700,
   white,
   fontWeightNormal,
   fontWeightBold,
@@ -11,6 +12,12 @@ import {
 } from '../selectors';
 
 const StyledTabs = styled.div`
+  height: ${props => (props.variant === 'scrollable' ? '100%' : 'auto')};
+
+  .ant-tabs-bar {
+    margin: ${props =>
+      props.variant === 'scrollable' ? '0 !important' : null};
+  }
   .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-nav-container {
     height: 40px;
   }
@@ -386,6 +393,7 @@ const StyledTabs = styled.div`
     position: relative;
     display: inline-block;
     -webkit-box-sizing: border-box;
+    width: ${props => (props.variant === 'scrollable' ? '100%' : 'auto')};
     box-sizing: border-box;
     margin: 0;
     padding-left: 0;
@@ -397,6 +405,7 @@ const StyledTabs = styled.div`
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
       -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
+
   .ant-tabs-nav::before,
   .ant-tabs-nav::after {
     display: table;
@@ -404,6 +413,22 @@ const StyledTabs = styled.div`
   }
   .ant-tabs-nav::after {
     clear: both;
+  }
+
+  .ant-tabs-tab {
+    flex: ${props => (props.variant === 'scrollable' ? '1 1 auto' : null)};
+    margin: ${props =>
+      props.variant === 'scrollable' ? '0 !important' : null};
+    text-align: ${props => (props.variant === 'scrollable' ? 'center' : null)};
+    font-size: ${props => (props.variant === 'scrollable' ? '14px' : null)};
+  }
+
+  .ant-tabs-nav div:first-of-type {
+    display: ${props => (props.variant === 'scrollable' ? 'flex' : null)};
+
+    div {
+      display: ${props => (props.variant === 'scrollable' ? 'inline' : null)};
+    }
   }
   .ant-tabs-nav .ant-tabs-tab {
     position: relative;
@@ -434,7 +459,8 @@ const StyledTabs = styled.div`
     margin-right: 0;
   }
   .ant-tabs-nav .ant-tabs-tab:hover {
-    color: ${primaryColor};
+    color: ${props =>
+      props.variant === 'scrollable' ? gray700 : primaryColor};
   }
   .ant-tabs-nav .ant-tabs-tab:active {
     color: ${primaryColor};
@@ -443,8 +469,10 @@ const StyledTabs = styled.div`
     margin-right: 8px;
   }
   .ant-tabs-nav .ant-tabs-tab-active {
-    color: ${primaryColor};
-    font-weight: ${fontWeightNormal};
+    color: ${props =>
+      props.variant === 'scrollable' ? gray700 : primaryColor};
+    font-weight: ${props =>
+      props.variant === 'scrollable' ? fontWeightBold : fontWeightNormal};
   }
   .ant-tabs-nav .ant-tabs-tab-disabled,
   .ant-tabs-nav .ant-tabs-tab-disabled:hover {
@@ -468,6 +496,7 @@ const StyledTabs = styled.div`
     overflow: hidden;
     content: '';
   }
+
   .ant-tabs .ant-tabs-top-content,
   .ant-tabs .ant-tabs-bottom-content {
     width: 100%;
@@ -675,6 +704,18 @@ const StyledTabs = styled.div`
     overflow: hidden;
     opacity: 0;
     pointer-events: none;
+  }
+
+  .ant-tabs {
+    height: ${props => (props.variant === 'scrollable' ? '100%' : 'auto')};
+    display: ${props => (props.variant === 'scrollable' ? 'flex' : null)};
+    flex-direction: ${props =>
+      props.variant === 'scrollable' ? 'column' : null};
+  }
+
+  .ant-tabs-content {
+    flex: ${props => (props.variant === 'scrollable' ? '1 1 auto' : null)};
+    overflow: ${props => (props.variant === 'scrollable' ? 'auto' : null)};
   }
   .no-flex > .ant-tabs-content > .ant-tabs-tabpane-inactive input,
   .ant-tabs-no-animation
