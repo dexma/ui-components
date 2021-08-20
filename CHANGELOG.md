@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/dexma/ui-components/compare/v5.0.0...v5.0.1) (2021-08-20)
+
+
+### Bug Fixes
+
+* **button:** style of the secondary button ([47f7cf0](https://github.com/dexma/ui-components/commit/47f7cf0ffe017a3b3ccbc5dae579f810bc055277))
+
 # [5.0.0](https://github.com/dexma/ui-components/compare/v4.8.0...v5.0.0) (2021-07-29)
 
 
