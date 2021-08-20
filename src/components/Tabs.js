@@ -12,6 +12,7 @@ const propTypes = {
    * Theme json based
    */
   theme: PropTypes.shape({}),
+  variant: PropTypes.string,
 };
 
 const defaultProps = {
@@ -19,10 +20,10 @@ const defaultProps = {
 };
 
 export const Tabs = withTheme(props => {
-  const { theme } = props;
+  const { theme, variant } = props;
   const tabsProps = omit(props, ['theme']);
   return (
-    <StyledTabs data-testid="tabs" theme={theme}>
+    <StyledTabs variant={variant} data-testid="tabs" theme={theme}>
       <TabsAntDesign
         {...tabsProps}
         animated={{ inkBar: false, tabPane: false }}
