@@ -107,7 +107,8 @@ export const getButtonVariantPrimary = props => {
   `;
 };
 export const getButtonVariantSecondary = props => {
-  const borderColor = gray400(props);
+  const borderColor = gray300(props);
+  const borderColorHover = gray400(props);
   const color = gray900(props);
   const colorHover = white(props);
   const colorIcon = iconColor(props);
@@ -122,8 +123,8 @@ export const getButtonVariantSecondary = props => {
     }
     &:hover {
       color: ${colorHover};
-      border-color: ${borderColor};
-      background-color: ${borderColor};
+      border-color: ${borderColorHover};
+      background-color: ${borderColorHover};
       ${StyledIcon} {
         fill: ${colorHover};
       }
