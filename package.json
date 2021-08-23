@@ -1,6 +1,6 @@
 {
   "name": "@dexma/ui-components",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "DEXMA UI Components (React)",
   "main": "dist/main.bundle.js",
   "scripts": {

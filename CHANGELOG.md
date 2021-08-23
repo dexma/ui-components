@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/dexma/ui-components/compare/v5.0.2...v5.0.3) (2021-08-23)
+
+
+### Bug Fixes
+
+* **field-group:** add tooltip key ([771ed7d](https://github.com/dexma/ui-components/commit/771ed7d8195a7aa75db23f09b8829cd11fd2eee5))
+
 ## [5.0.2](https://github.com/dexma/ui-components/compare/v5.0.1...v5.0.2) (2021-08-20)
 
 
