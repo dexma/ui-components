@@ -173,7 +173,9 @@ export const FieldGroup = props => {
           </label>
         );
         return tooltip ? (
-          <Tooltip title={tooltip}>{getLabel()}</Tooltip>
+          <Tooltip title={tooltip} key={`tooltip_${id}`}>
+            {getLabel()}
+          </Tooltip>
         ) : (
           getLabel()
         );
