@@ -16,7 +16,7 @@ const propTypes = {
    */
   name: PropTypes.string.isRequired,
   /**
-   * Set the color name for the icon, it will be a <a href="https://dexma.github.io/ui-components/?path=/docs/colors--colors">color</a>
+   * Set a color from <a href="https://dexma.github.io/ui-components/?path=/docs/colors--colors">color</a> or pass a HEX color #333 or #333333
    */
   color: PropTypes.string,
   /**
@@ -76,9 +76,12 @@ const getIconPaths = name => {
   });
 };
 
+const isHexColor = hex =>
+  /^#[0-9A-F]{6}$/i.test(hex) || /^#[0-9A-F]{3}$/i.test(hex);
+
 export const Icon = forwardRef((props, ref) => {
   const { name, color, size, theme } = props;
-  const fillColor = get(theme.color, color);
+  const fillColor = isHexColor(color) ? color : get(theme.color, color);
   const pathElements = getIconPaths(name);
   const iconSize = getIconSize(size);
   const iconProps = omit(props, ['name', 'color', 'size']);
