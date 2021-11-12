@@ -1,3 +1,11 @@
+## [5.0.4](https://github.com/dexma/ui-components/compare/v5.0.3...v5.0.4) (2021-11-12)
+
+
+### Bug Fixes
+
+* **icon:** allow to pass a hex as a color prop ([1f1de17](https://github.com/dexma/ui-components/commit/1f1de17d492474fc8f92e78bae78ac33a19ce4a2))
+* **icon:** allow to pass a hex color ([5d76763](https://github.com/dexma/ui-components/commit/5d7676374b99e5423b265e9e6023eab039ecb424))
+
 ## [5.0.3](https://github.com/dexma/ui-components/compare/v5.0.2...v5.0.3) (2021-08-23)
 
 
