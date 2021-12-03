@@ -22,12 +22,21 @@
   window.onerror = function onerror(message, source, line, column, err) {
     if (window.CONFIG_TYPE !== 'DEVELOPMENT') return;
     // eslint-disable-next-line no-var, vars-on-top
-    var error = { message: err.message, name: err.name, stack: err.stack };
-    window.fetch('/runtime-error', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message, source, line, column, error, origin: 'manager' }),
-    });
+    var xhr = new window.XMLHttpRequest();
+    xhr.open('POST', '/runtime-error');
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhr.send(
+      JSON.stringify({
+        /* eslint-disable object-shorthand */
+        message: message,
+        source: source,
+        line: line,
+        column: column,
+        error: err && { message: err.message, name: err.name, stack: err.stack },
+        origin: 'manager',
+        /* eslint-enable object-shorthand */
+      })
+    );
   };</script><style>#root[hidden],
       #docs-root[hidden] {
         display: none !important;
@@ -43,4 +52,4 @@
             
         
             
-              window['DOCS_MODE'] = false;</script><script src="runtime~main.870e8ee0658e83d05c6b.bundle.js"></script><script src="vendors~main.877f3b1b975e9899e5ac.bundle.js"></script><script src="main.297182007aa648d09d7a.bundle.js"></script></body></html>
+              window['DOCS_MODE'] = false;</script><script src="runtime~main.91c256eb259ecc622c15.manager.bundle.js"></script><script src="vendors~main.0aa9819dccf9a0b310b6.manager.bundle.js"></script><script src="main.224710de32e85ebd4008.manager.bundle.js"></script></body></html>
