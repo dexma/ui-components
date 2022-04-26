@@ -16,7 +16,13 @@ export const Theme = ({ children, options }) => {
   if (isEmpty(options)) {
     themeProviderOptions = defaultTheme;
   } else {
-    themeProviderOptions = Object.assign(defaultTheme, options);
+    themeProviderOptions = {
+      ...defaultTheme,
+      ...options,
+      backgroundColorActive: options.backgroundColor
+        ? options.backgroundColor
+        : options.primary,
+    };
   }
   return <ThemeProvider theme={themeProviderOptions}>{children}</ThemeProvider>;
 };
