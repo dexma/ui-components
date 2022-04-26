@@ -25,7 +25,11 @@ export const buttons = () => (
         <Button text="Outline" variant="outline" />
         <Button text="Destructive" variant="destructive" />
         <Button text="Link" variant="link" />
-        <Button text="Disabled" variant="primary" isDisabled />
+        <Button text="Primary Disabled" variant="primary" isDisabled />
+        <Button text="Secondary Disabled" variant="secondary" isDisabled />
+        <Button text="Outline Disabled" variant="outline" isDisabled />
+        <Button text="Destructive Disabled" variant="destructive" isDisabled />
+        <Button text="Link Disabled" variant="link" isDisabled />
       </Cell>
     </Row>
   </Grid>
@@ -119,43 +123,6 @@ export const loading = () => (
         <Button variant="outline" iconBefore="gas" isCircle isLoading />
         <Button variant="destructive" iconBefore="delete" isCircle isLoading />
         <Button variant="link" iconBefore="world" isCircle isLoading />
-      </Cell>
-      <Cell xs={12}>
-        <Button
-          variant="primary"
-          iconBefore="add"
-          isCircle
-          isLoading
-          isDisabled
-        />
-        <Button
-          variant="secondary"
-          iconBefore="image"
-          isCircle
-          isLoading
-          isDisabled
-        />
-        <Button
-          variant="outline"
-          iconBefore="gas"
-          isCircle
-          isLoading
-          isDisabled
-        />
-        <Button
-          variant="destructive"
-          iconBefore="delete"
-          isCircle
-          isLoading
-          isDisabled
-        />
-        <Button
-          variant="link"
-          iconBefore="world"
-          isCircle
-          isLoading
-          isDisabled
-        />
       </Cell>
     </Row>
   </Grid>
