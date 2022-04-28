@@ -1,3 +1,10 @@
+## [5.0.7](https://github.com/dexma/ui-components/compare/v5.0.6...v5.0.7) (2022-04-28)
+
+
+### Bug Fixes
+
+* **button:** disabled and loading does not have hover feedback anymore ([bfc97d2](https://github.com/dexma/ui-components/commit/bfc97d24c83f41e4c4ec64c30c1f340902841812))
+
 ## [5.0.6](https://github.com/dexma/ui-components/compare/v5.0.5...v5.0.6) (2022-04-28)
 
 
