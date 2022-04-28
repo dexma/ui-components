@@ -1,3 +1,10 @@
+## [5.0.6](https://github.com/dexma/ui-components/compare/v5.0.5...v5.0.6) (2022-04-28)
+
+
+### Bug Fixes
+
+* **icon:** add and fix icons ([a3bab4f](https://github.com/dexma/ui-components/commit/a3bab4f4add47f9c180ef801bcd211d56f86dcf5))
+
 ## [5.0.5](https://github.com/dexma/ui-components/compare/v5.0.4...v5.0.5) (2021-12-03)
 
 
