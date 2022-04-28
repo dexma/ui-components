@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/dexma/ui-components/compare/v5.0.8...v5.1.0) (2022-04-28)
+
+
+### Features
+
+* **switch:** add switch component ([dbf0863](https://github.com/dexma/ui-components/commit/dbf08639b2e44f50a454471fc0977dceee6a5a68))
+
 ## [5.0.8](https://github.com/dexma/ui-components/compare/v5.0.7...v5.0.8) (2022-04-28)
 
 
