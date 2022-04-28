@@ -1,3 +1,10 @@
+## [5.0.8](https://github.com/dexma/ui-components/compare/v5.0.7...v5.0.8) (2022-04-28)
+
+
+### Bug Fixes
+
+* **select:** active element background color ([7526d87](https://github.com/dexma/ui-components/commit/7526d870549f9d063c1c6ff730a0caec824db6fe))
+
 ## [5.0.7](https://github.com/dexma/ui-components/compare/v5.0.6...v5.0.7) (2022-04-28)
 
 
