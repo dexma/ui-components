@@ -4,7 +4,6 @@ import get from 'lodash/get';
 
 import {
   white,
-  gray200,
   gray300,
   gray400,
   gray500,
@@ -82,7 +81,10 @@ export const getIconSize = props => {
   `;
 };
 export const getButtonVariantPrimary = props => {
-  const newHoverColor = darken(0.1, saturate(0.2, primaryColor(props)));
+  const newHoverColor =
+    props.disabled || props.isLoading
+      ? primaryColor
+      : darken(0.1, saturate(0.2, primaryColor(props)));
   const newFocusColor = transparentize(0.3, primaryColor(props));
   const color = white(props);
   return css`
@@ -108,11 +110,14 @@ export const getButtonVariantPrimary = props => {
 };
 export const getButtonVariantSecondary = props => {
   const borderColor = gray300(props);
-  const borderColorHover = gray400(props);
-  const color = gray900(props);
-  const colorHover = white(props);
-  const colorIcon = iconColor(props);
+  const borderColorHover =
+    props.disabled || props.isLoading ? borderColor : gray400(props);
   const background = backgroundColor(props);
+  const backgroundHover =
+    props.disabled || props.isLoading ? background : gray400(props);
+  const color = gray900(props);
+  const colorHover = props.disabled || props.isLoading ? color : white(props);
+  const colorIcon = iconColor(props);
   const newFocusColor = transparentize(0.3, borderColor);
   return css`
     color: ${color};
@@ -124,7 +129,7 @@ export const getButtonVariantSecondary = props => {
     &:hover {
       color: ${colorHover};
       border-color: ${borderColorHover};
-      background-color: ${borderColorHover};
+      background-color: ${backgroundHover};
       ${StyledIcon} {
         fill: ${colorHover};
       }
@@ -135,63 +140,13 @@ export const getButtonVariantSecondary = props => {
     }
   `;
 };
-export const getButtonVariantSecondary300 = props => {
-  const borderColor = gray300(props);
-  const color = gray900(props);
-  const colorHover = white(props);
-  const background = backgroundColor(props);
-  const newFocusColor = transparentize(0.3, borderColor);
-  return css`
-    color: ${color};
-    border-color: ${borderColor};
-    background-color: ${background};
-    ${StyledIcon} {
-      fill: ${color};
-    }
-    &:hover {
-      color: ${colorHover};
-      border-color: ${borderColor};
-      background-color: ${borderColor};
-      ${StyledIcon} {
-        fill: ${colorHover};
-      }
-    }
-    &:focus {
-      box-shadow: 0px 0px 0px 2px ${newFocusColor};
-    }
-  `;
-};
-export const getButtonVariantSecondary200 = props => {
-  const borderColor = gray200(props);
-  const color = gray900(props);
-  const colorHover = white(props);
-  const background = backgroundColor(props);
-  const newFocusColor = transparentize(0.3, borderColor);
-  return css`
-    color: ${color};
-    border-color: ${borderColor};
-    background-color: ${background};
-    ${StyledIcon} {
-      fill: ${color};
-    }
-    &:hover {
-      color: ${colorHover};
-      border-color: ${borderColor};
-      background-color: ${borderColor};
-      ${StyledIcon} {
-        fill: ${colorHover};
-      }
-    }
-    &:focus {
-      box-shadow: 0px 0px 0px 2px ${newFocusColor};
-    }
-  `;
-};
 export const getButtonVariantOutline = props => {
   const borderColor = primaryColor(props);
   const color = primaryColor(props);
-  const colorHover = white(props);
+  const colorHover = props.disabled || props.isLoading ? color : white(props);
   const background = backgroundColor(props);
+  const backgroundHover =
+    props.disabled || props.isLoading ? background : borderColor;
   const newFocusColor = transparentize(0.3, borderColor);
   return css`
     color: ${color};
@@ -203,7 +158,7 @@ export const getButtonVariantOutline = props => {
     &:hover {
       color: ${colorHover};
       border-color: ${borderColor};
-      background-color: ${borderColor};
+      background-color: ${backgroundHover};
       ${StyledIcon} {
         fill: ${colorHover};
       }
@@ -218,7 +173,10 @@ export const getButtonVariantDestructive = props => {
   const color = white(props);
   const background = red(props);
   const borderColor = background;
-  const backgroundHover = darken(0.1, saturate(0.2, red(props)));
+  const backgroundHover =
+    props.disabled || props.isLoading
+      ? background
+      : darken(0.1, saturate(0.2, red(props)));
   const newFocusColor = transparentize(0.3, backgroundHover);
   return css`
     color: ${color};
@@ -237,6 +195,8 @@ export const getButtonVariantDestructive = props => {
 };
 export const getButtonVariantLink = props => {
   const color = primaryColor(props);
+  const textDecorationHover =
+    props.disabled || props.isLoading ? 'none' : 'underline';
   return css`
     color: ${color};
     border-color: transparent;
@@ -248,7 +208,7 @@ export const getButtonVariantLink = props => {
       color: ${color};
       border-color: transparent;
       background-color: transparent;
-      text-decoration: underline;
+      text-decoration: ${textDecorationHover};
     }
   `;
 };
@@ -273,7 +233,6 @@ export const getButtonVariantIcon = props => {
     }
   `;
 };
-
 export const getButtonVariantIconSecondary = props => {
   const color = gray500(props);
   const hoverColor = gray700(props);
@@ -332,6 +291,7 @@ export const getButtonDisabled = () => {
 };
 export const getButtonLoading = props => {
   return css`
+    cursor: wait;
     ${StyledSpinner} {
       ${props.text && `margin-right: .25rem`};
     }
@@ -363,7 +323,7 @@ const StyledButton = styled.button`
     props.variant === 'icon-secondary' && getButtonVariantIconSecondary};
   ${props => props.variant === 'icon-outline' && getButtonVariantIconOutline};
   ${props => props.isCircle && getButtonCircle};
-  ${props => props.isDisabled && getButtonDisabled};
+  ${props => props.disabled && getButtonDisabled};
   ${props => props.isLoading && getButtonLoading};
   ${props => props.isExpanded && getButtonExpanded};
 `;
