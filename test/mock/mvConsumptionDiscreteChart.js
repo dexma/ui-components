@@ -1510,7 +1510,6 @@ export default {
           null
         ]
       ],
-      "linkedTo": ":previous"
     },
     {
       "type": "column",
