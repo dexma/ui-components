@@ -34,7 +34,7 @@ describe('<Chart>', () => {
     render(<Chart options={mvConsumptionDiscreteChart} isLoading />);
     expect(screen.getByTestId('chart-loading')).toBeTruthy();
   });
-  it('Should not render error result component if showError is passed', () => {
+  it('Should render error result component if showError is passed', () => {
     render(
       <Chart
         options={mvConsumptionDiscreteChart}
@@ -50,7 +50,17 @@ describe('<Chart>', () => {
     );
     expect(screen.getByTestId('result-error')).toBeTruthy();
     expect(screen.getByTestId('chart-error')).toBeTruthy();
-    expect(screen.getByText("Error chart")).toBeTruthy();
-    expect(screen.getByText("Test info chart error")).toBeTruthy();
+    expect(screen.getByText('Error chart')).toBeTruthy();
+    expect(screen.getByText('Test info chart error')).toBeTruthy();
+  });
+
+  it('Should properly handle the callback function', () => {
+    const mockCallback = jest.fn();
+    const { result, getByTestId } = render(
+      <Chart options={mvConsumptionDiscreteChart} callback={mockCallback} />
+    );
+    expect(getByTestId('chart')).toBeTruthy();
+
+    expect(mockCallback).toBeCalled();
   });
 });

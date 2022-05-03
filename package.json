@@ -173,5 +173,9 @@
     "reporters": [
       "default"
     ]
+  },
+  "dependencies": {
+    "highcharts-react-official": "^3.1.0",
+    "highcharts-rounded-corners": "^1.0.6"
   }
 }

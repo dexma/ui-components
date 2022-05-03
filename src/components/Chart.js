@@ -1,14 +1,12 @@
-import React, {
-  forwardRef,
-  useRef,
-  useEffect,
-  useImperativeHandle,
-} from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import omit from 'lodash/omit';
 
 import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
+import HCRounded from 'highcharts-rounded-corners';
+
 import addSankeyModule from 'highcharts/modules/sankey';
 import addExportingModule from 'highcharts/modules/exporting';
 import addOfflineExportingModule from 'highcharts/modules/offline-exporting';
@@ -21,6 +19,7 @@ import withDataId from '../components/DataId/withDataId';
 
 boost(Highcharts);
 addSankeyModule(Highcharts);
+HCRounded(Highcharts);
 addExportingModule(Highcharts);
 addOfflineExportingModule(Highcharts);
 addExportData(Highcharts);
@@ -123,53 +122,6 @@ const defaultProps = {
   dataId: 'chart',
 };
 
-const getStyledChart = () => {
-  const { backgroundColor, fontFamily } = theme;
-  return {
-    chart: {
-      backgroundColor: backgroundColor,
-      style: {
-        fontFamily: fontFamily,
-      },
-    },
-    title: {
-      style: {
-        fontWeight: 'bold',
-      },
-    },
-    tooltip: {
-      backgroundColor: backgroundColor,
-      shadow: false,
-    },
-    legend: {
-      backgroundColor: backgroundColor,
-      itemStyle: {},
-    },
-    xAxis: {
-      labels: {
-        style: {},
-      },
-    },
-    yAxis: {
-      title: {
-        style: {},
-      },
-      labels: {
-        style: {},
-      },
-    },
-  };
-};
-
-const defaultOptions = {
-  credits: {
-    enabled: false,
-  },
-  exporting: {
-    enabled: false,
-  },
-};
-
 const StyledChartLoading = styled.div`
   display: flex;
   margin: 0 auto;
@@ -262,104 +214,106 @@ const StyledChart = styled.div`
   }
 `;
 
-const HighchartsReact = forwardRef((props, ref) => {
+const Chart = props => {
   const {
+    options,
+    isLoading,
+    showError,
+    errorContent,
+    dataId,
     decimalPoint,
     thousandsSep,
     numericSymbols,
     months,
     shortMonths,
     weekdays,
-    options,
-    callback,
   } = props;
-  const containerRef = useRef();
-  const chartRef = useRef();
-  useEffect(() => {
-    if (!chartRef.current) {
-      Highcharts.setOptions({
-        lang: {
-          decimalPoint,
-          thousandsSep,
-          numericSymbols,
-          months,
-          shortMonths,
-          weekdays,
-        },
-      });
-      chartRef.current = Highcharts.chart(
-        containerRef.current,
-        {
-          ...defaultOptions,
-          ...options,
-        },
-        callback || undefined
-      );
-      chartRef.current.update(getStyledChart());
-    } else {
-      chartRef.current.update(options);
-    }
-  });
-  useEffect(() => {
-    return () => {
-      if (chartRef.current) {
-        chartRef.current.destroy();
-        chartRef.current = null;
-      }
-    };
-  }, []);
-  useImperativeHandle(
-    ref,
-    () => ({
-      get chart() {
-        return chartRef.current;
-      },
-      container: containerRef,
-    }),
-    []
-  );
-  const chartProps = omit(props, [
+
+  const loading = isLoading && !showError;
+  const error = !isLoading && showError && errorContent;
+  const showChart = !loading && !error && options;
+  const { backgroundColor, fontFamily } = theme;
+  const highchartsReactProps = omit(props, [
+    'isLoading',
+    'showError',
+    'dataId',
     'decimalPoint',
     'thousandsSep',
     'thousandsSeparator',
     'numericSymbols',
     'months',
+    'options',
     'shortMonths',
     'weekdays',
     'options',
-    'callback',
     'theme',
-    'dataId',
   ]);
-  return (
-    <div
-      ref={containerRef}
-      className="chart"
-      data-testid="chart"
-      {...chartProps}
-    />
-  );
-});
 
-const Chart = forwardRef((props, ref) => {
-  const { options, isLoading, showError, errorContent, dataId } = props;
-  const loading = isLoading && !showError;
-  const error = !isLoading && showError && errorContent;
-  const showChart = !loading && !error && options;
-  const highchartsReactProps = omit(props, [
-    'isLoading',
-    'showError',
-    'errorContent',
-    'dataId',
-  ]);
+  useEffect(() => {
+    Highcharts.setOptions({
+      lang: {
+        decimalPoint,
+        thousandsSep,
+        numericSymbols,
+        months,
+        shortMonths,
+        weekdays,
+      },
+      chart: {
+        backgroundColor: backgroundColor,
+        style: {
+          fontFamily: fontFamily,
+        },
+      },
+      title: {
+        style: {
+          fontWeight: 'bold',
+        },
+      },
+      tooltip: {
+        backgroundColor: backgroundColor,
+        shadow: false,
+      },
+      legend: {
+        backgroundColor: backgroundColor,
+        itemStyle: {},
+      },
+      xAxis: {
+        labels: {
+          style: {},
+        },
+      },
+      yAxis: {
+        title: {
+          style: {},
+        },
+        labels: {
+          style: {},
+        },
+      },
+      credits: {
+        enabled: false,
+      },
+      exporting: {
+        enabled: false,
+      },
+    });
+  }, []);
+
   return (
-    <StyledChart data-id={dataId}>
+    <StyledChart data-id={dataId} data-testid={dataId}>
       {loading && <ChartLoading />}
       {error && <ChartError>{errorContent}</ChartError>}
-      {showChart && <HighchartsReact ref={ref} {...highchartsReactProps} />}
+      {showChart && (
+        <HighchartsReact
+          highcharts={Highcharts}
+          {...highchartsReactProps}
+          options={options}
+        />
+      )}
     </StyledChart>
   );
-});
+};
 
 Chart.propTypes = propTypes;
 Chart.defaultProps = defaultProps;

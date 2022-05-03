@@ -13,14 +13,10 @@ describe('<SectionData>', () => {
   it('Should render a chart', () => {
     render(
       <SectionData>
-        <Chart
-          data-testid="section-data-chart"
-          type="chart"
-          options={mockBasicArea}
-        />
+        <Chart type="chart" options={mockBasicArea} />
       </SectionData>
     );
-    expect(screen.getByTestId('section-data-chart')).toBeTruthy();
+    expect(screen.getByTestId('chart')).toBeTruthy();
   });
   it('Should render a table', () => {
     render(
