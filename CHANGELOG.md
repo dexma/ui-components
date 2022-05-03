@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/dexma/ui-components/compare/v5.1.0...v5.2.0) (2022-05-03)
+
+
+### Features
+
+* **chart:** update highcharts lib ([5a11b42](https://github.com/dexma/ui-components/commit/5a11b42d20495ba32ee1a0ff12c0c4c872288d19))
+
 # [5.1.0](https://github.com/dexma/ui-components/compare/v5.0.8...v5.1.0) (2022-04-28)
 
 
