@@ -10,9 +10,9 @@
     "build": "npm run build:icons && npm run clean-build && webpack --mode production",
     "build-storybook": "build-storybook -c src/.storybook -o docs",
     "storybook": "npm run build:icons && start-storybook -p 9999 -c src/.storybook --docs",
-    "prettier": "prettier --write 'src/{,**/{,*.}}*.js'",
-    "eslint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "eslint:fix": "eslint --fix 'src/{,**/{,*.}}*.js'",
+    "prettier": "prettier --write '{src,test}/{,**/{,*.}}*.js'",
+    "eslint": "eslint '{src,test}/{,**/{,*.}}*.js'",
+    "eslint:fix": "eslint --fix '{src,test}/{,**/{,*.}}*.js'",
     "format": "npm run eslint:fix && npm run prettier",
     "test": "NODE_ENV=test jest --json --outputFile=test/jest-test-results.json",
     "semantic-release": "semantic-release"

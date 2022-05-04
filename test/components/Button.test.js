@@ -9,7 +9,7 @@ describe('<Button>', () => {
     expect(getByRole('button')).toBeTruthy();
   });
   it('Should render the spinner if isLoading is passed', () => {
-    const { getByTestId } = render(<Button isLoading/>);
+    const { getByTestId } = render(<Button isLoading />);
     expect(getByTestId('button-loading')).toBeTruthy();
   });
   it('Should render the icon before', () => {
@@ -21,14 +21,20 @@ describe('<Button>', () => {
     expect(getByTestId('button-icon-after')).toBeTruthy();
   });
   it('Should render the children correctly', () => {
-    const testDiv = <div data-testid="test">test</div>
-    const { getByTestId } = render(<Button iconAfter="vader">{testDiv}</Button>);
+    const testDiv = <div data-testid="test">test</div>;
+    const { getByTestId } = render(
+      <Button iconAfter="vader">{testDiv}</Button>
+    );
     expect(getByTestId('button-icon-after')).toBeTruthy();
   });
   it('Should call mock function on click', () => {
     const mockCallBack = jest.fn();
-    const testDiv = <div data-testid="test">test</div>
-    const { getByRole } = render(<Button iconAfter="vader" onClick={mockCallBack}>{testDiv}</Button>);
+    const testDiv = <div data-testid="test">test</div>;
+    const { getByRole } = render(
+      <Button iconAfter="vader" onClick={mockCallBack}>
+        {testDiv}
+      </Button>
+    );
     fireEvent.click(getByRole('button'));
     expect(mockCallBack).toBeCalled();
   });

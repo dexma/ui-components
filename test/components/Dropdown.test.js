@@ -19,8 +19,8 @@ describe('<Dropdown>', () => {
     const { getByTestId } = render(
       <Dropdown icon="more_horiz" content={content} />
     );
-    expect(getByTestId("dropdown-button-icon")).toBeTruthy();
-    expect(getByTestId("button-icon-before")).toBeTruthy();
+    expect(getByTestId('dropdown-button-icon')).toBeTruthy();
+    expect(getByTestId('button-icon-before')).toBeTruthy();
   });
   it('Should render the button text', () => {
     const textTest = 'Test';
@@ -32,12 +32,16 @@ describe('<Dropdown>', () => {
   it('Should render 1 button', () => {
     const textTest = 'Test';
     const { getByText } = render(
-      <Dropdown text={textTest} trigger="click" content={[
-        {
-          text: 'Edit',
-          iconBefore: 'edit',
-        }
-      ]} />
+      <Dropdown
+        text={textTest}
+        trigger="click"
+        content={[
+          {
+            text: 'Edit',
+            iconBefore: 'edit',
+          },
+        ]}
+      />
     );
     fireEvent.click(getByText(textTest));
     const contentButtons = screen.getAllByTestId('button');
@@ -46,16 +50,20 @@ describe('<Dropdown>', () => {
   it('Should render 2 button', () => {
     const textTest = 'Test';
     const { getByText } = render(
-      <Dropdown text={textTest} trigger="click" content={[
-        {
-          text: 'Edit',
-          iconBefore: 'edit',
-        },
-        {
-          text: 'Delete',
-          iconBefore: 'delete',
-        }
-      ]} />
+      <Dropdown
+        text={textTest}
+        trigger="click"
+        content={[
+          {
+            text: 'Edit',
+            iconBefore: 'edit',
+          },
+          {
+            text: 'Delete',
+            iconBefore: 'delete',
+          },
+        ]}
+      />
     );
     fireEvent.click(getByText(textTest));
     const contentButtons = screen.getAllByTestId('button');
@@ -64,20 +72,24 @@ describe('<Dropdown>', () => {
   it('Should render 3 button', () => {
     const textTest = 'Test';
     const { getByText } = render(
-      <Dropdown text={textTest} trigger="click" content={[
-        {
-          text: 'Edit',
-          iconBefore: 'edit',
-        },
-        {
-          text: 'Delete',
-          iconBefore: 'delete',
-        },
-        {
-          text: 'Add',
-          iconBefore: 'add',
-        }
-      ]} />
+      <Dropdown
+        text={textTest}
+        trigger="click"
+        content={[
+          {
+            text: 'Edit',
+            iconBefore: 'edit',
+          },
+          {
+            text: 'Delete',
+            iconBefore: 'delete',
+          },
+          {
+            text: 'Add',
+            iconBefore: 'add',
+          },
+        ]}
+      />
     );
     fireEvent.click(getByText(textTest));
     const contentButtons = screen.getAllByTestId('button');
@@ -89,23 +101,27 @@ describe('<Dropdown>', () => {
     const mockCallBackButtonDelete = jest.fn();
     const mockCallBackButtonAdd = jest.fn();
     const { getByText } = render(
-      <Dropdown text={textTest} trigger="click" content={[
-        {
-          text: 'Edit',
-          iconBefore: 'edit',
-          onClick: mockCallBackButtonEdit
-        },
-        {
-          text: 'Delete',
-          iconBefore: 'delete',
-          onClick: mockCallBackButtonDelete
-        },
-        {
-          text: 'Add',
-          iconBefore: 'add',
-          onClick: mockCallBackButtonAdd
-        }
-      ]} />
+      <Dropdown
+        text={textTest}
+        trigger="click"
+        content={[
+          {
+            text: 'Edit',
+            iconBefore: 'edit',
+            onClick: mockCallBackButtonEdit,
+          },
+          {
+            text: 'Delete',
+            iconBefore: 'delete',
+            onClick: mockCallBackButtonDelete,
+          },
+          {
+            text: 'Add',
+            iconBefore: 'add',
+            onClick: mockCallBackButtonAdd,
+          },
+        ]}
+      />
     );
     fireEvent.click(getByText(textTest));
 
@@ -125,4 +141,3 @@ describe('<Dropdown>', () => {
     expect(mockCallBackButtonDelete).toBeCalled();
   });
 });
-

@@ -16,19 +16,19 @@ describe('<Icon>', () => {
     expect(icons.length).toBeTruthy();
   });
   it('Should have correct size passing small sizes', () => {
-    const icon = mount(<Icon size="small"/>);
+    const icon = mount(<Icon size="small" />);
     expect(icon.find('svg').prop('width')).toBe(getIconSize('small'));
   });
   it('Should have correct size passing medium sizes', () => {
-    const icon = mount(<Icon size="medium"/>);
+    const icon = mount(<Icon size="medium" />);
     expect(icon.find('svg').prop('width')).toBe(getIconSize('medium'));
   });
   it('Should have correct size passing large sizes', () => {
-    const icon = mount(<Icon size="large"/>);
+    const icon = mount(<Icon size="large" />);
     expect(icon.find('svg').prop('width')).toBe(getIconSize('large'));
   });
   it('Should have correct size passing xlarge sizes', () => {
-    const icon = mount(<Icon size="xlarge"/>);
+    const icon = mount(<Icon size="xlarge" />);
     expect(icon.find('svg').prop('width')).toBe(getIconSize('xlarge'));
   });
 });

@@ -321,7 +321,7 @@ export const mockStackedBarNegative = {
     },
     labels: {
       formatter: function() {
-        return Math.abs(this.value) + '%';
+        return `${Math.abs(this.value)}%`;
       },
     },
   },
@@ -335,13 +335,8 @@ export const mockStackedBarNegative = {
   tooltip: {
     formatter: function() {
       return (
-        '<b>' +
-        this.series.name +
-        ', age ' +
-        this.point.category +
-        '</b><br/>' +
-        'Population: ' +
-        Highcharts.numberFormat(Math.abs(this.point.y), 0)
+        `<b>${this.series.name}, age ${this.point.category}</b><br/>` +
+        `Population: ${Highcharts.numberFormat(Math.abs(this.point.y), 0)}`
       );
     },
   },

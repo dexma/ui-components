@@ -24,7 +24,7 @@ const propTypes = {
   /**
    * Set values
    */
-  values: PropTypes.arrayOf(PropTypes.object),
+  values: PropTypes.arrayOf(PropTypes.shape({})),
   /**
    * Set selected values default
    */

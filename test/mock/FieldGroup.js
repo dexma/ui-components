@@ -53,15 +53,15 @@ export const mockRadioCustomGroup = [
     id: 'gauge',
     icon: 'widget_gauge',
     name: 'gauge',
-    tooltip: 'gauge'
+    tooltip: 'gauge',
   },
   {
     value: 'percentage',
     id: 'percentage',
     icon: 'widget_percentage',
     name: 'percentage',
-    tooltip: 'percentage'
-  }
+    tooltip: 'percentage',
+  },
 ];
 export const mockSelectedRadioItem = 'horas';
 export const mockCheckboxGroup = [

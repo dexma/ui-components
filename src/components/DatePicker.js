@@ -73,7 +73,7 @@ const propTypes = {
   /**
    * The period option default selected, we use a select so please check the <a href="https://dexma.github.io/ui-components/?path=/docs/select--select">Select section</a>
    */
-  periodOptions: PropTypes.arrayOf(PropTypes.object),
+  periodOptions: PropTypes.arrayOf(PropTypes.shape({})),
   /**
    * The period option default selected, we use a select so please check the <a href="https://dexma.github.io/ui-components/?path=/docs/select--select">Select section</a>
    */

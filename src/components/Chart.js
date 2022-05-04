@@ -52,7 +52,7 @@ const propTypes = {
   /**
    * All the highcharts options you can see on the <a href="https://api.highcharts.com/highcharts/chart">documentation</a>
    */
-  options: PropTypes.objectOf(PropTypes.any),
+  options: PropTypes.shape({}),
   /**
    * Call a function when the charts is mounted, helpful when use multiple ref
    */
@@ -221,6 +221,7 @@ const Chart = props => {
     showError,
     errorContent,
     dataId,
+    'data-testid': dataTestId,
     decimalPoint,
     thousandsSep,
     numericSymbols,
@@ -237,6 +238,7 @@ const Chart = props => {
     'isLoading',
     'showError',
     'dataId',
+    'data-testid',
     'decimalPoint',
     'thousandsSep',
     'thousandsSeparator',
@@ -301,7 +303,7 @@ const Chart = props => {
   }, []);
 
   return (
-    <StyledChart data-id={dataId} data-testid={dataId}>
+    <StyledChart data-id={dataId} data-testid={dataTestId}>
       {loading && <ChartLoading />}
       {error && <ChartError>{errorContent}</ChartError>}
       {showChart && (

@@ -35,7 +35,7 @@ const propTypes = {
    * Array of objects, each object represents the button contract for example `{text: 'Edit',
     iconBefore: 'edit'}` so please check the <a href="https://dexma.github.io/ui-components/?path=/docs/button--buttons">buttons</a>
    */
-  content: PropTypes.arrayOf(PropTypes.object),
+  content: PropTypes.arrayOf(PropTypes.shape({})),
   /**
    * Set the text of the dropdown button
    */

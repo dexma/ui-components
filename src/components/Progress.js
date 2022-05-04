@@ -17,7 +17,7 @@ const propTypes = {
   /**
    * List if marks `[{ value: 20, color: 'blue' }, { value: 30, color: 'red' }]`
    */
-  marks: PropTypes.arrayOf(PropTypes.object),
+  marks: PropTypes.arrayOf(PropTypes.shape({})),
   /**
    * Set the text on the end
    */

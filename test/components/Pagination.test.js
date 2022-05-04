@@ -10,7 +10,9 @@ describe('<Pagination>', () => {
   });
 
   it('Should render the correct icon left', () => {
-    const pagination = mount(<Pagination total={100} pageSize={10} defaultCurrent={6} />);
+    const pagination = mount(
+      <Pagination total={100} pageSize={10} defaultCurrent={6} />
+    );
     const icon = pagination.find('StyledIcon');
     expect(icon.length).toEqual(2);
   });

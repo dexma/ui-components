@@ -5,18 +5,14 @@ import Switch from '../../src/components/Switch';
 
 describe('<Switch>', () => {
   it('Should render the switch', () => {
-    const { getByTestId } = render(
-      <Switch />
-    );
+    const { getByTestId } = render(<Switch />);
     expect(getByTestId('switch')).toBeTruthy();
   });
 
   it('Should call on click when is clicked', () => {
     const mockOnClick = jest.fn();
 
-    const { getByTestId } = render(
-      <Switch onClick={mockOnClick} />
-    );
+    const { getByTestId } = render(<Switch onClick={mockOnClick} />);
 
     fireEvent.click(getByTestId('switch'));
 

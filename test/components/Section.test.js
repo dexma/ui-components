@@ -13,7 +13,7 @@ describe('<SectionData>', () => {
   it('Should render a chart', () => {
     render(
       <SectionData>
-        <Chart type="chart" options={mockBasicArea} />
+        <Chart type="chart" options={mockBasicArea} data-testid="chart" />
       </SectionData>
     );
     expect(screen.getByTestId('chart')).toBeTruthy();

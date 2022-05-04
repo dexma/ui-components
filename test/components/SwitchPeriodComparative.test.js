@@ -2,17 +2,20 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import SwitchPeriodComparative, { getPreviousDate, getSamePeriodLastYear } from '../../src/components/SwitchPeriodComparative';
+import SwitchPeriodComparative, {
+  getPreviousDate,
+  getSamePeriodLastYear,
+} from '../../src/components/SwitchPeriodComparative';
 import { endDate, startDate } from '../mock/SwitchPeriodComparative';
 
 describe('<SwitchPeriodComparative>', () => {
   it('Should have correct text', () => {
-    const previousPeriodText = "previousPeriodText";
-    const samePeriodLastYearText = "samePeriodLastYearText";
+    const previousPeriodText = 'previousPeriodText';
+    const samePeriodLastYearText = 'samePeriodLastYearText';
     const { getByText } = render(
       <div>
         <SwitchPeriodComparative
-          selectedPeriod='previous_period'
+          selectedPeriod="previous_period"
           startDate={startDate}
           endDate={endDate}
           samePeriodLastYearText={samePeriodLastYearText}
@@ -27,7 +30,7 @@ describe('<SwitchPeriodComparative>', () => {
     const { getByDisplayValue } = render(
       <div>
         <SwitchPeriodComparative
-          selectedPeriod='previous_period'
+          selectedPeriod="previous_period"
           startDate={startDate}
           endDate={endDate}
         />
@@ -42,7 +45,7 @@ describe('<SwitchPeriodComparative>', () => {
     const { getByDisplayValue } = render(
       <div>
         <SwitchPeriodComparative
-          selectedPeriod='last_period'
+          selectedPeriod="last_period"
           startDate={startDate}
           endDate={endDate}
         />
@@ -57,7 +60,7 @@ describe('<SwitchPeriodComparative>', () => {
     const { getByTestId } = render(
       <div>
         <SwitchPeriodComparative
-          selectedPeriod='previous_period'
+          selectedPeriod="previous_period"
           startDate={startDate}
           endDate={endDate}
         />
@@ -66,10 +69,7 @@ describe('<SwitchPeriodComparative>', () => {
     expect(getByTestId('switch-period-comparative')).toBeTruthy();
   });
   it('Should select the correct previous period', () => {
-    const [
-      previousStartDate,
-      previousEndDate
-    ] = getPreviousDate(
+    const [previousStartDate, previousEndDate] = getPreviousDate(
       startDate,
       endDate
     );
@@ -77,13 +77,15 @@ describe('<SwitchPeriodComparative>', () => {
     const { getByTestId } = render(
       <div>
         <SwitchPeriodComparative
-          selectedPeriod='previous_period'
+          selectedPeriod="previous_period"
           startDate={startDate}
           endDate={endDate}
         />
       </div>
     );
-    expect(getByTestId('compare-period-previous-period-dates')).toHaveTextContent(previousPeriod);
+    expect(
+      getByTestId('compare-period-previous-period-dates')
+    ).toHaveTextContent(previousPeriod);
   });
   it('Should select the correct last period', () => {
     const [lastYearStartDate, lastYearEndDate] = getSamePeriodLastYear(
@@ -94,19 +96,21 @@ describe('<SwitchPeriodComparative>', () => {
     const { getByTestId } = render(
       <div>
         <SwitchPeriodComparative
-          selectedPeriod='last_period'
+          selectedPeriod="last_period"
           startDate={startDate}
           endDate={endDate}
         />
       </div>
     );
-    expect(getByTestId('compare-period-last-period-dates')).toHaveTextContent(lastYearPeriod);
+    expect(getByTestId('compare-period-last-period-dates')).toHaveTextContent(
+      lastYearPeriod
+    );
   });
   it('Should call onPeriodSelect', () => {
     const mockCallBack = jest.fn();
     const { getAllByTestId } = render(
       <SwitchPeriodComparative
-        selectedPeriod='previous_period'
+        selectedPeriod="previous_period"
         startDate={startDate}
         endDate={endDate}
         onPeriodSelect={mockCallBack}

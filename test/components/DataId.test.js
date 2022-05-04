@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react'
+import { render } from '@testing-library/react';
 
 import { DataIdProvider } from '../../src/components/DataId/DataIdProvider';
 import withDataId from '../../src/components/DataId/withDataId';
@@ -16,7 +16,7 @@ import Table from '../../src/components/Table';
 describe('Data Id', () => {
   it('withDataId should not build data-id', () => {
     const Example = props => {
-      return <div data-id={props.dataId}>Example</div>
+      return <div data-id={props.dataId}>Example</div>;
     };
 
     const ExampleWithId = withDataId(Example);
@@ -28,7 +28,7 @@ describe('Data Id', () => {
 
   it('withDataId should build data-id as default value', () => {
     const Example = props => {
-      return <div data-id={props.dataId}>Example</div>
+      return <div data-id={props.dataId}>Example</div>;
     };
 
     Example.defaultProps = {
@@ -44,7 +44,7 @@ describe('Data Id', () => {
 
   it('withDataId should build data-id as specific value', () => {
     const Example = props => {
-      return <div data-id={props.dataId}>Example</div>
+      return <div data-id={props.dataId}>Example</div>;
     };
 
     Example.defaultProps = {
@@ -53,14 +53,14 @@ describe('Data Id', () => {
 
     const ExampleWithId = withDataId(Example);
 
-    const { container } = render(<ExampleWithId dataId='example.test' />);
+    const { container } = render(<ExampleWithId dataId="example.test" />);
     const example = container.querySelectorAll("[data-id='example.test']");
     expect(Array.from(example)).toHaveLength(1);
   });
 
   it('withDataId should build data-id as context + default value', () => {
     const Example = props => {
-      return <div data-id={props.dataId}>Example</div>
+      return <div data-id={props.dataId}>Example</div>;
     };
 
     Example.defaultProps = {
@@ -69,14 +69,20 @@ describe('Data Id', () => {
 
     const ExampleWithId = withDataId(Example);
 
-    const { container } = render(<DataIdProvider dataId="page.section"><ExampleWithId /></DataIdProvider>);
-    const example = container.querySelectorAll("[data-id='page.section.example']");
+    const { container } = render(
+      <DataIdProvider dataId="page.section">
+        <ExampleWithId />
+      </DataIdProvider>
+    );
+    const example = container.querySelectorAll(
+      "[data-id='page.section.example']"
+    );
     expect(Array.from(example)).toHaveLength(1);
   });
 
   it('withDataId should build data-id as context + specific value', () => {
     const Example = props => {
-      return <div data-id={props.dataId}>Example</div>
+      return <div data-id={props.dataId}>Example</div>;
     };
 
     Example.defaultProps = {
@@ -85,13 +91,30 @@ describe('Data Id', () => {
 
     const ExampleWithId = withDataId(Example);
 
-    const { container } = render(<DataIdProvider dataId="page.section"><ExampleWithId dataId='example.test' /></DataIdProvider>);
-    const example = container.querySelectorAll("[data-id='page.section.example.test']");
+    const { container } = render(
+      <DataIdProvider dataId="page.section">
+        <ExampleWithId dataId="example.test" />
+      </DataIdProvider>
+    );
+    const example = container.querySelectorAll(
+      "[data-id='page.section.example.test']"
+    );
     expect(Array.from(example)).toHaveLength(1);
   });
 
   it('components should have data-id as default value', () => {
-    const { container } = render(<SectionData><><Button /><Chart /><DatePicker /><Input /><Select /><Table /></></SectionData>);
+    const { container } = render(
+      <SectionData>
+        <>
+          <Button />
+          <Chart />
+          <DatePicker />
+          <Input />
+          <Select />
+          <Table />
+        </>
+      </SectionData>
+    );
 
     const sectionData = container.querySelectorAll("[data-id='section-data']");
     const button = container.querySelectorAll("[data-id='button']");
@@ -111,12 +134,27 @@ describe('Data Id', () => {
   });
 
   it('components should have data-id as specific value', () => {
-    const { container } = render(<SectionData dataId='section-data.test'><><Button dataId='button.test' /><Chart dataId='chart.test' /><DatePicker dataId='datepicker.test' /><Input dataId='input.test' /><Select dataId='select.test' /><Table dataId='table.test' /></></SectionData>);
+    const { container } = render(
+      <SectionData dataId="section-data.test">
+        <>
+          <Button dataId="button.test" />
+          <Chart dataId="chart.test" />
+          <DatePicker dataId="datepicker.test" />
+          <Input dataId="input.test" />
+          <Select dataId="select.test" />
+          <Table dataId="table.test" />
+        </>
+      </SectionData>
+    );
 
-    const sectionData = container.querySelectorAll("[data-id='section-data.test']");
+    const sectionData = container.querySelectorAll(
+      "[data-id='section-data.test']"
+    );
     const button = container.querySelectorAll("[data-id='button.test']");
     const chart = container.querySelectorAll("[data-id='chart.test']");
-    const datePicker = container.querySelectorAll("[data-id='datepicker.test']");
+    const datePicker = container.querySelectorAll(
+      "[data-id='datepicker.test']"
+    );
     const input = container.querySelectorAll("[data-id='input.test']");
     const select = container.querySelectorAll("[data-id='select.test']");
     const table = container.querySelectorAll("[data-id='table.test']");
@@ -131,14 +169,35 @@ describe('Data Id', () => {
   });
 
   it('components should have data-id as context + default value', () => {
-    const { container } = render(<DataIdProvider dataId="page.section"><SectionData><><Button /><Chart /><DatePicker /><Input /><Select /><Table /></></SectionData></DataIdProvider>);
+    const { container } = render(
+      <DataIdProvider dataId="page.section">
+        <SectionData>
+          <>
+            <Button />
+            <Chart />
+            <DatePicker />
+            <Input />
+            <Select />
+            <Table />
+          </>
+        </SectionData>
+      </DataIdProvider>
+    );
 
-    const sectionData = container.querySelectorAll("[data-id='page.section.section-data']");
-    const button = container.querySelectorAll("[data-id='page.section.button']");
+    const sectionData = container.querySelectorAll(
+      "[data-id='page.section.section-data']"
+    );
+    const button = container.querySelectorAll(
+      "[data-id='page.section.button']"
+    );
     const chart = container.querySelectorAll("[data-id='page.section.chart']");
-    const datePicker = container.querySelectorAll("[data-id='page.section.datepicker']");
+    const datePicker = container.querySelectorAll(
+      "[data-id='page.section.datepicker']"
+    );
     const input = container.querySelectorAll("[data-id='page.section.input']");
-    const select = container.querySelectorAll("[data-id='page.section.select']");
+    const select = container.querySelectorAll(
+      "[data-id='page.section.select']"
+    );
     const table = container.querySelectorAll("[data-id='page.section.table']");
 
     expect(Array.from(sectionData)).toHaveLength(1);
@@ -151,15 +210,42 @@ describe('Data Id', () => {
   });
 
   it('components should have data-id as context + specific value', () => {
-    const { container } = render(<DataIdProvider dataId="page.section"><SectionData dataId='section-data.test'><><Button dataId='button.test' /><Chart dataId='chart.test' /><DatePicker dataId='datepicker.test' /><Input dataId='input.test' /><Select dataId='select.test' /><Table dataId='table.test' /></></SectionData></DataIdProvider>);
+    const { container } = render(
+      <DataIdProvider dataId="page.section">
+        <SectionData dataId="section-data.test">
+          <>
+            <Button dataId="button.test" />
+            <Chart dataId="chart.test" />
+            <DatePicker dataId="datepicker.test" />
+            <Input dataId="input.test" />
+            <Select dataId="select.test" />
+            <Table dataId="table.test" />
+          </>
+        </SectionData>
+      </DataIdProvider>
+    );
 
-    const sectionData = container.querySelectorAll("[data-id='page.section.section-data.test']");
-    const button = container.querySelectorAll("[data-id='page.section.button.test']");
-    const chart = container.querySelectorAll("[data-id='page.section.chart.test']");
-    const datePicker = container.querySelectorAll("[data-id='page.section.datepicker.test']");
-    const input = container.querySelectorAll("[data-id='page.section.input.test']");
-    const select = container.querySelectorAll("[data-id='page.section.select.test']");
-    const table = container.querySelectorAll("[data-id='page.section.table.test']");
+    const sectionData = container.querySelectorAll(
+      "[data-id='page.section.section-data.test']"
+    );
+    const button = container.querySelectorAll(
+      "[data-id='page.section.button.test']"
+    );
+    const chart = container.querySelectorAll(
+      "[data-id='page.section.chart.test']"
+    );
+    const datePicker = container.querySelectorAll(
+      "[data-id='page.section.datepicker.test']"
+    );
+    const input = container.querySelectorAll(
+      "[data-id='page.section.input.test']"
+    );
+    const select = container.querySelectorAll(
+      "[data-id='page.section.select.test']"
+    );
+    const table = container.querySelectorAll(
+      "[data-id='page.section.table.test']"
+    );
 
     expect(Array.from(sectionData)).toHaveLength(1);
     expect(Array.from(button)).toHaveLength(1);

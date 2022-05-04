@@ -8,9 +8,9 @@ import Result from '../../src/components/Result';
 describe('<Chart>', () => {
   it('Should render the chart correct', () => {
     const { getByTestId } = render(
-      <Chart options={mvConsumptionDiscreteChart} />
+      <Chart options={mvConsumptionDiscreteChart} data-testid="test chart" />
     );
-    expect(getByTestId('chart')).toBeTruthy();
+    expect(getByTestId('test chart')).toBeTruthy();
   });
   it('Should render Real as the legend', () => {
     const { getByText } = render(
@@ -56,8 +56,12 @@ describe('<Chart>', () => {
 
   it('Should properly handle the callback function', () => {
     const mockCallback = jest.fn();
-    const { result, getByTestId } = render(
-      <Chart options={mvConsumptionDiscreteChart} callback={mockCallback} />
+    const { getByTestId } = render(
+      <Chart
+        options={mvConsumptionDiscreteChart}
+        callback={mockCallback}
+        data-testid="chart"
+      />
     );
     expect(getByTestId('chart')).toBeTruthy();
 

@@ -89,7 +89,7 @@ describe('<TagGroup>', () => {
 
     render(
       <TagGroup>
-        <Tag icon="vader" onClick={mockCallBackVader}/>
+        <Tag icon="vader" onClick={mockCallBackVader} />
         <Tag icon="close" onClick={mockCallBackClose} />
         <Tag icon="add" onClick={mockCallBackAdd} />
       </TagGroup>
