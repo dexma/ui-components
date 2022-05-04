@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/dexma/ui-components/compare/v5.2.0...v5.2.1) (2022-05-04)
+
+
+### Bug Fixes
+
+* **chart:** data-testid implementation and eslint ([2c69c91](https://github.com/dexma/ui-components/commit/2c69c91bdf074b24913254405b8f5572117c30d3))
+
 # [5.2.0](https://github.com/dexma/ui-components/compare/v5.1.0...v5.2.0) (2022-05-03)
 
 
