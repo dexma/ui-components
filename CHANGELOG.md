@@ -1,3 +1,10 @@
+## [5.2.2](https://github.com/dexma/ui-components/compare/v5.2.1...v5.2.2) (2022-05-05)
+
+
+### Bug Fixes
+
+* **chart:** default values ([778db70](https://github.com/dexma/ui-components/commit/778db700b65b92de2e8675094c4e0598c8472ca2))
+
 ## [5.2.1](https://github.com/dexma/ui-components/compare/v5.2.0...v5.2.1) (2022-05-04)
 
 
