@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import omit from 'lodash/omit';
@@ -233,7 +233,8 @@ const Chart = props => {
   const loading = isLoading && !showError;
   const error = !isLoading && showError && errorContent;
   const showChart = !loading && !error && options;
-  const { backgroundColor, fontFamily } = theme;
+  const [aggregateOptions, setAggregateOptions] = useState();
+  const { fontFamily, backgroundColor } = theme;
   const highchartsReactProps = omit(props, [
     'isLoading',
     'showError',
@@ -252,7 +253,27 @@ const Chart = props => {
   ]);
 
   useEffect(() => {
-    Highcharts.setOptions({
+    const currentOptions = { ...options };
+
+    if (!currentOptions.chart) {
+      currentOptions.chart = { style: {} };
+    } else if (!currentOptions.chart.style) {
+      currentOptions.chart.style = {};
+    }
+    if (!currentOptions.legend) {
+      currentOptions.legend = {};
+    }
+    if (!currentOptions.tooltip) {
+      currentOptions.tooltip = {};
+    }
+    if (!currentOptions.title) {
+      currentOptions.title = {};
+    } else if (!currentOptions.title.style) {
+      currentOptions.title.style = {};
+    }
+
+    setAggregateOptions({
+      ...options,
       lang: {
         decimalPoint,
         thousandsSep,
@@ -261,37 +282,22 @@ const Chart = props => {
         shortMonths,
         weekdays,
       },
-      chart: {
-        backgroundColor: backgroundColor,
-        style: {
-          fontFamily: fontFamily,
-        },
-      },
       title: {
+        ...currentOptions.title,
         style: {
+          ...currentOptions.title.style,
           fontWeight: 'bold',
         },
       },
       tooltip: {
+        ...currentOptions.tooltip,
         backgroundColor: backgroundColor,
         shadow: false,
       },
       legend: {
+        ...currentOptions.legend,
         backgroundColor: backgroundColor,
         itemStyle: {},
-      },
-      xAxis: {
-        labels: {
-          style: {},
-        },
-      },
-      yAxis: {
-        title: {
-          style: {},
-        },
-        labels: {
-          style: {},
-        },
       },
       credits: {
         enabled: false,
@@ -299,8 +305,16 @@ const Chart = props => {
       exporting: {
         enabled: false,
       },
+      chart: {
+        ...currentOptions.chart,
+        backgroundColor: backgroundColor,
+        style: {
+          ...currentOptions.chart.style,
+          fontFamily: fontFamily,
+        },
+      },
     });
-  }, []);
+  }, [options, fontFamily, backgroundColor]);
 
   return (
     <StyledChart data-id={dataId} data-testid={dataTestId}>
@@ -310,7 +324,7 @@ const Chart = props => {
         <HighchartsReact
           highcharts={Highcharts}
           {...highchartsReactProps}
-          options={options}
+          options={aggregateOptions}
         />
       )}
     </StyledChart>
