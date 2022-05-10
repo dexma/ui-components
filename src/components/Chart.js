@@ -6,6 +6,7 @@ import omit from 'lodash/omit';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import HCRounded from 'highcharts-rounded-corners';
+import HighchartsHeatmap from 'highcharts/modules/heatmap';
 
 import addSankeyModule from 'highcharts/modules/sankey';
 import addExportingModule from 'highcharts/modules/exporting';
@@ -23,6 +24,7 @@ HCRounded(Highcharts);
 addExportingModule(Highcharts);
 addOfflineExportingModule(Highcharts);
 addExportData(Highcharts);
+HighchartsHeatmap(Highcharts);
 
 const propTypes = {
   /**
@@ -318,9 +320,9 @@ const Chart = props => {
 
   return (
     <StyledChart data-id={dataId} data-testid={dataTestId}>
-      {loading && <ChartLoading />}
+      {(loading || !aggregateOptions) && <ChartLoading />}
       {error && <ChartError>{errorContent}</ChartError>}
-      {showChart && (
+      {showChart && aggregateOptions && (
         <HighchartsReact
           highcharts={Highcharts}
           {...highchartsReactProps}
