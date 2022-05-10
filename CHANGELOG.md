@@ -1,3 +1,10 @@
+# [5.3.0](https://github.com/dexma/ui-components/compare/v5.2.2...v5.3.0) (2022-05-10)
+
+
+### Features
+
+* **chart:** add heatmap option ([92dad04](https://github.com/dexma/ui-components/commit/92dad047a3f2eec3f47f2120d58da79fe2bd02ab))
+
 ## [5.2.2](https://github.com/dexma/ui-components/compare/v5.2.1...v5.2.2) (2022-05-05)
 
 
