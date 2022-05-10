@@ -12,6 +12,7 @@ import {
   mockStackedBar,
   mockStackedBarNegative,
   mockMixed,
+  mockHeatmap,
 } from '../../test/mock/Chart';
 
 import mvConsumptionDiscreteChart from '../../test/mock/mvConsumptionDiscreteChart';
@@ -158,6 +159,19 @@ export const mixed = () => (
       </Cell>
       <Cell xs={12}>
         <Chart options={mockMixed} />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const heatmap = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">Basic Heatmap</Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Chart options={mockHeatmap} />
       </Cell>
     </Row>
   </Grid>
