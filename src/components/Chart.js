@@ -254,6 +254,19 @@ const Chart = props => {
     'theme',
   ]);
 
+  // NOTE: this setOptions is global to all Charts so everytime it is called these values
+  // will be overwritten and the last one will prevail on all rendered charts
+  Highcharts.setOptions({
+    lang: {
+      decimalPoint,
+      thousandsSep,
+      numericSymbols,
+      months,
+      shortMonths,
+      weekdays,
+    },
+  });
+
   useEffect(() => {
     const currentOptions = { ...options };
 
@@ -276,14 +289,6 @@ const Chart = props => {
 
     setAggregateOptions({
       ...options,
-      lang: {
-        decimalPoint,
-        thousandsSep,
-        numericSymbols,
-        months,
-        shortMonths,
-        weekdays,
-      },
       title: {
         ...currentOptions.title,
         style: {
