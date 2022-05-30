@@ -1,3 +1,10 @@
+## [5.3.1](https://github.com/dexma/ui-components/compare/v5.3.0...v5.3.1) (2022-05-30)
+
+
+### Bug Fixes
+
+* **chart:** separators ([da9e6e0](https://github.com/dexma/ui-components/commit/da9e6e0039945cc2641452e86fc187889ed36432))
+
 # [5.3.0](https://github.com/dexma/ui-components/compare/v5.2.2...v5.3.0) (2022-05-10)
 
 
