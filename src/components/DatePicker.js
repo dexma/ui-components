@@ -218,7 +218,7 @@ export const DatePicker = props => {
           transitionDuration={0}
           hideKeyboardShortcutsPanel
           isOutsideRange={() => false}
-          customArrowIcon={<Icon name="arrow_left" size="small" />}
+          customArrowIcon={<Icon name="arrow_right" size="small" />}
           displayFormat={ISO_FORMAT}
           minimumNights={0}
           customInputIcon={
