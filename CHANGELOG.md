@@ -1,3 +1,10 @@
+## [5.3.2](https://github.com/dexma/ui-components/compare/v5.3.1...v5.3.2) (2022-06-01)
+
+
+### Bug Fixes
+
+* **datepiker:** arrow icon ([00bdf15](https://github.com/dexma/ui-components/commit/00bdf15cfb5e4af638ffe31d4f97db56112c99e1))
+
 ## [5.3.1](https://github.com/dexma/ui-components/compare/v5.3.0...v5.3.1) (2022-05-30)
 
 
