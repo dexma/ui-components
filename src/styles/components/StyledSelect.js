@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
-import get from 'lodash/get';
 import {
   border,
   borderColor,
@@ -9,7 +8,6 @@ import {
   backgroundColorSelected,
   boxShadow,
   fontColor,
-  gray100,
   fontWeightBold,
   iconColor,
   borderRadius,
@@ -17,11 +15,8 @@ import {
   selectHeight,
   selectPaddingX,
   primaryColor,
-  fontWeightSemiBold,
   boxShadowHover,
-  tagFontSize,
   tagHeight,
-  tagLineHeight,
 } from '../selectors';
 
 export const getSelectSize = props => {
@@ -184,17 +179,6 @@ const StyledSelect = styled.div`
     }
   }
 
-  .select-styled__multi-value {
-    color: ${fontColor};
-    font-size: ${tagFontSize};
-    font-weight: ${fontWeightSemiBold};
-    border: 0px;
-    background: ${gray100};
-    margin: 3px;
-    height: ${tagHeight};
-    line-height: ${tagHeight};
-  }
-
   .select-styled__multi-value__label {
     padding: 0px 0px 0px 6px;
   }
@@ -240,21 +224,4 @@ const StyledSelect = styled.div`
   }
 `;
 
-const StyledSelectMultiValue = styled.div`
-  ${props =>
-    props.background &&
-    `background-color: ${get(props.theme.color, props.background)}`};
-  border-radius: 4px;
-  margin: 4px;
-  .select-styled__multi-value__label {
-    font-size: ${tagFontSize};
-    font-weight: ${fontWeightSemiBold};
-    line-height: ${tagLineHeight};
-    ${props => props.color && `color: ${get(props.theme.color, props.color)}`};
-  }
-  .select-styled__multi-value {
-    background: transparent;
-  }
-`;
-
-export { StyledSelect, StyledSelectMultiValue };
+export { StyledSelect };
