@@ -130,6 +130,69 @@ const TableError = props => (
   <StyledTableError data-testid="table-error" {...props} />
 );
 
+const StyledButtonExpanded = styled.label`
+  .expand-button {
+    width: 16px;
+    height: 16px;
+    border-color: transparent;
+    &:hover &:focus {
+      background-color: rgba(64, 65, 69, 0.05) !important;
+    }
+  }
+
+  .button-expanded {
+    transform: rotate(-90deg);
+    border-color: transparent;
+  }
+`;
+export const ButtonExpanded = ({
+  className,
+  expanded,
+  onExpand,
+  record,
+  variant,
+}) => {
+  return (
+    <StyledButtonExpanded>
+      <Button
+        className={`expand-button ${className} ${
+          expanded ? 'button-no-expanded' : 'button-expanded'
+        }`}
+        iconAfter="chevron_down"
+        isCircle
+        variant={variant}
+        onClick={e => {
+          e.stopPropagation();
+          onExpand(e, record);
+        }}
+      />
+    </StyledButtonExpanded>
+  );
+};
+const propTypesButtonExpanded = {
+  expanded: PropTypes.bool,
+  onExpand: PropTypes.func,
+  className: PropTypes.string,
+  variant: PropTypes.string,
+};
+ButtonExpanded.propTypes = propTypesButtonExpanded;
+
+const getExpandedIcon = props => {
+  const { expanded, onExpand, record } = props;
+  return (
+    <ButtonExpanded
+      expanded={expanded}
+      iconAfter="chevron_down"
+      variant="icon-secondary"
+      isCircle
+      record={record}
+      onExpand={e => {
+        onExpand(record, e);
+      }}
+    />
+  );
+};
+
 export const Table = props => {
   const {
     theme,
@@ -150,22 +213,6 @@ export const Table = props => {
       ...columns[0],
     };
     return Object.assign([], columns, { 0: newFirstColumn });
-  };
-
-  const getExpandedIcon = props => {
-    const { expanded, onExpand } = props;
-    const classButton = expanded ? 'button-no-expanded' : 'button-expanded';
-    return (
-      <Button
-        className={classButton}
-        iconAfter="chevron_down"
-        variant="icon-secondary"
-        onClick={e => {
-          e.stopPropagation();
-          onExpand();
-        }}
-      />
-    );
   };
 
   const loading = isLoading && !showError;
