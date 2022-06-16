@@ -14,10 +14,6 @@ import {
 const StyledTabs = styled.div`
   height: ${props => (props.variant === 'scrollable' ? '100%' : 'auto')};
 
-  .ant-tabs-bar {
-    margin: ${props =>
-      props.variant === 'scrollable' ? '0 !important' : null};
-  }
   .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-nav-container {
     height: 40px;
   }
@@ -391,13 +387,14 @@ const StyledTabs = styled.div`
   }
   .ant-tabs-nav {
     position: relative;
-    display: inline-block;
     -webkit-box-sizing: border-box;
     width: ${props => (props.variant === 'scrollable' ? '100%' : 'auto')};
     box-sizing: border-box;
-    margin: 0;
+    margin: ${props =>
+      props.variant === 'scrollable' ? '0' : '0px 0px 16px 0px'};
     padding-left: 0;
     list-style: none;
+    border-bottom: 1px solid rgb(222, 224, 226);
     -webkit-transition: -webkit-transform 0.3s
       cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -417,18 +414,13 @@ const StyledTabs = styled.div`
 
   .ant-tabs-tab {
     flex: ${props => (props.variant === 'scrollable' ? '1 1 auto' : null)};
-    margin: ${props =>
-      props.variant === 'scrollable' ? '0 !important' : null};
+
     text-align: ${props => (props.variant === 'scrollable' ? 'center' : null)};
     font-size: ${props => (props.variant === 'scrollable' ? '14px' : null)};
   }
 
   .ant-tabs-nav div:first-of-type {
     display: ${props => (props.variant === 'scrollable' ? 'flex' : null)};
-
-    div {
-      display: ${props => (props.variant === 'scrollable' ? 'inline' : null)};
-    }
   }
   .ant-tabs-nav .ant-tabs-tab {
     position: relative;
@@ -469,10 +461,14 @@ const StyledTabs = styled.div`
     margin-right: 8px;
   }
   .ant-tabs-nav .ant-tabs-tab-active {
-    color: ${props =>
-      props.variant === 'scrollable' ? gray700 : primaryColor};
-    font-weight: ${props =>
-      props.variant === 'scrollable' ? fontWeightBold : fontWeightNormal};
+    font-weight: ${fontWeightNormal};
+  }
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: ${primaryColor};
+    text-shadow: 0 0 0.25px currentcolor;
+  }
+  .ant-tabs-content-holder {
+    overflow: ${props => (props.variant === 'scrollable' ? 'auto' : null)};
   }
   .ant-tabs-nav .ant-tabs-tab-disabled,
   .ant-tabs-nav .ant-tabs-tab-disabled:hover {
