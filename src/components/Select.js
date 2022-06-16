@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import ReactSelect, { components } from 'react-select';
 import omit from 'lodash/omit';
 import { withTheme } from 'styled-components';
+import get from 'lodash/get';
 
-import {
-  StyledSelect,
-  StyledSelectMultiValue,
-} from '../styles/components/StyledSelect';
+import { StyledSelect } from '../styles/components/StyledSelect';
 import theme from '../styles/theme';
 import withDataId from '../components/DataId/withDataId';
 
 import Icon from './Icon';
+import {
+  fontWeightSemiBold,
+  tagFontSize,
+  tagLineHeight,
+} from '../styles/selectors';
 
 const propTypes = {
   /**
@@ -60,6 +63,33 @@ const defaultProps = {
   dataId: 'select',
 };
 
+const styles = {
+  multiValue: (styles, state) => {
+    return {
+      ...styles,
+      backgroundColor: get(theme.color, state.data.background || 'gray400'),
+      borderRadius: '4px',
+    };
+  },
+  multiValueLabel: (styles, state) => {
+    return {
+      ...styles,
+      color: get(theme.color, state.data.color || 'white'),
+      margin: '4px',
+      fontSize: tagFontSize,
+      fontWeight: fontWeightSemiBold,
+      lineHeight: tagLineHeight,
+    };
+  },
+  multiValueRemove: (styles, state) => {
+    return {
+      ...omit(styles, [':hover', 'backgroundColor']),
+      color: get(theme.color, state.data.color || 'white'),
+      cursor: 'pointer',
+    };
+  },
+};
+
 const DropdownIndicator = props => {
   const iconName = props.selectProps.menuIsOpen ? 'chevron_up' : 'chevron_down';
   return (
@@ -94,16 +124,6 @@ const Option = props => {
     <div data-testid="select-option" title={props.label}>
       <components.Option {...props}>{props.label}</components.Option>
     </div>
-  );
-};
-
-const MultiValue = (selectProps, props) => {
-  const background = selectProps.data.background || 'gray400';
-  const color = selectProps.data.color || 'white';
-  return (
-    <StyledSelectMultiValue background={background} color={color} {...props}>
-      <components.MultiValue {...selectProps} />
-    </StyledSelectMultiValue>
   );
 };
 
@@ -149,10 +169,10 @@ export const Select = forwardRef((props, ref) => {
           Input: selectProps =>
             SelectInput({ ...selectProps, name: props.name }),
           Option: selectProps => Option({ ...selectProps, name: props.name }),
-          MultiValue: selectProps => MultiValue(selectProps, props),
           MultiValueRemove: selectProps => MultiValueRemove(selectProps),
         }}
         {...selectProps}
+        styles={styles}
       />
     </StyledSelect>
   );
