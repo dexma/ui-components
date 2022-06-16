@@ -105,7 +105,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "file-loader": "^3.0.1",
-    "highcharts": "^7.1.1",
+    "highcharts": "^9.0.0",
     "hoist-non-react-statics": "^3.3.2",
     "husky": "^4.3.0",
     "identity-obj-proxy": "^3.0.0",
