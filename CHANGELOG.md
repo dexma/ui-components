@@ -1,3 +1,12 @@
+# [5.4.0](https://github.com/dexma/ui-components/compare/v5.3.3...v5.4.0) (2022-06-16)
+
+
+### Features
+
+* **deps:** bump antd from 3.16.1 to 4.21.0 ([dd199a5](https://github.com/dexma/ui-components/commit/dd199a5499d5260b7475e866ad42c7dce572d4e2))
+* **table:**  adapt styles Table component to new antd version ([fdac454](https://github.com/dexma/ui-components/commit/fdac454055c805270f986b3a9e2f852c3cf3f6a0))
+* **tabs:** adapt styles Tabs component to new antd version ([f26c6e7](https://github.com/dexma/ui-components/commit/f26c6e783cc819a260f04c9b1db2b76cc1d2d77f))
+
 ## [5.3.3](https://github.com/dexma/ui-components/compare/v5.3.2...v5.3.3) (2022-06-16)
 
 
