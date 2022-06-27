@@ -22,6 +22,7 @@ const propTypes = {
     'Textarea',
     'Select',
     'DatePicker',
+    'LegacyDatePicker',
   ]).isRequired,
   /**
    * Whether Alert can be closed
@@ -81,12 +82,20 @@ const FormControl = forwardRef((props, ref) => {
           value={find(options, { value })}
         />
       )}
-      {control === 'DatePicker' && (
+      {control === 'LegacyDatePicker' && (
         <DatePicker
+          variant="legacy"
           className="form-control-date-picker"
           initialStartDate={value && value.startDate}
           initialEndDate={value && value.startDate}
           firstDayOfWeek={1}
+          ref={ref}
+          {...newProps}
+        />
+      )}
+      {control === 'DatePicker' && (
+        <DatePicker
+          className="form-control-date-picker"
           ref={ref}
           {...newProps}
         />

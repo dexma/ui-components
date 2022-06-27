@@ -25,10 +25,11 @@ const last28Days = mockPeriodOptions[4].label;
 const currentMonthLabel = mockPeriodOptions[5].label;
 const lastMonthLabel = mockPeriodOptions[6].label;
 
-describe('<DatePicker>', () => {
+describe('<DatePicker variant="legacy">', () => {
   it('Should render the selector of period', () => {
     render(
       <DatePicker
+        variant="legacy"
         periodOptions={mockPeriodOptions}
         periodDefault={{ value: 'last_7_days', label: 'Last 7 days' }}
         language="fr"
@@ -37,11 +38,11 @@ describe('<DatePicker>', () => {
     expect(screen.getByTestId('select')).toBeInTheDocument();
   });
   it('Should not render the selector of period', () => {
-    render(<DatePicker />);
+    render(<DatePicker variant="legacy" />);
     expect(screen.queryByTestId('select-icon')).not.toBeInTheDocument();
   });
   it('Should have 3 month visible when user open the calendar', () => {
-    const { container } = render(<DatePicker />);
+    const { container } = render(<DatePicker variant="legacy" />);
     const calendarButton = container.querySelector(
       '.DateRangePickerInput_calendarIcon'
     );
@@ -51,7 +52,7 @@ describe('<DatePicker>', () => {
   });
   it('Should render correct period options labels passed', () => {
     const { container, getAllByTitle } = render(
-      <DatePicker periodOptions={mockPeriodOptions} />
+      <DatePicker variant="legacy" periodOptions={mockPeriodOptions} />
     );
 
     fireEvent.mouseDown(container.querySelector('.select-styled__control'));
@@ -66,7 +67,7 @@ describe('<DatePicker>', () => {
   });
   it('Should choose correct date when click on Today period', () => {
     const { container, getByText } = render(
-      <DatePicker periodOptions={mockPeriodOptions} />
+      <DatePicker variant="legacy" periodOptions={mockPeriodOptions} />
     );
     const calendarButton = container.querySelector(
       '.DateRangePickerInput_calendarIcon'
@@ -81,7 +82,7 @@ describe('<DatePicker>', () => {
   });
   it('Should choose correct date when click on Yesterday period', () => {
     const { container, getByText } = render(
-      <DatePicker periodOptions={mockPeriodOptions} />
+      <DatePicker variant="legacy" periodOptions={mockPeriodOptions} />
     );
     const calendarButton = container.querySelector(
       '.DateRangePickerInput_calendarIcon'
@@ -98,7 +99,7 @@ describe('<DatePicker>', () => {
   });
   it('Should choose correct date range when click on Last 7 days period', () => {
     const { container, getByText } = render(
-      <DatePicker periodOptions={mockPeriodOptions} />
+      <DatePicker variant="legacy" periodOptions={mockPeriodOptions} />
     );
     const calendarButton = container.querySelector(
       '.DateRangePickerInput_calendarIcon'
@@ -118,7 +119,7 @@ describe('<DatePicker>', () => {
   });
   it('Should choose correct date range when click on Last 28 days period', () => {
     const { container, getByText } = render(
-      <DatePicker periodOptions={mockPeriodOptions} />
+      <DatePicker variant="legacy" periodOptions={mockPeriodOptions} />
     );
     const calendarButton = container.querySelector(
       '.DateRangePickerInput_calendarIcon'
@@ -138,7 +139,7 @@ describe('<DatePicker>', () => {
   });
   it('Should choose correct date range when click on Current month period', () => {
     const { container, getByText } = render(
-      <DatePicker periodOptions={mockPeriodOptions} />
+      <DatePicker variant="legacy" periodOptions={mockPeriodOptions} />
     );
     const calendarButton = container.querySelector(
       '.DateRangePickerInput_calendarIcon'
@@ -173,7 +174,7 @@ describe('<DatePicker>', () => {
   });
   it('Should choose correct date range when click on Last month period', () => {
     const { container, getByText } = render(
-      <DatePicker periodOptions={mockPeriodOptions} />
+      <DatePicker variant="legacy" periodOptions={mockPeriodOptions} />
     );
     const calendarButton = container.querySelector(
       '.DateRangePickerInput_calendarIcon'
@@ -202,6 +203,7 @@ describe('<DatePicker>', () => {
     const endDatePlaceholderText = 'End test placeholder';
     const { container } = render(
       <DatePicker
+        variant="legacy"
         periodOptions={mockPeriodOptions}
         startDatePlaceholderText={startDatePlaceholderText}
         endDatePlaceholderText={endDatePlaceholderText}
@@ -214,7 +216,11 @@ describe('<DatePicker>', () => {
   });
   it('Should render NUMBER_OF_MONTHS * 7 days day of week', () => {
     const { container } = render(
-      <DatePicker periodOptions={mockPeriodOptions} autoFocus />
+      <DatePicker
+        variant="legacy"
+        periodOptions={mockPeriodOptions}
+        autoFocus
+      />
     );
     const DayPickerWeekHeader = container.querySelectorAll(
       '.DayPicker_weekHeader_li'
@@ -223,7 +229,12 @@ describe('<DatePicker>', () => {
   });
   it('Should render End Date correct inside input text', () => {
     const { container } = render(
-      <DatePicker periodOptions={mockPeriodOptions} language="es" autoFocus />
+      <DatePicker
+        variant="legacy"
+        periodOptions={mockPeriodOptions}
+        language="es"
+        autoFocus
+      />
     );
     const DayPickerWeekHeader = container.querySelectorAll(
       '.DayPicker_weekHeader_li'
@@ -246,7 +257,11 @@ describe('<DatePicker>', () => {
   it('Should render correct placeholder select', () => {
     const periodLabel = 'Test period label';
     const { getByText } = render(
-      <DatePicker periodOptions={mockPeriodOptions} periodLabel={periodLabel} />
+      <DatePicker
+        variant="legacy"
+        periodOptions={mockPeriodOptions}
+        periodLabel={periodLabel}
+      />
     );
     const selectWithLabel = getByText(periodLabel);
     expect(selectWithLabel).toBeInTheDocument();
@@ -255,6 +270,7 @@ describe('<DatePicker>', () => {
     const mockCallBack = jest.fn();
     const { container, getByText } = render(
       <DatePicker
+        variant="legacy"
         periodOptions={mockPeriodOptions}
         onDatesChange={mockCallBack}
       />
@@ -267,6 +283,7 @@ describe('<DatePicker>', () => {
     const mockStateDateWrapper = jest.fn();
     const { container, getByText } = render(
       <DatePicker
+        variant="legacy"
         periodOptions={mockPeriodOptions}
         stateDateWrapper={mockStateDateWrapper}
       />

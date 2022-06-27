@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import FormControl from '../../src/components/FormControl';
 import { mockPeriodOptions } from '../mock/DatePicker';
 
@@ -51,12 +51,31 @@ describe('<FormControl>', () => {
       expect(selectOptions).toHaveLength(2);
     });
   });
+
   describe('date picker', () => {
+    it('Should call onChange when some date change', () => {
+      const mockCallBack = jest.fn();
+      render(
+        <FormControl
+          control="DatePicker"
+          type="date"
+          format="DD-MM-yyyy"
+          onChange={mockCallBack}
+        />
+      );
+      fireEvent.mouseDown(screen.getByTestId('antd-date-picker'));
+      const todayLink = screen.getByText('Today');
+      fireEvent.click(todayLink);
+      expect(mockCallBack).toHaveBeenCalled();
+    });
+  });
+
+  describe('legacy date picker', () => {
     it('Should call onDatesChange when some date change', () => {
       const mockCallBack = jest.fn();
       const { container, getByText } = render(
         <FormControl
-          control="DatePicker"
+          control="LegacyDatePicker"
           periodOptions={mockPeriodOptions}
           onDatesChange={mockCallBack}
         />
