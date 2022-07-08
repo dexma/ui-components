@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { Tabs as TabsAntDesign } from 'antd';
 import omit from 'lodash/omit';
-import 'antd/dist/antd.css';
 
 import theme from '../styles/theme';
 import { StyledTabs } from '../styles/components/StyledTabs';
