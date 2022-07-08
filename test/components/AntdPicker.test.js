@@ -230,10 +230,18 @@ describe('<AntPicker>', () => {
       });
       it('should change values of start and end date when "Today" and "Tomorrow" numbers are selected on dropdown menu', async () => {
         const onChangeFunction = jest.fn();
-        const todayValue = moment().format('DD');
-        const tomorrowValue = moment()
+        let todayValue = moment().format('DD');
+        let tomorrowValue = moment()
           .add(1, 'days')
           .format('DD');
+        if (todayValue.charAt(0) === '0') {
+          const sanitizeTodayValue = todayValue.charAt(1);
+          todayValue = sanitizeTodayValue;
+        }
+        if (tomorrowValue.charAt(0) === '0') {
+          const sanitizeTomorrowValue = tomorrowValue.charAt(1);
+          tomorrowValue = sanitizeTomorrowValue;
+        }
         // Given
         render(
           <AntdPicker
