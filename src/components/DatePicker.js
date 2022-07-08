@@ -36,6 +36,7 @@ import 'react-dates/initialize';
 
 import { StyledDatePicker } from '../styles/components/StyledDatePicker';
 import withDataId from '../components/DataId/withDataId';
+import AntdPicker from './AntdPicker';
 
 const withDatePickerFormat = (start, end) => ({
   startDate: start,
@@ -139,6 +140,7 @@ export const DatePicker = props => {
     language,
     theme,
     dataId,
+    variant,
   } = props;
   const dateRangePickerProps = omit(props, [
     'className',
@@ -153,6 +155,7 @@ export const DatePicker = props => {
     'periodDefault',
     'language',
     'periodLabel',
+    'variant',
     'dataId',
   ]);
   useEffect(() => {
@@ -196,50 +199,58 @@ export const DatePicker = props => {
   const { startDate, endDate } = date;
   moment.locale(language);
   return (
-    <StyledDatePicker
-      theme={theme}
-      focusedInput={focusedInput}
-      withSelect={periodOptions}
-      data-id={dataId}
-    >
-      <div className={classes}>
-        <DateRangePicker
-          {...dateRangePickerProps}
-          weekDayFormat="YYYY-MM-DD HH:mm:ss" // We set with this format, because we handle manually the week element in renderWeekHeaderElement
-          renderWeekHeaderElement={getWeekHeaderElement}
-          startDate={startDate}
-          endDate={endDate}
+    <>
+      {variant === 'legacy' ? (
+        <StyledDatePicker
+          theme={theme}
           focusedInput={focusedInput}
-          onDatesChange={handleDatesChange}
-          onFocusChange={onFocusChange}
-          noBorder
-          daySize={DAY_SIZE}
-          horizontalMonthPadding={10}
-          transitionDuration={0}
-          hideKeyboardShortcutsPanel
-          isOutsideRange={() => false}
-          customArrowIcon={<Icon name="arrow_right" size="small" />}
-          displayFormat={ISO_FORMAT}
-          minimumNights={0}
-          customInputIcon={
-            <Icon name="calendar_range" size="xlarge" color="gray500" />
-          }
-          navPrev={<Icon name="chevron_left_l" size={10} color="gray600" />}
-          navNext={<Icon name="chevron_right_l" size={10} color="gray600" />}
-        />
-      </div>
-      {periodOptions && (
-        <div className="select">
-          <Select
-            options={periodOptions}
-            defaultValue={periodDefault}
-            placeholder={periodLabel}
-            onChange={onSelectChange}
-            isSearchable={false}
-          />
-        </div>
+          withSelect={periodOptions}
+          data-id={dataId}
+        >
+          <div className={classes}>
+            <DateRangePicker
+              {...dateRangePickerProps}
+              weekDayFormat="YYYY-MM-DD HH:mm:ss" // We set with this format, because we handle manually the week element in renderWeekHeaderElement
+              renderWeekHeaderElement={getWeekHeaderElement}
+              startDate={startDate}
+              endDate={endDate}
+              focusedInput={focusedInput}
+              onDatesChange={handleDatesChange}
+              onFocusChange={onFocusChange}
+              noBorder
+              daySize={DAY_SIZE}
+              horizontalMonthPadding={10}
+              transitionDuration={0}
+              hideKeyboardShortcutsPanel
+              isOutsideRange={() => false}
+              customArrowIcon={<Icon name="arrow_right" size="small" />}
+              displayFormat={ISO_FORMAT}
+              minimumNights={0}
+              customInputIcon={
+                <Icon name="calendar_range" size="xlarge" color="gray500" />
+              }
+              navPrev={<Icon name="chevron_left_l" size={10} color="gray600" />}
+              navNext={
+                <Icon name="chevron_right_l" size={10} color="gray600" />
+              }
+            />
+          </div>
+          {periodOptions && (
+            <div className="select">
+              <Select
+                options={periodOptions}
+                defaultValue={periodDefault}
+                placeholder={periodLabel}
+                onChange={onSelectChange}
+                isSearchable={false}
+              />
+            </div>
+          )}
+        </StyledDatePicker>
+      ) : (
+        <AntdPicker {...props} />
       )}
-    </StyledDatePicker>
+    </>
   );
 };
 

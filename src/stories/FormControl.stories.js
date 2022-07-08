@@ -58,6 +58,13 @@ export const basic = () => (
             periodOptions={mockPeriodOptions}
             message="Text info caption"
           />
+          <br />
+          <FormControl
+            control="LegacyDatePicker"
+            options={options}
+            periodOptions={mockPeriodOptions}
+            message="Text info caption"
+          />
         </div>
       </Cell>
     </Row>
@@ -181,7 +188,15 @@ export const datePicker = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Render loading spinner for the UI views
+          Render loading spinner for the UI views. There are 2 options of
+          controls for DatePickers.
+        </Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">
+          Due to the upgrade of DatePicker component, by default, the value
+          &apos;DatePicker&apos; on control property will render the new
+          DatePicker component. The old DatePicker component is now deprecated
+          and can be still used with value &apos;LegacyDatePicker&apos; on
+          control property.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -193,12 +208,18 @@ export const datePicker = () => (
             marginTop: '30px',
           }}
         >
-          <FormControl control="DatePicker" options={options} />
+          <FormControl control="DatePicker" />
           <br />
           <FormControl
             control="DatePicker"
             options={options}
             periodOptions={mockPeriodOptions}
+          />
+          <FormControl
+            control="LegacyDatePicker"
+            options={options}
+            periodOptions={mockPeriodOptions}
+            message="Text info caption"
           />
         </div>
       </Cell>
