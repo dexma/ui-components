@@ -1,3 +1,10 @@
+# [5.5.0](https://github.com/dexma/ui-components/compare/v5.4.0...v5.5.0) (2022-07-14)
+
+
+### Features
+
+* **version:** update version ([cc6d514](https://github.com/dexma/ui-components/commit/cc6d514056f27644ef960cc1117970b31edec9ec))
+
 # [5.4.0](https://github.com/dexma/ui-components/compare/v5.3.2...v5.4.0) (2022-07-14)
 
 
