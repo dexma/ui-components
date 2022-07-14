@@ -1,3 +1,15 @@
+# [5.4.0](https://github.com/dexma/ui-components/compare/v5.3.2...v5.4.0) (2022-07-14)
+
+
+### Bug Fixes
+
+* **select:** add ellipsis to multivalue_label to show multivalueremove ([b4d0b56](https://github.com/dexma/ui-components/commit/b4d0b5672d3dc28700dd7e94dc05e31d1da51da2))
+
+
+### Features
+
+* **version:** update version ([f5c54c9](https://github.com/dexma/ui-components/commit/f5c54c9fea02af68887e9319c8465f91d1ea74b6))
+
 ## [5.3.3](https://github.com/dexma/ui-components/compare/v5.3.2...v5.3.3) (2022-07-14)
 
 
