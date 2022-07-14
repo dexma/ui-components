@@ -67,15 +67,35 @@ For the documentation we use storybook docs that transforms our stories into wor
 - If you need to export static doc run `npm run build-storybook` this will export a static folder with all our component docs
 
 ## Changelog
+
 For changelogs, check out [the CHANGELOG section of ui-components](https://github.com/dexma/ui-components/blob/master/CHANGELOG.md)
 
 ## Testing
+
 We use React Testing Library as our testing lib you can check out the [documentation](https://testing-library.com/docs/react-testing-library/intro)
 
 - To run our test: `npm run test`
 
+Note: Due to the use of third-party libraries, some components use methods that JSDOM (the DOM implementation used by Jest) hasn't implemented yet, testing it is not easily possible. This is the case with window.matchMedia(). Jest returns ```TypeError: window.matchMedia is not a function``` and doesn't properly execute the test.
+
+In this case, to resolve this issue to execute successfully your tests when @dexma/ui-components is used, include the following code on setupTest file for Jest to mock matchMedia and it should solve the issue:
+
+```javascript
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
+```
+
 ## Contributing
+
 Check out the [CONTRIBUTING document](https://github.com/dexma/ui-components/blob/master/CONTRIBUTING.md) in the root of the repository to learn how you can contribute.
-
-
-
