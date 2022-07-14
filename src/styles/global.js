@@ -1,3 +1,4 @@
+import * as AntdStyles from 'antd/dist/antd.min.css';
 import { createGlobalStyle, css } from 'styled-components';
 import { StyledButton } from './components/StyledButton';
 import { StyledTooltip } from './components/StyledTooltip';
@@ -304,6 +305,7 @@ const getStorybookStyles = css`
 
 export const GlobalStyle = createGlobalStyle`
   ${getGlobalStyles};
+  ${AntdStyles};
 `;
 
 export const StorybookStyles = createGlobalStyle`

@@ -13,13 +13,12 @@ module.exports = function(env, argv) {
   const isEnvProduction = argv.mode === 'production';
   const babelLoader = {
     test: /\.(js|jsx)$/,
-    exclude: /node_modules/,
     use: ['babel-loader'],
   };
   const cssLoader = {
     test: /\.css$/,
     use: [
-      isEnvDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+      'style-loader',
       'css-loader',
       {
         loader: 'postcss-loader',
@@ -84,9 +83,9 @@ module.exports = function(env, argv) {
             parser: safePostCssParser,
             map: shouldUseSourceMap
               ? {
-                inline: false,
-                annotation: true,
-              }
+                  inline: false,
+                  annotation: true,
+                }
               : false,
           },
         }),
@@ -100,6 +99,6 @@ module.exports = function(env, argv) {
     externals: {
       react: 'react',
       'react-dom': 'react-dom',
-    }
+    },
   };
 };
