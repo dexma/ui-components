@@ -9,7 +9,20 @@ const propTypes = {
   /**
    * Determines the tooltip position.
    */
-  position: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  position: PropTypes.oneOf([
+    'top',
+    'topLeft',
+    'topRight',
+    'bottom',
+    'bottomLeft',
+    'bottomRight',
+    'left',
+    'leftBottom',
+    'leftTop',
+    'right',
+    'rightBottom',
+    'rightTop',
+  ]),
   /**
    * The content of the tooltip.
    */
@@ -28,7 +41,11 @@ const defaultProps = {
   theme: theme,
 };
 
-export const Tooltip = props => <TooltipReact {...props} />;
+export const Tooltip = props => {
+  const { position, placement } = props;
+
+  return <TooltipReact placement={position || placement} {...props} />;
+};
 
 Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;
