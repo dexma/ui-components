@@ -1,3 +1,19 @@
+# [5.6.0](https://github.com/dexma/ui-components/compare/v5.5.0...v5.6.0) (2022-07-18)
+
+
+### Bug Fixes
+
+* **styles:** add styles from antd to global styles ([fe645a9](https://github.com/dexma/ui-components/commit/fe645a9369ebab0f84cdc17a0d9723d7d53e2d74))
+* **styles:** import antd styles without alias ([35f289a](https://github.com/dexma/ui-components/commit/35f289a58753ae586769657408fd51a1ad004a60))
+* **test:** fix today and tomorrow values on tests ([dd49744](https://github.com/dexma/ui-components/commit/dd49744253ae4ef10b6395cad434bfefb402f493))
+* **tooltip:** add retrocompatibility on Tooltip props ([29190ba](https://github.com/dexma/ui-components/commit/29190ba3b42204e511d979c06c976322ed02ea38))
+
+
+### Features
+
+* **datepicker:** datepicker based on ant design ([cdc0277](https://github.com/dexma/ui-components/commit/cdc0277db07de28c5715173250b4c1d408cf5e9b))
+* **deps:** bump antd from 3.16.1 to 4.21.0 ([880489e](https://github.com/dexma/ui-components/commit/880489ed0fe478eb8da0ef58906e65df736d3295))
+
 # [5.5.0](https://github.com/dexma/ui-components/compare/v5.4.0...v5.5.0) (2022-07-14)
 
 
