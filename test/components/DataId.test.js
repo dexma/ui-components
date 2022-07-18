@@ -109,6 +109,7 @@ describe('Data Id', () => {
           <Button />
           <Chart />
           <DatePicker />
+          <DatePicker variant="legacy" />
           <Input />
           <Select />
           <Table />
@@ -127,7 +128,7 @@ describe('Data Id', () => {
     expect(Array.from(sectionData)).toHaveLength(1);
     expect(Array.from(button)).toHaveLength(1);
     expect(Array.from(chart)).toHaveLength(1);
-    expect(Array.from(datePicker)).toHaveLength(1);
+    expect(Array.from(datePicker)).toHaveLength(2);
     expect(Array.from(input)).toHaveLength(1);
     expect(Array.from(select)).toHaveLength(1);
     expect(Array.from(table)).toHaveLength(1);
@@ -140,6 +141,7 @@ describe('Data Id', () => {
           <Button dataId="button.test" />
           <Chart dataId="chart.test" />
           <DatePicker dataId="datepicker.test" />
+          <DatePicker variant="legacy" dataId="datepicker.test" />
           <Input dataId="input.test" />
           <Select dataId="select.test" />
           <Table dataId="table.test" />
@@ -162,7 +164,7 @@ describe('Data Id', () => {
     expect(Array.from(sectionData)).toHaveLength(1);
     expect(Array.from(button)).toHaveLength(1);
     expect(Array.from(chart)).toHaveLength(1);
-    expect(Array.from(datePicker)).toHaveLength(1);
+    expect(Array.from(datePicker)).toHaveLength(2);
     expect(Array.from(input)).toHaveLength(1);
     expect(Array.from(select)).toHaveLength(1);
     expect(Array.from(table)).toHaveLength(1);
@@ -176,6 +178,7 @@ describe('Data Id', () => {
             <Button />
             <Chart />
             <DatePicker />
+            <DatePicker variant="legacy" />
             <Input />
             <Select />
             <Table />
@@ -203,7 +206,7 @@ describe('Data Id', () => {
     expect(Array.from(sectionData)).toHaveLength(1);
     expect(Array.from(button)).toHaveLength(1);
     expect(Array.from(chart)).toHaveLength(1);
-    expect(Array.from(datePicker)).toHaveLength(1);
+    expect(Array.from(datePicker)).toHaveLength(2);
     expect(Array.from(input)).toHaveLength(1);
     expect(Array.from(select)).toHaveLength(1);
     expect(Array.from(table)).toHaveLength(1);
@@ -217,6 +220,7 @@ describe('Data Id', () => {
             <Button dataId="button.test" />
             <Chart dataId="chart.test" />
             <DatePicker dataId="datepicker.test" />
+            <DatePicker variant="legacy" dataId="datepicker.test" />
             <Input dataId="input.test" />
             <Select dataId="select.test" />
             <Table dataId="table.test" />
@@ -250,7 +254,7 @@ describe('Data Id', () => {
     expect(Array.from(sectionData)).toHaveLength(1);
     expect(Array.from(button)).toHaveLength(1);
     expect(Array.from(chart)).toHaveLength(1);
-    expect(Array.from(datePicker)).toHaveLength(1);
+    expect(Array.from(datePicker)).toHaveLength(2);
     expect(Array.from(input)).toHaveLength(1);
     expect(Array.from(select)).toHaveLength(1);
     expect(Array.from(table)).toHaveLength(1);

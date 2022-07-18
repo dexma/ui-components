@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Modal } from '../components/Modal';
+import Modal from '../components/Modal';
 import Grid from '../components/Grid';
 import Row from '../components/Row';
 import Cell from '../components/Cell';

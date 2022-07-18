@@ -28,6 +28,8 @@ export const Modal = props => {
         data-testid="modal"
         closeIcon={<Icon name="close" color="gray300" size="medium" />}
         footer={false}
+        transitionName=""
+        maskTransitionName=""
         {...props}
       />
       <StyledModalGlobal theme={theme} />

@@ -5,7 +5,7 @@
 
 * **version:** update version ([cc6d514](https://github.com/dexma/ui-components/commit/cc6d514056f27644ef960cc1117970b31edec9ec))
 
-# [5.4.0](https://github.com/dexma/ui-components/compare/v5.3.2...v5.4.0) (2022-07-14)
+# [5.4.0](https://github.com/dexma/ui-components/compare/v5.3.2...v5.4.0) (2022-07-14) (deprecated)
 
 
 ### Bug Fixes
@@ -17,7 +17,7 @@
 
 * **version:** update version ([f5c54c9](https://github.com/dexma/ui-components/commit/f5c54c9fea02af68887e9319c8465f91d1ea74b6))
 
-## [5.3.3](https://github.com/dexma/ui-components/compare/v5.3.2...v5.3.3) (2022-07-14)
+## [5.3.3](https://github.com/dexma/ui-components/compare/v5.3.2...v5.3.3) (2022-07-14) (deprecated)
 
 
 ### Bug Fixes
