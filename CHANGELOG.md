@@ -1,3 +1,10 @@
+## [5.6.1](https://github.com/dexma/ui-components/compare/v5.6.0...v5.6.1) (2022-07-28)
+
+
+### Bug Fixes
+
+* **icon:** add heatmap icon, change treemap and pie and fix datapicker test ([40d0dbe](https://github.com/dexma/ui-components/commit/40d0dbeb00dbc22c7528c85db3ed4d4a38a94137))
+
 # [5.6.0](https://github.com/dexma/ui-components/compare/v5.5.0...v5.6.0) (2022-07-18)
 
 
