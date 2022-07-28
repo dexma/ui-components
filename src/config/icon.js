@@ -5919,16 +5919,24 @@ export default [
       {
         tag: 'path',
         d:
-          'M0 10.5V2.25H9V10.5H0ZM10.5 21.75V6.75H18V21.75H10.5ZM19.5 6.75V16.5H24V6.75H19.5Z',
-        opacity: '0.4',
+          'M15 5H19V9H15V5ZM0 10H4V14H0V10ZM9 10H5V14H9V10ZM10 10H14V14H10V10ZM9 15H5V19H9V15Z',
+        opacity: {},
         clipRule: 'evenodd',
         fillRule: 'evenodd',
       },
       {
         tag: 'path',
         d:
-          'M10.5 5.25V2.25H24V5.25H10.5ZM19.5 21.75V18H24V21.75H19.5ZM0 12V21.75H9V12H0Z',
-        opacity: {},
+          'M4 5H0V9H4V5ZM9 5H5V9H9V5ZM10 5H14V9H10V5ZM24 5H20V9H24V5ZM15 10H19V14H15V10ZM24 10H20V14H24V10ZM0 15H4V19H0V15ZM14 15H10V19H14V15ZM15 15H19V19H15V15ZM24 15H20V19H24V15Z',
+        opacity: '0.5',
+        clipRule: 'evenodd',
+        fillRule: 'evenodd',
+      },
+      {
+        tag: 'path',
+        d:
+          'M9 0H5V4H9V0ZM14 0H10V4H14V0ZM15 0H19V4H15V0ZM24 0H20V4H24V0ZM0 20H4V24H0V20ZM9 20H5V24H9V20ZM10 20H14V24H10V20ZM19 20H15V24H19V20Z',
+        opacity: '0.2',
         clipRule: 'evenodd',
         fillRule: 'evenodd',
       },
@@ -6077,7 +6085,7 @@ export default [
       {
         tag: 'path',
         d:
-          'M1.70215 12.0001C1.70215 6.97169 4.86373 2.85726 9.91059 2.0278V14.0244H21.8413C21.4705 16.0409 20.6836 17.799 19.3804 19.1497C17.8339 20.7526 15.4414 21.9049 11.7946 22.1251C6.22459 22.1075 1.70215 17.5742 1.70215 12.0001Z',
+          'M1.70215 12.0001C1.70215 6.97172 4.86373 2.85729 9.91059 2.02783V14.0244H21.8413C21.4705 16.0409 20.6836 17.799 19.3804 19.1497C17.8339 20.7526 15.4414 21.905 11.7946 22.1251C6.22459 22.1075 1.70215 17.5742 1.70215 12.0001Z',
         opacity: '0.4',
         clipRule: {},
         fillRule: {},
@@ -6209,6 +6217,27 @@ export default [
         tag: 'path',
         d:
           'M-0.0996094 1.5H23.9004V22.5H-0.0996094V1.5ZM2.90039 4.5H20.9004V7.5H2.90039V4.5ZM10.4004 10.5H2.90039V13.5H10.4004V10.5ZM10.4004 16.5H2.90039V19.5H10.4004V16.5ZM13.4004 19.5V16.5H20.9004V19.5H13.4004ZM13.4004 13.5V10.5H20.9004V13.5H13.4004Z',
+        opacity: {},
+        clipRule: 'evenodd',
+        fillRule: 'evenodd',
+      },
+    ],
+  },
+  {
+    name: 'widget_treemap',
+    icon: [
+      {
+        tag: 'path',
+        d:
+          'M0 10.5V2.25H9V10.5H0ZM10.5 21.75V6.75H18V21.75H10.5ZM19.5 6.75V16.5H24V6.75H19.5Z',
+        opacity: '0.4',
+        clipRule: 'evenodd',
+        fillRule: 'evenodd',
+      },
+      {
+        tag: 'path',
+        d:
+          'M10.5 5.25V2.25H24V5.25H10.5ZM19.5 21.75V18H24V21.75H19.5ZM0 12V21.75H9V12H0Z',
         opacity: {},
         clipRule: 'evenodd',
         fillRule: 'evenodd',
