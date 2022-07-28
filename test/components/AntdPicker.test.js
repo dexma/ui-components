@@ -41,9 +41,9 @@ describe('<AntPicker>', () => {
         // Then
         expect(onChangeFunction).toBeCalledTimes(1);
       });
-      it('should execute onChange function once when click "Today" number day on dropdown menu', async () => {
+      it('should execute onChange function once when click "15" number day on dropdown menu', async () => {
         const onChangeFunction = jest.fn();
-        const todayValue = moment().date();
+        const daySelected = 15;
         // Given
         render(
           <AntdPicker
@@ -55,8 +55,8 @@ describe('<AntPicker>', () => {
         const dateInput = screen.getByTestId('antd-date-picker');
         // When
         fireEvent.mouseDown(dateInput);
-        const todayButton = await screen.findByText(todayValue);
-        fireEvent.click(todayButton);
+        const day15Button = await screen.findByText(daySelected);
+        fireEvent.click(day15Button);
         // Then
         expect(onChangeFunction).toBeCalledTimes(1);
       });
@@ -228,20 +228,10 @@ describe('<AntPicker>', () => {
           )
         ).toBeTruthy();
       });
-      it('should change values of start and end date when "Today" and "Tomorrow" numbers are selected on dropdown menu', async () => {
+      it('should change values of start and end date when "15" and "16" numbers are selected on dropdown menu', async () => {
         const onChangeFunction = jest.fn();
-        let todayValue = moment().format('DD');
-        let tomorrowValue = moment()
-          .add(1, 'days')
-          .format('DD');
-        if (todayValue.charAt(0) === '0') {
-          const sanitizeTodayValue = todayValue.charAt(1);
-          todayValue = sanitizeTodayValue;
-        }
-        if (tomorrowValue.charAt(0) === '0') {
-          const sanitizeTomorrowValue = tomorrowValue.charAt(1);
-          tomorrowValue = sanitizeTomorrowValue;
-        }
+        const daySelected = 15;
+        const nextDaySelected = 16;
         // Given
         render(
           <AntdPicker
@@ -253,21 +243,25 @@ describe('<AntPicker>', () => {
         // When
         const startDateInput = screen.getByPlaceholderText('Start date');
         fireEvent.mouseDown(startDateInput);
-        const todayButton = screen.getAllByText(todayValue)[0];
+        const todayButton = screen.getAllByText(daySelected)[0];
         fireEvent.click(todayButton);
         const endDateInput = screen.getByPlaceholderText('End date');
         fireEvent.mouseDown(endDateInput);
-        const tomorrowButton = screen.getAllByText(tomorrowValue)[0];
+        const tomorrowButton = screen.getAllByText(nextDaySelected)[0];
         fireEvent.click(tomorrowButton);
         // Then
         expect(onChangeFunction).toBeCalledTimes(1);
         expect(
-          await screen.findByDisplayValue(moment().format('DD/MM/yyyy'))
+          await screen.findByDisplayValue(
+            moment()
+              .date(daySelected)
+              .format('DD/MM/yyyy')
+          )
         ).toBeTruthy();
         expect(
           await screen.findByDisplayValue(
             moment()
-              .add(1, 'days')
+              .date(nextDaySelected)
               .format('DD/MM/yyyy')
           )
         ).toBeTruthy();
