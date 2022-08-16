@@ -216,7 +216,7 @@ const StyledChart = styled.div`
   }
 `;
 
-const Chart = props => {
+const Chart = React.forwardRef((props, ref) => {
   const {
     options,
     isLoading,
@@ -282,7 +282,7 @@ const Chart = props => {
       currentOptions.tooltip = {};
     }
     if (!currentOptions.title) {
-      currentOptions.title = {};
+      currentOptions.title = { text: '' };
     } else if (!currentOptions.title.style) {
       currentOptions.title.style = {};
     }
@@ -330,13 +330,14 @@ const Chart = props => {
       {showChart && aggregateOptions && (
         <HighchartsReact
           highcharts={Highcharts}
+          ref={ref}
           {...highchartsReactProps}
           options={aggregateOptions}
         />
       )}
     </StyledChart>
   );
-};
+});
 
 Chart.propTypes = propTypes;
 Chart.defaultProps = defaultProps;
