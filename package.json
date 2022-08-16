@@ -7,7 +7,7 @@
     "clean-build": "rm -rf dist",
     "build:development": "npm run clean-build && webpack --mode development",
     "build:icons": "node scripts/buildIconConfig.js",
-    "build": "npm run build:icons && npm run clean-build && webpack --mode production",
+    "build": "npm run patch && npm run build:icons && npm run clean-build && webpack --mode production",
     "build-storybook": "build-storybook -c src/.storybook -o docs",
     "storybook": "npm run build:icons && start-storybook -p 9999 -c src/.storybook --docs",
     "prettier": "prettier --write '{src,test}/{,**/{,*.}}*.js'",
@@ -16,7 +16,7 @@
     "format": "npm run eslint:fix && npm run prettier",
     "test": "NODE_ENV=test jest --json --outputFile=test/jest-test-results.json",
     "semantic-release": "semantic-release",
-    "postinstall": "patch-package"
+    "patch": "patch-package"
   },
   "publishConfig": {
     "tag": "latest"
