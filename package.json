@@ -15,7 +15,8 @@
     "eslint:fix": "eslint --fix '{src,test}/{,**/{,*.}}*.js'",
     "format": "npm run eslint:fix && npm run prettier",
     "test": "NODE_ENV=test jest --json --outputFile=test/jest-test-results.json",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "postinstall": "patch-package"
   },
   "publishConfig": {
     "tag": "latest"
@@ -97,8 +98,8 @@
     "deep-equal": "^1.0.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.11.2",
-    "eslint": "^5.15.3",
-    "eslint-config-airbnb": "^17.1.0",
+    "eslint": "^6.0.0",
+    "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
@@ -116,6 +117,7 @@
     "mini-css-extract-plugin": "^0.5.0",
     "moment": "^2.29.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "patch-package": "^6.4.7",
     "path": "^0.12.7",
     "polished": "^3.4.0",
     "postcss-loader": "^3.0.0",
@@ -177,5 +179,9 @@
   "dependencies": {
     "highcharts-react-official": "^3.1.0",
     "highcharts-rounded-corners": "^1.0.6"
+  },
+  "volta": {
+    "node": "16.16.0",
+    "npm": "8.11.0"
   }
 }

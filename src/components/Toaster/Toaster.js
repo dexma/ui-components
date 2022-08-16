@@ -39,12 +39,12 @@ export class Toaster extends PureComponent {
   render = () => {
     return (
       <ToasterContext.Provider value={{ toast: this.showToast }}>
-        <React.Fragment>
+        <>
           <div>{this.props.children}</div>
           {this.state.visible && (
             <Toast {...this.props} {...this.state.toastConfig} />
           )}
-        </React.Fragment>
+        </>
       </ToasterContext.Provider>
     );
   };

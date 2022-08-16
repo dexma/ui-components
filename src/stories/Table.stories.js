@@ -14,9 +14,12 @@ export default {
 };
 
 class Selection extends React.Component {
-  state = {
-    selectedRowKeys: [], // Check here to configure the default column
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedRowKeys: [], // Check here to configure the default column
+    };
+  }
 
   onSelectChange = selectedRowKeys => {
     console.log('selectedRowKeys changed: ', selectedRowKeys);
