@@ -1,3 +1,10 @@
+# [5.7.0](https://github.com/dexma/ui-components/compare/v5.6.1...v5.7.0) (2022-08-16)
+
+
+### Features
+
+* **chart:** get back chart ref ([cc0cb00](https://github.com/dexma/ui-components/commit/cc0cb00d3cce8bcb6c2fc2c0d219dbcfadd2ff8f))
+
 ## [5.6.1](https://github.com/dexma/ui-components/compare/v5.6.0...v5.6.1) (2022-07-28)
 
 
