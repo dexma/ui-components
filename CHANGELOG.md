@@ -1,3 +1,10 @@
+## [5.7.2](https://github.com/dexma/ui-components/compare/v5.7.1...v5.7.2) (2022-08-16)
+
+
+### Bug Fixes
+
+* **build:** apply patch on build instead of postinstall ([33fe4ca](https://github.com/dexma/ui-components/commit/33fe4ca5b8ea6c475a0848d3309b5ae49df6cc53))
+
 ## [5.7.1](https://github.com/dexma/ui-components/compare/v5.7.0...v5.7.1) (2022-08-16)
 
 
