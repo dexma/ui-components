@@ -1,8 +1,8 @@
 diff --git a/node_modules/highcharts-rounded-corners/rounded-corners.js b/node_modules/highcharts-rounded-corners/rounded-corners.js
-index 365c2f4..6203aa9 100644
+index 365c2f4..8649bf5 100644
 --- a/node_modules/highcharts-rounded-corners/rounded-corners.js
 +++ b/node_modules/highcharts-rounded-corners/rounded-corners.js
-@@ -23,66 +23,68 @@
+@@ -23,66 +23,69 @@
  
          proceed.call(this);
  
@@ -14,60 +14,59 @@ index 365c2f4..6203aa9 100644
 -                y = shapeArgs.y;
 +        if (this.points) {
 +            H.each(this.points, function (point) {
-+                var shapeArgs = point.shapeArgs,
-+                    w = shapeArgs.width,
-+                    h = shapeArgs.height,
-+                    x = shapeArgs.x,
-+                    y = shapeArgs.y;
++                if (point.shapeArgs) {
++                    var shapeArgs = point.shapeArgs,
++                        w = shapeArgs.width,
++                        h = shapeArgs.height,
++                        x = shapeArgs.x,
++                        y = shapeArgs.y;
  
 -            // Get the radius
 -            var rTopLeft = rel(options.borderRadiusTopLeft || 0, w),
 -                rTopRight = rel(options.borderRadiusTopRight || 0, w),
 -                rBottomRight = rel(options.borderRadiusBottomRight || 0, w),
 -                rBottomLeft = rel(options.borderRadiusBottomLeft || 0, w);
-+                // Get the radius
-+                var rTopLeft = rel(options.borderRadiusTopLeft || 0, w),
-+                    rTopRight = rel(options.borderRadiusTopRight || 0, w),
-+                    rBottomRight = rel(options.borderRadiusBottomRight || 0, w),
-+                    rBottomLeft = rel(options.borderRadiusBottomLeft || 0, w);
++                    // Get the radius
++                    var rTopLeft = rel(options.borderRadiusTopLeft || 0, w),
++                        rTopRight = rel(options.borderRadiusTopRight || 0, w),
++                        rBottomRight = rel(options.borderRadiusBottomRight || 0, w),
++                        rBottomLeft = rel(options.borderRadiusBottomLeft || 0, w);
              
 -            if (rTopLeft || rTopRight || rBottomRight || rBottomLeft) {
 -                var maxR = Math.min(w, h) / 2
-+                if (rTopLeft || rTopRight || rBottomRight || rBottomLeft) {
-+                    var maxR = Math.min(w, h) / 2
++                    if (rTopLeft || rTopRight || rBottomRight || rBottomLeft) {
++                        var maxR = Math.min(w, h) / 2
                          
 -                if (rTopLeft > maxR) {
 -                    rTopLeft = maxR;
 -                }
-+                    if (rTopLeft > maxR) {
-+                        rTopLeft = maxR;
-+                    }
- 
+-
 -                if (rTopRight > maxR) {
 -                    rTopRight = maxR;
 -                }
-+                    if (rTopRight > maxR) {
-+                        rTopRight = maxR;
-+                    }
++                        if (rTopLeft > maxR) {
++                            rTopLeft = maxR;
++                        }
  
 -                if (rBottomRight > maxR) {
 -                    rBottomRight = maxR;
 -                }
-+                    if (rBottomRight > maxR) {
-+                        rBottomRight = maxR;
-+                    }
++                        if (rTopRight > maxR) {
++                            rTopRight = maxR;
++                        }
  
 -                if (rBottomLeft > maxR) {
 -                    rBottomLeft = maxR;
 -                }
-+                    if (rBottomLeft > maxR) {
-+                        rBottomLeft = maxR;
-+                    }
++                        if (rBottomRight > maxR) {
++                            rBottomRight = maxR;
++                        }
  
 -                // Preserve the box for data labels
 -                point.dlBox = point.shapeArgs;
-+                    // Preserve the box for data labels
-+                    point.dlBox = point.shapeArgs;
++                        if (rBottomLeft > maxR) {
++                            rBottomLeft = maxR;
++                        }
  
 -                point.shapeType = 'path';
 -                point.shapeArgs = {
@@ -93,32 +92,35 @@ index 365c2f4..6203aa9 100644
 -                    ]
 -                };
 -            }
-+                    point.shapeType = 'path';
-+                    point.shapeArgs = {
-+                        d: [
-+                            'M', x + rTopLeft, y + topMargin,
-+                            // top side
-+                            'L', x + w - rTopRight, y + topMargin,
-+                            // top right corner
-+                            'C', x + w - rTopRight / 2, y, x + w, y + rTopRight / 2, x + w, y + rTopRight,
-+                            // right side
-+                            'L', x + w, y + h - rBottomRight,
-+                            // bottom right corner
-+                            'C', x + w, y + h - rBottomRight / 2, x + w - rBottomRight / 2, y + h, x + w - rBottomRight, y + h + bottomMargin,
-+                            // bottom side
-+                            'L', x + rBottomLeft, y + h + bottomMargin,
-+                            // bottom left corner
-+                            'C', x + rBottomLeft / 2, y + h, x, y + h - rBottomLeft / 2, x, y + h - rBottomLeft,
-+                            // left side
-+                            'L', x, y + rTopLeft,
-+                            // top left corner
-+                            'C', x, y + rTopLeft / 2, x + rTopLeft / 2, y, x + rTopLeft, y,
-+                            'Z'
-+                        ]
-+                    };
-+                }
-                     
++                        // Preserve the box for data labels
++                        point.dlBox = point.shapeArgs;
+ 
 -        });
++                        point.shapeType = 'path';
++                        point.shapeArgs = {
++                            d: [
++                                'M', x + rTopLeft, y + topMargin,
++                                // top side
++                                'L', x + w - rTopRight, y + topMargin,
++                                // top right corner
++                                'C', x + w - rTopRight / 2, y, x + w, y + rTopRight / 2, x + w, y + rTopRight,
++                                // right side
++                                'L', x + w, y + h - rBottomRight,
++                                // bottom right corner
++                                'C', x + w, y + h - rBottomRight / 2, x + w - rBottomRight / 2, y + h, x + w - rBottomRight, y + h + bottomMargin,
++                                // bottom side
++                                'L', x + rBottomLeft, y + h + bottomMargin,
++                                // bottom left corner
++                                'C', x + rBottomLeft / 2, y + h, x, y + h - rBottomLeft / 2, x, y + h - rBottomLeft,
++                                // left side
++                                'L', x, y + rTopLeft,
++                                // top left corner
++                                'C', x, y + rTopLeft / 2, x + rTopLeft / 2, y, x + rTopLeft, y,
++                                'Z'
++                            ]
++                        };
++                    }
++                }
 +            });
 +        }
      });
