@@ -114,6 +114,100 @@ export const antdPickerPresets = () => (
   </Grid>
 );
 
+export const languageDatePicker = () => (
+  <Grid fluid>
+    <Row>
+      <Paragraph margin="1rem 0 1rem 0">
+        In this section we include the string values for the languages available
+        for Date Picker component through property <strong>language</strong> and
+        the value that expects regarding the location of that language. When
+        there&apos;s no value specified, it will have by default :{' '}
+        <strong>`en`</strong> for English from{' '}
+        <strong>Great Britain (en_GB)</strong>
+      </Paragraph>
+      <ul>
+        <li>
+          <strong>`bg`</strong> for{' '}
+          <strong>Bulgarian from Bulgaria (bg_BG)</strong>
+        </li>
+        <li>
+          <strong>`br`</strong> for{' '}
+          <strong>Portuguese from Brazil (pt_BR)</strong>
+        </li>
+        <li>
+          <strong>`be`</strong> for <strong>Dutch from Belgium (nl_BE)</strong>
+        </li>
+        <li>
+          <strong>`ca`</strong> for <strong>Catalan from Spain (ca_ES)</strong>
+        </li>
+        <li>
+          <strong>`da`</strong> for <strong>Danish from Denmark (da_DK)</strong>
+        </li>
+        <li>
+          <strong>`de`</strong> for <strong>German from Germany (da_DE)</strong>
+        </li>
+        <li>
+          <strong>`el`</strong> for <strong>Greek from Greece (el_GR)</strong>
+        </li>
+        <li>
+          <strong>`es`</strong> for <strong>Spanish from Spain (es_ES)</strong>
+        </li>
+        <li>
+          <strong>`fi`</strong> for{' '}
+          <strong>Finnish from Finland (fi_FI)</strong>
+        </li>
+        <li>
+          <strong>`fr`</strong> for <strong>French from France (fr_FR)</strong>
+        </li>
+        <li>
+          <strong>`it`</strong> for <strong>Italian from Italy (it_IT)</strong>
+        </li>
+        <li>
+          <strong>`nl`</strong> for{' '}
+          <strong>Dutch from Netherlands (nl_NL)</strong>
+        </li>
+        <li>
+          <strong>`pl`</strong> for <strong>Polish from Poland (pl_PL)</strong>
+        </li>
+        <li>
+          <strong>`pt`</strong> for{' '}
+          <strong>Portuguese from Portugal (pt_PT)</strong>
+        </li>
+        <li>
+          <strong>`sl`</strong> for{' '}
+          <strong>Slovenian from Slovenia (sl_SI)</strong>
+        </li>
+        <li>
+          <strong>`sv`</strong> for <strong>Swedish from Sweden (sv_SE)</strong>
+        </li>
+        <li>
+          <strong>`tr`</strong> for <strong>Turkish from Turkey (tr_TR)</strong>
+        </li>
+        <li>
+          <strong>`us`</strong> for{' '}
+          <strong>English from United States (en_US)</strong>
+        </li>
+        <li>
+          <strong>`zh`</strong> for{' '}
+          <strong>Simplified Chinese from China (zh_CN)</strong>
+        </li>
+      </ul>
+      <Paragraph margin="1rem 0 1rem 0">
+        In the case there is a language not supported on the previous list, you
+        may include through property <strong>locale</strong> to add it from Ant
+        Design:
+        <br />
+        <br />
+        <code>
+          import fr_BE from &apos;antd/lib/locale/fr_BE&apos;;
+          <br />
+          &lt;DatePicker locale=&#123;fr_BE&#125;/&gt;
+        </code>
+      </Paragraph>
+    </Row>
+  </Grid>
+);
+
 export const migrationDatePickerLegacy = () => (
   <Grid fluid>
     <Row>

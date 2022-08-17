@@ -4,6 +4,7 @@ import { ConfigProvider } from 'antd';
 import ca_ES from 'antd/lib/locale/ca_ES';
 import de_DE from 'antd/lib/locale/de_DE';
 import en_US from 'antd/lib/locale/en_US';
+import en_GB from 'antd/lib/locale/en_GB';
 import es_ES from 'antd/lib/locale/es_ES';
 // import eu_ES from 'antd/lib/locale/eu_ES'; There's no such translation on antd
 import fr_FR from 'antd/lib/locale/fr_FR';
@@ -14,10 +15,10 @@ import { omit } from 'lodash';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-// import pt_BR from 'antd/lib/locale/pt_BR';
+import pt_BR from 'antd/lib/locale/pt_BR';
 import el_GR from 'antd/lib/locale/el_GR';
 import nl_NL from 'antd/lib/locale/nl_NL';
-// import nl_BE from 'antd/lib/locale/nl_BE';
+import nl_BE from 'antd/lib/locale/nl_BE';
 import pl_PL from 'antd/lib/locale/pl_PL';
 import bg_BG from 'antd/lib/locale/bg_BG';
 import da_DK from 'antd/lib/locale/da_DK';
@@ -48,41 +49,47 @@ import Icon from './Icon';
 // i18n
 const getLocale = language => {
   switch (language) {
+    case 'bg':
+      return bg_BG;
+    case 'br':
+      return pt_BR;
+    case 'be':
+      return nl_BE;
     case 'ca':
       return ca_ES;
+    case 'da':
+      return da_DK;
     case 'de':
       return de_DE;
+    case 'el':
+      return el_GR;
     case 'es':
       return es_ES;
+    case 'fi':
+      return fi_FI;
     case 'fr':
       return fr_FR;
     case 'it':
       return it_IT;
-    case 'pt':
-      return pt_PT;
-    case 'tr':
-      return tr_TR;
-    case 'el':
-      return el_GR;
     case 'nl':
       return nl_NL;
     case 'pl':
       return pl_PL;
-    case 'bg':
-      return bg_BG;
-    case 'da':
-      return da_DK;
-    case 'fi':
-      return fi_FI;
+    case 'pt':
+      return pt_PT;
     case 'sl':
       return sl_SI;
     case 'sv':
       return sv_SE;
+    case 'tr':
+      return tr_TR;
+    case 'us':
+      return en_US;
     case 'zh':
       return zh_CN;
     case 'en':
     default:
-      return en_US;
+      return en_GB;
   }
 };
 
@@ -103,6 +110,28 @@ export const datePickerRange = (range, parser = date => date) => {
 };
 const DATEPICKER_PICKER = [null, 'week', 'month', 'year'];
 const TYPE_PICKER = ['date', 'range'];
+const AVAILABLE_LANGUAGES = [
+  'en',
+  'bg',
+  'br',
+  'be',
+  'ca',
+  'da',
+  'de',
+  'el',
+  'es',
+  'fi',
+  'fr',
+  'it',
+  'nl',
+  'pl',
+  'pt',
+  'sl',
+  'sv',
+  'tr',
+  'us',
+  'zh',
+];
 
 const AntdDatePicker = props => {
   const { dataId } = props;
@@ -253,6 +282,14 @@ AntdPicker.propTypes = {
    * JSON object that applies styles to the component
    */
   theme: PropTypes.shape({}),
+  /**
+   * String to specify the language of the component
+   */
+  language: PropTypes.oneOf(AVAILABLE_LANGUAGES),
+  /**
+   * Object of type locale to specify a language from Ant Design. Full list on https://ant.design/docs/react/i18n
+   */
+  locale: PropTypes.shape({}),
   /**
    * Allowed types of AntdPicker
    */
