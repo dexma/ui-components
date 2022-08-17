@@ -1,3 +1,10 @@
+## [5.7.3](https://github.com/dexma/ui-components/compare/v5.7.2...v5.7.3) (2022-08-17)
+
+
+### Bug Fixes
+
+* **datepicker:** use "en_GB" locate by default ([5ec01da](https://github.com/dexma/ui-components/commit/5ec01da02798f15e5de761ca01721879363a555a))
+
 ## [5.7.2](https://github.com/dexma/ui-components/compare/v5.7.1...v5.7.2) (2022-08-16)
 
 
