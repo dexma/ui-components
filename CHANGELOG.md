@@ -1,3 +1,11 @@
+## [5.7.5](https://github.com/dexma/ui-components/compare/v5.7.4...v5.7.5) (2022-08-19)
+
+
+### Bug Fixes
+
+* **datepicker:** add translations from momentJS dependency ([bd52218](https://github.com/dexma/ui-components/commit/bd52218396f0f36ef2bdf183f2d7d9ce1e81639f))
+* **test:** refactor imports of datePickerUtils ([1e7fa35](https://github.com/dexma/ui-components/commit/1e7fa35885a5b922924a219f4643d5d35d7b3ae7))
+
 ## [5.7.4](https://github.com/dexma/ui-components/compare/v5.7.3...v5.7.4) (2022-08-19)
 
 
