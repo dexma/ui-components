@@ -4,8 +4,6 @@ import ca_ES from 'antd/lib/locale-provider/ca_ES';
 import 'moment/locale/de';
 import de_DE from 'antd/lib/locale-provider/de_DE';
 import en_US from 'antd/lib/locale-provider/en_US';
-import 'moment/locale/en-gb';
-import en_GB from 'antd/lib/locale-provider/en_GB';
 import 'moment/locale/es';
 import es_ES from 'antd/lib/locale-provider/es_ES';
 // import eu_ES from 'antd/lib/locale/eu_ES'; There's no such translation on antd
@@ -40,6 +38,8 @@ import 'moment/locale/sv';
 import sv_SE from 'antd/lib/locale-provider/sv_SE';
 import 'moment/locale/zh-cn';
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import 'moment/locale/en-gb';
+import en_GB from 'antd/lib/locale-provider/en_GB';
 
 // i18n
 export const getLocale = language => {
