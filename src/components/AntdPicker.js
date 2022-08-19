@@ -1,32 +1,11 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
 import { ConfigProvider } from 'antd';
-import ca_ES from 'antd/lib/locale/ca_ES';
-import de_DE from 'antd/lib/locale/de_DE';
-import en_US from 'antd/lib/locale/en_US';
-import en_GB from 'antd/lib/locale/en_GB';
-import es_ES from 'antd/lib/locale/es_ES';
-// import eu_ES from 'antd/lib/locale/eu_ES'; There's no such translation on antd
-import fr_FR from 'antd/lib/locale/fr_FR';
-import it_IT from 'antd/lib/locale/it_IT';
-import pt_PT from 'antd/lib/locale/pt_PT';
-import tr_TR from 'antd/lib/locale/tr_TR';
 import { omit } from 'lodash';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import pt_BR from 'antd/lib/locale/pt_BR';
-import el_GR from 'antd/lib/locale/el_GR';
-import nl_NL from 'antd/lib/locale/nl_NL';
-import nl_BE from 'antd/lib/locale/nl_BE';
-import pl_PL from 'antd/lib/locale/pl_PL';
-import bg_BG from 'antd/lib/locale/bg_BG';
-import da_DK from 'antd/lib/locale/da_DK';
-import fi_FI from 'antd/lib/locale/fi_FI';
-// import no_NO from 'antd/lib/locale/no_NO'; There's no such translation on antd
-import sl_SI from 'antd/lib/locale/sl_SI';
-import sv_SE from 'antd/lib/locale/sv_SE';
-import zh_CN from 'antd/lib/locale/zh_CN';
+import * as datePickerUtils from '../utils/datePickerUtils';
+
 import {
   DropdownDatePickerStyles,
   StyledAntdDatePicker,
@@ -46,53 +25,6 @@ import {
 } from '../utils/dates';
 import Icon from './Icon';
 
-// i18n
-const getLocale = language => {
-  switch (language) {
-    case 'bg':
-      return bg_BG;
-    case 'br':
-      return pt_BR;
-    case 'be':
-      return nl_BE;
-    case 'ca':
-      return ca_ES;
-    case 'da':
-      return da_DK;
-    case 'de':
-      return de_DE;
-    case 'el':
-      return el_GR;
-    case 'es':
-      return es_ES;
-    case 'fi':
-      return fi_FI;
-    case 'fr':
-      return fr_FR;
-    case 'it':
-      return it_IT;
-    case 'nl':
-      return nl_NL;
-    case 'pl':
-      return pl_PL;
-    case 'pt':
-      return pt_PT;
-    case 'sl':
-      return sl_SI;
-    case 'sv':
-      return sv_SE;
-    case 'tr':
-      return tr_TR;
-    case 'us':
-      return en_US;
-    case 'zh':
-      return zh_CN;
-    case 'en':
-    default:
-      return en_GB;
-  }
-};
-
 // Ranges
 export const withDatePickerFormat = (start, end) => [start, end];
 const custom = () => withDatePickerFormat(null, null);
@@ -101,7 +33,7 @@ export const datePickerRange = (range, parser = date => date) => {
   if (range === DATE_RANGE.YESTERDAY) return yesterday(parser);
   if (range === DATE_RANGE.LAST_7_DAYS) return last7Days(parser);
   if (range === DATE_RANGE.LAST_28_DAYS) return last28Days(parser);
-  if (range === DATE_RANGE.CURRENET_MONTH) return currentMonth(parser);
+  if (range === DATE_RANGE.CURRENT_MONTH) return currentMonth(parser);
   if (range === DATE_RANGE.LAST_MONTH) return lastMonth(parser);
   if (range === DATE_RANGE.YEAR_TO_DATE) return yearToDate(parser);
   if (range === DATE_RANGE.PREVIOUS_YEAR) return previousYear(parser);
@@ -229,15 +161,13 @@ const AntdPicker = props => {
   ]);
   const { theme, type, language, locale } = props;
 
-  useEffect(() => {
-    moment.locale(language);
-  }, [language]);
-
   return (
     <>
       <ConfigProvider
         locale={
-          (String(language).length === 2 && getLocale(language)) || locale
+          (String(language).length === 2 &&
+            datePickerUtils.getLocale(language)) ||
+          locale
         }
       >
         <DropdownDatePickerStyles theme={theme} />
