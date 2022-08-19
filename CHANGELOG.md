@@ -1,3 +1,10 @@
+## [5.7.4](https://github.com/dexma/ui-components/compare/v5.7.3...v5.7.4) (2022-08-19)
+
+
+### Bug Fixes
+
+* **chart:** bar chart failing when it has a lot of values on a serie and is resized ([2d7b1cb](https://github.com/dexma/ui-components/commit/2d7b1cbc76dc8a6a19691f00bec572a12a87ab86))
+
 ## [5.7.3](https://github.com/dexma/ui-components/compare/v5.7.2...v5.7.3) (2022-08-17)
 
 
