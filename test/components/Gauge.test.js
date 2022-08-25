@@ -1,13 +1,15 @@
 import {
+  chart,
   getBackgroundSerie,
+  getChart,
   getCheckpointSeries,
   getComparisonText,
-  getFontSizeDataLabel,
+  getPercentageComparisonValue,
   getPercentageElement,
-  getPercentageValue,
   getRangeSeries,
   getValueSeries,
   getYAxis,
+  valueAsPercentage,
 } from '../../src/components/Gauge';
 import theme from '../../src/styles/theme';
 import {
@@ -20,50 +22,36 @@ import {
   mockExpectedValueSerie,
   mockExpectedSingleCheckpointSeries,
   mockExpectedIncreasePercentage,
+  mockExpectedChart,
 } from '../mock/Gauge';
 
 describe('<Gauge>', () => {
   describe('Ancilliary functions', () => {
-    describe('getRangeSeries', () => {
-      it('should return a sorted array of range series on ascendant order by "to" field', () => {
+    describe('valueAsPercentage', () => {
+      it('should return the value between the 0 and 100', () => {
         // Given
-        const givenRangeSeries = mockRangeSeries;
-        const expectedRangeSeries = mockExpectedRangeSeries;
+        const expectedResult = 40;
         // When
-        const resultingRangeSeries = getRangeSeries(givenRangeSeries);
+        const resultingPercentage = valueAsPercentage(40, 100, 0);
         // Then
-        expect(resultingRangeSeries).toStrictEqual(expectedRangeSeries);
+        expect(resultingPercentage).toBe(expectedResult);
       });
     });
-    describe('getFontSizeDataLabel', () => {
-      it('should return a string pixel value (ex: "10px") according to the number of characters of a string value', () => {
-        // Given
-        const expectedValues = [
-          '30px',
-          '48px',
-          '60px',
-          '72px',
-          '80px',
-          '100px',
-        ];
-        const initialValues = [100000.5, -999999, 650000, 30000, 1000, 0];
-        // When
-        const resultingValues = initialValues.map(value =>
-          getFontSizeDataLabel(value)
-        );
-        // Then
-        expect(resultingValues).toStrictEqual(expectedValues);
-      });
-    });
-    describe('getYAxis', () => {
-      it('should return a axisY object that defines the Axis Y on the gauge for the labels', () => {
+    describe('getValueSeries', () => {
+      it('should return a range serie related to the value represented on the gauge', () => {
         // Given
         const givenProps = mockPropsGauge;
-        const expectedAxis = mockExpectedAxisY;
+        const expectedValueSerie = mockExpectedValueSerie;
         // When
-        const resultingAxis = getYAxis(givenProps.min, givenProps.max, theme);
+        const resultingSerie = getValueSeries(
+          givenProps.indicator,
+          givenProps.max,
+          null,
+          null,
+          false
+        );
         // Then
-        expect(resultingAxis).toStrictEqual(expectedAxis);
+        expect(resultingSerie).toStrictEqual(expectedValueSerie);
       });
     });
     describe('getBackgroundSerie', () => {
@@ -78,23 +66,15 @@ describe('<Gauge>', () => {
         expect(resultingSerie).toStrictEqual(expectedSerie);
       });
     });
-    describe('getValueSeries', () => {
-      it('should return a range serie related to the value represented on the gauge', () => {
+    describe('getRangeSeries', () => {
+      it('should return a sorted array of range series on ascendant order by "to" field', () => {
         // Given
-        const givenProps = mockPropsGauge;
-        const expectedValueSerie = mockExpectedValueSerie;
+        const givenRangeSeries = mockRangeSeries;
+        const expectedRangeSeries = mockExpectedRangeSeries;
         // When
-        const resultingSerie = getValueSeries(
-          givenProps.value,
-          givenProps.color,
-          givenProps.max,
-          null,
-          null,
-          givenProps.units,
-          null
-        );
+        const resultingRangeSeries = getRangeSeries(givenRangeSeries);
         // Then
-        expect(resultingSerie).toStrictEqual(expectedValueSerie);
+        expect(resultingRangeSeries).toStrictEqual(expectedRangeSeries);
       });
     });
     describe('getCheckpointSeries', () => {
@@ -114,12 +94,45 @@ describe('<Gauge>', () => {
         expect(...resultingSerie).toStrictEqual(expectedCheckpointSerie);
       });
     });
-    describe('getPercentageValue', () => {
+    describe('getYAxis', () => {
+      it('should return a axisY object that defines the Axis Y on the gauge for the labels', () => {
+        // Given
+        const givenProps = mockPropsGauge;
+        const expectedAxis = mockExpectedAxisY;
+        // When
+        const resultingAxis = getYAxis(false, givenProps.min, givenProps.max);
+        // Then
+        expect(resultingAxis).toStrictEqual(expectedAxis);
+      });
+    });
+    describe('getChart', () => {
+      it('should return a chart object that defines the chart properties on the gauge', () => {
+        // Given
+        const givenProps = mockPropsGauge;
+        const renderFunction = expect.any(Function);
+        const expectedChart = mockExpectedChart({ render: renderFunction });
+        const initialChart = chart;
+        // When
+        const resultingChart = getChart(
+          initialChart,
+          givenProps.value,
+          givenProps.decimalSeparator,
+          givenProps.thousandSeparator,
+          givenProps.color,
+          false,
+          givenProps.units,
+          { enabled: false }
+        );
+        // Then
+        expect(resultingChart).toMatchObject(expectedChart);
+      });
+    });
+    describe('getPercentageComparisonValue', () => {
       it('should return the value, in percentage, if it were an increase or decrease of the value against the previous one', () => {
         // Given
         const expectedResult = 100;
         // When
-        const resultingPercentage = getPercentageValue(40, 80);
+        const resultingPercentage = getPercentageComparisonValue(40, 80);
         // Then
         expect(resultingPercentage).toBe(expectedResult);
       });
@@ -150,28 +163,8 @@ describe('<Gauge>', () => {
     describe('getComparisonText', () => {
       it('should return empty if comparison is disabled', () => {
         // Given
-        const expectedElement = '';
-        // When
-        const resultingElement = getComparisonText(
-          {
-            enabled: false,
-            value: 40,
-            color: '#00CC88',
-            period: {
-              from: null,
-              to: null,
-              type: 'TEXT',
-              text: 'Compared to last seven days',
-            },
-          },
-          80
-        );
-        // Then
-        expect(resultingElement).toBe(expectedElement);
-      });
-      it('should return HTML code if comparison is enabled', () => {
-        // Given
-        const expectedElement = `<div class="comparison-info"><span style="position:relative; color: #00CC88;"><svg width="16" height="16" viewBox="0 0 24 24" stroke-width="0" fill="currentColor" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" data-testid="icon" style="position:inherit;left:0px;top:4px" class="StyledIcon-gkgbl duckRk"><path d="M4 12L5.41 13.41L11 7.83V20H13V7.83L18.58 13.42L20 12L12 4L4 12Z" opacity="[object Object]" clip-rule="[object Object]" fill-rule="[object Object]"></path></svg>100%</span>&nbsp;<span style="color: #7E8084;">Compared to last seven days</span></div>`;
+        const expectedElement =
+          '<span style="color: #7E8084;">Compared to last seven days</span>';
         // When
         const resultingElement = getComparisonText(
           {

@@ -71,20 +71,22 @@ export const mockExpectedValueSerie = {
   data: [
     {
       color: '#7cb5ec',
-      radius: '105%',
-      innerRadius: '95%',
+      radius: '90%',
+      innerRadius: '80%',
       y: 59,
     },
   ],
   dataLabels: {
-    format: `<div style="text-align:center;"><div class="highcharts-main-data-label" ><div><span data-testid="highchart-data-label-value" style="font-size:100px;color:#7cb5ec;">59</span></div><span data-testid="highchart-data-label-units" style="font-size:30px; font-weight: 400;color:#7E8084;"> kWh</span></div>
-      </div>`,
+    format: '',
+    borderWidth: 0,
+    verticalAlign: 'bottom',
   },
   threshold: 0,
   tooltip: {
-    valueSuffix: ' kWh',
+    pointFormat:
+      '<span style="fill:#7cb5ec; stroke:#7cb5ec; border-color:#7cb5ec;"><span style="color:#7cb5ec;">●</span> <b>Test Tooltip</b></span><br/>',
   },
-  zIndex: 4,
+  zIndex: 1,
   useHTML: true,
 };
 
@@ -92,8 +94,8 @@ export const expectedBackgroundSerie = {
   data: [
     {
       color: '#FFFFFF',
-      radius: '105%',
-      innerRadius: '95%',
+      radius: '90%',
+      innerRadius: '80%',
       y: 100,
     },
   ],
@@ -129,8 +131,8 @@ export const mockExpectedRangeSeries = [
     data: [
       {
         color: '#FD5754',
-        innerRadius: '85%',
-        radius: '90%',
+        innerRadius: '70%',
+        radius: '75%',
         y: 100,
       },
     ],
@@ -142,14 +144,14 @@ export const mockExpectedRangeSeries = [
       pointFormat:
         '<span style="fill:#FD5754; stroke:#FD5754; border-color:#FD5754;"><span style="color:#FD5754;">●</span> <b>Bad</b></span><br/>',
     },
-    zIndex: 0,
+    zIndex: 1,
   },
   {
     data: [
       {
         color: '#FE9753',
-        innerRadius: '85%',
-        radius: '90%',
+        innerRadius: '70%',
+        radius: '75%',
         y: 75,
       },
     ],
@@ -167,8 +169,8 @@ export const mockExpectedRangeSeries = [
     data: [
       {
         color: '#00CC88',
-        innerRadius: '85%',
-        radius: '90%',
+        innerRadius: '70%',
+        radius: '75%',
         y: 50,
       },
     ],
@@ -180,46 +182,38 @@ export const mockExpectedRangeSeries = [
       pointFormat:
         '<span style="fill:#00CC88; stroke:#00CC88; border-color:#00CC88;"><span style="color:#00CC88;">●</span> <b>Good</b></span><br/>',
     },
-    zIndex: 2,
+    zIndex: 1,
   },
 ];
 
 export const mockPropsGauge = {
-  color: '#7cb5ec',
+  indicator: {
+    value: 59,
+    color: '#7cb5ec',
+    tooltip: 'Test Tooltip',
+  },
   units: ' kWh',
-  value: 59,
   min: 0,
   max: 100,
+  thousandSeparator: ' ',
+  decimalSeparator: ',',
 };
 
-export const mockAxisY = {
-  min: 0,
-  max: 100,
-  lineWidth: 0,
-  allowDecimals: true,
-  labels: {
-    distance: 18,
-    enabled: true,
-    x: 0,
-    y: 0,
-    style: {
-      fontSize: '18',
-      color: '#7E8084',
-    },
-  },
-  minorTickInterval: null,
-  tickWidth: 0,
-};
+export const mockExpectedChart = events => ({
+  borderRadius: 8,
+  events,
+  margin: [0, 0, 0, 0],
+  marginTop: 55,
+  type: 'solidgauge',
+});
 export const mockExpectedAxisY = {
   min: 0,
   max: 100,
   lineWidth: 0,
   allowDecimals: true,
   labels: {
-    distance: 30,
+    distance: '105%',
     enabled: true,
-    x: 0,
-    y: 0,
     style: {
       fontSize: '18',
       color: '#7E8084',
@@ -228,31 +222,30 @@ export const mockExpectedAxisY = {
   minorTickInterval: null,
   tickWidth: 0,
 };
-export const mockExpectedIncreasePercentage = `<span style="position:relative; color: #00CC88;"><svg width="16" height="16" viewBox="0 0 24 24" stroke-width="0" fill="currentColor" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" data-testid="icon" style="position:inherit;left:0px;top:4px" class="StyledIcon-gkgbl duckRk"><path d="M4 12L5.41 13.41L11 7.83V20H13V7.83L18.58 13.42L20 12L12 4L4 12Z" opacity="[object Object]" clip-rule="[object Object]" fill-rule="[object Object]"></path></svg>100%</span>`;
+export const mockExpectedIncreasePercentage = `<span style="color: #00CC88;">↑100%</span>`;
 
 export const mockSingleCheckpointSeries = [
-  { color: '#000000', tooltip: 'Basic tooltip', value: 55 },
+  { color: '#000000', tooltip: 'Basic tooltip: 55kWh', value: 55 },
 ];
 export const mockExpectedSingleCheckpointSeries = {
   data: [55],
   tooltip: {
-    valueSuffix: ' kWh',
     borderColor: '#000000',
     pointFormat:
-      '<span style="fill:#000000; stroke:#000000; border-color:#000000;"><span style="color:#000000;">●</span> {series.name}: <b>{point.y}</b></span><br/>',
+      '<span style="fill:#000000; stroke:#000000; border-color:#000000;"><span style="color:#000000;">●</span> <b>Basic tooltip: 55kWh</b></span><br/>',
   },
   dataLabels: {
     format: ``,
   },
-  name: 'Basic tooltip',
+  name: 'Basic tooltip: 55kWh',
   type: 'gauge',
   dial: {
     backgroundColor: '#000000',
   },
-  zIndex: 4,
+  zIndex: 2,
 };
 
 export const mockCheckpointSeries = [
-  { color: '#000000', tooltip: 'Basic tooltip', value: 55 },
-  { color: '#000000', tooltip: 'Basic tooltip 2', value: 76 },
+  { color: '#000000', tooltip: 'Basic tooltip: 55kWh', value: 55 },
+  { color: '#000000', tooltip: 'Basic tooltip 2: 76kWh', value: 76 },
 ];
