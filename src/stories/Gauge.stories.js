@@ -29,7 +29,7 @@ export const gauge = () => (
           name="Contador general Industrias ACME"
           comparison={{
             enabled: true,
-            value: 40,
+            value: 80,
             color: '#00CC88',
             period: {
               from: null,
@@ -59,11 +59,17 @@ export const gauge = () => (
             },
           ]}
           color="#7cb5ec"
-          units=" kWh"
-          value={60}
+          units="kWh"
+          indicator={{
+            color: '#FB4EDA',
+            tooltip: 'Contador general Industrias ACME: 50kWh',
+            value: 50,
+          }}
           min={0}
           max={100}
-          checkpoints={[{ color: 'blue', tooltip: 'Basic tooltip', value: 60 }]}
+          checkpoints={[
+            { color: 'blue', tooltip: 'Basic tooltip: 60kWh', value: 60 },
+          ]}
         />
       </Cell>
     </Row>
@@ -71,14 +77,26 @@ export const gauge = () => (
 );
 
 export const basicGauge = () => (
-  <Gauge type="DIAL" value={59} min={0} max={100} />
+  <Gauge
+    type="DIAL"
+    indicator={{
+      color: '#00CC88',
+      tooltip: 'Contador general Industrias ACME: 50kWh',
+      value: 50,
+    }}
+    min={0}
+    max={100}
+  />
 );
 
 export const SingleRangeSerieGauge = () => (
   <Gauge
     type="DIAL"
-    color="#00CC88"
-    value={59}
+    indicator={{
+      color: '#00CC88',
+      tooltip: 'Contador general Industrias ACME: 50kWh',
+      value: 50,
+    }}
     min={0}
     max={100}
     ranges={mockSingleRangeSerie}
@@ -88,8 +106,11 @@ export const SingleRangeSerieGauge = () => (
 export const MultipleRangeSerieGauge = () => (
   <Gauge
     type="DIAL"
-    color="#FE9753"
-    value={59}
+    indicator={{
+      color: '#FB4EDA',
+      tooltip: 'Contador general Industrias ACME: 50kWh',
+      value: 50,
+    }}
     min={0}
     max={100}
     ranges={mockRangeSeries}
@@ -99,8 +120,11 @@ export const MultipleRangeSerieGauge = () => (
 export const SingleCheckpointSerieGauge = () => (
   <Gauge
     type="DIAL"
-    color="#FE9753"
-    value={59}
+    indicator={{
+      color: '#FB4EDA',
+      tooltip: 'Contador general Industrias ACME: 50kWh',
+      value: 50,
+    }}
     min={0}
     max={100}
     ranges={mockRangeSeries}
@@ -111,8 +135,11 @@ export const SingleCheckpointSerieGauge = () => (
 export const MultipleCheckpointSerieGauge = () => (
   <Gauge
     type="DIAL"
-    color="#FE9753"
-    value={59}
+    indicator={{
+      color: '#FB4EDA',
+      tooltip: 'Contador general Industrias ACME: 50kWh',
+      value: 50,
+    }}
     min={0}
     max={100}
     ranges={mockRangeSeries}
