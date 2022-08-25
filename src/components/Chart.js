@@ -222,15 +222,6 @@ const StyledChart = styled.div`
   .highcharts-data-label-box {
     visibility: hidden;
   }
-  .highcharts-main-data-label:hover {
-    opacity: 0.2;
-  }
-  .comparison-info {
-    position: relative;
-    top: 35px;
-    text-align: center;
-    font-size: 12px;
-  }
 `;
 
 const Chart = React.forwardRef((props, ref) => {
