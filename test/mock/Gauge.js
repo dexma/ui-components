@@ -215,7 +215,7 @@ export const mockExpectedAxisY = {
     distance: '105%',
     enabled: true,
     style: {
-      fontSize: '18',
+      fontSize: '12px',
       color: '#7E8084',
     },
   },

@@ -133,7 +133,7 @@ export const getYAxis = (showAsPercentage, minValue, maxValue) => ({
     distance: '105%',
     enabled: true,
     style: {
-      fontSize: '18',
+      fontSize: '12px',
       color: '#7E8084',
     },
   },
@@ -520,7 +520,7 @@ const propTypes = {
    */
   decimalPoint: PropTypes.string,
   /**
-   * Main value draw on main arc and center of gauge. If showAsPercentage is activated, this value will be escaled to a value between 0%-100%.
+   * Main value draw on main arc and center of gauge. If showAsPercentage is activated, this value will be scaled to a value between 0%-100%.
    */
   indicator: PropTypes.shape({
     color: PropTypes.string.isRequired,
