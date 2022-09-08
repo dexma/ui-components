@@ -8,11 +8,13 @@ import HighchartsReact from 'highcharts-react-official';
 import HCRounded from 'highcharts-rounded-corners';
 import HighchartsHeatmap from 'highcharts/modules/heatmap';
 
+import addSolidGauge from 'highcharts/modules/solid-gauge';
 import addSankeyModule from 'highcharts/modules/sankey';
 import addExportingModule from 'highcharts/modules/exporting';
 import addOfflineExportingModule from 'highcharts/modules/offline-exporting';
 import addExportData from 'highcharts/modules/export-data';
 import boost from 'highcharts/modules/boost';
+import highchartsMore from 'highcharts/highcharts-more';
 
 import theme from '../styles/theme';
 import { StyledResult } from '../styles/components/StyledResult';
@@ -25,6 +27,8 @@ addExportingModule(Highcharts);
 addOfflineExportingModule(Highcharts);
 addExportData(Highcharts);
 HighchartsHeatmap(Highcharts);
+highchartsMore(Highcharts);
+addSolidGauge(Highcharts);
 
 const propTypes = {
   /**
@@ -213,6 +217,10 @@ const ChartError = props => (
 const StyledChart = styled.div`
   .highcharts-exporting-group {
     display: none !important;
+  }
+  .highcharts-pivot,
+  .highcharts-data-label-box {
+    visibility: hidden;
   }
 `;
 

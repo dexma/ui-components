@@ -28,6 +28,7 @@ export { default as Dots } from './components/Dots';
 export { default as Dropdown } from './components/Dropdown';
 export { default as FieldGroup } from './components/FieldGroup';
 export { default as FormControl } from './components/FormControl';
+export { default as Gauge } from './components/Gauge';
 export { default as Grid } from './components/Grid';
 export { default as Heading } from './components/Heading';
 export { default as Icon } from './components/Icon';
