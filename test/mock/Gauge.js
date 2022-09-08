@@ -216,7 +216,7 @@ export const mockExpectedAxisY = {
     enabled: true,
     style: {
       fontSize: '12px',
-      color: '#7E8084',
+      color: '#7e8084',
     },
   },
   minorTickInterval: null,

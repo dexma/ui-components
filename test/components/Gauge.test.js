@@ -26,7 +26,7 @@ import {
 } from '../mock/Gauge';
 
 describe('<Gauge>', () => {
-  describe('Ancilliary functions', () => {
+  describe('Ancillary functions', () => {
     describe('valueAsPercentage', () => {
       it('should return the value between the 0 and 100', () => {
         // Given
@@ -164,7 +164,7 @@ describe('<Gauge>', () => {
       it('should return empty if comparison is disabled', () => {
         // Given
         const expectedElement =
-          '<span style="color: #7E8084;">Compared to last seven days</span>';
+          '<span style="color: #7e8084;">Compared to last seven days</span>';
         // When
         const resultingElement = getComparisonText(
           {

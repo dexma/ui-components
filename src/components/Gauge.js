@@ -3,6 +3,7 @@ import Highcharts from 'highcharts';
 import PropTypes from 'prop-types';
 import Chart from '../components/Chart';
 import { applyScientific, numberFormatter } from '../utils/formatter';
+import { color } from '../styles/theme';
 
 // As we cannot specify a different color (per each checkpoint) to border of tooltip
 // in the same series, we need to override the call of "refresh" on Highcharts to set
@@ -134,7 +135,7 @@ export const getYAxis = (showAsPercentage, minValue, maxValue) => ({
     enabled: true,
     style: {
       fontSize: '12px',
-      color: '#7E8084',
+      color: color.gray500,
     },
   },
   minorTickInterval: null,
@@ -243,7 +244,7 @@ const renderSuffix = (chart, showAsPercentage, units, mainSize, suffixSize) => {
       currentChart.chartHeight / 2
     )
     .css({
-      color: '#7E8084',
+      color: color.gray500,
       fontWeight: 400,
       fontSize: suffixSize,
     })
@@ -277,7 +278,7 @@ export const getPercentageElement = (
   )}%</span>`;
 };
 export const getComparisonText = comparison =>
-  `<span style="color: #7E8084;">${comparison.period.text}</span>`;
+  `<span style="color: ${color.gray500};">${comparison.period.text}</span>`;
 
 const renderComparison = (
   chart,
@@ -309,7 +310,7 @@ const renderComparison = (
       currentChart.chartHeight / 2
     )
     .css({
-      color: '#7E8084',
+      color: color.gray500,
       fontWeight: 400,
       fontSize: `min(${comparisonPerCentageSize}px, 30px)`,
     })
@@ -339,7 +340,7 @@ const renderComparison = (
       currentChart.chartHeight / 2
     )
     .css({
-      color: '#7E8084',
+      color: color.gray500,
       fontWeight: 400,
       fontSize: `min(${comparisonSize}px, 24px)`,
     })
@@ -445,7 +446,7 @@ const Gauge = props => {
           ? getCheckpointSeries(checkpoints, max, min, showAsPercentage)
           : [];
       const backgroundSerie = getBackgroundSerie(
-        new Highcharts.Color('#D9D9D9').setOpacity(0.3).get(),
+        new Highcharts.Color(color.gray200).setOpacity(0.3).get(),
         max
       );
       const series = [
