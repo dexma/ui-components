@@ -1,3 +1,18 @@
+# [5.8.0](https://github.com/dexma/ui-components/compare/v5.7.5...v5.8.0) (2022-09-08)
+
+
+### Bug Fixes
+
+* **gauge:** use colors from library instead of hardcoded ([e80adce](https://github.com/dexma/ui-components/commit/e80adce407d540324c91182b75c4569686645fe6))
+
+
+### Features
+
+* **gauge:** adapt fontSize on labels ([e83b2d3](https://github.com/dexma/ui-components/commit/e83b2d3ce1342470dc81b0d5f19d471f103ce916))
+* **gauge:** add Gauge Dial widget based on Highcharts Solidgauge chart ([28f8707](https://github.com/dexma/ui-components/commit/28f87076e02365337b86260f8bd02393fd9b2f43))
+* **gauge:** add tests for Gauge chart ([672cc2c](https://github.com/dexma/ui-components/commit/672cc2cae52187a678325d747d3aa03d845c35c7))
+* **gauge:** adjust styles and renderization of Gauge elements ([22a1e1f](https://github.com/dexma/ui-components/commit/22a1e1ffeb77583244edc078fa635eec95defe1b))
+
 ## [5.7.5](https://github.com/dexma/ui-components/compare/v5.7.4...v5.7.5) (2022-08-19)
 
 
