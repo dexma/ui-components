@@ -25,6 +25,7 @@ export const gauge = () => (
       </Cell>
       <Cell xs={12}>
         <Gauge
+          data-testid="gauge-chart"
           type="DIAL"
           name="Contador general Industrias ACME"
           comparison={{
