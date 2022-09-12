@@ -412,6 +412,7 @@ const Gauge = props => {
     thousandsSep,
     type,
     units,
+    'data-testid': dataTestId,
   } = props;
 
   const [gaugeOptions, setGaugeOptions] = useState();
@@ -487,7 +488,13 @@ const Gauge = props => {
       });
     }
   }, [checkpoints, indicator, min, max, options, ranges, units]);
-  return <>{gaugeOptions && <Chart options={gaugeOptions} />}</>;
+  return (
+    <>
+      {gaugeOptions && (
+        <Chart data-testid={dataTestId} options={gaugeOptions} />
+      )}
+    </>
+  );
 };
 
 const propTypes = {
@@ -516,6 +523,10 @@ const propTypes = {
     value: PropTypes.number.isRequired,
     showAsPercentage: PropTypes.bool,
   }),
+  /**
+   * String to specify data test id for Gauge chart
+   */
+  'data-testid': PropTypes.string,
   /**
    * Format of decimal point on the representation of the values on the chart.
    */
