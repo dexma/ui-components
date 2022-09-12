@@ -1,3 +1,10 @@
+## [5.8.1](https://github.com/dexma/ui-components/compare/v5.8.0...v5.8.1) (2022-09-12)
+
+
+### Bug Fixes
+
+* **gauge:** add data-testid prop to Gauge chart ([b4c3636](https://github.com/dexma/ui-components/commit/b4c3636b4e687b7bc25941d218c71b1e1197e631))
+
 # [5.8.0](https://github.com/dexma/ui-components/compare/v5.7.5...v5.8.0) (2022-09-08)
 
 
