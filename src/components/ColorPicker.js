@@ -8,9 +8,9 @@ import {
   StyledColorPickerLayout,
   StyledColorPickerPopover,
   StyledColorPickerSwatch,
+  StyledSpinnerColorPicker,
 } from '../styles/components/StyledColorPicker';
 import withDataId from './DataId/withDataId';
-import Spinner from './Spinner';
 import theme from '../styles/theme';
 
 const ColorPicker = forwardRef((props, ref) => {
@@ -48,11 +48,14 @@ const ColorPicker = forwardRef((props, ref) => {
         {showInput && (
           <StyledColorPickerInput
             data-testid="input-color-picker"
-            value={color}
+            value={!isLoading ? color : ''}
             ref={ref}
-            placeholder={placeholder}
+            placeholder={!isLoading && placeholder}
             onChange={handleChangeInput}
           />
+        )}
+        {isLoading && (
+          <StyledSpinnerColorPicker showInput={showInput} size={20} />
         )}
       </StyledColorPickerLayout>
       {showColorPicker && (
@@ -66,7 +69,6 @@ const ColorPicker = forwardRef((props, ref) => {
           />
         </StyledColorPickerPopover>
       )}
-      {isLoading && <Spinner size={20} />}
     </>
   );
 });

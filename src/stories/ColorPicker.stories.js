@@ -21,6 +21,9 @@ export const colorPicker = () => (
       <Cell xs={12}>
         <ColorPicker showInput />
       </Cell>
+      <Cell style={{ marginTop: '4px' }} xs={12}>
+        <ColorPicker showInput isLoading />
+      </Cell>
     </Row>
   </Grid>
 );
@@ -35,6 +38,9 @@ export const simpleColorPicker = () => (
       </Cell>
       <Cell xs={12}>
         <ColorPicker />
+      </Cell>
+      <Cell style={{ marginTop: '4px' }} xs={12}>
+        <ColorPicker isLoading />
       </Cell>
     </Row>
   </Grid>

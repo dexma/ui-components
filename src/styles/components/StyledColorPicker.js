@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Input from '../../components/Input';
+import Spinner from '../../components/Spinner';
 
 const StyledColorPickerLayout = styled.div`
   display: flex;
@@ -9,7 +10,11 @@ const StyledColorPickerLayout = styled.div`
 const StyledColorPickerInput = styled(Input)`
   margin-left: 8px;
   width: 96px;
-  height: 22px;
+`;
+
+const StyledSpinnerColorPicker = styled(Spinner)`
+  position: absolute;
+  margin-left: ${props => `${props.showInput ? '96px' : '40px'}`};
 `;
 
 const StyledColorPanel = styled.div`
@@ -18,8 +23,8 @@ const StyledColorPanel = styled.div`
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
   display: inline-block;
   cursor: pointer;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border-radius: 4.5px;
   background: ${props => `${props.color ? props.color : '#fff'}`};
 `;
@@ -41,6 +46,7 @@ const StyledColorPickerPopover = styled.div`
 export {
   StyledColorPickerLayout,
   StyledColorPickerInput,
+  StyledSpinnerColorPicker,
   StyledColorPanel,
   StyledColorPickerPopover,
   StyledColorPickerSwatch,
