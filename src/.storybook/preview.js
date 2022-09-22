@@ -6,7 +6,9 @@ export const decorators = [
     <>
       <GlobalStyle />
       <StorybookStyles />
-      <Story />
+      <div style={{ minHeight: '300px' }}>
+        <Story />
+      </div>
     </>
   ),
 ];

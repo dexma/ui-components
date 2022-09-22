@@ -11,6 +11,7 @@ import DatePicker from './DatePicker';
 
 import { StyledFormControl } from '../styles/components/StyledFormControl';
 import theme from '../styles/theme';
+import ColorPicker from './ColorPicker';
 
 const propTypes = {
   /**
@@ -21,6 +22,7 @@ const propTypes = {
     'Checkbox',
     'Textarea',
     'Select',
+    'ColorPicker',
     'DatePicker',
     'LegacyDatePicker',
   ]).isRequired,
@@ -100,6 +102,7 @@ const FormControl = forwardRef((props, ref) => {
           {...newProps}
         />
       )}
+      {control === 'ColorPicker' && <ColorPicker ref={ref} {...newProps} />}
       {message && <span className="form-control-message">{message}</span>}
     </StyledFormControl>
   );
