@@ -50,7 +50,7 @@ const ColorPicker = forwardRef((props, ref) => {
             data-testid="input-color-picker"
             value={!isLoading ? color : ''}
             ref={ref}
-            placeholder={!isLoading && placeholder}
+            placeholder={!isLoading ? placeholder : ''}
             onChange={handleChangeInput}
           />
         )}
@@ -105,12 +105,10 @@ ColorPicker.propTypes = {
   /**
    *  Array of colors to be suggested on the ColorPicker
    */
-  presetColors: PropTypes.arrayOf(
-    PropTypes.oneOf(
-      PropTypes.shape({ color: PropTypes.string, title: PropTypes.string }),
-      PropTypes.string
-    )
-  ),
+  presetColors: PropTypes.oneOfType([
+    PropTypes.arrayOf({ color: PropTypes.string, title: PropTypes.string }),
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
   /**
    *  Boolean to show or not the ancillary Input of ColorPicker
    */

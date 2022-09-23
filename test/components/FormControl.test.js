@@ -52,6 +52,23 @@ describe('<FormControl>', () => {
     });
   });
 
+  describe('Color Picker', () => {
+    it('Should call onChange when some color change through input', () => {
+      const mockCallBack = jest.fn();
+      render(
+        <FormControl
+          control="ColorPicker"
+          showInput
+          onChangeInput={mockCallBack}
+        />
+      );
+      fireEvent.change(screen.getByTestId('input-element'), {
+        target: { value: '#AAA' },
+      });
+      expect(mockCallBack).toHaveBeenCalled();
+    });
+  });
+
   describe('date picker', () => {
     it('Should call onChange when some date change', () => {
       const mockCallBack = jest.fn();
