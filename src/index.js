@@ -42,6 +42,7 @@ export { default as Result } from './components/Result';
 export { default as Row } from './components/Row';
 export { default as Select } from './components/Select';
 export { default as Spinner } from './components/Spinner';
+export { default as Switch } from './components/Switch';
 export { default as SwitchPeriodComparative } from './components/SwitchPeriodComparative';
 export { default as Table } from './components/Table';
 export { Tabs } from './components/Tabs';
