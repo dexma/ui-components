@@ -55,6 +55,7 @@ describe('<FormControl>', () => {
   describe('Color Picker', () => {
     it('Should call onChange when some color change through input', () => {
       const mockCallBack = jest.fn();
+      const expectedColor = '#AAA';
       render(
         <FormControl
           control="ColorPicker"
@@ -63,9 +64,10 @@ describe('<FormControl>', () => {
         />
       );
       fireEvent.change(screen.getByTestId('input-element'), {
-        target: { value: '#AAA' },
+        target: { value: expectedColor },
       });
       expect(mockCallBack).toHaveBeenCalled();
+      expect(screen.getByTestId('input-element').value).toBe(expectedColor);
     });
   });
 
