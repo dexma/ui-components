@@ -18,7 +18,7 @@ const StyledSwitch = styled.div`
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     min-width: 44px;
-    height: 22px;
+    height: 24px;
     line-height: 20px;
     vertical-align: middle;
     background-color: rgba(0, 0, 0, 0.25);
@@ -41,11 +41,8 @@ const StyledSwitch = styled.div`
   }
   .ant-switch-loading-icon,
   .ant-switch::after {
-    position: absolute;
-    top: 1px;
-    left: 1px;
     width: 18px;
-    height: 18px;
+    height: 24px;
     background-color: #fff;
     border-radius: 18px;
     cursor: pointer;
@@ -93,7 +90,7 @@ const StyledSwitch = styled.div`
   }
   .ant-switch-small {
     min-width: 28px;
-    height: 16px;
+    height: 18px;
     line-height: 14px;
   }
   .ant-switch-small .ant-switch-inner {
@@ -103,7 +100,7 @@ const StyledSwitch = styled.div`
   }
   .ant-switch-small::after {
     width: 12px;
-    height: 12px;
+    height: 18px;
   }
   .ant-switch-small:active::before,
   .ant-switch-small:active::after {
@@ -111,7 +108,7 @@ const StyledSwitch = styled.div`
   }
   .ant-switch-small .ant-switch-loading-icon {
     width: 12px;
-    height: 12px;
+    height: 18px;
   }
   .ant-switch-small.ant-switch-checked .ant-switch-inner {
     margin-right: 18px;
