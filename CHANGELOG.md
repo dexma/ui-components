@@ -1,3 +1,11 @@
+## [5.8.2](https://github.com/dexma/ui-components/compare/v5.8.1...v5.8.2) (2022-09-26)
+
+
+### Bug Fixes
+
+* **switch:** adjust styles on Switch component ([25b98a5](https://github.com/dexma/ui-components/commit/25b98a56261e03c154174fbdef38424bf986b42a))
+* **switch:** expose Switch component in the library ([721fbf0](https://github.com/dexma/ui-components/commit/721fbf07096db1c50ce4870f480bc9d7fac9b61f))
+
 ## [5.8.1](https://github.com/dexma/ui-components/compare/v5.8.0...v5.8.1) (2022-09-12)
 
 
