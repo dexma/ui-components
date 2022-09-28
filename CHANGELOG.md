@@ -1,3 +1,17 @@
+# [5.9.0](https://github.com/dexma/ui-components/compare/v5.8.2...v5.9.0) (2022-09-28)
+
+
+### Bug Fixes
+
+* **test:** add check onChange on ColorPicker component as FormControl ([488da03](https://github.com/dexma/ui-components/commit/488da03deb1b75c2468c028dc17b5e1f9119be8b))
+
+
+### Features
+
+* **color-picker:** add ColorPicker input based on React-color ([ae70d20](https://github.com/dexma/ui-components/commit/ae70d20b5f1438935b60ce0a71ded1d8f9891515))
+* **color-picker:** add tests for ColorPicker ([b7b90ba](https://github.com/dexma/ui-components/commit/b7b90ba279de59fa955ef83b79d6a789196f3878))
+* **color-picker:** adjust styles on ColorPicker when isLoading a value ([8590e43](https://github.com/dexma/ui-components/commit/8590e43b8a6ca94cfb9931279851adf6600b0fe0))
+
 ## [5.8.2](https://github.com/dexma/ui-components/compare/v5.8.1...v5.8.2) (2022-09-26)
 
 
