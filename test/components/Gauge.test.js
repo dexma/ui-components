@@ -46,7 +46,7 @@ describe('<Gauge>', () => {
         const resultingSerie = getValueSeries(
           givenProps.indicator,
           givenProps.max,
-          null,
+          givenProps.min,
           null,
           false
         );
