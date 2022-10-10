@@ -1,3 +1,10 @@
+## [5.9.1](https://github.com/dexma/ui-components/compare/v5.9.0...v5.9.1) (2022-10-10)
+
+
+### Bug Fixes
+
+* **gauge:** start point for gauge on min value ([9dab492](https://github.com/dexma/ui-components/commit/9dab49267e7abc7e8e88b8ecf48a2e390a1458fa))
+
 # [5.9.0](https://github.com/dexma/ui-components/compare/v5.8.2...v5.9.0) (2022-09-28)
 
 
