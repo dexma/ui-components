@@ -152,6 +152,7 @@ const getSize = (width, height, fontSizeRelation = 10, minRatio = 0.9) => {
 export const getChart = (
   chart,
   indicator,
+  hasData,
   decimalSeparator,
   thousandSeparator,
   showAsPercentage,
@@ -173,6 +174,7 @@ export const getChart = (
       renderIndicatorLabel(
         chart2,
         indicator,
+        hasData,
         decimalSeparator,
         thousandSeparator,
         mainSize
@@ -188,6 +190,8 @@ export const getChart = (
         renderComparison(
           chart2,
           indicator,
+          hasData,
+          units,
           comparison,
           decimalSeparator,
           thousandSeparator,
@@ -202,6 +206,7 @@ export const getChart = (
 const renderIndicatorLabel = (
   chart,
   indicator,
+  hasData,
   decimalSeparator,
   thousandSeparator,
   mainSize
@@ -209,7 +214,9 @@ const renderIndicatorLabel = (
   const currentChart = chart;
   currentChart.indicatorLabel = currentChart.renderer
     .text(
-      numberFormatter(indicator.value, decimalSeparator, thousandSeparator),
+      hasData
+        ? numberFormatter(indicator.value, decimalSeparator, thousandSeparator)
+        : '-',
       currentChart.chartWidth / 2,
       currentChart.chartHeight / 2
     )
@@ -262,6 +269,12 @@ const renderSuffix = (chart, showAsPercentage, units, mainSize, suffixSize) => {
 export const getPercentageComparisonValue = (comparativeValue, initialValue) =>
   ((initialValue - comparativeValue) / Math.abs(comparativeValue)) * 100;
 
+export const getSymbolElement = difference => {
+  if (difference >= 0 && difference !== Number.POSITIVE_INFINITY) return '↑';
+  if (difference < 0 && difference !== Number.NEGATIVE_INFINITY) return '↓';
+  return '-';
+};
+
 export const getPercentageElement = (
   comparison,
   value,
@@ -269,20 +282,72 @@ export const getPercentageElement = (
   thousandSeparator
 ) => {
   const percentage = getPercentageComparisonValue(comparison.value, value);
-  return `<span style="color: ${comparison.color};">${
-    percentage > 0 ? '↑' : '↓'
-  }${numberFormatter(
-    Math.abs(percentage),
-    decimalSeparator,
-    thousandSeparator
-  )}%</span>`;
+  return `<span style="color: ${comparison.color};">${getSymbolElement(
+    percentage
+  )}${
+    !Number.isNaN(percentage) &&
+    percentage !== Number.POSITIVE_INFINITY &&
+    percentage !== Number.NEGATIVE_INFINITY
+      ? numberFormatter(
+          Math.abs(percentage),
+          decimalSeparator,
+          thousandSeparator
+        )
+      : ''
+  }%</span>`;
 };
+
+export const getDifferenceElement = (
+  comparison,
+  value,
+  units,
+  decimalSeparator,
+  thousandSeparator
+) => {
+  const difference = value - comparison.value;
+  return `<span style="color: ${comparison.color};">${getSymbolElement(
+    difference
+  )}${
+    !Number.isNaN(difference)
+      ? numberFormatter(
+          Math.abs(difference),
+          decimalSeparator,
+          thousandSeparator
+        )
+      : ''
+  } ${units}</span>`;
+};
+
 export const getComparisonText = comparison =>
   `<span style="color: ${color.gray500};">${comparison.period.text}</span>`;
+
+export const getCompareIndicator = (
+  comparison,
+  indicator,
+  units,
+  decimalSeparator,
+  thousandSeparator
+) =>
+  comparison.showAsPercentage
+    ? getPercentageElement(
+        comparison,
+        indicator.value,
+        decimalSeparator,
+        thousandSeparator
+      )
+    : getDifferenceElement(
+        comparison,
+        indicator.value,
+        units,
+        decimalSeparator,
+        thousandSeparator
+      );
 
 const renderComparison = (
   chart,
   indicator,
+  hasData,
+  units,
   comparison,
   decimalSeparator,
   thousandSeparator,
@@ -298,14 +363,18 @@ const renderComparison = (
     currentChart.chartHeight,
     18
   );
+
   currentChart.comparisonPercentage = currentChart.renderer
     .text(
-      getPercentageElement(
-        comparison,
-        indicator.value,
-        decimalSeparator,
-        thousandSeparator
-      ),
+      hasData
+        ? getCompareIndicator(
+            comparison,
+            indicator,
+            units,
+            decimalSeparator,
+            thousandSeparator
+          )
+        : `- ${comparison.showAsPercentage ? '%' : units}`,
       currentChart.chartWidth / 2,
       currentChart.chartHeight / 2
     )
@@ -402,6 +471,7 @@ const Gauge = props => {
     checkpoints,
     comparison,
     decimalPoint,
+    hasData,
     indicator,
     max,
     min,
@@ -426,6 +496,7 @@ const Gauge = props => {
       const resultChart = getChart(
         aggregateChart,
         indicator,
+        hasData,
         decimalPoint,
         thousandsSep,
         showAsPercentage,
@@ -532,6 +603,10 @@ const propTypes = {
    */
   decimalPoint: PropTypes.string,
   /**
+   * Property to indicate if the indicator has or not data to be calculated. If this boolean is TRUE, the main indicator and comparison, if enabled, will show "-".
+   */
+  hasData: PropTypes.bool,
+  /**
    * Main value draw on main arc and center of gauge. If showAsPercentage is activated, this value will be scaled to a value between 0%-100%.
    */
   indicator: PropTypes.shape({
@@ -606,6 +681,7 @@ const defaultProps = {
   showAsPercentage: false,
   decimalPoint: ',',
   thousandsSep: '.',
+  hasData: true,
 };
 
 Gauge.propTypes = propTypes;

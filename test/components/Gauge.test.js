@@ -4,9 +4,11 @@ import {
   getChart,
   getCheckpointSeries,
   getComparisonText,
+  getDifferenceElement,
   getPercentageComparisonValue,
   getPercentageElement,
   getRangeSeries,
+  getSymbolElement,
   getValueSeries,
   getYAxis,
   valueAsPercentage,
@@ -23,6 +25,7 @@ import {
   mockExpectedSingleCheckpointSeries,
   mockExpectedIncreasePercentage,
   mockExpectedChart,
+  mockExpectedIncreaseValue,
 } from '../mock/Gauge';
 
 describe('<Gauge>', () => {
@@ -137,6 +140,35 @@ describe('<Gauge>', () => {
         expect(resultingPercentage).toBe(expectedResult);
       });
     });
+    describe('getSymbolElement', () => {
+      it('should return "-" by default', () => {
+        // Given
+        const givenDifference = NaN;
+        const expectedValue = '-';
+        // When
+        const resultingValue = getSymbolElement(givenDifference);
+        // Then
+        expect(resultingValue).toBe(expectedValue);
+      });
+      it('should return "↑" when difference is positive', () => {
+        // Given
+        const givenDifference = 1;
+        const expectedValue = '↑';
+        // When
+        const resultingValue = getSymbolElement(givenDifference);
+        // Then
+        expect(resultingValue).toBe(expectedValue);
+      });
+      it('should return "↓" when difference is negative', () => {
+        // Given
+        const givenDifference = -1;
+        const expectedValue = '↓';
+        // When
+        const resultingValue = getSymbolElement(givenDifference);
+        // Then
+        expect(resultingValue).toBe(expectedValue);
+      });
+    });
     describe('getPercentageElement', () => {
       it('should return the HTML element with the arrow and the increase/decrease value', () => {
         // Given
@@ -155,6 +187,30 @@ describe('<Gauge>', () => {
             },
           },
           80
+        );
+        // Then
+        expect(resultingPercentage).toBe(expectedElement);
+      });
+    });
+    describe('getDifferenceElement', () => {
+      it('should return the HTML element with the arrow, the increase/decrease value and units', () => {
+        // Given
+        const expectedElement = mockExpectedIncreaseValue;
+        // When
+        const resultingPercentage = getDifferenceElement(
+          {
+            enabled: true,
+            value: 40,
+            color: '#00CC88',
+            period: {
+              from: null,
+              to: null,
+              type: 'TEXT',
+              text: 'Compared to last seven days',
+            },
+          },
+          80,
+          'kWh'
         );
         // Then
         expect(resultingPercentage).toBe(expectedElement);
