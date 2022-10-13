@@ -1,3 +1,11 @@
+## [5.9.2](https://github.com/dexma/ui-components/compare/v5.9.1...v5.9.2) (2022-10-13)
+
+
+### Bug Fixes
+
+* **gauge:** show "-" when data is not available for indicator ([58711ea](https://github.com/dexma/ui-components/commit/58711ea073f84702df2a65b1244bd83eab75518b))
+* **gauge:** update tests for Gauge rendering functions ([dfb5ca2](https://github.com/dexma/ui-components/commit/dfb5ca29fb41e6cca8c6992bfd8979ff5a01d6d8))
+
 ## [5.9.1](https://github.com/dexma/ui-components/compare/v5.9.0...v5.9.1) (2022-10-10)
 
 
