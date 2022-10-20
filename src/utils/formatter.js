@@ -5,13 +5,10 @@ export const numberFormatter = (numberAsStr, decimal, grouping) => {
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, grouping);
   }
-  if (number >= 1 || number <= -1) {
-    return applyTwoDecimals(number, decimal, grouping);
-  }
   if (number === 0) {
     return '0';
   }
-  return applySixDecimals(number, decimal);
+  return applyTwoDecimals(number, decimal, grouping);
 };
 
 const applyTwoDecimals = (number, decimal, grouping) =>
@@ -19,9 +16,6 @@ const applyTwoDecimals = (number, decimal, grouping) =>
     .toString()
     .replace(/,|\./g, decimal)
     .replace(/\B(?=(\d{3})+(?!\d))/g, grouping);
-
-const applySixDecimals = (number, decimal) =>
-  number.toFixed(6).replace(/,|\./g, decimal);
 
 export const applyScientific = (number, decimal, exponential) =>
   number

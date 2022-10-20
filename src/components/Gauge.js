@@ -160,9 +160,6 @@ export const getChart = (
   comparison
 ) => ({
   ...chart,
-  margin: [0, 0, 0, 0],
-  marginTop: 55,
-  borderRadius: 8,
   events: {
     render() {
       const chart2 = this;
@@ -361,7 +358,7 @@ const renderComparison = (
   const comparisonPerCentageSize = getSize(
     currentChart.chartWidth,
     currentChart.chartHeight,
-    18
+    20
   );
 
   currentChart.comparisonPercentage = currentChart.renderer
@@ -390,7 +387,7 @@ const renderComparison = (
   const comparisonPercentageBox = currentChart.comparisonPercentage.getBBox();
   currentChart.comparisonPercentage.translate(
     -comparisonPercentageBox.width / 2,
-    2 * mainSize + 2 * suffixSize
+    2.2 * mainSize + 2.2 * suffixSize
   );
 
   // Comparison text
@@ -420,16 +417,13 @@ const renderComparison = (
   const comparisonBox = currentChart.comparisonLabel.getBBox();
   currentChart.comparisonLabel.translate(
     -comparisonBox.width / 2,
-    2.25 * mainSize + 2.25 * suffixSize + 6
+    2.5 * mainSize + 2.5 * suffixSize + 12
   );
 };
 
 // Default chart
 export const chart = {
   type: 'solidgauge',
-  margin: [0, 0, 0, 0],
-  marginTop: 55,
-  borderRadius: 8,
 };
 // Default pane
 const pane = {
@@ -532,6 +526,9 @@ const Gauge = props => {
         title: {
           text: title,
           ...options?.title,
+        },
+        subtitle: {
+          ...options?.subtitle,
         },
         credits: {
           enabled: false,
