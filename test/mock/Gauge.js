@@ -200,10 +200,7 @@ export const mockPropsGauge = {
 };
 
 export const mockExpectedChart = events => ({
-  borderRadius: 8,
   events,
-  margin: [0, 0, 0, 0],
-  marginTop: 55,
   type: 'solidgauge',
 });
 export const mockExpectedAxisY = {

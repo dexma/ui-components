@@ -27,6 +27,7 @@ export const gauge = () => (
         <Gauge
           data-testid="gauge-chart"
           type="DIAL"
+          title="Contador general Industrias ACME"
           name="Contador general Industrias ACME"
           comparison={{
             enabled: true,
@@ -71,6 +72,7 @@ export const gauge = () => (
           checkpoints={[
             { color: 'blue', tooltip: 'Basic tooltip: 60kWh', value: 60 },
           ]}
+          options={{ subtitle: { text: 'last seven days' } }}
         />
       </Cell>
     </Row>
