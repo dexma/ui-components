@@ -1,3 +1,10 @@
+## [5.9.3](https://github.com/dexma/ui-components/compare/v5.9.2...v5.9.3) (2022-10-20)
+
+
+### Bug Fixes
+
+* **gauge:** add subtitle for Gauge chart ([876fc7c](https://github.com/dexma/ui-components/commit/876fc7ce141476ed1be423abf9a57c03e5810d69))
+
 ## [5.9.2](https://github.com/dexma/ui-components/compare/v5.9.1...v5.9.2) (2022-10-13)
 
 
