@@ -1,3 +1,10 @@
+## [5.9.4](https://github.com/dexma/ui-components/compare/v5.9.3...v5.9.4) (2022-10-24)
+
+
+### Bug Fixes
+
+* **gauge:** adjust indicator position to not overlap graphics ([aecd11d](https://github.com/dexma/ui-components/commit/aecd11d17a9e791a1ac352fe4164097f8f32094d))
+
 ## [5.9.3](https://github.com/dexma/ui-components/compare/v5.9.2...v5.9.3) (2022-10-20)
 
 
