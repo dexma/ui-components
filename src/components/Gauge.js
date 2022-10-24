@@ -236,7 +236,7 @@ const renderIndicatorLabel = (
     });
     textBox = currentChart.indicatorLabel.getBBox();
   }
-  currentChart.indicatorLabel.translate(-textBox.width / 2, mainSize);
+  currentChart.indicatorLabel.translate(-textBox.width / 2, mainSize + 16);
 };
 
 const renderSuffix = (chart, showAsPercentage, units, mainSize, suffixSize) => {
@@ -259,7 +259,7 @@ const renderSuffix = (chart, showAsPercentage, units, mainSize, suffixSize) => {
   const suffixBox = currentChart.suffixDataLabel.getBBox();
   currentChart.suffixDataLabel.translate(
     -suffixBox.width / 2,
-    mainSize + suffixSize
+    mainSize + suffixSize + 16
   );
 };
 
@@ -387,7 +387,7 @@ const renderComparison = (
   const comparisonPercentageBox = currentChart.comparisonPercentage.getBBox();
   currentChart.comparisonPercentage.translate(
     -comparisonPercentageBox.width / 2,
-    2.2 * mainSize + 2.2 * suffixSize
+    2.35 * mainSize + 2.35 * suffixSize
   );
 
   // Comparison text
