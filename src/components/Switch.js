@@ -1,5 +1,6 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
+import { omit } from 'lodash';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { Switch as SwitchAntDesign } from 'antd';
@@ -40,7 +41,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-  defaultChecked: false,
   disabled: false,
   size: 'default',
   theme: theme,
@@ -48,12 +48,14 @@ const defaultProps = {
 };
 
 export const Switch = props => {
-  const { defaultChecked, disabled, size, onChange, onClick, dataId } = props;
+  const { disabled, size, onChange, onClick, dataId } = props;
+  const switchProps = omit(props, ['dataId']);
+
   return (
     <StyledSwitch {...props}>
       <SwitchAntDesign
+        {...switchProps}
         data-testid="switch"
-        defaultChecked={defaultChecked}
         disabled={disabled}
         onChange={onChange}
         onClick={onClick}
