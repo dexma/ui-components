@@ -97,8 +97,25 @@ module.exports = function(env, argv) {
     resolve,
     plugins,
     externals: {
-      react: 'react',
-      'react-dom': 'react-dom',
+      // Don't bundle react, react-dom and styled-components
+      react: {
+        commonjs: 'react',
+        commonjs2: 'react',
+        amd: 'React',
+        root: 'React',
+      },
+      'react-dom': {
+        commonjs: 'react-dom',
+        commonjs2: 'react-dom',
+        amd: 'ReactDOM',
+        root: 'ReactDOM',
+      },
+      'styled-components': {
+        commonjs: 'styled-components',
+        commonjs2: 'styled-components',
+        amd: 'styled-components',
+        root: 'styled-components',
+      },
     },
   };
 };

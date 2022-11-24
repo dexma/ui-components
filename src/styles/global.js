@@ -3,7 +3,7 @@ import { createGlobalStyle, css } from 'styled-components';
 import { StyledButton } from './components/StyledButton';
 import { StyledTooltip } from './components/StyledTooltip';
 
-const getGlobalStyles = css`
+const getUIComponentsStyle = css`
   input::-ms-clear,
   input::-ms-reveal {
     display: none;
@@ -13,11 +13,6 @@ const getGlobalStyles = css`
   *::after {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-  }
-  html {
-    font-size: 14px;
-    font-family: sans-serif;
-    line-height: 1.15;
   }
   @-ms-viewport {
     width: device-width;
@@ -34,15 +29,6 @@ const getGlobalStyles = css`
   nav,
   section {
     display: block;
-  }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
-      'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial,
-      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    font-variant: tabular-nums;
-    line-height: 1.5;
-    font-feature-settings: 'tnum';
   }
   [tabindex='-1']:focus {
     outline: none !important;
@@ -211,12 +197,6 @@ const getGlobalStyles = css`
   select {
     text-transform: none;
   }
-  button,
-  html [type='button'],
-  [type='reset'],
-  [type='submit'] {
-    -webkit-appearance: button;
-  }
   button::-moz-focus-inner,
   [type='button']::-moz-focus-inner,
   [type='reset']::-moz-focus-inner,
@@ -303,8 +283,40 @@ const getStorybookStyles = css`
   }
 `;
 
+const getGlobalStyle = css`
+  html {
+    font-size: 14px;
+    font-family: sans-serif;
+    line-height: 1.15;
+  }
+  button,
+  html [type='button'],
+  [type='reset'],
+  [type='submit'] {
+    -webkit-appearance: button;
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+      'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial,
+      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    font-feature-settings: 'tnum';
+  }
+`;
+
+export const UIComponentsStyle = createGlobalStyle`
+  ${getUIComponentsStyle};
+`;
+
+export const IsolatedGlobalStyle = createGlobalStyle`
+  ${getGlobalStyle};
+`;
+
 export const GlobalStyle = createGlobalStyle`
-  ${getGlobalStyles};
+  ${getGlobalStyle};
+  ${getUIComponentsStyle};
 `;
 
 export const StorybookStyles = createGlobalStyle`
