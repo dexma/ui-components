@@ -1,4 +1,10 @@
-import { GlobalStyle } from './styles/global';
+import createCache from '@emotion/cache';
+import { NonceProvider } from 'react-select';
+import {
+  GlobalStyle,
+  IsolatedGlobalStyle,
+  UIComponentsStyle,
+} from './styles/global';
 import { color as colors } from './styles/theme';
 
 import {
@@ -57,6 +63,12 @@ export { default as Tooltip } from './components/Tooltip';
 export { default as SectionData } from './components/Section/SectionData';
 export { DataIdProvider } from './components/DataId/DataIdProvider';
 
+export { ConfigProvider } from 'antd';
+export class SelectNonceProvider extends NonceProvider {
+  createEmotionCache = nonce =>
+    createCache({ nonce, container: this.props.container });
+}
+
 export {
   ISO_FORMAT,
   DATE_RANGE,
@@ -70,5 +82,7 @@ export {
   yearToDate,
   previousYear,
   GlobalStyle,
+  IsolatedGlobalStyle,
+  UIComponentsStyle,
   colors,
 };
