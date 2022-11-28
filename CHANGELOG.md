@@ -1,3 +1,16 @@
+# [5.10.0](https://github.com/dexma/ui-components/compare/v5.9.4...v5.10.0) (2022-11-28)
+
+
+### Bug Fixes
+
+* **switch:** remove defaultCheck as defaultProp ([a2b1e71](https://github.com/dexma/ui-components/commit/a2b1e7180c35269bbb62e34dbe17ae29e90a2ec7))
+* **travis:** harcoded node 16.18.0 version ([9d62eb9](https://github.com/dexma/ui-components/commit/9d62eb9b62a64a203f04dd005947b9b745951e5f))
+
+
+### Features
+
+* **styled-components:** ensure style-components is a peer dependency, update babel and react-slect, and isolate global styles ([3a5fd8d](https://github.com/dexma/ui-components/commit/3a5fd8df19c6dc1b1b28a0c0318c4e3dd7fe5241))
+
 ## [5.9.4](https://github.com/dexma/ui-components/compare/v5.9.3...v5.9.4) (2022-10-24)
 
 
