@@ -25,6 +25,17 @@ describe('<ColorPicker>', () => {
     expect(inputElement).toBeTruthy();
   });
 
+  it('should render a basic ColorPicker with a loaded value from props', () => {
+    const color = '#DDFFFB';
+    render(<ColorPicker showInput value={color} />);
+    const colorPicker = screen.getByTestId('color-picker');
+    expect(colorPicker).toBeTruthy();
+    const inputElementValue = screen
+      .getByTestId('input-element')
+      .getAttribute('value');
+    expect(inputElementValue).toBe(color);
+  });
+
   it('should render a basic ColorPicker with an input and a loading spinner', () => {
     render(<ColorPicker showInput isLoading />);
     const colorPicker = screen.getByTestId('color-picker');
@@ -45,7 +56,7 @@ describe('<ColorPicker>', () => {
     fireEvent.click(colorPicker);
     const inputHex = container.querySelector('#rc-editable-input-1');
     fireEvent.change(inputHex, { target: { value: color } });
-    expect(screen.getByDisplayValue(color)).toBeTruthy();
+    expect(screen.findByDisplayValue(color)).toBeTruthy();
   });
 
   it('should render a basic ColorPicker call mockFunction onChangeInput when a color is changed on input', () => {
@@ -54,6 +65,6 @@ describe('<ColorPicker>', () => {
     render(<ColorPicker showInput onChangeInput={onChangeInputFunction} />);
     const inputColorPicker = screen.getByTestId('input-element');
     fireEvent.change(inputColorPicker, { target: { value: color } });
-    expect(screen.getByDisplayValue(color)).toBeTruthy();
+    expect(screen.findByDisplayValue(color)).toBeTruthy();
   });
 });

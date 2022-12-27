@@ -1,3 +1,4 @@
+import { SketchPicker } from 'react-color';
 import styled from 'styled-components';
 import Input from '../../components/Input';
 import Spinner from '../../components/Spinner';
@@ -29,6 +30,11 @@ const StyledColorPanel = styled.div`
   background: ${props => `${props.color ? props.color : '#fff'}`};
 `;
 
+const StyledSketchPicker = styled(SketchPicker)`
+  position: absolute;
+  z-index: 1000;
+`;
+
 const StyledColorPickerSwatch = styled.div`
   position: fixed;
   top: 0px;
@@ -38,7 +44,6 @@ const StyledColorPickerSwatch = styled.div`
 `;
 
 const StyledColorPickerPopover = styled.div`
-  position: absolute;
   z-index: 2;
   margin-top: 4px;
 `;
@@ -46,6 +51,7 @@ const StyledColorPickerPopover = styled.div`
 export {
   StyledColorPickerLayout,
   StyledColorPickerInput,
+  StyledSketchPicker,
   StyledSpinnerColorPicker,
   StyledColorPanel,
   StyledColorPickerPopover,
