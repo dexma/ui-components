@@ -25,6 +25,17 @@ describe('<ColorPicker>', () => {
     expect(inputElement).toBeTruthy();
   });
 
+  it('should render a basic ColorPicker with a loaded value from props', () => {
+    const color = '#DDFFFB';
+    render(<ColorPicker showInput value={color} />);
+    const colorPicker = screen.getByTestId('color-picker');
+    expect(colorPicker).toBeTruthy();
+    const inputElementValue = screen
+      .getByTestId('input-element')
+      .getAttribute('value');
+    expect(inputElementValue).toBe(color);
+  });
+
   it('should render a basic ColorPicker with an input and a loading spinner', () => {
     render(<ColorPicker showInput isLoading />);
     const colorPicker = screen.getByTestId('color-picker');
