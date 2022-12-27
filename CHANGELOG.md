@@ -1,3 +1,12 @@
+## [5.10.1](https://github.com/dexma/ui-components/compare/v5.10.0...v5.10.1) (2022-12-27)
+
+
+### Bug Fixes
+
+* **color-picker:** add test load color state value from props ([4cc3140](https://github.com/dexma/ui-components/commit/4cc3140d8f2805fdd8cc6f42717afdc88b683b28))
+* **color-picker:** change color state value from outside the component ([f2e2fc1](https://github.com/dexma/ui-components/commit/f2e2fc14fe04ae5a8c15fb255acb1909b84dde9c))
+* **color-picker:** remove initial color unused prop ([8a2d97d](https://github.com/dexma/ui-components/commit/8a2d97d354616f6e518287cb77b6e75050987a5a))
+
 # [5.10.0](https://github.com/dexma/ui-components/compare/v5.9.4...v5.10.0) (2022-11-28)
 
 
