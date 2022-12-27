@@ -16,7 +16,6 @@ import theme from '../styles/theme';
 const ColorPicker = forwardRef((props, ref) => {
   const {
     dataId,
-    initialColor,
     isLoading,
     placeholder,
     presetColors,
@@ -26,7 +25,7 @@ const ColorPicker = forwardRef((props, ref) => {
     value,
   } = props;
   const [showColorPicker, setShowColorPicker] = useState(false);
-  const [color, setColor] = useState(initialColor);
+  const [color, setColor] = useState(value);
 
   useEffect(() => {
     setColor(value);
@@ -90,10 +89,6 @@ ColorPicker.propTypes = {
    */
   dataId: PropTypes.string,
   /**
-   *  Initial color for the ColorPicker
-   */
-  initialColor: PropTypes.string,
-  /**
    *  Boolean to identify if the ColorPicker is loading its value
    */
   isLoading: PropTypes.bool,
@@ -136,7 +131,7 @@ ColorPicker.propTypes = {
 
 ColorPicker.defaultProps = {
   dataId: 'colorpicker',
-  initialColor: '#000000',
+  value: '#FFFFFF',
   placeholder: '#FFFFFF',
   presetColors: [],
   theme: theme,

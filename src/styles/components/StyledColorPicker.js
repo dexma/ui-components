@@ -18,11 +18,7 @@ const StyledSpinnerColorPicker = styled(Spinner)`
   margin-left: ${props => `${props.showInput ? '96px' : '40px'}`};
 `;
 
-const StyledColorPanel = styled.div.attrs(props => ({
-  style: {
-    background: props.color,
-  },
-}))`
+const StyledColorPanel = styled.div`
   padding: 5px;
   border-radius: 1px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
@@ -31,6 +27,7 @@ const StyledColorPanel = styled.div.attrs(props => ({
   width: 22px;
   height: 22px;
   border-radius: 4.5px;
+  background: ${props => `${props.color ? props.color : '#fff'}`};
 `;
 
 const StyledSketchPicker = styled(SketchPicker)`
