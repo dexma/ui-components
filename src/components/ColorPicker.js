@@ -1,6 +1,5 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { SketchPicker } from 'react-color';
 import { withTheme } from 'styled-components';
 import {
   StyledColorPanel,
@@ -8,6 +7,7 @@ import {
   StyledColorPickerLayout,
   StyledColorPickerPopover,
   StyledColorPickerSwatch,
+  StyledSketchPicker,
   StyledSpinnerColorPicker,
 } from '../styles/components/StyledColorPicker';
 import withDataId from './DataId/withDataId';
@@ -23,18 +23,29 @@ const ColorPicker = forwardRef((props, ref) => {
     onChangePicker,
     onChangeInput,
     showInput,
+    value,
   } = props;
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [color, setColor] = useState(initialColor);
-  const handleClick = () => setShowColorPicker(status => !status);
-  const handleClose = () => setShowColorPicker(false);
+
+  useEffect(() => {
+    setColor(value);
+  }, [value]);
+
+  const handleClick = () => {
+    setShowColorPicker(status => !status);
+  };
+  const handleClose = () => {
+    setShowColorPicker(false);
+  };
+
   const handleChangePicker = color => {
-    onChangePicker && onChangePicker(color);
     setColor(color.hex);
+    onChangePicker && onChangePicker(color);
   };
   const handleChangeInput = e => {
-    onChangeInput && onChangeInput(e);
     setColor(e.target.value);
+    onChangeInput && onChangeInput(e);
   };
   return (
     <>
@@ -61,9 +72,9 @@ const ColorPicker = forwardRef((props, ref) => {
       {showColorPicker && (
         <StyledColorPickerPopover data-testid="popover-color-picker">
           <StyledColorPickerSwatch onClick={handleClose} />
-          <SketchPicker
+          <StyledSketchPicker
             color={color}
-            onChange={handleChangePicker}
+            onChangeComplete={handleChangePicker}
             presetColors={presetColors}
             disableAlpha
           />
@@ -117,6 +128,10 @@ ColorPicker.propTypes = {
    * JSON object that applies styles to the component
    */
   theme: PropTypes.shape({}),
+  /**
+   * Current color for the ColorPicker
+   */
+  value: PropTypes.string,
 };
 
 ColorPicker.defaultProps = {
