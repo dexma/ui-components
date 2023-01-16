@@ -219,8 +219,8 @@ export const mockExpectedAxisY = {
   minorTickInterval: null,
   tickWidth: 0,
 };
-export const mockExpectedIncreasePercentage = `<span style="color: #00CC88;">↑100%</span>`;
-export const mockExpectedIncreaseValue = `<span style="color: #00CC88;">↑40 kWh</span>`;
+export const mockExpectedIncreasePercentage = `<span style="font-size: 1.2em; font-weight: bold; color: #00CC88;">↑</span><span style="color: #00CC88;"> 100%</span>`;
+export const mockExpectedIncreaseValue = `<span style="font-size: 1.2em; font-weight: bold; color: #00CC88;">↑</span><span style="color: #00CC88;"> 40 kWh</span>`;
 
 export const mockSingleCheckpointSeries = [
   { color: '#000000', tooltip: 'Basic tooltip: 55kWh', value: 55 },
