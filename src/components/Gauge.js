@@ -279,9 +279,11 @@ export const getPercentageElement = (
   thousandSeparator
 ) => {
   const percentage = getPercentageComparisonValue(comparison.value, value);
-  return `<span style="color: ${comparison.color};">${getSymbolElement(
-    percentage
-  )}${
+  return `<span style="font-size: 1.2em; font-weight: bold; color: ${
+    comparison.color
+  };">${getSymbolElement(percentage)}</span><span style="color: ${
+    comparison.color
+  };"> ${
     !Number.isNaN(percentage) &&
     percentage !== Number.POSITIVE_INFINITY &&
     percentage !== Number.NEGATIVE_INFINITY
@@ -302,9 +304,11 @@ export const getDifferenceElement = (
   thousandSeparator
 ) => {
   const difference = value - comparison.value;
-  return `<span style="color: ${comparison.color};">${getSymbolElement(
-    difference
-  )}${
+  return `<span style="font-size: 1.2em; font-weight: bold; color: ${
+    comparison.color
+  };">${getSymbolElement(difference)}</span><span style="color: ${
+    comparison.color
+  };"> ${
     !Number.isNaN(difference)
       ? numberFormatter(
           Math.abs(difference),
