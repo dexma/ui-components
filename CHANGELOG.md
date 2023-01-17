@@ -1,3 +1,10 @@
+## [5.10.2](https://github.com/dexma/ui-components/compare/v5.10.1...v5.10.2) (2023-01-17)
+
+
+### Bug Fixes
+
+* **gauge:** increase space and font size for arrow symbol on comparison ([55aaa17](https://github.com/dexma/ui-components/commit/55aaa17540b0e422b011c3e04e9fc9ec3f2527dc))
+
 ## [5.10.1](https://github.com/dexma/ui-components/compare/v5.10.0...v5.10.1) (2022-12-27)
 
 
