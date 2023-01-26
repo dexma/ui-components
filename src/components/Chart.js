@@ -15,6 +15,7 @@ import addOfflineExportingModule from 'highcharts/modules/offline-exporting';
 import addExportData from 'highcharts/modules/export-data';
 import boost from 'highcharts/modules/boost';
 import highchartsMore from 'highcharts/highcharts-more';
+import addPatternFill from 'highcharts/modules/pattern-fill';
 
 import theme from '../styles/theme';
 import { StyledResult } from '../styles/components/StyledResult';
@@ -29,6 +30,7 @@ addExportData(Highcharts);
 HighchartsHeatmap(Highcharts);
 highchartsMore(Highcharts);
 addSolidGauge(Highcharts);
+addPatternFill(Highcharts);
 
 const propTypes = {
   /**
