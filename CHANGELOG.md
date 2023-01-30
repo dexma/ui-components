@@ -1,3 +1,10 @@
+# [5.11.0](https://github.com/dexma/ui-components/compare/v5.10.2...v5.11.0) (2023-01-30)
+
+
+### Features
+
+* **chart:** enable fill pattern on Chart highcharts ([410817b](https://github.com/dexma/ui-components/commit/410817bea647f59211f0509a6ce166ab460912bc))
+
 ## [5.10.2](https://github.com/dexma/ui-components/compare/v5.10.1...v5.10.2) (2023-01-17)
 
 
