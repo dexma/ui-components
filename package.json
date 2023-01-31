@@ -16,7 +16,8 @@
     "format": "npm run eslint:fix && npm run prettier",
     "test": "NODE_ENV=test jest --json --outputFile=test/jest-test-results.json",
     "semantic-release": "semantic-release",
-    "patch": "patch-package"
+    "patch": "patch-package",
+    "postinstall": "npm run patch"
   },
   "publishConfig": {
     "tag": "latest"
@@ -117,7 +118,7 @@
     "mini-css-extract-plugin": "^0.5.0",
     "moment": "^2.29.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "patch-package": "^6.4.7",
+    "patch-package": "^6.5.1",
     "path": "^0.12.7",
     "polished": "^3.4.0",
     "postcss-loader": "^3.0.0",
