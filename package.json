@@ -16,8 +16,7 @@
     "format": "npm run eslint:fix && npm run prettier",
     "test": "NODE_ENV=test jest --json --outputFile=test/jest-test-results.json",
     "semantic-release": "semantic-release",
-    "patch": "patch-package",
-    "postinstall": "npm run patch"
+    "patch": "patch-package"
   },
   "publishConfig": {
     "tag": "latest"
