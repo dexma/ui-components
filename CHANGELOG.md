@@ -1,3 +1,10 @@
+## [5.11.2](https://github.com/dexma/ui-components/compare/v5.11.1...v5.11.2) (2023-01-31)
+
+
+### Bug Fixes
+
+* **chart:** fix rounded negative bar charts ([c02b6b9](https://github.com/dexma/ui-components/commit/c02b6b9308fd1e41405f0e5f90b0decdc1773d09))
+
 ## [5.11.1](https://github.com/dexma/ui-components/compare/v5.11.0...v5.11.1) (2023-01-31)
 
 
