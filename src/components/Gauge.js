@@ -58,7 +58,7 @@ export const getValueSeries = (indicator, max, min, name, showAsPercentage) => {
       verticalAlign: 'bottom',
       format: '',
     },
-    threshold: min,
+    threshold: 0,
     tooltip: {
       pointFormat: `<span style="fill:${indicator.color}; stroke:${indicator.color}; border-color:${indicator.color};"><span style="color:${indicator.color};">\u25CF</span> <b>${indicator.tooltip}</b></span><br/>`,
     },
