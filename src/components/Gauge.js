@@ -39,10 +39,40 @@ Highcharts.wrap(Highcharts.Tooltip.prototype, 'refresh', function(
 export const valueAsPercentage = (value, max, min) =>
   ((value - min) * 100) / (max - min);
 
+export const getThreshold = (max, min, value = 0) => {
+  const threshold = value;
+  if (min < threshold && max < threshold) {
+    return max;
+  }
+  if (min > threshold && max > threshold) {
+    return min;
+  }
+  return threshold;
+};
+
+const parseInsideRange = (value, startRange, endRange) => {
+  if (value > endRange) {
+    return endRange;
+  }
+  if (value < startRange) {
+    return startRange;
+  }
+  return value;
+};
+
+const validValueAndThreshold = (value, threshold, min, max) =>
+  !(
+    (value <= min && value <= max && min > threshold && max > threshold) ||
+    (value >= min && value >= max && min < threshold && max < threshold)
+  );
+
 export const getValueSeries = (indicator, max, min, name, showAsPercentage) => {
-  const value = showAsPercentage
+  let value = showAsPercentage
     ? valueAsPercentage(indicator.value, max, min)
     : indicator.value;
+  const threshold = getThreshold(max, min);
+  if (!validValueAndThreshold(value, 0, min, max)) return {};
+  value = parseInsideRange(value, min, max);
   return {
     name: name || 'Value',
     data: [
@@ -58,7 +88,7 @@ export const getValueSeries = (indicator, max, min, name, showAsPercentage) => {
       verticalAlign: 'bottom',
       format: '',
     },
-    threshold: 0,
+    threshold,
     tooltip: {
       pointFormat: `<span style="fill:${indicator.color}; stroke:${indicator.color}; border-color:${indicator.color};"><span style="color:${indicator.color};">\u25CF</span> <b>${indicator.tooltip}</b></span><br/>`,
     },
@@ -83,47 +113,56 @@ export const getBackgroundSerie = (backgroundColor, max) => ({
   zIndex: 0,
 });
 
-export const getRangeSeries = ranges => {
+export const getRangeSeries = (ranges, min, max) => {
   const rangesRes = ranges
     .sort((rangeA, rangeB) => rangeB.to - rangeA.to)
-    .map(range => ({
-      data: [
-        {
-          color: range.color,
-          radius: '75%',
-          innerRadius: '70%',
-          y: range.to,
+    .map(range => {
+      const threshold = getThreshold(max, min, range.from);
+      if (!validValueAndThreshold(range.to, range.from, min, max)) return {};
+      const y = parseInsideRange(range.to, min, max);
+      return {
+        data: [
+          {
+            color: range.color,
+            radius: '75%',
+            innerRadius: '70%',
+            y,
+          },
+        ],
+        dataLabels: {
+          format: ``,
         },
-      ],
-      dataLabels: {
-        format: ``,
-      },
-      threshold: range.from,
-      tooltip: {
-        pointFormat: `<span style="fill:${range.color}; stroke:${range.color}; border-color:${range.color};"><span style="color:${range.color};">\u25CF</span> <b>${range.tooltip}</b></span><br/>`,
-      },
-      zIndex: 1,
-    }));
+        threshold,
+        tooltip: {
+          pointFormat: `<span style="fill:${range.color}; stroke:${range.color}; border-color:${range.color};"><span style="color:${range.color};">\u25CF</span> <b>${range.tooltip}</b></span><br/>`,
+        },
+        zIndex: 1,
+      };
+    });
   return rangesRes;
 };
 
 export const getCheckpointSeries = (checkpoints, max, min, showAsPercentage) =>
-  checkpoints.map(cp => ({
-    data: [showAsPercentage ? valueAsPercentage(cp.value, max, min) : cp.value],
-    tooltip: {
-      borderColor: cp.color, // This field is not included by default on Highcharts, it's a customized one created on this library
-      pointFormat: `<span style="fill:${cp.color}; stroke:${cp.color}; border-color:${cp.color};"><span style="color:${cp.color};">\u25CF</span> <b>${cp.tooltip}</b></span><br/>`,
-    },
-    dataLabels: {
-      format: ``,
-    },
-    name: cp.tooltip,
-    type: 'gauge',
-    dial: {
-      backgroundColor: cp.color,
-    },
-    zIndex: 2,
-  }));
+  checkpoints
+    .filter(cp => cp.value <= max && cp.value >= min)
+    .map(cp => ({
+      data: [
+        showAsPercentage ? valueAsPercentage(cp.value, max, min) : cp.value,
+      ],
+      tooltip: {
+        borderColor: cp.color, // This field is not included by default on Highcharts, it's a customized one created on this library
+        pointFormat: `<span style="fill:${cp.color}; stroke:${cp.color}; border-color:${cp.color};"><span style="color:${cp.color};">\u25CF</span> <b>${cp.tooltip}</b></span><br/>`,
+      },
+      dataLabels: {
+        format: ``,
+      },
+      name: cp.tooltip,
+      type: 'gauge',
+      dial: {
+        backgroundColor: cp.color,
+      },
+      zIndex: 2,
+    }));
 
 export const getYAxis = (showAsPercentage, minValue, maxValue) => ({
   min: showAsPercentage ? 0 : minValue,
@@ -503,7 +542,7 @@ const Gauge = props => {
       );
       const yAxis = getYAxis(showAsPercentage, min, max);
       const rangeSeries =
-        ranges && ranges.length > 0 ? getRangeSeries(ranges) : [];
+        ranges && ranges.length > 0 ? getRangeSeries(ranges, min, max) : [];
       const valueSerie = getValueSeries(
         indicator,
         max,
