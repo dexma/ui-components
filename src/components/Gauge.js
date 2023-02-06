@@ -116,9 +116,9 @@ export const getBackgroundSerie = (backgroundColor, max) => ({
 export const getRangeSeries = (ranges, min, max) => {
   const rangesRes = ranges
     .sort((rangeA, rangeB) => rangeB.to - rangeA.to)
+    .filter(range => validValueAndThreshold(range.to, range.from, min, max))
     .map(range => {
       const threshold = getThreshold(max, min, range.from);
-      if (!validValueAndThreshold(range.to, range.from, min, max)) return {};
       const y = parseInsideRange(range.to, min, max);
       return {
         data: [

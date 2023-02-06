@@ -90,6 +90,54 @@ export const mockExpectedValueSerie = {
   useHTML: true,
 };
 
+export const mockParsedMaxValueSerie = {
+  name: 'Value',
+  data: [
+    {
+      color: '#7cb5ec',
+      radius: '90%',
+      innerRadius: '80%',
+      y: 100,
+    },
+  ],
+  dataLabels: {
+    format: '',
+    borderWidth: 0,
+    verticalAlign: 'bottom',
+  },
+  threshold: 0,
+  tooltip: {
+    pointFormat:
+      '<span style="fill:#7cb5ec; stroke:#7cb5ec; border-color:#7cb5ec;"><span style="color:#7cb5ec;">●</span> <b>Test Tooltip</b></span><br/>',
+  },
+  zIndex: 1,
+  useHTML: true,
+};
+
+export const mockParsedMinValueSerie = {
+  name: 'Value',
+  data: [
+    {
+      color: '#7cb5ec',
+      radius: '90%',
+      innerRadius: '80%',
+      y: -100,
+    },
+  ],
+  dataLabels: {
+    format: '',
+    borderWidth: 0,
+    verticalAlign: 'bottom',
+  },
+  threshold: 0,
+  tooltip: {
+    pointFormat:
+      '<span style="fill:#7cb5ec; stroke:#7cb5ec; border-color:#7cb5ec;"><span style="color:#7cb5ec;">●</span> <b>Test Tooltip</b></span><br/>',
+  },
+  zIndex: 1,
+  useHTML: true,
+};
+
 export const expectedBackgroundSerie = {
   data: [
     {
@@ -195,6 +243,58 @@ export const mockPropsGauge = {
   units: ' kWh',
   min: 0,
   max: 100,
+  thousandSeparator: ' ',
+  decimalSeparator: ',',
+};
+
+export const mockValueBiggerThanMaxPropsGauge = {
+  indicator: {
+    value: 150,
+    color: '#7cb5ec',
+    tooltip: 'Test Tooltip',
+  },
+  units: ' kWh',
+  min: 0,
+  max: 100,
+  thousandSeparator: ' ',
+  decimalSeparator: ',',
+};
+
+export const mockInvertedValueLessThanMinPropsGauge = {
+  indicator: {
+    value: -100,
+    color: '#7cb5ec',
+    tooltip: 'Test Tooltip',
+  },
+  units: ' kWh',
+  min: 40,
+  max: 100,
+  thousandSeparator: ' ',
+  decimalSeparator: ',',
+};
+
+export const mockValueLessThanMinPropsGauge = {
+  indicator: {
+    value: -150,
+    color: '#7cb5ec',
+    tooltip: 'Test Tooltip',
+  },
+  units: ' kWh',
+  min: -100,
+  max: 0,
+  thousandSeparator: ' ',
+  decimalSeparator: ',',
+};
+
+export const mockInvertedValueMoreThanMaxPropsGauge = {
+  indicator: {
+    value: 100,
+    color: '#7cb5ec',
+    tooltip: 'Test Tooltip',
+  },
+  units: ' kWh',
+  min: -100,
+  max: -40,
   thousandSeparator: ' ',
   decimalSeparator: ',',
 };
