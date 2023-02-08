@@ -26,6 +26,12 @@ import {
   mockExpectedIncreasePercentage,
   mockExpectedChart,
   mockExpectedIncreaseValue,
+  mockInvertedValueLessThanMinPropsGauge,
+  mockInvertedValueMoreThanMaxPropsGauge,
+  mockValueBiggerThanMaxPropsGauge,
+  mockParsedMaxValueSerie,
+  mockValueLessThanMinPropsGauge,
+  mockParsedMinValueSerie,
 } from '../mock/Gauge';
 
 describe('<Gauge>', () => {
@@ -56,6 +62,60 @@ describe('<Gauge>', () => {
         // Then
         expect(resultingSerie).toStrictEqual(expectedValueSerie);
       });
+      it('should return a range serie related with a value y equals to min of gauge, as its original value is outside the min max range', () => {
+        // Given
+        const givenProps = mockValueLessThanMinPropsGauge;
+        const expectedValueSerie = mockParsedMinValueSerie;
+        // When
+        const resultingSerie = getValueSeries(
+          givenProps.indicator,
+          givenProps.max,
+          givenProps.min,
+          null,
+          false
+        );
+        // Then
+        expect(resultingSerie).toStrictEqual(expectedValueSerie);
+      });
+      it('should return a range serie related with a value y equals to max of gauge, as its original value is outside the min max range', () => {
+        // Given
+        const givenProps = mockValueBiggerThanMaxPropsGauge;
+        const expectedValueSerie = mockParsedMaxValueSerie;
+        // When
+        const resultingSerie = getValueSeries(
+          givenProps.indicator,
+          givenProps.max,
+          givenProps.min,
+          null,
+          false
+        );
+        // Then
+        expect(resultingSerie).toStrictEqual(expectedValueSerie);
+      });
+      it('should return an empty serie due to the value and threshold is outside the min max range', () => {
+        // Given
+        const givenProps1 = mockInvertedValueLessThanMinPropsGauge;
+        const givenProps2 = mockInvertedValueMoreThanMaxPropsGauge;
+        const expectedValueSerie = {};
+        // When
+        const resultingSerie1 = getValueSeries(
+          givenProps1.indicator,
+          givenProps1.max,
+          givenProps1.min,
+          null,
+          false
+        );
+        const resultingSerie2 = getValueSeries(
+          givenProps2.indicator,
+          givenProps2.max,
+          givenProps2.min,
+          null,
+          false
+        );
+        // Then
+        expect(resultingSerie1).toStrictEqual(expectedValueSerie);
+        expect(resultingSerie2).toStrictEqual(expectedValueSerie);
+      });
     });
     describe('getBackgroundSerie', () => {
       it('should return a range serie, based on the backgroundColor of theme, that defines the whole shadow of the main arc on the gauge', () => {
@@ -79,6 +139,18 @@ describe('<Gauge>', () => {
         // Then
         expect(resultingRangeSeries).toStrictEqual(expectedRangeSeries);
       });
+      it('should return an empty array of range series as the ranges are outside the min max range', () => {
+        // Given
+        const givenRangeSeries = mockRangeSeries;
+        // When
+        const resultingRangeSeries = getRangeSeries(
+          givenRangeSeries,
+          -100,
+          -40
+        );
+        // Then
+        expect(resultingRangeSeries).toStrictEqual([]);
+      });
     });
     describe('getCheckpointSeries', () => {
       it('should return an array of range series that represent the checkpoints on axis Y', () => {
@@ -95,6 +167,20 @@ describe('<Gauge>', () => {
         );
         // Then
         expect(...resultingSerie).toStrictEqual(expectedCheckpointSerie);
+      });
+      it('should return an empty array range series as the checkpoints are outside the min max range', () => {
+        // Given
+        const givenProps = mockInvertedValueMoreThanMaxPropsGauge;
+        const givenCheckpoint = mockSingleCheckpointSeries;
+        // When
+        const resultingSerie = getCheckpointSeries(
+          givenCheckpoint,
+          givenProps.max,
+          givenProps.min,
+          givenProps.units
+        );
+        // Then
+        expect(resultingSerie).toStrictEqual([]);
       });
     });
     describe('getYAxis', () => {
