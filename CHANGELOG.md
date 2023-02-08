@@ -1,3 +1,18 @@
+# [5.12.0](https://github.com/dexma/ui-components/compare/v5.11.2...v5.12.0) (2023-02-08)
+
+
+### Bug Fixes
+
+* **gauge:** add tests for new scenarios of min max values on Gauge ([026a73e](https://github.com/dexma/ui-components/commit/026a73eba4ee62ceaa24cca80f40c239f992894b))
+* **gauge:** dynamic calculation for yValue of series and threshold ([656e298](https://github.com/dexma/ui-components/commit/656e298266a3952185c48f54c43f48a1bd2c5a33))
+* **gauge:** update pointStart for main value to 0 ([f30c93b](https://github.com/dexma/ui-components/commit/f30c93bc0ff569966e075a1cd3f38f1bdceba4b7))
+* **icons:** remove duplicated icon ([8788b20](https://github.com/dexma/ui-components/commit/8788b20cf64bd8fc2a6e688a4b4a88f1fc4dac87))
+
+
+### Features
+
+* **icons:** add extra icons ([dbf1ac1](https://github.com/dexma/ui-components/commit/dbf1ac1ced8d741c0725011650d3eec9cfca1f1b))
+
 ## [5.11.2](https://github.com/dexma/ui-components/compare/v5.11.1...v5.11.2) (2023-01-31)
 
 
