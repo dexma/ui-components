@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { withTheme } from 'styled-components';
 import omit from 'lodash/omit';
-import { v4 as uuidv4 } from 'uuid';
-
+import { uniqueId } from 'lodash';
 import { ISO_FORMAT } from '../utils/dates';
 import { StyledSwitchPeriodComparative } from '../styles/components/StyledSwitchPeriodComparative';
 import FieldGroup from './FieldGroup';
@@ -139,8 +138,8 @@ export const SwitchPeriodComparative = props => {
   const previousPeriod = `${previousStartDate} - ${previousEndDate}`;
   const samePeriodLastYear = `${lastYearStartDate} - ${lastYearEndDate}`;
 
-  const prevId = uuidv4();
-  const lastId = uuidv4();
+  const prevId = uniqueId();
+  const lastId = uniqueId();
 
   return (
     <StyledSwitchPeriodComparative

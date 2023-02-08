@@ -80,4 +80,31 @@ describe('<FieldGroup>', () => {
     fieldGroup.find('.item-hdd input').simulate('change');
     expect(mockCallBack).toBeCalled();
   });
+  it('Should run onChangeFunction for second FieldGroup when it changes', () => {
+    const mockCallBackFirst = jest.fn();
+    const mockCallBackSecond = jest.fn();
+    const fieldGroup = mount(
+      <>
+        <FieldGroup
+          values={mockCheckboxGroup}
+          selectedValues={mockSelectedCheckboxItem}
+          type="checkbox"
+          onChange={value => mockCallBackFirst(value)}
+        />
+        <FieldGroup
+          values={mockCheckboxGroup}
+          selectedValues={mockSelectedCheckboxItem}
+          type="checkbox"
+          onChange={value => mockCallBackSecond(value)}
+        />
+      </>
+    );
+    expect(fieldGroup.find('.item-hdd input').length).toBe(2);
+    fieldGroup
+      .find('.item-hdd input')
+      .at(1)
+      .simulate('change');
+    expect(mockCallBackFirst).not.toBeCalled();
+    expect(mockCallBackSecond).toBeCalled();
+  });
 });

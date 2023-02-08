@@ -1,16 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { uniqueId } from 'lodash';
 import find from 'lodash/find';
-import set from 'lodash/set';
-import { withTheme } from 'styled-components';
 import omit from 'lodash/omit';
-import Icon from './Icon';
-import { Tooltip } from './Tooltip';
-import { BUTTON_SIZE } from './Button';
+import set from 'lodash/set';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { withTheme } from 'styled-components';
+import withDataId from '../components/DataId/withDataId';
 import { StyledFieldGroup } from '../styles/components/StyledFieldGroup';
 import theme from '../styles/theme';
-import withDataId from '../components/DataId/withDataId';
+import { BUTTON_SIZE } from './Button';
+import Icon from './Icon';
+import { Tooltip } from './Tooltip';
 
 const propTypes = {
   /**
@@ -112,7 +113,21 @@ export const FieldGroup = props => {
     theme,
     dataId,
   } = props;
-  const selectedField = getSelectedField(type, values, selectedValues, 'value');
+  const uniqueValues =
+    values.length > 0
+      ? [
+          ...values.map(value => ({
+            ...value,
+            uniqueId: uniqueId(value.id),
+          })),
+        ]
+      : [];
+  const selectedField = getSelectedField(
+    type,
+    uniqueValues,
+    selectedValues,
+    'value'
+  );
   const fieldGroupProps = omit(props, [
     'values',
     'selectedValues',
@@ -121,6 +136,16 @@ export const FieldGroup = props => {
     'onFieldClick',
     'dataId',
   ]);
+  const handleOnFieldClick = item => {
+    const { uniqueId, ...itemRest } = item;
+    onFieldClick(itemRest);
+  };
+
+  const handleOnChange = item => {
+    const { uniqueId, ...itemRest } = item;
+    onChange(itemRest);
+  };
+
   return (
     <StyledFieldGroup
       theme={theme}
@@ -131,8 +156,8 @@ export const FieldGroup = props => {
       {...fieldGroupProps}
       data-id={dataId}
     >
-      {values.map(item => {
-        const { id, value, label, icon, tooltip, isDisabled } = item;
+      {uniqueValues.map(item => {
+        const { uniqueId, value, label, icon, tooltip, isDisabled } = item;
         const isSelected = isFieldSelected(type, item, selectedField);
         const classesItem = classNames(
           'item',
@@ -145,9 +170,9 @@ export const FieldGroup = props => {
           <label
             className={classesItem}
             data-tooltip={tooltip}
-            htmlFor={id}
-            key={id}
-            onClick={() => onFieldClick && onFieldClick(item)}
+            htmlFor={`${uniqueId}_${value}`}
+            key={`${uniqueId}_${value}`}
+            onClick={() => onFieldClick && handleOnFieldClick(item)}
             data-testid="field-group-label"
           >
             {!icon && label ? label : null}
@@ -161,8 +186,8 @@ export const FieldGroup = props => {
               />
             ) : null}
             <input
-              id={id}
-              onChange={() => onChange && onChange(item)}
+              id={`${uniqueId}_${value}`}
+              onChange={() => onChange && handleOnChange(item)}
               type={type}
               name={name}
               value={value}
@@ -173,7 +198,7 @@ export const FieldGroup = props => {
           </label>
         );
         return tooltip ? (
-          <Tooltip title={tooltip} key={`tooltip_${id}`}>
+          <Tooltip title={tooltip} key={`tooltip_${uniqueId}`}>
             {getLabel()}
           </Tooltip>
         ) : (
