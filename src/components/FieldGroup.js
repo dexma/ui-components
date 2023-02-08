@@ -118,7 +118,7 @@ export const FieldGroup = props => {
       ? [
           ...values.map(value => ({
             ...value,
-            uuid: uniqueId(value.id),
+            uniqueId: uniqueId(value.id),
           })),
         ]
       : [];
@@ -137,12 +137,12 @@ export const FieldGroup = props => {
     'dataId',
   ]);
   const handleOnFieldClick = item => {
-    const { uuid, ...itemRest } = item;
+    const { uniqueId, ...itemRest } = item;
     onFieldClick(itemRest);
   };
 
   const handleOnChange = item => {
-    const { uuid, ...itemRest } = item;
+    const { uniqueId, ...itemRest } = item;
     onChange(itemRest);
   };
 
@@ -157,7 +157,7 @@ export const FieldGroup = props => {
       data-id={dataId}
     >
       {uniqueValues.map(item => {
-        const { uuid, value, label, icon, tooltip, isDisabled } = item;
+        const { uniqueId, value, label, icon, tooltip, isDisabled } = item;
         const isSelected = isFieldSelected(type, item, selectedField);
         const classesItem = classNames(
           'item',
@@ -170,8 +170,8 @@ export const FieldGroup = props => {
           <label
             className={classesItem}
             data-tooltip={tooltip}
-            htmlFor={`${uuid}_${value}`}
-            key={`${uuid}_${value}`}
+            htmlFor={`${uniqueId}_${value}`}
+            key={`${uniqueId}_${value}`}
             onClick={() => onFieldClick && handleOnFieldClick(item)}
             data-testid="field-group-label"
           >
@@ -186,7 +186,7 @@ export const FieldGroup = props => {
               />
             ) : null}
             <input
-              id={`${uuid}_${value}`}
+              id={`${uniqueId}_${value}`}
               onChange={() => onChange && handleOnChange(item)}
               type={type}
               name={name}
@@ -198,7 +198,7 @@ export const FieldGroup = props => {
           </label>
         );
         return tooltip ? (
-          <Tooltip title={tooltip} key={`tooltip_${uuid}`}>
+          <Tooltip title={tooltip} key={`tooltip_${uniqueId}`}>
             {getLabel()}
           </Tooltip>
         ) : (
