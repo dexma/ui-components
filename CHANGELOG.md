@@ -1,3 +1,12 @@
+## [5.12.1](https://github.com/dexma/ui-components/compare/v5.12.0...v5.12.1) (2023-02-08)
+
+
+### Bug Fixes
+
+* **fieldgroup:** rename attribute for uniqueId ([ee8d69d](https://github.com/dexma/ui-components/commit/ee8d69d24401e0f9231ea3f5de6df2be453830d2))
+* **fieldgroup:** update tests to include an scenario with same options ([5849f81](https://github.com/dexma/ui-components/commit/5849f8190fcd0d1b29945341f9595f93da53deb9))
+* **fieldgroup:** use uniqueId to generate ids on values for FieldGroup ([d8419d5](https://github.com/dexma/ui-components/commit/d8419d59a93d1bda5ff6955acc5c1147faea16c1))
+
 # [5.12.0](https://github.com/dexma/ui-components/compare/v5.11.2...v5.12.0) (2023-02-08)
 
 
