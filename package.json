@@ -112,7 +112,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "jest-axe": "^4.1.0",
-    "lint-staged": "^8.2.0",
+    "lint-staged": "^13.0.3",
     "lodash": "^4.17.20",
     "mini-css-extract-plugin": "^0.5.0",
     "moment": "^2.29.1",
