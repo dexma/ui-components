@@ -54,6 +54,7 @@ export { default as Table } from './components/Table';
 export { Tabs } from './components/Tabs';
 export { TabPane } from './components/Tabs';
 export { default as Tag } from './components/Tag';
+export { default as TagGroup } from './components/TagGroup';
 export { default as Theme } from './components/Theme';
 export { default as Toaster } from './components/Toaster/Toaster';
 export { default as ToasterContext } from './components/Toaster/ToasterContext';
