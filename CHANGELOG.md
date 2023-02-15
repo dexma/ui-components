@@ -1,3 +1,10 @@
+## [5.12.2](https://github.com/dexma/ui-components/compare/v5.12.1...v5.12.2) (2023-02-15)
+
+
+### Bug Fixes
+
+* **taggroup:** enable usage of TagGroup component ([0fa3004](https://github.com/dexma/ui-components/commit/0fa3004a9cfa3cf4c67adc50acfee4d053ed83a2))
+
 ## [5.12.1](https://github.com/dexma/ui-components/compare/v5.12.0...v5.12.1) (2023-02-08)
 
 
