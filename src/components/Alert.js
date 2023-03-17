@@ -63,10 +63,10 @@ export const Alert = props => {
       renderIcon = 'alert_sign';
       break;
     case 'warning':
-      renderIcon = 'circle_info_outline';
+      renderIcon = 'alert_sign';
       break;
     case 'info':
-      renderIcon = 'alert_sign';
+      renderIcon = 'circle_info_outline';
       break;
     case 'success':
       renderIcon = 'circle_check_outline';
