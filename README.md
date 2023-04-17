@@ -99,3 +99,5 @@ Object.defineProperty(window, 'matchMedia', {
 ## Contributing
 
 Check out the [CONTRIBUTING document](https://github.com/dexma/ui-components/blob/master/CONTRIBUTING.md) in the root of the repository to learn how you can contribute.
+
+Random change to trigger CI
