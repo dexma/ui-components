@@ -23,7 +23,32 @@ import Result from '../components/Result';
 export default {
   title: 'Chart',
   component: Chart,
+  argTypes: {
+    dataId: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
+
+export const basic = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Wrapper for Highcharts to allow for some specific customisations. For
+          deep information about this component visit the official highcharts
+          documentation.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">Basic Line Chart.</Paragraph>
+        <Chart options={mvConsumptionDiscreteChart} />
+      </Cell>
+    </Row>
+  </Grid>
+);
 
 export const mvExample = () => (
   <Grid fluid>
@@ -57,7 +82,7 @@ export const chartLoading = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">Basic area chart loading</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic area chart loading.</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Chart options={mockBasicArea} isLoading />
@@ -116,7 +141,7 @@ export const basicArea = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">Basic area chart</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic area chart.</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Chart options={mockBasicArea} />
@@ -129,7 +154,7 @@ export const stackedBar = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">Basic area chart</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic stacked chart.</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Chart options={mockStackedBar} />
@@ -142,7 +167,7 @@ export const stackedBarNegative = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">Basic area chart</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic area chart.</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Chart options={mockStackedBarNegative} />
@@ -155,7 +180,7 @@ export const mixed = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">Basic area chart</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic mixed chart.</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Chart options={mockMixed} />
@@ -168,7 +193,7 @@ export const heatmap = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">Basic Heatmap</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">Basic heatmap.</Paragraph>
       </Cell>
       <Cell xs={12}>
         <Chart options={mockHeatmap} />
