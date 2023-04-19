@@ -11,19 +11,19 @@ export default {
   component: Alert,
   argTypes: {
     theme: {
-      table: {
+      control: {
         disable: true,
       },
     },
     onClose: {
-      table: {
+      control: {
         disable: true,
       },
     },
   },
 };
 
-export const alert = args => (
+export const alert = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
@@ -32,12 +32,6 @@ export const alert = args => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">
-          Add your own props via Controls to see the changes on the Alert below.
-        </Paragraph>
-        <Alert {...args} />
-        <hr />
-        <br />
         <Paragraph margin="1rem 0 1rem 0">
           You can choose between basic, outline, success, info and warning for
           different icon an color options.
@@ -58,7 +52,7 @@ export const alert = args => (
   </Grid>
 );
 
-export const description = args => (
+export const description = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
@@ -67,12 +61,6 @@ export const description = args => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">
-          Add your own props via Controls to see the changes on the Alert below.
-        </Paragraph>
-        <Alert {...args} />
-        <hr />
-        <br />
         <Alert
           message="Basic alert"
           description="Detailed description and advice about successful copywriting."
@@ -84,7 +72,7 @@ export const description = args => (
   </Grid>
 );
 
-export const noIcon = args => (
+export const noIcon = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
@@ -94,12 +82,6 @@ export const noIcon = args => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">
-          Add your own props via Controls to see the changes on the Alert below.
-        </Paragraph>
-        <Alert {...args} />
-        <hr />
-        <br />
         <Alert
           message="Success Tips"
           description="Detailed description and advice about successful copywriting."
@@ -124,7 +106,7 @@ export const noIcon = args => (
   </Grid>
 );
 
-export const customAlert = args => (
+export const customAlert = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
@@ -134,12 +116,6 @@ export const customAlert = args => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">
-          Add your own props via Controls to see the changes on the Alert below.
-        </Paragraph>
-        <Alert {...args} />
-        <hr />
-        <br />
         <Alert
           type="info"
           message={
@@ -215,6 +191,20 @@ export const customAlert = args => (
           showIcon
         />
         <br />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const playground = args => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Use the Controls on the section below to add your own props to this
+          Alert.
+        </Paragraph>
+        <Alert {...args} />
       </Cell>
     </Row>
   </Grid>
