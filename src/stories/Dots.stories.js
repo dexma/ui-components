@@ -8,9 +8,16 @@ import Paragraph from '../components/Paragraph';
 export default {
   title: 'Dots',
   component: Dots,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
-export const dots = () => (
+export const dots = args => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
@@ -22,11 +29,8 @@ export const dots = () => (
       <Cell xs={12}>
         <Dots steps={4} size={15} />
       </Cell>
-      <Cell xs={12}>
-        <Dots steps={3} size={12} />
-      </Cell>
-      <Cell xs={12}>
-        <Dots steps={2} size={10} />
+      <Cell xs={12} style={{ marginTop: '24px' }}>
+        <Dots {...args} />
       </Cell>
     </Row>
   </Grid>
