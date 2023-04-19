@@ -14,6 +14,13 @@ import { StyledCell } from '../styles/components/StyledCell';
 export default {
   title: 'Card',
   component: Card,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 const StyledCustomGrid = styled(Grid)`
@@ -27,7 +34,7 @@ export const cards = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          We present our simple and custom cards
+          We present our simple and custom cards.
         </Paragraph>
       </Cell>
       {mockCards.map((card, i) => (
@@ -48,7 +55,7 @@ export const image = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Here we have cards but we pass a image prop
+          Here we have cards but we pass a image prop.
         </Paragraph>
       </Cell>
       {mockCards.map((card, i) => (
@@ -65,7 +72,7 @@ export const icons = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Here we have cards but we pass a icon name
+          Here we have cards but we pass a icon name.
         </Paragraph>
       </Cell>
       {mockCards.map((card, i) => (
@@ -86,7 +93,8 @@ export const footer = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Here we have cards and custom footer
+          Here we have cards and custom footer. You can pass JSX element to it
+          to render a component inside the footer.
         </Paragraph>
       </Cell>
       {mockCards.map((card, i) => (
@@ -113,7 +121,7 @@ export const link = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          This is an example of the a link (image) with a card
+          This is an example of the a link (image) with a card.
         </Paragraph>
       </Cell>
       {mockCards.map((card, i) => (
@@ -135,7 +143,7 @@ export const horizontal = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Here we have horizontal cards
+          Here we have horizontal cards.
         </Paragraph>
       </Cell>
       {mockCards.map((card, i) => (
@@ -157,7 +165,8 @@ export const horizontalFooter = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Here we have horizontal cards and we can customize the footer
+          Here we have horizontal cards and we can customize the footer, passing
+          a JSX element to it.
         </Paragraph>
       </Cell>
       {mockCards.map((card, i) => (
@@ -176,6 +185,22 @@ export const horizontalFooter = () => (
           />
         </Cell>
       ))}
+    </Row>
+  </StyledCustomGrid>
+);
+
+export const playground = args => (
+  <StyledCustomGrid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Use the Controls on the section below to add your own props to this
+          Card.
+        </Paragraph>
+      </Cell>
+      <Cell xs={4}>
+        <Card {...args} />
+      </Cell>
     </Row>
   </StyledCustomGrid>
 );
