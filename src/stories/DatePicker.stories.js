@@ -8,11 +8,10 @@ import Row from '../components/Row';
 import Paragraph from '../components/Paragraph';
 import { mockPeriodOptions } from '../../test/mock/DatePicker';
 import theme from '../styles/theme';
-import AntdPicker from '../components/AntdPicker';
 
 export default {
   title: 'DatePicker',
-  component: AntdPicker,
+  component: DatePicker,
 };
 
 export const antdDatePicker = () => (
