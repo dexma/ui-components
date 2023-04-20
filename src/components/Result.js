@@ -26,7 +26,7 @@ const propTypes = {
    */
   info: PropTypes.string,
   /**
-   * You can set the footer of the card
+   * You can set the footer of the resut as JSX element.
    */
   content: PropTypes.node,
   /**
