@@ -226,7 +226,7 @@ const StyledChart = styled.div`
   }
 `;
 
-const Chart = React.forwardRef((props, ref) => {
+export const Chart = React.forwardRef((props, ref) => {
   const {
     options,
     isLoading,

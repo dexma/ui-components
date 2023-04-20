@@ -4,7 +4,7 @@ import Grid from '../components/Grid';
 import Row from '../components/Row';
 import Paragraph from '../components/Paragraph';
 import Cell from '../components/Cell';
-import Chart from '../components/Chart';
+import { Chart } from '../components/Chart';
 import Button from '../components/Button';
 
 import {
