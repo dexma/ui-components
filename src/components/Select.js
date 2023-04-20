@@ -18,6 +18,15 @@ import {
 
 const propTypes = {
   /**
+   * Options to be displayed inside the Select, as an array. Format is {
+  "value": string,
+  "label": string,
+  "background": Color,
+  "color": Color
+}
+   */
+  options: PropTypes.arrayOf(PropTypes.shape({})),
+  /**
    * Is the select disabled
    */
   isDisabled: PropTypes.bool,
