@@ -23,7 +23,7 @@ export const dots = args => (
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
           Here we have dots for show loading part of the UI you can customize
-          with 2, 3 or 4 dot
+          with 2, 3 or 4 dot.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
