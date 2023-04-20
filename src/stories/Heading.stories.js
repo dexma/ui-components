@@ -18,6 +18,13 @@ const StyledBox = styled.div`
 export default {
   title: 'Heading',
   component: Heading,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export const headings = () => (
@@ -25,7 +32,7 @@ export const headings = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          All HTML headings, h1 through h6, are available
+          All HTML headings, h1 through h6, are available.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -45,7 +52,7 @@ export const childrens = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          You can customize the heading sending children component{' '}
+          You can customize the heading sending children component.
         </Paragraph>
       </Cell>
       <StyledBox>
@@ -69,6 +76,22 @@ export const childrens = () => (
           <Divider />
         </Cell>
       </StyledBox>
+    </Row>
+  </Grid>
+);
+
+export const playground = args => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Use the Controls on the section below to add your own props to this
+          Heading.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Heading {...args} />
+      </Cell>
     </Row>
   </Grid>
 );
