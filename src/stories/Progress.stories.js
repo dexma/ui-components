@@ -8,6 +8,13 @@ import Paragraph from '../components/Paragraph';
 export default {
   title: 'Progress',
   component: Progress,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export const progress = () => (
@@ -82,6 +89,22 @@ export const noText = () => (
         <Progress percent={40} color="red" />
         <Progress percent={60} color="amber" />
         <Progress percent={80} color="green" />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const playground = args => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Use the Controls on the section below to add your own props to this
+          Progress.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Progress {...args} />
       </Cell>
     </Row>
   </Grid>
