@@ -103,7 +103,7 @@ export const getVertical = () => css`
 `;
 
 export const getHorizontal = () => css`
-  display: flex;
+  display: inline-block;
   label:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
