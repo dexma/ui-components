@@ -28,7 +28,7 @@ export const itemRender = (current, type, originalElement) => {
   return originalElement;
 };
 
-export const Pagination = ({ theme, dataCy, ...props }) => {
+export const Pagination = ({ theme, ...props }) => {
   return (
     <StyledPagination data-testid="pagination" theme={theme}>
       <PaginationAntDesign itemRender={itemRender} {...props} />

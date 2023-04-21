@@ -258,7 +258,7 @@ const renderIndicatorLabel = (
     )
     .css({
       color: indicator.color,
-      fontSize: mainSize,
+      fontSize: `${mainSize}px`,
       fontWeight: 700,
     })
     .attr({
@@ -289,7 +289,7 @@ const renderSuffix = (chart, showAsPercentage, units, mainSize, suffixSize) => {
     .css({
       color: color.gray500,
       fontWeight: 400,
-      fontSize: suffixSize,
+      fontSize: `${suffixSize}px`,
     })
     .attr({
       zIndex: 3,
