@@ -1,3 +1,15 @@
+# [5.13.0](https://github.com/dexma/ui-components/compare/v5.12.2...v5.13.0) (2023-04-21)
+
+
+### Bug Fixes
+
+* **styles:** changes to trigger cd job ([a716f45](https://github.com/dexma/ui-components/commit/a716f45fe994acdfb6490f1f0933232239b40b5c))
+
+
+### Features
+
+* **cicd:** add yml files for Github Actions ([e03f619](https://github.com/dexma/ui-components/commit/e03f6194d6ebab69fd4d9cadef2e843f700569db))
+
 ## [5.12.2](https://github.com/dexma/ui-components/compare/v5.12.1...v5.12.2) (2023-02-15)
 
 
