@@ -5,18 +5,6 @@ import Cell from '../components/Cell';
 import Paragraph from '../components/Paragraph';
 import { Dropdown } from '../components/Dropdown';
 
-export default {
-  title: 'Dropdown',
-  component: Dropdown,
-  argTypes: {
-    theme: {
-      control: {
-        disable: true,
-      },
-    },
-  },
-};
-
 const content = [
   {
     text: 'Edit',
@@ -33,6 +21,18 @@ const content = [
     },
   },
 ];
+
+export default {
+  title: 'Dropdown',
+  component: Dropdown,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+  },
+};
 
 export const dropdown = () => (
   <Grid fluid>
@@ -119,6 +119,10 @@ export const dropdownWithPlacement = () => (
 );
 
 export const playground = args => {
+  if (typeof args.content === 'object' && !Array.isArray(args.content)) {
+    // eslint-disable-next-line
+    args.content = [];
+  }
   return (
     <Grid fluid>
       <Row>
