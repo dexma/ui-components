@@ -268,7 +268,7 @@ const renderIndicatorLabel = (
   let textBox = currentChart.indicatorLabel.getBBox();
   if (
     textBox.width >
-    currentChart.axes[1].axisGroup.element.getBoundingClientRect().width * 0.7
+    currentChart.chartWidth / indicator.value.toString().length
   ) {
     currentChart.indicatorLabel.attr({
       text: applyScientific(parseFloat(indicator.value), decimalSeparator, 2),
