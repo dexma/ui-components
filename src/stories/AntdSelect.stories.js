@@ -1,5 +1,5 @@
 import React from 'react';
-import AntdSelect from '../components/AntdSelect';
+import AntdSelect from '../components/AntdSelect/AntdSelect';
 import Cell from '../components/Cell';
 import Grid from '../components/Grid';
 import Paragraph from '../components/Paragraph';
@@ -21,23 +21,10 @@ export const select = () => (
       <Cell xs={12}>
         <AntdSelect
           mode="multiple"
-          showButton
           style={{ width: '100%' }}
           pageSize={10}
           options={[
             { color: 'blue', value: 'Hola 1', label: 'Hola 1' },
-            { color: 'blue', value: 'Hola 101', label: 'Hola 101' },
-            { color: 'blue', value: 'Hola 1001', label: 'Hola 1001' },
-            { color: 'blue', value: 'Hola 11001', label: 'Hola 11001' },
-            { color: 'blue', value: 'Hola 111001', label: 'Hola 111001' },
-            { color: 'blue', value: 'Hola 1111001', label: 'Hola 1111001' },
-            { color: 'blue', value: 'Hola 11111001', label: 'Hola 11111001' },
-            { color: 'blue', value: 'Hola 111111001', label: 'Hola 111111001' },
-            {
-              color: 'blue',
-              value: 'Hola 1111111001',
-              label: 'Hola 1111111001',
-            },
             { color: 'green', value: 'Hola 2', label: 'Hola 2' },
             { color: 'gray', value: 'Hola 3', label: 'Hola 3' },
             { color: 'blue', value: 'Hola 4', label: 'Hola 4' },
@@ -79,7 +66,6 @@ export const selectNoButton = () => (
       <Cell xs={12}>
         <AntdSelect
           mode="multiple"
-          isPaginated
           pageSize={10}
           options={[
             { color: 'blue', value: 'Hola 1', label: 'Hola 1' },

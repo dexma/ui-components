@@ -1,107 +1,19 @@
 import { Select } from 'antd';
 import PropTypes from 'prop-types';
-import React, { forwardRef, useCallback, useState } from 'react';
+import React, { forwardRef, useCallback, useRef, useState } from 'react';
 import { withTheme } from 'styled-components';
-import { get } from 'lodash';
-import theme from '../styles/theme';
-import Icon from './Icon';
+import { get, omit } from 'lodash';
+import theme from '../../styles/theme';
+import Icon from '../Icon';
 import {
   SelectOptionStyle,
   StyledAntdSelectDropdown,
-  StyledButtonSelectAll,
-  StyledPaginationPageWrapper,
   StyledSelectOption,
   StyledSpanOption,
   StyledTagOption,
-} from '../styles/components/StyledAntdSelect';
-import { Row } from './Row';
-import Cell from './Cell';
-
-const ButtonPaginationSelector = ({
-  handleSelectAll,
-  pageSize,
-  currentPage,
-  options,
-  totalPages,
-  onPageChange,
-}) => {
-  const [isPrevDisabled, setIsPrevDisabled] = useState(currentPage === 1);
-  const [isNextDisabled, setIsNextDisabled] = useState(
-    currentPage === totalPages
-  );
-
-  const handlePrevClick = () => {
-    const newPage = currentPage - 1;
-    if (newPage <= totalPages && newPage >= 1) {
-      onPageChange(newPage);
-      setIsPrevDisabled(newPage === 1);
-      setIsNextDisabled(false);
-    }
-  };
-
-  const handleNextClick = () => {
-    const newPage = currentPage + 1;
-    if (newPage <= totalPages && newPage >= 1) {
-      onPageChange(newPage);
-      setIsPrevDisabled(false);
-      setIsNextDisabled(newPage === totalPages);
-    }
-  };
-  return (
-    <Row
-      style={{
-        marginRight: '0.5rem',
-        marginLeft: '0.5rem',
-        marginTop: '0.5rem',
-      }}
-    >
-      <StyledPaginationPageWrapper
-        xs={1}
-        disabled={isPrevDisabled}
-        onClick={handlePrevClick}
-      >
-        <Icon
-          style={{
-            display: 'block',
-            margin: 'auto',
-          }}
-          name="chevron_left_l"
-          color={isPrevDisabled ? 'gray300' : 'gray900'}
-          size={12}
-        />
-      </StyledPaginationPageWrapper>
-      <Cell>
-        <StyledButtonSelectAll
-          variant="outline"
-          style={{ width: '100%' }}
-          data-testid="button-select-all"
-          onClick={() => handleSelectAll(currentPage, options)}
-        >
-          {`Select ${1 + (currentPage - 1) * pageSize} - ${
-            pageSize * currentPage > options.length
-              ? options.length
-              : pageSize * currentPage
-          } items ${options.length}`}
-        </StyledButtonSelectAll>
-      </Cell>
-      <StyledPaginationPageWrapper
-        xs={1}
-        disabled={isNextDisabled}
-        onClick={handleNextClick}
-      >
-        <Icon
-          style={{
-            display: 'block',
-            margin: 'auto',
-          }}
-          name="chevron_right_l"
-          color={isNextDisabled ? 'gray300' : 'gray900'}
-          size={12}
-        />
-      </StyledPaginationPageWrapper>
-    </Row>
-  );
-};
+} from '../../styles/components/StyledAntdSelect';
+import { getOptionsBySearch } from './selectUtils';
+import ButtonPaginationSelector from './ButtonPaginationSelector';
 
 const tagRender = (props, options) => {
   const { label, value, closable, onClose } = props;
@@ -117,6 +29,7 @@ const tagRender = (props, options) => {
       closable={closable}
       onClose={onClose}
       style={{ marginRight: 4, padding: '0px 4px' }}
+      data-testid={`tag-option-selected-${value}`}
     >
       {label}
     </StyledTagOption>
@@ -130,13 +43,17 @@ const dropdownRender = (
   currentPage,
   options,
   handleChangePage,
-  handleSelectAll
+  handleSelectAll,
+  text,
+  searchValue,
+  showDropdown,
+  mode
 ) => {
   return (
     <>
-      <StyledAntdSelectDropdown>
+      <StyledAntdSelectDropdown data-testid="select-dropdown">
         {menu}
-        {
+        {pageSize !== undefined && ['multiple', 'tags'].includes(mode) && (
           <ButtonPaginationSelector
             pageSize={pageSize}
             totalPages={totalPages}
@@ -144,8 +61,11 @@ const dropdownRender = (
             handleSelectAll={handleSelectAll}
             onPageChange={handleChangePage}
             options={options}
+            text={text}
+            searchValue={searchValue}
+            showDropdown={showDropdown}
           />
-        }
+        )}
       </StyledAntdSelectDropdown>
     </>
   );
@@ -155,30 +75,22 @@ const getBackgroundColor = (theme, color) => {
   return get(theme.color, color);
 };
 
-const optionsRenderer = (
-  options,
-  // theme,
-  selectedValues
-  // pageSize,
-  // currentPage,
-  // searchValue
-) => {
-  // const optionsToRender = getOptionsBySearch(options, searchValue);
-  // const startIndex = (currentPage - 1) * pageSize;
-  // const endIndex = startIndex + pageSize;
-  // const slicedOptions =
-  //   pageSize > 0
-  //     ? optionsToRender.slice(startIndex, endIndex)
-  //     : optionsToRender;
+const optionsRenderer = (options, selectedValues, searchValue, pageSize) => {
+  const optionsToRender =
+    searchValue !== '' ? options : getOptionsBySearch(options, searchValue);
   return (
     <>
-      {options.map(option => {
+      {optionsToRender.map(option => {
         const backgroundColor = selectedValues.includes(option.value)
           ? getBackgroundColor(theme, option.color)
           : '#FFFFFF';
         return (
           <StyledSelectOption
             key={option.value}
+            disabled={
+              selectedValues.length >= pageSize &&
+              !selectedValues.includes(option.value)
+            }
             value={option.value}
             theme={theme}
             color={option.color}
@@ -202,11 +114,20 @@ const optionsRenderer = (
 };
 
 const AntdSelect = forwardRef((props, ref) => {
-  const { dataId, defaultValues, mode, options, pageSize } = props;
+  const { dataId, defaultValues, mode, options, pageSize, text } = props;
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedValues, setSelectedValues] = useState(defaultValues);
-  // const antdSelectProps = omit(props, []);
+  const antdSelectProps = omit(props, [
+    'dataId',
+    'defaultValues',
+    'mode',
+    'options',
+    'pageSize',
+    'text',
+  ]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchValue, setSearchValue] = useState('');
+  const sValue = useRef('');
   const totalPages = pageSize ? Math.ceil(options.length / pageSize) : 1;
 
   const handleChangePage = useCallback(page => {
@@ -214,20 +135,41 @@ const AntdSelect = forwardRef((props, ref) => {
   }, []);
 
   const handleSelectAll = () => {
+    console.log('handleSelectAll');
     const actualPage = currentPage;
-    const selectedOptions = options;
-    // pageSize > 0 ? getOptionsBySearch(options, searchValue) : options;
+    const parsedSearchValue = searchValue.includes('*')
+      ? searchValue.split('*')[0]
+      : searchValue;
+    const selectedOptions =
+      searchValue !== ''
+        ? getOptionsBySearch(options, parsedSearchValue)
+        : options;
     const startIndex = (actualPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const slicedOptions = selectedOptions.slice(startIndex, endIndex);
-
     const allValues = slicedOptions.map(option => option.value);
 
     setSelectedValues(prevSelected => {
-      const selected = allValues.filter(value => !prevSelected.includes(value));
+      const selected = allValues
+        .filter(value => !prevSelected.includes(value))
+        .splice(0, pageSize - prevSelected.length);
       const values = [...prevSelected, ...selected];
+      console.log(values);
       return values;
     });
+  };
+
+  const filterOption = (input, option) => {
+    if (input.includes('*')) {
+      const parsedSearchValue = input.split('*')[0];
+      return option.value
+        .toLowerCase()
+        .includes(parsedSearchValue.toLowerCase());
+    }
+    if (input !== '' && !input.includes('*')) {
+      return option.value.toLowerCase().includes(input.toLowerCase());
+    }
+    return false;
   };
 
   return (
@@ -240,35 +182,52 @@ const AntdSelect = forwardRef((props, ref) => {
         data-testid={`${dataId}`}
         defaultValue={selectedValues}
         dropdownRender={menu =>
-          pageSize
-            ? dropdownRender(
-                menu,
-                pageSize,
-                totalPages,
-                currentPage,
-                options,
-                handleChangePage,
-                handleSelectAll
-              )
-            : menu
+          dropdownRender(
+            menu,
+            pageSize,
+            totalPages,
+            currentPage,
+            options,
+            handleChangePage,
+            handleSelectAll,
+            text,
+            searchValue,
+            showDropdown,
+            mode
+          )
         }
+        filterOption={filterOption}
         maxTagCount="responsive"
         menuItemSelectedIcon={<Icon color="white" name="close" size="small" />}
         mode={mode}
+        searchValue={sValue.current}
         showArrow
+        showSearch
+        open={showDropdown}
+        ref={ref}
+        style={{ width: '100%', zIndex: 1001 }}
+        tagRender={props => tagRender(props, options)}
+        value={selectedValues}
         onChange={values => {
           setSelectedValues(values);
         }}
         onFocus={() => {
           setShowDropdown(true);
         }}
-        open={showDropdown}
-        ref={ref}
-        style={{ width: '100%', zIndex: 1001 }}
-        tagRender={props => tagRender(props, options)}
-        value={selectedValues}
+        onSearch={searchText => {
+          setSearchValue(searchText);
+          sValue.current = searchText;
+          return searchText;
+        }}
+        onInputKeyDown={e => {
+          if (e.key === 'Enter' && sValue.current.includes('*')) {
+            handleSelectAll(currentPage, options);
+            e.stopPropagation();
+          }
+        }}
+        {...antdSelectProps}
       >
-        {optionsRenderer(options, selectedValues)}
+        {optionsRenderer(options, selectedValues, searchValue, pageSize)}
       </Select>
       {showDropdown && (
         <div
@@ -277,8 +236,9 @@ const AntdSelect = forwardRef((props, ref) => {
             background: 'transparent',
           }}
           onClick={() => {
-            setShowDropdown(false);
             setCurrentPage(1);
+            setSearchValue('');
+            setShowDropdown(false);
           }}
         />
       )}
@@ -294,12 +254,24 @@ const propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({})),
   pageSize: PropTypes.number,
   theme: PropTypes.shape({}),
+  text: PropTypes.shape({
+    select: PropTypes.string,
+    content: PropTypes.string,
+    search: PropTypes.string,
+  }),
 };
 const defaultProps = {
+  dataId: 'select',
   defaultValues: [],
   options: [],
+  mode: 'multiple',
+  text: {
+    select: 'Select',
+    all: 'all',
+    connector: 'of',
+    content: '"All items"',
+  },
   theme: theme,
-  dataId: 'select',
 };
 
 AntdSelect.propTypes = propTypes;

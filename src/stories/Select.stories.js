@@ -14,10 +14,10 @@ const options = [
     background: 'teal500',
     color: 'white',
   },
-  { value: '3', label: '3st Floor', background: 'orange' },
+  { value: '3', label: '3rd Floor', background: 'orange' },
   {
     value: '4',
-    label: '45st Floor [04. Luxemburg Building]',
+    label: '45th Floor [04. Luxemburg Building]',
     background: 'red',
     color: 'white',
   },
