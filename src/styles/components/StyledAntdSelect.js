@@ -3,6 +3,8 @@ import { Pagination, Select } from 'antd';
 import Button from '../../components/Button';
 import Tag from '../../components/Tag';
 import Cell from '../../components/Cell';
+import Icon from '../../components/Icon';
+import Row from '../../components/Row';
 
 export const StyledAntDPagination = styled(Pagination)``;
 
@@ -17,14 +19,20 @@ export const StyledPaginationPageWrapper = styled(Cell)`
   justify-items: center;
 `;
 
+export const StyledIconButtonPagination = styled(Icon)`
+  display: block;
+  margin: auto;
+`;
+
+export const StyledRowButtonPagination = styled(Row)`
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+`;
+
 export const StyledSelectOption = styled(Select.Option)`
   .ant-select-item-option-content {
     background-color: ${props => props.color};
-    // padding: 0;
-    // margin: 2px 16px 2px 8px;
-    // display: flex;
-    // border-radius: 4px;
-    // align-items: center;
   }
 `;
 
@@ -77,6 +85,9 @@ const getSelectOptionStyle = css`
   .ant-select-item,
   .ant-select-item-empty {
     padding: 3px 12px;
+  }
+  .ant-select {
+    z-index: 1001;
   }
 `;
 

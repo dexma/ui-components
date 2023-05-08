@@ -12,10 +12,10 @@ import {
   StyledSpanOption,
   StyledTagOption,
 } from '../../styles/components/StyledAntdSelect';
-import { getOptionsBySearch } from './selectUtils';
+import { filterOption, getOptionsBySearch } from './selectUtils';
 import ButtonPaginationSelector from './ButtonPaginationSelector';
 
-const tagRender = (props, options) => {
+export const tagRenderButtonPagination = (props, options) => {
   const { label, value, closable, onClose } = props;
   const onPreventMouseDown = event => {
     event.preventDefault();
@@ -36,10 +36,9 @@ const tagRender = (props, options) => {
   );
 };
 
-const dropdownRender = (
+export const dropdownRenderSelectAntd = (
   menu,
   pageSize,
-  totalPages,
   currentPage,
   options,
   handleChangePage,
@@ -56,7 +55,6 @@ const dropdownRender = (
         {pageSize !== undefined && ['multiple', 'tags'].includes(mode) && (
           <ButtonPaginationSelector
             pageSize={pageSize}
-            totalPages={totalPages}
             currentPage={currentPage}
             handleSelectAll={handleSelectAll}
             onPageChange={handleChangePage}
@@ -71,18 +69,57 @@ const dropdownRender = (
   );
 };
 
-const getBackgroundColor = (theme, color) => {
-  return get(theme.color, color);
+export const renderSpanBoldMatchOption = (option, searchValue) => {
+  if (searchValue === '') {
+    return (
+      <StyledSpanOption data-testid={`option-span-${option}`}>
+        {option}
+      </StyledSpanOption>
+    );
+  }
+  const parsedSearchValue = searchValue.includes('*')
+    ? searchValue.split('*')[0]
+    : searchValue;
+  const matchIndex = option
+    .toLowerCase()
+    .indexOf(parsedSearchValue.toLowerCase());
+  if (matchIndex === -1) {
+    return (
+      <StyledSpanOption data-testid={`option-span-${option}`}>
+        {option}
+      </StyledSpanOption>
+    );
+  }
+
+  const beforeMatch = option.substring(0, matchIndex);
+  const match = option.substring(
+    matchIndex,
+    matchIndex + parsedSearchValue.length
+  );
+  const afterMatch = option.substring(matchIndex + parsedSearchValue.length);
+
+  return (
+    <StyledSpanOption data-testid={`option-span-${option}-bold`}>
+      {beforeMatch}
+      <strong>{match}</strong>
+      {afterMatch}
+    </StyledSpanOption>
+  );
 };
 
-const optionsRenderer = (options, selectedValues, searchValue, pageSize) => {
+export const optionsRenderer = (
+  options,
+  selectedValues,
+  searchValue,
+  pageSize
+) => {
   const optionsToRender =
     searchValue !== '' ? options : getOptionsBySearch(options, searchValue);
   return (
     <>
       {optionsToRender.map(option => {
         const backgroundColor = selectedValues.includes(option.value)
-          ? getBackgroundColor(theme, option.color)
+          ? get(theme.color, option.color)
           : '#FFFFFF';
         return (
           <StyledSelectOption
@@ -98,13 +135,14 @@ const optionsRenderer = (options, selectedValues, searchValue, pageSize) => {
               backgroundColor,
               borderRadius: '4px',
             }}
+            data-testid={`select-option-${option.value}`}
           >
             {selectedValues.includes(option.value) ? (
               <StyledTagOption color={option.color}>
                 {option.label}
               </StyledTagOption>
             ) : (
-              <StyledSpanOption>{option.label}</StyledSpanOption>
+              renderSpanBoldMatchOption(option.label, searchValue)
             )}
           </StyledSelectOption>
         );
@@ -128,14 +166,12 @@ const AntdSelect = forwardRef((props, ref) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState('');
   const sValue = useRef('');
-  const totalPages = pageSize ? Math.ceil(options.length / pageSize) : 1;
 
   const handleChangePage = useCallback(page => {
     setCurrentPage(page);
   }, []);
 
   const handleSelectAll = () => {
-    console.log('handleSelectAll');
     const actualPage = currentPage;
     const parsedSearchValue = searchValue.includes('*')
       ? searchValue.split('*')[0]
@@ -154,22 +190,8 @@ const AntdSelect = forwardRef((props, ref) => {
         .filter(value => !prevSelected.includes(value))
         .splice(0, pageSize - prevSelected.length);
       const values = [...prevSelected, ...selected];
-      console.log(values);
       return values;
     });
-  };
-
-  const filterOption = (input, option) => {
-    if (input.includes('*')) {
-      const parsedSearchValue = input.split('*')[0];
-      return option.value
-        .toLowerCase()
-        .includes(parsedSearchValue.toLowerCase());
-    }
-    if (input !== '' && !input.includes('*')) {
-      return option.value.toLowerCase().includes(input.toLowerCase());
-    }
-    return false;
   };
 
   return (
@@ -182,10 +204,9 @@ const AntdSelect = forwardRef((props, ref) => {
         data-testid={`${dataId}`}
         defaultValue={selectedValues}
         dropdownRender={menu =>
-          dropdownRender(
+          dropdownRenderSelectAntd(
             menu,
             pageSize,
-            totalPages,
             currentPage,
             options,
             handleChangePage,
@@ -196,6 +217,7 @@ const AntdSelect = forwardRef((props, ref) => {
             mode
           )
         }
+        optionFilterProp="label"
         filterOption={filterOption}
         maxTagCount="responsive"
         menuItemSelectedIcon={<Icon color="white" name="close" size="small" />}
@@ -205,8 +227,7 @@ const AntdSelect = forwardRef((props, ref) => {
         showSearch
         open={showDropdown}
         ref={ref}
-        style={{ width: '100%', zIndex: 1001 }}
-        tagRender={props => tagRender(props, options)}
+        tagRender={props => tagRenderButtonPagination(props, options)}
         value={selectedValues}
         onChange={values => {
           setSelectedValues(values);

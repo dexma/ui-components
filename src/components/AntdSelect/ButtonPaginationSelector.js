@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Row from '../Row';
 import { getOptionsBySearch } from './selectUtils';
 import Cell from '../Cell';
 import {
   StyledButtonSelectAll,
+  StyledIconButtonPagination,
   StyledPaginationPageWrapper,
+  StyledRowButtonPagination,
 } from '../../styles/components/StyledAntdSelect';
-import Icon from '../Icon';
 
-const getButtonText = (
+export const getButtonText = (
   text,
   currentPage,
   pageSize,
@@ -34,7 +34,7 @@ const getButtonText = (
       : ``
   } (${numElements})`;
   return (
-    <span>
+    <span data-testid="text-pagination-selector">
       {textValue}
       <strong>{boldText}</strong>
       {lastValue}
@@ -42,12 +42,21 @@ const getButtonText = (
   );
 };
 
+export const getTotalPages = (pageSize, searchValue, options) => {
+  if (pageSize === undefined) return 1;
+  if (searchValue !== '') {
+    return Math.ceil(
+      getOptionsBySearch(options, searchValue).length / pageSize
+    );
+  }
+  return Math.ceil(options.length / pageSize);
+};
+
 const ButtonPaginationSelector = ({
   handleSelectAll,
   pageSize,
   currentPage,
   options,
-  totalPages,
   onPageChange,
   text,
   searchValue,
@@ -56,6 +65,7 @@ const ButtonPaginationSelector = ({
   const [showPagination, setShowPagination] = useState(
     pageSize !== undefined && pageSize < options.length
   );
+  const totalPages = getTotalPages(pageSize, searchValue, options);
   const [showButton, setShowButton] = useState(options.length > 0);
   const [isPrevDisabled, setIsPrevDisabled] = useState(currentPage === 1);
   const [isNextDisabled, setIsNextDisabled] = useState(
@@ -119,15 +129,11 @@ const ButtonPaginationSelector = ({
     searchValue !== ''
       ? getOptionsBySearch(options, searchValue).length
       : options.length;
+  const optionsAvailable =
+    searchValue !== '' ? getOptionsBySearch(options, searchValue) : options;
 
   return (
-    <Row
-      style={{
-        marginRight: '0.5rem',
-        marginLeft: '0.5rem',
-        marginTop: '0.5rem',
-      }}
-    >
+    <StyledRowButtonPagination>
       {showPagination && (
         <StyledPaginationPageWrapper
           data-testid="button-prev"
@@ -135,11 +141,7 @@ const ButtonPaginationSelector = ({
           disabled={isPrevDisabled}
           onClick={handlePrevClick}
         >
-          <Icon
-            style={{
-              display: 'block',
-              margin: 'auto',
-            }}
+          <StyledIconButtonPagination
             name="chevron_left_l"
             color={isPrevDisabled ? 'gray300' : 'gray900'}
             size={12}
@@ -150,7 +152,6 @@ const ButtonPaginationSelector = ({
         <Cell>
           <StyledButtonSelectAll
             variant="outline"
-            style={{ width: '100%' }}
             data-testid="button-select-all"
             onClick={() => {
               handleSelectAll(currentPage, options);
@@ -160,7 +161,7 @@ const ButtonPaginationSelector = ({
               text,
               currentPage,
               pageSize,
-              options,
+              optionsAvailable,
               searchValue,
               numOptionsAvailable
             )}
@@ -174,18 +175,14 @@ const ButtonPaginationSelector = ({
           disabled={isNextDisabled}
           onClick={handleNextClick}
         >
-          <Icon
-            style={{
-              display: 'block',
-              margin: 'auto',
-            }}
+          <StyledIconButtonPagination
             name="chevron_right_l"
             color={isNextDisabled ? 'gray300' : 'gray900'}
             size={12}
           />
         </StyledPaginationPageWrapper>
       )}
-    </Row>
+    </StyledRowButtonPagination>
   );
 };
 
