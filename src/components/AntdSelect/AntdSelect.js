@@ -1,6 +1,12 @@
 import { Select } from 'antd';
 import PropTypes from 'prop-types';
-import React, { forwardRef, useCallback, useRef, useState } from 'react';
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { withTheme } from 'styled-components';
 import { get, omit } from 'lodash';
 import theme from '../../styles/theme';
@@ -11,9 +17,18 @@ import {
   StyledSelectOption,
   StyledSpanOption,
   StyledTagOption,
+  StyledTagSelectedOption,
 } from '../../styles/components/StyledAntdSelect';
-import { filterOption, getOptionsBySearch } from './selectUtils';
+import {
+  filterOption,
+  findSubstringIndices,
+  getOptionsBySearch,
+  getRegExpBasedOnInput,
+} from './selectUtils';
 import ButtonPaginationSelector from './ButtonPaginationSelector';
+
+const ALL_CHARACTER = '*';
+const ENTER_CHARACTER = 'Enter';
 
 export const tagRenderButtonPagination = (props, options) => {
   const { label, value, closable, onClose } = props;
@@ -23,7 +38,7 @@ export const tagRenderButtonPagination = (props, options) => {
   };
 
   return (
-    <StyledTagOption
+    <StyledTagSelectedOption
       color={options.filter(element => element.value === value)[0].color}
       onMouseDown={onPreventMouseDown}
       closable={closable}
@@ -32,7 +47,7 @@ export const tagRenderButtonPagination = (props, options) => {
       data-testid={`tag-option-selected-${value}`}
     >
       {label}
-    </StyledTagOption>
+    </StyledTagSelectedOption>
   );
 };
 
@@ -69,40 +84,33 @@ export const dropdownRenderSelectAntd = (
   );
 };
 
-export const renderSpanBoldMatchOption = (option, searchValue) => {
-  if (searchValue === '') {
-    return (
-      <StyledSpanOption data-testid={`option-span-${option}`}>
-        {option}
-      </StyledSpanOption>
-    );
+export const renderUnselectedOption = (option, searchValue) => {
+  if (
+    searchValue !== '' &&
+    (![...searchValue].every(char => char === '*' || char === ' ') ||
+      !searchValue.includes(ALL_CHARACTER))
+  ) {
+    const regex = getRegExpBasedOnInput(searchValue);
+    const indices = findSubstringIndices(option, regex);
+    if (indices.start !== undefined || indices.end !== undefined) {
+      return (
+        <StyledSpanOption
+          data-testid={`option-span-${option}-bold`}
+          value={option}
+        >
+          {[...option].map((letter, index) => {
+            const isBold = searchValue.includes(ALL_CHARACTER)
+              ? index === indices.start || index === indices.end
+              : index >= indices.start && index <= indices.end;
+            return isBold ? <b key={index}>{letter}</b> : letter;
+          })}
+        </StyledSpanOption>
+      );
+    }
   }
-  const parsedSearchValue = searchValue.includes('*')
-    ? searchValue.split('*')[0]
-    : searchValue;
-  const matchIndex = option
-    .toLowerCase()
-    .indexOf(parsedSearchValue.toLowerCase());
-  if (matchIndex === -1) {
-    return (
-      <StyledSpanOption data-testid={`option-span-${option}`}>
-        {option}
-      </StyledSpanOption>
-    );
-  }
-
-  const beforeMatch = option.substring(0, matchIndex);
-  const match = option.substring(
-    matchIndex,
-    matchIndex + parsedSearchValue.length
-  );
-  const afterMatch = option.substring(matchIndex + parsedSearchValue.length);
-
   return (
-    <StyledSpanOption data-testid={`option-span-${option}-bold`}>
-      {beforeMatch}
-      <strong>{match}</strong>
-      {afterMatch}
+    <StyledSpanOption data-testid={`option-span-${option}`}>
+      {option}
     </StyledSpanOption>
   );
 };
@@ -138,11 +146,11 @@ export const optionsRenderer = (
             data-testid={`select-option-${option.value}`}
           >
             {selectedValues.includes(option.value) ? (
-              <StyledTagOption color={option.color}>
+              <StyledTagOption color={option.color} value={option.label}>
                 {option.label}
               </StyledTagOption>
             ) : (
-              renderSpanBoldMatchOption(option.label, searchValue)
+              renderUnselectedOption(option.label, searchValue)
             )}
           </StyledSelectOption>
         );
@@ -152,7 +160,15 @@ export const optionsRenderer = (
 };
 
 const AntdSelect = forwardRef((props, ref) => {
-  const { dataId, defaultValues, mode, options, pageSize, text } = props;
+  const {
+    dataId,
+    defaultValues,
+    mode,
+    options,
+    pageSize,
+    text,
+    placeholder,
+  } = props;
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedValues, setSelectedValues] = useState(defaultValues);
   const antdSelectProps = omit(props, [
@@ -167,31 +183,24 @@ const AntdSelect = forwardRef((props, ref) => {
   const [searchValue, setSearchValue] = useState('');
   const sValue = useRef('');
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchValue]);
+
   const handleChangePage = useCallback(page => {
     setCurrentPage(page);
   }, []);
 
   const handleSelectAll = () => {
     const actualPage = currentPage;
-    const parsedSearchValue = searchValue.includes('*')
-      ? searchValue.split('*')[0]
-      : searchValue;
     const selectedOptions =
-      searchValue !== ''
-        ? getOptionsBySearch(options, parsedSearchValue)
-        : options;
+      searchValue !== '' ? getOptionsBySearch(options, searchValue) : options;
     const startIndex = (actualPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const slicedOptions = selectedOptions.slice(startIndex, endIndex);
     const allValues = slicedOptions.map(option => option.value);
 
-    setSelectedValues(prevSelected => {
-      const selected = allValues
-        .filter(value => !prevSelected.includes(value))
-        .splice(0, pageSize - prevSelected.length);
-      const values = [...prevSelected, ...selected];
-      return values;
-    });
+    setSelectedValues(() => allValues);
   };
 
   return (
@@ -217,11 +226,12 @@ const AntdSelect = forwardRef((props, ref) => {
             mode
           )
         }
-        optionFilterProp="label"
+        optionFilterProp="children"
         filterOption={filterOption}
         maxTagCount="responsive"
         menuItemSelectedIcon={<Icon color="white" name="close" size="small" />}
         mode={mode}
+        placeholder={placeholder}
         searchValue={sValue.current}
         showArrow
         showSearch
@@ -241,7 +251,10 @@ const AntdSelect = forwardRef((props, ref) => {
           return searchText;
         }}
         onInputKeyDown={e => {
-          if (e.key === 'Enter' && sValue.current.includes('*')) {
+          if (
+            e.key === ENTER_CHARACTER &&
+            sValue.current.includes(ALL_CHARACTER)
+          ) {
             handleSelectAll(currentPage, options);
             e.stopPropagation();
           }
@@ -274,6 +287,7 @@ const propTypes = {
   mode: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.shape({})),
   pageSize: PropTypes.number,
+  placeholder: PropTypes.string,
   theme: PropTypes.shape({}),
   text: PropTypes.shape({
     select: PropTypes.string,
@@ -286,6 +300,7 @@ const defaultProps = {
   defaultValues: [],
   options: [],
   mode: 'multiple',
+  placeholder: 'Select',
   text: {
     select: 'Select',
     all: 'all',

@@ -71,6 +71,12 @@ export const StyledSpanOption = styled.span`
   margin: 0px;
 `;
 
+export const StyledTagSelectedOption = styled(Tag)`
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+`;
+
 export const StyledTagOption = styled(Tag)`
   font-weight: 400;
   font-size: 14px;
@@ -88,6 +94,9 @@ const getSelectOptionStyle = css`
   }
   .ant-select {
     z-index: 1001;
+  }
+  .ant-select-selection-overflow-item > .ant-select-selection-item {
+    border-radius: 100px;
   }
 `;
 

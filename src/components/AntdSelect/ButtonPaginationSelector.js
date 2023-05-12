@@ -125,6 +125,11 @@ const ButtonPaginationSelector = ({
     }
   }, [options, searchValue]);
 
+  useEffect(() => {
+    setIsPrevDisabled(true);
+    setIsNextDisabled(false);
+  }, [searchValue]);
+
   const numOptionsAvailable =
     searchValue !== ''
       ? getOptionsBySearch(options, searchValue).length

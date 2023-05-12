@@ -3,7 +3,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import AntdSelect, {
   dropdownRenderSelectAntd,
-  renderSpanBoldMatchOption,
+  renderUnselectedOption,
   tagRenderButtonPagination,
 } from '../../src/components/AntdSelect/AntdSelect';
 import ButtonPaginationSelector, {
@@ -47,17 +47,38 @@ describe('AntdSelect', () => {
       });
     });
     describe('filterOption', () => {
-      test('should return false when there is no search value', () => {
-        const result = filterOption('', options[0]);
-        expect(result).toEqual(false);
+      test('should return true when there is no search value, search value is empty or only has "*"', () => {
+        expect(filterOption('', options[0])).toEqual(true);
+        expect(filterOption('***', options[0])).toEqual(true);
+        expect(filterOption('  ', options[0])).toEqual(true);
       });
       test('should return true if the option matches with the input value', () => {
-        const result = filterOption('Test 1', options[0]);
-        expect(result).toEqual(true);
+        const result = filterOption('Test 1', {
+          children: { props: { value: 'Test 1' } },
+          label: 'Test 1',
+        });
+        expect(result).toEqual(['Test 1']);
       });
       test('should return true if the option matches with the substring previous to *', () => {
-        const result = filterOption('Random *', options[6]);
-        expect(result).toEqual(true);
+        const result = filterOption('Random*', {
+          children: { props: { value: 'Random Test 1' } },
+          label: 'Random Test 1',
+        });
+        expect(result).toEqual(['Random']);
+      });
+      test('should return true if the option matches with the substring after to *', () => {
+        const result = filterOption('* 1', {
+          children: { props: { value: 'Test 1' } },
+          label: 'Test 1',
+        });
+        expect(result).toEqual([' 1']);
+      });
+      test('should return true if the option matches with the substring before and after to *', () => {
+        const result = filterOption('t* 1', {
+          children: { props: { value: 'Test 1' } },
+          label: 'Test 1',
+        });
+        expect(result).toEqual(['t 1']);
       });
     });
   });
@@ -377,24 +398,18 @@ describe('AntdSelect', () => {
         expect(buttonSelectAll).toBeNull();
       });
     });
-    describe('renderSpanBoldMatchOption', () => {
-      test('should render a span without strong element', () => {
-        const option = { value: 'Test 1', label: 'Test 1' };
-        const searchValue = '';
-        render(renderSpanBoldMatchOption(option.label, searchValue));
-        const span = screen.getByTestId('option-span-Test 1');
-        expect(span).toBeTruthy();
-        const spanBold = screen.queryByTestId('option-span-Test 1-bold');
-        expect(spanBold).toBeNull();
+    describe('renderUnselectedOption', () => {
+      test('should render an simple option when no search value', () => {
+        const option = 'Test 1';
+        render(renderUnselectedOption(option, ''));
+        const optionWrapper = screen.getByTestId('option-span-Test 1');
+        expect(optionWrapper).toBeTruthy();
       });
-      test('should render a span with strong element when search value matches', () => {
-        const option = { value: 'Test 1', label: 'Test 1' };
-        const searchValue = 'Test';
-        render(renderSpanBoldMatchOption(option.label, searchValue));
-        const span = screen.queryByTestId('option-span-Test 1');
-        expect(span).toBeNull();
-        const spanBold = screen.getByTestId('option-span-Test 1-bold');
-        expect(spanBold).toBeTruthy();
+      test('should render an bold option when search value matches', () => {
+        const option = 'Test 1';
+        render(renderUnselectedOption(option, 'Test'));
+        const optionWrapper = screen.getByTestId('option-span-Test 1-bold');
+        expect(optionWrapper).toBeTruthy();
       });
     });
   });

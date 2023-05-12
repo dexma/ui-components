@@ -24,30 +24,54 @@ export const select = () => (
           style={{ width: '100%' }}
           pageSize={10}
           options={[
-            { color: 'blue', value: 'Hola 1', label: 'Hola 1' },
-            { color: 'green', value: 'Hola 2', label: 'Hola 2' },
-            { color: 'gray', value: 'Hola 3', label: 'Hola 3' },
-            { color: 'blue', value: 'Hola 4', label: 'Hola 4' },
-            { color: 'green', value: 'Hola 5', label: 'Hola 5' },
-            { color: 'gray', value: 'Hola 6', label: 'Hola 6' },
-            { color: 'blue', value: 'Hola 7', label: 'Hola 7' },
-            { color: 'green', value: 'Hola 8', label: 'Hola 8' },
-            { color: 'gray', value: 'Hola 9', label: 'Hola 9' },
-            { color: 'blue', value: 'Hola 10', label: 'Hola 10' },
-            { color: 'green', value: 'Hola 11', label: 'Hola 11' },
-            { color: 'gray', value: 'Hola 12', label: 'Hola 12' },
-            { color: 'blue', value: 'Hola 13', label: 'Hola 13' },
-            { color: 'green', value: 'Hola 14', label: 'Hola 14' },
-            { color: 'gray', value: 'Hola 15', label: 'Hola 15' },
-            { color: 'blue', value: 'Hola 16', label: 'Hola 16' },
-            { color: 'green', value: 'Hola 17', label: 'Hola 17' },
-            { color: 'gray', value: 'Hola 18', label: 'Hola 18' },
-            { color: 'blue', value: 'Hola 19', label: 'Hola 19' },
-            { color: 'green', value: 'Hola 20', label: 'Hola 20' },
-            { color: 'gray', value: 'Hola 21', label: 'Hola 21' },
-            { color: 'blue', value: 'Hola 22', label: 'Hola 22' },
-            { color: 'green', value: 'Hola 23', label: 'Hola 23' },
-            { color: 'gray', value: 'Hola 24', label: 'Hola 24' },
+            { value: '1', label: '1st Floor', color: 'blue' },
+            {
+              value: '2',
+              label: '1st Floor [02. Luxemburg Building]',
+              color: 'green',
+            },
+            { value: '3', label: '3rd Floor', color: 'orange' },
+            {
+              value: '4',
+              label: '45th Floor [04. Luxemburg Building]',
+              color: 'green',
+            },
+            {
+              value: '5',
+              color: 'blue',
+              label: '1st Floor [05. Luxemburg Building]',
+            },
+            {
+              value: '6',
+              color: 'green',
+              label: '1st Floor [06. Luxemburg Building]',
+            },
+            { value: '7', label: '2nd Floor', color: 'blue' },
+            {
+              value: '8',
+              label: '2nd Floor [03. Malaga Building]',
+              color: 'red',
+            },
+            {
+              value: '9',
+              label: '2nd Floor [04. New York Building]',
+              color: 'green',
+            },
+            {
+              value: '10',
+              label: '1st Floor [12. Hong Kong Building]',
+              color: 'blue',
+            },
+            {
+              value: '11',
+              label: '3rd Floor [02. Singapur Building]',
+              color: 'orange',
+            },
+            {
+              value: '12',
+              label: '2nd Floor [16.  Building]',
+              color: 'orange',
+            },
           ]}
         ></AntdSelect>
       </Cell>
@@ -68,30 +92,54 @@ export const selectNoButton = () => (
           mode="multiple"
           pageSize={10}
           options={[
-            { color: 'blue', value: 'Hola 1', label: 'Hola 1' },
-            { color: 'green', value: 'Hola 2', label: 'Hola 2' },
-            { color: 'gray', value: 'Hola 3', label: 'Hola 3' },
-            { color: 'blue', value: 'Hola 4', label: 'Hola 4' },
-            { color: 'green', value: 'Hola 5', label: 'Hola 5' },
-            { color: 'gray', value: 'Hola 6', label: 'Hola 6' },
-            { color: 'blue', value: 'Hola 7', label: 'Hola 7' },
-            { color: 'green', value: 'Hola 8', label: 'Hola 8' },
-            { color: 'gray', value: 'Hola 9', label: 'Hola 9' },
-            { color: 'blue', value: 'Hola 10', label: 'Hola 10' },
-            { color: 'green', value: 'Hola 11', label: 'Hola 11' },
-            { color: 'gray', value: 'Hola 12', label: 'Hola 12' },
-            { color: 'blue', value: 'Hola 13', label: 'Hola 13' },
-            { color: 'green', value: 'Hola 14', label: 'Hola 14' },
-            { color: 'gray', value: 'Hola 15', label: 'Hola 15' },
-            { color: 'blue', value: 'Hola 16', label: 'Hola 16' },
-            { color: 'green', value: 'Hola 17', label: 'Hola 17' },
-            { color: 'gray', value: 'Hola 18', label: 'Hola 18' },
-            { color: 'blue', value: 'Hola 19', label: 'Hola 19' },
-            { color: 'green', value: 'Hola 20', label: 'Hola 20' },
-            { color: 'gray', value: 'Hola 21', label: 'Hola 21' },
-            { color: 'blue', value: 'Hola 22', label: 'Hola 22' },
-            { color: 'green', value: 'Hola 23', label: 'Hola 23' },
-            { color: 'gray', value: 'Hola 24', label: 'Hola 24' },
+            { value: '1', label: '1st Floor', color: 'blue' },
+            {
+              value: '2',
+              label: '1st Floor [02. Luxemburg Building]',
+              color: 'green',
+            },
+            { value: '3', label: '3rd Floor', color: 'orange' },
+            {
+              value: '4',
+              label: '45th Floor [04. Luxemburg Building]',
+              color: 'green',
+            },
+            {
+              value: '5',
+              color: 'blue',
+              label: '1st Floor [05. Luxemburg Building]',
+            },
+            {
+              value: '6',
+              color: 'green',
+              label: '1st Floor [06. Luxemburg Building]',
+            },
+            { value: '7', label: '2nd Floor', color: 'blue' },
+            {
+              value: '8',
+              label: '2nd Floor [03. Malaga Building]',
+              color: 'red',
+            },
+            {
+              value: '9',
+              label: '2nd Floor [04. New York Building]',
+              color: 'green',
+            },
+            {
+              value: '10',
+              label: '1st Floor [12. Hong Kong Building]',
+              color: 'blue',
+            },
+            {
+              value: '11',
+              label: '3rd Floor [02. Singapur Building]',
+              color: 'orange',
+            },
+            {
+              value: '12',
+              label: '2nd Floor [16.  Building]',
+              color: 'orange',
+            },
           ]}
         ></AntdSelect>
       </Cell>
