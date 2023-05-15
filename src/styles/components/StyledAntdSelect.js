@@ -1,12 +1,17 @@
+/* eslint-disable no-nested-ternary */
 import styled, { createGlobalStyle, css } from 'styled-components';
-import { Pagination, Select } from 'antd';
+import { Select } from 'antd';
 import Button from '../../components/Button';
 import Tag from '../../components/Tag';
 import Cell from '../../components/Cell';
 import Icon from '../../components/Icon';
 import Row from '../../components/Row';
+import { primary } from '../theme';
+import { primaryColor } from '../selectors';
 
-export const StyledAntDPagination = styled(Pagination)``;
+const getColorHover = props => {
+  return props.theme ? primaryColor : primary;
+};
 
 export const StyledPaginationPageWrapper = styled(Cell)`
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
@@ -17,6 +22,13 @@ export const StyledPaginationPageWrapper = styled(Cell)`
   display: flex;
   align-items: center;
   justify-items: center;
+  :hover {
+    border: 1px solid
+      ${props => (props.disabled ? '#c9cccf' : getColorHover(props))};
+    svg {
+      fill: ${props => (props.disabled ? '#c9cccf' : getColorHover(props))};
+    }
+  }
 `;
 
 export const StyledIconButtonPagination = styled(Icon)`
@@ -25,9 +37,9 @@ export const StyledIconButtonPagination = styled(Icon)`
 `;
 
 export const StyledRowButtonPagination = styled(Row)`
-  margin-right: 0.5rem;
+  margin-right: 0px;
   margin-left: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 10px;
 `;
 
 export const StyledSelectOption = styled(Select.Option)`
@@ -90,13 +102,23 @@ const getSelectOptionStyle = css`
   }
   .ant-select-item,
   .ant-select-item-empty {
-    padding: 3px 12px;
+    padding: 3px 14px 3px 8px;
   }
   .ant-select {
     z-index: 1001;
   }
   .ant-select-selection-overflow-item > .ant-select-selection-item {
     border-radius: 100px;
+  }
+  .ant-select-dropdown {
+    padding: 8px 8px 8px 0px;
+  }
+  .rc-virtual-list-scrollbar.rc-virtual-list-scrollbar-show {
+    width: 6px !important;
+  }
+
+  .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+    border-color: ${props => (props.theme ? primaryColor : primary)};
   }
 `;
 

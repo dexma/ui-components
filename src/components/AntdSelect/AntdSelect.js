@@ -61,7 +61,8 @@ export const dropdownRenderSelectAntd = (
   text,
   searchValue,
   showDropdown,
-  mode
+  mode,
+  theme
 ) => {
   return (
     <>
@@ -75,6 +76,7 @@ export const dropdownRenderSelectAntd = (
             onPageChange={handleChangePage}
             options={options}
             text={text}
+            theme={theme}
             searchValue={searchValue}
             showDropdown={showDropdown}
           />
@@ -168,6 +170,7 @@ const AntdSelect = forwardRef((props, ref) => {
     pageSize,
     text,
     placeholder,
+    theme,
   } = props;
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedValues, setSelectedValues] = useState(defaultValues);
@@ -223,7 +226,8 @@ const AntdSelect = forwardRef((props, ref) => {
             text,
             searchValue,
             showDropdown,
-            mode
+            mode,
+            theme
           )
         }
         optionFilterProp="children"

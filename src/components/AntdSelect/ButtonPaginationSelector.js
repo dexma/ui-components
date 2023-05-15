@@ -59,6 +59,7 @@ const ButtonPaginationSelector = ({
   options,
   onPageChange,
   text,
+  theme,
   searchValue,
   showDropdown,
 }) => {
@@ -145,6 +146,7 @@ const ButtonPaginationSelector = ({
           xs={1}
           disabled={isPrevDisabled}
           onClick={handlePrevClick}
+          theme={theme}
         >
           <StyledIconButtonPagination
             name="chevron_left_l"
@@ -161,6 +163,7 @@ const ButtonPaginationSelector = ({
             onClick={() => {
               handleSelectAll(currentPage, options);
             }}
+            theme={theme}
           >
             {getButtonText(
               text,
@@ -179,6 +182,7 @@ const ButtonPaginationSelector = ({
           xs={1}
           disabled={isNextDisabled}
           onClick={handleNextClick}
+          theme={theme}
         >
           <StyledIconButtonPagination
             name="chevron_right_l"
