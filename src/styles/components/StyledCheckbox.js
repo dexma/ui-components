@@ -11,6 +11,7 @@ import {
 
 export const getStyledCheckBox = () => css`
     color: ${gray700};
+    align-items: center;
     .ant-checkbox {
         box-sizing: border-box;
         margin: 0;
