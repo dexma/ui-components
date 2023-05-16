@@ -4,6 +4,7 @@ export const getOptionsBySearch = (optionsAvailable, currentSearchValue) => {
   }
   if (![...currentSearchValue].every(char => char === '*' || char === ' ')) {
     const regex = getRegExpBasedOnInput(currentSearchValue);
+    if (regex === false) return false;
     return optionsAvailable.filter(option => {
       return option.label.match(regex);
     });
@@ -16,42 +17,49 @@ export const getOptionsBySearch = (optionsAvailable, currentSearchValue) => {
   return optionsAvailable;
 };
 
-export const regExpWithoutAllCharacter = input => new RegExp(input, 'g');
+export const regExpWithoutAllCharacter = input => new RegExp(input, 'ig');
 export const regExpWithSubstringsWithAllCharacter = string =>
-  new RegExp(`${string}`, 'g');
+  new RegExp(`${string}`, 'ig');
 export const regExpWith2Substrings = (initialString, finalString) =>
-  new RegExp(`${initialString}.*?${finalString}`, 'g');
+  new RegExp(`${initialString}.*?${finalString}`, 'ig');
 
 export const getRegExpBasedOnInput = input => {
-  if (input.includes('*')) {
-    const splitInput = input.split('*');
-    const initialPartSearchValue = splitInput[0];
-    const lastPartSearchValue = splitInput[1];
+  try {
+    if (input.includes('*')) {
+      const splitInput = input.split('*');
+      const initialPartSearchValue = splitInput[0];
+      const lastPartSearchValue = splitInput[1];
 
-    if (
-      initialPartSearchValue !== '' &&
-      initialPartSearchValue !== undefined &&
-      lastPartSearchValue === ''
-    ) {
-      return regExpWithSubstringsWithAllCharacter(initialPartSearchValue);
+      if (
+        initialPartSearchValue !== '' &&
+        initialPartSearchValue !== undefined &&
+        lastPartSearchValue === ''
+      ) {
+        return regExpWithSubstringsWithAllCharacter(initialPartSearchValue);
+      }
+      if (
+        initialPartSearchValue === '' &&
+        lastPartSearchValue !== '' &&
+        lastPartSearchValue !== undefined
+      ) {
+        return regExpWithSubstringsWithAllCharacter(lastPartSearchValue);
+      }
+      if (
+        initialPartSearchValue !== '' &&
+        lastPartSearchValue !== '' &&
+        initialPartSearchValue !== undefined &&
+        lastPartSearchValue !== undefined
+      ) {
+        return regExpWith2Substrings(
+          initialPartSearchValue,
+          lastPartSearchValue
+        );
+      }
     }
-    if (
-      initialPartSearchValue === '' &&
-      lastPartSearchValue !== '' &&
-      lastPartSearchValue !== undefined
-    ) {
-      return regExpWithSubstringsWithAllCharacter(lastPartSearchValue);
-    }
-    if (
-      initialPartSearchValue !== '' &&
-      lastPartSearchValue !== '' &&
-      initialPartSearchValue !== undefined &&
-      lastPartSearchValue !== undefined
-    ) {
-      return regExpWith2Substrings(initialPartSearchValue, lastPartSearchValue);
-    }
+    return regExpWithoutAllCharacter(input);
+  } catch (e) {
+    return false;
   }
-  return regExpWithoutAllCharacter(input);
 };
 
 export const findSubstringIndices = (string, regex) => {
@@ -66,6 +74,13 @@ export const findSubstringIndices = (string, regex) => {
   return matches;
 };
 
+export const singleOptionFilter = (input, option) => {
+  if (option.label) {
+    return option.label.toLowerCase().includes(input.toLowerCase());
+  }
+  return false;
+};
+
 export const filterOption = (input, option) => {
   if ([...input].every(char => char === '*' || char === ' ')) {
     return true;
@@ -73,6 +88,7 @@ export const filterOption = (input, option) => {
   if (![...input].every(char => char === '*' || char === ' ')) {
     if (option.children.props.value) {
       const regex = getRegExpBasedOnInput(input);
+      if (regex === false) return false;
       return option.children.props.value.match(regex);
     }
     return false;

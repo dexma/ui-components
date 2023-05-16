@@ -78,7 +78,7 @@ describe('AntdSelect', () => {
           children: { props: { value: 'Test 1' } },
           label: 'Test 1',
         });
-        expect(result).toEqual(['t 1']);
+        expect(result).toEqual(['Test 1']);
       });
     });
   });
