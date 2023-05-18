@@ -23,6 +23,7 @@ export const select = () => (
           mode="multiple"
           style={{ width: '100%' }}
           pageSize={10}
+          defaultValues={['3']}
           options={[
             { value: '1', label: '1st Floor', color: 'blue' },
             {

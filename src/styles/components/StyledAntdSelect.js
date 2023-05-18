@@ -1,18 +1,17 @@
 /* eslint-disable no-nested-ternary */
 import styled, { createGlobalStyle, css } from 'styled-components';
-import { Select } from 'antd';
 import { get } from 'lodash';
 import Button from '../../components/Button';
 import Tag from '../../components/Tag';
 import Cell from '../../components/Cell';
 import Icon from '../../components/Icon';
 import Row from '../../components/Row';
-import { primary } from '../theme';
+import { color, primary } from '../theme';
 import { primaryColor, white } from '../selectors';
 
-const hexToRGBA = (hex, a) => {
+export const hexToRGBA = (hex, a) => {
   let hexTemp = hex;
-  if (hex.startsWith('#')) {
+  if (hex !== undefined && hex.startsWith('#')) {
     hexTemp = hex.slice(1);
   }
 
@@ -62,12 +61,6 @@ export const StyledRowButtonPagination = styled(Row)`
   margin-right: 0px;
   margin-left: 0.5rem;
   margin-top: 10px;
-`;
-
-export const StyledSelectOption = styled(Select.Option)`
-  .ant-select-item-option-content {
-    background-color: ${props => props.color};
-  }
 `;
 
 export const StyledButtonSelectAll = styled(Button)`
@@ -126,10 +119,14 @@ export const StyledSpanOption = styled.span`
   margin: 0px;
 `;
 
+// TagRender selected element
 export const StyledTagSelectedOption = styled(Tag)`
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
+  > svg.icon-close {
+    margin: 0px 3px 0px 0px !important;
+  }
 `;
 
 export const StyledTagOption = styled(Tag)`
@@ -143,6 +140,10 @@ const getSelectOptionStyle = css`
     background-clip: content-box;
     border-radius: 4px;
   }
+  .ant-select-multiple.ant-select-allow-clear .ant-select-selector,
+  .ant-select-multiple.ant-select-show-arrow .ant-select-selector {
+    padding-right: 60px !important;
+  }
   .ant-select-item,
   .ant-select-item-empty {
     padding: 3px 14px 3px 8px;
@@ -150,16 +151,19 @@ const getSelectOptionStyle = css`
   .ant-select {
     z-index: 1001;
   }
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-radius: 4px;
+  }
   .ant-select-selection-overflow-item > .ant-select-selection-item {
     border-radius: 100px;
   }
   .ant-select-dropdown {
+    border-radius: 4px;
     padding: 8px 8px 8px 0px;
   }
   .rc-virtual-list-scrollbar.rc-virtual-list-scrollbar-show {
     width: 6px !important;
   }
-
   .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
     border-color: ${props => (props.theme ? primaryColor : primary)} !important;
   }
@@ -173,8 +177,14 @@ const getSelectOptionStyle = css`
     border-color: ${props => (props.theme ? primaryColor : primary)} !important;
     box-shadow: ${props =>
       props.theme
-        ? `0 0 0 2px ${hexToRGBA(primaryColor, 0.2)}`
+        ? `0 0 0 2px ${hexToRGBA(primaryColor(props), 0.2)}`
         : `0 0 0 2px ${hexToRGBA(primary, 0.2)}`};
+  }
+  .ant-select-item-option-active:not(.ant-select-item-option-disabled):not(.ant-select-item-option-selected) {
+    background-color: ${color.gray50} !important;
+  }
+  .ant-select-item-option-active:not(.ant-select-item-option-disabled).ant-select-item-option-selected {
+    filter: brightness(0.95);
   }
 `;
 

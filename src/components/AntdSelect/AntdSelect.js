@@ -8,7 +8,6 @@ import Icon from '../Icon';
 import {
   SelectOptionStyle,
   StyledAntdSelectDropdown,
-  StyledSelectOption,
   StyledSpanOption,
   StyledSpanOptionSelected,
   StyledTagSelectedOption,
@@ -135,7 +134,7 @@ export const optionsRenderer = (
           ? get(theme.color, option.color)
           : '#FFFFFF';
         return (
-          <StyledSelectOption
+          <Select.Option
             key={option.value}
             disabled={
               selectedValues.length >= pageSize &&
@@ -145,23 +144,19 @@ export const optionsRenderer = (
             theme={theme}
             color={option.color}
             style={{
-              backgroundColor,
-              borderRadius: '4px',
+              backgroundColor: backgroundColor,
             }}
+            selected={selectedValues.includes(option.value)}
             data-testid={`select-option-${option.value}`}
           >
             {selectedValues.includes(option.value) ? (
-              <StyledSpanOptionSelected
-                color={option.color}
-                value={option.label}
-                theme={theme}
-              >
+              <StyledSpanOptionSelected value={option.label} theme={theme}>
                 {option.label}
               </StyledSpanOptionSelected>
             ) : (
               renderUnselectedOption(option.label, searchValue)
             )}
-          </StyledSelectOption>
+          </Select.Option>
         );
       })}
     </>
@@ -178,6 +173,8 @@ const AntdSelect = props => {
     text,
     placeholder,
     theme,
+    isLoading,
+    onChange,
   } = props;
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedValues, setSelectedValues] = useState(defaultValues);
@@ -188,6 +185,8 @@ const AntdSelect = props => {
     'options',
     'pageSize',
     'text',
+    'isLoading',
+    'onChange',
   ]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState('');
@@ -235,13 +234,13 @@ const AntdSelect = props => {
     <>
       {mode === 'single' ? (
         <Select
-          allowClear
           autoClearSearchValue
           clearIcon={<Icon color="gray" name="close" size="small" />}
           data-testid={`${dataId}`}
           defaultValue={selectedValues}
           optionFilterProp="children"
           filterOption={singleOptionFilter}
+          loading={isLoading}
           placeholder={placeholder} // Unneed, viene de antdSelectProps
           open={showDropdown}
           searchValue={sValue.current}
@@ -256,6 +255,7 @@ const AntdSelect = props => {
             )
           }
           onChange={values => {
+            onChange !== undefined && onChange(values);
             setSelectedValues(values);
             setShowDropdown(false);
           }}
@@ -271,7 +271,7 @@ const AntdSelect = props => {
         />
       ) : (
         <>
-          <SelectOptionStyle />
+          <SelectOptionStyle theme={theme} />
           <Select
             autoClearSearchValue={false}
             clearIcon={<Icon color="gray" name="close" size="small" />}
@@ -295,12 +295,14 @@ const AntdSelect = props => {
             optionFilterProp="children"
             filterOption={filterOption}
             maxTagCount="responsive"
+            maxTagPlaceholder={values => `+${values.length}`}
             menuItemSelectedIcon={
               <Icon color="white" name="close" size="small" />
             }
             mode={mode}
             placeholder={placeholder}
             searchValue={sValue.current}
+            style={{ width: '100%' }}
             showArrow
             showSearch
             suffixIcon={
@@ -347,6 +349,7 @@ const AntdSelect = props => {
             value={selectedValues}
             dropdownAlign={{ offset: [0, 3] }}
             onChange={values => {
+              onChange !== undefined && onChange(values);
               setSelectedValues(values);
             }}
             onFocus={() => {
@@ -396,12 +399,13 @@ const AntdSelect = props => {
   );
 };
 
-// StyledSelect.displayName = 'StyledSelect';
 const propTypes = {
   dataId: PropTypes.string,
   defaultValues: PropTypes.arrayOf(PropTypes.shape({})),
+  isLoading: PropTypes.bool,
   mode: PropTypes.oneOf(['single', 'multiple', 'tags']),
   options: PropTypes.arrayOf(PropTypes.shape({})),
+  onChange: PropTypes.func,
   pageSize: PropTypes.number,
   placeholder: PropTypes.string,
   theme: PropTypes.shape({}),
