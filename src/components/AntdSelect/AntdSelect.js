@@ -268,6 +268,7 @@ const AntdSelect = props => {
             return searchText;
           }}
           options={options}
+          {...antdSelectProps}
         />
       ) : (
         <>
