@@ -22,6 +22,7 @@ import {
 } from './utils/dates';
 
 export { default as Alert } from './components/Alert';
+export { default as AntdSelect } from './components/AntdSelect/AntdSelect';
 export { default as Button } from './components/Button';
 export { default as ButtonGroup } from './components/Button';
 export { default as Card } from './components/Card';
