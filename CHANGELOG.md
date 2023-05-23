@@ -1,3 +1,22 @@
+# [5.14.0](https://github.com/dexma/ui-components/compare/v5.13.0...v5.14.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* **select:** search filter based on regex and update logic on button ([09d799b](https://github.com/dexma/ui-components/commit/09d799b61281b74c38725fc4a53c47cba2d96133))
+* **test:** fix typo on test description ([2baa2e9](https://github.com/dexma/ui-components/commit/2baa2e97e8887b9ab5d09460a6fdc47e2500d03a))
+
+
+### Features
+
+* **select:** apply theme and adapt visuals ([9ea1c35](https://github.com/dexma/ui-components/commit/9ea1c35dab97a85e1f35bcbf9e7a44fd52277171))
+* **select:** apply visual changes ([132eb20](https://github.com/dexma/ui-components/commit/132eb20864ed3daddfa64bcb8d7ebe96c2179677))
+* **select:** implement visual adjusts and logic to multi-select ([58ee779](https://github.com/dexma/ui-components/commit/58ee77952650576abdb6bc5722510f9c7155eb0d))
+* **select:** initial select component based on Antd ([77a9d6f](https://github.com/dexma/ui-components/commit/77a9d6f9157ca5b3ff0eaf3fb553c234856324e0))
+* **select:** manage invalid characters on search and adapt visuals ([e8058fa](https://github.com/dexma/ui-components/commit/e8058fa03cb6829e3532c7b2462e03fbecbb9e89))
+* **select:** prop drilling other props for SingleSelector ([f3fb6d1](https://github.com/dexma/ui-components/commit/f3fb6d1a1d86ca7ac4fb8ed6d5fd05da0f4ca927))
+* **select:** refactor AntdSelect component and add testing ([189da19](https://github.com/dexma/ui-components/commit/189da19c241cc87dea79984cdd0baf9af10d78b9))
+
 # [5.13.0](https://github.com/dexma/ui-components/compare/v5.12.2...v5.13.0) (2023-04-21)
 
 
