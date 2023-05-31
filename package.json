@@ -87,7 +87,7 @@
     "@storybook/source-loader": "^7.0.5",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
-    "antd": "^4.21.0",
+    "antd": "^5.5.1",
     "autoprefixer": "^9.5.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^26.6.0",
@@ -176,6 +176,7 @@
   },
   "dependencies": {
     "@storybook/addon-controls": "^7.0.5",
+    "dayjs": "^1.11.7",
     "highcharts-react-official": "^3.1.0",
     "highcharts-rounded-corners": "^1.0.6",
     "react-color": "^2.19.3"
