@@ -133,7 +133,7 @@ const AntdRangePicker = props => {
     <StyledAntdRangePicker
       autoFocus={autoFocus}
       defaultValue={defaultValuePeriod}
-      ranges={rangesValue}
+      presets={rangesValue}
       onChange={onDatesChange}
       placeholder={
         startDatePlaceholderText || endDatePlaceholderText
