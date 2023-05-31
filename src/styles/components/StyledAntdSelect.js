@@ -151,6 +151,10 @@ const getSelectOptionStyle = css`
   .ant-select {
     z-index: 1001;
   }
+
+  .selectable-icon {
+    pointer-events: all;
+  }
   .ant-select:not(.ant-select-customize-input) .ant-select-selector {
     border-radius: 4px;
   }
