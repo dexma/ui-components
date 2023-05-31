@@ -58,6 +58,7 @@ const StyledGlobalDropdown = createGlobalStyle(css`
     background-color: #fff;
     background-clip: padding-box;
     border-radius: 4px;
+    padding: 0 !important;
     -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.15) \\9;
