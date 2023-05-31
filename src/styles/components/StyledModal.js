@@ -60,11 +60,8 @@ const StyledModal = styled(ModalAntDesign)`
   }
   .ant-modal-close-x {
     display: block;
-    width: 56px;
-    height: 56px;
     font-size: 16px;
     font-style: normal;
-    line-height: 56px;
     text-align: center;
     text-transform: none;
     text-rendering: auto;
@@ -75,13 +72,11 @@ const StyledModal = styled(ModalAntDesign)`
     text-decoration: none;
   }
   .ant-modal-header {
-    padding: 24px 24px 16px 24px;
     color: ${fontColor};
     background: ${backgroundColor};
     border-radius: ${borderRadius} ${borderRadius} 0 0;
   }
   .ant-modal-body {
-    padding: 0 24px 24px 24px;
     font-size: 14px;
     line-height: 1.5;
     word-wrap: break-word;
