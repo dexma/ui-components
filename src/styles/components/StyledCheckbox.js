@@ -23,7 +23,6 @@ export const getStyledCheckBox = () => css`
         font-feature-settings: 'tnum';
         display: inline-block;
         white-space: nowrap;
-        vertical-align: middle;
         outline: none;
         cursor: pointer;
     }
@@ -38,6 +37,10 @@ export const getStyledCheckBox = () => css`
     .ant-checkbox-wrapper:hover .ant-checkbox::after {
         visibility: visible;
     }
+
+    .ant-checkbox-wrapper:hover .ant-checkbox-input:checked + .ant-checkbox-inner {
+  background-color: ${primaryColor};
+}
 
     .ant-checkbox-inner {
         position: relative;
