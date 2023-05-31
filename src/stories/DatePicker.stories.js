@@ -1,6 +1,6 @@
 import React from 'react';
 
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { DatePicker } from '../components/DatePicker';
 import Grid from '../components/Grid';
 import Cell from '../components/Cell';
@@ -66,7 +66,7 @@ export const antdDateTimePicker = () => (
           This property provide an additional time selection. When showTime is
           an Object, its properties will be passed on to built-in TimePicker.
           Remember to set a &quot;format&quot; value that includes the time
-          values (like &quot;DD/MM/yyyy HH:mm:ss&quot;)
+          values (like &quot;DD/MM/YYYY HH:mm:ss&quot;)
         </Paragraph>
       </Cell>
       <Cell>
@@ -74,14 +74,14 @@ export const antdDateTimePicker = () => (
           theme={theme}
           type="date"
           showTime
-          format="DD/MM/yyyy HH:mm:ss"
+          format="DD/MM/YYYY HH:mm:ss"
         />
         <br />
         <DatePicker
           theme={theme}
           type="range"
           showTime
-          format="DD/MM/yyyy HH:mm:ss"
+          format="DD/MM/YYYY HH:mm:ss"
         />
         <br />
       </Cell>
@@ -102,10 +102,16 @@ export const antdPickerPresets = () => (
           theme={theme}
           type="range"
           showTime
-          ranges={{
-            Today: [moment().startOf('day'), moment().endOf('day')],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-          }}
+          ranges={[
+            {
+              label: 'Today',
+              value: [dayjs().startOf('day'), dayjs().endOf('day')],
+            },
+            {
+              label: 'This Month',
+              value: [dayjs().startOf('month'), dayjs().endOf('month')],
+            },
+          ]}
         />
         <br />
       </Cell>
