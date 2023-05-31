@@ -17,7 +17,7 @@ const StyledSwitch = styled.div`
     display: inline-block;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    min-width: 44px;
+    width: 44px;
     height: 24px;
     line-height: 20px;
     vertical-align: middle;
@@ -78,6 +78,7 @@ const StyledSwitch = styled.div`
   }
   .ant-switch-checked.ant-switch-loading .ant-switch-loading-icon {
     color: ${props => props.theme.primary};
+    width: 44px;
   }
   .ant-switch:focus {
     outline: 0;
@@ -171,6 +172,11 @@ const StyledSwitch = styled.div`
       transform-origin: 50% 50%;
     }
   }
+
+  .ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+    background-color: ${props => props.theme.primary};
+  }
+
   @keyframes AntSwitchSmallLoadingCircle {
     0% {
       -webkit-transform: rotate(0deg) scale(0.66667);
