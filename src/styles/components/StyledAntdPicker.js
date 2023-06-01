@@ -161,7 +161,7 @@ const dropdownStyles = () => {
     .ant-picker-time-panel-column
       > li.ant-picker-time-panel-cell-selected
       .ant-picker-time-panel-cell-inner {
-      background: ${props => lighten(0.5, props.theme.primary)};
+      background: ${props => lighten(0.5, props.theme.primary)} !important;
     }
 
     // Preset Tags
