@@ -108,13 +108,15 @@ const dropdownStyles = () => {
     }
 
     // Today cell
-    .ant-picker-cell-in-view.ant-picker-cell-today
+    .ant-picker-dropdown
+      .ant-picker-cell-in-view.ant-picker-cell-today
       .ant-picker-cell-inner::before {
       border: 1px solid ${props => lighten(0.1, props.theme.primary)};
       border-radius: 2px;
     }
     // Today footer
-    .ant-picker-today-btn {
+
+    .ant-picker-dropdown .ant-picker-today-btn {
       color: ${props => props.theme.primary};
     }
 
@@ -131,6 +133,18 @@ const dropdownStyles = () => {
     // Week selected
     .ant-picker-week-panel-row-selected td,
     .ant-picker-week-panel-row-selected:hover td {
+      background: ${props => lighten(0.1, props.theme.primary)};
+    }
+
+    .ant-picker-dropdown
+      .ant-picker-week-panel-row-selected
+      td.ant-picker-cell:before {
+      background: ${props => lighten(0.1, props.theme.primary)};
+    }
+
+    .ant-picker-dropdown
+      .ant-picker-week-panel-row-selected
+      td.ant-picker-cell:before {
       background: ${props => lighten(0.1, props.theme.primary)};
     }
 
