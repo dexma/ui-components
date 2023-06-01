@@ -164,13 +164,13 @@ const dropdownStyles = () => {
       background: ${props => lighten(0.5, props.theme.primary)};
     }
 
-    // Preset ranges buttons
-    .ant-picker-preset {
-      .ant-tag {
-        color: ${props => props.theme.primary} !important;
-        background: ${props => lighten(0.5, props.theme.primary)} !important;
-        border-color: ${props => props.theme.primary} !important;
-      }
+    // Preset Tags
+
+    .ant-picker-presets > ul > li {
+      color: ${props => props.theme.primary} !important;
+      background: ${props => lighten(0.5, props.theme.primary)} !important;
+      border-color: ${props => props.theme.primary} !important;
+      border: 1px solid;
     }
 
     // DateRange Range being selected (dotted line)
