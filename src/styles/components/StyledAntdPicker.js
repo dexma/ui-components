@@ -44,10 +44,30 @@ const dropdownStyles = () => {
     // Background for selected cells
     .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single)::before,
     .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single)::before {
-      background: ${props => lighten(0.5, props.theme.primary)};
+      background: ${props => lighten(0.5, props.theme.primary)} !important;
     }
     .ant-picker-cell-in-view.ant-picker-cell-in-range::before {
-      background: ${props => lighten(0.5, props.theme.primary)};
+      background: ${props => lighten(0.5, props.theme.primary)} !important;
+    }
+
+    //Backgrounds for week period
+    :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+      .ant-picker-week-panel-row-range-start
+      td.ant-picker-cell:before,
+    :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+      .ant-picker-week-panel-row-range-end
+      td.ant-picker-cell:before,
+    :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+      .ant-picker-week-panel-row-selected
+      td.ant-picker-cell:before {
+      background-color: ${props => props.theme.primary};
+    }
+
+    :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+      .ant-picker-week-panel-row-range-hover
+      td:before {
+      background-color: ${props =>
+        lighten(0.5, props.theme.primary)} !important;
     }
     // Background for periods selected
     .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover::before,
@@ -111,7 +131,7 @@ const dropdownStyles = () => {
     .ant-picker-dropdown
       .ant-picker-cell-in-view.ant-picker-cell-today
       .ant-picker-cell-inner::before {
-      border: 1px solid ${props => lighten(0.1, props.theme.primary)};
+      border: 1px solid ${props => lighten(0.1, props.theme.primary)} !important;
       border-radius: 2px;
     }
     // Today footer
@@ -130,18 +150,7 @@ const dropdownStyles = () => {
       border-color: ${props => props.theme.primary};
     }
 
-    // Week selected
-    .ant-picker-week-panel-row-selected td,
-    .ant-picker-week-panel-row-selected:hover td {
-      background: ${props => lighten(0.1, props.theme.primary)};
-    }
-
-    .ant-picker-dropdown
-      .ant-picker-week-panel-row-selected
-      td.ant-picker-cell:before {
-      background: ${props => lighten(0.1, props.theme.primary)};
-    }
-
+    // Datepicker Week selected
     .ant-picker-dropdown
       .ant-picker-week-panel-row-selected
       td.ant-picker-cell:before {
@@ -162,6 +171,25 @@ const dropdownStyles = () => {
         background: ${props => lighten(0.5, props.theme.primary)} !important;
         border-color: ${props => props.theme.primary} !important;
       }
+    }
+
+    // DateRange Range being selected (dotted line)
+    :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+      .ant-picker-cell-in-view.ant-picker-cell-range-hover-start:not(.ant-picker-cell-in-range):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end)::after,
+    :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+      .ant-picker-cell-in-view.ant-picker-cell-range-hover-end:not(.ant-picker-cell-in-range):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end)::after,
+    :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+      .ant-picker-cell-in-view.ant-picker-cell-range-hover-start.ant-picker-cell-range-start-single::after,
+    :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+      .ant-picker-cell-in-view.ant-picker-cell-range-hover-start.ant-picker-cell-range-start.ant-picker-cell-range-end.ant-picker-cell-range-end-near-hover::after,
+    :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+      .ant-picker-cell-in-view.ant-picker-cell-range-hover-end.ant-picker-cell-range-start.ant-picker-cell-range-end.ant-picker-cell-range-start-near-hover::after,
+    :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+      .ant-picker-cell-in-view.ant-picker-cell-range-hover-end.ant-picker-cell-range-end-single::after,
+    :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+      .ant-picker-cell-in-view.ant-picker-cell-range-hover:not(.ant-picker-cell-in-range)::after {
+      border-top-color: ${props => props.theme.primary} !important;
+      border-bottom-color: ${props => props.theme.primary} !important;
     }
   `;
 };
