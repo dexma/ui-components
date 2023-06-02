@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 const StyledSwitch = styled.div`
   display: inline-block;
@@ -89,6 +90,7 @@ const StyledSwitch = styled.div`
     -webkit-box-shadow: none;
     box-shadow: none;
   }
+
   .ant-switch-small {
     min-width: 28px;
     height: 18px;
@@ -173,8 +175,14 @@ const StyledSwitch = styled.div`
     }
   }
 
-  .ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+  // Checked
+  .ant-switch.ant-switch-checked {
     background-color: ${props => props.theme.primary};
+  }
+
+  // On hover ad checked
+  .ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+    background-color: ${props => darken(0.1, props.theme.primary)};
   }
 
   @keyframes AntSwitchSmallLoadingCircle {
