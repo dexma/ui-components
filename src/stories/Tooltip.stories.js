@@ -56,7 +56,6 @@ export const playground = args => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          {' '}
           Use the Controls on the section below to add your own props to this
           Tooltip.
         </Paragraph>
