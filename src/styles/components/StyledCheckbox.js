@@ -39,8 +39,8 @@ export const getStyledCheckBox = () => css`
     }
 
     .ant-checkbox-wrapper:hover .ant-checkbox-input:checked + .ant-checkbox-inner {
-  background-color: ${primaryColor};
-}
+        background-color: ${primaryColor};
+    }
 
     .ant-checkbox-inner {
         position: relative;
