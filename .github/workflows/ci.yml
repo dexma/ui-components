@@ -15,7 +15,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     permissions:
       actions: write
       contents: write
@@ -31,7 +31,7 @@ jobs:
           node-version: '16.18.0'
 
       - name: Install dependencies 🛠️
-        run: npm install
+        run: npm install -legacy-peer-deps
 
       - name: Run tests 📝
         run: npm run test
