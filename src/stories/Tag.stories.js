@@ -1,6 +1,6 @@
 import React from 'react';
-import Tag from '../components/Tag';
-import TagGroup from '../components/TagGroup';
+import { Tag } from '../components/Tag';
+import { TagGroup } from '../components/TagGroup';
 import Grid from '../components/Grid';
 import Row from '../components/Row';
 import Cell from '../components/Cell';
@@ -10,6 +10,13 @@ export default {
   title: 'Tag',
   component: Tag,
   subcomponents: { TagGroup },
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export const tags = () => (
@@ -141,6 +148,12 @@ export const icons = () => (
 export const closable = () => (
   <Grid fluid>
     <Row>
+      <Cell>
+        <Paragraph margin="1rem 0 1rem 0">
+          Use the Controls on the section below to add your own props to this
+          Tags.
+        </Paragraph>
+      </Cell>
       <TagGroup>
         <Tag
           color="blue"
@@ -154,6 +167,23 @@ export const closable = () => (
           Tag closable
         </Tag>
       </TagGroup>
+    </Row>
+  </Grid>
+);
+
+export const playground = args => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Use the Controls on the section below to add your own props to this
+          Tag Group.
+        </Paragraph>
+        <TagGroup>
+          <Tag {...args}>Tag</Tag>
+          <Tag {...args}>Tag</Tag>
+        </TagGroup>
+      </Cell>
     </Row>
   </Grid>
 );

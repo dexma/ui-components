@@ -8,6 +8,18 @@ import { Switch } from '../components/Switch';
 export default {
   title: 'Switch',
   component: Switch,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+    dataId: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export const defaultSwitch = () => (
@@ -46,6 +58,21 @@ export const disabled = () => (
       </Cell>
       <Cell xs={12}>
         <Switch defaultChecked disabled />
+      </Cell>
+    </Row>
+  </Grid>
+);
+export const playground = args => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Use the Controls on the section below to add your own props to this
+          Switch.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Switch {...args} />
       </Cell>
     </Row>
   </Grid>

@@ -278,7 +278,7 @@ describe('AntdSelect', () => {
     });
   });
 
-  describe('Ancilliary functions', () => {
+  describe('Ancillary functions', () => {
     describe('tagRender', () => {
       test('should render a tag successfully', () => {
         const props = {

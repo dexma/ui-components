@@ -8,6 +8,33 @@ import Paragraph from '../components/Paragraph';
 export default {
   title: 'Button',
   component: Button,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+    onClose: {
+      control: {
+        disable: true,
+      },
+    },
+    dataId: {
+      control: {
+        disable: true,
+      },
+    },
+    onClick: {
+      control: {
+        disable: true,
+      },
+    },
+    onFocus: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export const buttons = () => (
@@ -162,6 +189,22 @@ export const withTooltips = () => (
         <Button tooltip="Button 1" text="Button 1" variant="primary" />
         <Button tooltip="Button 2" text="Button 2" variant="secondary" />
         <Button tooltip="Primary" variant="primary" iconBefore="add" />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const playground = args => (
+  <Grid fluid>
+    <Row style={{ marginBottom: '10px' }}>
+      <Cell xs={12}>
+        <Paragraph margin="1.5rem 0 1rem 0">
+          Use the Controls on the section below to add your own props to this
+          Button.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Button {...args} />
       </Cell>
     </Row>
   </Grid>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Result from '../components/Result';
+import { Result } from '../components/Result';
 import Grid from '../components/Grid';
 import Row from '../components/Row';
 import Cell from '../components/Cell';
@@ -9,14 +9,24 @@ import Button from '../components/Button';
 
 export default {
   title: 'Result',
-  component: <></>,
+  component: Result,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export const result = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
-        <Paragraph margin="1rem 0 1rem 0">Result</Paragraph>
+        <Paragraph margin="1rem 0 1rem 0">
+          Result component presents a straightforward way to inform the user of
+          different state situations.
+        </Paragraph>
       </Cell>
       <Result
         variant="default"
@@ -142,6 +152,20 @@ export const customIcon = () => (
         size={140}
         icon="vader"
       />
+    </Row>
+  </Grid>
+);
+
+export const playground = args => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Use the Controls on the section below to add your own props to this
+          Result.
+        </Paragraph>
+      </Cell>
+      <Result {...args} />
     </Row>
   </Grid>
 );

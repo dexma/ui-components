@@ -26,6 +26,18 @@ const StyledBoxSearch = styled.div`
 export default {
   title: 'Icon',
   component: Icon,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+    size: {
+      control: {
+        type: 'number',
+      },
+    },
+  },
 };
 
 export const sizes = () => (
@@ -68,6 +80,19 @@ export const icons = () => (
         </Paragraph>
       </Cell>
       <SearchIcons />
+    </Row>
+  </Grid>
+);
+
+export const playground = args => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          An icon is a svg used to represent something else
+        </Paragraph>
+      </Cell>
+      <Icon {...args} />
     </Row>
   </Grid>
 );

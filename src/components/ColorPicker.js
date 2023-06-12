@@ -13,7 +13,7 @@ import {
 import withDataId from './DataId/withDataId';
 import theme from '../styles/theme';
 
-const ColorPicker = forwardRef((props, ref) => {
+export const ColorPicker = forwardRef((props, ref) => {
   const {
     dataId,
     isLoading,

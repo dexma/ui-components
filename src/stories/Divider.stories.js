@@ -1,5 +1,5 @@
 import React from 'react';
-import Divider from '../components/Divider';
+import { Divider } from '../components/Divider';
 import Grid from '../components/Grid';
 import Row from '../components/Row';
 import Cell from '../components/Cell';
@@ -8,9 +8,16 @@ import Paragraph from '../components/Paragraph';
 export default {
   title: 'Divider',
   component: Divider,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
-export const divider = () => (
+export const divider = args => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
@@ -20,8 +27,8 @@ export const divider = () => (
           color.
         </Paragraph>
       </Cell>
-      <Cell xs={12}>
-        <Divider />
+      <Cell xs={12} style={{ height: '50px' }}>
+        <Divider {...args} />
       </Cell>
     </Row>
   </Grid>

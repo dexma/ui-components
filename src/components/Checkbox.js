@@ -1,10 +1,18 @@
 import React from 'react';
 import { withTheme } from 'styled-components';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import omit from 'lodash/omit';
 
 import { StyledCheckbox } from '../styles/components/StyledCheckbox';
 import theme from '../styles/theme';
+
+const propTypes = {
+  /**
+   * Theme json based
+   */
+  theme: PropTypes.shape({}),
+};
 
 const defaultProps = {
   theme: theme,
@@ -29,6 +37,7 @@ export const Checkbox = props => {
   );
 };
 
+Checkbox.propTypes = propTypes;
 Checkbox.defaultProps = defaultProps;
 
 export default withTheme(Checkbox);

@@ -76,7 +76,7 @@ export const input = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Render loading spinner for the UI views
+          Form Control can be rendered as an Input.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -110,7 +110,7 @@ export const checkbox = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Render loading spinner for the UI views
+          Form Control can be rendered as an Checkbox.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -144,7 +144,7 @@ export const select = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Render loading spinner for the UI views
+          Form Control can be rendered as an Select.
         </Paragraph>
       </Cell>
       <Cell xs={12}>

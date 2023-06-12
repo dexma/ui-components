@@ -5,11 +5,6 @@ import Cell from '../components/Cell';
 import Paragraph from '../components/Paragraph';
 import { Dropdown } from '../components/Dropdown';
 
-export default {
-  title: 'Dropdown',
-  component: Dropdown,
-};
-
 const content = [
   {
     text: 'Edit',
@@ -27,12 +22,25 @@ const content = [
   },
 ];
 
+export default {
+  title: 'Dropdown',
+  component: Dropdown,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+  },
+};
+
 export const dropdown = () => (
   <Grid fluid>
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          A simple dropdown that provide action elements like links and buttons.
+          A simple dropdown that provides action elements like links and
+          buttons.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -48,7 +56,7 @@ export const dropdownWithText = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          A simple dropdown that provide action elements like links and buttons.
+          The text prop allows the dropdown to be more descriptive.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -68,7 +76,7 @@ export const dropdownWithPlacement = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          A simple dropdown that provide action elements like links and buttons.
+          You can use the placement prop to adjust the dropdown position.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -109,3 +117,25 @@ export const dropdownWithPlacement = () => (
     </Row>
   </Grid>
 );
+
+export const playground = args => {
+  if (typeof args.content === 'object' && !Array.isArray(args.content)) {
+    // eslint-disable-next-line
+    args.content = [];
+  }
+  return (
+    <Grid fluid>
+      <Row>
+        <Cell xs={12}>
+          <Paragraph margin="1rem 0 1rem 0">
+            Use the Controls on the section below to add your own props to this
+            Dropdown.
+          </Paragraph>
+        </Cell>
+        <Cell xs={12}>
+          <Dropdown {...args} />
+        </Cell>
+      </Row>
+    </Grid>
+  );
+};

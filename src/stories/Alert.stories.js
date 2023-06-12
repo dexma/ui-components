@@ -9,6 +9,18 @@ import { Alert } from '../components/Alert';
 export default {
   title: 'Alert',
   component: Alert,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+    onClose: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export const alert = () => (
@@ -20,17 +32,21 @@ export const alert = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          You can choose between basic, outline, success, info and warning for
+          different icon an color options.
+        </Paragraph>
         <Alert message="Basic" type="basic" showIcon />
         <br />
-        <Alert message="Outline" type="outline" showIcon={false} />
+        <Alert message="Outline" type="outline" />
         <br />
-        <Alert message="Success Tips" type="success" showIcon closable />
+        <Alert message="Success Tips" type="success" showIcon />
         <br />
-        <Alert description="Informational Notes" type="info" showIcon />
+        <Alert message="Informational Notes" type="info" showIcon />
         <br />
-        <Alert description="Warning" type="warning" showIcon />
+        <Alert message="Warning" type="warning" showIcon />
         <br />
-        <Alert description="Error" type="error" showIcon />
+        <Alert message="Error" type="error" showIcon />
       </Cell>
     </Row>
   </Grid>
@@ -41,7 +57,7 @@ export const description = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          You can add description to the body of the alert
+          You can add description to the body of the alert.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -50,45 +66,6 @@ export const description = () => (
           description="Detailed description and advice about successful copywriting."
           type="basic"
           showIcon
-          closable
-        />
-        <br />
-        <Alert
-          message="Basic alert"
-          description="Detailed description and advice about successful copywriting."
-          type="outline"
-          showIcon
-          closable
-        />
-        <br />
-        <Alert
-          message="Success Tips"
-          description="Detailed description and advice about successful copywriting."
-          type="success"
-          showIcon
-          closable
-        />
-        <br />
-        <Alert
-          message="Informational Notes"
-          description="Additional description and information about copywriting."
-          type="info"
-          showIcon
-        />
-        <br />
-        <Alert
-          message="Warning"
-          description="This is a warning notice about copywriting."
-          type="warning"
-          showIcon
-        />
-        <br />
-        <Alert
-          message="Error"
-          description="This is an error message about copywriting."
-          type="error"
-          showIcon
-          closable
         />
       </Cell>
     </Row>
@@ -100,7 +77,8 @@ export const noIcon = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          A option without the icon on the title alert
+          A option without the icon on the title alert. The showIcon prop that
+          allows to show or not the icon default to false.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -133,7 +111,8 @@ export const customAlert = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Alert component used when you need customs messages
+          Alert component used when you need customs messages. You can pass html
+          to the message prop to allow for it.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -212,6 +191,20 @@ export const customAlert = () => (
           showIcon
         />
         <br />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const playground = args => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Use the Controls on the section below to add your own props to this
+          Alert.
+        </Paragraph>
+        <Alert {...args} />
       </Cell>
     </Row>
   </Grid>

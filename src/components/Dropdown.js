@@ -32,8 +32,9 @@ const propTypes = {
    */
   trigger: PropTypes.oneOf(['hover', 'focus', 'click']),
   /**
-   * Array of objects, each object represents the button contract for example `{text: 'Edit',
-    iconBefore: 'edit'}` so please check the <a href="https://dexma.github.io/ui-components/?path=/docs/button--buttons">buttons</a>
+   * Array of objects, which have the same contract as the Button contract for example `{text: 'Edit',
+    iconBefore: 'edit'}`. Please check the <a href="https://dexma.github.io/ui-components/?path=/docs/button--buttons">buttons</a> 
+    for further reference.
    */
   content: PropTypes.arrayOf(PropTypes.shape({})),
   /**
