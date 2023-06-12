@@ -1,3 +1,10 @@
+## [5.14.1](https://github.com/dexma/ui-components/compare/v5.14.0...v5.14.1) (2023-06-12)
+
+
+### Bug Fixes
+
+* **storybook:** update Storybook  ([b7ea1f0](https://github.com/dexma/ui-components/commit/b7ea1f07e173aea2369a01cb1ddf10486492f6fb))
+
 # [5.14.0](https://github.com/dexma/ui-components/compare/v5.13.0...v5.14.0) (2023-05-23)
 
 
