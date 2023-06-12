@@ -21,8 +21,6 @@ export const getStyledCheckBox = () => css`
         line-height: 1.5;
         list-style: none;
         font-feature-settings: 'tnum';
-        position: relative;
-        top: -0.09em;
         display: inline-block;
         white-space: nowrap;
         vertical-align: middle;

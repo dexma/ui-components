@@ -18,7 +18,10 @@ export const toaster = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          We preset a series of toaster that appear on the top of the view
+          We present a series of toasters that appear on the top area of the
+          view. In order to make it work it is necessary to inject our custom
+          provider wrapping all components you want to be able to display it.
+          You will then be able to operate the toaster via this provider.
         </Paragraph>
       </Cell>
       <Cell xs={12}>

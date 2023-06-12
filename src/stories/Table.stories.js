@@ -49,7 +49,9 @@ export const table = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Tables allow arranging and organising data into rows and columns.
+          Tables allow arranging and organising data into rows and columns. A
+          wrapper for Ant Design Table so check their documentation for further
+          information.
         </Paragraph>
       </Cell>
       <Cell xs={12}>

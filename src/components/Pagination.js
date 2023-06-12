@@ -12,6 +12,18 @@ const propTypes = {
    * Theme json based
    */
   theme: PropTypes.shape({}),
+  /**
+   * Total number of items
+   */
+  total: PropTypes.number,
+  /**
+   * Items per age
+   */
+  pageSize: PropTypes.number,
+  /**
+   * Default initial page
+   */
+  defaultCurrent: PropTypes.number,
 };
 
 const defaultProps = {

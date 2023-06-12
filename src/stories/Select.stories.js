@@ -28,6 +28,18 @@ const options = [
 export default {
   title: 'Select',
   component: Select,
+  argTypes: {
+    theme: {
+      control: {
+        disable: true,
+      },
+    },
+    dataId: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export const select = () => (
@@ -36,6 +48,8 @@ export const select = () => (
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
           Select is a form control for selecting a value from a set of options.
+          Component is a wrapper for react Select so you can check its
+          documentation.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -51,7 +65,7 @@ export const multi = () => (
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
           Support multiple selected options, we customize the multi value so you
-          can pass background and color for each options
+          can pass background and color for each options.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -66,7 +80,7 @@ export const noSearch = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Whether to enable search functionality
+          Whether to enable search functionality.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -85,7 +99,7 @@ export const clear = () => (
     <Row>
       <Cell xs={12}>
         <Paragraph margin="1rem 0 1rem 0">
-          Is the select value clearable with value option
+          Is the select value clearable with value option.
         </Paragraph>
       </Cell>
       <Cell xs={12}>
@@ -123,6 +137,22 @@ export const loading = () => (
           isLoading
           isDisabled
         />
+      </Cell>
+    </Row>
+  </Grid>
+);
+
+export const playground = args => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Use the Controls on the section below to add your own props to this
+          Select.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Select {...args} />
       </Cell>
     </Row>
   </Grid>
