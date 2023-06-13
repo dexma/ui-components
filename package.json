@@ -8,7 +8,7 @@
     "build:development": "npm run clean-build && webpack --mode development",
     "build:icons": "node scripts/buildIconConfig.js",
     "build": "npm run patch && npm run build:icons && npm run clean-build && webpack --mode production",
-    "build-storybook": "storybook build -c src/.storybook",
+    "build-storybook": "storybook build -c src/.storybook -o docs",
     "storybook": "npm run build:icons && storybook dev -c src/.storybook",
     "prettier": "prettier --write '{src,test}/{,**/{,*.}}*.js'",
     "eslint": "eslint '{src,test}/{,**/{,*.}}*.js'",
