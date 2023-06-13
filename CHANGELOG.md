@@ -1,3 +1,10 @@
+## [5.14.2](https://github.com/dexma/ui-components/compare/v5.14.1...v5.14.2) (2023-06-13)
+
+
+### Bug Fixes
+
+* **cd:** add output path on build-storybook script ([decfed9](https://github.com/dexma/ui-components/commit/decfed9a272cc55d7766ce991444e41321c8c70e))
+
 ## [5.14.1](https://github.com/dexma/ui-components/compare/v5.14.0...v5.14.1) (2023-06-12)
 
 
