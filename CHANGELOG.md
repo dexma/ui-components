@@ -1,3 +1,15 @@
+# [5.15.0](https://github.com/dexma/ui-components/compare/v5.14.2...v5.15.0) (2023-06-15)
+
+
+### Bug Fixes
+
+* **cd:** enable trigger cd on Github Actions interface ([4c78a8a](https://github.com/dexma/ui-components/commit/4c78a8ae69b3050289c8f93029917b2d98486166))
+
+
+### Features
+
+* **tag:** add hex capacity to tag color ([6172da7](https://github.com/dexma/ui-components/commit/6172da7d445abb7d9917f5b0c6428f679f4b4882))
+
 ## [5.14.2](https://github.com/dexma/ui-components/compare/v5.14.1...v5.14.2) (2023-06-13)
 
 
