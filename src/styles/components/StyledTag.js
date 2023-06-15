@@ -55,7 +55,10 @@ const StyledTag = styled.div`
   cursor: default;
   opacity: 1;
   border: ${border};
-  background: ${props => props.color && getTagColor(props)};
+  background: ${props =>
+    props.color && props.color.startsWith('#')
+      ? props.color
+      : props.color && getTagColor(props)};
   border-radius: ${props => (props.type === 'rounded' ? '16px' : borderRadius)};
   ${props => props.variant === 'primary' && getTagPrimary};
   ${props => props.variant === 'outline' && getTagOutline};

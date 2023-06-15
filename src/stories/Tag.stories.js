@@ -83,6 +83,19 @@ export const tags = () => (
         </TagGroup>
       </Cell>
     </Row>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Tags can also be used with hexadecimal colors.
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <TagGroup>
+          <Tag color="#333444">Tag with hex</Tag>
+          <Tag color="#888444">Tag with hex</Tag>
+        </TagGroup>
+      </Cell>
+    </Row>
   </Grid>
 );
 
