@@ -97,7 +97,7 @@ export const tags = () => (
             Tag with hex and outline
           </Tag>
           <Tag color="#888444" variant="outline">
-            Tag with hex
+            Tag with hex and outline
           </Tag>
         </TagGroup>
       </Cell>
