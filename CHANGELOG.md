@@ -1,3 +1,10 @@
+## [5.15.1](https://github.com/dexma/ui-components/compare/v5.15.0...v5.15.1) (2023-06-20)
+
+
+### Bug Fixes
+
+* **Tag:** Tag outline hex ([e127b66](https://github.com/dexma/ui-components/commit/e127b6678eca41d55f4265dc28a19e9ec8bcdc2e))
+
 # [5.15.0](https://github.com/dexma/ui-components/compare/v5.14.2...v5.15.0) (2023-06-15)
 
 
