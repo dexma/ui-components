@@ -31,7 +31,9 @@ const getTagColor = props => {
 };
 
 export const getTagOutline = props => {
-  const themeColor = getTagColor(props);
+  const themeColor = props.color.startsWith('#')
+    ? props.color
+    : getTagColor(props);
   const tagBackgroundColor = transparentize(0.9, themeColor);
   const tagColor = darken(0.1, themeColor);
   return css`

@@ -93,6 +93,12 @@ export const tags = () => (
         <TagGroup>
           <Tag color="#333444">Tag with hex</Tag>
           <Tag color="#888444">Tag with hex</Tag>
+          <Tag color="#333444" variant="outline">
+            Tag with hex and outline
+          </Tag>
+          <Tag color="#888444" variant="outline">
+            Tag with hex and outline
+          </Tag>
         </TagGroup>
       </Cell>
     </Row>
