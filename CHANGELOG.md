@@ -1,3 +1,10 @@
+## [5.15.2](https://github.com/dexma/ui-components/compare/v5.15.1...v5.15.2) (2023-06-26)
+
+
+### Bug Fixes
+
+* **antDesign:** Update Ant Design to v5 ([2549865](https://github.com/dexma/ui-components/commit/2549865e553c21413930317919e370896fdab7fb))
+
 ## [5.15.1](https://github.com/dexma/ui-components/compare/v5.15.0...v5.15.1) (2023-06-20)
 
 
