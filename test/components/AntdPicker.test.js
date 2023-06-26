@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render, screen } from '@testing-library/react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import AntdPicker from '../../src/components/AntdPicker';
 
 describe('<AntPicker>', () => {
@@ -75,7 +75,7 @@ describe('<AntPicker>', () => {
       });
       it('should execute onChange function once when click the current month on dropdown menu', async () => {
         const onChangeFunction = jest.fn();
-        const currentMonthValue = moment().format('MMM');
+        const currentMonthValue = dayjs().format('MMM');
         // Given
         render(
           <AntdPicker
@@ -108,7 +108,7 @@ describe('<AntPicker>', () => {
       });
       it('should execute onChange function once when click the current year on dropdown menu', async () => {
         const onChangeFunction = jest.fn();
-        const currentYearValue = moment().format('yyyy');
+        const currentYearValue = dayjs().format('YYYY');
         // Given
         render(
           <AntdPicker
@@ -146,12 +146,12 @@ describe('<AntPicker>', () => {
       });
       it('should change values of start date when a preset range is clicked', async () => {
         const onChangeFunction = jest.fn();
-        const todayValue = moment().format('DD/MM/yyyy HH:mm');
+        const todayValue = dayjs().format('DD/MM/YYYY HH:mm');
         // Given
         render(
           <AntdPicker
             type="date"
-            format="DD/MM/yyyy HH:mm"
+            format="DD/MM/YYYY HH:mm"
             onChange={onChangeFunction}
           />
         );
@@ -194,15 +194,14 @@ describe('<AntPicker>', () => {
         // Given
         render(
           <AntdPicker
-            format="DD/MM/yyyy"
+            format="DD/MM/YYYY"
             type="range"
-            ranges={{
-              Today: [moment(), moment()],
-              'This Month': [
-                moment().startOf('month'),
-                moment().endOf('month'),
-              ],
-            }}
+            ranges={[
+              {
+                label: 'This Month',
+                value: [dayjs().startOf('month'), dayjs().endOf('month')],
+              },
+            ]}
             onChange={onChangeFunction}
           />
         );
@@ -215,16 +214,16 @@ describe('<AntPicker>', () => {
         expect(onChangeFunction).toBeCalledTimes(1);
         expect(
           await screen.findByDisplayValue(
-            moment()
+            dayjs()
               .startOf('month')
-              .format('DD/MM/yyyy')
+              .format('DD/MM/YYYY')
           )
         ).toBeTruthy();
         expect(
           await screen.findByDisplayValue(
-            moment()
+            dayjs()
               .endOf('month')
-              .format('DD/MM/yyyy')
+              .format('DD/MM/YYYY')
           )
         ).toBeTruthy();
       });
@@ -237,7 +236,7 @@ describe('<AntPicker>', () => {
           <AntdPicker
             type="range"
             onChange={onChangeFunction}
-            format="DD/MM/yyyy"
+            format="DD/MM/YYYY"
           />
         );
         // When
@@ -253,16 +252,16 @@ describe('<AntPicker>', () => {
         expect(onChangeFunction).toBeCalledTimes(1);
         expect(
           await screen.findByDisplayValue(
-            moment()
+            dayjs()
               .date(daySelected)
-              .format('DD/MM/yyyy')
+              .format('DD/MM/YYYY')
           )
         ).toBeTruthy();
         expect(
           await screen.findByDisplayValue(
-            moment()
+            dayjs()
               .date(nextDaySelected)
-              .format('DD/MM/yyyy')
+              .format('DD/MM/YYYY')
           )
         ).toBeTruthy();
       });
@@ -285,20 +284,20 @@ describe('<AntPicker>', () => {
         expect(screen.getByDisplayValue(endDateValue)).toBeTruthy();
       });
       it('should change values of start and end date when a preset range is clicked', async () => {
-        const currentMonth = moment();
-        const expectedCurrentMonth = currentMonth.format('MM/yyyy');
-        const lastMonth = moment().add(2, 'months');
-        const expectedLastMonth = lastMonth.format('MM/yyyy');
+        const currentMonth = dayjs();
+        const expectedCurrentMonth = currentMonth.format('MM/YYYY');
+        const lastMonth = dayjs().add(2, 'months');
+        const expectedLastMonth = lastMonth.format('MM/YYYY');
         const onChangeFunction = jest.fn();
         // Given
         render(
           <AntdPicker
             type="range"
             picker="month"
-            format="MM/yyyy"
-            ranges={{
-              'Next 2 Months': [currentMonth, lastMonth],
-            }}
+            format="MM/YYYY"
+            ranges={[
+              { label: 'Next 2 Months', value: [currentMonth, lastMonth] },
+            ]}
             onChange={onChangeFunction}
           />
         );
@@ -333,20 +332,18 @@ describe('<AntPicker>', () => {
         expect(await screen.findByDisplayValue(endDateValue)).toBeTruthy();
       });
       it('should change values of start and end date when a preset range is clicked', async () => {
-        const currentYear = moment();
-        const expectedCurrentYear = currentYear.format('yyyy');
-        const lastYear = moment().add(2, 'year');
-        const expectedLastYear = lastYear.format('yyyy');
+        const currentYear = dayjs();
+        const expectedCurrentYear = currentYear.format('YYYY');
+        const lastYear = dayjs().add(2, 'year');
+        const expectedLastYear = lastYear.format('YYYY');
         const onChangeFunction = jest.fn();
         // Given
         render(
           <AntdPicker
             type="range"
             picker="year"
-            format="yyyy"
-            ranges={{
-              'Next 2 Years': [currentYear, lastYear],
-            }}
+            format="YYYY"
+            ranges={[{ label: 'Next 2 Years', value: [currentYear, lastYear] }]}
             onChange={onChangeFunction}
           />
         );
@@ -386,10 +383,13 @@ describe('<AntPicker>', () => {
         render(
           <AntdPicker
             type="range"
-            ranges={{
-              Today: [moment().startOf('day'), moment().endOf('day')],
-            }}
-            format="DD/MM/yyyy HH:mm"
+            ranges={[
+              {
+                label: 'Today',
+                value: [dayjs().startOf('day'), dayjs().endOf('day')],
+              },
+            ]}
+            format="DD/MM/YYYY HH:mm"
             onChange={onChangeFunction}
           />
         );
@@ -402,16 +402,16 @@ describe('<AntPicker>', () => {
         expect(onChangeFunction).toBeCalledTimes(1);
         expect(
           await screen.findByDisplayValue(
-            moment()
+            dayjs()
               .startOf('day')
-              .format('DD/MM/yyyy HH:mm')
+              .format('DD/MM/YYYY HH:mm')
           )
         ).toBeTruthy();
         expect(
           await screen.findByDisplayValue(
-            moment()
+            dayjs()
               .endOf('day')
-              .format('DD/MM/yyyy HH:mm')
+              .format('DD/MM/YYYY HH:mm')
           )
         ).toBeTruthy();
       });
