@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AntdSelect from '../components/AntdSelect/AntdSelect';
 import Cell from '../components/Cell';
 import Grid from '../components/Grid';
@@ -143,11 +143,28 @@ export const selectNoButton = () => (
               color: 'orange',
             },
           ]}
-        ></AntdSelect>
+        />
       </Cell>
     </Row>
   </Grid>
 );
+
+const SingleSelect = props => {
+  const [selectedValues, setSelectedValue] = useState([]);
+  const handleChange = value => {
+    setSelectedValue(value);
+  };
+  return (
+    <AntdSelect
+      onChange={handleChange}
+      value={selectedValues}
+      handleClearAll={() => {
+        setSelectedValue([]);
+      }}
+      {...props}
+    />
+  );
+};
 
 export const singleSelect = () => (
   <Grid fluid>
@@ -158,7 +175,7 @@ export const singleSelect = () => (
         </Paragraph>
       </Cell>
       <Cell xs={12}>
-        <AntdSelect
+        <SingleSelect
           mode="single"
           options={[
             { value: '1', label: '1st Floor', color: 'blue' },
@@ -210,7 +227,7 @@ export const singleSelect = () => (
               color: 'orange',
             },
           ]}
-        ></AntdSelect>
+        />
       </Cell>
     </Row>
   </Grid>

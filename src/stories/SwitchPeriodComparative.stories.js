@@ -38,8 +38,7 @@ export const switchPeriodComparative = () => {
             startDate={startDate}
             endDate={endDate}
             onPeriodSelect={({ period, date }) =>
-              setStateNoText({ period, date })
-            }
+              setStateNoText({ period, date })}
           />
         </Cell>
       </Row>

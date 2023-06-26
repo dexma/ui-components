@@ -13,6 +13,7 @@ import {
   filterOption,
   getOptionsBySearch,
 } from '../../src/components/AntdSelect/selectUtils';
+import theme from '../../src/styles/theme';
 
 describe('AntdSelect', () => {
   describe('selectUtils', () => {
@@ -288,7 +289,7 @@ describe('AntdSelect', () => {
           onClose: jest.fn(),
         };
         const options = [{ value: 'Test 1', label: 'Test 1', color: 'blue' }];
-        render(tagRenderButtonPagination(props, options));
+        render(tagRenderButtonPagination(props, options, theme));
         const tag = screen.getByTestId('tag-option-selected-Test 1');
         expect(tag).toBeTruthy();
       });
@@ -301,7 +302,7 @@ describe('AntdSelect', () => {
           onClose,
         };
         const options = [{ value: 'Test 1', label: 'Test 1', color: 'blue' }];
-        render(tagRenderButtonPagination(props, options));
+        render(tagRenderButtonPagination(props, options, theme));
         const tag = screen.getByTestId('tag-option-selected-Test 1');
         expect(tag).toBeTruthy();
         const closeIcon = screen.getByTestId('icon');
@@ -318,7 +319,7 @@ describe('AntdSelect', () => {
           onClose: jest.fn(),
         };
         const options = [{ value: 'Test 1', label: 'Test 1', color: 'blue' }];
-        render(tagRenderButtonPagination(props, options));
+        render(tagRenderButtonPagination(props, options, theme));
         const tag = screen.getByTestId('tag-option-selected-Test 1');
         expect(tag).toBeTruthy();
         const closeIcon = screen.queryByTestId('icon');

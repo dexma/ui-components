@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { getOptionsBySearch } from './selectUtils';
 import Cell from '../Cell';
 import {
@@ -63,6 +63,7 @@ const ButtonPaginationSelector = ({
   searchValue,
   showDropdown,
 }) => {
+  const ref = useRef(null);
   const [showPagination, setShowPagination] = useState(
     pageSize !== undefined && pageSize < options.length
   );
@@ -162,8 +163,12 @@ const ButtonPaginationSelector = ({
             data-testid="button-select-all"
             onClick={() => {
               handleSelectAll(currentPage, options);
+              if (ref !== null && ref.current !== null) ref.current.blur();
             }}
             theme={theme}
+            ref={r => {
+              ref.current = r;
+            }}
           >
             {getButtonText(
               text,
