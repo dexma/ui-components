@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { Popover } from 'antd';
+import { Dropdown as DropdownAntd } from 'antd';
 
 import Button from './Button';
 
@@ -28,7 +28,7 @@ const propTypes = {
     'rightBottom',
   ]),
   /**
-   * Tooltip trigger mode. Could be multiple by passing an array
+   * Tooltip trigger mode. MUST be pased in an array of strings with "hover","focus" and/or "click"
    */
   trigger: PropTypes.oneOf(['hover', 'focus', 'click']),
   /**
@@ -49,7 +49,7 @@ const propTypes = {
 
 const defaultProps = {
   placement: 'bottomRight',
-  trigger: 'hover',
+  trigger: ['hover'],
   variant: 'primary',
   text: null,
   theme: theme,
@@ -58,48 +58,52 @@ const defaultProps = {
 const getContent = content => {
   return content.map((props, i) => {
     const { icon } = props;
-    return (
-      <Button
-        key={i}
-        className="dropdown-button-item"
-        variant="icon"
-        iconBefore={icon}
-        {...props}
-      />
-    );
+    return {
+      label: (
+        <Button
+          key={i}
+          className="dropdown-button-item"
+          variant="icon"
+          iconBefore={icon}
+          {...props}
+        />
+      ),
+    };
   });
 };
 
 export const Dropdown = props => {
   const { trigger, text, placement, content, icon } = props;
   const renderContent = content ? getContent(content) : null;
+
   return (
-    <Popover
-      content={renderContent}
-      title={null}
-      trigger={trigger}
-      placement={placement}
-    >
+    <>
       <StyledGlobalDropdown {...props} />
-      {text ? (
-        <Button
-          data-testid="dropdown-button-text"
-          className="dropdown-button"
-          variant="icon"
-          iconBefore={icon}
-          text={text}
-        ></Button>
-      ) : (
-        <Button
-          data-testid="dropdown-button-icon"
-          className="dropdown-button"
-          variant="icon-secondary"
-          iconBefore={icon}
-          text={null}
-          isCircle
-        ></Button>
-      )}
-    </Popover>
+      <DropdownAntd
+        menu={{ items: renderContent }}
+        placement={placement}
+        trigger={trigger}
+      >
+        {text ? (
+          <Button
+            data-testid="dropdown-button-text"
+            className="dropdown-button"
+            variant="icon"
+            iconBefore={icon}
+            text={text}
+          ></Button>
+        ) : (
+          <Button
+            data-testid="dropdown-button-icon"
+            className="dropdown-button"
+            variant="icon-secondary"
+            iconBefore={icon}
+            text={null}
+            isCircle
+          ></Button>
+        )}
+      </DropdownAntd>
+    </>
   );
 };
 
