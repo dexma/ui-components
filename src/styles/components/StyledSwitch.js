@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 const StyledSwitch = styled.div`
   display: inline-block;
@@ -17,7 +18,7 @@ const StyledSwitch = styled.div`
     display: inline-block;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    min-width: 44px;
+    width: 44px;
     height: 24px;
     line-height: 20px;
     vertical-align: middle;
@@ -78,6 +79,7 @@ const StyledSwitch = styled.div`
   }
   .ant-switch-checked.ant-switch-loading .ant-switch-loading-icon {
     color: ${props => props.theme.primary};
+    width: 44px;
   }
   .ant-switch:focus {
     outline: 0;
@@ -88,6 +90,7 @@ const StyledSwitch = styled.div`
     -webkit-box-shadow: none;
     box-shadow: none;
   }
+
   .ant-switch-small {
     min-width: 28px;
     height: 18px;
@@ -171,6 +174,17 @@ const StyledSwitch = styled.div`
       transform-origin: 50% 50%;
     }
   }
+
+  // Checked
+  .ant-switch.ant-switch-checked {
+    background-color: ${props => props.theme.primary};
+  }
+
+  // On hover ad checked
+  .ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+    background-color: ${props => darken(0.1, props.theme.primary)};
+  }
+
   @keyframes AntSwitchSmallLoadingCircle {
     0% {
       -webkit-transform: rotate(0deg) scale(0.66667);
