@@ -133,7 +133,7 @@ const AntdRangePicker = props => {
     <StyledAntdRangePicker
       autoFocus={autoFocus}
       defaultValue={defaultValuePeriod}
-      ranges={rangesValue}
+      presets={rangesValue}
       onChange={onDatesChange}
       placeholder={
         startDatePlaceholderText || endDatePlaceholderText
@@ -169,6 +169,11 @@ const AntdPicker = props => {
             datePickerUtils.getLocale(language)) ||
           locale
         }
+        theme={{
+          token: {
+            colorPrimary: theme.primary,
+          },
+        }}
       >
         <DropdownDatePickerStyles theme={theme} />
         {type === 'range' ||

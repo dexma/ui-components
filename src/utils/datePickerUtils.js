@@ -1,45 +1,45 @@
 /* eslint-disable camelcase */
 import 'moment/locale/ca';
-import ca_ES from 'antd/lib/locale-provider/ca_ES';
+import ca_ES from 'antd/locale/ca_ES';
 import 'moment/locale/de';
-import de_DE from 'antd/lib/locale-provider/de_DE';
-import en_US from 'antd/lib/locale-provider/en_US';
+import de_DE from 'antd/locale/de_DE';
+import en_US from 'antd/locale/en_US';
 import 'moment/locale/es';
-import es_ES from 'antd/lib/locale-provider/es_ES';
+import es_ES from 'antd/locale/es_ES';
 // import eu_ES from 'antd/lib/locale/eu_ES'; There's no such translation on antd
 import 'moment/locale/fr';
-import fr_FR from 'antd/lib/locale-provider/fr_FR';
+import fr_FR from 'antd/locale/fr_FR';
 import 'moment/locale/it';
-import it_IT from 'antd/lib/locale-provider/it_IT';
+import it_IT from 'antd/locale/it_IT';
 import 'moment/locale/pt';
-import pt_PT from 'antd/lib/locale-provider/pt_PT';
+import pt_PT from 'antd/locale/pt_PT';
 import 'moment/locale/tr';
-import tr_TR from 'antd/lib/locale-provider/tr_TR';
+import tr_TR from 'antd/locale/tr_TR';
 import 'moment/locale/pt-br';
-import pt_BR from 'antd/lib/locale-provider/pt_BR';
+import pt_BR from 'antd/locale/pt_BR';
 import 'moment/locale/el';
-import el_GR from 'antd/lib/locale-provider/el_GR';
+import el_GR from 'antd/locale/el_GR';
 import 'moment/locale/nl';
-import nl_NL from 'antd/lib/locale-provider/nl_NL';
+import nl_NL from 'antd/locale/nl_NL';
 import 'moment/locale/nl-be';
-import nl_BE from 'antd/lib/locale-provider/nl_BE';
+import nl_BE from 'antd/locale/nl_BE';
 import 'moment/locale/pl';
-import pl_PL from 'antd/lib/locale-provider/pl_PL';
+import pl_PL from 'antd/locale/pl_PL';
 import 'moment/locale/bg';
-import bg_BG from 'antd/lib/locale-provider/bg_BG';
+import bg_BG from 'antd/locale/bg_BG';
 import 'moment/locale/da';
-import da_DK from 'antd/lib/locale-provider/da_DK';
+import da_DK from 'antd/locale/da_DK';
 import 'moment/locale/fi';
-import fi_FI from 'antd/lib/locale-provider/fi_FI';
+import fi_FI from 'antd/locale/fi_FI';
 // import no_NO from 'antd/lib/locale/no_NO'; There's no such translation on antd
 import 'moment/locale/sl';
-import sl_SI from 'antd/lib/locale-provider/sl_SI';
+import sl_SI from 'antd/locale/sl_SI';
 import 'moment/locale/sv';
-import sv_SE from 'antd/lib/locale-provider/sv_SE';
+import sv_SE from 'antd/locale/sv_SE';
 import 'moment/locale/zh-cn';
-import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import zh_CN from 'antd/locale/zh_CN';
 import 'moment/locale/en-gb';
-import en_GB from 'antd/lib/locale-provider/en_GB';
+import en_GB from 'antd/locale/en_GB';
 
 // i18n
 export const getLocale = language => {

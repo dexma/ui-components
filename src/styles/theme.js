@@ -41,6 +41,7 @@ export const color = {
   cyan: '#38dcdf',
   blueLight: '#5da8f2',
   blue: '#0054a1',
+  irisBlue: '#00B3BC',
   violet: '#9152A5',
   magenta: '#DD4B80',
   pink: '#ffaca8',
@@ -51,7 +52,7 @@ export const color = {
 };
 
 export const transparent = 'transparent';
-export const primary = color.teal500;
+export const primary = color.irisBlue;
 export const success = color.green;
 export const warning = color.amber;
 export const error = color.red;

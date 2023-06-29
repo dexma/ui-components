@@ -249,15 +249,36 @@ const AntdSelect = props => {
           style={{ width: '100%' }}
           suffixIcon={
             showDropdown ? (
-              <Icon color="gray" name="chevron_up" size="small" />
+              <Icon
+                className="selectable-icon"
+                color="gray"
+                name="chevron_up"
+                size="small"
+                onClick={() => {
+                  setShowDropdown(false);
+                }}
+              />
             ) : (
-              <Icon color="gray" name="chevron_down" size="small" />
+              <Icon
+                className="selectable-icon"
+                color="gray"
+                name="chevron_down"
+                size="small"
+                onClick={() => {
+                  setShowDropdown(true);
+                }}
+              />
             )
           }
           onChange={values => {
             onChange !== undefined && onChange(values);
             setSelectedValues(values);
             setShowDropdown(false);
+          }}
+          onDropdownVisibleChange={e => {
+            if (e !== showDropdown) {
+              setShowDropdown(e);
+            }
           }}
           onFocus={() => {
             setShowDropdown(true);
@@ -301,6 +322,7 @@ const AntdSelect = props => {
               <Icon color="white" name="close" size="small" />
             }
             mode={mode}
+            open={showDropdown}
             placeholder={placeholder}
             searchValue={sValue.current}
             style={{ width: '100%' }}
@@ -311,16 +333,17 @@ const AntdSelect = props => {
                 <>
                   {(searchValue !== '' || selectedValues.length > 0) && (
                     <Icon
+                      className="selectable-icon"
                       color="gray"
                       name="close"
                       size="small"
-                      onClick={e => {
+                      onClick={() => {
                         reset();
-                        e.stopPropagation();
                       }}
                     />
                   )}
                   <Icon
+                    className="selectable-icon"
                     color="gray"
                     name="chevron_up"
                     size="small"
@@ -332,19 +355,27 @@ const AntdSelect = props => {
                 </>
               ) : (
                 <Icon
+                  className="selectable-icon"
                   color="gray"
                   name="chevron_down"
                   size="small"
-                  onClick={e => {
+                  onClick={() => {
                     setShowDropdown(true);
-                    e.stopPropagation();
                   }}
                 />
               )
             }
-            open={showDropdown}
             ref={r => {
               ref.current = r;
+            }}
+            onDropdownVisibleChange={e => {
+              if (e !== showDropdown) {
+                setShowDropdown(e);
+                if (e === false) {
+                  setCurrentPage(1);
+                  setSearchValue('');
+                }
+              }
             }}
             tagRender={props => tagRenderButtonPagination(props, options)}
             value={selectedValues}
@@ -382,19 +413,6 @@ const AntdSelect = props => {
             )}
           </Select>
         </>
-      )}
-      {showDropdown && (
-        <div
-          className="ant-modal-mask"
-          style={{
-            background: 'transparent',
-          }}
-          onClick={() => {
-            setCurrentPage(1);
-            setSearchValue('');
-            setShowDropdown(false);
-          }}
-        />
       )}
     </>
   );

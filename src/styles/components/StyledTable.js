@@ -331,12 +331,7 @@ const StyledTable = styled.div`
     -ms-user-select: none;
     user-select: none;
   }
-  .ant-table-thead > tr:first-child > th:first-child {
-    border-top-left-radius: 4px;
-  }
-  .ant-table-thead > tr:first-child > th:last-child {
-    border-top-right-radius: 4px;
-  }
+
   .ant-table-thead > tr:not(:last-child) > th[colspan] {
     border-bottom: 0;
   }

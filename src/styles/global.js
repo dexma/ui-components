@@ -1,4 +1,3 @@
-import 'antd/dist/antd.min.css';
 import { createGlobalStyle, css } from 'styled-components';
 import { StyledButton } from './components/StyledButton';
 import { StyledTooltip } from './components/StyledTooltip';
