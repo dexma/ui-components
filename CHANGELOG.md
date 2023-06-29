@@ -1,3 +1,19 @@
+# [6.0.0](https://github.com/dexma/ui-components/compare/v5.15.1...v6.0.0) (2023-06-29)
+
+
+* Merge pull request #99 from luisval11/feat/upgrade-antd-v5 ([3b89f6f](https://github.com/dexma/ui-components/commit/3b89f6f5d153651752b995a5cbc1411d7d16ac7e)), closes [#99](https://github.com/dexma/ui-components/issues/99)
+
+
+### Features
+
+* **antd:** upgrade antd to v5 ([ac27f86](https://github.com/dexma/ui-components/commit/ac27f861e18a16fb8867a8fdab006eaef8227121))
+
+
+### BREAKING CHANGES
+
+* some components that uses v5 may have changes on its props. Please, check the changes in detail on official documentation provided by Ant Design developers
+* **antd:** some components that uses v5 may have changes on its props. Please, check the changes in detail on official documentation provided by Ant Design developers
+
 ## [5.15.2](https://github.com/dexma/ui-components/compare/v5.15.1...v5.15.2) (2023-06-26)
 
 
