@@ -38,6 +38,10 @@ const StyledGlobalDropdown = createGlobalStyle(css`
     display: none;
   }
 
+  .dropdown-button-item:hover {
+    text-decoration: none !important;
+  }
+
   .ant-dropdown-inner {
     background-color: #fff;
     background-clip: padding-box;
