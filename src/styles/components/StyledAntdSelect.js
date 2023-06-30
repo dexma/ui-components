@@ -2,12 +2,12 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
 import { get } from 'lodash';
 import Button from '../../components/Button';
-import Tag from '../../components/Tag';
 import Cell from '../../components/Cell';
 import Icon from '../../components/Icon';
 import Row from '../../components/Row';
 import { color, primary } from '../theme';
 import { primaryColor, white } from '../selectors';
+import { StyledIcon } from './StyledIcon';
 
 export const hexToRGBA = (hex, a) => {
   let hexTemp = hex;
@@ -94,6 +94,7 @@ const getSpanColor = props => {
 };
 
 export const StyledSpanOptionSelected = styled.span`
+  display: flex;
   align-items: center;
   padding: 2px 4px;
   font-weight: 400;
@@ -106,6 +107,26 @@ export const StyledSpanOptionSelected = styled.span`
   line-height: 14px;
   background: ${props => props.color && getSpanColor(props)};
   color: ${white};
+  ${StyledIcon} {
+    ${props =>
+      props.icon &&
+      css`
+        &.icon {
+          margin-right: 3px;
+          margin-left: -2px;
+        }
+      `};
+    ${props =>
+      props.closable &&
+      css`
+        &.icon-close {
+          cursor: pointer;
+          margin-right: -2px;
+          margin-left: 3px;
+          fill: ${white};
+        }
+      `};
+  }
 `;
 
 export const StyledSpanOption = styled.span`
@@ -117,22 +138,6 @@ export const StyledSpanOption = styled.span`
   opacity: 1;
   border-radius: 4px;
   margin: 0px;
-`;
-
-// TagRender selected element
-export const StyledTagSelectedOption = styled(Tag)`
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
-  > svg.icon-close {
-    margin: 0px 3px 0px 0px !important;
-  }
-`;
-
-export const StyledTagOption = styled(Tag)`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
 `;
 
 const getSelectOptionStyle = css`
@@ -173,7 +178,7 @@ const getSelectOptionStyle = css`
   }
 
   .ant-select-arrow {
-    pointer-events: all;
+    pointer-events: all !important;
   }
 
   .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
@@ -189,6 +194,12 @@ const getSelectOptionStyle = css`
   }
   .ant-select-item-option-active:not(.ant-select-item-option-disabled).ant-select-item-option-selected {
     filter: brightness(0.95);
+  }
+
+  .option-select.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    > div > span {
+      padding: 4px !important;
+    }
   }
 `;
 
