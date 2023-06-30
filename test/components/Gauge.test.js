@@ -11,6 +11,7 @@ import {
   getSymbolElement,
   getValueSeries,
   getYAxis,
+  indicatorLengthIsBiggerThanItsScientificNotationLength,
   valueAsPercentage,
 } from '../../src/components/Gauge';
 import theme from '../../src/styles/theme';
@@ -324,6 +325,18 @@ describe('<Gauge>', () => {
         );
         // Then
         expect(resultingElement).toBe(expectedElement);
+      });
+    });
+    describe('indicatorLengthIsBiggerThanItsScientificNotationLength', () => {
+      it('should return true when the indicator length is bigger than its equivalent scientific expression', () => {
+        expect(
+          indicatorLengthIsBiggerThanItsScientificNotationLength(12, 23445.32)
+        ).toBeTruthy();
+      });
+      it('should return false when the indicator length is smaller than its equivalent scientific expression', () => {
+        expect(
+          indicatorLengthIsBiggerThanItsScientificNotationLength(4, 23445.32)
+        ).toBeFalsy();
       });
     });
   });

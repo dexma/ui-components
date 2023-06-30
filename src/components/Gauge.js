@@ -113,7 +113,7 @@ export const getBackgroundSerie = (backgroundColor, max) => ({
   zIndex: 0,
 });
 
-const indicatorLengthIsBiggerThanItsScientificNotationLength = (
+export const indicatorLengthIsBiggerThanItsScientificNotationLength = (
   indicatorLength,
   indicatorValue
 ) =>
