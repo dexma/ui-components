@@ -113,6 +113,12 @@ export const getBackgroundSerie = (backgroundColor, max) => ({
   zIndex: 0,
 });
 
+export const indicatorLengthIsBiggerThanItsScientificNotationLength = (
+  indicatorLength,
+  indicatorValue
+) =>
+  indicatorLength > applyScientific(parseFloat(indicatorValue), '.', 2).length;
+
 export const getRangeSeries = (ranges, min, max) => {
   const rangesRes = ranges
     .sort((rangeA, rangeB) => rangeB.to - rangeA.to)
@@ -266,9 +272,17 @@ const renderIndicatorLabel = (
     })
     .add();
   let textBox = currentChart.indicatorLabel.getBBox();
+  const plotWidth = currentChart.plotWidth;
+  const plotHeight = currentChart.plotHeight;
+  const indicatorLength = numberFormatter(indicator.value.toString(), '.', '.')
+    .length;
   if (
-    textBox.width >
-    currentChart.chartWidth / indicator.value.toString().length
+    Math.min(plotWidth, plotHeight) / 2 / indicatorLength <=
+      3 * indicatorLength &&
+    indicatorLengthIsBiggerThanItsScientificNotationLength(
+      indicatorLength,
+      indicator.value
+    )
   ) {
     currentChart.indicatorLabel.attr({
       text: applyScientific(parseFloat(indicator.value), decimalSeparator, 2),
