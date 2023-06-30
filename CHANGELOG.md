@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/dexma/ui-components/compare/v6.0.0...v6.0.1) (2023-06-30)
+
+
+### Bug Fixes
+
+* **various:** checkbox dropdown gauge fixes ([f686076](https://github.com/dexma/ui-components/commit/f686076f24a62aea115d18434a4be977d31172d6))
+
 # [6.0.0](https://github.com/dexma/ui-components/compare/v5.15.1...v6.0.0) (2023-06-29)
 
 
