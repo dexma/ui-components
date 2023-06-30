@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/dexma/ui-components/compare/v6.0.1...v6.1.0) (2023-06-30)
+
+
+### Features
+
+* **select:** Improvements Antd Select component ([97411db](https://github.com/dexma/ui-components/commit/97411dbaecf4e3d33d20443ca14dd88a4835f88a))
+
 ## [6.0.1](https://github.com/dexma/ui-components/compare/v6.0.0...v6.0.1) (2023-06-30)
 
 
