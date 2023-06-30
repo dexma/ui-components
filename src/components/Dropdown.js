@@ -28,9 +28,9 @@ const propTypes = {
     'rightBottom',
   ]),
   /**
-   * Tooltip trigger mode. MUST be pased in an array of strings with "hover","focus" and/or "click"
+   * Tooltip trigger mode. MUST be pased in an array of either "hover or "click".
    */
-  trigger: PropTypes.oneOf(['hover', 'focus', 'click']),
+  trigger: PropTypes.oneOf([['hover'], ['click']]),
   /**
    * Array of objects, which have the same contract as the Button contract for example `{text: 'Edit',
     iconBefore: 'edit'}`. Please check the <a href="https://dexma.github.io/ui-components/?path=/docs/button--buttons">buttons</a> 
@@ -57,7 +57,7 @@ const defaultProps = {
 
 const getContent = content => {
   return content.map((props, i) => {
-    const { icon } = props;
+    const { icon, onClick, ...rest } = props;
     return {
       label: (
         <Button
@@ -65,7 +65,8 @@ const getContent = content => {
           className="dropdown-button-item"
           variant="icon"
           iconBefore={icon}
-          {...props}
+          onClick={onClick}
+          {...rest}
         />
       ),
     };
