@@ -3,11 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { Dropdown as DropdownAntd } from 'antd';
-
 import Button from './Button';
-
 import theme from '../styles/theme';
-import { StyledGlobalDropdown } from '../styles/components/StyledDropdown';
+import {
+  StyledGlobalDropdown,
+  StyledDropdownButton,
+} from '../styles/components/StyledDropdown';
 
 const propTypes = {
   /**
@@ -60,7 +61,7 @@ const getContent = content => {
     const { icon, onClick, ...rest } = props;
     return {
       label: (
-        <Button
+        <StyledDropdownButton
           key={i}
           className="dropdown-button-item"
           variant="icon"
