@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/dexma/ui-components/compare/v6.1.0...v6.1.1) (2023-07-06)
+
+
+### Bug Fixes
+
+* **dropdown:** button onClick show occupy whole menu item ([2cc0117](https://github.com/dexma/ui-components/commit/2cc01172decab0cf72975f2d0072f1c7c8e97622))
+
 # [6.1.0](https://github.com/dexma/ui-components/compare/v6.0.1...v6.1.0) (2023-06-30)
 
 
