@@ -1,5 +1,9 @@
-import { createGlobalStyle, css } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
+import Button from '../../components/Button';
 
+export const StyledDropdownButton = styled(Button)`
+  width: 100%;
+`;
 const StyledGlobalDropdown = createGlobalStyle(css`
   .dropdown-button {
     padding: 0;
