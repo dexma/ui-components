@@ -10,7 +10,6 @@ import {
 } from '../selectors';
 
 import { getStyledPagination } from './StyledPagination';
-import { getStyledCheckBox } from './StyledCheckbox';
 
 import { StyledButton } from './StyledButton';
 
@@ -108,7 +107,6 @@ const StyledTable = styled.div`
     > th
     .ant-table-column-sorter
     .ant-table-column-sorter-inner {
-    height: 1em;
     margin-top: 0.35em;
     margin-left: 0.57142857em;
     color: #bfbfbf;
@@ -1400,9 +1398,7 @@ const StyledTable = styled.div`
     margin: -8px -8px -9px;
   }
   ${getStyledPagination};
-  .ant-table-selection-column {
-    ${getStyledCheckBox};
-  }
+
   .expanded-first-column {
     position: relative;
     padding-left: ${iconSize}!important;

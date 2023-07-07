@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import omit from 'lodash/omit';
-import { Table as TableAntDesign } from 'antd';
+import { Table as TableAntDesign, ConfigProvider } from 'antd';
 
 import theme from '../styles/theme';
 import { itemRender } from './Pagination';
@@ -220,19 +220,27 @@ export const Table = props => {
   const showTable = !loading && !error && columns && dataSource;
 
   return (
-    <StyledTable data-testid="table" theme={theme} data-id={dataId}>
-      {loading && <TableLoading />}
-      {error && <TableError> {errorContent} </TableError>}
-      {showTable && (
-        <TableAntDesign
-          expandIconAsCell={false}
-          expandIcon={expandedRowRender && getExpandedIcon}
-          pagination={{ itemRender: itemRender }}
-          columns={isExpanded ? getColumnsExpanded() : columns}
-          {...tableProps}
-        />
-      )}
-    </StyledTable>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: theme.primary,
+        },
+      }}
+    >
+      <StyledTable data-testid="table" theme={theme} data-id={dataId}>
+        {loading && <TableLoading />}
+        {error && <TableError> {errorContent} </TableError>}
+        {showTable && (
+          <TableAntDesign
+            expandIconAsCell={false}
+            expandIcon={expandedRowRender && getExpandedIcon}
+            pagination={{ itemRender: itemRender }}
+            columns={isExpanded ? getColumnsExpanded() : columns}
+            {...tableProps}
+          />
+        )}
+      </StyledTable>
+    </ConfigProvider>
   );
 };
 
