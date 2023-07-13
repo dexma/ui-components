@@ -1,3 +1,10 @@
+## [6.1.2](https://github.com/dexma/ui-components/compare/v6.1.1...v6.1.2) (2023-07-13)
+
+
+### Bug Fixes
+
+* **table:** adjust Table checkbox and sorter icon ([610aad4](https://github.com/dexma/ui-components/commit/610aad4fe9c5476d89edbfcefc9b19bdac1d5363))
+
 ## [6.1.1](https://github.com/dexma/ui-components/compare/v6.1.0...v6.1.1) (2023-07-06)
 
 
