@@ -2,6 +2,8 @@ export const columnsTable = [
   {
     title: 'Name',
     dataIndex: 'name',
+    sortDirections: ['ascend', 'descend'],
+    sorter: true,
   },
   {
     title: 'Age',
