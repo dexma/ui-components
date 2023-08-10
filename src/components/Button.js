@@ -49,7 +49,11 @@ const propTypes = {
    */
   iconAfter: PropTypes.string,
   /**
-   * Show tooltip on mouseenter to more info go to <a href="https://dexma.github.io/ui-components/?path=/docs/tooltip--tooltip">Tooltips section</a>
+   * Set a color from <a href="https://dexma.github.io/ui-components/?path=/docs/colors--colors">color</a> or pass a HEX color #333 or #333333
+   */
+  iconColor: PropTypes.string,
+  /**
+   * Invoked once the button has been clicked.
    */
   tooltip: PropTypes.string,
   /**
@@ -118,6 +122,7 @@ export const Button = forwardRef((props, ref) => {
     text,
     iconBefore,
     iconAfter,
+    iconColor,
     tooltip,
     onClick,
     isDisabled,
@@ -157,7 +162,7 @@ export const Button = forwardRef((props, ref) => {
         <Icon
           name={iconBefore}
           size={iconSize}
-          color="white"
+          color={iconColor}
           data-testid="button-icon-before"
         />
       ) : null}
@@ -167,7 +172,7 @@ export const Button = forwardRef((props, ref) => {
         <Icon
           name={iconAfter}
           size={iconSize}
-          color="white"
+          color={iconColor}
           data-testid="button-icon-after"
         />
       ) : null}
