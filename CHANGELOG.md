@@ -1,3 +1,10 @@
+## [6.1.3](https://github.com/dexma/ui-components/compare/v6.1.2...v6.1.3) (2023-08-14)
+
+
+### Bug Fixes
+
+* **button:** custom icon color ([2bfc154](https://github.com/dexma/ui-components/commit/2bfc15404e0ee1bfbedab2a050808760cf1cb4ce))
+
 ## [6.1.2](https://github.com/dexma/ui-components/compare/v6.1.1...v6.1.2) (2023-07-13)
 
 
