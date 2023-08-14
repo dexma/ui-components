@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
 import Button from '../../src/components/Button';
+import { color } from '../../src/styles/theme';
 
 describe('<Button>', () => {
   it('Should render the button component', () => {
@@ -19,6 +20,22 @@ describe('<Button>', () => {
   it('Should render the icon after', () => {
     const { getByTestId } = render(<Button iconAfter="vader" />);
     expect(getByTestId('button-icon-after')).toBeTruthy();
+  });
+  it('Should render the icon before with overriden color', () => {
+    const { getByTestId } = render(
+      <Button iconBefore="vader" iconColor={color.amber} />
+    );
+    expect(getByTestId('button-icon-before')).toHaveStyle(
+      `fill: ${color.amber}`
+    );
+  });
+  it('Should render the icon after with overriden color', () => {
+    const { getByTestId } = render(
+      <Button iconAfter="vader" iconColor={color.amber} />
+    );
+    expect(getByTestId('button-icon-after')).toHaveStyle(
+      `fill: ${color.amber}`
+    );
   });
   it('Should render the children correctly', () => {
     const testDiv = <div data-testid="test">test</div>;

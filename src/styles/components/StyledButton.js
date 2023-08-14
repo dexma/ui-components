@@ -80,6 +80,7 @@ export const getIconSize = props => {
     }
   `;
 };
+const getIconColor = (iconColor, color) => iconColor ?? color;
 export const getButtonVariantPrimary = props => {
   const newHoverColor =
     props.disabled || props.isLoading
@@ -92,7 +93,7 @@ export const getButtonVariantPrimary = props => {
     border-color: ${primaryColor};
     background-color: ${primaryColor};
     ${StyledIcon} {
-      fill: ${color};
+      fill: ${getIconColor(props.iconColor, color)};
     }
     ${getSpinnerWhite()}
     &:hover {
@@ -100,7 +101,7 @@ export const getButtonVariantPrimary = props => {
       border-color: ${newHoverColor};
       background-color: ${newHoverColor};
       ${StyledIcon} {
-        fill: ${color};
+        fill: ${getIconColor(props.iconColor, color)};
       }
     }
     &:focus {
@@ -124,7 +125,7 @@ export const getButtonVariantSecondary = props => {
     border-color: ${borderColor};
     background-color: ${background};
     ${StyledIcon} {
-      fill: ${colorIcon};
+      fill: ${getIconColor(props.iconColor, colorIcon)};
     }
     &:hover {
       color: ${colorHover};
@@ -153,7 +154,7 @@ export const getButtonVariantOutline = props => {
     border-color: ${borderColor};
     background-color: ${background};
     ${StyledIcon} {
-      fill: ${color};
+      fill: ${getIconColor(props.iconColor, color)};
     }
     &:hover {
       color: ${colorHover};
@@ -183,6 +184,9 @@ export const getButtonVariantDestructive = props => {
     border-color: ${borderColor};
     background-color: ${background};
     ${getSpinnerWhite()}
+    ${StyledIcon} {
+      fill: ${getIconColor(props.iconColor, color)};
+    }
     &:hover {
       color: ${color};
       border-color: ${backgroundHover};
@@ -202,7 +206,7 @@ export const getButtonVariantLink = props => {
     border-color: transparent;
     background-color: transparent;
     ${StyledIcon} {
-      fill: ${color};
+      fill: ${getIconColor(props.iconColor, color)};
     }
     &:hover {
       color: ${color};
@@ -220,7 +224,7 @@ export const getButtonVariantIcon = props => {
     border-color: transparent;
     background-color: transparent;
     ${StyledIcon} {
-      fill: ${color};
+      fill: ${getIconColor(props.iconColor, color)};
     }
     &:hover {
       ${StyledIcon} {
@@ -242,7 +246,7 @@ export const getButtonVariantIconSecondary = props => {
     border-color: transparent;
     background-color: transparent;
     ${StyledIcon} {
-      fill: ${color};
+      fill: ${getIconColor(props.iconColor, color)};
     }
     &:focus,
     &:hover {
@@ -264,7 +268,7 @@ export const getButtonVariantIconOutline = props => {
     border-color: transparent;
     background-color: transparent;
     ${StyledIcon} {
-      fill: ${color};
+      fill: ${getIconColor(props.iconColor, color)};
     }
     &:hover {
       ${StyledIcon} {

@@ -164,7 +164,7 @@
       "!<rootDir>/node_modules/",
       "!dist/"
     ],
-    "setupFiles": [
+    "setupFilesAfterEnv": [
       "<rootDir>/test/config/tests-setup.js"
     ],
     "transformIgnorePatterns": [

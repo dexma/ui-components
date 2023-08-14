@@ -113,6 +113,13 @@ export const icons = () => (
         <Button iconAfter="circle_add" variant="icon" isCircle />
         <Button iconAfter="vader" variant="icon-secondary" isCircle />
         <Button iconAfter="search" variant="icon-outline" isCircle />
+        <Button
+          iconAfter="star"
+          iconColor="amber"
+          variant="icon-secondary"
+          isCircle
+          size="large"
+        />
       </Cell>
     </Row>
   </Grid>
