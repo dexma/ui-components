@@ -1,6 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { StyledButton } from './components/StyledButton';
-import { StyledTooltip } from './components/StyledTooltip';
 
 const getUIComponentsStyle = css`
   input::-ms-clear,
@@ -270,7 +269,6 @@ const getUIComponentsStyle = css`
   mark {
     padding: 0.2em;
   }
-  ${StyledTooltip};
 `;
 const getStorybookStyles = css`
   ${StyledButton} {
