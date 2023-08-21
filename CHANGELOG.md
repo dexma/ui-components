@@ -1,3 +1,10 @@
+## [6.1.4](https://github.com/dexma/ui-components/compare/v6.1.3...v6.1.4) (2023-08-21)
+
+
+### Bug Fixes
+
+* **tooltip:** remove unused styles on Tooltip to fix arrow position ([2a89c87](https://github.com/dexma/ui-components/commit/2a89c87bb269d6ca48465c9a091350653f8839bc))
+
 ## [6.1.3](https://github.com/dexma/ui-components/compare/v6.1.2...v6.1.3) (2023-08-14)
 
 
