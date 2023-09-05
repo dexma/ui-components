@@ -1,3 +1,10 @@
+## [6.1.5](https://github.com/dexma/ui-components/compare/v6.1.4...v6.1.5) (2023-09-05)
+
+
+### Bug Fixes
+
+* **select:** enable allowClear prop to affect custom iconClear ([582a435](https://github.com/dexma/ui-components/commit/582a435d656441fab966dddfcba809ac071f0464))
+
 ## [6.1.4](https://github.com/dexma/ui-components/compare/v6.1.3...v6.1.4) (2023-08-21)
 
 
