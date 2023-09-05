@@ -442,6 +442,35 @@ describe('AntdSelect', () => {
       // Then
       expect(screen.findAllByText('Test').length > 0);
     });
+
+    test('should show icon clearAll when a value is selected and allowClear is enabled', () => {
+      const { container } = render(
+        <AntdSelect
+          allowClear
+          defaultValues={['Test']}
+          mode="multiple"
+          style={{ width: '100%' }}
+          options={[
+            { color: 'blue', value: 'Test', label: 'Test' },
+            { color: 'red', value: 'Test1', label: 'Test1' },
+          ]}
+        />
+      );
+      // When
+      const select = container.querySelector(
+        "[data-testid='select'] > .ant-select-selector"
+      );
+      expect(select).not.toBeNull();
+
+      act(() => {
+        fireEvent.focus(select);
+      });
+      // Then
+      expect(screen.findAllByText('Test').length > 0);
+      // One icon for arrow down, another for clearAll and another for selected value
+      expect(screen.getAllByTestId('icon').length).toBe(3);
+    });
+
     test('should trigger onChange when some option is selected', () => {
       const onChange = jest.fn();
       const { container } = render(
