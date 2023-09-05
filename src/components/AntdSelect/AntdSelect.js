@@ -187,10 +187,12 @@ const AntdSelect = props => {
     onChange,
     handleButtonSelectAll,
     handleClearAll,
+    allowClear,
   } = props;
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedValues, setSelectedValues] = useState([]);
   const antdSelectProps = omit(props, [
+    'allowClear',
     'dataId',
     'defaultValues',
     'mode',
@@ -274,16 +276,17 @@ const AntdSelect = props => {
           suffixIcon={
             showDropdown ? (
               <>
-                {(searchValue !== '' || selectedValues.length > 0) && (
-                  <Icon
-                    color="gray"
-                    name="close"
-                    size="small"
-                    onClick={() => {
-                      reset();
-                    }}
-                  />
-                )}
+                {allowClear &&
+                  (searchValue !== '' || selectedValues.length > 0) && (
+                    <Icon
+                      color="gray"
+                      name="close"
+                      size="small"
+                      onClick={() => {
+                        reset();
+                      }}
+                    />
+                  )}
                 <Icon
                   color="gray"
                   name="chevron_up"
@@ -365,17 +368,18 @@ const AntdSelect = props => {
           suffixIcon={
             showDropdown ? (
               <>
-                {(searchValue !== '' || selectedValues.length > 0) && (
-                  <Icon
-                    className="selectable-icon"
-                    color="gray"
-                    name="close"
-                    size="small"
-                    onClick={() => {
-                      reset();
-                    }}
-                  />
-                )}
+                {allowClear &&
+                  (searchValue !== '' || selectedValues.length > 0) && (
+                    <Icon
+                      className="selectable-icon"
+                      color="gray"
+                      name="close"
+                      size="small"
+                      onClick={() => {
+                        reset();
+                      }}
+                    />
+                  )}
                 <Icon
                   className="selectable-icon"
                   color="gray"
@@ -452,6 +456,7 @@ const AntdSelect = props => {
 };
 
 const propTypes = {
+  allowClear: PropTypes.bool,
   dataId: PropTypes.string,
   defaultValues: PropTypes.arrayOf(PropTypes.shape({})),
   isLoading: PropTypes.bool,
@@ -470,6 +475,7 @@ const propTypes = {
   }),
 };
 const defaultProps = {
+  allowClear: true,
   dataId: 'select',
   defaultValues: [],
   options: [],
