@@ -44,6 +44,7 @@ export { default as Loading } from './components/Loading';
 export { default as Modal } from './components/Modal';
 export { default as Pagination } from './components/Pagination';
 export { default as Paragraph } from './components/Paragraph';
+export { default as Popover } from './components/Popover';
 export { default as Progress } from './components/Progress';
 export { default as Result } from './components/Result';
 export { default as Row } from './components/Row';
