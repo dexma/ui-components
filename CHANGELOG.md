@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/dexma/ui-components/compare/v6.1.5...v6.2.0) (2023-09-06)
+
+
+### Features
+
+* **popover:** enable popover component ([43dcbbb](https://github.com/dexma/ui-components/commit/43dcbbb6f40cd25a81def96bcfe40199e02c5996))
+
 ## [6.1.5](https://github.com/dexma/ui-components/compare/v6.1.4...v6.1.5) (2023-09-05)
 
 
