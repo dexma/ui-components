@@ -1,3 +1,10 @@
+# [6.3.0](https://github.com/dexma/ui-components/compare/v6.2.0...v6.3.0) (2023-09-08)
+
+
+### Features
+
+* **select:** add id to option of select ([d1c45ef](https://github.com/dexma/ui-components/commit/d1c45ef9d144122c0e425c27badcae0f881f3cc2))
+
 # [6.2.0](https://github.com/dexma/ui-components/compare/v6.1.5...v6.2.0) (2023-09-06)
 
 
