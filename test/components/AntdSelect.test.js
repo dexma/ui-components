@@ -422,6 +422,31 @@ describe('AntdSelect', () => {
       const select = screen.getByTestId('select');
       expect(select).toBeTruthy();
     });
+
+    test('should render AntdSelect successfully with ids', () => {
+      const { container } = render(
+        <AntdSelect
+          mode="multiple"
+          style={{ width: '100%' }}
+          options={[
+            { id: 'blueId', color: 'blue', value: 'Test', label: 'Test' },
+          ]}
+        />
+      );
+
+      // When
+      const select = container.querySelector(
+        "[data-testid='select'] > .ant-select-selector"
+      );
+      expect(select).not.toBeNull();
+
+      act(() => {
+        fireEvent.focus(select);
+      });
+
+      expect(screen.getByTestId('select-option-Test').id).toEqual('blueId');
+    });
+
     test('should open dropDown when input is clicked', () => {
       const { container } = render(
         <AntdSelect
