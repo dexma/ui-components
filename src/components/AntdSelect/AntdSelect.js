@@ -144,6 +144,7 @@ export const optionsRenderer = (
           : '#FFFFFF';
         return (
           <Select.Option
+            id={option.id}
             className="option-select"
             key={option.value}
             disabled={
