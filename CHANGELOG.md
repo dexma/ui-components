@@ -1,3 +1,10 @@
+# [6.4.0](https://github.com/dexma/ui-components/compare/v6.3.0...v6.4.0) (2023-09-11)
+
+
+### Features
+
+* **cascader:** add Cascader component ([204ff47](https://github.com/dexma/ui-components/commit/204ff4756b0ffd80a75d6f1c319bc2e801ae2ae3))
+
 # [6.3.0](https://github.com/dexma/ui-components/compare/v6.2.0...v6.3.0) (2023-09-08)
 
 
