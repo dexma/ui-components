@@ -140,7 +140,7 @@ export const StyledSpanOption = styled.span`
   margin: 0px;
 `;
 
-const getSelectOptionStyle = css`
+export const getSelectOptionStyle = css`
   .ant-select-item-option {
     background-clip: content-box;
     border-radius: 4px;
