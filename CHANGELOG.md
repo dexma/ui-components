@@ -1,3 +1,15 @@
+# [6.5.0](https://github.com/dexma/ui-components/compare/v6.4.0...v6.5.0) (2023-09-12)
+
+
+### Bug Fixes
+
+* **select:** fix typo and maxLength to be parsed ([f73b40e](https://github.com/dexma/ui-components/commit/f73b40e0af9cb7fdd6dd93d5fed80a96d7b589f0))
+
+
+### Features
+
+* **select:** add tooltip on selected values ([b3b307d](https://github.com/dexma/ui-components/commit/b3b307d75b34443f20f08c54f74d360f74b05bc1))
+
 # [6.4.0](https://github.com/dexma/ui-components/compare/v6.3.0...v6.4.0) (2023-09-11)
 
 
