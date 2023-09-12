@@ -37,9 +37,9 @@ export const tagRenderButtonPagination = (
   };
 
   const option = options.filter(element => element.value === value)[0];
-  const labelParsed =
-    option.label.length > maxTagLength
-      ? `${option.label.slice(0, maxTagLength)}...`
+  const parsedLabel =
+    option.label.length > maxTagLength - 3
+      ? `${option.label.slice(0, maxTagLength - 3)}...`
       : option.label;
 
   return (
@@ -53,7 +53,7 @@ export const tagRenderButtonPagination = (
         data-testid={`tag-option-selected-${value}`}
         theme={theme}
       >
-        {labelParsed}
+        {parsedLabel}
         {closable && (
           <Icon
             className="icon-close"
