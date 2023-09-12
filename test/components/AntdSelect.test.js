@@ -4,6 +4,7 @@ import { act } from 'react-dom/test-utils';
 import AntdSelect, {
   dropdownRenderSelectAntd,
   renderUnselectedOption,
+  selectedValuesRenderer,
   tagRenderButtonPagination,
 } from '../../src/components/AntdSelect/AntdSelect';
 import ButtonPaginationSelector, {
@@ -14,6 +15,7 @@ import {
   getOptionsBySearch,
 } from '../../src/components/AntdSelect/selectUtils';
 import theme from '../../src/styles/theme';
+import Tooltip from '../../src/components/Tooltip';
 
 describe('AntdSelect', () => {
   describe('selectUtils', () => {
@@ -289,7 +291,7 @@ describe('AntdSelect', () => {
           onClose: jest.fn(),
         };
         const options = [{ value: 'Test 1', label: 'Test 1', color: 'blue' }];
-        render(tagRenderButtonPagination(props, options, theme));
+        render(tagRenderButtonPagination(props, options, 5, theme));
         const tag = screen.getByTestId('tag-option-selected-Test 1');
         expect(tag).toBeTruthy();
       });
@@ -302,7 +304,7 @@ describe('AntdSelect', () => {
           onClose,
         };
         const options = [{ value: 'Test 1', label: 'Test 1', color: 'blue' }];
-        render(tagRenderButtonPagination(props, options, theme));
+        render(tagRenderButtonPagination(props, options, 5, theme));
         const tag = screen.getByTestId('tag-option-selected-Test 1');
         expect(tag).toBeTruthy();
         const closeIcon = screen.getByTestId('icon');
@@ -411,6 +413,60 @@ describe('AntdSelect', () => {
         render(renderUnselectedOption(option, 'Test'));
         const optionWrapper = screen.getByTestId('option-span-Test 1-bold');
         expect(optionWrapper).toBeTruthy();
+      });
+    });
+    describe('selectedValuesRenderer', () => {
+      beforeEach(() => {
+        jest
+          .spyOn(Tooltip, 'render')
+          .mockImplementation(({ title, children }) => (
+            <>
+              <div data-testid="title-tooltip">{title}</div>
+              <div data-testid="children-tooltip">{children}</div>
+            </>
+          ));
+      });
+      test('should render the overflow values based on overlfowLength prop, including overflowText', () => {
+        const selectedVaues = [
+          { value: 'Test 1', label: { props: { value: 'Test 1' } } },
+          { value: 'Test 2', label: { props: { value: 'Test 2' } } },
+          { value: 'Test 3', label: { props: { value: 'Test 3' } } },
+          { value: 'Test 4', label: { props: { value: 'Test 4' } } },
+          { value: 'Test 5', label: { props: { value: 'Test 5' } } },
+        ];
+        const overflowLength = 2;
+        const overflowText = 'and more...';
+        const result = selectedValuesRenderer(
+          selectedVaues,
+          overflowLength,
+          overflowText
+        );
+        render(result);
+        expect(screen.getByTestId('title-tooltip').textContent).toBe(
+          ' Test 1, Test 2 and more...'
+        );
+        expect(screen.getByTestId('children-tooltip').textContent).toBe('+5');
+      });
+      test('should render the overflow values based on overlfowLength prop, not including overflowText', () => {
+        const selectedVaues = [
+          { value: 'Test 1', label: { props: { value: 'Test 1' } } },
+          { value: 'Test 2', label: { props: { value: 'Test 2' } } },
+          { value: 'Test 3', label: { props: { value: 'Test 3' } } },
+          { value: 'Test 4', label: { props: { value: 'Test 4' } } },
+          { value: 'Test 5', label: { props: { value: 'Test 5' } } },
+        ];
+        const overflowLength = undefined;
+        const overflowText = 'and more...';
+        const result = selectedValuesRenderer(
+          selectedVaues,
+          overflowLength,
+          overflowText
+        );
+        render(result);
+        expect(screen.getByTestId('title-tooltip').textContent).toBe(
+          ' Test 1, Test 2, Test 3, Test 4, Test 5'
+        );
+        expect(screen.getByTestId('children-tooltip').textContent).toBe('+5');
       });
     });
   });

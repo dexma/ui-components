@@ -24,6 +24,7 @@ export const select = () => (
           style={{ width: '100%' }}
           pageSize={10}
           defaultValues={['3']}
+          maxTagLength={20}
           options={[
             { id: 1, value: '1', label: '1st Floor', color: 'blue' },
             {
