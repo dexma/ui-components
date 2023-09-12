@@ -19,38 +19,52 @@ import {
   singleOptionFilter,
 } from './selectUtils';
 import ButtonPaginationSelector from './ButtonPaginationSelector';
+import Tooltip from '../Tooltip';
 
 const ALL_CHARACTER = '*';
 const ENTER_CHARACTER = 'Enter';
 
-export const tagRenderButtonPagination = (props, options, theme) => {
-  const { label, value, closable, onClose } = props;
+export const tagRenderButtonPagination = (
+  props,
+  options,
+  maxTagLength,
+  theme
+) => {
+  const { value, closable, onClose } = props;
   const onPreventMouseDown = event => {
     event.preventDefault();
     event.stopPropagation();
   };
 
+  const option = options.filter(element => element.value === value)[0];
+  const labelParsed =
+    option.label.length > maxTagLength
+      ? `${option.label.slice(0, maxTagLength)}...`
+      : option.label;
+
   return (
-    <StyledSpanOptionSelected
-      className="tag-select-option-selected"
-      color={options.filter(element => element.value === value)[0].color}
-      onMouseDown={onPreventMouseDown}
-      onClose={onClose}
-      style={{ marginRight: 4 }}
-      data-testid={`tag-option-selected-${value}`}
-      theme={theme}
-    >
-      {label}
-      {closable && (
-        <Icon
-          className="icon-close"
-          name="close"
-          size="small"
-          onClick={onClose}
-          fillColor={theme.color.white}
-        />
-      )}
-    </StyledSpanOptionSelected>
+    <Tooltip title={option.label}>
+      <StyledSpanOptionSelected
+        className="tag-select-option-selected"
+        color={options.filter(element => element.value === value)[0].color}
+        onMouseDown={onPreventMouseDown}
+        onClose={onClose}
+        style={{ marginRight: 4 }}
+        data-testid={`tag-option-selected-${value}`}
+        theme={theme}
+      >
+        {labelParsed}
+        {closable && (
+          <Icon
+            className="icon-close"
+            name="close"
+            size="small"
+            onClick={onClose}
+            fillColor={theme.color.white}
+          />
+        )}
+      </StyledSpanOptionSelected>
+    </Tooltip>
   );
 };
 
@@ -174,6 +188,19 @@ export const optionsRenderer = (
   );
 };
 
+export const selectedValuesRenderer = (
+  values,
+  overflowLength,
+  overflowText
+) => {
+  const text =
+    overflowLength && values.length > overflowLength ? ` ${overflowText}` : '';
+  const valuesToRender = `${values
+    .slice(0, overflowLength)
+    .map(value => ` ${value.label.props.value}`)}${text}`;
+  return <Tooltip title={valuesToRender}>{`+${values.length}`}</Tooltip>;
+};
+
 const AntdSelect = props => {
   const {
     dataId,
@@ -186,6 +213,8 @@ const AntdSelect = props => {
     theme,
     isLoading,
     onChange,
+    maxTagLength,
+    overflowLength,
     handleButtonSelectAll,
     handleClearAll,
     allowClear,
@@ -204,6 +233,7 @@ const AntdSelect = props => {
     'onChange',
     'handleButtonSelectAll',
     'handleClearAll',
+    'maxTagLength',
   ]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState('');
@@ -355,7 +385,9 @@ const AntdSelect = props => {
           optionFilterProp="children"
           filterOption={filterOption}
           maxTagCount="responsive"
-          maxTagPlaceholder={values => `+${values.length}`}
+          maxTagPlaceholder={values =>
+            selectedValuesRenderer(values, overflowLength, text.overflow)
+          }
           menuItemSelectedIcon={
             <Icon color="white" name="close" size="small" />
           }
@@ -416,7 +448,9 @@ const AntdSelect = props => {
               }
             }
           }}
-          tagRender={props => tagRenderButtonPagination(props, options, theme)}
+          tagRender={props =>
+            tagRenderButtonPagination(props, options, maxTagLength, theme)
+          }
           value={selectedValues}
           dropdownAlign={{ offset: [0, 3] }}
           onChange={values => {
@@ -468,11 +502,14 @@ const propTypes = {
   handleClearAll: PropTypes.func,
   pageSize: PropTypes.number,
   placeholder: PropTypes.string,
+  maxTagLength: PropTypes.number,
+  overflowLength: PropTypes.number,
   theme: PropTypes.shape({}),
   text: PropTypes.shape({
     select: PropTypes.string,
     content: PropTypes.string,
     search: PropTypes.string,
+    overflow: PropTypes.string,
   }),
 };
 const defaultProps = {
@@ -486,7 +523,9 @@ const defaultProps = {
     all: 'all',
     connector: 'of',
     content: '"All items"',
+    overflow: 'and more...',
   },
+  overflowLength: 5,
   theme: theme,
 };
 
