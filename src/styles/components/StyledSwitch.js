@@ -4,42 +4,6 @@ import { darken } from 'polished';
 const StyledSwitch = styled.div`
   display: inline-block;
 
-  .ant-switch {
-    margin: 0;
-    padding: 0;
-    color: rgba(0, 0, 0, 0.65);
-    font-size: 14px;
-    font-variant: tabular-nums;
-    line-height: 1.5;
-    list-style: none;
-    -webkit-font-feature-settings: 'tnum';
-    font-feature-settings: 'tnum';
-    position: relative;
-    display: inline-block;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 44px;
-    height: 24px;
-    line-height: 20px;
-    vertical-align: middle;
-    background-color: rgba(0, 0, 0, 0.25);
-    border: 1px solid transparent;
-    border-radius: 100px;
-    cursor: pointer;
-    -webkit-transition: all 0.36s;
-    transition: all 0.36s;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  .ant-switch-inner {
-    display: block;
-    margin-right: 6px;
-    margin-left: 24px;
-    color: #fff;
-    font-size: 12px;
-  }
   .ant-switch-loading-icon,
   .ant-switch::after {
     width: 18px;
@@ -91,49 +55,10 @@ const StyledSwitch = styled.div`
     box-shadow: none;
   }
 
-  .ant-switch-small {
-    min-width: 28px;
-    height: 18px;
-    line-height: 14px;
-  }
-  .ant-switch-small .ant-switch-inner {
-    margin-right: 3px;
-    margin-left: 18px;
-    font-size: 12px;
-  }
-  .ant-switch-small::after {
-    width: 12px;
-    height: 18px;
-  }
-  .ant-switch-small:active::before,
-  .ant-switch-small:active::after {
-    width: 16px;
-  }
-  .ant-switch-small .ant-switch-loading-icon {
-    width: 12px;
-    height: 18px;
-  }
-  .ant-switch-small.ant-switch-checked .ant-switch-inner {
-    margin-right: 18px;
-    margin-left: 3px;
-  }
-  .ant-switch-small.ant-switch-checked .ant-switch-loading-icon {
-    left: 100%;
-    margin-left: -13px;
-  }
-  .ant-switch-small.ant-switch-loading .ant-switch-loading-icon {
-    font-weight: bold;
-    -webkit-transform: scale(0.66667);
-    -ms-transform: scale(0.66667);
-    transform: scale(0.66667);
-  }
   .ant-switch-checked {
     background-color: ${props => props.theme.primary};
   }
-  .ant-switch-checked .ant-switch-inner {
-    margin-right: 24px;
-    margin-left: 6px;
-  }
+
   .ant-switch-checked::after {
     left: 100%;
     margin-left: -1px;
