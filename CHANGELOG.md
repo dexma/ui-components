@@ -1,3 +1,10 @@
+## [6.5.2](https://github.com/dexma/ui-components/compare/v6.5.1...v6.5.2) (2023-10-04)
+
+
+### Bug Fixes
+
+* **switch:** correct small switch view + code cleanup ([#111](https://github.com/dexma/ui-components/issues/111)) ([2295ca7](https://github.com/dexma/ui-components/commit/2295ca7732a436193f4d58461ca88e64b9a3fb5f))
+
 ## [6.5.1](https://github.com/dexma/ui-components/compare/v6.5.0...v6.5.1) (2023-10-04)
 
 
