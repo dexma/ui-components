@@ -1,3 +1,10 @@
+## [6.5.1](https://github.com/dexma/ui-components/compare/v6.5.0...v6.5.1) (2023-10-04)
+
+
+### Bug Fixes
+
+* **input:** enhance visuals when input is disabled ([#110](https://github.com/dexma/ui-components/issues/110)) ([7e6e0a4](https://github.com/dexma/ui-components/commit/7e6e0a4118e76d0acbd1f1fe793bcfa956c6d096))
+
 # [6.5.0](https://github.com/dexma/ui-components/compare/v6.4.0...v6.5.0) (2023-09-12)
 
 
