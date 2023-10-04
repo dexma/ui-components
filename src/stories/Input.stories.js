@@ -53,3 +53,22 @@ export const loading = () => (
     </Row>
   </Grid>
 );
+
+export const disabled = () => (
+  <Grid fluid>
+    <Row>
+      <Cell xs={12}>
+        <Paragraph margin="1rem 0 1rem 0">
+          Disabled input, both placeholders and values
+        </Paragraph>
+      </Cell>
+      <Cell xs={12}>
+        <Input type="text" value="Value Text" disabled />
+      </Cell>
+
+      <Cell xs={12}>
+        <Input type="text" placeholder="Placeholder text" disabled />
+      </Cell>
+    </Row>
+  </Grid>
+);

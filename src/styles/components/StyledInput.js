@@ -7,6 +7,7 @@ import {
   inputHeight,
   inputFontSize,
   inputPaddingX,
+  gray300,
 } from '../selectors';
 import { StyledSpinner } from './StyledSpinner';
 
@@ -64,11 +65,19 @@ const StyledInput = styled.div`
     display: inline-flex;
     flex: 1 1 auto;
     width: 100%;
-    color: ${gray500};
+    color: ${props => (props.disabled ? gray300 : gray500)};
     ${props => props.focused && `border: 1px solid ${primaryColor(props)}`};
   }
   ${props => props.icon && getIcon};
   ${props => props.isLoading && getLoading};
+
+  input:disabled {
+    color: ${props => (props.disabled ? gray300 : gray500)};
+  }
+
+  input:disabled::placeholder {
+    color: ${props => (props.disabled ? gray300 : gray500)};
+  }
 `;
 
 export { StyledInput };
