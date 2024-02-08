@@ -1,3 +1,10 @@
+# [6.6.0](https://github.com/dexma/ui-components/compare/v6.5.2...v6.6.0) (2024-02-08)
+
+
+### Features
+
+* **dataId:** expose withDataId HOC ([#112](https://github.com/dexma/ui-components/issues/112)) ([762b5d3](https://github.com/dexma/ui-components/commit/762b5d3909b671620d86c9a05f65bfe1e869fbd1))
+
 ## [6.5.2](https://github.com/dexma/ui-components/compare/v6.5.1...v6.5.2) (2023-10-04)
 
 
