@@ -65,7 +65,7 @@ export { ToastType } from './components/Toaster/Toast';
 export { default as Tooltip } from './components/Tooltip';
 export { default as SectionData } from './components/Section/SectionData';
 export { DataIdProvider } from './components/DataId/DataIdProvider';
-
+export { default as withDataId } from './components/DataId/withDataId';
 export { ConfigProvider } from 'antd';
 export class SelectNonceProvider extends NonceProvider {
   createEmotionCache = nonce =>
