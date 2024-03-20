@@ -1,3 +1,10 @@
+# [6.7.0](https://github.com/dexma/ui-components/compare/v6.6.0...v6.7.0) (2024-03-20)
+
+
+### Features
+
+* **highcharts:** add cross symbol on highcharts graphs for markers ([7c6f4f4](https://github.com/dexma/ui-components/commit/7c6f4f42f4afc35c7e82ff573fe3b440372b9b8c))
+
 # [6.6.0](https://github.com/dexma/ui-components/compare/v6.5.2...v6.6.0) (2024-02-08)
 
 
