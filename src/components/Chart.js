@@ -21,6 +21,10 @@ import theme from '../styles/theme';
 import { StyledResult } from '../styles/components/StyledResult';
 import withDataId from '../components/DataId/withDataId';
 
+Highcharts.SVGRenderer.prototype.symbols.cross = function(x, y, w, h) {
+  return ['M', x, y, 'L', x + w, y + h, 'M', x + w, y, 'L', x, y + h, 'z'];
+};
+
 boost(Highcharts);
 addSankeyModule(Highcharts);
 HCRounded(Highcharts);
