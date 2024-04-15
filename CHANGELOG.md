@@ -1,3 +1,10 @@
+## [6.8.1](https://github.com/dexma/ui-components/compare/v6.8.0...v6.8.1) (2024-04-15)
+
+
+### Bug Fixes
+
+* **dropdown:** fix for expose button variant ([381ae3a](https://github.com/dexma/ui-components/commit/381ae3ad948d653c0c4a3ac56789231588331506))
+
 # [6.8.0](https://github.com/dexma/ui-components/compare/v6.7.0...v6.8.0) (2024-04-15)
 
 
