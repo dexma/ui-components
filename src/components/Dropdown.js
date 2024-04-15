@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { Dropdown as DropdownAntd } from 'antd';
-import Button from './Button';
+import Button, { BUTTON_VARIANT } from './Button';
 import theme from '../styles/theme';
 import {
   StyledGlobalDropdown,
@@ -43,6 +43,10 @@ const propTypes = {
    */
   text: PropTypes.string,
   /**
+   * Set the variant of the dropdown button
+   */
+  variant: PropTypes.oneOf(BUTTON_VARIANT),
+  /**
    * Theme json based
    */
   theme: PropTypes.shape({}),
@@ -51,20 +55,19 @@ const propTypes = {
 const defaultProps = {
   placement: 'bottomRight',
   trigger: ['hover'],
-  variant: 'primary',
   text: null,
   theme: theme,
 };
 
 const getContent = content => {
   return content.map((props, i) => {
-    const { icon, onClick, ...rest } = props;
+    const { icon, onClick, variant, ...rest } = props;
     return {
       label: (
         <StyledDropdownButton
           key={i}
           className="dropdown-button-item"
-          variant="icon"
+          variant={variant ?? 'icon'}
           iconBefore={icon}
           onClick={onClick}
           {...rest}
@@ -75,7 +78,7 @@ const getContent = content => {
 };
 
 export const Dropdown = props => {
-  const { trigger, text, placement, content, icon } = props;
+  const { trigger, text, placement, content, icon, variant } = props;
   const renderContent = content ? getContent(content) : null;
 
   return (
@@ -90,7 +93,7 @@ export const Dropdown = props => {
           <Button
             data-testid="dropdown-button-text"
             className="dropdown-button"
-            variant="icon"
+            variant={variant ?? 'icon'}
             iconBefore={icon}
             text={text}
           ></Button>
@@ -98,7 +101,7 @@ export const Dropdown = props => {
           <Button
             data-testid="dropdown-button-icon"
             className="dropdown-button"
-            variant="icon-secondary"
+            variant={variant ?? 'icon-secondary'}
             iconBefore={icon}
             text={null}
             isCircle

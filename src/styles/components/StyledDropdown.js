@@ -5,10 +5,12 @@ export const StyledDropdownButton = styled(Button)`
   width: 100%;
 `;
 const StyledGlobalDropdown = createGlobalStyle(css`
-  .dropdown-button {
-    padding: 0;
-    margin: 0;
-  }
+  ${props =>
+    (!props.variant && props.variant !== '') ||
+    props.variant === 'icon' ||
+    props.variant === 'icon-secondary'
+      ? '.dropdown-button { padding: 0; margin: 0;}'
+      : ''}
   .ant-dropdown {
     box-sizing: border-box;
     margin: 0;
