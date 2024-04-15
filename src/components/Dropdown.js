@@ -3,11 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { Dropdown as DropdownAntd } from 'antd';
-import Button, { BUTTON_VARIANT } from './Button';
+import { BUTTON_VARIANT } from './Button';
 import theme from '../styles/theme';
 import {
   StyledGlobalDropdown,
   StyledDropdownButton,
+  StyledDropdownInnerButton,
 } from '../styles/components/StyledDropdown';
 
 const propTypes = {
@@ -64,7 +65,7 @@ const getContent = content => {
     const { icon, onClick, variant, ...rest } = props;
     return {
       label: (
-        <StyledDropdownButton
+        <StyledDropdownInnerButton
           key={i}
           className="dropdown-button-item"
           variant={variant ?? 'icon'}
@@ -83,29 +84,29 @@ export const Dropdown = props => {
 
   return (
     <>
-      <StyledGlobalDropdown {...props} />
+      <StyledGlobalDropdown />
       <DropdownAntd
         menu={{ items: renderContent }}
         placement={placement}
         trigger={trigger}
       >
         {text ? (
-          <Button
+          <StyledDropdownButton
             data-testid="dropdown-button-text"
             className="dropdown-button"
             variant={variant ?? 'icon'}
             iconBefore={icon}
             text={text}
-          ></Button>
+          ></StyledDropdownButton>
         ) : (
-          <Button
+          <StyledDropdownButton
             data-testid="dropdown-button-icon"
             className="dropdown-button"
             variant={variant ?? 'icon-secondary'}
             iconBefore={icon}
             text={null}
             isCircle
-          ></Button>
+          ></StyledDropdownButton>
         )}
       </DropdownAntd>
     </>
