@@ -1,3 +1,15 @@
+# [7.0.0](https://github.com/dexma/ui-components/compare/v6.8.1...v7.0.0) (2024-07-01)
+
+
+### Features
+
+* **typescript:** migration to typescript ([3163028](https://github.com/dexma/ui-components/commit/3163028a9b88292e1b6333af54295acc9563d558))
+
+
+### BREAKING CHANGES
+
+* **typescript:** Start using typescript, react 18 and vite. Also AntSelect and AndPicker now are Select and DatePicker (old ones deprecated)
+
 # [6.9.0](https://github.com/dexma/ui-components/compare/v6.8.1...v6.9.0) (2024-07-01)
 
 
