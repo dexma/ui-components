@@ -1,3 +1,10 @@
+# [6.9.0](https://github.com/dexma/ui-components/compare/v6.8.1...v6.9.0) (2024-07-01)
+
+
+### Features
+
+* **typescript:** migration to typescript, react 18 and vite ([4f83ce4](https://github.com/dexma/ui-components/commit/4f83ce41fb831244eec82e6eda53031e52b96cb1))
+
 ## [6.8.1](https://github.com/dexma/ui-components/compare/v6.8.0...v6.8.1) (2024-04-15)
 
 

@@ -1,45 +1,40 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+    push:
+        branches:
+            - master
+    pull_request:
+        branches:
+            - master
 
 env:
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    permissions:
-      actions: write
-      contents: write
-      deployments: write
+        permissions:
+            actions: write
+            contents: write
+            deployments: write
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
 
-      - name: Use Node.js v16.18.0
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16.18.0'
+            - name: Install dependencies 🛠️
+              run: npm install
 
-      - name: Install dependencies 🛠️
-        run: npm install -legacy-peer-deps
+            - name: Run tests 📝
+              run: npm run test
 
-      - name: Run tests 📝
-        run: npm run test
+            - name: Build project ⚙️
+              run: npm run build
 
-      - name: Build project ⚙️
-        run: npm run build
-
-      - name: Publish to NPM 📦
-        run: npx semantic-release
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - name: Publish to NPM 📦
+              run: npx semantic-release
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,0 +1,45 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "types": ["vite/client"],
+        "useDefineForClassFields": true,
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "allowJs": false,
+        "skipLibCheck": true,
+        "esModuleInterop": false,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+
+        "baseUrl": "./src",
+        "paths": {
+            "@components/*": ["./lib/components/*"],
+            "@components": ["./lib/components/index.ts"],
+            "@styles/*": ["./lib/styles/*"],
+            "@styles": ["./lib/styles/index.ts"],
+            "@utils/*": ["./lib/utils/*"],
+            "@utils": ["./lib/utils/index.ts"],
+            "@config/*": ["./lib/config/*"],
+            "@config": ["./lib/config/index.ts"]
+        }
+    },
+    "include": [
+        "./src/**/*.ts",
+        "./src/**/*.tsx",
+        "./src/**/*.stories.*",
+        "./tests/**/*.test.*",
+        "./tests/mock/**/*.ts",
+        "./.storybook/**/*",
+        "vite.config.mts",
+        "vitest-ui.config.mts",
+        ".eslintrc.js"
+    ],
+    "exclude": ["node_modules", "build", "dist", "coverage", "docs", "./src/lib/config/**/*"]
+}
