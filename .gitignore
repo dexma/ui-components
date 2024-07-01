@@ -1,22 +1,32 @@
-# DEXMA
-generated
-coverage
-docs-static/**/*.d.ts
-test/jest-test-results.json
-test/components/__snapshots_
-/storybook-static
-dist
-
-#IDE
-.idea/
-*.iml
-*.ipr
-*.iws
-.history/
-
-# Node
-node_modules
+# Logs
+logs
+*.log
 npm-debug.log*
-lerna-debug.log
-yarn-error.log
-src/components/.DS_Store
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Storybook
+docs
+
+# Testing
+coverage
+
+src/lib/config/icon.ts
