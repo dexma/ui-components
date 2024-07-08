@@ -1,3 +1,10 @@
+## [7.0.1](https://github.com/dexma/ui-components/compare/v7.0.0...v7.0.1) (2024-07-08)
+
+
+### Bug Fixes
+
+* **alert:** alert description type fix and add electricity icons ([b683212](https://github.com/dexma/ui-components/commit/b68321241f78337a9b51f895216299385f7ca687))
+
 # [7.0.0](https://github.com/dexma/ui-components/compare/v6.8.1...v7.0.0) (2024-07-01)
 
 

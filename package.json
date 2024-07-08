@@ -1,6 +1,6 @@
 {
     "name": "@dexma/ui-components",
-    "version": "7.0.0",
+    "version": "7.0.1",
     "description": "DEXMA UI Components (React)",
     "main": "./dist/ui-components.umd.js",
     "module": "./dist/ui-components.es.js",
