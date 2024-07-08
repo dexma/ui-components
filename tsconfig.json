@@ -39,7 +39,8 @@
         "./.storybook/**/*",
         "vite.config.mts",
         "vitest-ui.config.mts",
-        ".eslintrc.js"
+        ".eslintrc.js",
+        "./scripts/**/*"
     ],
     "exclude": ["node_modules", "build", "dist", "coverage", "docs", "./src/lib/config/**/*"]
 }

@@ -1,11 +1,15 @@
-const path = require('path');
-const fs = require('fs');
+import path, { join } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync, readdirSync, writeFileSync } from 'fs';
+import { DOMParser } from '@xmldom/xmldom';
 
-const directoryIconsPath = path.join(__dirname, '../src/lib/assets/icons');
-const directoryExportPath = path.join(__dirname, '../src/lib/config');
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+
+const directoryIconsPath = join(dirname, '../src/lib/assets/icons');
+const directoryExportPath = join(dirname, '../src/lib/config');
 
 const formatIcon = (icon, name) => {
-    const DOMParser = require('@xmldom/xmldom').DOMParser;
     const parser = new DOMParser();
     const dom = parser.parseFromString(icon, 'text/xml');
     const pathElement = dom.documentElement.getElementsByTagName('path');
@@ -13,7 +17,7 @@ const formatIcon = (icon, name) => {
     const svgConifg = [];
 
     if (pathElement.length > 0) {
-        for (let x = 0; pathElement.length > x; x++) {
+        for (let x = 0; pathElement.length > x; x += 1) {
             const itemPath = pathElement.item(x);
             const d = itemPath.getAttribute('d');
             const opacity = itemPath.getAttribute('opacity');
@@ -31,7 +35,7 @@ const formatIcon = (icon, name) => {
     }
 
     if (circleElement.length > 0) {
-        for (let c = 0; circleElement.length > c; c++) {
+        for (let c = 0; circleElement.length > c; c += 1) {
             const itemPathCircle = circleElement.item(c);
             const cx = itemPathCircle.getAttribute('cx');
             const cy = itemPathCircle.getAttribute('cy');
@@ -49,30 +53,28 @@ const formatIcon = (icon, name) => {
     }
 
     return {
-        name: name,
+        name,
         icon: svgConifg,
     };
 };
 
-const getIconElementsFromFiles = async (files) => {
-    const iconFiles = [];
-    for (const file in files) {
-        const iconElement = await fs.readFileSync(`./src/lib/assets/icons/${files[file]}`, 'utf8');
-        const iconConfig = formatIcon(iconElement, files[file].replace('.svg', ''));
-        iconFiles.push(
-            new Promise(function (resolve, reject) {
+const getIconElementsFromFiles = async (files) =>
+    Promise.all(
+        Object.values(files).map((file) => {
+            const iconElement = readFileSync(`./src/lib/assets/icons/${file}`, 'utf8');
+            const iconConfig = formatIcon(iconElement, file.replace('.svg', ''));
+
+            return new Promise((resolve) => {
                 resolve(iconConfig);
-            })
-        );
-    }
-    return Promise.all(iconFiles);
-};
+            });
+        })
+    );
 
 const main = async () => {
     try {
-        const iconFiles = await fs.readdirSync(directoryIconsPath);
+        const iconFiles = readdirSync(directoryIconsPath);
         const iconElements = await getIconElementsFromFiles(iconFiles);
-        await fs.writeFileSync(`${directoryExportPath}/icon.ts`, 'export default' + JSON.stringify(iconElements));
+        writeFileSync(`${directoryExportPath}/icon.ts`, `export default${JSON.stringify(iconElements)}`);
         return 'ok';
     } catch (err) {
         console.log('err', err);

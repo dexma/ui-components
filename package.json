@@ -18,7 +18,7 @@
     "scripts": {
         "build": "npm run build-icons && tsc && vite build",
         "build-storybook": "npm run build-icons && storybook build -o docs",
-        "build-icons": "node scripts/buildIconConfig.js",
+        "build-icons": "node scripts/buildIconConfig.mjs",
         "clean-build": "rm -rf dist",
         "coverage": "vitest run --coverage && npx serve coverage",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix",
