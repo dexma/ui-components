@@ -15,7 +15,7 @@ module.exports = {
             },
         },
         {
-            files: ['src/stories/**/*.tsx', 'tests/**/*.tsx'],
+            files: ['src/stories/**/*.tsx', 'tests/**/*.tsx', 'scripts/**/*'],
             rules: {
                 'no-alert': 'off',
                 'no-console': 'off',

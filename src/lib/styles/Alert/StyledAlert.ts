@@ -52,7 +52,7 @@ const getAlertTypeColor = (theme: Theme, $type: string) => {
 
 type StyledAlertProps = {
     $type: string;
-    $description?: string;
+    $description?: ReactNode;
     $message: ReactNode;
     $showIcon?: boolean;
     theme: Theme;

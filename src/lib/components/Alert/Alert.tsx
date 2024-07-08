@@ -10,7 +10,7 @@ export type AlertProps = {
     message?: ReactNode;
     type: 'basic' | 'outline' | 'warning' | 'info' | 'success' | 'error';
     onClose?: (e: any) => void;
-    description?: string;
+    description?: ReactNode;
     showIcon?: boolean;
     closable?: boolean;
     className?: string;
@@ -46,7 +46,7 @@ export const Alert = ({ type = 'warning', closable = false, message, description
         setClosed(true);
         if (onClose) onClose(e);
     };
-    const getDescription = (_description: string) => (
+    const getDescription = (_description: ReactNode) => (
         <span data-testid='alert-description' className='description'>
             {_description}
         </span>
