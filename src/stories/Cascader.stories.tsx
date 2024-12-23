@@ -48,7 +48,6 @@ export const Single = () => (
                 <Paragraph margin='1rem 0 1rem 0'>When selecting from a large data set, with multi-stage classification separated for easy selection.</Paragraph>
                 <Paragraph margin='1rem 0 1rem 0'>Chooses cascade items in one float layer for better user experience.</Paragraph>
                 <Cascader
-                    multiple
                     options={[
                         {
                             label: 'Light',
