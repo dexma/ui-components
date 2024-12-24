@@ -47,8 +47,16 @@ describe('Cascader', () => {
             expect(closeIcon).toBeNull();
         });
     });
+
     it('should render correctly in single mode', () => {
         const { getByTestId } = render(<Cascader multiple={false} />);
+
+        const cascader = getByTestId('cascader');
+        expect(cascader).toBeInTheDocument();
+    });
+
+    it('should render correctly in single parent mode', () => {
+        const { getByTestId } = render(<Cascader multiple={false} changeOnSelect />);
 
         const cascader = getByTestId('cascader');
         expect(cascader).toBeInTheDocument();

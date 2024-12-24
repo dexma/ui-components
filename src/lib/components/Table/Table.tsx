@@ -8,7 +8,7 @@ import { Button, itemRender } from '@components';
 import { withDataId } from '@components/DataId/withDataId';
 import { StyledResult } from '@styles/Result/StyledResult';
 import { StyledTable } from '@styles/Table/StyledTable';
-import { type AnyObject } from 'antd/lib/table/Table';
+import { AnyObject } from 'antd/lib/_util/type';
 
 const StyledTableLoading = styled.div`
     display: flex;

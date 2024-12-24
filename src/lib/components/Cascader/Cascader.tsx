@@ -30,14 +30,14 @@ export const tagRender = (theme: DefaultTheme) => (props: { label: ReactNode; va
     );
 };
 
-export const Cascader = <OptionType extends DefaultOptionType>({ multiple, options = [], maxTagCount, onChange, open, ...props }: CascaderProps<OptionType>) => {
+export const Cascader = <OptionType extends DefaultOptionType>({ multiple, options = [], maxTagCount, onChange, open, changeOnSelect, ...props }: CascaderProps<OptionType>) => {
     const th = useContext(ThemeContext) || defaultTheme;
     const [currentOpen, setCurrentOpen] = useState(open || false);
     const ref = useRef<CascaderRef>();
 
     const handleOnChange = (value: Value | Value[]) => {
         if (onChange) onChange(value);
-        if (!multiple && ref.current?.blur()) setCurrentOpen(false);
+        if (!changeOnSelect && !multiple && ref.current?.blur()) setCurrentOpen(false);
     };
 
     return (
@@ -59,17 +59,22 @@ export const Cascader = <OptionType extends DefaultOptionType>({ multiple, optio
                     ref={(innerRef) => {
                         if (innerRef) ref.current = innerRef;
                     }}
-                    onDropdownVisibleChange={(e) => {
-                        if (e !== currentOpen) {
-                            setCurrentOpen(e);
-                        }
-                    }}
+                    onDropdownVisibleChange={
+                        !changeOnSelect
+                            ? (e) => {
+                                  if (e !== currentOpen) {
+                                      setCurrentOpen(e);
+                                  }
+                              }
+                            : undefined
+                    }
                     onFocus={() => {
                         setCurrentOpen(true);
                     }}
                     tagRender={tagRender(defaultTheme)}
                     maxTagPlaceholder={(values) => `+${values.length}`}
-                    open={currentOpen}
+                    open={!changeOnSelect? currentOpen : undefined}
+                    changeOnSelect={changeOnSelect}
                     {...props}
                 />
             </ConfigProvider>
