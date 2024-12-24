@@ -36,6 +36,7 @@
         "./src/**/*.stories.*",
         "./tests/**/*.test.*",
         "./tests/mock/**/*.ts",
+        "./tests/setup.ts",
         "./.storybook/**/*",
         "vite.config.mts",
         "vitest-ui.config.mts",

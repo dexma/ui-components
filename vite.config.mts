@@ -38,7 +38,7 @@ const app = async (): Promise<UserConfigExport> =>
             coverage: {
                 provider: 'v8',
                 reporter: ['text', 'json', 'html'],
-                exclude: ['docs/*', 'src/stories/*', 'tests/*', '.storybook/*', 'scripts/*', '.eslintrc.js', 'vitest-ui.config.mts'],
+                exclude: ['docs/*', 'src/stories/*', 'tests/*', '.storybook/*', 'scripts/*', '.eslintrc.js', 'vitest-ui.config.mts', 'src/lib/index.ts'],
             },
         },
         plugins: [

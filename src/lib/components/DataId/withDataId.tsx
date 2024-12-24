@@ -6,7 +6,7 @@ type WithDataIdProps = {
 };
 
 export const withDataId = <P extends object>(Component: ComponentType<P & WithDataIdProps>, defaultValue: string) => {
-    const WrappedComponent = forwardRef<unknown, Omit<P, keyof WithDataIdProps> & Partial<WithDataIdProps>>(({ dataId, ...props }, ref) => {
+    const WrappedComponent = forwardRef<unknown, P & WithDataIdProps>(({ dataId, ...props }, ref) => {
         const namespace = useContext(DataIdContext);
 
         let composedDataId = defaultValue;
