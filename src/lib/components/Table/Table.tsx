@@ -90,9 +90,9 @@ type ExpandedIconProps<T> = {
     record: T;
 };
 
-const getExpandedIcon = <T extends object>(props: ExpandedIconProps<T>) => {
+const getExpandedIcon = <T extends { children?: object; expandable?: boolean }>(props: ExpandedIconProps<T>) => {
     const { expanded, onExpand, record } = props;
-    return (
+    return record.children || record.expandable ? (
         <StyledButtonExpanded>
             <Button
                 className={`expand-button ${expanded ? 'button-no-expanded' : 'button-expanded'}`}
@@ -105,18 +105,20 @@ const getExpandedIcon = <T extends object>(props: ExpandedIconProps<T>) => {
                 }}
             />
         </StyledButtonExpanded>
+    ) : (
+        <span style={{ height: '16px', width: '16px', display: 'inline-block' }} />
     );
 };
 
-type TableProps = {
+export type TableProps<RecordType> = {
     isLoading?: boolean;
     isExpanded?: boolean;
     showError?: boolean;
     dataId?: string;
     errorContent?: React.ReactNode;
-};
+} & AntDTableProps<RecordType>;
 
-export const Table = <RecordType extends AnyObject>(props: AntDTableProps<RecordType> & TableProps) => {
+export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType>) => {
     const { isExpanded, expandable, columns, dataSource, isLoading, showError, errorContent, dataId } = props;
     const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable']);
     const th = useContext(ThemeContext) || defaultTheme;
@@ -126,7 +128,7 @@ export const Table = <RecordType extends AnyObject>(props: AntDTableProps<Record
                 className: 'expanded-first-column',
                 ...columns[0],
             };
-            return [newFirstColumn, ...columns];
+            return [newFirstColumn, ...columns.slice(1)];
         }
         return [];
     };

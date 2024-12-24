@@ -85,40 +85,154 @@ export const TableSelection = () => (
     </Grid>
 );
 
-const expandedRowRender = () => {
+export const ExpandableTable = () => {
     const columns = [
         {
-            title: 'Project details',
-            dataIndex: 'project_details',
-            key: 'project_details',
-            width: '25%',
+            title: 'Component categorisation',
+            dataIndex: 'categorisation',
+            key: 'categorisation',
         },
-        { title: 'Type', dataIndex: 'type', key: 'type', width: '20%' },
-        { title: 'Target', dataIndex: 'target', key: 'target', width: '11%' },
-        { title: 'Saved %', dataIndex: 'saved', key: 'saved', width: '14%' },
+        { title: 'Devices', dataIndex: 'devices', key: 'devices' },
         {
-            title: 'Saved Total',
-            dataIndex: 'saved_total',
-            key: 'saved_total',
-            width: '30%',
+            title: 'Configuration',
+            dataIndex: 'configuration',
+            key: 'configuration',
         },
     ];
 
-    const data = [];
-    for (let i = 0; i < 6; i += 1) {
-        data.push({
-            key: i,
-            project_details: i,
-            type: 'Screem',
-            target: 50,
-            saved: 'iOS',
-            saved_total: '10.3.4.5654',
-        });
-    }
-    return <Table isExpanded columns={columns} dataSource={data} pagination={false} bordered={false} />;
+    const dataSources = [
+        {
+            key: 1,
+            categorisation: 'Electricity',
+            description: 'Electricity',
+            children: [
+                {
+                    key: 11,
+                    categorisation: 'Consumption',
+                    devices: 'Device name',
+                    configuration: 'Mesured',
+                    children: [
+                        {
+                            key: 111,
+                            categorisation: 'HVAC',
+                            configuration: 'Unmesured',
+                            children: [
+                                {
+                                    key: 1111,
+                                    categorisation: 'Subtotals',
+                                    devices: 'device name, device name',
+                                    configuration: 'Partially mesured',
+                                },
+                            ],
+                        },
+                        {
+                            key: 112,
+                            categorisation: 'Heating system',
+                            configuration: 'Calculated',
+                            children: [
+                                {
+                                    key: 1121,
+                                    categorisation: 'Subtotals',
+                                    devices: 'device name, device name',
+                                    configuration: 'Mesured',
+                                },
+                            ],
+                        },
+                        {
+                            key: 113,
+                            categorisation: 'Lighting',
+                            configuration: 'Mesured',
+                            children: [
+                                {
+                                    key: 1131,
+                                    categorisation: 'Subtotals',
+                                    devices: 'device name, device name',
+                                    configuration: 'Mesured',
+                                },
+                            ],
+                        },
+                        {
+                            key: 114,
+                            categorisation: 'Example',
+                            configuration: 'Mesured',
+                            children: [
+                                {
+                                    key: 1141,
+                                    categorisation: 'Subtotals',
+                                    devices: 'device name, device name',
+                                    configuration: 'Partially mesured',
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            key: 2,
+            categorisation: 'Gas',
+            description: 'Gas',
+            children: [
+                {
+                    key: 21,
+                    categorisation: 'Consumption',
+                    devices: 'device name',
+                    configuration: 'Mesured',
+                },
+            ],
+        },
+        {
+            key: 3,
+            categorisation: 'Water',
+            description: 'Water',
+            children: [
+                {
+                    key: 31,
+                    categorisation: 'Consumption',
+                    devices: 'device name',
+                    configuration: 'Mesured',
+                },
+            ],
+        },
+    ];
+
+    return <Table columns={columns} dataSource={dataSources} expandable={{}} />;
 };
 
 export const NestedTable = () => {
+    const expandedRowRender = () => {
+        const columns = [
+            {
+                title: 'Project details',
+                dataIndex: 'project_details',
+                key: 'project_details',
+                width: '25%',
+            },
+            { title: 'Type', dataIndex: 'type', key: 'type', width: '20%' },
+            { title: 'Target', dataIndex: 'target', key: 'target', width: '11%' },
+            { title: 'Saved %', dataIndex: 'saved', key: 'saved', width: '14%' },
+            {
+                title: 'Saved Total',
+                dataIndex: 'saved_total',
+                key: 'saved_total',
+                width: '30%',
+            },
+        ];
+
+        const data = [];
+        for (let i = 0; i < 6; i += 1) {
+            data.push({
+                key: i,
+                project_details: i,
+                type: 'Standard',
+                target: `${(i + Math.random() * 100).toFixed(1)}%`,
+                saved: `${(i * 2 + Math.random() * 100).toFixed(2)}%`,
+                saved_total: (i * 1000 + Math.random() * 1000).toFixed(2),
+            });
+        }
+        return <Table isExpanded columns={columns} dataSource={data} pagination={false} bordered={false} />;
+    };
+
     const columns = [
         {
             title: 'Group details',
@@ -142,13 +256,14 @@ export const NestedTable = () => {
             saved: '0.41%',
             saved_total: '10.3.4.5654',
             time_savings: 'asdasda',
+            expandable: true,
         });
     }
     return (
         <Grid fluid>
             <Row>
                 <Cell xs={12}>
-                    <Table isExpanded className='components-table-demo-nested' columns={columns} expandable={{ expandedRowRender }} dataSource={data} pagination={false} />
+                    <Table isExpanded columns={columns} expandable={{ expandedRowRender }} dataSource={data} pagination={false} />
                 </Cell>
             </Row>
         </Grid>
