@@ -1,3 +1,10 @@
+# [7.1.0](https://github.com/dexma/ui-components/compare/v7.0.1...v7.1.0) (2025-01-13)
+
+
+### Features
+
+* **cascader, table:** add expandable tables support, add single parent mode and fixes for loading types, button test warning, withDataId type and coverage configuration ([afc8105](https://github.com/dexma/ui-components/commit/afc810528725154d3b75b2ed1fb9b6086148a357))
+
 ## [7.0.1](https://github.com/dexma/ui-components/compare/v7.0.0...v7.0.1) (2024-07-08)
 
 
