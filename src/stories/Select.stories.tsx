@@ -7,7 +7,7 @@ export default {
     tags: ['autodocs'],
 };
 
-export const Basic = () => (
+export const Multiple = () => (
     <Grid fluid>
         <Row>
             <Cell xs={12}>

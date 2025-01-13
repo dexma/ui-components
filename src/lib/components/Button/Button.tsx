@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import React, { type ButtonHTMLAttributes, type ReactNode, useContext } from 'react';
+import React, { forwardRef, type ButtonHTMLAttributes, type ReactNode, useContext } from 'react';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
 import { ThemeContext } from 'styled-components';
@@ -16,6 +16,7 @@ export enum ButtonSize {
     LARGE = 'large',
     XLARGE = 'xlarge',
 }
+
 export const BUTTON_VARIANT = ['primary', 'secondary', 'outline', 'destructive', 'link', 'icon', 'icon-secondary', 'icon-outline'];
 
 const getButtonIconSize = (size?: string | ButtonSize) => {
@@ -49,57 +50,63 @@ export type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button = withDataId(
-    ({
-        className,
-        text,
-        iconBefore,
-        iconAfter,
-        isCircle,
-        iconColor,
-        tooltip,
-        onClick,
-        isDisabled = false,
-        isExpanded = false,
-        isLoading = false,
-        size = 'medium',
-        debounceTime,
-        children,
-        dataId = 'button',
-        variant = 'primary',
-        ...props
-    }: ButtonProps) => {
-        const th = useContext(ThemeContext) || defaultTheme;
-        const rest = omit(props, ['refs']);
-        const classes = classNames(isExpanded && 'expanded', className);
-        const handleClick = debounceTime && debounceTime > 0 && onClick ? debounce(onClick, debounceTime) : onClick;
-        const spinnerSize = getIconSize(size);
-        const iconSize = getButtonIconSize(size);
-        const getStyledButton = () => (
-            <StyledButton
-                className={classes}
-                $isCircle={isCircle || false}
-                $isExpanded={isExpanded || false}
-                $isLoading={isLoading || false}
-                disabled={isDisabled || false}
-                $size={size || 'medium'}
-                $iconColor={iconColor}
-                $iconAfter={iconAfter}
-                $variant={variant ?? 'primary'}
-                $text={text}
-                theme={th}
-                onClick={handleClick}
-                data-id={dataId}
-                data-testid={rest['data-testid'] ?? 'button'}
-                {...rest}
-            >
-                {isLoading ? <Spinner size={spinnerSize} data-testid='button-loading' /> : null}
-                {!isLoading && iconBefore ? <Icon name={iconBefore} size={iconSize} color={iconColor} data-testid='button-icon-before' /> : null}
-                {text || null}
-                {children || null}
-                {!isLoading && iconAfter ? <Icon name={iconAfter} size={iconSize} color={iconColor} data-testid='button-icon-after' /> : null}
-            </StyledButton>
-        );
-        return tooltip ? <Tooltip title={tooltip}>{getStyledButton()}</Tooltip> : getStyledButton();
-    },
+    forwardRef<HTMLButtonElement, ButtonProps>(
+        (
+            {
+                className,
+                text,
+                iconBefore,
+                iconAfter,
+                isCircle,
+                iconColor,
+                tooltip,
+                onClick,
+                isDisabled = false,
+                isExpanded = false,
+                isLoading = false,
+                size = 'medium',
+                debounceTime,
+                children,
+                dataId = 'button',
+                variant = 'primary',
+                ...props
+            },
+            ref
+        ) => {
+            const th = useContext(ThemeContext) || defaultTheme;
+            const rest = omit(props, ['refs']);
+            const classes = classNames(isExpanded && 'expanded', className);
+            const handleClick = debounceTime && debounceTime > 0 && onClick ? debounce(onClick, debounceTime) : onClick;
+            const spinnerSize = getIconSize(size);
+            const iconSize = getButtonIconSize(size);
+            const getStyledButton = () => (
+                <StyledButton
+                    ref={ref}
+                    className={classes}
+                    $isCircle={isCircle || false}
+                    $isExpanded={isExpanded || false}
+                    $isLoading={isLoading || false}
+                    disabled={isDisabled || false}
+                    $size={size || 'medium'}
+                    $iconColor={iconColor}
+                    $iconAfter={iconAfter}
+                    $variant={variant ?? 'primary'}
+                    $text={text}
+                    theme={th}
+                    onClick={handleClick}
+                    data-id={dataId}
+                    data-testid={rest['data-testid'] ?? 'button'}
+                    {...rest}
+                >
+                    {isLoading ? <Spinner size={spinnerSize} data-testid='button-loading' /> : null}
+                    {!isLoading && iconBefore ? <Icon name={iconBefore} size={iconSize} color={iconColor} data-testid='button-icon-before' /> : null}
+                    {text || null}
+                    {children || null}
+                    {!isLoading && iconAfter ? <Icon name={iconAfter} size={iconSize} color={iconColor} data-testid='button-icon-after' /> : null}
+                </StyledButton>
+            );
+            return tooltip ? <Tooltip title={tooltip}>{getStyledButton()}</Tooltip> : getStyledButton();
+        }
+    ),
     'button'
 );
