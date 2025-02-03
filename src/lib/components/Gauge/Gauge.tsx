@@ -239,12 +239,32 @@ export const getYAxis = (minValue: number, maxValue: number, showAsPercentage?: 
     tickWidth: 0,
 });
 
+const getResponiseSize = (currentChart: any, fontSizeRelation = 1, minRatio = 0.9) => {
+    const paneGroup = currentChart.renderer.box.querySelector('.highcharts-pane-group');
+    const bbox = (paneGroup as SVGGraphicsElement).getBBox();
+    const { width, height } = bbox;
+    const proportion = height / width;
+    const basicSize = width / fontSizeRelation;
+
+    return basicSize * Math.min(proportion, minRatio);
+};
+
 const getSize = (width: number, height: number, fontSizeRelation = 10, minRatio = 0.9) => {
     const proportion = height / width;
     const basicSize = width / fontSizeRelation;
 
     return basicSize * Math.min(proportion, minRatio);
 };
+
+const getIndicatorLength = (indicatorValue: number) => {
+    let indicatorString = indicatorValue.toString();
+    const indicatorPeaces = indicatorString.split('.');
+    if (indicatorPeaces.length > 1 && indicatorPeaces[0].length >= 5) {
+        indicatorString = indicatorPeaces[0].toString();
+    }
+
+    return indicatorString.length;
+}
 
 const renderIndicatorLabel = (chart: any, indicator: Indicator, mainSize: number, decimalSeparator?: string, thousandSeparator?: string, hasData?: boolean) => {
     const currentChart = chart;
@@ -260,10 +280,7 @@ const renderIndicatorLabel = (chart: any, indicator: Indicator, mainSize: number
         })
         .add();
     let textBox = currentChart.indicatorLabel.getBBox();
-    const { plotWidth } = currentChart;
-    const { plotHeight } = currentChart;
-    const indicatorLength = numberFormatter(indicator.value, '.', '.').length;
-    if (Math.min(plotWidth, plotHeight) / 2 / indicatorLength <= 3 * indicatorLength && indicatorLengthIsBiggerThanItsScientificNotationLength(indicatorLength, indicator.value)) {
+    if (getIndicatorLength(indicator.value) >= 10) {
         currentChart.indicatorLabel.attr({
             text: applyScientific(indicator.value, decimalSeparator || ',', 2),
         });
@@ -392,7 +409,9 @@ export const getChart = (
             if (chart2.indicatorLabel) {
                 chart2.indicatorLabel.destroy();
             }
-            const mainSize = getSize(chart2.chartWidth, chart2.chartHeight);
+            const indicatorLength = getIndicatorLength(indicator.value);
+            const scientificLength = applyScientific(indicator.value, decimalSeparator || ',', 2).length;
+            const mainSize = Math.min(getResponiseSize(chart2) / (indicatorLength >= 10 ? scientificLength : indicatorLength), 30);
             renderIndicatorLabel(chart2, indicator, mainSize, decimalSeparator, thousandSeparator, hasData);
             // Units
             if (chart2.suffixDataLabel) {
