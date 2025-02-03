@@ -1,3 +1,10 @@
+## [7.1.1](https://github.com/dexma/ui-components/compare/v7.1.0...v7.1.1) (2025-02-03)
+
+
+### Bug Fixes
+
+* **gauge:** scientific notation only appling if 10 >= numbers ([#123](https://github.com/dexma/ui-components/issues/123)) ([e1b0d15](https://github.com/dexma/ui-components/commit/e1b0d15f0298fe6d01b67fbc9ba07d837650edae))
+
 # [7.1.0](https://github.com/dexma/ui-components/compare/v7.0.1...v7.1.0) (2025-01-13)
 
 
