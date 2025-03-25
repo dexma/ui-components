@@ -47,6 +47,7 @@ export type ButtonProps = {
     children?: ReactNode;
     dataId?: string;
     'data-testid'?: string;
+    ariaLabel?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button = withDataId(
@@ -69,6 +70,7 @@ export const Button = withDataId(
                 children,
                 dataId = 'button',
                 variant = 'primary',
+                ariaLabel,
                 ...props
             },
             ref
@@ -96,6 +98,9 @@ export const Button = withDataId(
                     onClick={handleClick}
                     data-id={dataId}
                     data-testid={rest['data-testid'] ?? 'button'}
+                    aria-label={(!text && (iconBefore || iconAfter)) || isLoading ? ariaLabel : undefined}
+                    aria-live={isLoading ? 'polite' : undefined}
+                    aria-busy={isLoading || false}
                     {...rest}
                 >
                     {isLoading ? <Spinner size={spinnerSize} data-testid='button-loading' /> : null}
