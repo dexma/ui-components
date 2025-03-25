@@ -1,4 +1,4 @@
-import React, { type CSSProperties, type ReactNode, useContext, useState } from 'react';
+import { type CSSProperties, type ReactNode, useContext, useState } from 'react';
 import { ThemeContext } from 'styled-components';
 import get from 'lodash/get';
 
@@ -15,9 +15,10 @@ export type AlertProps = {
     closable?: boolean;
     className?: string;
     style?: CSSProperties;
+    ariaLive?: 'polite' | 'assertive';
 };
 
-export const Alert = ({ type = 'warning', closable = false, message, description, showIcon = false, onClose, ...props }: AlertProps) => {
+export const Alert = ({ type = 'warning', closable = false, message, description, showIcon = false, ariaLive = 'polite', onClose, ...props }: AlertProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
     const [closed, setClosed] = useState(false);
     let renderIcon = null;
@@ -53,7 +54,7 @@ export const Alert = ({ type = 'warning', closable = false, message, description
     );
 
     return closed ? null : (
-        <StyledAlert data-testid='alert' role='alert' $showIcon={showIcon} $type={type} $description={description} $message={message} theme={th} {...props}>
+        <StyledAlert data-testid='alert' role='alert' $showIcon={showIcon} $type={type} $description={description} $message={message} theme={th} aria-live={ariaLive} {...props}>
             <span data-testid='alert-message' className='message'>
                 {showIcon && <Icon color={get(th.color, 'color')} name={renderIcon} size={IconSize.MEDIUM} className='icon' data-testid={`alert-icon-${type}`} />}
                 {message}
