@@ -79,7 +79,7 @@ const SearchIcons = () => {
         <StyledBoxSearch>
             <Row>
                 <Cell xs={12} className='search'>
-                    <Input type='text' placeholder='Search icon' onChange={handleChange} icon='search' />
+                    <Input type='text' placeholder='Search icon' onChange={handleChange} icon='search' label='Search' />
                 </Cell>
                 {getIcons(value)}
             </Row>
