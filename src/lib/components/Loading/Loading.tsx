@@ -9,12 +9,13 @@ export type LoadingProps = {
     size?: number;
     isLoading: boolean;
     color?: typeof defaultTheme.color;
+    ariaLabel?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Loading = ({ color, size = 24, isLoading, children, ...props }: LoadingProps): ReactNode => {
+export const Loading = ({ color, size = 24, isLoading, children, ariaLabel, ...props }: LoadingProps): ReactNode => {
     const th = useContext(ThemeContext) || defaultTheme;
     return isLoading ? (
-        <StyledLoading data-testid='loading' theme={th} {...props}>
+        <StyledLoading data-testid='loading' theme={th} aria-label={ariaLabel} aria-live='polite' {...props}>
             <Spinner color={color} size={size} />
         </StyledLoading>
     ) : (

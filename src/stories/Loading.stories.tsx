@@ -22,7 +22,7 @@ export const Basic = () => (
                         marginTop: '30px',
                     }}
                 >
-                    <Loading isLoading size={50} />
+                    <Loading isLoading size={50} ariaLabel='Loading...' />
                 </div>
             </Cell>
             <Cell xs={12}>
@@ -34,7 +34,7 @@ export const Basic = () => (
                         marginTop: '30px',
                     }}
                 >
-                    <Loading isLoading color='teal500' size={50} />
+                    <Loading isLoading color='teal500' size={50} ariaLabel='Loading...' />
                 </div>
             </Cell>
             <Cell xs={12}>
@@ -46,7 +46,7 @@ export const Basic = () => (
                         marginTop: '30px',
                     }}
                 >
-                    <Loading isLoading color='red' size={50} />
+                    <Loading isLoading color='red' size={50} ariaLabel='Loading...' />
                 </div>
             </Cell>
             <Cell xs={12}>
@@ -58,7 +58,7 @@ export const Basic = () => (
                         marginTop: '30px',
                     }}
                 >
-                    <Loading isLoading color='cyan' size={50} />
+                    <Loading isLoading color='cyan' size={50} ariaLabel='Loading...' />
                 </div>
             </Cell>
         </Row>
