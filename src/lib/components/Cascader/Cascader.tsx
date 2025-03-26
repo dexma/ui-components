@@ -1,4 +1,4 @@
-import React, { type MouseEvent, type ReactNode, useContext, useRef, useState } from 'react';
+import { type MouseEvent, type ReactNode, useContext, useRef, useState } from 'react';
 import { Cascader as CascaderAntd, ConfigProvider, type CascaderProps as CascaderAntdProps } from 'antd';
 import { type CascaderRef, type DefaultOptionType } from 'antd/es/cascader';
 import { type DefaultTheme, ThemeContext } from 'styled-components';
@@ -12,10 +12,11 @@ type Value = Array<string | number>;
 type CascaderProps<OptionType extends DefaultOptionType> = CascaderAntdProps & {
     open?: boolean;
     options?: OptionType[];
+    iconAriaLabel?: string;
     onChange?: (value: Value | Value[]) => void;
 };
 
-export const tagRender = (theme: DefaultTheme) => (props: { label: ReactNode; value: string; closable: boolean; onClose: () => void }) => {
+export const tagRender = (theme: DefaultTheme, iconAriaLabel?: string) => (props: { label: ReactNode; value: string; closable: boolean; onClose: () => void }) => {
     const { label, value, closable, onClose } = props;
     const onPreventMouseDown = (event: MouseEvent<HTMLSpanElement>) => {
         event.preventDefault();
@@ -25,12 +26,12 @@ export const tagRender = (theme: DefaultTheme) => (props: { label: ReactNode; va
     return (
         <StyledTagSelected onMouseDown={onPreventMouseDown} $closable={closable} style={{ marginRight: 4 }} data-testid={`tag-option-selected-${value}`} theme={theme}>
             {label}
-            {closable && <Icon className='icon-close' name='close' size='small' onClick={onClose} color={colors.white} />}
+            {closable && <Icon className='icon-close' name='close' size='small' ariaLabel={!iconAriaLabel ? `Icon to close card` : iconAriaLabel} onClick={onClose} color={colors.white} />}
         </StyledTagSelected>
     );
 };
 
-export const Cascader = <OptionType extends DefaultOptionType>({ multiple, options = [], maxTagCount, onChange, open, changeOnSelect, ...props }: CascaderProps<OptionType>) => {
+export const Cascader = <OptionType extends DefaultOptionType>({ multiple, options = [], maxTagCount, onChange, open, changeOnSelect, iconAriaLabel, ...props }: CascaderProps<OptionType>) => {
     const th = useContext(ThemeContext) || defaultTheme;
     const [currentOpen, setCurrentOpen] = useState(open || false);
     const ref = useRef<CascaderRef>();
@@ -71,7 +72,7 @@ export const Cascader = <OptionType extends DefaultOptionType>({ multiple, optio
                     onFocus={() => {
                         setCurrentOpen(true);
                     }}
-                    tagRender={tagRender(defaultTheme)}
+                    tagRender={tagRender(defaultTheme, iconAriaLabel)}
                     maxTagPlaceholder={(values) => `+${values.length}`}
                     open={!changeOnSelect? currentOpen : undefined}
                     changeOnSelect={changeOnSelect}

@@ -40,9 +40,9 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
                     data-id={dataId}
                     data-testid='antd-date-picker'
                     format={format ?? 'DD/MM/YYYY'}
-                    nextIcon={<Icon name='chevron_right_l' size={10} color='gray600' />}
-                    prevIcon={<Icon name='chevron_left_l' size={10} color='gray600' />}
-                    suffixIcon={<Icon name='calendar_blank' size={18} color='gray600' />}
+                    nextIcon={<Icon name='chevron_right_l' size={10} color='gray600' ariaLabel='Next page' />}
+                    prevIcon={<Icon name='chevron_left_l' size={10} color='gray600' ariaLabel='Previous page' />}
+                    suffixIcon={<Icon name='calendar_blank' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
                     role='dialog'
                     aria-label={ariaLabel}
@@ -75,8 +75,8 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                     data-id={dataId}
                     data-testid='antd-range-picker'
                     format={format ?? 'DD/MM/YYYY'}
-                    separator={<Icon name='arrow_right' size={18} color='gray600' />}
-                    suffixIcon={<Icon name='calendar_range' size={18} color='gray600' />}
+                    separator={<Icon name='arrow_right' size={18} color='gray600' ariaLabel='to' />}
+                    suffixIcon={<Icon name='calendar_range' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
                     role='dialog'
                     aria-label={ariaLabel}

@@ -73,6 +73,7 @@ export type FieldGroupItem = {
     value: string;
     tooltip?: string;
     isDisabled?: boolean;
+    ariaLabel?: string;
 };
 
 const GenericFieldGroup = <T extends FieldGroupType, V>({
@@ -115,7 +116,7 @@ const GenericFieldGroup = <T extends FieldGroupType, V>({
     return (
         <StyledFieldGroup theme={th} size={size} data-testid='field-group' $vertical={!!vertical} variant={variant} data-id={dataId} {...props}>
             {uniqueValues.map((item: FieldGroupItem) => {
-                const { uniqueId, value, label, icon, tooltip, isDisabled } = item;
+                const { uniqueId, value, label, icon, tooltip, isDisabled, ariaLabel } = item;
                 const isSelected = isFieldSelected({ type, selectedValues: item }, selectedField);
                 const classesItem = classNames('item', label ? `item-${label}` : null, isSelected && 'active', isDisabled && 'disabled');
                 const getLabel = () => (
@@ -131,7 +132,7 @@ const GenericFieldGroup = <T extends FieldGroupType, V>({
                         data-testid='field-group-label'
                     >
                         {!icon && label ? label : null}
-                        {icon ? <Icon name={icon} size={variant === 'custom' && size === 'large' ? 'xlarge' : size} color={colors.red} /> : null}
+                        {icon ? <Icon name={icon} size={variant === 'custom' && size === 'large' ? 'xlarge' : size} color={colors.red} ariaLabel={!ariaLabel ? `${icon} icon` : ariaLabel} /> : null}
                         <input
                             id={`${uniqueId}_${value}`}
                             onChange={() => {

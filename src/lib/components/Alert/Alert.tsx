@@ -16,9 +16,10 @@ export type AlertProps = {
     className?: string;
     style?: CSSProperties;
     ariaLive?: 'polite' | 'assertive';
+    iconAriaLabel?: string;
 };
 
-export const Alert = ({ type = 'warning', closable = false, message, description, showIcon = false, ariaLive = 'polite', onClose, ...props }: AlertProps) => {
+export const Alert = ({ type = 'warning', closable = false, message, description, showIcon = false, ariaLive = 'polite', iconAriaLabel, onClose, ...props }: AlertProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
     const [closed, setClosed] = useState(false);
     let renderIcon = null;
@@ -56,13 +57,13 @@ export const Alert = ({ type = 'warning', closable = false, message, description
     return closed ? null : (
         <StyledAlert data-testid='alert' role='alert' $showIcon={showIcon} $type={type} $description={description} $message={message} theme={th} aria-live={ariaLive} {...props}>
             <span data-testid='alert-message' className='message'>
-                {showIcon && <Icon color={get(th.color, 'color')} name={renderIcon} size={IconSize.MEDIUM} className='icon' data-testid={`alert-icon-${type}`} />}
+                {showIcon && <Icon color={get(th.color, 'color')} name={renderIcon} size={IconSize.MEDIUM} className='icon' data-testid={`alert-icon-${type}`} ariaLabel={!iconAriaLabel ? `${renderIcon} icon` : iconAriaLabel} />}
                 {message}
                 {!message && description && getDescription(description)}
             </span>
             {message && description && getDescription(description)}
             {closable ? (
-                <Icon color={get(th.color, 'color')} onClick={handleClose} name='close' size={IconSize.MEDIUM} className='icon-close' data-testid='alert-icon-close' />
+                <Icon color={get(th.color, 'color')} onClick={handleClose} name='close' size={IconSize.MEDIUM} className='icon-close' data-testid='alert-icon-close' ariaLabel={!iconAriaLabel ? 'Alert could be closed' : iconAriaLabel} />
             ) : null}
         </StyledAlert>
     );

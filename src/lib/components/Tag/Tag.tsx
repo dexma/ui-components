@@ -14,9 +14,10 @@ export type TagProps = {
     onClose?: () => void;
     type?: 'normal' | 'rounded';
     variant?: 'primary' | 'outline';
+    iconAriaLabel?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Tag = withDataId(({ icon, color, closable, children, type = 'normal', onClose, variant = 'primary', dataId, ...props }: TagProps) => {
+export const Tag = withDataId(({ icon, color, closable, children, type = 'normal', onClose, variant = 'primary', dataId, iconAriaLabel, ...props }: TagProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
     return (
         <StyledTag
@@ -30,9 +31,9 @@ export const Tag = withDataId(({ icon, color, closable, children, type = 'normal
             theme={th}
             {...props}
         >
-            {icon && <Icon className='icon' name={icon} size='small' />}
+            {icon && <Icon className='icon' name={icon} size='small' ariaLabel={!iconAriaLabel ? `${icon} icon` : iconAriaLabel} />}
             {children && children}
-            {closable && <Icon className='icon-close' name='close' size='small' onClick={onClose} />}
+            {closable && <Icon className='icon-close' name='close' size='small' onClick={onClose} ariaLabel='Close tag' />}
         </StyledTag>
     );
 }, 'tag');
