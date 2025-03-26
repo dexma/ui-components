@@ -48,6 +48,7 @@ export type ButtonProps = {
     dataId?: string;
     'data-testid'?: string;
     ariaLabel?: string;
+    iconAriaLabel?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button = withDataId(
@@ -71,6 +72,7 @@ export const Button = withDataId(
                 dataId = 'button',
                 variant = 'primary',
                 ariaLabel,
+                iconAriaLabel,
                 ...props
             },
             ref
@@ -104,10 +106,10 @@ export const Button = withDataId(
                     {...rest}
                 >
                     {isLoading ? <Spinner size={spinnerSize} data-testid='button-loading' /> : null}
-                    {!isLoading && iconBefore ? <Icon name={iconBefore} size={iconSize} color={iconColor} data-testid='button-icon-before' /> : null}
+                    {!isLoading && iconBefore ? <Icon name={iconBefore} size={iconSize} color={iconColor} data-testid='button-icon-before' ariaLabel={!iconAriaLabel ? `${iconBefore} icon` : iconAriaLabel} /> : null}
                     {text || null}
                     {children || null}
-                    {!isLoading && iconAfter ? <Icon name={iconAfter} size={iconSize} color={iconColor} data-testid='button-icon-after' /> : null}
+                    {!isLoading && iconAfter ? <Icon name={iconAfter} size={iconSize} color={iconColor} data-testid='button-icon-after' ariaLabel={!iconAriaLabel ? `${iconAfter} icon` : iconAriaLabel} /> : null}
                 </StyledButton>
             );
             return tooltip ? <Tooltip title={tooltip}>{getStyledButton()}</Tooltip> : getStyledButton();

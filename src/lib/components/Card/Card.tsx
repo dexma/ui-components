@@ -6,12 +6,12 @@ import defaultTheme from '@utils/theme';
 import { Icon, Paragraph } from '@components';
 import { StyledCard, StyledCardLink } from '@styles/Card/StyledCard';
 
-const CardHeader = ({ image, icon }: { image?: string; icon?: string }) => {
+const CardHeader = ({ image, icon, iconAriaLabel }: { image?: string; icon?: string, iconAriaLabel?: string }) => {
     if (!image && !icon) return null;
     return (
         <div className='card-header' data-testid='card-header'>
             {image && !icon && <img alt='card-header' src={image} className='card-img card-img-top' data-testid='card-image' />}
-            {icon && !image && <Icon name={icon} data-testid='card-icon' />}
+            {icon && !image && <Icon name={icon} data-testid='card-icon' ariaLabel={!iconAriaLabel ? `${icon} icon` : iconAriaLabel} />}
         </div>
     );
 };
@@ -58,9 +58,10 @@ type CardContentProps = {
     image?: string;
     footer?: React.ReactNode;
     isHorizontal?: boolean;
+    iconAriaLabel?: string;
 };
 
-const CardContent = ({ image, icon, isHorizontal, title, subtitle, description, footer }: CardContentProps) => (
+const CardContent = ({ image, icon, isHorizontal, title, subtitle, description, footer, iconAriaLabel }: CardContentProps) => (
     <>
         <CardHeader image={image} icon={icon} />
         {isHorizontal ? (

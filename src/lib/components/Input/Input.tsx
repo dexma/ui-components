@@ -19,12 +19,13 @@ type InputProps = {
     name?: string;
     disabled?: boolean;
     dataId?: string;
+    iconAriaLabel?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export const Input = withDataId(
     forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
         const [focused, setFocused] = useState(false);
-        const { icon, isLoading, onFocus, onBlur, children, dataId } = props;
+        const { icon, isLoading, onFocus, onBlur, children, dataId, iconAriaLabel } = props;
         const th = useContext(ThemeContext) || defaultTheme;
         const newProps = omit(props, ['placeholder', 'id', 'label', 'value', 'type', 'name', 'onChange', 'onFocus', 'onBlur', 'dataId', 'isLoading']);
         const inputProps = omit(props, ['icon', 'isLoading', 'theme', 'children', 'onFocus', 'onBlur', 'dataId', 'isLoading']);
@@ -40,7 +41,7 @@ export const Input = withDataId(
             <StyledInput data-testid='input' $icon={icon} $isLoading={isLoading !== undefined ? isLoading : false} $focused={focused} data-id={dataId} theme={th} {...newProps}>
                 {icon && (
                     <div className='icon-container'>
-                        <Icon name={icon} size={20} color='gray500' />
+                        <Icon name={icon} size={20} color='gray500' ariaLabel={!iconAriaLabel ? `${icon} icon` : iconAriaLabel} />
                     </div>
                 )}
                 <input onFocus={handleOnFocus} onBlur={handleOnBlur} {...inputProps} ref={ref} data-testid='input-element' />

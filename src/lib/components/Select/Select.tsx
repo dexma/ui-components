@@ -59,7 +59,7 @@ export const tagRenderButtonPagination = (props: CustomTagProps, options: Option
                 theme={theme}
             >
                 {parsedLabel}
-                {closable && <Icon className='icon-close' name='close' size='small' onClick={onClose as unknown as MouseEventHandler<SVGSVGElement>} color={colors.white} />}
+                {closable && <Icon className='icon-close' name='close' size='small' onClick={onClose as unknown as MouseEventHandler<SVGSVGElement>} color={colors.white} ariaLabel='Delete option' />}
             </StyledSpanOptionSelected>
         </Tooltip>
     );
@@ -278,7 +278,7 @@ export const Select = withDataId(
                     <AntdSelect<Option>
                         data-testid='select'
                         autoClearSearchValue
-                        removeIcon={<Icon color='gray' name='close' size='small' />}
+                        removeIcon={<Icon color='gray' name='close' size='small' ariaLabel='Remove option' />}
                         data-id={dataId}
                         defaultValue={defaultValues}
                         optionFilterProp='children'
@@ -303,6 +303,7 @@ export const Select = withDataId(
                                             onClick={() => {
                                                 reset();
                                             }}
+                                            ariaLabel='Remove option selected'
                                         />
                                     )}
                                     <Icon
@@ -313,6 +314,7 @@ export const Select = withDataId(
                                             closeDropdown();
                                             e.stopPropagation();
                                         }}
+                                        ariaLabel='Hide options'
                                     />
                                 </>
                             ) : (
@@ -324,6 +326,7 @@ export const Select = withDataId(
                                     onClick={() => {
                                         setShowDropdown(true);
                                     }}
+                                    ariaLabel='Show options'
                                 />
                             )
                         }
@@ -351,7 +354,7 @@ export const Select = withDataId(
                 ) : (
                     <AntdSelect
                         autoClearSearchValue={false}
-                        removeIcon={<Icon color='gray' name='close' size='small' />}
+                        removeIcon={<Icon color='gray' name='close' size='small' ariaLabel='Remove option' />}
                         data-id={dataId}
                         data-testid='select'
                         defaultValue={defaultValues}
@@ -381,7 +384,7 @@ export const Select = withDataId(
                             const valuesToRender = `${displayValue.slice(0, overflowLength).map((value) => ` ${value?.label?.props?.value}`)}${textOverflow}`;
                             return <Tooltip title={valuesToRender}>{`+${displayValue.length}`}</Tooltip>;
                         }}
-                        menuItemSelectedIcon={<Icon color='white' name='close' size='small' />}
+                        menuItemSelectedIcon={<Icon color='white' name='close' size='small' ariaLabel='Remove option' />}
                         mode={mode}
                         open={showDropdown}
                         placeholder={placeholder}
@@ -400,6 +403,7 @@ export const Select = withDataId(
                                             onClick={() => {
                                                 reset();
                                             }}
+                                            ariaLabel='Remove all options'
                                         />
                                     )}
                                     <Icon
@@ -411,6 +415,7 @@ export const Select = withDataId(
                                             closeDropdown();
                                             e.stopPropagation();
                                         }}
+                                        ariaLabel='Hide options'
                                     />
                                 </>
                             ) : (
@@ -422,6 +427,7 @@ export const Select = withDataId(
                                     onClick={() => {
                                         setShowDropdown(true);
                                     }}
+                                    ariaLabel='Show options'
                                 />
                             )
                         }

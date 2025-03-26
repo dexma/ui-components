@@ -50,6 +50,7 @@ export type IconProps = {
     name?: string;
     color?: string | keyof typeof defaultTheme.color;
     size?: number | string | IconSize;
+    ariaLabel: string;
 } & SVGProps<SVGSVGElement>;
 
 const getColor = (th: Theme, color?: string | typeof defaultTheme.color) => {
@@ -58,7 +59,7 @@ const getColor = (th: Theme, color?: string | typeof defaultTheme.color) => {
     return th.color[color as keyof typeof th.color];
 };
 
-export const Icon = forwardRef(({ name = 'vader', color = 'gray500', size = IconSize.LARGE, onClick, ...props }: IconProps, ref: LegacyRef<SVGSVGElement>) => {
+export const Icon = forwardRef(({ name = 'vader', color = 'gray500', size = IconSize.LARGE, onClick, ariaLabel, ...props }: IconProps, ref: LegacyRef<SVGSVGElement>) => {
     const th = useContext(ThemeContext) || defaultTheme;
     const fillColor = getColor(th, color);
     const pathElements = getIconPaths(name);
@@ -75,6 +76,7 @@ export const Icon = forwardRef(({ name = 'vader', color = 'gray500', size = Icon
             xmlns='http://www.w3.org/2000/svg'
             $fillColor={fillColor}
             data-testid='icon'
+            aria-label={ariaLabel}
             onClick={onClick}
             {...props}
         >

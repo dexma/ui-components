@@ -38,22 +38,22 @@ export const Sizes = () => (
                 <Paragraph margin='1rem 0 1rem 0'>An icon is a svg used to represent something else you can set the size and color</Paragraph>
             </Cell>
             <Cell>
-                <Icon size={70} />
+                <Icon size={70} ariaLabel='aria-label example' />
             </Cell>
             <Cell>
-                <Icon size={60} color='red' />
+                <Icon size={60} color='red' ariaLabel='aria-label example' />
             </Cell>
             <Cell>
-                <Icon size={50} />
+                <Icon size={50} ariaLabel='aria-label example' />
             </Cell>
             <Cell>
-                <Icon size={40} />
+                <Icon size={40} ariaLabel='aria-label example' />
             </Cell>
             <Cell>
-                <Icon size={30} />
+                <Icon size={30} ariaLabel='aria-label example' />
             </Cell>
             <Cell>
-                <Icon size={20} />
+                <Icon size={20} ariaLabel='aria-label example' />
             </Cell>
         </Row>
     </Grid>
@@ -70,7 +70,7 @@ const SearchIcons = () => {
             .filter((i: { name: string }) => i.name.includes(searchValue))
             .map((iconItem: { name: string }) => (
                 <Cell key={iconItem.name} xs={2} className='box-icon'>
-                    <Icon name={iconItem.name} size={40} />
+                    <Icon name={iconItem.name} size={40} ariaLabel={`${iconItem.name} icon`} />
                     <Paragraph margin='.6rem'>{iconItem.name}</Paragraph>
                 </Cell>
             ));
