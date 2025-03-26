@@ -21,6 +21,7 @@ const getStylesInputAntdPicker = (props: AntdRangePickerProps | AntdDatePickerPr
             box-shadow: 0px 0px 5px ${darken(0.1, props.theme?.primary)};
         }
     `;
+
 const dropdownStyles = () => css`
     // Dropdown menu
     .ant-picker-dropdown {
@@ -55,10 +56,10 @@ const dropdownStyles = () => css`
     }
 `;
 
-const StyledAntdDatePicker = styled(AntdDatePicker)<AntdDatePickerProps>`
+const StyledAntdDatePicker = styled(AntdDatePicker) <AntdDatePickerProps>`
     ${getStylesInputAntdPicker}
 `;
-const StyledAntdRangePicker = styled(RangePicker)<AntdRangePickerProps>`
+const StyledAntdRangePicker = styled(RangePicker) <AntdRangePickerProps>`
     ${getStylesInputAntdPicker}
 `;
 const DropdownDatePickerStyles = createGlobalStyle`
