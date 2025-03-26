@@ -24,7 +24,7 @@ export const Basic = () => (
                 </Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Pagination total={100} pageSize={10} defaultCurrent={6} />
+                <Pagination total={100} pageSize={10} defaultCurrent={6} previosPageAriaLabel='Previos page' nextPageAriaLabel='Next page' />
             </Cell>
         </Row>
     </Grid>
