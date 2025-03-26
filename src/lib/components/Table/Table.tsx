@@ -155,7 +155,7 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                             expandedRowRender: expandable?.expandedRowRender,
                             expandIcon,
                         }}
-                        pagination={{ itemRender }}
+                        //pagination={{ (page, type, elem ) => itemRender(page) }}
                         columns={isExpanded ? getColumnsExpanded() : columns}
                         {...tableProps}
                     />
