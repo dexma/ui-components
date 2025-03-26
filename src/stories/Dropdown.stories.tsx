@@ -5,17 +5,28 @@ import { Dropdown, type DropdownProps, Row, Grid, Cell, Paragraph } from '@compo
 const innerContent = [
     {
         text: 'Edit',
+        parentId: 'dropdown-button',
         icon: 'edit',
         onClick: (e: any) => {
             console.log('click edit', e);
-        },
+        }
     },
     {
         text: 'Delete',
+        parentId: 'dropdown-button',
         icon: 'delete',
         onClick: (e: any) => {
             console.log('click delete', e);
         },
+    },
+    {
+        text: '',
+        parentId: 'dropdown-button',
+        icon: 'add',
+        onClick: (e: any) => {
+            console.log('click edit', e);
+        },
+        ariaLabel: 'Agregar'
     },
 ];
 
@@ -32,8 +43,8 @@ export const Basic = () => (
                 <Paragraph margin='1rem 0 1rem 0'>A simple dropdown that provides action elements like links and buttons.</Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Dropdown icon='more_horiz' content={innerContent} />
-                <Dropdown icon='add' content={innerContent} />
+                <Dropdown icon='more_horiz' content={innerContent} ariaLabel='Mas acciones' />
+                <Dropdown icon='add' content={innerContent} ariaLabel='Agregar' />
             </Cell>
         </Row>
     </Grid>

@@ -9,13 +9,15 @@ type DropdownContent = {
     icon?: string;
     dataId?: string;
     variant?: string;
+    ariaLabel?: string;
+    parentId: string;
     onClick?: (e: any) => void;
 };
 
 const getContent = (menu?: DropdownContent[]) => {
     if (!menu) return null;
     const items = menu
-        ? menu.map(({ key, icon, onClick, dataId, variant, text, ...props }) => ({
+        ? menu.map(({ key, icon, onClick, dataId, variant, text, ariaLabel, parentId, ...props }) => ({
               label: (
                   <StyledDropdownInnerButton
                       className='dropdown-button-item'
@@ -26,6 +28,9 @@ const getContent = (menu?: DropdownContent[]) => {
                       dataId={dataId ?? 'ddItem'}
                       variant={variant ?? 'icon'}
                       text={text}
+                      aria-label={icon ? ariaLabel : undefined}
+                      role='dialog'
+                      aria-labelledby={parentId}
                       {...props}
                   />
               ),
@@ -42,9 +47,10 @@ export type DropdownProps = DropDownProps & {
     icon?: string;
     variant?: string;
     content?: DropdownContent[];
+    ariaLabel?: string;
 };
 
-export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text, placement = 'bottomRight', menu, icon, content, variant }: DropdownProps) => {
+export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text, placement = 'bottomRight', menu, icon, content, variant, ariaLabel }: DropdownProps) => {
     const menuItems = menu || (getContent(content) as MenuProps);
     return (
         <>
@@ -68,6 +74,7 @@ export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text
                         iconBefore={icon}
                         text=''
                         isCircle
+                        aria-label={ariaLabel}
                     />
                 )}
             </DropdownAntd>
