@@ -100,7 +100,7 @@ export const Button = withDataId(
                     onClick={handleClick}
                     data-id={dataId}
                     data-testid={rest['data-testid'] ?? 'button'}
-                    aria-label={(!text && (iconBefore || iconAfter)) || isLoading ? ariaLabel : undefined}
+                    aria-label={ariaLabel}
                     aria-live={isLoading ? 'polite' : undefined}
                     aria-busy={isLoading || false}
                     {...rest}
