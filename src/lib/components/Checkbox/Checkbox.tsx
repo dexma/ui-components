@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Checkbox as CheckboxAntd, CheckboxProps as AntCheckboxProps, ConfigProvider } from 'antd';
 import { ThemeContext } from 'styled-components';
 

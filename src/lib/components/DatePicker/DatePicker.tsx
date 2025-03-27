@@ -15,13 +15,12 @@ type CommonProps = {
     dataId?: string;
     'data-testid'?: string;
     theme?: Theme;
-    ariaLabel?: string;
     label?: string;
 };
 
 export type AntdDatePickerProps = DatePickerProps & CommonProps;
 
-export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, ariaLabel, label, ...props }: AntdDatePickerProps) => {
+export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, ...props }: AntdDatePickerProps) => {
     const th = useContext(ThemeContext) || theme;
     return (
         <>
@@ -45,7 +44,6 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
                     suffixIcon={<Icon name='calendar_blank' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
                     role='dialog'
-                    aria-label={ariaLabel}
                     aria-labelledby={dataId}
                 />
             </ConfigProvider>
@@ -55,7 +53,7 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
 
 export type AntdRangePickerProps = RangePickerProps & CommonProps;
 
-export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, ariaLabel, label, format, ...props }: AntdRangePickerProps) => {
+export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, label, format, ...props }: AntdRangePickerProps) => {
     const th = useContext(ThemeContext) || theme;
 
     return (
@@ -79,7 +77,6 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                     suffixIcon={<Icon name='calendar_range' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
                     role='dialog'
-                    aria-label={ariaLabel}
                     aria-labelledby={dataId}
                 />
             </ConfigProvider>
