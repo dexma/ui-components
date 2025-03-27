@@ -1,4 +1,3 @@
-import React from 'react';
 import { Loading, Grid, Row, Cell, Paragraph, LoadingProps } from '@components';
 
 export default {
