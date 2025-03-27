@@ -1,11 +1,9 @@
-import React from 'react';
-
 import { Dropdown, type DropdownProps, Row, Grid, Cell, Paragraph } from '@components';
 
 const innerContent = [
     {
         text: 'Edit',
-        parentId: 'dropdown-button',
+        parentName: 'dropdown-button',
         icon: 'edit',
         onClick: (e: any) => {
             console.log('click edit', e);
@@ -13,7 +11,7 @@ const innerContent = [
     },
     {
         text: 'Delete',
-        parentId: 'dropdown-button',
+        parentName: 'dropdown-button',
         icon: 'delete',
         onClick: (e: any) => {
             console.log('click delete', e);
@@ -21,12 +19,12 @@ const innerContent = [
     },
     {
         text: '',
-        parentId: 'dropdown-button',
+        parentName: 'dropdown-button',
         icon: 'add',
         onClick: (e: any) => {
             console.log('click edit', e);
         },
-        ariaLabel: 'Agregar'
+        ariaLabel: 'Add'
     },
 ];
 
@@ -43,8 +41,8 @@ export const Basic = () => (
                 <Paragraph margin='1rem 0 1rem 0'>A simple dropdown that provides action elements like links and buttons.</Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Dropdown icon='more_horiz' content={innerContent} ariaLabel='Mas acciones' />
-                <Dropdown icon='add' content={innerContent} ariaLabel='Agregar' />
+                <Dropdown icon='more_horiz' content={innerContent}  ariaLabel='More actions' />
+                <Dropdown icon='add' content={innerContent} ariaLabel='Add' />
             </Cell>
         </Row>
     </Grid>
