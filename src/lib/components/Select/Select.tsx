@@ -10,6 +10,7 @@ import { SelectOptionStyle, StyledSelectDropdown, StyledSpanOption, StyledSpanOp
 import { colors } from 'index';
 import { filterOption, findSubstringIndices, getOptionsBySearch, getRegExpBasedOnInput, singleOptionFilter } from './selectUtils';
 import { ButtonPaginationSelector } from './ButtonPaginationSelector';
+import '@styles/Select/Select.css';
 
 const ALL_CHARACTER = '*';
 const ENTER_CHARACTER = 'Enter';
@@ -151,6 +152,7 @@ export const optionsRenderer = (options: Option[], selectedValues: Array<string 
                         selected={selectedValues.includes(option.value)}
                         data-testid={`select-option-${option.value}`}
                         data-id={`${dataId}.select-option-${option.value}`}
+                        aria-label={option.label}
                     >
                         {selectedValues.includes(option.value) ? (
                             <StyledSpanOptionSelected value={option.label} theme={theme}>
@@ -275,7 +277,8 @@ export const Select = withDataId(
             <>
                 <SelectOptionStyle $theme={th} />
                 {mode === undefined || mode === 'single' ? (
-                    <AntdSelect<Option>
+                    <AntdSelect
+                        className={`custom-select ${props.className}`}
                         data-testid='select'
                         autoClearSearchValue
                         removeIcon={<Icon color='gray' name='close' size='small' ariaLabel='Remove option' />}
@@ -348,9 +351,10 @@ export const Select = withDataId(
                             sValue.current = searchText;
                             return searchText;
                         }}
-                        options={options}
                         {...props}
-                    />
+                    >
+                        {optionsRenderer(options, selectedValues, searchValue, defaultTheme, dataId, pageSize)}
+                    </AntdSelect>
                 ) : (
                     <AntdSelect
                         autoClearSearchValue={false}
@@ -361,19 +365,19 @@ export const Select = withDataId(
                         dropdownRender={
                             text
                                 ? (menu: ReactElement) =>
-                                      dropdownRenderSelect(
-                                          menu,
-                                          currentPage,
-                                          options,
-                                          handleChangePage,
-                                          handleSelectAll,
-                                          text,
-                                          searchValue,
-                                          showDropdown,
-                                          mode,
-                                          defaultTheme,
-                                          pageSize
-                                      )
+                                    dropdownRenderSelect(
+                                        menu,
+                                        currentPage,
+                                        options,
+                                        handleChangePage,
+                                        handleSelectAll,
+                                        text,
+                                        searchValue,
+                                        showDropdown,
+                                        mode,
+                                        defaultTheme,
+                                        pageSize
+                                    )
                                 : undefined
                         }
                         optionFilterProp='children'
