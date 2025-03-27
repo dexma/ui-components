@@ -1,7 +1,6 @@
 import { Popover as AntDPopover, type PopoverProps as AntDPopoverProps } from 'antd';
 
 import { withDataId } from '@components/DataId/withDataId';
-import { useEffect } from 'react';
 
 export const Popover = withDataId((props: AntDPopoverProps & { dataId?: string }) => {
 
@@ -11,9 +10,9 @@ export const Popover = withDataId((props: AntDPopoverProps & { dataId?: string }
         setTimeout(() => {
             const popoverElement = document.querySelector('.ant-popover-inner');
             if (popoverElement) {
-              popoverElement.setAttribute('role', visible ? 'dialog' : 'tooltip');
+                popoverElement.setAttribute('role', visible ? 'dialog' : 'tooltip');
             }
-          }, 0);
+        }, 0);
     }
 
     return (
