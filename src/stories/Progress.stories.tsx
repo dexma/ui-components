@@ -32,7 +32,6 @@ export const ProgressTransparent = () => (
     </Grid>
 );
 
-const oneMark = [{ value: 30, color: 'black' }];
 const twoMark = [
     { value: 20, color: 'blue' },
     { value: 50, color: 'black' },
@@ -58,7 +57,7 @@ export const NoText = () => (
                 <Paragraph margin='1rem 0 1rem 0'>Display the current progress without text</Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Progress percent={20} color='red' />
+                <Progress percent={20} color='red' ariaLabel='20%' />
             </Cell>
         </Row>
     </Grid>
