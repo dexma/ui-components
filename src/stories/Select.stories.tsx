@@ -172,13 +172,13 @@ export const SingleSelect = () => (
                         {
                             value: '2',
                             label: '1st Floor [02. Luxemburg Building]',
-                            color: 'green',
+                            color: 'blue',
                         },
-                        { value: '3', label: '3rd Floor', color: 'orange' },
+                        { value: '3', label: '3rd Floor', color: 'blue' },
                         {
                             value: '4',
                             label: '45th Floor [04. Luxemburg Building]',
-                            color: 'green',
+                            color: 'blue',
                         },
                         {
                             value: '5',
@@ -187,19 +187,19 @@ export const SingleSelect = () => (
                         },
                         {
                             value: '6',
-                            color: 'green',
+                            color: 'blue',
                             label: '1st Floor [06. Luxemburg Building]',
                         },
                         { value: '7', label: '2nd Floor', color: 'blue' },
                         {
                             value: '8',
                             label: '2nd Floor [03. Malaga Building]',
-                            color: 'red',
+                            color: 'blue',
                         },
                         {
                             value: '9',
                             label: '2nd Floor [04. New York Building]',
-                            color: 'green',
+                            color: 'blue',
                         },
                         {
                             value: '10',
@@ -209,12 +209,12 @@ export const SingleSelect = () => (
                         {
                             value: '11',
                             label: '3rd Floor [02. Singapur Building]',
-                            color: 'orange',
+                            color: 'blue',
                         },
                         {
                             value: '12',
                             label: '2nd Floor [16.  Building]',
-                            color: 'orange',
+                            color: 'blue',
                         },
                     ]}
                 />
