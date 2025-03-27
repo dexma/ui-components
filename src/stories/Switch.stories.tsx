@@ -14,7 +14,7 @@ export const DefaultSwitch = () => (
                 <Paragraph margin='1rem 0 1rem 0'>A simple switch that changes value on click.</Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Switch defaultChecked />
+                <Switch defaultChecked ariaLabel='On/Off'/>
             </Cell>
         </Row>
     </Grid>
@@ -24,7 +24,7 @@ export const Sizes = () => (
     <Grid fluid>
         <Row>
             <Cell xs={12}>
-                <Switch size='small' />
+                <Switch size='small' ariaLabel='On/Off' />
             </Cell>
             <Cell xs={12}>
                 <Switch />
@@ -37,10 +37,10 @@ export const Disabled = () => (
     <Grid fluid>
         <Row>
             <Cell xs={12}>
-                <Switch defaultChecked={false} disabled />
+                <Switch defaultChecked={false} disabled ariaLabel='Yes/No' />
             </Cell>
             <Cell xs={12}>
-                <Switch defaultChecked disabled />
+                <Switch defaultChecked disabled ariaLabel='Yes/No' />
             </Cell>
         </Row>
     </Grid>
