@@ -1,4 +1,3 @@
-import React from 'react';
 import { Dropdown as DropdownAntd, type DropDownProps, type MenuProps } from 'antd';
 
 import { StyledDropdownInnerButton, StyledDropdownButton, StyledGlobalDropdown } from '@styles/Dropdown/StyledDropdown';
@@ -10,14 +9,14 @@ type DropdownContent = {
     dataId?: string;
     variant?: string;
     ariaLabel?: string;
-    parentId: string;
+    parentName: string;
     onClick?: (e: any) => void;
 };
 
 const getContent = (menu?: DropdownContent[]) => {
     if (!menu) return null;
     const items = menu
-        ? menu.map(({ key, icon, onClick, dataId, variant, text, ariaLabel, parentId, ...props }) => ({
+        ? menu.map(({ key, icon, onClick, dataId, variant, text, ariaLabel, parentName, ...props }) => ({
               label: (
                   <StyledDropdownInnerButton
                       className='dropdown-button-item'
@@ -30,7 +29,7 @@ const getContent = (menu?: DropdownContent[]) => {
                       text={text}
                       aria-label={icon ? ariaLabel : undefined}
                       role='dialog'
-                      aria-labelledby={parentId}
+                      aria-labelledby={parentName}
                       {...props}
                   />
               ),
