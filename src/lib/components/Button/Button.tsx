@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import React, { forwardRef, type ButtonHTMLAttributes, type ReactNode, useContext } from 'react';
+import { forwardRef, type ButtonHTMLAttributes, type ReactNode, useContext } from 'react';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
 import { ThemeContext } from 'styled-components';
@@ -47,7 +47,6 @@ export type ButtonProps = {
     children?: ReactNode;
     dataId?: string;
     'data-testid'?: string;
-    ariaLabel?: string;
     iconAriaLabel?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -71,7 +70,6 @@ export const Button = withDataId(
                 children,
                 dataId = 'button',
                 variant = 'primary',
-                ariaLabel,
                 iconAriaLabel,
                 ...props
             },
@@ -100,7 +98,6 @@ export const Button = withDataId(
                     onClick={handleClick}
                     data-id={dataId}
                     data-testid={rest['data-testid'] ?? 'button'}
-                    aria-label={ariaLabel}
                     aria-live={isLoading ? 'polite' : undefined}
                     aria-busy={isLoading || false}
                     {...rest}
