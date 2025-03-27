@@ -66,15 +66,15 @@ export const Icons = () => (
                 <Button text='Link' variant='link' iconBefore='world' />
             </Cell>
             <Cell xs={12}>
-                <Button iconBefore='add' isCircle aria-label="Agregar imágen" />
-                <Button variant='secondary' iconBefore='image' isCircle aria-label="Seleccionar imágen" />
-                <Button variant='outline' iconBefore='gas' isCircle aria-label="Reacción me encanta" />
-                <Button variant='destructive' iconBefore='delete' isCircle aria-label="Eliminar imágen" />
-                <Button variant='link' iconBefore='world' isCircle aria-label="Ver mapa"/>
-                <Button iconAfter='circle_add' variant='icon' isCircle aria-label="Agregar imágen" />
-                <Button iconAfter='vader' variant='icon-secondary' isCircle aria-label="Ver personaje" />
-                <Button iconAfter='search' variant='icon-outline' isCircle aria-label="Buscar" />
-                <Button iconAfter='star' iconColor='amber' variant='icon-secondary' isCircle size='large' aria-label="Marcar como favorito" />
+                <Button iconBefore='add' isCircle aria-label="Add image" />
+                <Button variant='secondary' iconBefore='image' isCircle aria-label="Select image" />
+                <Button variant='outline' iconBefore='gas' isCircle aria-label="I love reaction" />
+                <Button variant='destructive' iconBefore='delete' isCircle aria-label="Delete image" />
+                <Button variant='link' iconBefore='world' isCircle aria-label="View map"/>
+                <Button iconAfter='circle_add' variant='icon' isCircle aria-label="Add image" />
+                <Button iconAfter='vader' variant='icon-secondary' isCircle aria-label="View character" />
+                <Button iconAfter='search' variant='icon-outline' isCircle aria-label="Search" />
+                <Button iconAfter='star' iconColor='amber' variant='icon-secondary' isCircle size='large' aria-label="Mark favourite" />
             </Cell>
         </Row>
     </Grid>
@@ -87,18 +87,18 @@ export const Loading = () => (
                 <Paragraph margin='1.5rem 0 1rem 0'>A loading indicator can be added to a button by setting the isLoading property on the Button</Paragraph>
             </Cell>
             <Cell xs={12} style={{ marginBottom: '10px' }}>
-                <Button text='Primary' iconBefore='add' isLoading aria-label='Cargando por favor espere' />
-                <Button text='Secondary' variant='secondary' iconBefore='image' isLoading aria-label='Cargando por favor espere' />
-                <Button text='Outline' variant='outline' iconAfter='gas' isLoading aria-label='Cargando por favor espere' />
-                <Button text='Destructive' variant='destructive' iconBefore='delete' isLoading aria-label='Cargando por favor espere' />
-                <Button text='Link' variant='link' iconBefore='world' isLoading aria-label='Cargando por favor espere' />
+                <Button text='Primary' iconBefore='add' isLoading aria-label='Loading, please wait' />
+                <Button text='Secondary' variant='secondary' iconBefore='image' isLoading aria-label='Loading, please wait' />
+                <Button text='Outline' variant='outline' iconAfter='gas' isLoading aria-label='Loading, please wait' />
+                <Button text='Destructive' variant='destructive' iconBefore='delete' isLoading aria-label='Loading, please wait' />
+                <Button text='Link' variant='link' iconBefore='world' isLoading aria-label='Loading, please wait' />
             </Cell>
             <Cell xs={12} style={{ marginBottom: '10px' }}>
-                <Button iconBefore='add' isCircle isLoading aria-label='Cargando por favor espere' />
-                <Button variant='secondary' iconBefore='image' isCircle isLoading aria-label='Cargando por favor espere' />
-                <Button variant='outline' iconBefore='gas' isCircle isLoading aria-label='Cargando por favor espere' />
-                <Button variant='destructive' iconBefore='delete' isCircle isLoading aria-label='Cargando por favor espere' />
-                <Button variant='link' iconBefore='world' isCircle isLoading aria-label='Cargando por favor espere' />
+                <Button iconBefore='add' isCircle isLoading aria-label='Loading, please wait' />
+                <Button variant='secondary' iconBefore='image' isCircle isLoading aria-label='Loading, please wait' />
+                <Button variant='outline' iconBefore='gas' isCircle isLoading aria-label='Loading, please wait' />
+                <Button variant='destructive' iconBefore='delete' isCircle isLoading aria-label='Loading, please wait' />
+                <Button variant='link' iconBefore='world' isCircle isLoading aria-label='Loading, please wait' />
             </Cell>
         </Row>
     </Grid>
