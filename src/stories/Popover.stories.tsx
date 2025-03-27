@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { type JSX } from 'react/jsx-runtime';
 
 import { Grid, Row, Cell, Button, Paragraph, Popover } from '@components';
@@ -20,16 +20,16 @@ export const Basic = () => (
             </Cell>
             <Cell>
                 <Popover title='Popover' trigger='click'>
-                    <Button text='Click me' />
+                    <Button text='Click me' ariaLabel='Click to open popover' />
                 </Popover>
                 <Popover title='Popover' content={<Paragraph margin='1rem 0 1rem 0'>A popover content may be a simple text or a more complex component.</Paragraph>}>
-                    <Button text='Test' iconBefore='vader' />
+                    <Button text='Test' iconBefore='vader' ariaLabel='Hover it to open popover' />
                 </Popover>
                 <Popover placement='top' content={<Paragraph margin='1rem 0 1rem 0'>A popover may not have a title, but only content to be displayed.</Paragraph>}>
-                    <Button text='Test top' iconBefore='vader' variant='secondary' />
+                    <Button text='Test top' iconBefore='vader' variant='secondary' ariaLabel='Hover it to open popover on the top' />
                 </Popover>
                 <Popover title='Popover right' placement='right'>
-                    <Button iconBefore='help' isCircle />
+                    <Button iconBefore='help' isCircle ariaLabel='Hover it to open popover on the right' />
                 </Popover>
             </Cell>
         </Row>
@@ -73,7 +73,7 @@ export const PopoverClickHover = () => {
                 open={clicked}
                 onOpenChange={handleClickChange}
             >
-                <Button variant='primary'>Hover and click</Button>
+                <Button variant='primary' ariaLabel='Click or hover it to open popover'>Hover and click</Button>
             </Popover>
         </Popover>
     );
