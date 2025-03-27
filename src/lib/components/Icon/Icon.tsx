@@ -51,7 +51,7 @@ export type IconProps = {
     color?: string | keyof typeof defaultTheme.color;
     size?: number | string | IconSize;
     ariaLabel: string;
-} & SVGProps<SVGSVGElement>;
+} & Omit<SVGProps<SVGSVGElement>, 'aria-label'>;
 
 const getColor = (th: Theme, color?: string | typeof defaultTheme.color) => {
     if (!color) return th.color.gray500;
