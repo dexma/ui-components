@@ -1,4 +1,3 @@
-import React from 'react';
 import { Tabs, Grid, Row, Cell, Paragraph, Button, TabsVariant } from '@components';
 
 export default {
@@ -44,8 +43,8 @@ export const Basic = () => (
 
 const operations = (
     <>
-        <Button iconBefore='add' isCircle />
-        <Button iconBefore='add' isCircle />
+        <Button iconBefore='add' isCircle aria-label='Add user' />
+        <Button iconBefore='add' isCircle aria-label='Add rol' />
     </>
 );
 
