@@ -15,7 +15,7 @@ type InputProps = {
     title?: string;
     value?: string;
     isLoading?: boolean;
-    type?: 'email' | 'file' | 'number' | 'password' | 'tel' | 'text' | 'url';
+    type: 'email' | 'file' | 'number' | 'password' | 'tel' | 'text' | 'url';
     name?: string;
     disabled?: boolean;
     dataId?: string;
