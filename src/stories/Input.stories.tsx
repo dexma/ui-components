@@ -1,4 +1,3 @@
-import React from 'react';
 import { Input, Grid, Row, Cell, Paragraph } from '@components';
 
 export default {

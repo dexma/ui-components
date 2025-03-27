@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 import icon from '@config/icon';
 import { Icon, Grid, Row, Cell, Paragraph, Input, IconProps } from '@components';
