@@ -13,12 +13,13 @@ export type ProgressProps = {
     text?: string;
     isTransparent?: boolean;
     color: string;
+    ariaLabel?: string;
 };
 
-export const Progress = ({ text, marks, percent, color = 'green', isTransparent, ...props }: ProgressProps) => {
+export const Progress = ({ text, marks, percent, color = 'green', isTransparent, ariaLabel, ...props }: ProgressProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
     return (
-        <StyledProgress data-testid='progress' $color={color} $percent={percent} $isTransparent={isTransparent} theme={th} {...props}>
+        <StyledProgress data-testid='progress' $color={color} $percent={percent} $isTransparent={isTransparent} theme={th} aria-label={!text ? ariaLabel : undefined} {...props}>
             <div className='outer'>
                 <div className='inner'>
                     <div className='background' />
