@@ -43,7 +43,7 @@ export const color = {
     cyan: '#38dcdf',
     blueLight: '#5da8f2',
     blue: '#0054a1',
-    irisBlue: '#00B3BC',
+    irisBlue: '#008188',
     violet: '#9152A5',
     magenta: '#DD4B80',
     pink: '#ffaca8',
