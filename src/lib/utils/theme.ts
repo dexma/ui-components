@@ -36,10 +36,10 @@ export const color = {
     gray900: '#141518',
 
     teal: '#17A994',
-    red: '#F25A5A',
+    red: '#EB1212',
     orange: '#fb8f38',
     amber: '#ffc400',
-    green: '#00cc87',
+    green: '#008759',
     cyan: '#38dcdf',
     blueLight: '#5da8f2',
     blue: '#0054a1',
