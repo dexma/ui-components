@@ -1,4 +1,4 @@
-import React, { Key, useState } from 'react';
+import { Key, useState } from 'react';
 
 import { Result, ResultVariants, Grid, Row, Cell, Paragraph, Table, buildTableWithDataId } from '@components';
 import { type User, columnsTable, dataTable } from '../../tests/mock/Table';
@@ -24,7 +24,7 @@ const Selection = () => {
     const TableWithDataId = buildTableWithDataId<User>();
     return (
         <div>
-            <TableWithDataId rowSelection={rowSelection} columns={columnsTable} dataSource={dataTable} />
+            <TableWithDataId rowSelection={rowSelection} columns={columnsTable} dataSource={dataTable} rowsCanBeSelectAriaLabel='Check to select row' selectAllRowsAriaLabel='Select all' />
         </div>
     );
 };
