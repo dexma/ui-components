@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import omit from 'lodash/omit';
 import { Table as TableAntDesign, ConfigProvider, type TableProps as AntDTableProps } from 'antd';
@@ -116,10 +116,21 @@ export type TableProps<RecordType> = {
     showError?: boolean;
     dataId?: string;
     errorContent?: React.ReactNode;
+    rowsCanBeSelectAriaLabel?: string;
+    selectAllRowsAriaLabel?: string;
 } & AntDTableProps<RecordType>;
 
 export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType>) => {
-    const { isExpanded, expandable, columns, dataSource, isLoading, showError, errorContent, dataId } = props;
+    const { isExpanded, expandable, columns, dataSource, isLoading, showError, errorContent, dataId, rowsCanBeSelectAriaLabel, selectAllRowsAriaLabel } = props;
+    useEffect(() => {
+        const checkboxes = document.querySelectorAll('.ant-checkbox-inner');
+        checkboxes.forEach(li => li.setAttribute('aria-label',  rowsCanBeSelectAriaLabel || ''));
+        const thead = document.querySelector('.ant-table-thead');
+        const checkSelectAll = thead?.querySelector('.ant-checkbox-inner');
+        if(checkSelectAll && selectAllRowsAriaLabel)
+            checkSelectAll.setAttribute('aria-label', selectAllRowsAriaLabel);
+    }, []);
+
     const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable']);
     const th = useContext(ThemeContext) || defaultTheme;
     const getColumnsExpanded = () => {

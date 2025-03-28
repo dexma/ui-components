@@ -39,7 +39,6 @@ export const Pagination = (props: PaginationProps) => {
             if(jumpNextPages && props.nextDotsPageAriaLabel)
                 jumpNextPages.setAttribute('aria-label', props.nextDotsPageAriaLabel);
         }
-
     }, []);
 
     const [current, setCurrent] = useState(props.defaultCurrent ? props.defaultCurrent : 1);
