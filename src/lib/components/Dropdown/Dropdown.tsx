@@ -1,6 +1,7 @@
 import { Dropdown as DropdownAntd, type DropDownProps, type MenuProps } from 'antd';
 
 import { StyledDropdownInnerButton, StyledDropdownButton, StyledGlobalDropdown } from '@styles/Dropdown/StyledDropdown';
+import { useEffect, useState } from 'react';
 
 type DropdownContent = {
     text: string;
@@ -17,23 +18,22 @@ const getContent = (menu?: DropdownContent[]) => {
     if (!menu) return null;
     const items = menu
         ? menu.map(({ key, icon, onClick, dataId, variant, text, ariaLabel, parentName, ...props }) => ({
-              label: (
-                  <StyledDropdownInnerButton
-                      className='dropdown-button-item'
-                      style={{ width: '100%', padding: '0px 1rem' }}
-                      iconBefore={icon}
-                      onClick={onClick}
-                      key={key}
-                      dataId={dataId ?? 'ddItem'}
-                      variant={variant ?? 'icon'}
-                      text={text}
-                      aria-label={icon ? ariaLabel : undefined}
-                      role='dialog'
-                      aria-labelledby={parentName}
-                      {...props}
-                  />
-              ),
-          }))
+            label: (
+                <StyledDropdownInnerButton
+                    className='dropdown-button-item'
+                    style={{ width: '100%', padding: '0px 1rem' }}
+                    iconBefore={icon}
+                    onClick={onClick}
+                    key={key}
+                    dataId={dataId ?? 'ddItem'}
+                    variant={variant ?? 'icon'}
+                    text={text}
+                    aria-label={icon ? ariaLabel : undefined}
+                    aria-labelledby={parentName}
+                    {...props}
+                />
+            ),
+        }))
         : undefined;
     return {
         items,
@@ -49,12 +49,25 @@ export type DropdownProps = DropDownProps & {
     ariaLabel?: string;
 };
 
-export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text, placement = 'bottomRight', menu, icon, content, variant, ariaLabel }: DropdownProps) => {
+export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text, placement = 'bottomRight', menu, icon, content, variant, ariaLabel, open }: DropdownProps) => {
+    useEffect(() => {
+        const dropdownElem = document.querySelector('.ant-dropdown');
+        if (dropdownElem)
+            dropdownElem.setAttribute('role', 'dialog');
+    }, []);
+
     const menuItems = menu || (getContent(content) as MenuProps);
+    const [openDropdown, setOpen] = useState(open || false);
+
+    const handleKeyDown = (e: any) => {
+        if (e.key === "Enter") {
+            setOpen((prev) => !prev);
+        }
+    };
     return (
         <>
             <StyledGlobalDropdown />
-            <DropdownAntd menu={menuItems} placement={placement} trigger={trigger}>
+            <DropdownAntd menu={menuItems} placement={placement} trigger={trigger} open={openDropdown} onOpenChange={setOpen}>
                 {text ? (
                     <StyledDropdownButton
                         data-testid='dropdown-button-text'
@@ -63,6 +76,7 @@ export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text
                         variant={variant ?? 'icon'}
                         iconBefore={icon}
                         text={text}
+                        onKeyDown={handleKeyDown}
                     />
                 ) : (
                     <StyledDropdownButton
@@ -74,6 +88,7 @@ export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text
                         text=''
                         isCircle
                         aria-label={ariaLabel}
+                        onKeyDown={handleKeyDown}
                     />
                 )}
             </DropdownAntd>
