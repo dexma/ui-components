@@ -64,7 +64,7 @@ type CardContentProps = {
     imageAlt?: string;
 };
 
-const CardContent = ({ image, icon, isHorizontal, title, subtitle, description, footer, iconAriaLabel, imageAlt }: CardContentProps) => (
+const CardContent = ({ image, icon, isHorizontal, title, subtitle, description, footer, iconAriaLabel, imageAlt }: CardContentProps): JSX.Element => (
     <>
         <CardHeader image={image} icon={icon} iconAriaLabel={iconAriaLabel} imageAlt={imageAlt} />
         {isHorizontal ? (
