@@ -1,11 +1,30 @@
-import React from 'react';
 import { Grid, Row, Cell, Paragraph, Tooltip, Button, TooltipPropsExtended } from '@components';
+import { useState } from 'react';
 
 export default {
     title: 'Tooltip',
     component: Tooltip,
     tags: ['autodocs'],
 };
+
+
+
+const TooltipComponent = (props: any) => {
+    const [open, setOpen] = useState(false);
+    const {tooltipTitle, buttonText, buttonIcon, position} = props;
+
+    const handleKeyDown = (e: any) => {
+        if (e.key === "Enter") {
+            setOpen(true);
+            setTimeout(() => setOpen(false), 2000); // Hide after 2 seconds
+        }
+    };
+    return (
+        <Tooltip title={tooltipTitle} open={open} position={position}>
+            <Button text={buttonText} iconBefore={buttonIcon} onKeyDown={handleKeyDown} />
+        </Tooltip>
+    )
+}
 
 export const Basic = () => (
     <Grid fluid>
@@ -16,19 +35,13 @@ export const Basic = () => (
                     further children in order to operate.
                 </Paragraph>
             </Cell>
-            <Cell>
+            <Cell>                
                 <Tooltip title='Tooltip' trigger='click'>
                     <Button text='Click me' />
                 </Tooltip>
-                <Tooltip title='Tooltip'>
-                    <Button text='Test' iconBefore='vader' />
-                </Tooltip>
-                <Tooltip title='Tooltip top' position='top'>
-                    <Button text='Test top' iconBefore='vader' variant='secondary' />
-                </Tooltip>
-                <Tooltip title='Tooltip right' position='right'>
-                    <Button iconBefore='help' isCircle />
-                </Tooltip>
+                <TooltipComponent tooltipTitle="Tooltip" buttonText="Test" buttonIcon="vader" />
+                <TooltipComponent tooltipTitle="Tooltip top" buttonText="Test top" buttonIcon="vader" />
+                <TooltipComponent tooltipTitle="Tooltip right" buttonIcon="help" position='right' />
             </Cell>
         </Row>
     </Grid>
