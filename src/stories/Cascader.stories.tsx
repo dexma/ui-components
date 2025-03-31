@@ -38,6 +38,50 @@ export default {
     },
 };
 
+const options = [
+    {
+        label: 'Light',
+        value: 'light',
+        selectedItemAriaLabel: 'Ligth item selected',
+        children: new Array(20).fill(null).map((_, index) => ({
+            label: `Number ${index}`,
+            value: index,
+            selectedItemAriaLabel: `Number ${index} item selected`
+        })),
+    },
+    {
+        label: 'Bamboo',
+        value: 'bamboo',
+        selectedItemAriaLabel: 'Bamboo item selected',
+        children: [
+            {
+                label: 'Little',
+                value: 'little',
+                selectedItemAriaLabel: 'Little item selected',
+                children: [
+                    {
+                        label: 'Toy Fish',
+                        value: 'fish',
+                        disabled: true,
+                        disableCheckbox: true,
+                        selectedItemAriaLabel: 'Toy Fish item selected'
+                    },
+                    {
+                        label: 'Toy Cards',
+                        value: 'cards',
+                        selectedItemAriaLabel: 'Toy Cards item selected'
+                    },
+                    {
+                        label: 'Toy Bird',
+                        value: 'bird',
+                        selectedItemAriaLabel: 'Toy Bird item selected'
+                    },
+                ],
+            },
+        ],
+    },
+];
+
 export const Single = () => (
     <Grid fluid>
         <Row>
@@ -48,42 +92,7 @@ export const Single = () => (
                 <Paragraph margin='1rem 0 1rem 0'>When selecting from a large data set, with multi-stage classification separated for easy selection.</Paragraph>
                 <Paragraph margin='1rem 0 1rem 0'>Chooses cascade items in one float layer for better user experience.</Paragraph>
                 <Cascader
-                    options={[
-                        {
-                            label: 'Light',
-                            value: 'light',
-                            children: new Array(20).fill(null).map((_, index) => ({
-                                label: `Number ${index}`,
-                                value: index,
-                            })),
-                        },
-                        {
-                            label: 'Bamboo',
-                            value: 'bamboo',
-                            children: [
-                                {
-                                    label: 'Little',
-                                    value: 'little',
-                                    children: [
-                                        {
-                                            label: 'Toy Fish',
-                                            value: 'fish',
-                                            disabled: true,
-                                            disableCheckbox: true,
-                                        },
-                                        {
-                                            label: 'Toy Cards',
-                                            value: 'cards',
-                                        },
-                                        {
-                                            label: 'Toy Bird',
-                                            value: 'bird',
-                                        },
-                                    ],
-                                },
-                            ],
-                        },
-                    ]}
+                    options={options}
                     onChange={(value) => {
                         console.log(value);
                     }}
@@ -103,42 +112,7 @@ export const SingleParent = () => (
                 <Paragraph margin='1rem 0 1rem 0'>When selecting from a large data set, with multi-stage classification separated for easy selection.</Paragraph>
                 <Paragraph margin='1rem 0 1rem 0'>Chooses cascade items in one float layer for better user experience.</Paragraph>
                 <Cascader
-                    options={[
-                        {
-                            label: 'Light',
-                            value: 'light',
-                            children: new Array(20).fill(null).map((_, index) => ({
-                                label: `Number ${index}`,
-                                value: index,
-                            })),
-                        },
-                        {
-                            label: 'Bamboo',
-                            value: 'bamboo',
-                            children: [
-                                {
-                                    label: 'Little',
-                                    value: 'little',
-                                    children: [
-                                        {
-                                            label: 'Toy Fish',
-                                            value: 'fish',
-                                            disabled: true,
-                                            disableCheckbox: true,
-                                        },
-                                        {
-                                            label: 'Toy Cards',
-                                            value: 'cards',
-                                        },
-                                        {
-                                            label: 'Toy Bird',
-                                            value: 'bird',
-                                        },
-                                    ],
-                                },
-                            ],
-                        },
-                    ]}
+                    options={options}
                     onChange={(value) => {
                         console.log(value);
                     }}
@@ -158,42 +132,7 @@ export const Multiple = () => (
                     style={{ width: '100%' }}
                     multiple
                     maxTagCount='responsive'
-                    options={[
-                        {
-                            label: 'Light',
-                            value: 'light',
-                            children: new Array(20).fill(null).map((_, index) => ({
-                                label: `Number ${index}`,
-                                value: index,
-                            })),
-                        },
-                        {
-                            label: 'Bamboo',
-                            value: 'bamboo',
-                            children: [
-                                {
-                                    label: 'Little',
-                                    value: 'little',
-                                    children: [
-                                        {
-                                            label: 'Toy Fish',
-                                            value: 'fish',
-                                            disabled: true,
-                                            disableCheckbox: true,
-                                        },
-                                        {
-                                            label: 'Toy Cards',
-                                            value: 'cards',
-                                        },
-                                        {
-                                            label: 'Toy Bird',
-                                            value: 'bird',
-                                        },
-                                    ],
-                                },
-                            ],
-                        },
-                    ]}
+                    options={options}
                     onChange={(value) => {
                         console.log(value);
                     }}
