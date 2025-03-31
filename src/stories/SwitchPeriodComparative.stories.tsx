@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { type Dayjs } from 'dayjs';
 
 import { Grid, Row, Cell, Paragraph, SwitchPeriodComparative, SelectedPeriodType } from '@components';
@@ -26,7 +26,7 @@ export const Basic = () => {
             <Row>
                 <Cell xs={12}>
                     <Paragraph margin='1rem 0 1rem 0'>
-                        A switch period comparative between two dates start and end, the text its optional so if you dont put nothing its ok
+                        A switch period comparative between two dates start and end, the text its optional so if you dont put nothing its ok. If you choose a period with Keyboard, you need move to period with "Tab" key and select it with "Enter" key
                     </Paragraph>
                 </Cell>
                 <Cell xs={12}>
