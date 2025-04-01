@@ -5,17 +5,20 @@ import { Icon } from '@components';
 import { StyledPagination } from '@styles/Pagination/StyledPagination';
 import defaultTheme from '@utils/theme';
 
-export const itemRender = (page: number, type: 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next', element: React.ReactNode, current: number, prevAriaLabel?: string, nextAriaLabel?: string) => {
-    if (type === 'prev') {
-        return <Icon name='chevron_left_l' color='gray900' size={12} ariaLabel={prevAriaLabel || ''} />;
-    }
-    if (type === 'next') {
-        return <Icon name='chevron_right_l' color='gray900' size={12} ariaLabel={nextAriaLabel || ''} />;
-    }
-    if (type === 'page')
-        return <a aria-current={current === page ? 'page' : undefined}>{page}</a>
-    return element;
-};
+export const itemRender = (current: number) => {
+    return (page: number, type: 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next', element: React.ReactNode) => {
+        if (type === 'prev') {
+            return <Icon name='chevron_left_l' color='gray900' size={12} ariaLabel="" />;
+        }
+        if (type === 'next') {
+            return <Icon name='chevron_right_l' color='gray900' size={12} ariaLabel="" />;
+        }
+        if (type === 'page')
+            return <a aria-current={current === page ? 'page' : undefined}>{page}</a>
+        return element;
+    };
+}
+
 
 export type PaginationProps = {
     previosPageAriaLabel?: string;
@@ -33,6 +36,12 @@ export const Pagination = (props: PaginationProps) => {
             ulElem.setAttribute('role', 'list');
             const liElements = ulElem.querySelectorAll<HTMLLIElement>('li');
             liElements.forEach(li => li.setAttribute('role', 'listitem'));
+            const prevPageElem = ulElem.querySelector('.ant-pagination-prev');
+            if (prevPageElem && previosPageAriaLabel)
+                prevPageElem.setAttribute('aria-label', previosPageAriaLabel);
+            const nextPageElem = ulElem.querySelector('.ant-pagination-next');
+            if (nextPageElem && nextPageAriaLabel)
+                nextPageElem.setAttribute('aria-label', nextPageAriaLabel);
             const jumpPrevPages = ulElem.querySelector('.ant-pagination-jump-prev');
             if (jumpPrevPages && props.prevDotsPageAriaLabel)
                 jumpPrevPages.setAttribute('aria-label', props.prevDotsPageAriaLabel);
@@ -49,7 +58,7 @@ export const Pagination = (props: PaginationProps) => {
 
     return (
         <StyledPagination data-testid='pagination' theme={th}>
-            <PaginationAntDesign itemRender={(page, type, originalElement) => itemRender(page, type, originalElement, current, previosPageAriaLabel, nextPageAriaLabel)} onChange={onChange} disabled={disabled} aria-disabled={disabled} {...props} />
+            <PaginationAntDesign itemRender={itemRender(current)} onChange={onChange} disabled={disabled} aria-disabled={disabled} {...props} />
         </StyledPagination>
     );
 };
