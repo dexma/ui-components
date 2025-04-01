@@ -97,32 +97,32 @@ export const SwitchPeriodComparative = ({
     const prevId = uniqueId();
     const lastId = uniqueId();
 
-    const handleKeyDown = (e: any) => {
-        if (e.key === "Enter") {
-            var oppositePeriod = values.find(v => v.value !== currentPeriod);
-            if (oppositePeriod) {
-                setCurrentPeriod(oppositePeriod.value);
-                if (onPeriodSelect) onPeriodSelect({ period: oppositePeriod.value, date: getActivePeriod(oppositePeriod.value) });
-            }
-        }
-    };
-
     const values = [
         {
             value: 'previous_period',
             label: renderPeriodComparativeItem(previousPeriodText, previousPeriod, 'previous-period'),
             id: prevId,
             name: prevId,
-            isDisabled: disabled
+            isDisabled: disabled,
         },
         {
             value: 'last_period',
             label: renderPeriodComparativeItem(samePeriodLastYearText, samePeriodLastYear, 'last-period'),
             id: lastId,
             name: lastId,
-            isDisabled: disabled
+            isDisabled: disabled,
         },
     ];
+
+    const handleKeyDown = (e: any) => {
+        if (e.key === 'Enter') {
+            const oppositePeriod = values.find((v) => v.value !== currentPeriod);
+            if (oppositePeriod) {
+                setCurrentPeriod(oppositePeriod.value);
+                if (onPeriodSelect) onPeriodSelect({ period: oppositePeriod.value, date: getActivePeriod(oppositePeriod.value) });
+            }
+        }
+    };
 
     return (
         <StyledSwitchPeriodComparative data-testid='switch-period-comparative' {...props} theme={th}>

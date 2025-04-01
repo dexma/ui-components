@@ -59,22 +59,22 @@ export const Icons = () => (
                 <Paragraph margin='1.5rem 0 1rem 0'>We can add icon before and after by setting the iconBefore or iconAfter property and isCircle to set a circle button</Paragraph>
             </Cell>
             <Cell xs={12} style={{ marginBottom: '10px' }}>
-                <Button text='Primary' iconBefore='add' aria-label="" />
+                <Button text='Primary' iconBefore='add' aria-label='' />
                 <Button text='Secondary' variant='secondary' iconBefore='image' />
                 <Button text='Outline' variant='outline' iconAfter='gas' />
                 <Button text='Destructive' variant='destructive' iconBefore='delete' />
                 <Button text='Link' variant='link' iconBefore='world' />
             </Cell>
             <Cell xs={12}>
-                <Button iconBefore='add' isCircle aria-label="Add image" />
-                <Button variant='secondary' iconBefore='image' isCircle aria-label="Select image" />
-                <Button variant='outline' iconBefore='gas' isCircle aria-label="I love reaction" />
-                <Button variant='destructive' iconBefore='delete' isCircle aria-label="Delete image" />
-                <Button variant='link' iconBefore='world' isCircle aria-label="View map"/>
-                <Button iconAfter='circle_add' variant='icon' isCircle aria-label="Add image" />
-                <Button iconAfter='vader' variant='icon-secondary' isCircle aria-label="View character" />
-                <Button iconAfter='search' variant='icon-outline' isCircle aria-label="Search" />
-                <Button iconAfter='star' iconColor='amber' variant='icon-secondary' isCircle size='large' aria-label="Mark favourite" />
+                <Button iconBefore='add' isCircle aria-label='Add image' />
+                <Button variant='secondary' iconBefore='image' isCircle aria-label='Select image' />
+                <Button variant='outline' iconBefore='gas' isCircle aria-label='I love reaction' />
+                <Button variant='destructive' iconBefore='delete' isCircle aria-label='Delete image' />
+                <Button variant='link' iconBefore='world' isCircle aria-label='View map' />
+                <Button iconAfter='circle_add' variant='icon' isCircle aria-label='Add image' />
+                <Button iconAfter='vader' variant='icon-secondary' isCircle aria-label='View character' />
+                <Button iconAfter='search' variant='icon-outline' isCircle aria-label='Search' />
+                <Button iconAfter='star' iconColor='amber' variant='icon-secondary' isCircle size='large' aria-label='Mark favourite' />
             </Cell>
         </Row>
     </Grid>

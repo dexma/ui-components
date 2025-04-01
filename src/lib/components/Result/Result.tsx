@@ -64,7 +64,17 @@ export const Result = ({ title, info, variant = ResultVariants.DEFAULT, content,
     const { iconName, iconColor } = getIcon(variant);
     return (
         <StyledResult fluid className={`result-${variant}`} data-testid={`result-${variant}`} theme={th}>
-            <Row className='result-row icon'>{iconElement || <Icon name={icon || iconName} size={size} color={iconColor} data-testid={`icon_${icon || iconName}`} ariaLabel={!iconAriaLabel ? `${icon || iconName} icon` : iconAriaLabel} />}</Row>
+            <Row className='result-row icon'>
+                {iconElement || (
+                    <Icon
+                        name={icon || iconName}
+                        size={size}
+                        color={iconColor}
+                        data-testid={`icon_${icon || iconName}`}
+                        ariaLabel={!iconAriaLabel ? `${icon || iconName} icon` : iconAriaLabel}
+                    />
+                )}
+            </Row>
             {title && (
                 <Row className='result-row title'>
                     <span>{title}</span>

@@ -7,14 +7,12 @@ export default {
     tags: ['autodocs'],
 };
 
-
-
 const TooltipComponent = (props: any) => {
     const [open, setOpen] = useState(false);
-    const {tooltipTitle, buttonText, buttonIcon, position} = props;
+    const { tooltipTitle, buttonText, buttonIcon, position } = props;
 
     const handleKeyDown = (e: any) => {
-        if (e.key === "Enter") {
+        if (e.key === 'Enter') {
             setOpen(true);
             setTimeout(() => setOpen(false), 2000); // Hide after 2 seconds
         }
@@ -23,8 +21,8 @@ const TooltipComponent = (props: any) => {
         <Tooltip title={tooltipTitle} open={open} position={position}>
             <Button text={buttonText} iconBefore={buttonIcon} onKeyDown={handleKeyDown} />
         </Tooltip>
-    )
-}
+    );
+};
 
 export const Basic = () => (
     <Grid fluid>
@@ -35,13 +33,13 @@ export const Basic = () => (
                     further children in order to operate.
                 </Paragraph>
             </Cell>
-            <Cell>                
+            <Cell>
                 <Tooltip title='Tooltip' trigger='click'>
                     <Button text='Click me' />
                 </Tooltip>
-                <TooltipComponent tooltipTitle="Tooltip" buttonText="Test" buttonIcon="vader" />
-                <TooltipComponent tooltipTitle="Tooltip top" buttonText="Test top" buttonIcon="vader" />
-                <TooltipComponent tooltipTitle="Tooltip right" buttonIcon="help" position='right' />
+                <TooltipComponent tooltipTitle='Tooltip' buttonText='Test' buttonIcon='vader' />
+                <TooltipComponent tooltipTitle='Tooltip top' buttonText='Test top' buttonIcon='vader' />
+                <TooltipComponent tooltipTitle='Tooltip right' buttonIcon='help' position='right' />
             </Cell>
         </Row>
     </Grid>

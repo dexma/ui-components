@@ -132,7 +132,14 @@ const GenericFieldGroup = <T extends FieldGroupType, V>({
                         data-testid='field-group-label'
                     >
                         {!icon && label ? label : null}
-                        {icon ? <Icon name={icon} size={variant === 'custom' && size === 'large' ? 'xlarge' : size} color={colors.red} ariaLabel={!iconAriaLabel ? `${icon} icon` : iconAriaLabel} /> : null}
+                        {icon ? (
+                            <Icon
+                                name={icon}
+                                size={variant === 'custom' && size === 'large' ? 'xlarge' : size}
+                                color={colors.red}
+                                ariaLabel={!iconAriaLabel ? `${icon} icon` : iconAriaLabel}
+                            />
+                        ) : null}
                         <input
                             id={`${uniqueId}_${value}`}
                             onChange={() => {

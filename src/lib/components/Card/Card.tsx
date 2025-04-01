@@ -6,7 +6,7 @@ import defaultTheme from '@utils/theme';
 import { Icon, Paragraph } from '@components';
 import { StyledCard, StyledCardLink } from '@styles/Card/StyledCard';
 
-const CardHeader = ({ image, icon, iconAriaLabel, imageAlt }: { image?: string; icon?: string, iconAriaLabel?: string, imageAlt?: string }) => {
+const CardHeader = ({ image, icon, iconAriaLabel, imageAlt }: { image?: string; icon?: string; iconAriaLabel?: string; imageAlt?: string }) => {
     if (!image && !icon) return null;
     return (
         <div className='card-header' data-testid='card-header'>
@@ -86,7 +86,17 @@ export const Card = (props: CardProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
     const classes = classNames(isActive && 'active');
     return link ? (
-        <StyledCardLink href={link} className={classes} theme={th} $hasFooter={footer !== null} $isHorizontal={isHorizontal} data-testid='card' title={linkTitle} onClick={onClick} onFocus={onFocus}>
+        <StyledCardLink
+            href={link}
+            className={classes}
+            theme={th}
+            $hasFooter={footer !== null}
+            $isHorizontal={isHorizontal}
+            data-testid='card'
+            title={linkTitle}
+            onClick={onClick}
+            onFocus={onFocus}
+        >
             <CardContent title={title} subtitle={subtitle} description={description} icon={icon} image={image} footer={footer} isHorizontal={isHorizontal} imageAlt={imageAlt} />
         </StyledCardLink>
     ) : (

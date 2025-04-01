@@ -4,7 +4,7 @@ import omit from 'lodash/omit';
 import { Table as TableAntDesign, ConfigProvider, type TableProps as AntDTableProps } from 'antd';
 
 import defaultTheme from '@utils/theme';
-import { Button, itemRender, Pagination } from '@components';
+import { Button, Pagination } from '@components';
 import { withDataId } from '@components/DataId/withDataId';
 import { StyledResult } from '@styles/Result/StyledResult';
 import { StyledTable } from '@styles/Table/StyledTable';
@@ -125,20 +125,33 @@ export type TableProps<RecordType> = {
 } & AntDTableProps<RecordType>;
 
 export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType>) => {
-    const { isExpanded, expandable, columns, dataSource, isLoading, showError, errorContent, dataId, rowsCanBeSelectAriaLabel, selectAllRowsAriaLabel, showSizeChanger } = props;
+    const {
+        isExpanded,
+        expandable,
+        columns,
+        dataSource,
+        isLoading,
+        showError,
+        errorContent,
+        dataId,
+        rowsCanBeSelectAriaLabel,
+        selectAllRowsAriaLabel,
+        currentPage = 1,
+        pageSize = 10,
+        showSizeChanger,
+        pageSizeOptions = ['5', '10', '20'],
+    } = props;
     useEffect(() => {
         const checkboxes = document.querySelectorAll('.ant-checkbox-inner');
-        checkboxes.forEach(li => li.setAttribute('aria-label', rowsCanBeSelectAriaLabel || ''));
+        checkboxes.forEach((li) => li.setAttribute('aria-label', rowsCanBeSelectAriaLabel || ''));
         const thead = document.querySelector('.ant-table-thead');
         const checkSelectAll = thead?.querySelector('.ant-checkbox-inner');
-        if (checkSelectAll && selectAllRowsAriaLabel)
-            checkSelectAll.setAttribute('aria-label', selectAllRowsAriaLabel);
-    }, []);
-    const [currentPage, setCurrentPage] = useState(props.currentPage ?? 1);
-    const [pageSize, setPageSize] = useState(props.pageSize ?? 10);
-    const data = props.dataSource ?? [];
-    const paginatedData = data.slice((currentPage - 1) * pageSize, currentPage * pageSize);
-    const pageSizeOptions = props.pageSizeOptions ?? ["5", "10", "20"];
+        if (checkSelectAll && selectAllRowsAriaLabel) checkSelectAll.setAttribute('aria-label', selectAllRowsAriaLabel);
+    }, [rowsCanBeSelectAriaLabel, selectAllRowsAriaLabel]);
+    const [actualPage, setActualPage] = useState(currentPage);
+    const [pageWidth, setPageWidth] = useState(pageSize);
+    const data = dataSource ?? [];
+    const paginatedData = data.slice((actualPage - 1) * pageWidth, actualPage * pageWidth);
 
     const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable', 'dataSource']);
     const th = useContext(ThemeContext) || defaultTheme;
@@ -170,7 +183,7 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                 {loading && <TableLoading />}
                 {error && <TableError> {errorContent} </TableError>}
                 {showTable && (
-                    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                         <TableAntDesign
                             expandable={{
                                 expandedRowRender: expandable?.expandedRowRender,
@@ -181,11 +194,11 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                             dataSource={paginatedData}
                             {...tableProps}
                         />
-                        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                             <Pagination
                                 total={data.length}
                                 pageSize={pageSize}
-                                current={currentPage}
+                                current={actualPage}
                                 previosPageAriaLabel='Previous page'
                                 nextPageAriaLabel='Next page'
                                 prevDotsPageAriaLabel='Jumpt previous 5 pages'
@@ -193,11 +206,10 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                                 showSizeChanger={showSizeChanger}
                                 pageSizeOptions={pageSizeOptions}
                                 onChange={(page, size) => {
-                                    setCurrentPage(page);
-                                    setPageSize(size);
+                                    setActualPage(page);
+                                    setPageWidth(size);
                                 }}
                             />
-
                         </div>
                     </div>
                 )}

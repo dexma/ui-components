@@ -60,7 +60,16 @@ export const tagRenderButtonPagination = (props: CustomTagProps, options: Option
                 theme={theme}
             >
                 {parsedLabel}
-                {closable && <Icon className='icon-close' name='close' size='small' onClick={onClose as unknown as MouseEventHandler<SVGSVGElement>} color={colors.white} ariaLabel='Delete option' />}
+                {closable && (
+                    <Icon
+                        className='icon-close'
+                        name='close'
+                        size='small'
+                        onClick={onClose as unknown as MouseEventHandler<SVGSVGElement>}
+                        color={colors.white}
+                        ariaLabel='Delete option'
+                    />
+                )}
             </StyledSpanOptionSelected>
         </Tooltip>
     );
@@ -368,19 +377,19 @@ export const Select = withDataId(
                         dropdownRender={
                             text
                                 ? (menu: ReactElement) =>
-                                    dropdownRenderSelect(
-                                        menu,
-                                        currentPage,
-                                        options,
-                                        handleChangePage,
-                                        handleSelectAll,
-                                        text,
-                                        searchValue,
-                                        showDropdown,
-                                        mode,
-                                        defaultTheme,
-                                        pageSize
-                                    )
+                                      dropdownRenderSelect(
+                                          menu,
+                                          currentPage,
+                                          options,
+                                          handleChangePage,
+                                          handleSelectAll,
+                                          text,
+                                          searchValue,
+                                          showDropdown,
+                                          mode,
+                                          defaultTheme,
+                                          pageSize
+                                      )
                                 : undefined
                         }
                         optionFilterProp='children'

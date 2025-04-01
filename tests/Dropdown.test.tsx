@@ -1,4 +1,3 @@
-import React from 'react';
 import { describe, expect, it, vitest } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 
@@ -8,10 +7,12 @@ const content = [
     {
         text: 'Edit',
         icon: 'edit',
+        parentName: 'dropdown-button'
     },
     {
         text: 'Delete',
         icon: 'delete',
+        parentName: 'dropdown-button'
     },
 ];
 
@@ -36,6 +37,7 @@ describe('<Dropdown>', () => {
                     {
                         text: 'Edit',
                         icon: 'edit',
+                        parentName: 'dropdown-button'
                     },
                 ]}
             />
@@ -54,10 +56,12 @@ describe('<Dropdown>', () => {
                     {
                         text: 'Edit',
                         icon: 'edit',
+                        parentName: 'dropdown-button'
                     },
                     {
                         text: 'Delete',
                         icon: 'delete',
+                        parentName: 'dropdown-button'
                     },
                 ]}
             />
@@ -76,14 +80,17 @@ describe('<Dropdown>', () => {
                     {
                         text: 'Edit',
                         icon: 'edit',
+                        parentName: 'dropdown-button'
                     },
                     {
                         text: 'Delete',
                         icon: 'delete',
+                        parentName: 'dropdown-button'
                     },
                     {
                         text: 'Add',
                         icon: 'add',
+                        parentName: 'dropdown-button'
                     },
                 ]}
             />
@@ -105,16 +112,19 @@ describe('<Dropdown>', () => {
                     {
                         text: 'Edit',
                         icon: 'edit',
+                        parentName: 'dropdown-button',
                         onClick: mockCallBackButtonEdit,
                     },
                     {
                         text: 'Delete',
                         icon: 'delete',
+                        parentName: 'dropdown-button',
                         onClick: mockCallBackButtonDelete,
                     },
                     {
                         text: 'Add',
                         icon: 'add',
+                        parentName: 'dropdown-button',
                         onClick: mockCallBackButtonAdd,
                     },
                 ]}

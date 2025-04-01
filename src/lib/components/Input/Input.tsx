@@ -23,6 +23,12 @@ type InputProps = {
     ariaLabel?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
+const getLabel = (_label: ReactNode) => (
+    <label htmlFor='input-element' className='sr-only'>
+        {_label}
+    </label>
+);
+
 export const Input = withDataId(
     forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
         const [focused, setFocused] = useState(false);
@@ -40,14 +46,24 @@ export const Input = withDataId(
         };
         return (
             <>
-                {getLabel(label, dataId)}
+                {getLabel(label)}
                 <StyledInput data-testid='input' $icon={icon} $isLoading={isLoading !== undefined ? isLoading : false} $focused={focused} data-id={dataId} theme={th} {...newProps}>
                     {icon && (
                         <div className='icon-container'>
                             <Icon name={icon} size={20} color='gray500' ariaLabel={!iconAriaLabel ? `${icon} icon` : iconAriaLabel} />
                         </div>
                     )}
-                    <input onFocus={handleOnFocus} onBlur={handleOnBlur} {...inputProps} ref={ref} data-testid='input-element' aria-label={ariaLabel} disabled={disabled} aria-disabled={disabled} />
+                    <input
+                        id='input-element'
+                        onFocus={handleOnFocus}
+                        onBlur={handleOnBlur}
+                        {...inputProps}
+                        ref={ref}
+                        data-testid='input-element'
+                        aria-label={ariaLabel}
+                        disabled={disabled}
+                        aria-disabled={disabled}
+                    />
                     {isLoading && <Spinner size={20} />}
                     {children && children}
                 </StyledInput>
@@ -55,10 +71,4 @@ export const Input = withDataId(
         );
     }),
     'input'
-);
-
-const getLabel = (_label: ReactNode, dataId?: string) => (
-    <label id={dataId} className='sr-only'>
-        {_label}
-    </label>
 );
