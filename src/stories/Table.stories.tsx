@@ -38,7 +38,7 @@ export const Basic = () => (
                 </Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Table dataSource={dataTable} columns={columnsTable} />
+                <Table dataSource={dataTable} columns={columnsTable} showSizeChanger />
             </Cell>
         </Row>
     </Grid>
