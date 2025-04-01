@@ -26,17 +26,18 @@ export type PaginationProps = {
 
 export const Pagination = (props: PaginationProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
+    const { previosPageAriaLabel, nextPageAriaLabel, disabled } = props;
     useEffect(() => {
         const ulElem = document.querySelector('.ant-pagination');
         if (ulElem) {
-            ulElem.setAttribute('role',  'list');
+            ulElem.setAttribute('role', 'list');
             const liElements = ulElem.querySelectorAll<HTMLLIElement>('li');
-            liElements.forEach(li => li.setAttribute('role',  'listitem'));
+            liElements.forEach(li => li.setAttribute('role', 'listitem'));
             const jumpPrevPages = ulElem.querySelector('.ant-pagination-jump-prev');
-            if(jumpPrevPages && props.prevDotsPageAriaLabel)
+            if (jumpPrevPages && props.prevDotsPageAriaLabel)
                 jumpPrevPages.setAttribute('aria-label', props.prevDotsPageAriaLabel);
             const jumpNextPages = ulElem.querySelector('.ant-pagination-jump-next');
-            if(jumpNextPages && props.nextDotsPageAriaLabel)
+            if (jumpNextPages && props.nextDotsPageAriaLabel)
                 jumpNextPages.setAttribute('aria-label', props.nextDotsPageAriaLabel);
         }
     }, []);
@@ -48,7 +49,7 @@ export const Pagination = (props: PaginationProps) => {
 
     return (
         <StyledPagination data-testid='pagination' theme={th}>
-            <PaginationAntDesign itemRender={(page, type, originalElement) => itemRender(page, type, originalElement, current, props.previosPageAriaLabel, props.nextPageAriaLabel)} onChange={onChange} {...props} />
+            <PaginationAntDesign itemRender={(page, type, originalElement) => itemRender(page, type, originalElement, current, previosPageAriaLabel, nextPageAriaLabel)} onChange={onChange} disabled={disabled} aria-disabled={disabled} {...props} />
         </StyledPagination>
     );
 };

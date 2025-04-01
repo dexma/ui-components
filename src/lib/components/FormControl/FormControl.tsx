@@ -1,4 +1,4 @@
-import React, { type ForwardedRef, type ReactNode, forwardRef, useContext } from 'react';
+import { type ForwardedRef, type ReactNode, forwardRef, useContext } from 'react';
 import find from 'lodash/find';
 import { ThemeContext } from 'styled-components';
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import defaultTheme from '@utils/theme';
 import { Cell, Heading, Button } from '@components';
 import { withDataId } from '@components/DataId/withDataId';

@@ -144,6 +144,7 @@ const GenericFieldGroup = <T extends FieldGroupType, V>({
                             checked={isSelected}
                             data-testid='field-group-input'
                             disabled={isDisabled}
+                            aria-disabled={isDisabled}
                         />
                     </label>
                 );

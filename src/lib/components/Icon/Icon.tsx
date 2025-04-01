@@ -1,4 +1,4 @@
-import React, { forwardRef, LegacyRef, SVGProps, useContext } from 'react';
+import { forwardRef, LegacyRef, SVGProps, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import isNumber from 'lodash/isNumber';
 import { v4 as uuidv4 } from 'uuid';

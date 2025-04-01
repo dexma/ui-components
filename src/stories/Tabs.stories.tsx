@@ -14,7 +14,7 @@ const items = [
     {
         key: '1',
         label: 'Tab 1',
-        children: 'Content of Tab Pane 1',
+        children: 'Content of Tab Pane 1'
     },
     {
         key: '2',

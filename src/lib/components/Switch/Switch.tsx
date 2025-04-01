@@ -27,7 +27,7 @@ export const Switch = withDataId(({ disabled, size = 'default', onChange, onClic
 
     return (
         <StyledSwitch {...props} theme={th}>
-            <SwitchAntDesign {...props} data-testid='switch' disabled={disabled} onChange={onChange} onClick={onClick} size={size} data-id={dataId} />
+            <SwitchAntDesign {...props} data-testid='switch' disabled={disabled} onChange={onChange} onClick={onClick} size={size} data-id={dataId} aria-disabled={disabled} />
         </StyledSwitch>
     );
 }, 'switch');
