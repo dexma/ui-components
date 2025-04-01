@@ -18,7 +18,7 @@ type CascaderProps = CascaderAntdProps & {
 
 type OptionProps = DefaultOptionType & {
     selectedItemAriaLabel?: string;
-}
+};
 
 export const tagRender = (theme: DefaultTheme, iconAriaLabel?: string) => (props: { label: ReactNode; value: string; closable: boolean; onClose: () => void }) => {
     const { label, value, closable, onClose } = props;
@@ -30,7 +30,9 @@ export const tagRender = (theme: DefaultTheme, iconAriaLabel?: string) => (props
     return (
         <StyledTagSelected onMouseDown={onPreventMouseDown} $closable={closable} style={{ marginRight: 4 }} data-testid={`tag-option-selected-${value}`} theme={theme}>
             {label}
-            {closable && <Icon className='icon-close' name='close' size='small' ariaLabel={!iconAriaLabel ? `Icon to close card` : iconAriaLabel} onClick={onClose} color={colors.white} />}
+            {closable && (
+                <Icon className='icon-close' name='close' size='small' ariaLabel={!iconAriaLabel ? `Icon to close card` : iconAriaLabel} onClick={onClose} color={colors.white} />
+            )}
         </StyledTagSelected>
     );
 };
@@ -38,34 +40,26 @@ export const tagRender = (theme: DefaultTheme, iconAriaLabel?: string) => (props
 export const Cascader = ({ multiple, options = [], maxTagCount, onChange, open, changeOnSelect, iconAriaLabel, ...props }: CascaderProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
     const [currentOpen, setCurrentOpen] = useState(open || false);
-    const [itemsSelected, setItemsSelected] = useState([] as { label: string, selectedItemAriaLabel: string }[]);
+    const [itemsSelected, setItemsSelected] = useState([] as { label: string; selectedItemAriaLabel: string }[]);
     const ref = useRef<CascaderRef>();
     useEffect(() => {
         document.querySelectorAll('.ant-cascader-menu-item').forEach((item) => {
             item.removeAttribute('aria-label');
         });
-        itemsSelected.forEach(item => {
-            var liSelected = document.querySelector(`li[title="${item.label}"]`);
+        itemsSelected.forEach((item) => {
+            const liSelected = document.querySelector(`li[title="${item.label}"]`);
             liSelected?.setAttribute('aria-label', item.selectedItemAriaLabel);
         });
     }, [itemsSelected]);
 
-    const handleOnChange = (value: Value | Value[]) => {
-        if (onChange) onChange(value);
-        if (!changeOnSelect && !multiple && ref.current?.blur()) setCurrentOpen(false);
-        setItemsSelected([]);
-        getItemsSelected(options, !multiple ? (value as Value[]).map(x => x.toString()) : (value as Value[]).flat().map(String));
-    };
-
-    const getItemsSelected = (options: OptionProps[], values: string[]) => {
-        let selectedLabels: { label: string, selectedItemAriaLabel: string }[] = [];
+    const getItemsSelected = (values: string[]) => {
+        const selectedLabels: { label: string; selectedItemAriaLabel: string }[] = [];
 
         const findSelectedItems = (opts: OptionProps[], vals: string[]) => {
-            vals.forEach(v => {
-                const optSelected = opts.find(o => v === o.value?.toString());
+            vals.forEach((v) => {
+                const optSelected = opts.find((o) => v === o.value?.toString());
                 if (optSelected) {
                     selectedLabels.push({ label: optSelected.label!.toString(), selectedItemAriaLabel: optSelected.selectedItemAriaLabel || '' });
-                    vals = vals.filter(val => val !== v);
 
                     if (optSelected.children) {
                         findSelectedItems(optSelected.children, vals);
@@ -77,8 +71,15 @@ export const Cascader = ({ multiple, options = [], maxTagCount, onChange, open, 
         findSelectedItems(options, values);
 
         // Ensuring the state is updated correctly
-        setItemsSelected(prev => [...prev, ...selectedLabels]);
-    }
+        setItemsSelected((prev) => [...prev, ...selectedLabels]);
+    };
+
+    const handleOnChange = (value: Value | Value[]) => {
+        if (onChange) onChange(value);
+        if (!changeOnSelect && !multiple && ref.current?.blur()) setCurrentOpen(false);
+        setItemsSelected([]);
+        getItemsSelected(!multiple ? (value as Value[]).map((x) => x.toString()) : (value as Value[]).flat().map(String));
+    };
 
     return (
         <>
@@ -102,10 +103,10 @@ export const Cascader = ({ multiple, options = [], maxTagCount, onChange, open, 
                     onDropdownVisibleChange={
                         !changeOnSelect
                             ? (e) => {
-                                if (e !== currentOpen) {
-                                    setCurrentOpen(e);
-                                }
-                            }
+                                  if (e !== currentOpen) {
+                                      setCurrentOpen(e);
+                                  }
+                              }
                             : undefined
                     }
                     onFocus={() => {

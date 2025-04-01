@@ -22,7 +22,15 @@ export const Basic = () => (
                 </Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Pagination total={100} pageSize={10} defaultCurrent={6} previosPageAriaLabel='Previous page' nextPageAriaLabel='Next page' prevDotsPageAriaLabel='Jumpt previous 5 pages' nextDotsPageAriaLabel='Jumpt next 5 pages' />
+                <Pagination
+                    total={100}
+                    pageSize={10}
+                    defaultCurrent={6}
+                    previosPageAriaLabel='Previous page'
+                    nextPageAriaLabel='Next page'
+                    prevDotsPageAriaLabel='Jumpt previous 5 pages'
+                    nextDotsPageAriaLabel='Jumpt next 5 pages'
+                />
             </Cell>
         </Row>
     </Grid>

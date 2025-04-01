@@ -56,10 +56,10 @@ const dropdownStyles = () => css`
     }
 `;
 
-const StyledAntdDatePicker = styled(AntdDatePicker) <AntdDatePickerProps>`
+const StyledAntdDatePicker = styled(AntdDatePicker)<AntdDatePickerProps>`
     ${getStylesInputAntdPicker}
 `;
-const StyledAntdRangePicker = styled(RangePicker) <AntdRangePickerProps>`
+const StyledAntdRangePicker = styled(RangePicker)<AntdRangePickerProps>`
     ${getStylesInputAntdPicker}
 `;
 const DropdownDatePickerStyles = createGlobalStyle`

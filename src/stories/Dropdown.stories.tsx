@@ -7,7 +7,7 @@ const innerContent = [
         icon: 'edit',
         onClick: (e: any) => {
             console.log('click edit', e);
-        }
+        },
     },
     {
         text: 'Delete',
@@ -24,7 +24,7 @@ const innerContent = [
         onClick: (e: any) => {
             console.log('click edit', e);
         },
-        ariaLabel: 'Add'
+        ariaLabel: 'Add',
     },
 ];
 
@@ -41,7 +41,7 @@ export const Basic = () => (
                 <Paragraph margin='1rem 0 1rem 0'>A simple dropdown that provides action elements like links and buttons.</Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Dropdown icon='more_horiz' content={innerContent}  ariaLabel='More actions' />
+                <Dropdown icon='more_horiz' content={innerContent} ariaLabel='More actions' />
                 <Dropdown icon='add' content={innerContent} ariaLabel='Add' />
             </Cell>
         </Row>

@@ -24,7 +24,13 @@ const Selection = () => {
     const TableWithDataId = buildTableWithDataId<User>();
     return (
         <div>
-            <TableWithDataId rowSelection={rowSelection} columns={columnsTable} dataSource={dataTable} rowsCanBeSelectAriaLabel='Check to select row' selectAllRowsAriaLabel='Select all' />
+            <TableWithDataId
+                rowSelection={rowSelection}
+                columns={columnsTable}
+                dataSource={dataTable}
+                rowsCanBeSelectAriaLabel='Check to select row'
+                selectAllRowsAriaLabel='Select all'
+            />
         </div>
     );
 };

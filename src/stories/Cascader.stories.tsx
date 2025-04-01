@@ -46,7 +46,7 @@ const options = [
         children: new Array(20).fill(null).map((_, index) => ({
             label: `Number ${index}`,
             value: index,
-            selectedItemAriaLabel: `Number ${index} item selected`
+            selectedItemAriaLabel: `Number ${index} item selected`,
         })),
     },
     {
@@ -64,17 +64,17 @@ const options = [
                         value: 'fish',
                         disabled: true,
                         disableCheckbox: true,
-                        selectedItemAriaLabel: 'Toy Fish item selected'
+                        selectedItemAriaLabel: 'Toy Fish item selected',
                     },
                     {
                         label: 'Toy Cards',
                         value: 'cards',
-                        selectedItemAriaLabel: 'Toy Cards item selected'
+                        selectedItemAriaLabel: 'Toy Cards item selected',
                     },
                     {
                         label: 'Toy Bird',
                         value: 'bird',
-                        selectedItemAriaLabel: 'Toy Bird item selected'
+                        selectedItemAriaLabel: 'Toy Bird item selected',
                     },
                 ],
             },

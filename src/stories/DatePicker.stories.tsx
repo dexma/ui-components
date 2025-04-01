@@ -86,7 +86,8 @@ export const PickerPresets = () => (
                             value: [dayjs().startOf('month'), dayjs().endOf('month')],
                         },
                     ]}
-                    aria-label='Dates range' label='Select start and end date'
+                    aria-label='Dates range'
+                    label='Select start and end date'
                 />
                 <br />
             </Cell>

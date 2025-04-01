@@ -69,7 +69,9 @@ export const Types = () => (
     <Grid fluid>
         <Row>
             <Cell xs={12}>
-                <Paragraph margin='1rem 0 1rem 0'>Input types must be 'text', 'email', 'number', 'tel', 'password', 'url' or 'file'</Paragraph>
+                <Paragraph margin='1rem 0 1rem 0'>
+                    Input types must be &apos;text&apos;, &apos;email&apos;, &apos;number&apos;, &apos;tel&apos;, &apos;password&apos;, &apos;url&apos; or &apos;file&apos;
+                </Paragraph>
             </Cell>
             <Cell xs={12}>
                 <Input type='text' value='Hi, I am Rob' label='Greeting' />

@@ -1,4 +1,3 @@
-import React from 'react';
 import { describe, expect, it } from 'vitest';
 import { render } from '@testing-library/react';
 
@@ -73,7 +72,7 @@ describe('Data Id', () => {
                     <Button />
                     <Chart />
                     <DatePicker type='date' />
-                    <Input />
+                    <Input label='input test' type='text'/>
                     <Select />
                     <TableWithDataId />
                     <Tag />
@@ -111,7 +110,7 @@ describe('Data Id', () => {
                     <Button dataId='button.test' />
                     <Chart dataId='chart.test' />
                     <DatePicker type='date' dataId='datepicker.test' />
-                    <Input dataId='input.test' />
+                    <Input dataId='input.test' label='input test' type='text' />
                     <Select dataId='select.test' />
                     <TableWithDataId dataId='table.test' />
                     <Tag dataId='tag.test' />
@@ -150,7 +149,7 @@ describe('Data Id', () => {
                         <Button />
                         <Chart />
                         <DatePicker type='date' />
-                        <Input />
+                        <Input label='input test' type='text' />
                         <Select />
                         <TableWithDataId />
                         <Tag />
@@ -190,7 +189,7 @@ describe('Data Id', () => {
                         <Button dataId='button.test' />
                         <Chart dataId='chart.test' />
                         <DatePicker type='date' dataId='datepicker.test' />
-                        <Input dataId='input.test' />
+                        <Input dataId='input.test' label='input test' type='text' />
                         <Select dataId='select.test' />
                         <TableWithDataId dataId='table.test' />
                         <Tag dataId='tag.test' />

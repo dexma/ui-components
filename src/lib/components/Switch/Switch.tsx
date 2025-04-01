@@ -23,7 +23,7 @@ export const Switch = withDataId(({ disabled, size = 'default', onChange, onClic
         if (switchElem) {
             switchElem.setAttribute('aria-label', ariaLabel || ''); // Change role dynamically
         }
-      }, []);
+    }, [ariaLabel]);
 
     return (
         <StyledSwitch {...props} theme={th}>

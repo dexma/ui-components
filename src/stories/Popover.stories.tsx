@@ -73,7 +73,9 @@ export const PopoverClickHover = () => {
                 open={clicked}
                 onOpenChange={handleClickChange}
             >
-                <Button variant='primary' aria-label='Click or hover it to open popover'>Hover and click</Button>
+                <Button variant='primary' aria-label='Click or hover it to open popover'>
+                    Hover and click
+                </Button>
             </Popover>
         </Popover>
     );
