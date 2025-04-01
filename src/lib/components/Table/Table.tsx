@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import omit from 'lodash/omit';
 import { Table as TableAntDesign, ConfigProvider, type TableProps as AntDTableProps } from 'antd';
 
 import defaultTheme from '@utils/theme';
-import { Button, itemRender } from '@components';
+import { Button, itemRender, Pagination } from '@components';
 import { withDataId } from '@components/DataId/withDataId';
 import { StyledResult } from '@styles/Result/StyledResult';
 import { StyledTable } from '@styles/Table/StyledTable';
@@ -118,20 +118,29 @@ export type TableProps<RecordType> = {
     errorContent?: React.ReactNode;
     rowsCanBeSelectAriaLabel?: string;
     selectAllRowsAriaLabel?: string;
+    currentPage?: number;
+    pageSize?: number;
+    showSizeChanger?: boolean;
+    pageSizeOptions?: string[];
 } & AntDTableProps<RecordType>;
 
 export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType>) => {
-    const { isExpanded, expandable, columns, dataSource, isLoading, showError, errorContent, dataId, rowsCanBeSelectAriaLabel, selectAllRowsAriaLabel } = props;
+    const { isExpanded, expandable, columns, dataSource, isLoading, showError, errorContent, dataId, rowsCanBeSelectAriaLabel, selectAllRowsAriaLabel, showSizeChanger } = props;
     useEffect(() => {
         const checkboxes = document.querySelectorAll('.ant-checkbox-inner');
-        checkboxes.forEach(li => li.setAttribute('aria-label',  rowsCanBeSelectAriaLabel || ''));
+        checkboxes.forEach(li => li.setAttribute('aria-label', rowsCanBeSelectAriaLabel || ''));
         const thead = document.querySelector('.ant-table-thead');
         const checkSelectAll = thead?.querySelector('.ant-checkbox-inner');
-        if(checkSelectAll && selectAllRowsAriaLabel)
+        if (checkSelectAll && selectAllRowsAriaLabel)
             checkSelectAll.setAttribute('aria-label', selectAllRowsAriaLabel);
     }, []);
+    const [currentPage, setCurrentPage] = useState(props.currentPage ?? 1);
+    const [pageSize, setPageSize] = useState(props.pageSize ?? 10);
+    const data = props.dataSource ?? [];
+    const paginatedData = data.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+    const pageSizeOptions = props.pageSizeOptions ?? ["5", "10", "20"];
 
-    const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable']);
+    const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable', 'dataSource']);
     const th = useContext(ThemeContext) || defaultTheme;
     const getColumnsExpanded = () => {
         if (columns) {
@@ -161,15 +170,36 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                 {loading && <TableLoading />}
                 {error && <TableError> {errorContent} </TableError>}
                 {showTable && (
-                    <TableAntDesign
-                        expandable={{
-                            expandedRowRender: expandable?.expandedRowRender,
-                            expandIcon,
-                        }}
-                        //pagination={{ (page, type, elem ) => itemRender(page) }}
-                        columns={isExpanded ? getColumnsExpanded() : columns}
-                        {...tableProps}
-                    />
+                    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                        <TableAntDesign
+                            expandable={{
+                                expandedRowRender: expandable?.expandedRowRender,
+                                expandIcon,
+                            }}
+                            pagination={false}
+                            columns={isExpanded ? getColumnsExpanded() : columns}
+                            dataSource={paginatedData}
+                            {...tableProps}
+                        />
+                        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                            <Pagination
+                                total={data.length}
+                                pageSize={pageSize}
+                                current={currentPage}
+                                previosPageAriaLabel='Previous page'
+                                nextPageAriaLabel='Next page'
+                                prevDotsPageAriaLabel='Jumpt previous 5 pages'
+                                nextDotsPageAriaLabel='Jumpt next 5 pages'
+                                showSizeChanger={showSizeChanger}
+                                pageSizeOptions={pageSizeOptions}
+                                onChange={(page, size) => {
+                                    setCurrentPage(page);
+                                    setPageSize(size);
+                                }}
+                            />
+
+                        </div>
+                    </div>
                 )}
             </StyledTable>
         </ConfigProvider>
