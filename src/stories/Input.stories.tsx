@@ -64,3 +64,34 @@ export const Disabled = () => (
         </Row>
     </Grid>
 );
+
+export const Types = () => (
+    <Grid fluid>
+        <Row>
+            <Cell xs={12}>
+                <Paragraph margin='1rem 0 1rem 0'>Input types must be 'text', 'email', 'number', 'tel', 'password', 'url' or 'file'</Paragraph>
+            </Cell>
+            <Cell xs={12}>
+                <Input type='text' value='Hi, I am Rob' label='Greeting' />
+            </Cell>
+            <Cell xs={12}>
+                <Input type='email' value='user@inputtest.com' label='Email' />
+            </Cell>
+            <Cell xs={12}>
+                <Input type='number' placeholder='Enter your number' label='Age' />
+            </Cell>
+            <Cell xs={12}>
+                <Input type='password' placeholder='Enter your password' label='Password' />
+            </Cell>
+            <Cell xs={12}>
+                <Input type='tel' placeholder='Phone number' label='Phone number' />
+            </Cell>
+            <Cell xs={12}>
+                <Input type='url' placeholder='URL' label='URL' />
+            </Cell>
+            <Cell xs={12}>
+                <Input type='file' placeholder='Choose a file' label='File' />
+            </Cell>
+        </Row>
+    </Grid>
+);
