@@ -45,6 +45,7 @@ type SwitchPeriodComparativeProps = {
     endDate: string;
     previousPeriodText?: string;
     samePeriodLastYearText?: string;
+    disabled?: boolean;
     onPeriodSelect?: ({ period, date }: { period: string; date: { startDate: Dayjs; endDate: Dayjs } }) => void;
 };
 
@@ -54,6 +55,7 @@ export const SwitchPeriodComparative = ({
     endDate,
     previousPeriodText,
     samePeriodLastYearText,
+    disabled,
     onPeriodSelect,
     ...props
 }: SwitchPeriodComparativeProps) => {
@@ -111,12 +113,14 @@ export const SwitchPeriodComparative = ({
             label: renderPeriodComparativeItem(previousPeriodText, previousPeriod, 'previous-period'),
             id: prevId,
             name: prevId,
+            isDisabled: disabled
         },
         {
             value: 'last_period',
             label: renderPeriodComparativeItem(samePeriodLastYearText, samePeriodLastYear, 'last-period'),
             id: lastId,
             name: lastId,
+            isDisabled: disabled
         },
     ];
 
@@ -131,6 +135,7 @@ export const SwitchPeriodComparative = ({
                             onPeriodChange(item);
                         }}
                         onKeyDown={handleKeyDown}
+                        aria-disabled={values[0].isDisabled}
                     />
                 </div>
             </div>

@@ -218,6 +218,7 @@ export const Select = withDataId(
         handleButtonSelectAll,
         handleClearAll,
         allowClear = true,
+        disabled,
         ...props
     }: SelectProps) => {
         const [showDropdown, setShowDropdown] = useState(false);
@@ -351,6 +352,8 @@ export const Select = withDataId(
                             sValue.current = searchText;
                             return searchText;
                         }}
+                        disabled={disabled}
+                        aria-disabled={disabled}
                         {...props}
                     >
                         {optionsRenderer(options, selectedValues, searchValue, defaultTheme, dataId, pageSize)}
@@ -468,6 +471,8 @@ export const Select = withDataId(
                                 e.stopPropagation();
                             }
                         }}
+                        disabled={disabled}
+                        aria-disabled={disabled}
                         {...props}
                     >
                         {optionsRenderer(options, selectedValues, searchValue, defaultTheme, dataId, pageSize)}

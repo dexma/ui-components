@@ -100,6 +100,7 @@ export const Button = withDataId(
                     data-testid={rest['data-testid'] ?? 'button'}
                     aria-live={isLoading ? 'polite' : undefined}
                     aria-busy={isLoading || false}
+                    aria-disabled={isDisabled || false}
                     {...rest}
                 >
                     {isLoading ? <Spinner size={spinnerSize} data-testid='button-loading' /> : null}

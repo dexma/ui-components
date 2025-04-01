@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, type ForwardedRef, useContext, ReactNode, FocusEvent, InputHTMLAttributes } from 'react';
+import { useState, forwardRef, type ForwardedRef, useContext, ReactNode, FocusEvent, InputHTMLAttributes } from 'react';
 import { ThemeContext } from 'styled-components';
 import omit from 'lodash/omit';
 
@@ -26,7 +26,7 @@ type InputProps = {
 export const Input = withDataId(
     forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
         const [focused, setFocused] = useState(false);
-        const { icon, isLoading, onFocus, onBlur, children, dataId, iconAriaLabel, label, ariaLabel } = props;
+        const { icon, isLoading, onFocus, onBlur, children, dataId, iconAriaLabel, label, ariaLabel, disabled } = props;
         const th = useContext(ThemeContext) || defaultTheme;
         const newProps = omit(props, ['placeholder', 'id', 'label', 'value', 'type', 'name', 'onChange', 'onFocus', 'onBlur', 'dataId', 'isLoading']);
         const inputProps = omit(props, ['icon', 'isLoading', 'theme', 'children', 'onFocus', 'onBlur', 'dataId', 'isLoading']);
@@ -47,7 +47,7 @@ export const Input = withDataId(
                             <Icon name={icon} size={20} color='gray500' ariaLabel={!iconAriaLabel ? `${icon} icon` : iconAriaLabel} />
                         </div>
                     )}
-                    <input onFocus={handleOnFocus} onBlur={handleOnBlur} {...inputProps} ref={ref} data-testid='input-element' aria-label={ariaLabel} />
+                    <input onFocus={handleOnFocus} onBlur={handleOnBlur} {...inputProps} ref={ref} data-testid='input-element' aria-label={ariaLabel} disabled={disabled} aria-disabled={disabled} />
                     {isLoading && <Spinner size={20} />}
                     {children && children}
                 </StyledInput>

@@ -45,6 +45,7 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
                     theme={th}
                     role='dialog'
                     aria-labelledby={dataId}
+                    aria-disabled={props.disabled || false}
                 />
             </ConfigProvider>
         </>
@@ -78,6 +79,7 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                     theme={th}
                     role='dialog'
                     aria-labelledby={dataId}
+                    aria-disabled={props.disabled as boolean || false}
                 />
             </ConfigProvider>
         </>

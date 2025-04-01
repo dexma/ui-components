@@ -115,6 +115,7 @@ export const Cascader = ({ multiple, options = [], maxTagCount, onChange, open, 
                     maxTagPlaceholder={(values) => `+${values.length}`}
                     open={!changeOnSelect ? currentOpen : undefined}
                     changeOnSelect={changeOnSelect}
+                    aria-disabled={props.disabled || false}
                     {...props}
                 />
             </ConfigProvider>

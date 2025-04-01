@@ -11,13 +11,14 @@ type DropdownContent = {
     variant?: string;
     ariaLabel?: string;
     parentName: string;
+    disabled?: boolean;
     onClick?: (e: any) => void;
 };
 
 const getContent = (menu?: DropdownContent[]) => {
     if (!menu) return null;
     const items = menu
-        ? menu.map(({ key, icon, onClick, dataId, variant, text, ariaLabel, parentName, ...props }) => ({
+        ? menu.map(({ key, icon, onClick, dataId, variant, text, ariaLabel, parentName, disabled, ...props }) => ({
             label: (
                 <StyledDropdownInnerButton
                     className='dropdown-button-item'
@@ -30,6 +31,8 @@ const getContent = (menu?: DropdownContent[]) => {
                     text={text}
                     aria-label={icon ? ariaLabel : undefined}
                     aria-labelledby={parentName}
+                    aria-disabled={disabled}
+                    disabled={disabled}
                     {...props}
                 />
             ),
@@ -49,7 +52,7 @@ export type DropdownProps = DropDownProps & {
     ariaLabel?: string;
 };
 
-export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text, placement = 'bottomRight', menu, icon, content, variant, ariaLabel, open }: DropdownProps) => {
+export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text, placement = 'bottomRight', menu, icon, content, variant, ariaLabel, open, disabled }: DropdownProps) => {
     useEffect(() => {
         const dropdownElem = document.querySelector('.ant-dropdown');
         if (dropdownElem)
@@ -67,7 +70,7 @@ export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text
     return (
         <>
             <StyledGlobalDropdown />
-            <DropdownAntd menu={menuItems} placement={placement} trigger={trigger} open={openDropdown} onOpenChange={setOpen}>
+            <DropdownAntd menu={menuItems} placement={placement} trigger={trigger} open={openDropdown} onOpenChange={setOpen} disabled={disabled}>
                 {text ? (
                     <StyledDropdownButton
                         data-testid='dropdown-button-text'
@@ -76,6 +79,7 @@ export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text
                         variant={variant ?? 'icon'}
                         iconBefore={icon}
                         text={text}
+                        aria-disabled={disabled || false}
                         onKeyDown={handleKeyDown}
                     />
                 ) : (
@@ -88,6 +92,7 @@ export const Dropdown = ({ dataId = 'dropdown-button', trigger = ['hover'], text
                         text=''
                         isCircle
                         aria-label={ariaLabel}
+                        aria-disabled={disabled || false}
                         onKeyDown={handleKeyDown}
                     />
                 )}

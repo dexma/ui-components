@@ -1,4 +1,4 @@
-import React, { ChangeEvent, type ForwardedRef, forwardRef, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, type ForwardedRef, forwardRef, useContext, useEffect, useState } from 'react';
 import { ThemeContext } from 'styled-components';
 
 import defaultTheme from '@utils/theme';

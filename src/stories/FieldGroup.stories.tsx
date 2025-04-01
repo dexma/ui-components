@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { RadioFieldGroup, CheckboxFieldGroup, Grid, Row, Cell, Paragraph, type FieldGroupItem, FieldGroupVariant, ButtonSize, RadioFieldGroupProps } from '@components';
 import { mockRadioGroup, mockRadioCustomGroup, mockCheckboxGroup, mockSelectedRadioItem, mockSelectedCheckboxItem } from '../../tests/mock/FieldGroup';

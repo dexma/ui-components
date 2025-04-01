@@ -1,4 +1,3 @@
-import React from 'react';
 import { Grid, Row, Cell, Paragraph, Switch, SwitchProps } from '@components';
 
 export default {
@@ -14,7 +13,7 @@ export const DefaultSwitch = () => (
                 <Paragraph margin='1rem 0 1rem 0'>A simple switch that changes value on click.</Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Switch defaultChecked ariaLabel='On/Off'/>
+                <Switch defaultChecked ariaLabel='On/Off' />
             </Cell>
         </Row>
     </Grid>
