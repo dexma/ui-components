@@ -3,7 +3,6 @@ import { Dropdown, type DropdownProps, Row, Grid, Cell, Paragraph } from '@compo
 const innerContent = [
     {
         text: 'Edit',
-        parentName: 'dropdown-button',
         icon: 'edit',
         onClick: (e: any) => {
             console.log('click edit', e);
@@ -11,7 +10,6 @@ const innerContent = [
     },
     {
         text: 'Delete',
-        parentName: 'dropdown-button',
         icon: 'delete',
         onClick: (e: any) => {
             console.log('click delete', e);
@@ -19,7 +17,6 @@ const innerContent = [
     },
     {
         text: '',
-        parentName: 'dropdown-button',
         icon: 'add',
         onClick: (e: any) => {
             console.log('click edit', e);
