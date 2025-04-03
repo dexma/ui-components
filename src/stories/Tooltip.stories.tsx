@@ -18,7 +18,7 @@ const TooltipComponent = (props: any) => {
         }
     };
     return (
-        <Tooltip title={tooltipTitle} open={open} position={position}>
+        <Tooltip title={tooltipTitle} open={open} position={position} onOpenChange={setOpen}>
             <Button text={buttonText} iconBefore={buttonIcon} onKeyDown={handleKeyDown} />
         </Tooltip>
     );
