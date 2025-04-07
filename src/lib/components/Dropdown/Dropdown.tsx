@@ -73,7 +73,6 @@ export const Dropdown = ({
         setOpen(!openDropdown);
         setTimeout(() => {
             const dropdownElem = document.querySelector('.ant-dropdown');
-            console.log(dropdownElem);
             if (dropdownElem && buttonRef) {
                 dropdownElem.setAttribute('role', 'dialog');
                 dropdownElem.setAttribute('aria-labelledby', buttonRef.current?.id || '');

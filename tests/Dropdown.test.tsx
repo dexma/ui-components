@@ -6,13 +6,11 @@ import { Dropdown } from '@components';
 const content = [
     {
         text: 'Edit',
-        icon: 'edit',
-        parentName: 'dropdown-button'
+        icon: 'edit'
     },
     {
         text: 'Delete',
-        icon: 'delete',
-        parentName: 'dropdown-button'
+        icon: 'delete'
     },
 ];
 
@@ -36,8 +34,7 @@ describe('<Dropdown>', () => {
                 content={[
                     {
                         text: 'Edit',
-                        icon: 'edit',
-                        parentName: 'dropdown-button'
+                        icon: 'edit'
                     },
                 ]}
             />
@@ -55,13 +52,11 @@ describe('<Dropdown>', () => {
                 content={[
                     {
                         text: 'Edit',
-                        icon: 'edit',
-                        parentName: 'dropdown-button'
+                        icon: 'edit'
                     },
                     {
                         text: 'Delete',
-                        icon: 'delete',
-                        parentName: 'dropdown-button'
+                        icon: 'delete'
                     },
                 ]}
             />
@@ -79,18 +74,15 @@ describe('<Dropdown>', () => {
                 content={[
                     {
                         text: 'Edit',
-                        icon: 'edit',
-                        parentName: 'dropdown-button'
+                        icon: 'edit'
                     },
                     {
                         text: 'Delete',
-                        icon: 'delete',
-                        parentName: 'dropdown-button'
+                        icon: 'delete'
                     },
                     {
                         text: 'Add',
-                        icon: 'add',
-                        parentName: 'dropdown-button'
+                        icon: 'add'
                     },
                 ]}
             />
@@ -112,19 +104,16 @@ describe('<Dropdown>', () => {
                     {
                         text: 'Edit',
                         icon: 'edit',
-                        parentName: 'dropdown-button',
                         onClick: mockCallBackButtonEdit,
                     },
                     {
                         text: 'Delete',
                         icon: 'delete',
-                        parentName: 'dropdown-button',
                         onClick: mockCallBackButtonDelete,
                     },
                     {
                         text: 'Add',
                         icon: 'add',
-                        parentName: 'dropdown-button',
                         onClick: mockCallBackButtonAdd,
                     },
                 ]}
