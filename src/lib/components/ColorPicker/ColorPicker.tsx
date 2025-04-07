@@ -65,6 +65,8 @@ export const ColorPicker = withDataId(
                                 ref={ref}
                                 placeholder={!isLoading ? placeholder : ''}
                                 onChange={handleChangeInput}
+                                type='text'
+                                label='Color picker input'
                             />
                         )}
                         {isLoading && <StyledSpinnerColorPicker $showInput={showInput !== undefined ? showInput : false} size={20} theme={th} />}

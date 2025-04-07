@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { StyledButtonSelectAll, StyledIconButtonPagination, StyledPaginationPageWrapper, StyledRowButtonPagination } from '@styles/Select/StyledSelect';
 import { type Theme } from '@utils/theme';
 import { getOptionsBySearch } from './selectUtils';
@@ -115,7 +115,7 @@ export const ButtonPaginationSelector = ({
         <StyledRowButtonPagination>
             {showPagination && (
                 <StyledPaginationPageWrapper data-testid='button-prev' xs={1} $disabled={isPrevDisabled} onClick={handlePrevClick} theme={theme}>
-                    <StyledIconButtonPagination name='chevron_left_l' color={isPrevDisabled ? 'gray300' : 'gray900'} size={12} />
+                    <StyledIconButtonPagination name='chevron_left_l' color={isPrevDisabled ? 'gray300' : 'gray900'} size={12} ariaLabel='Previous page' />
                 </StyledPaginationPageWrapper>
             )}
             {showButton && (
@@ -138,7 +138,7 @@ export const ButtonPaginationSelector = ({
             )}
             {showPagination && (
                 <StyledPaginationPageWrapper data-testid='button-next' xs={1} $disabled={isNextDisabled} onClick={handleNextClick} theme={theme}>
-                    <StyledIconButtonPagination name='chevron_right_l' color={isNextDisabled ? 'gray300' : 'gray900'} size={12} />
+                    <StyledIconButtonPagination name='chevron_right_l' color={isNextDisabled ? 'gray300' : 'gray900'} size={12} ariaLabel='Next page' />
                 </StyledPaginationPageWrapper>
             )}
         </StyledRowButtonPagination>
