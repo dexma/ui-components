@@ -32,11 +32,11 @@ const handleOpenChange = (_: boolean, ariaLabel?: string) => {
         pickerDropdownElem.setAttribute('role', 'dialog');
         pickerDropdownElem.setAttribute('aria-label', ariaLabel || '');
     }
-}
+};
 
 export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, disabled, ...props }: AntdDatePickerProps) => {
     const th = useContext(ThemeContext) || theme;
-    const id = `antd-date-picker_${Date.now()}`;    
+    const id = `antd-date-picker_${Date.now()}`;
     return (
         <>
             {getLabel(label, id)}
@@ -94,7 +94,7 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                     suffixIcon={<Icon name='calendar_range' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
                     onOpenChange={(value) => handleOpenChange(value, props['aria-label'])}
-                    aria-disabled={disabled as boolean || false}
+                    aria-disabled={(disabled as boolean) || false}
                 />
             </ConfigProvider>
         </>

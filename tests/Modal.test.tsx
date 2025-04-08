@@ -10,7 +10,7 @@ describe('<Modal>', () => {
     });
 
     it('Should render', () => {
-        const { getByTestId } = render(<Modal open />);
+        const { getByTestId } = render(<Modal open closeModalButtonAriaLabel='Close test modal' />);
         expect(getByTestId('modal')).toBeInTheDocument();
     });
 });

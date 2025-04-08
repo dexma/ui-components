@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Button, Modal, Grid, Row, Cell, Paragraph } from '@components';
 
@@ -41,9 +41,9 @@ const ModalView = ({ withFooter }: { withFooter?: boolean }) => {
                 title='Unsaved changes'
                 width={400}
                 footer={footer}
-            >
-                <Paragraph>Are you sure you want to discard your changes?</Paragraph>
-            </Modal>
+                body={<Paragraph>Are you sure you want to discard your changes?</Paragraph>}
+                closeModalButtonAriaLabel='Close modal'
+            />
         </div>
     );
 };

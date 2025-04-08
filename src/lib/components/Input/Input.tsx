@@ -49,7 +49,16 @@ export const Input = withDataId(
         return (
             <>
                 {getLabel(label)}
-                <StyledInput role={isItToSearch ? 'search' : undefined} data-testid='input' $icon={icon} $isLoading={isLoading !== undefined ? isLoading : false} $focused={focused} data-id={dataId} theme={th} {...newProps}>
+                <StyledInput
+                    role={isItToSearch ? 'search' : undefined}
+                    data-testid='input'
+                    $icon={icon}
+                    $isLoading={isLoading !== undefined ? isLoading : false}
+                    $focused={focused}
+                    data-id={dataId}
+                    theme={th}
+                    {...newProps}
+                >
                     {icon && (
                         <div className='icon-container'>
                             <Icon name={icon} size={20} color='gray500' ariaLabel={!iconAriaLabel ? `${icon} icon` : iconAriaLabel} />
