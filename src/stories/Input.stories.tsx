@@ -26,7 +26,7 @@ export const Search = () => (
                 <Paragraph margin='1rem 0 1rem 0'>Input search in two cell</Paragraph>
             </Cell>
             <Cell xs={6}>
-                <Input type='text' placeholder='Search text' icon='search' label='Search text' ariaLabel='Search' />
+                <Input type='text' placeholder='Search text' icon='search' label='Search text' ariaLabel='Search' isItToSearch />
             </Cell>
             <Cell xs={6}>
                 <Input type='text' placeholder='Insert date' icon='calendar_range' label='Date' ariaLabel='Select date' />
@@ -77,22 +77,22 @@ export const Types = () => (
                 <Input type='text' value='Hi, I am Rob' label='Greeting' />
             </Cell>
             <Cell xs={12}>
-                <Input type='email' value='user@inputtest.com' label='Email' />
+                <Input type='email' value='user@inputtest.com' label='Email' autoComplete='email' />
             </Cell>
             <Cell xs={12}>
-                <Input type='number' placeholder='Enter your number' label='Age' />
+                <Input type='number' placeholder='Enter your number' label='Age' autoComplete='age' />
             </Cell>
             <Cell xs={12}>
-                <Input type='password' placeholder='Enter your password' label='Password' />
+                <Input type='password' placeholder='Enter your password' label='Password' autoComplete='password' />
             </Cell>
             <Cell xs={12}>
-                <Input type='tel' placeholder='Phone number' label='Phone number' />
+                <Input type='tel' placeholder='Phone number' label='Phone number' autoComplete='tel' />
             </Cell>
             <Cell xs={12}>
-                <Input type='url' placeholder='URL' label='URL' />
+                <Input type='url' placeholder='URL' label='URL' autoComplete='url' />
             </Cell>
             <Cell xs={12}>
-                <Input type='file' placeholder='Choose a file' label='File' />
+                <Input type='file' placeholder='Choose a file' label='File' autoComplete='file' />
             </Cell>
         </Row>
     </Grid>
