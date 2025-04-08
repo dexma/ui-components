@@ -28,9 +28,6 @@ export const Search = () => (
             <Cell xs={6}>
                 <Input type='text' placeholder='Search text' icon='search' label='Search text' ariaLabel='Search' isItToSearch />
             </Cell>
-            <Cell xs={6}>
-                <Input type='text' placeholder='Insert date' icon='calendar_range' label='Date' ariaLabel='Select date' />
-            </Cell>
         </Row>
     </Grid>
 );
