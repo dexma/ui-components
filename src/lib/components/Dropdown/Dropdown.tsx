@@ -80,9 +80,8 @@ export const Dropdown = ({
     };
 
     const handleKeyDown = (e: any) => {
-        if (e.key === 'Enter') {
-            setOpen((prev) => !prev);
-        }
+        if (e.key === 'Enter') 
+            setOpen((prev) => !prev);        
     };
     return (
         <>
@@ -100,6 +99,7 @@ export const Dropdown = ({
                         aria-disabled={disabled || false}
                         onKeyDown={handleKeyDown}
                         ref={buttonRef}
+                        aria-expanded={openDropdown}
                     />
                 ) : (
                     <StyledDropdownButton
@@ -115,6 +115,7 @@ export const Dropdown = ({
                         aria-disabled={disabled || false}
                         onKeyDown={handleKeyDown}
                         ref={buttonRef}
+                        aria-expanded={openDropdown}
                     />
                 )}
             </DropdownAntd>

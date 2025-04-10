@@ -363,6 +363,7 @@ export const Select = withDataId(
                         }}
                         disabled={disabled}
                         aria-disabled={disabled}
+                        aria-expanded={showDropdown}
                         {...props}
                     >
                         {optionsRenderer(options, selectedValues, searchValue, defaultTheme, dataId, pageSize)}
@@ -482,6 +483,7 @@ export const Select = withDataId(
                         }}
                         disabled={disabled}
                         aria-disabled={disabled}
+                        aria-expanded={showDropdown}
                         {...props}
                     >
                         {optionsRenderer(options, selectedValues, searchValue, defaultTheme, dataId, pageSize)}
