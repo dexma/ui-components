@@ -43,15 +43,15 @@ export const Childrens = () => (
             <StyledBox>
                 <Cell xs={12}>
                     <Heading text='Heading'>
-                        <Button size='small' iconAfter='add' isCircle />
+                        <Button kind='iconButton' size='small' iconAfter='add' isCircle iconAriaLabel='Add icon' />
                     </Heading>
                     <Divider />
                 </Cell>
                 <br />
                 <Cell xs={12}>
                     <Heading text='Heading'>
-                        <Button size='small' text='Settings' iconBefore='settings' />
-                        <Button size='small' iconAfter='add' isCircle />
+                        <Button kind='iconTextButton' size='small' text='Settings' iconBefore='settings' />
+                        <Button kind='iconButton' size='small' iconAfter='add' isCircle iconAriaLabel='Add icon' />
                     </Heading>
                     <Divider />
                 </Cell>

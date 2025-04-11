@@ -43,8 +43,8 @@ export const Basic = () => (
 
 const operations = (
     <>
-        <Button iconBefore='add' isCircle aria-label='Add user' />
-        <Button iconBefore='add' isCircle aria-label='Add rol' />
+        <Button kind='iconButton' iconBefore='add' isCircle iconAriaLabel='Add user' />
+        <Button kind='iconButton' iconBefore='add' isCircle iconAriaLabel='Add rol' />
     </>
 );
 

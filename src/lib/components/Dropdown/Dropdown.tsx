@@ -12,29 +12,62 @@ type DropdownContent = {
     ariaLabel?: string;
     disabled?: boolean;
     onClick?: (e: any) => void;
+    iconAriaLabel?: string;
 };
 
 const getContent = (menu?: DropdownContent[]) => {
     if (!menu) return null;
     const items = menu
-        ? menu.map(({ key, icon, onClick, dataId, variant, text, ariaLabel, disabled, ...props }) => ({
-              label: (
-                  <StyledDropdownInnerButton
-                      className='dropdown-button-item'
-                      style={{ width: '100%', padding: '0px 1rem' }}
-                      iconBefore={icon}
-                      onClick={onClick}
-                      key={key}
-                      dataId={dataId ?? 'ddItem'}
-                      variant={variant ?? 'icon'}
-                      text={text}
-                      aria-label={icon ? ariaLabel : undefined}
-                      aria-disabled={disabled}
-                      disabled={disabled}
-                      {...props}
-                  />
-              ),
-          }))
+        ? menu.map(({ key, icon, onClick, dataId, variant, text, ariaLabel, disabled, iconAriaLabel, ...props }) => ({
+            label: (text && icon ?
+                (
+                    <StyledDropdownInnerButton
+                        kind='iconTextButton'
+                        className='dropdown-button-item'
+                        style={{ width: '100%', padding: '0px 1rem' }}
+                        iconBefore={icon}
+                        onClick={onClick}
+                        key={key}
+                        dataId={dataId ?? 'ddItem'}
+                        variant={variant ?? 'icon'}
+                        text={text}
+                        aria-label={icon ? ariaLabel : undefined}
+                        aria-disabled={disabled}
+                        disabled={disabled}
+                        {...props}
+                    />
+                ) : (!icon ? (
+                    <StyledDropdownInnerButton
+                        className='dropdown-button-item'
+                        style={{ width: '100%', padding: '0px 1rem' }}
+                        onClick={onClick}
+                        key={key}
+                        dataId={dataId ?? 'ddItem'}
+                        variant={variant ?? 'icon'}
+                        text={text}
+                        aria-label={icon ? ariaLabel : undefined}
+                        aria-disabled={disabled}
+                        disabled={disabled}
+                        {...props}
+                    />
+                ) :
+                    (
+                        <StyledDropdownInnerButton
+                            kind='iconButton'
+                            className='dropdown-button-item'
+                            style={{ width: '100%', padding: '0px 1rem' }}
+                            iconBefore={icon}
+                            onClick={onClick}
+                            key={key}
+                            dataId={dataId ?? 'ddItem'}
+                            variant={variant ?? 'icon'}
+                            iconAriaLabel={iconAriaLabel || ''}
+                            aria-disabled={disabled}
+                            disabled={disabled}
+                            {...props}
+                        />)
+                ))
+        }))
         : undefined;
     return {
         items,
@@ -48,6 +81,7 @@ export type DropdownProps = DropDownProps & {
     variant?: string;
     content?: DropdownContent[];
     ariaLabel?: string;
+    iconAriaLabel?: string;
 };
 
 export const Dropdown = ({
@@ -62,6 +96,7 @@ export const Dropdown = ({
     ariaLabel,
     open,
     disabled,
+    iconAriaLabel
 }: DropdownProps) => {
     const menuItems = menu || (getContent(content) as MenuProps);
     const [openDropdown, setOpen] = useState(open || false);
@@ -80,15 +115,16 @@ export const Dropdown = ({
     };
 
     const handleKeyDown = (e: any) => {
-        if (e.key === 'Enter') 
-            setOpen((prev) => !prev);        
+        if (e.key === 'Enter')
+            setOpen((prev) => !prev);
     };
     return (
         <>
             <StyledGlobalDropdown />
             <DropdownAntd menu={menuItems} placement={placement} trigger={trigger} open={openDropdown} onOpenChange={handleOpenChange} disabled={disabled}>
-                {text ? (
+                {text && icon ? (
                     <StyledDropdownButton
+                        kind='iconTextButton'
                         id={dropdownId}
                         data-testid='dropdown-button-text'
                         dataId={dataId}
@@ -96,27 +132,46 @@ export const Dropdown = ({
                         variant={variant ?? 'icon'}
                         iconBefore={icon}
                         text={text}
-                        aria-disabled={disabled || false}
+                        aria-disabled={disabled}
                         onKeyDown={handleKeyDown}
                         ref={buttonRef}
                         aria-expanded={openDropdown}
                     />
                 ) : (
-                    <StyledDropdownButton
-                        id={dropdownId}
-                        data-testid='dropdown-button-icon'
-                        dataId={dataId}
-                        className='dropdown-button'
-                        variant={variant ?? 'icon-secondary'}
-                        iconBefore={icon}
-                        text=''
-                        isCircle
-                        aria-label={ariaLabel}
-                        aria-disabled={disabled || false}
-                        onKeyDown={handleKeyDown}
-                        ref={buttonRef}
-                        aria-expanded={openDropdown}
-                    />
+                    text && !icon ?
+                        (
+                            <StyledDropdownButton
+                                id={dropdownId}
+                                data-testid='dropdown-button-icon'
+                                dataId={dataId}
+                                className='dropdown-button'
+                                variant={variant ?? 'icon-secondary'}
+                                text={text}
+                                isCircle
+                                aria-label={ariaLabel}
+                                aria-disabled={disabled || false}
+                                onKeyDown={handleKeyDown}
+                                ref={buttonRef}
+                                aria-expanded={openDropdown}
+                            />
+                        ) : (
+                            <StyledDropdownButton
+                                kind='iconButton'
+                                id={dropdownId}
+                                data-testid='dropdown-button-icon'
+                                dataId={dataId}
+                                className='dropdown-button'
+                                variant={variant ?? 'icon-secondary'}
+                                iconBefore={icon}
+                                isCircle
+                                aria-label={ariaLabel}
+                                aria-disabled={disabled || false}
+                                onKeyDown={handleKeyDown}
+                                ref={buttonRef}
+                                aria-expanded={openDropdown}
+                                iconAriaLabel={iconAriaLabel || ''}
+                            />
+                        )
                 )}
             </DropdownAntd>
         </>
