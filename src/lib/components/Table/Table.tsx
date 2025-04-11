@@ -9,6 +9,7 @@ import { withDataId } from '@components/DataId/withDataId';
 import { StyledResult } from '@styles/Result/StyledResult';
 import { StyledTable } from '@styles/Table/StyledTable';
 import { AnyObject } from 'antd/lib/_util/type';
+import _ from 'lodash';
 
 const StyledTableLoading = styled.div`
     display: flex;
@@ -88,13 +89,15 @@ type ExpandedIconProps<T> = {
     expanded: boolean;
     onExpand: (record: T, event: React.MouseEvent<HTMLElement>) => void;
     record: T;
+    expandIconAriaLabel?: string;
 };
 
 const getExpandedIcon = <T extends { children?: object; expandable?: boolean }>(props: ExpandedIconProps<T>) => {
-    const { expanded, onExpand, record } = props;
+    const { expanded, onExpand, record, expandIconAriaLabel } = props;
     return record.children || record.expandable ? (
         <StyledButtonExpanded>
             <Button
+                kind='iconButton'
                 className={`expand-button ${expanded ? 'button-no-expanded' : 'button-expanded'}`}
                 iconAfter='chevron_down'
                 isCircle
@@ -103,6 +106,7 @@ const getExpandedIcon = <T extends { children?: object; expandable?: boolean }>(
                     e.stopPropagation();
                     onExpand(record, e);
                 }}
+                iconAriaLabel={expandIconAriaLabel || ''}
             />
         </StyledButtonExpanded>
     ) : (

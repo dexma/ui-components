@@ -71,8 +71,8 @@ export const Modal = ({ open, title, body, footer, closeModalButtonAriaLabel, on
                     )}
 
                     <Button
-                        type='button'
-                        aria-label={closeModalButtonAriaLabel}
+                        kind='iconButton'
+                        iconAriaLabel={closeModalButtonAriaLabel}
                         onClick={onCancel}
                         style={{
                             position: 'absolute',

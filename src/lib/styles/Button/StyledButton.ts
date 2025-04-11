@@ -73,7 +73,7 @@ export const getIconSize = (props: StyledButtonProps) => {
         ${StyledIcon} {
             display: inline-flex;
             ${text &&
-            `margin-${paddingPosition}: ${iconPaddding}rem !important;
+        `margin-${paddingPosition}: ${iconPaddding}rem !important;
               margin-${marginPosition}: -2px;`}
         }
     `;
@@ -89,7 +89,6 @@ export type ButtonVariantProps = {
 
 export const getButtonVariantPrimary = (props: ButtonVariantProps) => {
     const newHoverColor = props.disabled || props.$isLoading ? primaryColor(props.theme) : darken(0.1, saturate(0.2, primaryColor(props.theme)));
-    const newFocusColor = transparentize(0.3, primaryColor(props.theme));
     const color = white(props.theme);
     return css`
         color: ${color};
@@ -108,7 +107,7 @@ export const getButtonVariantPrimary = (props: ButtonVariantProps) => {
             }
         }
         &:focus {
-            box-shadow: 0px 0px 0px 2px ${newFocusColor};
+            border: 3px solid ${newHoverColor};
         }
     `;
 };
@@ -138,7 +137,7 @@ export const getButtonVariantSecondary = (props: ButtonVariantProps) => {
             ${getSpinnerWhite()}
         }
         &:focus {
-            box-shadow: 0px 0px 0px 2px ${newFocusColor};
+            border: 3px solid ${newFocusColor};
         }
     `;
 };
@@ -175,8 +174,7 @@ export const getButtonVariantDestructive = (props: ButtonVariantProps) => {
     const color = white(props.theme);
     const background = red(props.theme);
     const borderColor = background;
-    const backgroundHover = props.disabled || props.$isLoading ? background : darken(0.1, saturate(0.2, red(props.theme)));
-    const newFocusColor = transparentize(0.3, backgroundHover);
+    const backgroundHover = props.disabled || props.$isLoading ? background : darken(0.2, saturate(0.2, red(props.theme)));
     return css`
         color: ${color};
         border-color: ${borderColor};
@@ -191,13 +189,14 @@ export const getButtonVariantDestructive = (props: ButtonVariantProps) => {
             background-color: ${backgroundHover};
         }
         &:focus {
-            box-shadow: 0px 0px 0px 2px ${newFocusColor};
+            border: 3px solid ${backgroundHover};
         }
     `;
 };
 export const getButtonVariantLink = (props: ButtonVariantProps) => {
     const color = primaryColor(props.theme);
     const textDecorationHover = props.disabled || props.$isLoading ? 'none' : 'underline';
+    const focusColor = gray300(props.theme);
     return css`
         color: ${color};
         border-color: transparent;
@@ -211,11 +210,15 @@ export const getButtonVariantLink = (props: ButtonVariantProps) => {
             background-color: transparent;
             text-decoration: ${textDecorationHover};
         }
+        &:focus {
+            border: 3px solid ${focusColor};
+        }
     `;
 };
 export const getButtonVariantIcon = (props: ButtonVariantProps) => {
     const color = gray500(props.theme);
     const hoverColor = gray700(props.theme);
+    const focusColor = gray300(props.theme);
     return css`
         color: ${color};
         border-color: transparent;
@@ -232,12 +235,16 @@ export const getButtonVariantIcon = (props: ButtonVariantProps) => {
             background-color: transparent;
             text-decoration: underline;
         }
+        &:focus {
+            border: 3px solid ${focusColor};
+        }
     `;
 };
 export const getButtonVariantIconSecondary = (props: ButtonVariantProps) => {
     const color = gray500(props.theme);
     const hoverColor = gray700(props.theme);
     const bgColorHover = transparentize(0.95, hoverColor);
+    const focusColor = gray300(props.theme);
     return css`
         color: ${color};
         border-color: transparent;
@@ -245,7 +252,6 @@ export const getButtonVariantIconSecondary = (props: ButtonVariantProps) => {
         ${StyledIcon} {
             fill: ${getIconColor(color, props.$iconColor)};
         }
-        &:focus,
         &:hover {
             ${StyledIcon} {
                 fill: ${hoverColor};
@@ -255,11 +261,15 @@ export const getButtonVariantIconSecondary = (props: ButtonVariantProps) => {
             background-color: ${bgColorHover};
             text-decoration: underline;
         }
+        &:focus {
+            border: 3px solid ${focusColor};
+        }
     `;
 };
 export const getButtonVariantIconOutline = (props: ButtonVariantProps) => {
     const color = gray500(props.theme);
     const hoverColor = gray700(props.theme);
+    const focusColor = gray300(props.theme);
     return css`
         color: ${color};
         border-color: transparent;
@@ -275,6 +285,9 @@ export const getButtonVariantIconOutline = (props: ButtonVariantProps) => {
             border-color: ${color};
             background-color: transparent;
             text-decoration: underline;
+        }
+        &:focus {
+            border: 3px solid ${focusColor};
         }
     `;
 };

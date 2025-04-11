@@ -131,6 +131,7 @@ export const ButtonPaginationSelector = ({
                         ref={(r: any) => {
                             ref.current = r;
                         }}
+                        text=''
                     >
                         {getButtonText(text, currentPage, pageSize, optionsAvailable, searchValue, numOptionsAvailable)}
                     </StyledButtonSelectAll>

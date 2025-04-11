@@ -29,13 +29,9 @@ const getButtonIconSize = (size?: string | ButtonSize) => {
 
 export const ButtonGroup = (props: any) => <StyledButtonGroup {...props} />;
 
-export type ButtonProps = {
-    text?: string;
+type CommonButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {    
     size?: string | ButtonSize;
     variant?: string;
-    iconBefore?: string;
-    iconAfter?: string;
-    iconColor?: string;
     tooltip?: string;
     onClick?: (e?: any) => void;
     onFocus?: () => void;
@@ -47,19 +43,37 @@ export type ButtonProps = {
     children?: ReactNode;
     dataId?: string;
     'data-testid'?: string;
-    iconAriaLabel?: string;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+};
+
+type ButtonTextProps = CommonButtonProps & {
+    kind: 'button';
+    text: string;
+}
+
+type IconButtonProps = CommonButtonProps & {
+    kind: 'iconButton',
+    iconColor?: string;
+    iconBefore?: string;
+    iconAfter?: string;
+    iconAriaLabel: string;
+}
+
+type IconTextButtonProps = CommonButtonProps & {
+    kind: 'iconTextButton',
+    text: string;
+    iconColor?: string;
+    iconBefore?: string;
+    iconAfter?: string;
+}
+
+export type ButtonProps = (Omit<ButtonTextProps, 'kind'> & { kind?: 'button' }) | IconButtonProps | IconTextButtonProps;
 
 export const Button = withDataId(
     forwardRef<HTMLButtonElement, ButtonProps>(
         (
             {
                 className,
-                text,
-                iconBefore,
-                iconAfter,
                 isCircle,
-                iconColor,
                 tooltip,
                 onClick,
                 isDisabled = false,
@@ -70,7 +84,7 @@ export const Button = withDataId(
                 children,
                 dataId = 'button',
                 variant = 'primary',
-                iconAriaLabel,
+                kind = 'button',
                 ...props
             },
             ref
@@ -81,42 +95,43 @@ export const Button = withDataId(
             const handleClick = debounceTime && debounceTime > 0 && onClick ? debounce(onClick, debounceTime) : onClick;
             const spinnerSize = getIconSize(size);
             const iconSize = getButtonIconSize(size);
+            const isIconButton = kind.includes('icon');
             const getStyledButton = () => (
                 <StyledButton
                     ref={ref}
                     className={classes}
                     $isCircle={isCircle || false}
-                    $isExpanded={isExpanded || false}
-                    $isLoading={isLoading || false}
-                    disabled={isDisabled || false}
+                    $isExpanded={isExpanded}
+                    $isLoading={isLoading}
+                    disabled={isDisabled}
                     $size={size || 'medium'}
-                    $iconColor={iconColor}
-                    $iconAfter={iconAfter}
+                    $iconColor={isIconButton ? (props as IconButtonProps).iconColor : undefined}
+                    $iconAfter={isIconButton ? (props as IconButtonProps).iconAfter : undefined}
                     $variant={variant ?? 'primary'}
-                    $text={text}
+                    $text={kind === 'button' ? (props as ButtonTextProps).text : (kind === 'iconTextButton' ? (props as IconTextButtonProps).text : undefined)}
                     theme={th}
                     onClick={handleClick}
                     data-id={dataId}
                     data-testid={rest['data-testid'] ?? 'button'}
                     aria-live={isLoading ? 'polite' : undefined}
                     aria-busy={isLoading || false}
-                    aria-disabled={isDisabled || false}
+                    aria-disabled={isDisabled}
                     {...rest}
                 >
                     {isLoading ? <Spinner size={spinnerSize} data-testid='button-loading' /> : null}
-                    {!isLoading && iconBefore ? (
+                    {!isLoading && isIconButton && (props as IconButtonProps).iconBefore ? (
                         <Icon
-                            name={iconBefore}
+                            name={(props as IconButtonProps).iconBefore}
                             size={iconSize}
-                            color={iconColor}
+                            color={(props as IconButtonProps).iconColor}
                             data-testid='button-icon-before'
-                            ariaLabel={!iconAriaLabel ? `${iconBefore} icon` : iconAriaLabel}
+                            ariaLabel={(props as IconButtonProps).iconAriaLabel}
                         />
                     ) : null}
-                    {text || null}
+                    {kind === 'button' ? (props as ButtonTextProps).text : (kind === 'iconTextButton' ? (props as IconTextButtonProps).text : undefined)}
                     {children || null}
-                    {!isLoading && iconAfter ? (
-                        <Icon name={iconAfter} size={iconSize} color={iconColor} data-testid='button-icon-after' ariaLabel={!iconAriaLabel ? `${iconAfter} icon` : iconAriaLabel} />
+                    {!isLoading && isIconButton && (props as IconButtonProps).iconAfter ? (
+                        <Icon name={(props as IconButtonProps).iconAfter} size={iconSize} color={(props as IconButtonProps).iconColor} data-testid='button-icon-after' ariaLabel={(props as IconButtonProps).iconAriaLabel} />
                     ) : null}
                 </StyledButton>
             );

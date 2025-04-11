@@ -69,7 +69,7 @@ describe('Data Id', () => {
         const { container } = render(
             <Section>
                 <>
-                    <Button />
+                    <Button text='Test' />
                     <Chart />
                     <DatePicker type='date' />
                     <Input label='input test' type='text'/>
@@ -107,7 +107,7 @@ describe('Data Id', () => {
         const { container } = render(
             <Section dataId='section-data.test'>
                 <>
-                    <Button dataId='button.test' />
+                    <Button dataId='button.test' text='Test' />
                     <Chart dataId='chart.test' />
                     <DatePicker type='date' dataId='datepicker.test' />
                     <Input dataId='input.test' label='input test' type='text' />
@@ -146,7 +146,7 @@ describe('Data Id', () => {
             <DataIdProvider dataId='page.section'>
                 <Section>
                     <>
-                        <Button />
+                        <Button text='Test' />
                         <Chart />
                         <DatePicker type='date' />
                         <Input label='input test' type='text' />
@@ -186,7 +186,7 @@ describe('Data Id', () => {
             <DataIdProvider dataId='page.section'>
                 <Section dataId='section-data.test'>
                     <>
-                        <Button dataId='button.test' />
+                        <Button dataId='button.test' text='Test' />
                         <Chart dataId='chart.test' />
                         <DatePicker type='date' dataId='datepicker.test' />
                         <Input dataId='input.test' label='input test' type='text' />

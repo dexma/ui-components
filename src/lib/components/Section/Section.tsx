@@ -11,10 +11,13 @@ type SectionProps = {
     onExportExcel?: () => void;
     onExportImage?: () => void;
     onAddReport?: () => void;
+    iconExportExcelAriaLabel?: string;
+    iconExportImageAriaLabel?: string;
+    iconAddReportAriaLabel?: string;
 };
 
 export const Section = withDataId((props: SectionProps) => {
-    const { title, isLoading, onExportExcel, onExportImage, onAddReport, children, dataId } = props;
+    const { title, isLoading, onExportExcel, onExportImage, onAddReport, children, dataId, iconExportExcelAriaLabel, iconExportImageAriaLabel, iconAddReportAriaLabel } = props;
     const hasExportExcel = !!onExportExcel;
     const hasExportImage = !!onExportImage;
     const hasAddReport = !!onAddReport;
@@ -31,10 +34,10 @@ export const Section = withDataId((props: SectionProps) => {
                     <Cell className='section-buttons'>
                         <>
                             {hasExportExcel && (
-                                <Button variant='icon-secondary' iconBefore='export_file' onClick={onExportExcel} isCircle data-testid='excel' isDisabled={isLoading} />
+                                <Button kind='iconButton' variant='icon-secondary' iconBefore='export_file' onClick={onExportExcel} isCircle data-testid='excel' isDisabled={isLoading} iconAriaLabel={iconExportExcelAriaLabel || ''} />
                             )}
-                            {hasExportImage && <Button variant='icon-secondary' iconBefore='image' onClick={onExportImage} isCircle data-testid='image' isDisabled={isLoading} />}
-                            {hasAddReport && <Button variant='icon-secondary' iconBefore='report_add' onClick={onAddReport} isCircle data-testid='report' isDisabled={isLoading} />}
+                            {hasExportImage && <Button kind='iconButton' variant='icon-secondary' iconBefore='image' onClick={onExportImage} isCircle data-testid='image' isDisabled={isLoading} iconAriaLabel={iconExportImageAriaLabel || ''} />}
+                            {hasAddReport && <Button kind='iconButton' variant='icon-secondary' iconBefore='report_add' onClick={onAddReport} isCircle data-testid='report' isDisabled={isLoading} iconAriaLabel={iconAddReportAriaLabel || ''} />}
                         </>
                     </Cell>
                 )}

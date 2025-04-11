@@ -76,7 +76,8 @@ export const Footer = () => (
                         subtitle='With supporting text below as a natural lead-in to additional content.'
                         footer={
                             <>
-                                <Button iconBefore='add' text='Button' /> <Button variant='destructive' iconBefore='delete' isCircle />{' '}
+                                <Button kind='iconTextButton' iconBefore='add' text='Button' />
+                                <Button kind='iconButton' variant='destructive' iconBefore='delete' isCircle iconAriaLabel='Delete' />{' '}
                             </>
                         }
                     />
@@ -138,7 +139,8 @@ export const HorizontalFooter = () => (
                         isHorizontal
                         footer={
                             <>
-                                <Button iconBefore='add' text='Button' /> <Button variant='destructive' iconBefore='delete' isCircle />{' '}
+                                <Button kind='iconTextButton' iconBefore='add' text='Button' />
+                                <Button kind='iconButton' variant='destructive' iconBefore='delete' isCircle iconAriaLabel='Delete' />{' '}
                             </>
                         }
                     />
