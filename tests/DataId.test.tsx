@@ -76,7 +76,7 @@ describe('Data Id', () => {
                     <Select />
                     <TableWithDataId />
                     <Tag />
-                    <Dropdown />
+                    <Dropdown onItemSelected={() => console.log('Item select OK!')} />
                 </>
             </Section>
         );
@@ -114,7 +114,7 @@ describe('Data Id', () => {
                     <Select dataId='select.test' />
                     <TableWithDataId dataId='table.test' />
                     <Tag dataId='tag.test' />
-                    <Dropdown dataId='dropdown.test' />
+                    <Dropdown dataId='dropdown.test' onItemSelected={() => console.log('Item select OK!')} />
                 </>
             </Section>
         );
@@ -153,7 +153,7 @@ describe('Data Id', () => {
                         <Select />
                         <TableWithDataId />
                         <Tag />
-                        <Dropdown />
+                        <Dropdown onItemSelected={() => console.log('Item select OK!')} />
                     </>
                 </Section>
             </DataIdProvider>
@@ -193,7 +193,7 @@ describe('Data Id', () => {
                         <Select dataId='select.test' />
                         <TableWithDataId dataId='table.test' />
                         <Tag dataId='tag.test' />
-                        <Dropdown dataId='dropdown.test' />
+                        <Dropdown dataId='dropdown.test' onItemSelected={() => console.log('Item select OK!')} />
                     </>
                 </Section>
             </DataIdProvider>

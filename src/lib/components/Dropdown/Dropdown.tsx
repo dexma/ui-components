@@ -3,8 +3,8 @@ import { Dropdown as DropdownAntd, type DropDownProps, type MenuProps } from 'an
 import { StyledDropdownInnerButton, StyledDropdownButton, StyledGlobalDropdown } from '@styles/Dropdown/StyledDropdown';
 import { useRef, useState } from 'react';
 
-type DropdownContent = {
-    text: string;
+export type DropdownContent = {
+    text?: string;
     key?: string;
     icon?: string;
     dataId?: string;
@@ -13,65 +13,7 @@ type DropdownContent = {
     disabled?: boolean;
     onClick?: (e: any) => void;
     iconAriaLabel?: string;
-};
-
-const getContent = (menu?: DropdownContent[]) => {
-    if (!menu) return null;
-    const items = menu
-        ? menu.map(({ key, icon, onClick, dataId, variant, text, ariaLabel, disabled, iconAriaLabel, ...props }) => ({
-            label: (text && icon ?
-                (
-                    <StyledDropdownInnerButton
-                        kind='iconTextButton'
-                        className='dropdown-button-item'
-                        style={{ width: '100%', padding: '0px 1rem' }}
-                        iconBefore={icon}
-                        onClick={onClick}
-                        key={key}
-                        dataId={dataId ?? 'ddItem'}
-                        variant={variant ?? 'icon'}
-                        text={text}
-                        aria-label={icon ? ariaLabel : undefined}
-                        aria-disabled={disabled}
-                        disabled={disabled}
-                        {...props}
-                    />
-                ) : (!icon ? (
-                    <StyledDropdownInnerButton
-                        className='dropdown-button-item'
-                        style={{ width: '100%', padding: '0px 1rem' }}
-                        onClick={onClick}
-                        key={key}
-                        dataId={dataId ?? 'ddItem'}
-                        variant={variant ?? 'icon'}
-                        text={text}
-                        aria-label={icon ? ariaLabel : undefined}
-                        aria-disabled={disabled}
-                        disabled={disabled}
-                        {...props}
-                    />
-                ) :
-                    (
-                        <StyledDropdownInnerButton
-                            kind='iconButton'
-                            className='dropdown-button-item'
-                            style={{ width: '100%', padding: '0px 1rem' }}
-                            iconBefore={icon}
-                            onClick={onClick}
-                            key={key}
-                            dataId={dataId ?? 'ddItem'}
-                            variant={variant ?? 'icon'}
-                            iconAriaLabel={iconAriaLabel || ''}
-                            aria-disabled={disabled}
-                            disabled={disabled}
-                            {...props}
-                        />)
-                ))
-        }))
-        : undefined;
-    return {
-        items,
-    };
+    onKeyDown?: (e: any) => void;
 };
 
 export type DropdownProps = DropDownProps & {
@@ -80,8 +22,8 @@ export type DropdownProps = DropDownProps & {
     icon?: string;
     variant?: string;
     content?: DropdownContent[];
-    ariaLabel?: string;
     iconAriaLabel?: string;
+    onItemSelected: (key: number) => void
 };
 
 export const Dropdown = ({
@@ -93,18 +35,18 @@ export const Dropdown = ({
     icon,
     content,
     variant,
-    ariaLabel,
     open,
     disabled,
-    iconAriaLabel
+    iconAriaLabel,
+    onItemSelected
 }: DropdownProps) => {
-    const menuItems = menu || (getContent(content) as MenuProps);
     const [openDropdown, setOpen] = useState(open || false);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const dropdownId = `dropdown-button-${text ? 'text' : 'icon'}_${Date.now()}`;
+    const dropdownButtonKind = text && icon ? 'iconTextButton' : (!text && icon ? 'iconButton' : 'button');
 
     const handleOpenChange = () => {
-        setOpen(!openDropdown);
+        setOpen((prev) => !prev);
         setTimeout(() => {
             const dropdownElem = document.querySelector('.ant-dropdown');
             if (dropdownElem && buttonRef) {
@@ -115,64 +57,71 @@ export const Dropdown = ({
     };
 
     const handleKeyDown = (e: any) => {
-        if (e.key === 'Enter')
-            setOpen((prev) => !prev);
+        if (e.key === 'Enter' && !open) {
+            e.preventDefault();
+            handleOpenChange();
+        }
     };
+
+    const getContent = (menuContent?: DropdownContent[]) => {
+        if (!menuContent) return null;
+        const itemButtonKind = (textItem?: string, iconItem?: string) => textItem && iconItem ? 'iconTextButton' : (!textItem && iconItem ? 'iconButton' : 'button');
+
+        const items = menuContent
+            ? menuContent.map(({ key, icon: iconItem, onClick, dataId: dataIdItem, variant: variantItem, text: textItem, ariaLabel, disabled: disabledItem, iconAriaLabel: iconAriaLabelItem, onKeyDown, ...props }, index) => ({
+                label:
+                    <StyledDropdownInnerButton
+                        kind={itemButtonKind(textItem, iconItem)}
+                        className='dropdown-button-item'
+                        style={{ width: '100%', padding: '0px 1rem' }}
+                        iconBefore={iconItem}
+                        onClick={onClick}
+                        key={key ?? `key_${index}`}
+                        dataId={dataIdItem ?? 'ddItem'}
+                        variant={variantItem ?? 'icon'}
+                        text={itemButtonKind(textItem, iconItem) === 'button' || itemButtonKind(textItem, iconItem) === 'iconTextButton' ? textItem! : ''}
+                        aria-label={iconItem ? ariaLabel : undefined}
+                        aria-disabled={disabledItem}
+                        disabled={disabledItem}
+                        iconAriaLabel={iconItem ? iconAriaLabelItem || '' : ''}
+                        {...props}
+                    />
+            }))
+            : undefined;
+        return {
+            items
+        };
+    };
+
+    const menuItems = menu || (getContent(content) as MenuProps);
+
+    const handleMenuClick: MenuProps['onClick'] = (e) => {
+        setOpen(false);
+        const key = (e.key.split('-')[1] as any) as number;
+        onItemSelected(key);
+    };
+
+
     return (
         <>
             <StyledGlobalDropdown />
-            <DropdownAntd menu={menuItems} placement={placement} trigger={trigger} open={openDropdown} onOpenChange={handleOpenChange} disabled={disabled}>
-                {text && icon ? (
-                    <StyledDropdownButton
-                        kind='iconTextButton'
-                        id={dropdownId}
-                        data-testid='dropdown-button-text'
-                        dataId={dataId}
-                        className='dropdown-button'
-                        variant={variant ?? 'icon'}
-                        iconBefore={icon}
-                        text={text}
-                        aria-disabled={disabled}
-                        onKeyDown={handleKeyDown}
-                        ref={buttonRef}
-                        aria-expanded={openDropdown}
-                    />
-                ) : (
-                    text && !icon ?
-                        (
-                            <StyledDropdownButton
-                                id={dropdownId}
-                                data-testid='dropdown-button-icon'
-                                dataId={dataId}
-                                className='dropdown-button'
-                                variant={variant ?? 'icon-secondary'}
-                                text={text}
-                                isCircle
-                                aria-label={ariaLabel}
-                                aria-disabled={disabled || false}
-                                onKeyDown={handleKeyDown}
-                                ref={buttonRef}
-                                aria-expanded={openDropdown}
-                            />
-                        ) : (
-                            <StyledDropdownButton
-                                kind='iconButton'
-                                id={dropdownId}
-                                data-testid='dropdown-button-icon'
-                                dataId={dataId}
-                                className='dropdown-button'
-                                variant={variant ?? 'icon-secondary'}
-                                iconBefore={icon}
-                                isCircle
-                                aria-label={ariaLabel}
-                                aria-disabled={disabled || false}
-                                onKeyDown={handleKeyDown}
-                                ref={buttonRef}
-                                aria-expanded={openDropdown}
-                                iconAriaLabel={iconAriaLabel || ''}
-                            />
-                        )
-                )}
+            <DropdownAntd menu={{ items: menuItems ? menuItems.items : [], onClick: handleMenuClick }} placement={placement} trigger={trigger} open={openDropdown} onOpenChange={handleOpenChange} disabled={disabled}>
+                <StyledDropdownButton
+                    tabIndex={0}
+                    kind={dropdownButtonKind}
+                    id={dropdownId}
+                    data-testid={`dropdown-button-${icon ? 'icon' : 'text'}`}
+                    dataId={dataId}
+                    className='dropdown-button'
+                    variant={variant ?? 'icon'}
+                    iconBefore={icon}
+                    text={dropdownButtonKind === 'button' || dropdownButtonKind === 'iconTextButton' ? text! : ''}
+                    aria-disabled={disabled}
+                    onKeyDown={trigger && trigger.find(x => x !== 'click') ? handleKeyDown : undefined}
+                    ref={buttonRef}
+                    aria-expanded={openDropdown}
+                    iconAriaLabel={icon ? iconAriaLabel || '' : ''}
+                />
             </DropdownAntd>
         </>
     );
