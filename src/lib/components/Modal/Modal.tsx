@@ -84,7 +84,7 @@ export const Modal = ({ open, title, body, footer, closeModalButtonAriaLabel, on
                             cursor: 'pointer',
                         }}
                     >
-                        <Icon name='close' color='gray300' size='medium' ariaLabel='Close modal' style={{ fill: '#c9cccf' }} />
+                        <Icon name='close' color='gray300' size='medium' ariaLabel={closeModalButtonAriaLabel} style={{ fill: '#c9cccf' }} />
                     </Button>
                 </div>
             </StyledModal>
