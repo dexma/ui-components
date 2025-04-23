@@ -16,13 +16,13 @@ const content = [
 
 describe('<Dropdown>', () => {
     it('Should render the button icon', () => {
-        const { getByTestId } = render(<Dropdown icon='more_horiz' content={content} />);
+        const { getByTestId } = render(<Dropdown icon='more_horiz' content={content} onItemSelected={() => console.log('Item select OK!')} />);
         expect(getByTestId('dropdown-button-icon')).toBeTruthy();
         expect(getByTestId('button-icon-before')).toBeTruthy();
     });
     it('Should render the button text', () => {
         const textTest = 'Test';
-        const { getByText } = render(<Dropdown text={textTest} content={content} />);
+        const { getByText } = render(<Dropdown text={textTest} content={content} onItemSelected={() => console.log('Item select OK!')} />);
         expect(getByText(textTest)).toBeTruthy();
     });
     it('Should render 1 button', () => {
@@ -37,6 +37,7 @@ describe('<Dropdown>', () => {
                         icon: 'edit'
                     },
                 ]}
+                onItemSelected={() => console.log('Item select OK!')}
             />
         );
         fireEvent.click(getByText(textTest));
@@ -59,6 +60,7 @@ describe('<Dropdown>', () => {
                         icon: 'delete'
                     },
                 ]}
+                onItemSelected={() => console.log('Item select OK!')}
             />
         );
         fireEvent.click(getByText(textTest));
@@ -85,6 +87,7 @@ describe('<Dropdown>', () => {
                         icon: 'add'
                     },
                 ]}
+                onItemSelected={() => console.log('Item select OK!')}
             />
         );
         fireEvent.click(getByText(textTest));
@@ -117,6 +120,7 @@ describe('<Dropdown>', () => {
                         onClick: mockCallBackButtonAdd,
                     },
                 ]}
+                onItemSelected={() => console.log('Item select OK!')}
             />
         );
         fireEvent.click(getByText(textTest));
