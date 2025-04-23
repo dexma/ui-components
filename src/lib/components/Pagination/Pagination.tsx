@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Pagination as PaginationAntDesign, type PaginationProps as PaginationAntProps } from 'antd';
 import { ThemeContext } from 'styled-components';
 import { Icon } from '@components';
@@ -25,7 +25,7 @@ export type PaginationProps = {
 
 export const Pagination = (props: PaginationProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
-    const { previosPageAriaLabel, nextPageAriaLabel, disabled, prevDotsPageAriaLabel, nextDotsPageAriaLabel, defaultCurrent } = props;
+    const { previosPageAriaLabel, nextPageAriaLabel, disabled, prevDotsPageAriaLabel, nextDotsPageAriaLabel, defaultCurrent, current, onChange } = props;
     useEffect(() => {
         const ulElem = document.querySelector('.ant-pagination');
         if (ulElem) {
@@ -43,14 +43,21 @@ export const Pagination = (props: PaginationProps) => {
         }
     }, [previosPageAriaLabel, nextPageAriaLabel, prevDotsPageAriaLabel, nextDotsPageAriaLabel]);
 
-    const [current, setCurrent] = useState(defaultCurrent ?? 1);
-    const onChange: PaginationProps['onChange'] = (page) => {
-        setCurrent(page);
+
+    const changePage = (page: number) => {
+        setTimeout(() => {
+            const liOldCurrentPage = document.querySelector<HTMLSpanElement>(`span[aria-current='page']`);
+            if (liOldCurrentPage)
+                liOldCurrentPage.removeAttribute('aria-current');
+            const liNewCurrentPage = document.querySelector<HTMLLIElement>(`li[title='${page}']`);
+            if (liNewCurrentPage)
+                liNewCurrentPage.querySelector('span')!.setAttribute('aria-current', 'page');
+        }, 0);
     };
 
     return (
         <StyledPagination data-testid='pagination' theme={th}>
-            <PaginationAntDesign itemRender={itemRender(current)} onChange={onChange} disabled={disabled} aria-disabled={disabled} {...props} />
+            <PaginationAntDesign itemRender={itemRender(current || defaultCurrent || 1)} onChange={onChange ?? changePage} disabled={disabled} aria-disabled={disabled} {...props} />
         </StyledPagination>
     );
 };
