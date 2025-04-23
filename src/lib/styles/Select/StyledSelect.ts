@@ -177,10 +177,11 @@ export const getSelectOptionStyle = (theme: DefaultTheme | Theme) => css`
         box-shadow: ${theme ? `0 0 0 2px ${hexToRGBA(primaryColor(theme), 0.2)}` : `0 0 0 2px ${hexToRGBA(theme, 0.2)}`};
     }
     .ant-select-item-option-active:not(.ant-select-item-option-disabled):not(.ant-select-item-option-selected) {
-        background-color: ${color.gray50} !important;
+        border: ${color.irisBlue} 2px solid;
     }
     .ant-select-item-option-active:not(.ant-select-item-option-disabled).ant-select-item-option-selected {
         filter: brightness(0.95);
+        border: ${color.irisBlue} 2px solid;
     }
 
     .option-select.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
