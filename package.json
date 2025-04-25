@@ -1,6 +1,6 @@
 {
     "name": "@dexma/ui-components",
-    "version": "7.1.0",
+    "version": "0.0.0",
     "description": "DEXMA UI Components (React)",
     "main": "./dist/ui-components.umd.js",
     "module": "./dist/ui-components.es.js",
@@ -40,17 +40,29 @@
         "branch": "master",
         "tagFormat": "v${version}",
         "plugins": [
-            "@semantic-release/commit-analyzer",
+            [
+                "@semantic-release/commit-analyzer",
+                {
+                    "releaseRules": [
+                        {
+                            "type": "feat",
+                            "release": "patch"
+                        },
+                        {
+                            "type": "fix",
+                            "release": "patch"
+                        },
+                        {
+                            "breaking": true,
+                            "release": "patch"
+                        }
+                    ]
+                }
+            ],
             "@semantic-release/release-notes-generator",
             "@semantic-release/npm",
             "@semantic-release/github",
-            "@semantic-release/changelog",
-            [
-                "@semantic-release/git",
-                {
-                    "message": "release (${nextRelease.version})"
-                }
-            ]
+            "@semantic-release/changelog"
         ]
     },
     "dependencies": {
@@ -69,7 +81,6 @@
     "devDependencies": {
         "@chromatic-com/storybook": "^1.5.0",
         "@semantic-release/changelog": "^6.0.3",
-        "@semantic-release/git": "^10.0.1",
         "@storybook/addon-essentials": "^8.1.10",
         "@storybook/addon-interactions": "^8.1.10",
         "@storybook/addon-links": "^8.1.10",
