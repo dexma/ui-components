@@ -1,3 +1,74 @@
+# [8.0.0](https://github.com/dexma/ui-components/compare/v7.1.1...v8.0.0) (2025-04-25)
+
+
+### Bug Fixes
+
+* **input:** Delete search date unnecessary story. ([c8848e6](https://github.com/dexma/ui-components/commit/c8848e6e748be9afbf050a1276cd28025c967eaf))
+
+
+### Features
+
+* **alert:** add aria-live property with enum values (polite, assertive) ([2e22193](https://github.com/dexma/ui-components/commit/2e22193c65fc1dd59023721b12faf83a65e73e87))
+* **area-label:** translation to english. ([1421f20](https://github.com/dexma/ui-components/commit/1421f20db106765fd3f603c2dc98bfe7baef9a58))
+* **aria-disabled:** add aria-disabled in each component if disabled property is allowed. ([5a8ad7f](https://github.com/dexma/ui-components/commit/5a8ad7f247add8be629e864834806f22a2e3e400))
+* **button:** add ariaLabel property, change where the aria-label property is displayed, add aria-label, aria-live and aria-busy when isLoding property is true. ([63ad1e7](https://github.com/dexma/ui-components/commit/63ad1e78d55ff84a00bc941972bcba688000e848))
+* **button:** delete ariaLabel input, add aria-label in button stories. ([d956ed2](https://github.com/dexma/ui-components/commit/d956ed2d87972e2a91001c35b8b6cc58b3a76c63))
+* **button:** discriminate buttons kind icon, button or iconText, fix unit-tests, add focus border and define kind=button as default value. ([30a1642](https://github.com/dexma/ui-components/commit/30a16422c53d76a6db485bac7d33968a4cf8c073))
+* **card:** change h5 to h3. Change h6 to p. Add imageAlt and linkTitle inputs. ([a6dcfc4](https://github.com/dexma/ui-components/commit/a6dcfc4bd24eb82497efd290d75f26280181ff63))
+* **cascader:** add ariaLabel input in each option, show this aria-label when item is selected. ([a5cbf17](https://github.com/dexma/ui-components/commit/a5cbf1725b7b9a0e7d7c8f33b96955078a8e793d))
+* **checkbox:** add aria-check and aria-disabled properties. ([e05a810](https://github.com/dexma/ui-components/commit/e05a81007bde53676b9a4929b6a109980f91be90))
+* **color:** change green and red. ([0e75c08](https://github.com/dexma/ui-components/commit/0e75c08a2f128495f0790574a8f736226c1b1fe9))
+* **color:** change irisBlue. ([7648bed](https://github.com/dexma/ui-components/commit/7648bedc8d3d9a779c82e7751705cbc744402bf8))
+* **datepicker:** add role, aria-level properties, add hide label tag . ([3ccff77](https://github.com/dexma/ui-components/commit/3ccff7729f5918972847130d1bf917cd57c619a5))
+* **datepicker:** delete ariaLabel input, add aria-label prop in datepicker stories, translate label and aria-label to english. ([8e4c668](https://github.com/dexma/ui-components/commit/8e4c66813b73b958c082cb1abd0353055c3cd356))
+* **datepicker:** set correctly label id reference, add role=dialog and aria-label in ant-picker-dropdown. ([b9a3daa](https://github.com/dexma/ui-components/commit/b9a3daab8e284e13f7c4c4ca70a328a6708df766))
+* **dropdown-select:** add aria-expandend property. ([5a1dc6f](https://github.com/dexma/ui-components/commit/5a1dc6fbc88c8ba3367263ea76f7163273fd70bd))
+* **dropdown:** add aria-label in main container, add aria-label, role and aria-labelledby in menu-items. ([159c480](https://github.com/dexma/ui-components/commit/159c48063a531614b0b787b7b24675dabeb38ea3))
+* **dropdown:** add onItemSelected method input for known how menu item is selected. Add border in menu item focused. ([593f86f](https://github.com/dexma/ui-components/commit/593f86f2002556084f36fef69fbc1510e490f6a9))
+* **dropdown:** remove parentName property in item content. Set role and aria-labelledby in openChange method. ([3bbbbff](https://github.com/dexma/ui-components/commit/3bbbbffa1bbc866cca5a3fd974a92f14f74d8d82))
+* **dropdown:** rename parentId to parentName, translate ariaLabel prop. ([4cad492](https://github.com/dexma/ui-components/commit/4cad492665e6bc350115c275d04f967ae3c5e963))
+* **dropdown:** set role=dialog in right location, allow open dropdown with Enter key. ([7af8dcd](https://github.com/dexma/ui-components/commit/7af8dcdbd16961da7ced820e3997e1cf4d42b592))
+* **fieldGroup:** rename ariaLabel to iconAriaLabel. ([0251b7d](https://github.com/dexma/ui-components/commit/0251b7dc0fd61f99688f86ae68131f914f67e4a0))
+* **formControl:** add inputLabel property to set label property in Input component. ([22e4674](https://github.com/dexma/ui-components/commit/22e46741f7144d8b223127985bf709fde852f675))
+* **icon:** add aria-label property, add iconAriaLabel in many components that use Icon component. ([329ad7e](https://github.com/dexma/ui-components/commit/329ad7e0207c203e6a18ae0719d238d60d2abb4a))
+* **icon:** omit aria-label prop to common SvgProps. ([773e3d6](https://github.com/dexma/ui-components/commit/773e3d67a273eedb9d769692edea86b6b1b09ae0))
+* **input:** add label tag, add ariaLabel property, change type: string to type: enum. ([80739bc](https://github.com/dexma/ui-components/commit/80739bc4600d7fa4cdfa22dca2ae406fe4aaccd6))
+* **input:** add required field. ([6157c44](https://github.com/dexma/ui-components/commit/6157c44d6b4d4630cbcb0d821b9130486539f8e9))
+* **input:** add role=search if input is it to search. Add autocomplete value. ([73a1659](https://github.com/dexma/ui-components/commit/73a16597c3eaee45e751f6f6938291b67e7d5b01))
+* **input:** add types input story. ([e967e44](https://github.com/dexma/ui-components/commit/e967e4443aed9c3fce891a283e27efe0c96fbf6b))
+* **input:** change optional type input to required input. ([402e6b5](https://github.com/dexma/ui-components/commit/402e6b5df2f6d14550388b2572cb48965eb2a343))
+* **loading:** add aria-busy, role and aria-label properties. ([3a7ccd0](https://github.com/dexma/ui-components/commit/3a7ccd0cb080f1825270a0ad1963bdc1716cbb33))
+* **loading:** add aria-label and aria-live properties. ([bf66b3e](https://github.com/dexma/ui-components/commit/bf66b3ec9760dcc404e434e14ee2690f657fb213))
+* **loading:** delete ariaLabel input, add aria-label prop in loading stories. ([f5ed485](https://github.com/dexma/ui-components/commit/f5ed485b2a8e5e7bf886d9739ad9e305ea7d981a))
+* **modal:** customize modal organizations of elements for screen reader read accurancy view. ([e196af1](https://github.com/dexma/ui-components/commit/e196af1a75928abfc9ad5502d282dd1634acf5c4))
+* **modal:** set aria-label in close button with input closeModalButton prop. ([c3c0db6](https://github.com/dexma/ui-components/commit/c3c0db65bc66e7031b4434fadccda5d96d532778))
+* **pagination:** add aria-current, aria-label in previos and next page and role=list and role=listitem. ([16d76da](https://github.com/dexma/ui-components/commit/16d76da7cd26fac9060f05f48f1ec2b48541605c))
+* **pagination:** change role=list and role=listitem locations in html, add aria-label in dots elements. ([40471b3](https://github.com/dexma/ui-components/commit/40471b30c562e41a6baeb6568ec8670f48e9d373))
+* **pagination:** change way to render item pages. ([75f8cf3](https://github.com/dexma/ui-components/commit/75f8cf38d8355b453555c862750a3345b5f125b6))
+* **pagination:** set aria-current in curren page when changePage execute. ([d51b89e](https://github.com/dexma/ui-components/commit/d51b89ef75ac75109b7b696cf78df388e4a0acda))
+* **popover:** add aria-label in Button inside to Popover component, show aria-label in Button component anyway and change to role=dialog. ([db0cf59](https://github.com/dexma/ui-components/commit/db0cf597d86a06cff88a420d8712058100a3ceb3))
+* **popover:** change ariaLabel to aria-label. ([e52ae7e](https://github.com/dexma/ui-components/commit/e52ae7ec2dab61bcb0cde643583be571cba80916))
+* **progress:** add ariaLabel input. ([657147a](https://github.com/dexma/ui-components/commit/657147a9a34ff5806257b8870151de791b171684))
+* **progress:** in each example there is only a progress bar. ([a52d305](https://github.com/dexma/ui-components/commit/a52d305f62e98f4e564be52029349e001dc511f8))
+* **select:** add border in item focused. ([b2ce0ef](https://github.com/dexma/ui-components/commit/b2ce0ef7188a7c2eaac159e000c00a218f9000d3))
+* **select:** add custom style in single Select, add aria-label in options. ([d51c472](https://github.com/dexma/ui-components/commit/d51c47216162e4759acf78c89bc215a9a2f386cf))
+* **switch:** add ariaLabel input. ([af3a40c](https://github.com/dexma/ui-components/commit/af3a40c1d8932f42b067b944e4b6f4dfe13fb03e))
+* **switchPeriodComparative:** allow switch period with keyboard. ([32cce58](https://github.com/dexma/ui-components/commit/32cce58db6d9b05e4449de59031eb0fd49943db3))
+* **table:** add aria-label in checkbox to we can select row. ([ceb7b06](https://github.com/dexma/ui-components/commit/ceb7b06d3a8a6ba0e386dbf62d9cf8d1a88f4817))
+* **table:** change to way that to show pagination item related to table. Add currentPage, pageSize, showSizeChanger and pageSizeOptions inputs. ([837fa9a](https://github.com/dexma/ui-components/commit/837fa9a29279c2b4d444d001b2a7fcca385b1527))
+* **tabs:** add aria-label in extra-actions buttons. ([38327ec](https://github.com/dexma/ui-components/commit/38327ec2ac1e0688403eff9ea7fb4af8405e1040))
+* **tooltip:** allow open it both keyboard key and hover. ([f570643](https://github.com/dexma/ui-components/commit/f57064309cf1d28454fa2c69e954ff7dafc999da))
+* **tooltip:** allow open tooltip with Enter key down. ([db5b0b0](https://github.com/dexma/ui-components/commit/db5b0b0a183ebaaffcb07ef7b31c00855ad9d774))
+
+
+### BREAKING CHANGES
+
+* **dropdown:** required onItemSelected
+* **button:** required kind when kind is not "button"
+* **modal:** required closeModalButtonAriaLabel
+* **input:** required type
+* **icon:** required iconAriaLabel
+
 ## [7.1.1](https://github.com/dexma/ui-components/compare/v7.1.0...v7.1.1) (2025-02-03)
 
 
