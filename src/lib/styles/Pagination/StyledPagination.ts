@@ -45,13 +45,13 @@ export const getStyledPagination = (theme: Theme) => css`
         cursor: pointer;
         user-select: none;
     }
-    .ant-pagination-item a {
+    .ant-pagination-item span {
         display: block;
         padding: 0;
         color: ${fontColor(theme)};
         transition: none;
     }
-    .ant-pagination-item a:hover {
+    .ant-pagination-item span:hover {
         text-decoration: none;
     }
     .ant-pagination-item:focus,
@@ -59,8 +59,8 @@ export const getStyledPagination = (theme: Theme) => css`
         border-color: transparent;
         transition: all 0.3s;
     }
-    .ant-pagination-item:focus a,
-    .ant-pagination-item:hover a {
+    .ant-pagination-item:focus span,
+    .ant-pagination-item:hover span {
         color: ${primaryColor(theme)};
     }
     .ant-pagination-item-active {
@@ -68,15 +68,15 @@ export const getStyledPagination = (theme: Theme) => css`
         background: ${backgroundColor(theme)};
         border-color: ${primaryColor(theme)};
     }
-    .ant-pagination-item-active a {
+    .ant-pagination-item-active span {
         color: ${primaryColor(theme)};
     }
     .ant-pagination-item-active:focus,
     .ant-pagination-item-active:hover {
         border-color: ${primaryColor(theme)};
     }
-    .ant-pagination-item-active:focus a,
-    .ant-pagination-item-active:hover a {
+    .ant-pagination-item-active:focus span,
+    .ant-pagination-item-active:hover span {
         color: ${primaryColor(theme)};
     }
     .ant-pagination-jump-next,
@@ -171,13 +171,13 @@ export const getStyledPagination = (theme: Theme) => css`
             }
         }
     }
-    .ant-pagination-next a,
-    .ant-pagination-prev a {
+    .ant-pagination-next span,
+    .ant-pagination-prev span {
         color: ${fontColor(theme)};
         user-select: none;
     }
-    .ant-pagination-next:hover a,
-    .ant-pagination-prev:hover a {
+    .ant-pagination-next:hover span,
+    .ant-pagination-prev:hover span {
         border-color: ${primaryColor(theme)};
     }
     .ant-pagination-next .ant-pagination-item-link,
@@ -205,10 +205,10 @@ export const getStyledPagination = (theme: Theme) => css`
     }
     .ant-pagination-disabled .ant-pagination-item-link,
     .ant-pagination-disabled:focus .ant-pagination-item-link,
-    .ant-pagination-disabled:focus a,
+    .ant-pagination-disabled:focus span,
     .ant-pagination-disabled:hover .ant-pagination-item-link,
-    .ant-pagination-disabled:hover a,
-    .ant-pagination-disabled a {
+    .ant-pagination-disabled:hover span,
+    .ant-pagination-disabled span {
         color: ${gray300(theme)};
         cursor: not-allowed;
     }
@@ -232,7 +232,7 @@ export const getStyledPagination = (theme: Theme) => css`
         background: ${backgroundColor(theme)};
         cursor: not-allowed;
     }
-    .ant-pagination.ant-pagination-disabled .ant-pagination-item a {
+    .ant-pagination.ant-pagination-disabled .ant-pagination-item span {
         color: ${gray300(theme)};
         background: transparent;
         border: none;
@@ -242,7 +242,7 @@ export const getStyledPagination = (theme: Theme) => css`
         background: ${backgroundColor(theme)};
         border-color: transparent;
     }
-    .ant-pagination.ant-pagination-disabled .ant-pagination-item-active a {
+    .ant-pagination.ant-pagination-disabled .ant-pagination-item-active span {
         color: #fff;
     }
     .ant-pagination.ant-pagination-disabled .ant-pagination-item-link,

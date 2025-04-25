@@ -1,4 +1,3 @@
-import React from 'react';
 import { Loading, Grid, Row, Cell, Paragraph, LoadingProps } from '@components';
 
 export default {
@@ -22,7 +21,7 @@ export const Basic = () => (
                         marginTop: '30px',
                     }}
                 >
-                    <Loading isLoading size={50} />
+                    <Loading isLoading size={50} aria-busy role='region' aria-label='Loading...' />
                 </div>
             </Cell>
             <Cell xs={12}>
@@ -34,7 +33,7 @@ export const Basic = () => (
                         marginTop: '30px',
                     }}
                 >
-                    <Loading isLoading color='teal500' size={50} />
+                    <Loading isLoading color='teal500' size={50} aria-busy role='region' aria-label='Loading...' />
                 </div>
             </Cell>
             <Cell xs={12}>
@@ -46,7 +45,7 @@ export const Basic = () => (
                         marginTop: '30px',
                     }}
                 >
-                    <Loading isLoading color='red' size={50} />
+                    <Loading isLoading color='red' size={50} aria-busy role='region' aria-label='Loading...' />
                 </div>
             </Cell>
             <Cell xs={12}>
@@ -58,7 +57,7 @@ export const Basic = () => (
                         marginTop: '30px',
                     }}
                 >
-                    <Loading isLoading color='cyan' size={50} />
+                    <Loading isLoading color='cyan' size={50} aria-busy role='region' aria-label='Loading...' />
                 </div>
             </Cell>
         </Row>

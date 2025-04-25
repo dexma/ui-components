@@ -1,4 +1,4 @@
-import React, { ComponentType, forwardRef, useContext } from 'react';
+import { ComponentType, forwardRef, useContext } from 'react';
 import { DataIdContext } from '@components/DataId/DataIdProvider';
 
 type WithDataIdProps = {

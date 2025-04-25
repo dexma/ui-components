@@ -264,7 +264,7 @@ const getIndicatorLength = (indicatorValue: number) => {
     }
 
     return indicatorString.length;
-}
+};
 
 const renderIndicatorLabel = (chart: any, indicator: Indicator, mainSize: number, decimalSeparator?: string, thousandSeparator?: string, hasData?: boolean) => {
     const currentChart = chart;

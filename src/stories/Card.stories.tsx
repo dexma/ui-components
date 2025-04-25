@@ -40,7 +40,7 @@ export const Image = () => (
             </Cell>
             {mockCards.map((card) => (
                 <Cell xs={4} key={card.title}>
-                    <Card title={card.title} image={card.image} />
+                    <Card title={card.title} image={card.image} imageAlt={card.alt} />
                 </Cell>
             ))}
         </Row>
@@ -76,7 +76,8 @@ export const Footer = () => (
                         subtitle='With supporting text below as a natural lead-in to additional content.'
                         footer={
                             <>
-                                <Button iconBefore='add' text='Button' /> <Button variant='destructive' iconBefore='delete' isCircle />{' '}
+                                <Button kind='iconTextButton' iconBefore='add' text='Button' />
+                                <Button kind='iconButton' variant='destructive' iconBefore='delete' isCircle iconAriaLabel='Delete' />{' '}
                             </>
                         }
                     />
@@ -94,7 +95,14 @@ export const Link = () => (
             </Cell>
             {mockCards.map((card) => (
                 <Cell xs={4} key={card.title}>
-                    <Card title={card.title} image={card.image} subtitle='With supporting text below as a natural lead-in to additional content.' link={card.image} />
+                    <Card
+                        title={card.title}
+                        image={card.image}
+                        subtitle='With supporting text below as a natural lead-in to additional content.'
+                        link={card.image}
+                        imageAlt={card.alt}
+                        linkTitle='Click to open image in another tab'
+                    />
                 </Cell>
             ))}
         </Row>
@@ -131,7 +139,8 @@ export const HorizontalFooter = () => (
                         isHorizontal
                         footer={
                             <>
-                                <Button iconBefore='add' text='Button' /> <Button variant='destructive' iconBefore='delete' isCircle />{' '}
+                                <Button kind='iconTextButton' iconBefore='add' text='Button' />
+                                <Button kind='iconButton' variant='destructive' iconBefore='delete' isCircle iconAriaLabel='Delete' />{' '}
                             </>
                         }
                     />

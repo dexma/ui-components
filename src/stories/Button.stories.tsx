@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, ButtonGroup, Cell, Grid, Row, Paragraph, ButtonProps } from '@components';
 
 export default {
@@ -60,22 +59,22 @@ export const Icons = () => (
                 <Paragraph margin='1.5rem 0 1rem 0'>We can add icon before and after by setting the iconBefore or iconAfter property and isCircle to set a circle button</Paragraph>
             </Cell>
             <Cell xs={12} style={{ marginBottom: '10px' }}>
-                <Button text='Primary' iconBefore='add' />
-                <Button text='Secondary' variant='secondary' iconBefore='image' />
-                <Button text='Outline' variant='outline' iconAfter='gas' />
-                <Button text='Destructive' variant='destructive' iconBefore='delete' />
-                <Button text='Link' variant='link' iconBefore='world' />
+                <Button kind='iconTextButton' text='Primary' iconBefore='add' aria-label='Add image' />
+                <Button kind='iconTextButton' text='Secondary' variant='secondary' iconBefore='image' aria-label='Select image' />
+                <Button kind='iconTextButton' text='Outline' variant='outline' iconAfter='gas' aria-label='Select gas provider' />
+                <Button kind='iconTextButton' text='Destructive' variant='destructive' iconBefore='delete' aria-label='Delete image' />
+                <Button kind='iconTextButton' text='Link' variant='link' iconBefore='world' aria-label='View world map' />
             </Cell>
             <Cell xs={12}>
-                <Button iconBefore='add' isCircle />
-                <Button variant='secondary' iconBefore='image' isCircle />
-                <Button variant='outline' iconBefore='gas' isCircle />
-                <Button variant='destructive' iconBefore='delete' isCircle />
-                <Button variant='link' iconBefore='world' isCircle />
-                <Button iconAfter='circle_add' variant='icon' isCircle />
-                <Button iconAfter='vader' variant='icon-secondary' isCircle />
-                <Button iconAfter='search' variant='icon-outline' isCircle />
-                <Button iconAfter='star' iconColor='amber' variant='icon-secondary' isCircle size='large' />
+                <Button kind='iconButton' iconBefore='add' isCircle iconAriaLabel='Add image icon' />
+                <Button kind='iconButton' variant='secondary' iconBefore='image' isCircle iconAriaLabel='Select image icon' />
+                <Button kind='iconButton' variant='outline' iconBefore='gas' isCircle iconAriaLabel='Add image icon' />
+                <Button kind='iconButton' variant='destructive' iconBefore='delete' isCircle iconAriaLabel='Delete image icon' />
+                <Button kind='iconButton' variant='link' iconBefore='world' isCircle iconAriaLabel='View map icon' />
+                <Button kind='iconButton' iconAfter='circle_add' variant='icon' isCircle iconAriaLabel='Add image icon' />
+                <Button kind='iconButton' iconAfter='vader' variant='icon-secondary' isCircle iconAriaLabel='Vader icon' />
+                <Button kind='iconButton' iconAfter='search' variant='icon-outline' isCircle iconAriaLabel='Search icon' />
+                <Button kind='iconButton' iconAfter='star' iconColor='amber' variant='icon-secondary' isCircle size='large' iconAriaLabel='Mark favourite icon' />
             </Cell>
         </Row>
     </Grid>
@@ -88,18 +87,18 @@ export const Loading = () => (
                 <Paragraph margin='1.5rem 0 1rem 0'>A loading indicator can be added to a button by setting the isLoading property on the Button</Paragraph>
             </Cell>
             <Cell xs={12} style={{ marginBottom: '10px' }}>
-                <Button text='Primary' iconBefore='add' isLoading />
-                <Button text='Secondary' variant='secondary' iconBefore='image' isLoading />
-                <Button text='Outline' variant='outline' iconAfter='gas' isLoading />
-                <Button text='Destructive' variant='destructive' iconBefore='delete' isLoading />
-                <Button text='Link' variant='link' iconBefore='world' isLoading />
+                <Button kind='iconTextButton' text='Primary' iconBefore='add' isLoading aria-label='Loading, please wait' />
+                <Button kind='iconTextButton' text='Secondary' variant='secondary' iconBefore='image' isLoading aria-label='Loading, please wait' />
+                <Button kind='iconTextButton' text='Outline' variant='outline' iconAfter='gas' isLoading aria-label='Loading, please wait' />
+                <Button kind='iconTextButton' text='Destructive' variant='destructive' iconBefore='delete' isLoading aria-label='Loading, please wait' />
+                <Button kind='iconTextButton' text='Link' variant='link' iconBefore='world' isLoading aria-label='Loading, please wait' />
             </Cell>
             <Cell xs={12} style={{ marginBottom: '10px' }}>
-                <Button iconBefore='add' isCircle isLoading />
-                <Button variant='secondary' iconBefore='image' isCircle isLoading />
-                <Button variant='outline' iconBefore='gas' isCircle isLoading />
-                <Button variant='destructive' iconBefore='delete' isCircle isLoading />
-                <Button variant='link' iconBefore='world' isCircle isLoading />
+                <Button kind='iconButton' iconBefore='add' isCircle isLoading iconAriaLabel='Loading, please wait' />
+                <Button kind='iconButton' variant='secondary' iconBefore='image' isCircle isLoading iconAriaLabel='Loading, please wait' />
+                <Button kind='iconButton' variant='outline' iconBefore='gas' isCircle isLoading iconAriaLabel='Loading, please wait' />
+                <Button kind='iconButton' variant='destructive' iconBefore='delete' isCircle isLoading iconAriaLabel='Loading, please wait' />
+                <Button kind='iconButton' variant='link' iconBefore='world' isCircle isLoading iconAriaLabel='Loading, please wait' />
             </Cell>
         </Row>
     </Grid>
@@ -134,7 +133,7 @@ export const WithTooltips = () => (
             <Cell xs={12}>
                 <Button tooltip='Button 1' text='Button 1' />
                 <Button tooltip='Button 2' text='Button 2' variant='secondary' />
-                <Button tooltip='Primary' iconBefore='add' />
+                <Button kind='iconButton' tooltip='Primary' iconBefore='add' iconAriaLabel='Add image' />
             </Cell>
         </Row>
     </Grid>

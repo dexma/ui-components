@@ -1,4 +1,4 @@
-import React, { type MouseEvent, type ReactNode, useContext, useRef, useState } from 'react';
+import { type MouseEvent, type ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import { Cascader as CascaderAntd, ConfigProvider, type CascaderProps as CascaderAntdProps } from 'antd';
 import { type CascaderRef, type DefaultOptionType } from 'antd/es/cascader';
 import { type DefaultTheme, ThemeContext } from 'styled-components';
@@ -9,13 +9,18 @@ import { CascaderOptionStyle, StyledTagSelected } from '@styles/Cascader/StyledC
 import { colors } from 'index';
 
 type Value = Array<string | number>;
-type CascaderProps<OptionType extends DefaultOptionType> = CascaderAntdProps & {
+type CascaderProps = CascaderAntdProps & {
     open?: boolean;
-    options?: OptionType[];
+    options?: OptionProps[];
+    iconAriaLabel?: string;
     onChange?: (value: Value | Value[]) => void;
 };
 
-export const tagRender = (theme: DefaultTheme) => (props: { label: ReactNode; value: string; closable: boolean; onClose: () => void }) => {
+type OptionProps = DefaultOptionType & {
+    selectedItemAriaLabel?: string;
+};
+
+export const tagRender = (theme: DefaultTheme, iconAriaLabel?: string) => (props: { label: ReactNode; value: string; closable: boolean; onClose: () => void }) => {
     const { label, value, closable, onClose } = props;
     const onPreventMouseDown = (event: MouseEvent<HTMLSpanElement>) => {
         event.preventDefault();
@@ -25,19 +30,55 @@ export const tagRender = (theme: DefaultTheme) => (props: { label: ReactNode; va
     return (
         <StyledTagSelected onMouseDown={onPreventMouseDown} $closable={closable} style={{ marginRight: 4 }} data-testid={`tag-option-selected-${value}`} theme={theme}>
             {label}
-            {closable && <Icon className='icon-close' name='close' size='small' onClick={onClose} color={colors.white} />}
+            {closable && (
+                <Icon className='icon-close' name='close' size='small' ariaLabel={!iconAriaLabel ? `Icon to close card` : iconAriaLabel} onClick={onClose} color={colors.white} />
+            )}
         </StyledTagSelected>
     );
 };
 
-export const Cascader = <OptionType extends DefaultOptionType>({ multiple, options = [], maxTagCount, onChange, open, changeOnSelect, ...props }: CascaderProps<OptionType>) => {
+export const Cascader = ({ multiple, options = [], maxTagCount, onChange, open, changeOnSelect, iconAriaLabel, ...props }: CascaderProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
     const [currentOpen, setCurrentOpen] = useState(open || false);
+    const [itemsSelected, setItemsSelected] = useState([] as { label: string; selectedItemAriaLabel: string }[]);
     const ref = useRef<CascaderRef>();
+    useEffect(() => {
+        document.querySelectorAll('.ant-cascader-menu-item').forEach((item) => {
+            item.removeAttribute('aria-label');
+        });
+        itemsSelected.forEach((item) => {
+            const liSelected = document.querySelector(`li[title="${item.label}"]`);
+            liSelected?.setAttribute('aria-label', item.selectedItemAriaLabel);
+        });
+    }, [itemsSelected]);
+
+    const getItemsSelected = (values: string[]) => {
+        const selectedLabels: { label: string; selectedItemAriaLabel: string }[] = [];
+
+        const findSelectedItems = (opts: OptionProps[], vals: string[]) => {
+            vals.forEach((v) => {
+                const optSelected = opts.find((o) => v === o.value?.toString());
+                if (optSelected) {
+                    selectedLabels.push({ label: optSelected.label!.toString(), selectedItemAriaLabel: optSelected.selectedItemAriaLabel || '' });
+
+                    if (optSelected.children) {
+                        findSelectedItems(optSelected.children, vals);
+                    }
+                }
+            });
+        };
+
+        findSelectedItems(options, values);
+
+        // Ensuring the state is updated correctly
+        setItemsSelected((prev) => [...prev, ...selectedLabels]);
+    };
 
     const handleOnChange = (value: Value | Value[]) => {
         if (onChange) onChange(value);
         if (!changeOnSelect && !multiple && ref.current?.blur()) setCurrentOpen(false);
+        setItemsSelected([]);
+        getItemsSelected(!multiple ? (value as Value[]).map((x) => x.toString()) : (value as Value[]).flat().map(String));
     };
 
     return (
@@ -71,10 +112,11 @@ export const Cascader = <OptionType extends DefaultOptionType>({ multiple, optio
                     onFocus={() => {
                         setCurrentOpen(true);
                     }}
-                    tagRender={tagRender(defaultTheme)}
+                    tagRender={tagRender(defaultTheme, iconAriaLabel)}
                     maxTagPlaceholder={(values) => `+${values.length}`}
-                    open={!changeOnSelect? currentOpen : undefined}
+                    open={!changeOnSelect ? currentOpen : undefined}
                     changeOnSelect={changeOnSelect}
+                    aria-disabled={props.disabled || false}
                     {...props}
                 />
             </ConfigProvider>

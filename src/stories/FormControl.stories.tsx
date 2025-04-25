@@ -30,7 +30,7 @@ export const Basic = () => (
                         marginTop: '30px',
                     }}
                 >
-                    <FormControl control='Input' />
+                    <FormControl control='Input' inputLabel='Input' />
                     <br />
                     <FormControl control='Checkbox' success message='Text info caption'>
                         Checkbox

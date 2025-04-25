@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { type JSX } from 'react/jsx-runtime';
 
 import { Grid, Row, Cell, Button, Paragraph, Popover } from '@components';
@@ -20,16 +20,16 @@ export const Basic = () => (
             </Cell>
             <Cell>
                 <Popover title='Popover' trigger='click'>
-                    <Button text='Click me' />
+                    <Button text='Click me' aria-label='Click to open popover' />
                 </Popover>
                 <Popover title='Popover' content={<Paragraph margin='1rem 0 1rem 0'>A popover content may be a simple text or a more complex component.</Paragraph>}>
-                    <Button text='Test' iconBefore='vader' />
+                    <Button kind='iconTextButton' text='Test' iconBefore='vader' aria-label='Hover it to open popover' />
                 </Popover>
                 <Popover placement='top' content={<Paragraph margin='1rem 0 1rem 0'>A popover may not have a title, but only content to be displayed.</Paragraph>}>
-                    <Button text='Test top' iconBefore='vader' variant='secondary' />
+                    <Button kind='iconTextButton' text='Test top' iconBefore='vader' variant='secondary' aria-label='Hover it to open popover on the top' />
                 </Popover>
                 <Popover title='Popover right' placement='right'>
-                    <Button iconBefore='help' isCircle />
+                    <Button kind='iconButton' iconBefore='help' isCircle iconAriaLabel='Hover it to open popover on the right' />
                 </Popover>
             </Cell>
         </Row>
@@ -73,7 +73,7 @@ export const PopoverClickHover = () => {
                 open={clicked}
                 onOpenChange={handleClickChange}
             >
-                <Button variant='primary'>Hover and click</Button>
+                <Button text='Hover and click' variant='primary' aria-label='Click or hover it to open popover' />
             </Popover>
         </Popover>
     );

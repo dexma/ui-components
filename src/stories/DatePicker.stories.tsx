@@ -14,13 +14,13 @@ export const Basic = () => (
                 <Paragraph margin='1rem 0 1rem 0'>DatePicker provided by Ant Design UI library.</Paragraph>
             </Cell>
             <Cell>
-                <DatePicker type='date' format='DD-MM-YYYY' />
+                <DatePicker type='date' format='DD-MM-YYYY' aria-label='Calendar to selection date' label='Select date' />
                 <br />
-                <DatePicker type='date' picker='week' />
+                <DatePicker type='date' picker='week' aria-label='Calendar to selection week' label='Select week' />
                 <br />
-                <DatePicker type='date' picker='month' />
+                <DatePicker type='date' picker='month' aria-label='Calendar to selection month' label='Select month' />
                 <br />
-                <DatePicker type='date' picker='year' />
+                <DatePicker type='date' picker='year' aria-label='Calendar to selection year' label='Select year' />
                 <br />
             </Cell>
         </Row>
@@ -34,13 +34,13 @@ export const RangePicker = () => (
                 <Paragraph margin='1rem 0 1rem 0'>RangePicker provided by Ant Design UI library.</Paragraph>
             </Cell>
             <Cell>
-                <DatePicker type='range' format='DD-MM-YYYY' />
+                <DatePicker type='range' format='DD-MM-YYYY' aria-label='Dates range' label='Select start and end date' />
                 <br />
-                <DatePicker type='range' picker='week' />
+                <DatePicker type='range' picker='week' aria-label='Weeks range' label='Select start and end week' />
                 <br />
-                <DatePicker type='range' picker='month' />
+                <DatePicker type='range' picker='month' aria-label='Month range' label='Select start and end month' />
                 <br />
-                <DatePicker type='range' picker='year' />
+                <DatePicker type='range' picker='year' aria-label='Years range' label='Select start and end year' />
                 <br />
             </Cell>
         </Row>
@@ -57,9 +57,9 @@ export const DateTimePicker = () => (
                 </Paragraph>
             </Cell>
             <Cell>
-                <DatePicker type='date' showTime format='DD/MM/YYYY HH:mm:ss' />
+                <DatePicker type='date' showTime format='DD/MM/YYYY HH:mm:ss' aria-label='Select datetime' label='Select datetime' />
                 <br />
-                <DatePicker type='range' showTime format='DD/MM/YYYY HH:mm:ss' />
+                <DatePicker type='range' showTime format='DD/MM/YYYY HH:mm:ss' aria-label='Datetime range' label='Select start and end datetime' />
                 <br />
             </Cell>
         </Row>
@@ -86,6 +86,8 @@ export const PickerPresets = () => (
                             value: [dayjs().startOf('month'), dayjs().endOf('month')],
                         },
                     ]}
+                    aria-label='Dates range'
+                    label='Select start and end date'
                 />
                 <br />
             </Cell>

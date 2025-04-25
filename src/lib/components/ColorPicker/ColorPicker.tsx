@@ -1,4 +1,4 @@
-import React, { ChangeEvent, type ForwardedRef, forwardRef, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, type ForwardedRef, forwardRef, useContext, useEffect, useState } from 'react';
 import { ThemeContext } from 'styled-components';
 
 import defaultTheme from '@utils/theme';
@@ -65,6 +65,8 @@ export const ColorPicker = withDataId(
                                 ref={ref}
                                 placeholder={!isLoading ? placeholder : ''}
                                 onChange={handleChangeInput}
+                                type='text'
+                                label='Color picker input'
                             />
                         )}
                         {isLoading && <StyledSpinnerColorPicker $showInput={showInput !== undefined ? showInput : false} size={20} theme={th} />}

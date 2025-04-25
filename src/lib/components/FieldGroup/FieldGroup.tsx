@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, type ReactNode, useContext } from 'react';
+import { HTMLAttributes, type ReactNode, useContext } from 'react';
 import classNames from 'classnames';
 import { uniqueId as lodashUniqueId } from 'lodash';
 import find from 'lodash/find';
@@ -73,6 +73,7 @@ export type FieldGroupItem = {
     value: string;
     tooltip?: string;
     isDisabled?: boolean;
+    iconAriaLabel?: string;
 };
 
 const GenericFieldGroup = <T extends FieldGroupType, V>({
@@ -115,7 +116,7 @@ const GenericFieldGroup = <T extends FieldGroupType, V>({
     return (
         <StyledFieldGroup theme={th} size={size} data-testid='field-group' $vertical={!!vertical} variant={variant} data-id={dataId} {...props}>
             {uniqueValues.map((item: FieldGroupItem) => {
-                const { uniqueId, value, label, icon, tooltip, isDisabled } = item;
+                const { uniqueId, value, label, icon, tooltip, isDisabled, iconAriaLabel } = item;
                 const isSelected = isFieldSelected({ type, selectedValues: item }, selectedField);
                 const classesItem = classNames('item', label ? `item-${label}` : null, isSelected && 'active', isDisabled && 'disabled');
                 const getLabel = () => (
@@ -131,7 +132,14 @@ const GenericFieldGroup = <T extends FieldGroupType, V>({
                         data-testid='field-group-label'
                     >
                         {!icon && label ? label : null}
-                        {icon ? <Icon name={icon} size={variant === 'custom' && size === 'large' ? 'xlarge' : size} color={colors.red} /> : null}
+                        {icon ? (
+                            <Icon
+                                name={icon}
+                                size={variant === 'custom' && size === 'large' ? 'xlarge' : size}
+                                color={colors.red}
+                                ariaLabel={!iconAriaLabel ? `${icon} icon` : iconAriaLabel}
+                            />
+                        ) : null}
                         <input
                             id={`${uniqueId}_${value}`}
                             onChange={() => {
@@ -143,6 +151,7 @@ const GenericFieldGroup = <T extends FieldGroupType, V>({
                             checked={isSelected}
                             data-testid='field-group-input'
                             disabled={isDisabled}
+                            aria-disabled={isDisabled}
                         />
                     </label>
                 );

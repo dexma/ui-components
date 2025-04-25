@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Checkbox as CheckboxAntd, CheckboxProps as AntCheckboxProps, ConfigProvider } from 'antd';
 import { ThemeContext } from 'styled-components';
 
@@ -20,7 +20,7 @@ export const Checkbox = withDataId(({ checked, disabled, dataId, children, ...pr
                 },
             }}
         >
-            <CheckboxAntd disabled={disabled} checked={checked} {...props}>
+            <CheckboxAntd disabled={disabled} checked={checked} aria-checked={checked} aria-disabled={disabled} {...props}>
                 {children && <span data-id={dataId}>{children}</span>}
             </CheckboxAntd>
         </ConfigProvider>

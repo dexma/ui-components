@@ -1,21 +1,17 @@
-import React from 'react';
+import { Dropdown, type DropdownProps, Row, Grid, Cell, Paragraph, DropdownContent } from '@components';
 
-import { Dropdown, type DropdownProps, Row, Grid, Cell, Paragraph } from '@components';
-
-const innerContent = [
+const innerContent: DropdownContent[] = [
     {
         text: 'Edit',
-        icon: 'edit',
-        onClick: (e: any) => {
-            console.log('click edit', e);
-        },
+        icon: 'edit'
     },
     {
         text: 'Delete',
-        icon: 'delete',
-        onClick: (e: any) => {
-            console.log('click delete', e);
-        },
+        icon: 'delete'
+    },
+    {
+        icon: 'add',
+        iconAriaLabel: 'Add'
     },
 ];
 
@@ -25,6 +21,12 @@ export default {
     tags: ['autodocs'],
 };
 
+const onItemDropdownSelected = (key: number) => {
+    const item = innerContent.find((_, index) => index == key);
+    if (item)
+        console.log(`Click in ${item.text} option`);
+}
+
 export const Basic = () => (
     <Grid fluid>
         <Row>
@@ -32,8 +34,8 @@ export const Basic = () => (
                 <Paragraph margin='1rem 0 1rem 0'>A simple dropdown that provides action elements like links and buttons.</Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Dropdown icon='more_horiz' content={innerContent} />
-                <Dropdown icon='add' content={innerContent} />
+                <Dropdown icon='more_horiz' content={innerContent} iconAriaLabel='More actions' onItemSelected={onItemDropdownSelected} />
+                <Dropdown icon='add' content={innerContent} iconAriaLabel='Add' onItemSelected={onItemDropdownSelected} />
             </Cell>
         </Row>
     </Grid>
@@ -46,7 +48,7 @@ export const DropdownWithText = () => (
                 <Paragraph margin='1rem 0 1rem 0'>The text prop allows the dropdown to be more descriptive.</Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Dropdown icon='add' content={innerContent} text='Dropdown' trigger={['click']} />
+                <Dropdown icon='add' content={innerContent} text='Dropdown' trigger={['click']} onItemSelected={onItemDropdownSelected} />
             </Cell>
         </Row>
     </Grid>
@@ -60,19 +62,19 @@ export const DropdownWithPlacement = () => (
                 <br />
             </Cell>
             <Cell xs={12} xsOffset={2}>
-                <Dropdown icon='settings' content={innerContent} text='Bottom' placement='bottom' />
+                <Dropdown icon='settings' content={innerContent} text='Bottom' placement='bottom' onItemSelected={onItemDropdownSelected} />
             </Cell>
             <br />
             <Cell xs={12} xsOffset={2}>
-                <Dropdown icon='settings' content={innerContent} text='Top' placement='top' />
+                <Dropdown icon='settings' content={innerContent} text='Top' placement='top' onItemSelected={onItemDropdownSelected} />
             </Cell>
             <br />
             <Cell xs={12} xsOffset={2}>
-                <Dropdown icon='settings' content={innerContent} text='Left' placement='bottomLeft' />
+                <Dropdown icon='settings' content={innerContent} text='Left' placement='bottomLeft' onItemSelected={onItemDropdownSelected} />
             </Cell>
             <br />
             <Cell xs={12} xsOffset={2}>
-                <Dropdown icon='settings' content={innerContent} text='Right' placement='bottomRight' />
+                <Dropdown icon='settings' content={innerContent} text='Right' placement='bottomRight' onItemSelected={onItemDropdownSelected} />
             </Cell>
         </Row>
     </Grid>

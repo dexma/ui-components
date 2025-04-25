@@ -1,4 +1,3 @@
-import React from 'react';
 import { describe, expect, it, vitest } from 'vitest';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { FormControl } from '@components';
