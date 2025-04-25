@@ -33,5 +33,4 @@ jobs:
                   commit_message: 'chore(deploy): Storybook'
                   keep_history: false
                   jekyll: false
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+                  token: ${{ secrets.GH_TOKEN }}
