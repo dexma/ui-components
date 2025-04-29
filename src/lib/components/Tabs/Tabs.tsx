@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react';
+import { ReactNode, useContext } from 'react';
 import { Tabs as TabsAntDesign, type TabsProps as TabsPropsAntDesign, type TabPaneProps } from 'antd';
 
 import { StyledTabs } from '@styles/Tabs/StyledTabs';

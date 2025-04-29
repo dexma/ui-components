@@ -1,4 +1,5 @@
 import { Button } from '@components';
+import { color } from '@utils/theme';
 import styled, { createGlobalStyle, css } from 'styled-components';
 
 const getDropdownStyle = css`
@@ -25,6 +26,9 @@ const getDropdownStyle = css`
     }
     .ant-dropdown-menu-item {
         padding: 0px !important;
+    }
+    .ant-dropdown-menu-item:focus {
+        border: ${color.gray300} 3px solid;
     }
     .ant-dropdown::after {
         position: absolute;

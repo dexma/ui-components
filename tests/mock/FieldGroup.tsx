@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const mockRadioGroup = [
     {
         value: '15min',

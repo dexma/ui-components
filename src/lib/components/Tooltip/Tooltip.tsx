@@ -1,4 +1,3 @@
-import React from 'react';
 import { Tooltip as TooltipReact, type TooltipProps } from 'antd';
 import { TooltipPlacement } from 'antd/lib/tooltip';
 

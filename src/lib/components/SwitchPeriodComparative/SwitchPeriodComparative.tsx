@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ThemeContext } from 'styled-components';
 import { uniqueId } from 'lodash';
 import dayjs, { type Dayjs } from 'dayjs';
@@ -45,6 +45,7 @@ type SwitchPeriodComparativeProps = {
     endDate: string;
     previousPeriodText?: string;
     samePeriodLastYearText?: string;
+    disabled?: boolean;
     onPeriodSelect?: ({ period, date }: { period: string; date: { startDate: Dayjs; endDate: Dayjs } }) => void;
 };
 
@@ -54,10 +55,12 @@ export const SwitchPeriodComparative = ({
     endDate,
     previousPeriodText,
     samePeriodLastYearText,
+    disabled,
     onPeriodSelect,
     ...props
 }: SwitchPeriodComparativeProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
+    const [currentPeriod, setCurrentPeriod] = useState(selectedPeriod.toString());
     const formatDate = (start: string, end: string): { startDate: Dayjs; endDate: Dayjs } => {
         const newStartDate = dayjs(start, ISO_FORMAT).startOf('day');
         const newEndDate = dayjs(end, ISO_FORMAT).endOf('day');
@@ -85,6 +88,7 @@ export const SwitchPeriodComparative = ({
         value === SelectedPeriodType.PREVIOUS_PERIOD ? formatDate(previousStartDate, previousEndDate) : formatDate(lastYearStartDate, lastYearEndDate);
 
     const onPeriodChange = (value: FieldGroupItem) => {
+        setCurrentPeriod(value.value);
         if (onPeriodSelect) onPeriodSelect({ period: value.value, date: getActivePeriod(value.value) });
     };
     const previousPeriod = `${previousStartDate} - ${previousEndDate}`;
@@ -93,29 +97,45 @@ export const SwitchPeriodComparative = ({
     const prevId = uniqueId();
     const lastId = uniqueId();
 
+    const values = [
+        {
+            value: 'previous_period',
+            label: renderPeriodComparativeItem(previousPeriodText, previousPeriod, 'previous-period'),
+            id: prevId,
+            name: prevId,
+            isDisabled: disabled,
+        },
+        {
+            value: 'last_period',
+            label: renderPeriodComparativeItem(samePeriodLastYearText, samePeriodLastYear, 'last-period'),
+            id: lastId,
+            name: lastId,
+            isDisabled: disabled,
+        },
+    ];
+
+    const handleKeyDown = (e: any) => {
+        if (e.key === 'Enter') {
+            const oppositePeriod = values.find((v) => v.value !== currentPeriod);
+            if (oppositePeriod) {
+                setCurrentPeriod(oppositePeriod.value);
+                if (onPeriodSelect) onPeriodSelect({ period: oppositePeriod.value, date: getActivePeriod(oppositePeriod.value) });
+            }
+        }
+    };
+
     return (
         <StyledSwitchPeriodComparative data-testid='switch-period-comparative' {...props} theme={th}>
             <div className='compare-period'>
                 <div className='compare-period-container'>
                     <RadioFieldGroup
-                        values={[
-                            {
-                                value: 'previous_period',
-                                label: renderPeriodComparativeItem(previousPeriodText, previousPeriod, 'previous-period'),
-                                id: prevId,
-                                name: prevId,
-                            },
-                            {
-                                value: 'last_period',
-                                label: renderPeriodComparativeItem(samePeriodLastYearText, samePeriodLastYear, 'last-period'),
-                                id: lastId,
-                                name: lastId,
-                            },
-                        ]}
+                        values={values}
                         selectedValues={selectedPeriod}
                         onChange={(item) => {
                             onPeriodChange(item);
                         }}
+                        onKeyDown={handleKeyDown}
+                        aria-disabled={values[0].isDisabled}
                     />
                 </div>
             </div>

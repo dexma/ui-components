@@ -1,4 +1,4 @@
-import React, { type ReactNode, useContext } from 'react';
+import { type ReactNode, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
 import defaultTheme from '@utils/theme';
@@ -56,14 +56,25 @@ export type ResultProps = {
     size?: number;
     icon?: string;
     iconElement?: ReactNode;
+    iconAriaLabel?: string;
 };
 
-export const Result = ({ title, info, variant = ResultVariants.DEFAULT, content, size = 72, icon, iconElement }: ResultProps) => {
+export const Result = ({ title, info, variant = ResultVariants.DEFAULT, content, size = 72, icon, iconElement, iconAriaLabel }: ResultProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
     const { iconName, iconColor } = getIcon(variant);
     return (
         <StyledResult fluid className={`result-${variant}`} data-testid={`result-${variant}`} theme={th}>
-            <Row className='result-row icon'>{iconElement || <Icon name={icon || iconName} size={size} color={iconColor} data-testid={`icon_${icon || iconName}`} />}</Row>
+            <Row className='result-row icon'>
+                {iconElement || (
+                    <Icon
+                        name={icon || iconName}
+                        size={size}
+                        color={iconColor}
+                        data-testid={`icon_${icon || iconName}`}
+                        ariaLabel={!iconAriaLabel ? `${icon || iconName} icon` : iconAriaLabel}
+                    />
+                )}
+            </Row>
             {title && (
                 <Row className='result-row title'>
                     <span>{title}</span>

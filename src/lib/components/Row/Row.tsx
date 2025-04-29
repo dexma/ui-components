@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useContext } from 'react';
+import { HTMLAttributes, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
 import defaultTheme from '@utils/theme';

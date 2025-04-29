@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import omit from 'lodash/omit';
 import { Table as TableAntDesign, ConfigProvider, type TableProps as AntDTableProps } from 'antd';
 
 import defaultTheme from '@utils/theme';
-import { Button, itemRender } from '@components';
+import { Button, Pagination } from '@components';
 import { withDataId } from '@components/DataId/withDataId';
 import { StyledResult } from '@styles/Result/StyledResult';
 import { StyledTable } from '@styles/Table/StyledTable';
 import { AnyObject } from 'antd/lib/_util/type';
+import _ from 'lodash';
 
 const StyledTableLoading = styled.div`
     display: flex;
@@ -88,13 +89,15 @@ type ExpandedIconProps<T> = {
     expanded: boolean;
     onExpand: (record: T, event: React.MouseEvent<HTMLElement>) => void;
     record: T;
+    expandIconAriaLabel?: string;
 };
 
 const getExpandedIcon = <T extends { children?: object; expandable?: boolean }>(props: ExpandedIconProps<T>) => {
-    const { expanded, onExpand, record } = props;
+    const { expanded, onExpand, record, expandIconAriaLabel } = props;
     return record.children || record.expandable ? (
         <StyledButtonExpanded>
             <Button
+                kind='iconButton'
                 className={`expand-button ${expanded ? 'button-no-expanded' : 'button-expanded'}`}
                 iconAfter='chevron_down'
                 isCircle
@@ -103,6 +106,7 @@ const getExpandedIcon = <T extends { children?: object; expandable?: boolean }>(
                     e.stopPropagation();
                     onExpand(record, e);
                 }}
+                iconAriaLabel={expandIconAriaLabel || ''}
             />
         </StyledButtonExpanded>
     ) : (
@@ -116,11 +120,44 @@ export type TableProps<RecordType> = {
     showError?: boolean;
     dataId?: string;
     errorContent?: React.ReactNode;
+    rowsCanBeSelectAriaLabel?: string;
+    selectAllRowsAriaLabel?: string;
+    currentPage?: number;
+    pageSize?: number;
+    showSizeChanger?: boolean;
+    pageSizeOptions?: string[];
 } & AntDTableProps<RecordType>;
 
 export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType>) => {
-    const { isExpanded, expandable, columns, dataSource, isLoading, showError, errorContent, dataId } = props;
-    const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable']);
+    const {
+        isExpanded,
+        expandable,
+        columns,
+        dataSource,
+        isLoading,
+        showError,
+        errorContent,
+        dataId,
+        rowsCanBeSelectAriaLabel,
+        selectAllRowsAriaLabel,
+        currentPage = 1,
+        pageSize = 10,
+        showSizeChanger,
+        pageSizeOptions = ['5', '10', '20'],
+    } = props;
+    useEffect(() => {
+        const checkboxes = document.querySelectorAll('.ant-checkbox-inner');
+        checkboxes.forEach((li) => li.setAttribute('aria-label', rowsCanBeSelectAriaLabel || ''));
+        const thead = document.querySelector('.ant-table-thead');
+        const checkSelectAll = thead?.querySelector('.ant-checkbox-inner');
+        if (checkSelectAll && selectAllRowsAriaLabel) checkSelectAll.setAttribute('aria-label', selectAllRowsAriaLabel);
+    }, [rowsCanBeSelectAriaLabel, selectAllRowsAriaLabel]);
+    const [actualPage, setActualPage] = useState(currentPage);
+    const [pageWidth, setPageWidth] = useState(pageSize);
+    const data = dataSource ?? [];
+    const paginatedData = data.slice((actualPage - 1) * pageWidth, actualPage * pageWidth);
+
+    const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable', 'dataSource']);
     const th = useContext(ThemeContext) || defaultTheme;
     const getColumnsExpanded = () => {
         if (columns) {
@@ -150,15 +187,35 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                 {loading && <TableLoading />}
                 {error && <TableError> {errorContent} </TableError>}
                 {showTable && (
-                    <TableAntDesign
-                        expandable={{
-                            expandedRowRender: expandable?.expandedRowRender,
-                            expandIcon,
-                        }}
-                        pagination={{ itemRender }}
-                        columns={isExpanded ? getColumnsExpanded() : columns}
-                        {...tableProps}
-                    />
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                        <TableAntDesign
+                            expandable={{
+                                expandedRowRender: expandable?.expandedRowRender,
+                                expandIcon,
+                            }}
+                            pagination={false}
+                            columns={isExpanded ? getColumnsExpanded() : columns}
+                            dataSource={paginatedData}
+                            {...tableProps}
+                        />
+                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <Pagination
+                                total={data.length}
+                                pageSize={pageSize}
+                                current={actualPage}
+                                previosPageAriaLabel='Previous page'
+                                nextPageAriaLabel='Next page'
+                                prevDotsPageAriaLabel='Jumpt previous 5 pages'
+                                nextDotsPageAriaLabel='Jumpt next 5 pages'
+                                showSizeChanger={showSizeChanger}
+                                pageSizeOptions={pageSizeOptions}
+                                onChange={(page, size) => {
+                                    setActualPage(page);
+                                    setPageWidth(size);
+                                }}
+                            />
+                        </div>
+                    </div>
                 )}
             </StyledTable>
         </ConfigProvider>

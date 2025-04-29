@@ -1,29 +1,28 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Button, Modal, Grid, Row, Cell, Paragraph } from '@components';
+import { StyledButton } from '@styles/Button/StyledButton';
 
 const ModalView = ({ withFooter }: { withFooter?: boolean }) => {
     const [showModal, setShowModal] = useState(false);
 
     const footer = withFooter
         ? [
-              <Button
-                  variant='destructive'
-                  onClick={() => {
-                      setShowModal(false);
-                  }}
-              >
-                  Yes, discard project
-              </Button>,
-              <Button
-                  variant='secondary'
-                  onClick={() => {
-                      setShowModal(false);
-                  }}
-              >
-                  No, continue editing
-              </Button>,
-          ]
+            <Button
+                text='Yes, discard project'
+                variant='destructive'
+                onClick={() => {
+                    setShowModal(false);
+                }}
+            />,
+            <Button
+                text='No, continue editing'
+                variant='secondary'
+                onClick={() => {
+                    setShowModal(false);
+                }}
+            />,
+        ]
         : false;
     return (
         <div>
@@ -41,9 +40,9 @@ const ModalView = ({ withFooter }: { withFooter?: boolean }) => {
                 title='Unsaved changes'
                 width={400}
                 footer={footer}
-            >
-                <Paragraph>Are you sure you want to discard your changes?</Paragraph>
-            </Modal>
+                body={<Paragraph>Are you sure you want to discard your changes?</Paragraph>}
+                closeModalButtonAriaLabel='Close modal'
+            />
         </div>
     );
 };

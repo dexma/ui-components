@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 
 import { Toast, ToastType } from '@components/Toaster/Toast';
 import { ToasterContext } from '@components/Toaster/ToasterContext';

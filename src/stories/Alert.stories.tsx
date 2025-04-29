@@ -1,4 +1,3 @@
-import React from 'react';
 import { Grid, Row, Cell, Paragraph, Alert, AlertProps } from '@components';
 
 export default {

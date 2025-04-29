@@ -1,4 +1,3 @@
-import React from 'react';
 import { describe, expect, it } from 'vitest';
 import { render } from '@testing-library/react';
 
@@ -70,14 +69,14 @@ describe('Data Id', () => {
         const { container } = render(
             <Section>
                 <>
-                    <Button />
+                    <Button text='Test' />
                     <Chart />
                     <DatePicker type='date' />
-                    <Input />
+                    <Input label='input test' type='text'/>
                     <Select />
                     <TableWithDataId />
                     <Tag />
-                    <Dropdown />
+                    <Dropdown onItemSelected={() => console.log('Item select OK!')} />
                 </>
             </Section>
         );
@@ -108,14 +107,14 @@ describe('Data Id', () => {
         const { container } = render(
             <Section dataId='section-data.test'>
                 <>
-                    <Button dataId='button.test' />
+                    <Button dataId='button.test' text='Test' />
                     <Chart dataId='chart.test' />
                     <DatePicker type='date' dataId='datepicker.test' />
-                    <Input dataId='input.test' />
+                    <Input dataId='input.test' label='input test' type='text' />
                     <Select dataId='select.test' />
                     <TableWithDataId dataId='table.test' />
                     <Tag dataId='tag.test' />
-                    <Dropdown dataId='dropdown.test' />
+                    <Dropdown dataId='dropdown.test' onItemSelected={() => console.log('Item select OK!')} />
                 </>
             </Section>
         );
@@ -147,14 +146,14 @@ describe('Data Id', () => {
             <DataIdProvider dataId='page.section'>
                 <Section>
                     <>
-                        <Button />
+                        <Button text='Test' />
                         <Chart />
                         <DatePicker type='date' />
-                        <Input />
+                        <Input label='input test' type='text' />
                         <Select />
                         <TableWithDataId />
                         <Tag />
-                        <Dropdown />
+                        <Dropdown onItemSelected={() => console.log('Item select OK!')} />
                     </>
                 </Section>
             </DataIdProvider>
@@ -187,14 +186,14 @@ describe('Data Id', () => {
             <DataIdProvider dataId='page.section'>
                 <Section dataId='section-data.test'>
                     <>
-                        <Button dataId='button.test' />
+                        <Button dataId='button.test' text='Test' />
                         <Chart dataId='chart.test' />
                         <DatePicker type='date' dataId='datepicker.test' />
-                        <Input dataId='input.test' />
+                        <Input dataId='input.test' label='input test' type='text' />
                         <Select dataId='select.test' />
                         <TableWithDataId dataId='table.test' />
                         <Tag dataId='tag.test' />
-                        <Dropdown dataId='dropdown.test' />
+                        <Dropdown dataId='dropdown.test' onItemSelected={() => console.log('Item select OK!')} />
                     </>
                 </Section>
             </DataIdProvider>
