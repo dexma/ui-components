@@ -17,11 +17,11 @@ export const Multiple = () => (
                 <Select
                     mode='multiple'
                     style={{ width: '100%' }}
-                    pageSize={10}
+                    // pageSize={10}
                     defaultValues={['3']}
                     maxTagLength={20}
                     options={[
-                        { value: '1', label: '1st Floor', color: 'blue' },
+                        { value: '1', label: '1st Floor' },
                         {
                             value: '2',
                             label: '1st Floor [02. Luxemburg Building]',
@@ -32,6 +32,7 @@ export const Multiple = () => (
                             value: '4',
                             label: '45th Floor [04. Luxemburg Building]',
                             color: 'green',
+                            disabled: true
                         },
                         {
                             value: '5',
@@ -67,7 +68,7 @@ export const Multiple = () => (
                         {
                             value: '12',
                             label: '2nd Floor [16.  Building]',
-                            color: 'orange',
+                            color: 'orange'                            
                         },
                     ]}
                 />
@@ -168,7 +169,7 @@ export const SingleSelect = () => (
             <Cell xs={12}>
                 <SingleSelectComponent
                     options={[
-                        { value: '1', label: '1st Floor', color: 'blue' },
+                        { value: '1', label: '1st Floor' },
                         {
                             value: '2',
                             label: '1st Floor [02. Luxemburg Building]',
@@ -210,6 +211,7 @@ export const SingleSelect = () => (
                             value: '11',
                             label: '3rd Floor [02. Singapur Building]',
                             color: 'blue',
+                            disabled: true
                         },
                         {
                             value: '12',

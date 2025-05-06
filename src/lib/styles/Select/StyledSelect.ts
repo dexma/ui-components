@@ -3,7 +3,7 @@ import { get } from 'lodash';
 import { Button, Cell, Icon } from '@components';
 import { Row } from '@components/Row';
 import { type Theme, color, primary } from '@utils/theme';
-import { primaryColor, white } from '@utils/selectors';
+import { gray400, primaryColor, white } from '@utils/selectors';
 import { StyledIcon } from '../Icon/StyledIcon';
 
 export const hexToRGBA = (hex: string, a: number) => {
@@ -29,7 +29,7 @@ export const hexToRGBA = (hex: string, a: number) => {
 
 const getColorHover = (theme?: Theme) => (theme ? primaryColor : primary);
 
-export const StyledPaginationPageWrapper = styled(Cell)<{ $disabled?: boolean; theme?: Theme }>`
+export const StyledPaginationPageWrapper = styled(Cell) <{ $disabled?: boolean; theme?: Theme }>`
     cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
     height: 32px !important;
     max-width: 32px;
@@ -84,7 +84,7 @@ export const StyledSelectDropdown = styled.div`
 
 const getSpanColor = (theme: Theme, _color: string) => get(theme.color, _color);
 
-export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; closable?: any; onClose?: any; value: string }>`
+export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; closable?: any; color?: string }>`
     display: flex;
     align-items: center;
     padding: 2px 4px;
@@ -96,20 +96,20 @@ export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; 
     margin: 0px;
     font-size: 14px;
     line-height: 14px;
-    background: ${(props) => props.color && getSpanColor(props.theme, props.color)};
+    background: ${(props) => props.color ? getSpanColor(props.theme, props.color) : gray400(props.theme)};
     color: ${(props) => white(props.theme)};
     ${StyledIcon} {
         ${(props) =>
-            props.icon &&
-            css`
+        props.icon &&
+        css`
                 &.icon {
                     margin-right: 3px;
                     margin-left: -2px;
                 }
             `};
         ${(props) =>
-            props.closable &&
-            css`
+        props.closable &&
+        css`
                 &.icon-close {
                     cursor: pointer;
                     margin-right: -2px;
