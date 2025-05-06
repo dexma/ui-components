@@ -27,6 +27,7 @@ type Option = {
     value: string | number;
     label: string;
     color?: string;
+    disabled?: boolean;
 };
 
 type DisplayValue = {
@@ -53,9 +54,7 @@ export const tagRenderButtonPagination = (props: CustomTagProps, options: Option
                 className='tag-select-option-selected'
                 color={options.filter((element) => element.value === value)[0].color}
                 onMouseDown={onPreventMouseDown}
-                onClose={onClose}
                 style={{ marginRight: 4 }}
-                value={option.value as string}
                 data-testid={`tag-option-selected-${value}`}
                 theme={theme}
             >
@@ -137,8 +136,44 @@ export const renderUnselectedOption = (option: any, searchValue: string, dataId:
 
 const isDisabledOption = (option: Option, selectedValues: Array<string | number>, pageSize?: number) => {
     if (pageSize !== undefined) return selectedValues.length >= pageSize && !selectedValues.includes(option.value);
-    return false;
+    return option.disabled;
 };
+
+export const singleOptionsRenderer = (options: Option[], selectedValue: string | number | undefined, theme: Theme, dataId: string) => (
+    <>
+        {options.map((option) => {
+            const backgroundColor = selectedValue === option.value && option.color ? get(theme.color, option.color) : colors.white;
+            return (
+                <AntdSelect.Option
+                    id={option.value}
+                    className='option-select'
+                    key={option.value}
+                    disabled={option.disabled}
+                    value={option.value}
+                    theme={theme}
+                    color={option.color}
+                    style={{
+                        backgroundColor,
+                    }}
+                    selected={selectedValue === option.value}
+                    data-testid={`select-option-${option.value}`}
+                    data-id={`${dataId}.select-option-${option.value}`}
+                    aria-label={option.label}
+                >
+                    {selectedValue === option.value ? (
+                        <StyledSpanOptionSelected color={option.color} theme={theme}>
+                            {option.label}
+                        </StyledSpanOptionSelected>
+                    ) : (
+                        <StyledSpanOption data-testid={`option-span-${option}`} data-id={`${dataId}.option-span-${option.value}`} value={option.label}>
+                            {option.label}
+                        </StyledSpanOption>
+                    )}
+                </AntdSelect.Option>
+            );
+        })}
+    </>
+);
 
 export const optionsRenderer = (options: Option[], selectedValues: Array<string | number>, searchValue: string, theme: Theme, dataId: string, pageSize?: number) => {
     const optionsToRender = searchValue !== '' ? options : (getOptionsBySearch(options, searchValue) as Option[]);
@@ -164,7 +199,7 @@ export const optionsRenderer = (options: Option[], selectedValues: Array<string 
                         aria-label={option.label}
                     >
                         {selectedValues.includes(option.value) ? (
-                            <StyledSpanOptionSelected value={option.label} theme={theme}>
+                            <StyledSpanOptionSelected color={option.color} theme={theme}>
                                 {option.label}
                             </StyledSpanOptionSelected>
                         ) : (
@@ -366,7 +401,7 @@ export const Select = withDataId(
                         aria-expanded={showDropdown}
                         {...props}
                     >
-                        {optionsRenderer(options, selectedValues, searchValue, defaultTheme, dataId, pageSize)}
+                        {singleOptionsRenderer(options, selectedValues ? selectedValues[0] : undefined, defaultTheme, dataId)}
                     </AntdSelect>
                 ) : (
                     <AntdSelect
@@ -378,19 +413,19 @@ export const Select = withDataId(
                         dropdownRender={
                             text
                                 ? (menu: ReactElement) =>
-                                      dropdownRenderSelect(
-                                          menu,
-                                          currentPage,
-                                          options,
-                                          handleChangePage,
-                                          handleSelectAll,
-                                          text,
-                                          searchValue,
-                                          showDropdown,
-                                          mode,
-                                          defaultTheme,
-                                          pageSize
-                                      )
+                                    dropdownRenderSelect(
+                                        menu,
+                                        currentPage,
+                                        options,
+                                        handleChangePage,
+                                        handleSelectAll,
+                                        text,
+                                        searchValue,
+                                        showDropdown,
+                                        mode,
+                                        defaultTheme,
+                                        pageSize
+                                    )
                                 : undefined
                         }
                         optionFilterProp='children'
