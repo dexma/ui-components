@@ -85,6 +85,7 @@ export const Dropdown = ({
                         disabled={disabledItem}
                         iconAriaLabel={iconItem ? iconAriaLabelItem || '' : ''}
                         {...props}
+                        type='button'
                     />
             }))
             : undefined;
