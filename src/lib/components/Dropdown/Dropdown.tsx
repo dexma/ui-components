@@ -23,7 +23,7 @@ export type DropdownProps = DropDownProps & {
     variant?: string;
     content?: DropdownContent[];
     iconAriaLabel?: string;
-    onItemSelected: (key: number) => void
+    onItemSelected: (key: number) => void;
 };
 
 export const Dropdown = ({
@@ -38,12 +38,12 @@ export const Dropdown = ({
     open,
     disabled,
     iconAriaLabel,
-    onItemSelected
+    onItemSelected,
 }: DropdownProps) => {
     const [openDropdown, setOpen] = useState(open || false);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const dropdownId = `dropdown-button-${text ? 'text' : 'icon'}_${Date.now()}`;
-    const dropdownButtonKind = text && icon ? 'iconTextButton' : (!text && icon ? 'iconButton' : 'button');
+    const dropdownButtonKind = text && icon ? 'iconTextButton' : !text && icon ? 'iconButton' : 'button';
 
     const handleOpenChange = () => {
         setOpen((prev) => !prev);
@@ -65,32 +65,50 @@ export const Dropdown = ({
 
     const getContent = (menuContent?: DropdownContent[]) => {
         if (!menuContent) return null;
-        const itemButtonKind = (textItem?: string, iconItem?: string) => textItem && iconItem ? 'iconTextButton' : (!textItem && iconItem ? 'iconButton' : 'button');
+        const itemButtonKind = (textItem?: string, iconItem?: string) => (textItem && iconItem ? 'iconTextButton' : !textItem && iconItem ? 'iconButton' : 'button');
 
         const items = menuContent
-            ? menuContent.map(({ key, icon: iconItem, onClick, dataId: dataIdItem, variant: variantItem, text: textItem, ariaLabel, disabled: disabledItem, iconAriaLabel: iconAriaLabelItem, onKeyDown, ...props }, index) => ({
-                label:
-                    <StyledDropdownInnerButton
-                        kind={itemButtonKind(textItem, iconItem)}
-                        className='dropdown-button-item'
-                        style={{ width: '100%', padding: '0px 1rem' }}
-                        iconBefore={iconItem}
-                        onClick={onClick}
-                        key={key ?? `key_${index}`}
-                        dataId={dataIdItem ?? 'ddItem'}
-                        variant={variantItem ?? 'icon'}
-                        text={itemButtonKind(textItem, iconItem) === 'button' || itemButtonKind(textItem, iconItem) === 'iconTextButton' ? textItem! : ''}
-                        aria-label={iconItem ? ariaLabel : undefined}
-                        aria-disabled={disabledItem}
-                        disabled={disabledItem}
-                        iconAriaLabel={iconItem ? iconAriaLabelItem || '' : ''}
-                        {...props}
-                        type='button'
-                    />
-            }))
+            ? menuContent.map(
+                  (
+                      {
+                          key,
+                          icon: iconItem,
+                          onClick,
+                          dataId: dataIdItem,
+                          variant: variantItem,
+                          text: textItem,
+                          ariaLabel,
+                          disabled: disabledItem,
+                          iconAriaLabel: iconAriaLabelItem,
+                          onKeyDown,
+                          ...props
+                      },
+                      index
+                  ) => ({
+                      label: (
+                          <StyledDropdownInnerButton
+                              kind={itemButtonKind(textItem, iconItem)}
+                              className='dropdown-button-item'
+                              style={{ width: '100%', padding: '0px 1rem' }}
+                              iconBefore={iconItem}
+                              onClick={onClick}
+                              key={key ?? `key_${index}`}
+                              dataId={dataIdItem ?? 'ddItem'}
+                              variant={variantItem ?? 'icon'}
+                              text={itemButtonKind(textItem, iconItem) === 'button' || itemButtonKind(textItem, iconItem) === 'iconTextButton' ? textItem! : ''}
+                              aria-label={iconItem ? ariaLabel : undefined}
+                              aria-disabled={disabledItem}
+                              disabled={disabledItem}
+                              iconAriaLabel={iconItem ? iconAriaLabelItem || '' : ''}
+                              {...props}
+                              type='button'
+                          />
+                      ),
+                  })
+              )
             : undefined;
         return {
-            items
+            items,
         };
     };
 
@@ -98,15 +116,21 @@ export const Dropdown = ({
 
     const handleMenuClick: MenuProps['onClick'] = (e) => {
         setOpen(false);
-        const key = (e.key.split('-')[1] as any) as number;
+        const key = e.key.split('-')[1] as any as number;
         onItemSelected(key);
     };
-
 
     return (
         <>
             <StyledGlobalDropdown />
-            <DropdownAntd menu={{ items: menuItems ? menuItems.items : [], onClick: handleMenuClick }} placement={placement} trigger={trigger} open={openDropdown} onOpenChange={handleOpenChange} disabled={disabled}>
+            <DropdownAntd
+                menu={{ items: menuItems ? menuItems.items : [], onClick: handleMenuClick }}
+                placement={placement}
+                trigger={trigger}
+                open={openDropdown}
+                onOpenChange={handleOpenChange}
+                disabled={disabled}
+            >
                 <StyledDropdownButton
                     tabIndex={0}
                     kind={dropdownButtonKind}
@@ -118,8 +142,9 @@ export const Dropdown = ({
                     iconBefore={icon}
                     text={dropdownButtonKind === 'button' || dropdownButtonKind === 'iconTextButton' ? text! : ''}
                     aria-disabled={disabled}
-                    onKeyDown={trigger && trigger.find(x => x !== 'click') ? handleKeyDown : undefined}
+                    onKeyDown={trigger && trigger.find((x) => x !== 'click') ? handleKeyDown : undefined}
                     ref={buttonRef}
+                    type='button'
                     aria-expanded={openDropdown}
                     iconAriaLabel={icon ? iconAriaLabel || '' : ''}
                 />
