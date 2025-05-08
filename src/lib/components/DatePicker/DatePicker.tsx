@@ -6,9 +6,8 @@ import { type RangePickerProps } from 'antd/lib/date-picker';
 import defaultTheme, { type Theme } from '@utils/theme';
 import { Icon } from '@components/Icon';
 import { withDataId } from '@components/DataId/withDataId';
-import { DropdownDatePickerStyles, StyledAntdDatePicker, StyledAntdRangePicker } from '@styles/DatePicker/StyledDatePicker';
+import { DropdownDatePickerStyles, StyledAntdDatePicker, StyledAntdRangePicker, StyledDatePickerLabel } from '@styles/DatePicker/StyledDatePicker';
 import * as datePickerUtils from './datePickerUtils';
-import '@styles/styles.css';
 
 type CommonProps = {
     lang?: 'en' | 'bg' | 'br' | 'be' | 'ca' | 'da' | 'de' | 'el' | 'es' | 'fi' | 'fr' | 'it' | 'nl' | 'pl' | 'pt' | 'sl' | 'sv' | 'tr' | 'us' | 'zh';
@@ -21,9 +20,9 @@ type CommonProps = {
 export type AntdDatePickerProps = DatePickerProps & CommonProps;
 
 const getLabel = (_label: ReactNode, id: string) => (
-    <label htmlFor={id} className='sr-only'>
+    <StyledDatePickerLabel htmlFor={id}>
         {_label}
-    </label>
+    </StyledDatePickerLabel>
 );
 
 const handleOpenChange = (_: boolean, ariaLabel?: string) => {
