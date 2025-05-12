@@ -64,6 +64,7 @@ export const Modal = ({ open, title, body, footer, closeModalButtonAriaLabel, on
                                 marginTop: '16px',
                                 display: 'flex',
                                 justifyContent: 'flex-end',
+                                gap: '20px'
                             }}
                         >
                             {footer as ReactNode}
