@@ -78,7 +78,7 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
 
 export type AntdRangePickerProps = RangePickerProps & CommonProps;
 
-export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, label, format, disabled, ...props }: AntdRangePickerProps) => {
+export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, label, format, disabled, allowClear, clearDateAriaLabel, ...props }: AntdRangePickerProps) => {
     const th = useContext(ThemeContext) || theme;
     const id = `antd-date-picker_${Date.now()}`;
     return (
@@ -100,6 +100,15 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                     data-testid='antd-range-picker'
                     format={format ?? 'DD/MM/YYYY'}
                     separator={<Icon name='arrow_right' size={18} color='gray600' ariaLabel='to' />}
+                    allowClear={allowClear ? {
+                        clearIcon: <Icon
+                            className='selectable-icon'
+                            color='gray'
+                            name='close'
+                            size='small'
+                            ariaLabel={clearDateAriaLabel || ''}
+                        />
+                    } : false}
                     suffixIcon={<Icon name='calendar_range' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
                     onOpenChange={(value) => handleOpenChange(value, props['aria-label'])}
