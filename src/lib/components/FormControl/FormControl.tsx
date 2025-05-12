@@ -34,17 +34,19 @@ type FormControlProps = {
     maxLength?: number;
     rows?: number;
     inputLabel?: string;
+    showSelectOptionsAriaLabel?: string;
+    hideSelectOptionsAriaLabel?: string;
 };
 
 export const FormControl = withDataId(
-    forwardRef(({ control, value, error, success, message, options, type, dataId, inputLabel, ...props }: FormControlProps, ref: ForwardedRef<HTMLElement>) => {
+    forwardRef(({ control, value, error, success, message, options, type, dataId, inputLabel, showSelectOptionsAriaLabel, hideSelectOptionsAriaLabel, ...props }: FormControlProps, ref: ForwardedRef<HTMLElement>) => {
         const th = useContext(ThemeContext) || defaultTheme;
         return (
             <StyledFormControl theme={th} $error={error} $success={success} data-id={dataId}>
                 {control === 'Input' && <Input type='text' className='form-control-input' title={value as string} ref={ref} {...props} value={value} label={inputLabel || ''} />}
                 {control === 'Checkbox' && <Checkbox className='form-control-checkbox' {...props} />}
                 {control === 'Textarea' && <textarea rows={2} className='form-control-textarea' {...props} value={value} />}
-                {control === 'Select' && <Select className='form-control-select' ref={ref} {...props} value={find(options, { value })} options={options} />}
+                {control === 'Select' && <Select className='form-control-select' ref={ref} {...props} value={find(options, { value })} options={options} showOptionsAriaLabel={showSelectOptionsAriaLabel || ''} hideOptionsAriaLabel={hideSelectOptionsAriaLabel || ''} />}
                 {control === 'DatePicker' && <DatePicker className='form-control-date-picker' type={type ?? 'date'} {...props} value={value} />}
                 {control === 'ColorPicker' && <ColorPicker ref={ref} {...props} value={value} />}
                 {message && <span className='form-control-message'>{message}</span>}

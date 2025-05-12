@@ -145,7 +145,6 @@ export const singleOptionsRenderer = (options: Option[], selectedValue: string |
                     disabled={option.disabled}
                     value={option.value}
                     theme={theme}
-                    color={option.color}
                     selected={selectedValue === option.value}
                     data-testid={`select-option-${option.value}`}
                     data-id={`${dataId}.select-option-${option.value}`}
@@ -191,7 +190,7 @@ export const optionsRenderer = (options: Option[], selectedValues: Array<string 
                         aria-label={option.label}
                     >
                         {selectedValues.includes(option.value) ? (
-                            <StyledSpanOptionSelected theme={theme}>
+                            <StyledSpanOptionSelected theme={theme} color={option.color}>
                                 {option.label}
                             </StyledSpanOptionSelected>
                         ) : (
