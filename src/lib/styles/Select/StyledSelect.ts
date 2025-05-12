@@ -3,7 +3,7 @@ import { get } from 'lodash';
 import { Button, Cell, Icon } from '@components';
 import { Row } from '@components/Row';
 import { type Theme, color, primary } from '@utils/theme';
-import { gray400, primaryColor, white } from '@utils/selectors';
+import { black, gray400, primaryColor, white } from '@utils/selectors';
 import { StyledIcon } from '../Icon/StyledIcon';
 
 export const hexToRGBA = (hex: string, a: number) => {
@@ -84,7 +84,7 @@ export const StyledSelectDropdown = styled.div`
 
 const getSpanColor = (theme: Theme, _color: string) => get(theme.color, _color);
 
-export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; closable?: any; color?: string }>`
+export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; closable?: any; color?: string, isSingleSelect?: boolean }>`
     display: flex;
     align-items: center;
     padding: 2px 4px;
@@ -96,8 +96,8 @@ export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; 
     margin: 0px;
     font-size: 14px;
     line-height: 14px;
-    background: ${(props) => props.color ? getSpanColor(props.theme, props.color) : gray400(props.theme)};
-    color: ${(props) => white(props.theme)};
+    background: ${(props) => props.color ? getSpanColor(props.theme, props.color) : (!props.isSingleSelect && gray400(props.theme))};
+    color: ${(props) => props.isSingleSelect ? primaryColor(props.theme) : white(props.theme)};
     ${StyledIcon} {
         ${(props) =>
         props.icon &&
@@ -188,6 +188,10 @@ export const getSelectOptionStyle = (theme: DefaultTheme | Theme) => css`
         > div > span {
             padding: 4px !important;
         }
+    }
+
+    .custom-select > .ant-select-selector > .ant-select-selection-item > span {
+        color: black;
     }
 `;
 
