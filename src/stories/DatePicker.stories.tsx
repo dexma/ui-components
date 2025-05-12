@@ -14,7 +14,7 @@ export const Basic = () => (
                 <Paragraph margin='1rem 0 1rem 0'>DatePicker provided by Ant Design UI library.</Paragraph>
             </Cell>
             <Cell>
-                <DatePicker type='date' format='DD-MM-YYYY' aria-label='Calendar to selection date' label='Select date' />
+                <DatePicker type='date' format='DD-MM-YYYY' aria-label='Calendar to selection date' label='Select date' allowClear clearDateAriaLabel='Clear date selected' />
                 <br />
                 <DatePicker type='date' picker='week' aria-label='Calendar to selection week' label='Select week' />
                 <br />

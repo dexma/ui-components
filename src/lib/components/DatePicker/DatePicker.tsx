@@ -1,4 +1,4 @@
-import { ReactNode, useContext } from 'react';
+import { ReactNode, useContext, useState } from 'react';
 import { ThemeContext } from 'styled-components';
 import { ConfigProvider, type DatePickerProps } from 'antd';
 import { type RangePickerProps } from 'antd/lib/date-picker';
@@ -15,6 +15,7 @@ type CommonProps = {
     'data-testid'?: string;
     theme?: Theme;
     label?: string;
+    clearDateAriaLabel?: string;
 };
 
 export type AntdDatePickerProps = DatePickerProps & CommonProps;
@@ -33,7 +34,7 @@ const handleOpenChange = (_: boolean, ariaLabel?: string) => {
     }
 };
 
-export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, disabled, ...props }: AntdDatePickerProps) => {
+export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, disabled, allowClear, defaultValue, clearDateAriaLabel, ...props }: AntdDatePickerProps) => {
     const th = useContext(ThemeContext) || theme;
     const id = `antd-date-picker_${Date.now()}`;
     return (
@@ -56,6 +57,15 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
                     format={format ?? 'DD/MM/YYYY'}
                     nextIcon={<Icon name='chevron_right_l' size={10} color='gray600' ariaLabel='Next page' />}
                     prevIcon={<Icon name='chevron_left_l' size={10} color='gray600' ariaLabel='Previous page' />}
+                    allowClear={allowClear ? {
+                        clearIcon: <Icon
+                            className='selectable-icon'
+                            color='gray'
+                            name='close'
+                            size='small'
+                            ariaLabel={clearDateAriaLabel || ''}
+                        />
+                    } : false}
                     suffixIcon={<Icon name='calendar_blank' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
                     aria-disabled={disabled}
