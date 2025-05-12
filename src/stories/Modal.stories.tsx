@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { Button, Modal, Grid, Row, Cell, Paragraph } from '@components';
-import { StyledButton } from '@styles/Button/StyledButton';
 
 const ModalView = ({ withFooter }: { withFooter?: boolean }) => {
     const [showModal, setShowModal] = useState(false);
