@@ -194,15 +194,12 @@ export const SelectNoButton = () => (
     </Grid>
 );
 
-const SingleSelectComponent = (props: any) => {
-
-    return (
+const SingleSelectComponent = (props: any) => (
         <Select
 
             {...props}
         />
     );
-};
 
 export const SingleSelect = () => {
     const [selectedValues, setSelectedValue] = useState(['4']);

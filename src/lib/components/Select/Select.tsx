@@ -136,10 +136,8 @@ const isDisabledOption = (option: Option, selectedValues: Array<string | number>
     return option.disabled;
 };
 
-export const singleOptionsRenderer = (options: Option[], selectedValue: string | number | undefined, theme: Theme, dataId: string) => {
-    return <>
-        {options.map((option) => {
-            return (
+export const singleOptionsRenderer = (options: Option[], selectedValue: string | number | undefined, theme: Theme, dataId: string) => <>
+        {options.map((option) => (
                 <AntdSelect.Option
                     id={option.value}
                     className='option-select'
@@ -163,11 +161,8 @@ export const singleOptionsRenderer = (options: Option[], selectedValue: string |
                         </StyledSpanOption>
                     )}
                 </AntdSelect.Option>
-            );
-        })}
+            ))}
     </>
-
-}
 
 export const optionsRenderer = (options: Option[], selectedValues: Array<string | number>, searchValue: string, theme: Theme, dataId: string, currentPage: number, pageSize?: number) => {
     const startIndex = (currentPage - 1) * (pageSize ?? options.length);

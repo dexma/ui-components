@@ -3,7 +3,7 @@ import { get } from 'lodash';
 import { Button, Cell, Icon } from '@components';
 import { Row } from '@components/Row';
 import { type Theme, color, primary } from '@utils/theme';
-import { black, gray400, primaryColor, white } from '@utils/selectors';
+import { gray400, primaryColor, white } from '@utils/selectors';
 import { StyledIcon } from '../Icon/StyledIcon';
 
 export const hexToRGBA = (hex: string, a: number) => {
