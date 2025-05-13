@@ -10,7 +10,6 @@ import { SelectOptionStyle, StyledSelectDropdown, StyledSpanOption, StyledSpanOp
 import { colors } from 'index';
 import { filterOption, findSubstringIndices, getOptionsBySearch, getRegExpBasedOnInput, singleOptionFilter } from './selectUtils';
 import { ButtonPaginationSelector } from './ButtonPaginationSelector';
-import '@styles/Select/Select.css';
 
 const ALL_CHARACTER = '*';
 const ENTER_CHARACTER = 'Enter';
@@ -38,7 +37,7 @@ type DisplayValue = {
     disabled?: boolean;
 };
 
-export const tagRenderButtonPagination = (props: CustomTagProps, options: Option[], maxTagLength: number, theme: Theme): ReactElement => {
+export const tagRenderButtonPagination = (props: CustomTagProps, options: Option[], maxTagLength: number, theme: Theme, deleteOptionAriaLabel: string): ReactElement => {
     const { value, closable, onClose } = props;
     const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         event.preventDefault();
@@ -66,7 +65,7 @@ export const tagRenderButtonPagination = (props: CustomTagProps, options: Option
                         size='small'
                         onClick={onClose as unknown as MouseEventHandler<SVGSVGElement>}
                         color={colors.white}
-                        ariaLabel='Delete option'
+                        ariaLabel={deleteOptionAriaLabel}
                     />
                 )}
             </StyledSpanOptionSelected>
@@ -82,7 +81,6 @@ export const dropdownRenderSelect = (
     handleSelectAll: () => void,
     text: SelectTextProps,
     searchValue: string,
-    showDropdown: boolean,
     mode: string,
     theme: Theme,
     pageSize?: number
@@ -99,7 +97,6 @@ export const dropdownRenderSelect = (
                 text={text}
                 theme={theme}
                 searchValue={searchValue}
-                showDropdown={showDropdown}
             />
         )}
     </StyledSelectDropdown>
@@ -110,7 +107,7 @@ export const renderUnselectedOption = (option: any, searchValue: string, dataId:
         const regex = getRegExpBasedOnInput(searchValue);
         if (regex === false) {
             return (
-                <StyledSpanOption data-testid={`option-span-${option}`} data-id={`${dataId}.option-span-${option.value}`} value={option as string}>
+                <StyledSpanOption data-testid={`option-span-${option.value}`} data-id={`${dataId}.option-span-${option.value}`} value={option as string}>
                     {option}
                 </StyledSpanOption>
             );
@@ -139,11 +136,8 @@ const isDisabledOption = (option: Option, selectedValues: Array<string | number>
     return option.disabled;
 };
 
-export const singleOptionsRenderer = (options: Option[], selectedValue: string | number | undefined, theme: Theme, dataId: string) => (
-    <>
-        {options.map((option) => {
-            const backgroundColor = selectedValue === option.value && option.color ? get(theme.color, option.color) : colors.white;
-            return (
+export const singleOptionsRenderer = (options: Option[], selectedValue: string | number | undefined, theme: Theme, dataId: string) => <>
+        {options.map((option) => (
                 <AntdSelect.Option
                     id={option.value}
                     className='option-select'
@@ -151,36 +145,33 @@ export const singleOptionsRenderer = (options: Option[], selectedValue: string |
                     disabled={option.disabled}
                     value={option.value}
                     theme={theme}
-                    color={option.color}
-                    style={{
-                        backgroundColor,
-                    }}
                     selected={selectedValue === option.value}
                     data-testid={`select-option-${option.value}`}
                     data-id={`${dataId}.select-option-${option.value}`}
                     aria-label={option.label}
                 >
                     {selectedValue === option.value ? (
-                        <StyledSpanOptionSelected color={option.color} theme={theme}>
+                        <StyledSpanOptionSelected theme={theme} isSingleSelect>
                             {option.label}
                         </StyledSpanOptionSelected>
                     ) : (
-                        <StyledSpanOption data-testid={`option-span-${option}`} data-id={`${dataId}.option-span-${option.value}`} value={option.label}>
+                        <StyledSpanOption data-testid={`option-span-${option.value}`} data-id={`${dataId}.option-span-${option.value}`} value={option.label}>
                             {option.label}
                         </StyledSpanOption>
                     )}
                 </AntdSelect.Option>
-            );
-        })}
+            ))}
     </>
-);
 
-export const optionsRenderer = (options: Option[], selectedValues: Array<string | number>, searchValue: string, theme: Theme, dataId: string, pageSize?: number) => {
-    const optionsToRender = searchValue !== '' ? options : (getOptionsBySearch(options, searchValue) as Option[]);
+export const optionsRenderer = (options: Option[], selectedValues: Array<string | number>, searchValue: string, theme: Theme, dataId: string, currentPage: number, pageSize?: number) => {
+    const startIndex = (currentPage - 1) * (pageSize ?? options.length);
+    const endIndex = startIndex + (pageSize ?? options.length);
+    let optionsToRender = searchValue === '' ? options : (getOptionsBySearch(options, searchValue) as Option[]);
+    optionsToRender = optionsToRender.slice(startIndex, endIndex);
     return (
         <>
             {optionsToRender.map((option) => {
-                const backgroundColor = selectedValues.includes(option.value) && option.color ? get(theme.color, option.color) : colors.white;
+                const backgroundColor = selectedValues.includes(option.value) ? (option.color ? get(theme.color, option.color) : colors.gray400) : colors.white;
                 return (
                     <AntdSelect.Option
                         id={option.value}
@@ -199,7 +190,7 @@ export const optionsRenderer = (options: Option[], selectedValues: Array<string 
                         aria-label={option.label}
                     >
                         {selectedValues.includes(option.value) ? (
-                            <StyledSpanOptionSelected color={option.color} theme={theme}>
+                            <StyledSpanOptionSelected theme={theme} color={option.color}>
                                 {option.label}
                             </StyledSpanOptionSelected>
                         ) : (
@@ -233,6 +224,10 @@ export type SelectProps = Omit<AntdSelectProps, 'options' | 'mode'> & {
     handleButtonSelectAll?: (values: any[]) => void;
     handleClearAll?: () => void;
     mode?: 'multiple' | 'single';
+    showOptionsAriaLabel: string;
+    hideOptionsAriaLabel: string;
+    clearAllOptionsAriaLabel?: string;
+    deleteOptionSelectedAriaLabel?: string;
 };
 
 type BaseSelectRef = {
@@ -261,8 +256,12 @@ export const Select = withDataId(
         overflowLength = 5,
         handleButtonSelectAll,
         handleClearAll,
-        allowClear = true,
+        allowClear,
         disabled,
+        showOptionsAriaLabel,
+        hideOptionsAriaLabel,
+        clearAllOptionsAriaLabel,
+        deleteOptionSelectedAriaLabel,
         ...props
     }: SelectProps) => {
         const [showDropdown, setShowDropdown] = useState(false);
@@ -279,14 +278,12 @@ export const Select = withDataId(
         }, [searchValue]);
 
         useEffect(() => {
-            if (defaultValues) {
+            if (defaultValues ) {
                 setSelectedValues(defaultValues);
             }
         }, [defaultValues]);
 
-        const handleChangePage = useCallback((page: number) => {
-            setCurrentPage(page);
-        }, []);
+        const handleChangePage = (page: number) => setCurrentPage(page);
 
         const handleSelectAll = () => {
             const actualPage = currentPage;
@@ -326,11 +323,15 @@ export const Select = withDataId(
                         className={`custom-select ${props.className}`}
                         data-testid='select'
                         autoClearSearchValue
-                        removeIcon={<Icon color='gray' name='close' size='small' ariaLabel='Remove option' />}
                         data-id={dataId}
                         defaultValue={defaultValues}
-                        optionFilterProp='children'
-                        filterOption={singleOptionFilter}
+                        filterOption={(input: string, option?: any) => {
+                            const opt = options.find(x => x.value === option.value)
+                            if (opt && opt?.label) {
+                                return (opt.label as string).toLowerCase().includes(input.toLowerCase());
+                            }
+                            return false;
+                        }}
                         loading={isLoading}
                         placeholder={placeholder}
                         open={showDropdown}
@@ -341,43 +342,37 @@ export const Select = withDataId(
                         showSearch
                         style={{ width: '100%' }}
                         suffixIcon={
-                            showDropdown ? (
-                                <>
-                                    {allowClear && (searchValue !== '' || selectedValues.length > 0) && (
-                                        <Icon
-                                            color='gray'
-                                            name='close'
-                                            size='small'
-                                            onClick={() => {
-                                                reset();
-                                            }}
-                                            ariaLabel='Remove option selected'
-                                        />
-                                    )}
+                            <>
+                                {allowClear && (searchValue !== '' || selectedValues.length > 0) && (
                                     <Icon
+                                        className='selectable-icon'
                                         color='gray'
-                                        name='chevron_up'
+                                        name='close'
                                         size='small'
-                                        onClick={(e) => {
-                                            closeDropdown();
-                                            e.stopPropagation();
+                                        onClick={() => {
+                                            reset();
                                         }}
-                                        ariaLabel='Hide options'
+                                        ariaLabel={clearAllOptionsAriaLabel || ''}
                                     />
-                                </>
-                            ) : (
+                                )}
                                 <Icon
                                     className='selectable-icon'
                                     color='gray'
-                                    name='chevron_down'
+                                    name={showDropdown ? 'chevron_up' : 'chevron_down'}
                                     size='small'
-                                    onClick={() => {
-                                        setShowDropdown(true);
+                                    onClick={(e) => {
+                                        if (showDropdown) {
+                                            closeDropdown();
+                                            e.stopPropagation();
+                                        }
+                                        else
+                                            setShowDropdown(true);
                                     }}
-                                    ariaLabel='Show options'
+                                    ariaLabel={showDropdown ? hideOptionsAriaLabel : showOptionsAriaLabel}
                                 />
-                            )
+                            </>
                         }
+                        value={selectedValues}
                         onSelect={(value, option) => {
                             if (onChange !== undefined) onChange(value, option);
                             setSelectedValues([value]);
@@ -401,12 +396,11 @@ export const Select = withDataId(
                         aria-expanded={showDropdown}
                         {...props}
                     >
-                        {singleOptionsRenderer(options, selectedValues ? selectedValues[0] : undefined, defaultTheme, dataId)}
-                    </AntdSelect>
+                        {singleOptionsRenderer(options, selectedValues.length > 0 ? selectedValues[0] : undefined, defaultTheme, dataId)}
+                    </AntdSelect >
                 ) : (
                     <AntdSelect
                         autoClearSearchValue={false}
-                        removeIcon={<Icon color='gray' name='close' size='small' ariaLabel='Remove option' />}
                         data-id={dataId}
                         data-testid='select'
                         defaultValue={defaultValues}
@@ -421,7 +415,6 @@ export const Select = withDataId(
                                         handleSelectAll,
                                         text,
                                         searchValue,
-                                        showDropdown,
                                         mode,
                                         defaultTheme,
                                         pageSize
@@ -436,7 +429,7 @@ export const Select = withDataId(
                             const valuesToRender = `${displayValue.slice(0, overflowLength).map((value) => ` ${value?.label?.props?.value}`)}${textOverflow}`;
                             return <Tooltip title={valuesToRender}>{`+${displayValue.length}`}</Tooltip>;
                         }}
-                        menuItemSelectedIcon={<Icon color='white' name='close' size='small' ariaLabel='Remove option' />}
+                        menuItemSelectedIcon={<Icon color='white' name='close' size='small' ariaLabel={deleteOptionSelectedAriaLabel || ''} />}
                         mode={mode}
                         open={showDropdown}
                         placeholder={placeholder}
@@ -444,44 +437,35 @@ export const Select = withDataId(
                         style={{ width: '100%' }}
                         showSearch
                         suffixIcon={
-                            showDropdown ? (
-                                <>
-                                    {allowClear && (searchValue !== '' || selectedValues.length > 0) && (
-                                        <Icon
-                                            className='selectable-icon'
-                                            color='gray'
-                                            name='close'
-                                            size='small'
-                                            onClick={() => {
-                                                reset();
-                                            }}
-                                            ariaLabel='Remove all options'
-                                        />
-                                    )}
+                            <>
+                                {allowClear && (searchValue !== '' || selectedValues.length > 0) && (
                                     <Icon
                                         className='selectable-icon'
                                         color='gray'
-                                        name='chevron_up'
+                                        name='close'
                                         size='small'
-                                        onClick={(e) => {
-                                            closeDropdown();
-                                            e.stopPropagation();
+                                        onClick={() => {
+                                            reset();
                                         }}
-                                        ariaLabel='Hide options'
+                                        ariaLabel={clearAllOptionsAriaLabel || ''}
                                     />
-                                </>
-                            ) : (
+                                )}
                                 <Icon
                                     className='selectable-icon'
                                     color='gray'
-                                    name='chevron_down'
+                                    name={showDropdown ? 'chevron_up' : 'chevron_down'}
                                     size='small'
-                                    onClick={() => {
-                                        setShowDropdown(true);
+                                    onClick={(e) => {
+                                        if (showDropdown) {
+                                            closeDropdown();
+                                            e.stopPropagation();
+                                        }
+                                        else
+                                            setShowDropdown(true);
                                     }}
-                                    ariaLabel='Show options'
+                                    ariaLabel={showDropdown ? hideOptionsAriaLabel : showOptionsAriaLabel}
                                 />
-                            )
+                            </>
                         }
                         ref={(r) => {
                             if (ref !== null && r !== null) ref.current = r;
@@ -492,10 +476,11 @@ export const Select = withDataId(
                                 if (!e) {
                                     setCurrentPage(1);
                                     setSearchValue('');
+                                    sValue.current = '';
                                 }
                             }
                         }}
-                        tagRender={maxTagLength ? (customTagProps: CustomTagProps) => tagRenderButtonPagination(customTagProps, options, maxTagLength, defaultTheme) : undefined}
+                        tagRender={maxTagLength ? (customTagProps: CustomTagProps) => tagRenderButtonPagination(customTagProps, options, maxTagLength, defaultTheme, deleteOptionSelectedAriaLabel || '') : undefined}
                         value={selectedValues}
                         dropdownAlign={{ offset: [0, 3] }}
                         onChange={(values, _options) => {
@@ -521,7 +506,7 @@ export const Select = withDataId(
                         aria-expanded={showDropdown}
                         {...props}
                     >
-                        {optionsRenderer(options, selectedValues, searchValue, defaultTheme, dataId, pageSize)}
+                        {optionsRenderer(options, selectedValues, searchValue, defaultTheme, dataId, currentPage, pageSize)}
                     </AntdSelect>
                 )}
             </>

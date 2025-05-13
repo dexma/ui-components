@@ -66,4 +66,15 @@ const StyledInput = styled.div<{ $focused: boolean; $icon?: string; $isLoading?:
     ${(props) => props.$isLoading && getLoading(props)};
 `;
 
-export { StyledInput };
+const StyledInputLabel = styled.label`
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+`;
+
+export { StyledInput, StyledInputLabel };

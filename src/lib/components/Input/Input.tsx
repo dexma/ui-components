@@ -1,8 +1,8 @@
-import { useState, forwardRef, type ForwardedRef, useContext, ReactNode, FocusEvent, InputHTMLAttributes } from 'react';
+import { useState, forwardRef, type ForwardedRef, useContext, FocusEvent, InputHTMLAttributes } from 'react';
 import { ThemeContext } from 'styled-components';
 import omit from 'lodash/omit';
 
-import { StyledInput } from '@styles/Input/StyledInput';
+import { StyledInput, StyledInputLabel } from '@styles/Input/StyledInput';
 import defaultTheme from '@utils/theme';
 import { Icon, Spinner } from '@components';
 import { withDataId } from '@components/DataId/withDataId';
@@ -25,12 +25,6 @@ type InputProps = {
     autoComplete?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-const getLabel = (_label: ReactNode) => (
-    <label htmlFor='input-element' className='sr-only'>
-        {_label}
-    </label>
-);
-
 export const Input = withDataId(
     forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
         const [focused, setFocused] = useState(false);
@@ -48,7 +42,9 @@ export const Input = withDataId(
         };
         return (
             <>
-                {getLabel(label)}
+                <StyledInputLabel htmlFor='input-element'>
+                    {label}
+                </StyledInputLabel>
                 <StyledInput
                     role={isItToSearch ? 'search' : undefined}
                     data-testid='input'

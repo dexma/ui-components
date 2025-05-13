@@ -73,7 +73,7 @@ describe('Data Id', () => {
                     <Chart />
                     <DatePicker type='date' />
                     <Input label='input test' type='text'/>
-                    <Select />
+                    <Select showOptionsAriaLabel='Show options' hideOptionsAriaLabel='Hide options' />
                     <TableWithDataId />
                     <Tag />
                     <Dropdown onItemSelected={() => console.log('Item select OK!')} />
@@ -111,7 +111,7 @@ describe('Data Id', () => {
                     <Chart dataId='chart.test' />
                     <DatePicker type='date' dataId='datepicker.test' />
                     <Input dataId='input.test' label='input test' type='text' />
-                    <Select dataId='select.test' />
+                    <Select dataId='select.test' showOptionsAriaLabel='Show options' hideOptionsAriaLabel='Hide options' />
                     <TableWithDataId dataId='table.test' />
                     <Tag dataId='tag.test' />
                     <Dropdown dataId='dropdown.test' onItemSelected={() => console.log('Item select OK!')} />
@@ -150,7 +150,7 @@ describe('Data Id', () => {
                         <Chart />
                         <DatePicker type='date' />
                         <Input label='input test' type='text' />
-                        <Select />
+                        <Select showOptionsAriaLabel='Show options' hideOptionsAriaLabel='Hide options' />
                         <TableWithDataId />
                         <Tag />
                         <Dropdown onItemSelected={() => console.log('Item select OK!')} />
@@ -190,7 +190,7 @@ describe('Data Id', () => {
                         <Chart dataId='chart.test' />
                         <DatePicker type='date' dataId='datepicker.test' />
                         <Input dataId='input.test' label='input test' type='text' />
-                        <Select dataId='select.test' />
+                        <Select dataId='select.test' showOptionsAriaLabel='Show options' hideOptionsAriaLabel='Hide options' />
                         <TableWithDataId dataId='table.test' />
                         <Tag dataId='tag.test' />
                         <Dropdown dataId='dropdown.test' onItemSelected={() => console.log('Item select OK!')} />

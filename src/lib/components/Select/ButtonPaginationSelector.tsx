@@ -12,7 +12,7 @@ export const getButtonText = (text: SelectTextProps, currentPage: number, pageSi
     const lastValue = `${
         // eslint-disable-next-line no-nested-ternary
         searchValue !== '' ? ` "${searchValue}"` : pageSize <= numElements ? ` ${text.connector} ${text.content}` : ``
-    } (${numElements})`;
+        } (${numElements})`;
     return (
         <span data-testid='text-pagination-selector'>
             {textValue}
@@ -39,7 +39,6 @@ type ButtonPaginationSelectorProps = {
     text: SelectTextProps;
     theme?: Theme;
     searchValue: string;
-    showDropdown: boolean;
 };
 
 export const ButtonPaginationSelector = ({
@@ -50,8 +49,7 @@ export const ButtonPaginationSelector = ({
     onPageChange,
     text,
     theme,
-    searchValue,
-    showDropdown,
+    searchValue
 }: ButtonPaginationSelectorProps) => {
     const ref = useRef(null);
     const [showPagination, setShowPagination] = useState(pageSize !== undefined && pageSize < options.length);
@@ -64,8 +62,6 @@ export const ButtonPaginationSelector = ({
         const newPage = currentPage - 1;
         if (newPage <= totalPages && newPage >= 1) {
             onPageChange(newPage);
-            setIsPrevDisabled(newPage === 1);
-            setIsNextDisabled(false);
         }
     };
 
@@ -73,17 +69,13 @@ export const ButtonPaginationSelector = ({
         const newPage = currentPage + 1;
         if (newPage <= totalPages && newPage >= 1) {
             onPageChange(newPage);
-            setIsPrevDisabled(false);
-            setIsNextDisabled(newPage === totalPages);
         }
     };
 
     useEffect(() => {
-        if (!showDropdown) {
-            setIsPrevDisabled(currentPage === 1);
-            setIsNextDisabled(currentPage === totalPages);
-        }
-    }, [showDropdown, currentPage, totalPages]);
+        setIsPrevDisabled(currentPage === 1);
+        setIsNextDisabled(currentPage === totalPages);
+    }, [currentPage, totalPages]);
 
     useEffect(() => {
         if (pageSize !== undefined) {

@@ -120,7 +120,6 @@ describe('ButtonPaginationSelector', () => {
                     onPageChange={vitest.fn()}
                     text={text}
                     searchValue=''
-                    showDropdown
                 />
             );
             const button = screen.getByTestId('text-pagination-selector');
@@ -137,7 +136,6 @@ describe('ButtonPaginationSelector', () => {
                     onPageChange={vitest.fn()}
                     text={text}
                     searchValue=''
-                    showDropdown
                 />
             );
             const button = screen.getByTestId('button-select-all');
@@ -157,7 +155,6 @@ describe('ButtonPaginationSelector', () => {
                     onPageChange={onPageChange}
                     text={text}
                     searchValue=''
-                    showDropdown
                 />
             );
             const button = screen.getByTestId('button-prev');
@@ -175,7 +172,6 @@ describe('ButtonPaginationSelector', () => {
                     onPageChange={onPageChange}
                     text={text}
                     searchValue=''
-                    showDropdown
                 />
             );
             const button = screen.getByTestId('button-next');
@@ -193,7 +189,6 @@ describe('ButtonPaginationSelector', () => {
                     onPageChange={onPageChange}
                     text={text}
                     searchValue=''
-                    showDropdown
                 />
             );
             const button = screen.getByTestId('button-next');
@@ -211,7 +206,6 @@ describe('ButtonPaginationSelector', () => {
                     onPageChange={onPageChange}
                     text={text}
                     searchValue=''
-                    showDropdown
                 />
             );
             const button = screen.getByTestId('button-prev');
@@ -228,7 +222,6 @@ describe('ButtonPaginationSelector', () => {
                     onPageChange={vitest.fn()}
                     text={text}
                     searchValue=''
-                    showDropdown
                 />
             );
             const buttonPrev = screen.queryByTestId('button-prev');
@@ -248,7 +241,6 @@ describe('ButtonPaginationSelector', () => {
                     onPageChange={vitest.fn()}
                     text={text}
                     searchValue='random'
-                    showDropdown
                 />
             );
             const buttonPrev = screen.queryByTestId('button-prev');
@@ -271,7 +263,7 @@ describe('Ancillary functions', () => {
                 onClose: vitest.fn(),
             };
             const options = [{ value: 'Test 1', label: 'Test 1', color: 'blue' }];
-            render(tagRenderButtonPagination(props, options, 5, defaultTheme));
+            render(tagRenderButtonPagination(props, options, 5, defaultTheme, 'Delete Option'));
             const tag = screen.getByTestId('tag-option-selected-Test 1');
             expect(tag).toBeTruthy();
         });
@@ -284,7 +276,7 @@ describe('Ancillary functions', () => {
                 onClose,
             };
             const options = [{ value: 'Test 1', label: 'Test 1', color: 'blue' }];
-            render(tagRenderButtonPagination(props, options, 5, defaultTheme));
+            render(tagRenderButtonPagination(props, options, 5, defaultTheme, 'Delete Option'));
             const tag = screen.getByTestId('tag-option-selected-Test 1');
             expect(tag).toBeTruthy();
             const closeIcon = screen.getByTestId('icon');
@@ -301,7 +293,7 @@ describe('Ancillary functions', () => {
                 onClose: vitest.fn(),
             };
             const options = [{ value: 'Test 1', label: 'Test 1', color: 'blue' }];
-            render(tagRenderButtonPagination(props, options, 5, defaultTheme));
+            render(tagRenderButtonPagination(props, options, 5, defaultTheme, 'Delete Option'));
             const tag = screen.getByTestId('tag-option-selected-Test 1');
             expect(tag).toBeTruthy();
             const closeIcon = screen.queryByTestId('icon');
@@ -326,7 +318,6 @@ describe('Ancillary functions', () => {
                     vitest.fn(),
                     text,
                     '',
-                    true,
                     'multiple',
                     defaultTheme,
                     1
@@ -344,7 +335,7 @@ describe('Ancillary functions', () => {
             expect(buttonSelectAll).toBeTruthy();
         });
         it('should render a dropdown successfully but not pagination and select all ones', () => {
-            render(dropdownRenderSelect(<MockDropdownMenuComponent />, 10, [], vitest.fn(), vitest.fn(), text, '', true, 'multiple', defaultTheme, 1));
+            render(dropdownRenderSelect(<MockDropdownMenuComponent />, 10, [], vitest.fn(), vitest.fn(), text, '', 'multiple', defaultTheme, 1));
             const wrapper = screen.getByTestId('select-dropdown');
             expect(wrapper).toBeTruthy();
             const dropdown = screen.getByTestId('dropdown-menu');
@@ -375,14 +366,14 @@ describe('Ancillary functions', () => {
 
 describe('Select', () => {
     it('should render Select successfully', () => {
-        render(<Select mode='multiple' data-testid='select' style={{ width: '100%' }} />);
+        render(<Select mode='multiple' data-testid='select' style={{ width: '100%' }} showOptionsAriaLabel='Show options' hideOptionsAriaLabel='Hide options' />);
 
         const select = screen.getByTestId('select');
         expect(select).toBeTruthy();
     });
 
     it('should open dropDown when input is clicked', () => {
-        const { container } = render(<Select mode='multiple' data-testid='select' style={{ width: '100%' }} options={[{ color: 'blue', value: 'Test', label: 'Test' }]} />);
+        const { container } = render(<Select mode='multiple' data-testid='select' style={{ width: '100%' }} options={[{ color: 'blue', value: 'Test', label: 'Test' }]} showOptionsAriaLabel='Show options' hideOptionsAriaLabel='Hide options' />);
         // When
         const select = container.querySelector("[data-testid='select'] > .ant-select-selector");
         expect(select).not.toBeNull();
@@ -406,6 +397,8 @@ describe('Select', () => {
                     { color: 'blue', value: 'Test', label: 'Test' },
                     { color: 'red', value: 'Test1', label: 'Test1' },
                 ]}
+                showOptionsAriaLabel='Show options' 
+                hideOptionsAriaLabel='Hide options'
             />
         );
         // When
@@ -438,6 +431,8 @@ describe('Select', () => {
                 ]}
                 pageSize={2}
                 onChange={onChange}
+                showOptionsAriaLabel='Show options' 
+                hideOptionsAriaLabel='Hide options'
             />
         );
 
@@ -473,6 +468,8 @@ describe('Select', () => {
                 ]}
                 pageSize={2}
                 onChange={onChange}
+                showOptionsAriaLabel='Show options' 
+                hideOptionsAriaLabel='Hide options'
             />
         );
 
@@ -512,6 +509,8 @@ describe('Select', () => {
                     { color: 'blue', value: 'Test6', label: 'Test6' },
                 ]}
                 pageSize={2}
+                showOptionsAriaLabel='Show options' 
+                hideOptionsAriaLabel='Hide options'
             />
         );
         // When
@@ -543,6 +542,8 @@ describe('Select', () => {
                     { color: 'blue', value: 'Test6', label: 'Test6' },
                 ]}
                 pageSize={10}
+                showOptionsAriaLabel='Show options' 
+                hideOptionsAriaLabel='Hide options'
             />
         );
         // When
@@ -572,6 +573,8 @@ describe('Select', () => {
                     { color: 'blue', value: 'Test5', label: 'Test5' },
                     { color: 'blue', value: 'Test6', label: 'Test6' },
                 ]}
+                showOptionsAriaLabel='Show options' 
+                hideOptionsAriaLabel='Hide options'
             />
         );
         // When
@@ -602,6 +605,8 @@ describe('Select', () => {
                     { color: 'blue', value: 'Test6', label: 'Test6' },
                 ]}
                 pageSize={2}
+                showOptionsAriaLabel='Show options' 
+                hideOptionsAriaLabel='Hide options'
             />
         );
         // When

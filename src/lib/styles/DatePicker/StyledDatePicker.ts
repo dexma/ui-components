@@ -56,14 +56,27 @@ const dropdownStyles = () => css`
     }
 `;
 
-const StyledAntdDatePicker = styled(AntdDatePicker)<AntdDatePickerProps>`
+const StyledAntdDatePicker = styled(AntdDatePicker) <AntdDatePickerProps>`
     ${getStylesInputAntdPicker}
 `;
-const StyledAntdRangePicker = styled(RangePicker)<AntdRangePickerProps>`
+
+const StyledAntdRangePicker = styled(RangePicker) <AntdRangePickerProps>`
     ${getStylesInputAntdPicker}
 `;
+
 const DropdownDatePickerStyles = createGlobalStyle`
     ${dropdownStyles};
 `;
 
-export { StyledAntdDatePicker, StyledAntdRangePicker, DropdownDatePickerStyles };
+const StyledDatePickerLabel = styled.label`
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+`;
+
+export { StyledAntdDatePicker, StyledAntdRangePicker, DropdownDatePickerStyles, StyledDatePickerLabel };

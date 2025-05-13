@@ -6,9 +6,8 @@ import { type RangePickerProps } from 'antd/lib/date-picker';
 import defaultTheme, { type Theme } from '@utils/theme';
 import { Icon } from '@components/Icon';
 import { withDataId } from '@components/DataId/withDataId';
-import { DropdownDatePickerStyles, StyledAntdDatePicker, StyledAntdRangePicker } from '@styles/DatePicker/StyledDatePicker';
+import { DropdownDatePickerStyles, StyledAntdDatePicker, StyledAntdRangePicker, StyledDatePickerLabel } from '@styles/DatePicker/StyledDatePicker';
 import * as datePickerUtils from './datePickerUtils';
-import '@styles/styles.css';
 
 type CommonProps = {
     lang?: 'en' | 'bg' | 'br' | 'be' | 'ca' | 'da' | 'de' | 'el' | 'es' | 'fi' | 'fr' | 'it' | 'nl' | 'pl' | 'pt' | 'sl' | 'sv' | 'tr' | 'us' | 'zh';
@@ -16,14 +15,15 @@ type CommonProps = {
     'data-testid'?: string;
     theme?: Theme;
     label?: string;
+    clearDateAriaLabel?: string;
 };
 
 export type AntdDatePickerProps = DatePickerProps & CommonProps;
 
 const getLabel = (_label: ReactNode, id: string) => (
-    <label htmlFor={id} className='sr-only'>
+    <StyledDatePickerLabel htmlFor={id}>
         {_label}
-    </label>
+    </StyledDatePickerLabel>
 );
 
 const handleOpenChange = (_: boolean, ariaLabel?: string) => {
@@ -34,7 +34,7 @@ const handleOpenChange = (_: boolean, ariaLabel?: string) => {
     }
 };
 
-export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, disabled, ...props }: AntdDatePickerProps) => {
+export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, disabled, allowClear, clearDateAriaLabel, ...props }: AntdDatePickerProps) => {
     const th = useContext(ThemeContext) || theme;
     const id = `antd-date-picker_${Date.now()}`;
     return (
@@ -57,6 +57,15 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
                     format={format ?? 'DD/MM/YYYY'}
                     nextIcon={<Icon name='chevron_right_l' size={10} color='gray600' ariaLabel='Next page' />}
                     prevIcon={<Icon name='chevron_left_l' size={10} color='gray600' ariaLabel='Previous page' />}
+                    allowClear={allowClear ? {
+                        clearIcon: <Icon
+                            className='selectable-icon'
+                            color='gray'
+                            name='close'
+                            size='small'
+                            ariaLabel={clearDateAriaLabel || ''}
+                        />
+                    } : false}
                     suffixIcon={<Icon name='calendar_blank' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
                     aria-disabled={disabled}
@@ -69,7 +78,7 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
 
 export type AntdRangePickerProps = RangePickerProps & CommonProps;
 
-export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, label, format, disabled, ...props }: AntdRangePickerProps) => {
+export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, label, format, disabled, allowClear, clearDateAriaLabel, ...props }: AntdRangePickerProps) => {
     const th = useContext(ThemeContext) || theme;
     const id = `antd-date-picker_${Date.now()}`;
     return (
@@ -91,6 +100,15 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                     data-testid='antd-range-picker'
                     format={format ?? 'DD/MM/YYYY'}
                     separator={<Icon name='arrow_right' size={18} color='gray600' ariaLabel='to' />}
+                    allowClear={allowClear ? {
+                        clearIcon: <Icon
+                            className='selectable-icon'
+                            color='gray'
+                            name='close'
+                            size='small'
+                            ariaLabel={clearDateAriaLabel || ''}
+                        />
+                    } : false}
                     suffixIcon={<Icon name='calendar_range' size={18} color='gray600' ariaLabel='Calendar icon' />}
                     theme={th}
                     onOpenChange={(value) => handleOpenChange(value, props['aria-label'])}
