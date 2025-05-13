@@ -34,7 +34,7 @@ const handleOpenChange = (_: boolean, ariaLabel?: string) => {
     }
 };
 
-export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, disabled, allowClear, defaultValue, clearDateAriaLabel, ...props }: AntdDatePickerProps) => {
+export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, disabled, allowClear, clearDateAriaLabel, ...props }: AntdDatePickerProps) => {
     const th = useContext(ThemeContext) || theme;
     const id = `antd-date-picker_${Date.now()}`;
     return (

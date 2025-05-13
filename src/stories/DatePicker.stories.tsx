@@ -14,7 +14,7 @@ export const Basic = () => (
                 <Paragraph margin='1rem 0 1rem 0'>DatePicker provided by Ant Design UI library.</Paragraph>
             </Cell>
             <Cell>
-                <DatePicker type='date' format='DD-MM-YYYY' aria-label='Calendar to selection date' label='Select date' allowClear clearDateAriaLabel='Clear date selected' />
+                <DatePicker type='date' format='DD-MM-YYYY' aria-label='Calendar to selection date' label='Select date' defaultValue={dayjs('01/01/2024')} allowClear clearDateAriaLabel='Clear date selected' />
                 <br />
                 <DatePicker type='date' picker='week' aria-label='Calendar to selection week' label='Select week' />
                 <br />
@@ -34,7 +34,7 @@ export const RangePicker = () => (
                 <Paragraph margin='1rem 0 1rem 0'>RangePicker provided by Ant Design UI library.</Paragraph>
             </Cell>
             <Cell>
-                <DatePicker type='range' format='DD-MM-YYYY' aria-label='Dates range' label='Select start and end date' />
+                <DatePicker type='range' format='DD-MM-YYYY' aria-label='Dates range' label='Select start and end date' allowClear defaultValue={[dayjs('2025/01/01', 'YYYY/MM/DD'), dayjs('2025/01/31', 'YYYY/MM/DD')]} />
                 <br />
                 <DatePicker type='range' picker='week' aria-label='Weeks range' label='Select start and end week' />
                 <br />
@@ -175,3 +175,12 @@ export const LanguageDatePicker = () => (
         </Row>
     </Grid>
 );
+
+export const RangePickerDate = () => (
+    <DatePicker
+        type='range'
+        defaultValue={[dayjs('2024-01-01'), dayjs('2024-12-31')]}
+        format={'YYYY-MM-DD'}
+        clearDateAriaLabel={'clear Date Aria Label'}
+    />
+)
