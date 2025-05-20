@@ -1,10 +1,11 @@
-import { ReactNode, useContext, useEffect, useRef } from 'react';
+import React, { ReactNode, useContext, useEffect, useRef } from 'react';
 import { type ModalProps as AntDModalProps } from 'antd';
 import { ThemeContext } from 'styled-components';
 
 import defaultTheme from '@utils/theme';
 import { Button, Icon } from '@components';
 import { StyledModal, StyledModalGlobal } from '@styles/Modal/StyledModal';
+
 
 export type ModalProps = {
     body?: ReactNode;
@@ -51,24 +52,46 @@ export const Modal = ({ open, title, body, footer, closeModalButtonAriaLabel, on
                         {title}
                     </h2>
 
-                    {body && (
+                    {Array.isArray(body) ? (
                         <div id='modal-body' tabIndex={-1}>
-                            {body}
+                            {body.map((child, index) =>
+                                React.isValidElement(child)
+                                    ? React.cloneElement(child, { key: child.key || index })
+                                    : child
+                            )}
                         </div>
+                    ) : (
+                        body && <div id='modal-body' tabIndex={-1}>{body}</div>
                     )}
 
-                    {footer && (
-                        <div
-                            id='modal-footer'
+                    {Array.isArray(footer) ? (
+                        <div id='modal-footer'
                             style={{
                                 marginTop: '16px',
                                 display: 'flex',
                                 justifyContent: 'flex-end',
                                 gap: '20px'
-                            }}
-                        >
-                            {footer as ReactNode}
+                            }}>
+                            {footer.map((child, index) =>
+                                React.isValidElement(child)
+                                    ? React.cloneElement(child, { key: child.key || index })
+                                    : child
+                            )}
                         </div>
+                    ) : (
+                        footer && (
+                            <div
+                                id='modal-footer'
+                                style={{
+                                    marginTop: '16px',
+                                    display: 'flex',
+                                    justifyContent: 'flex-end',
+                                    gap: '20px'
+                                }}
+                            >
+                                {footer as ReactNode}
+                            </div>
+                        )
                     )}
 
                     <Button

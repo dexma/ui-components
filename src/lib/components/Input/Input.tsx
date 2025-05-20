@@ -1,4 +1,4 @@
-import { useState, forwardRef, type ForwardedRef, useContext, FocusEvent, InputHTMLAttributes } from 'react';
+import { useState, forwardRef, type ForwardedRef, useContext, FocusEvent, InputHTMLAttributes, ChangeEvent } from 'react';
 import { ThemeContext } from 'styled-components';
 import omit from 'lodash/omit';
 
@@ -28,10 +28,10 @@ type InputProps = {
 export const Input = withDataId(
     forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
         const [focused, setFocused] = useState(false);
-        const { icon, isLoading, onFocus, onBlur, children, dataId, iconAriaLabel, label, ariaLabel, disabled, isItToSearch, autoComplete } = props;
+        const { icon, isLoading, onFocus, onBlur, children, dataId, iconAriaLabel, label, ariaLabel, disabled, isItToSearch, autoComplete, onChange } = props;
         const th = useContext(ThemeContext) || defaultTheme;
-        const newProps = omit(props, ['placeholder', 'id', 'label', 'value', 'type', 'name', 'onChange', 'onFocus', 'onBlur', 'dataId', 'isLoading']);
-        const inputProps = omit(props, ['icon', 'isLoading', 'theme', 'children', 'onFocus', 'onBlur', 'dataId', 'isLoading']);
+        const newProps = omit(props, ['placeholder', 'id', 'label', 'value', 'type', 'name', 'onChange', 'onFocus', 'onBlur', 'dataId', 'isLoading', 'icon', 'ariaLabel', 'isItToSearch']);
+        const inputProps = omit(props, ['icon', 'isLoading', 'theme', 'children', 'onFocus', 'onBlur', 'dataId', 'isLoading', 'ariaLabel', 'isItToSearch']);
         const handleOnFocus = (e: FocusEvent<HTMLInputElement>) => {
             setFocused(true);
             if (onFocus) onFocus(e);
@@ -39,6 +39,9 @@ export const Input = withDataId(
         const handleOnBlur = (e: FocusEvent<HTMLInputElement>) => {
             setFocused(false);
             if (onBlur) onBlur(e);
+        };
+        const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+            if (onChange) onChange(e);
         };
         return (
             <>
@@ -71,6 +74,7 @@ export const Input = withDataId(
                         disabled={disabled}
                         aria-disabled={disabled}
                         autoComplete={autoComplete ?? 'off'}
+                        onChange={handleOnChange}
                     />
                     {isLoading && <Spinner size={20} />}
                     {children && children}

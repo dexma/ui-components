@@ -120,7 +120,7 @@ export const getHorizontal = () => css`
 type StyledFieldGroupProps = {
     $vertical?: boolean;
     size?: string;
-    variant?: string;
+    $variant?: string;
     type?: FieldGroupType;
     theme: Theme;
 };
@@ -159,7 +159,7 @@ const StyledFieldGroup = styled.div<StyledFieldGroupProps>`
         opacity: 0;
         width: 0px;
     }
-    ${(props) => props.variant === 'split' && getSplitVariant(props)}
-    ${(props) => props.variant === 'custom' && getCustomVariant(props)}
+    ${(props) => props.$variant === 'split' && getSplitVariant(props)}
+    ${(props) => props.$variant === 'custom' && getCustomVariant(props)}
 `;
 export { StyledFieldGroup };

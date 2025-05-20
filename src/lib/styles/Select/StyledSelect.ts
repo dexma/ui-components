@@ -84,7 +84,7 @@ export const StyledSelectDropdown = styled.div`
 
 const getSpanColor = (theme: Theme, _color: string) => get(theme.color, _color);
 
-export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; closable?: any; color?: string, isSingleSelect?: boolean }>`
+export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; closable?: any; color?: string, $isSingleSelect?: boolean }>`
     display: flex;
     align-items: center;
     padding: 2px 4px;
@@ -96,8 +96,8 @@ export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; 
     margin: 0px;
     font-size: 14px;
     line-height: 14px;
-    background: ${(props) => props.color ? getSpanColor(props.theme, props.color) : (!props.isSingleSelect && gray400(props.theme))};
-    color: ${(props) => props.isSingleSelect ? primaryColor(props.theme) : white(props.theme)};
+    background: ${(props) => props.color ? getSpanColor(props.theme, props.color) : (!props.$isSingleSelect && gray400(props.theme))};
+    color: ${(props) => props.$isSingleSelect ? primaryColor(props.theme) : white(props.theme)};
     ${StyledIcon} {
         ${(props) =>
         props.icon &&

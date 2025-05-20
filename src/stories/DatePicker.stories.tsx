@@ -180,7 +180,7 @@ export const RangePickerDate = () => (
     <DatePicker
         type='range'
         defaultValue={[dayjs('2024-01-01'), dayjs('2024-12-31')]}
-        format={'YYYY-MM-DD'}
-        clearDateAriaLabel={'clear Date Aria Label'}
+        format="YYYY-MM-DD"
+        clearDateAriaLabel="clear Date Aria Label"
     />
 )
