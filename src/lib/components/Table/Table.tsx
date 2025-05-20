@@ -117,6 +117,7 @@ const getExpandedIcon = <T extends { children?: object; expandable?: boolean }>(
 export type TableProps<RecordType> = {
     isLoading?: boolean;
     isExpanded?: boolean;
+    isPaginated?: boolean;
     showError?: boolean;
     dataId?: string;
     errorContent?: React.ReactNode;
@@ -131,6 +132,7 @@ export type TableProps<RecordType> = {
 export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType>) => {
     const {
         isExpanded,
+        isPaginated = true,
         expandable,
         columns,
         dataSource,
@@ -155,7 +157,7 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
     const [actualPage, setActualPage] = useState(currentPage);
     const [pageWidth, setPageWidth] = useState(pageSize);
     const data = dataSource ?? [];
-    const paginatedData = data.slice((actualPage - 1) * pageWidth, actualPage * pageWidth);
+    const paginatedData = isPaginated ? data.slice((actualPage - 1) * pageWidth, actualPage * pageWidth) : data;
 
     const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable', 'dataSource']);
     const th = useContext(ThemeContext) || defaultTheme;
@@ -198,23 +200,25 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                             dataSource={paginatedData}
                             {...tableProps}
                         />
-                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            <Pagination
-                                total={data.length}
-                                pageSize={pageSize}
-                                current={actualPage}
-                                previosPageAriaLabel='Previous page'
-                                nextPageAriaLabel='Next page'
-                                prevDotsPageAriaLabel='Jumpt previous 5 pages'
-                                nextDotsPageAriaLabel='Jumpt next 5 pages'
-                                showSizeChanger={showSizeChanger}
-                                pageSizeOptions={pageSizeOptions}
-                                onChange={(page, size) => {
-                                    setActualPage(page);
-                                    setPageWidth(size);
-                                }}
-                            />
-                        </div>
+                        {isPaginated &&
+                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                <Pagination
+                                    total={data.length}
+                                    pageSize={pageSize}
+                                    current={actualPage}
+                                    previosPageAriaLabel='Previous page'
+                                    nextPageAriaLabel='Next page'
+                                    prevDotsPageAriaLabel='Jumpt previous 5 pages'
+                                    nextDotsPageAriaLabel='Jumpt next 5 pages'
+                                    showSizeChanger={showSizeChanger}
+                                    pageSizeOptions={pageSizeOptions}
+                                    onChange={(page, size) => {
+                                        setActualPage(page);
+                                        setPageWidth(size);
+                                    }}
+                                />
+                            </div>
+                        }
                     </div>
                 )}
             </StyledTable>
