@@ -7,6 +7,7 @@ import { withDataId } from '@components/DataId/withDataId';
 
 export type CheckboxProps = {
     dataId?: string;
+    onBlur?: React.FocusEventHandler<HTMLInputElement>;
 } & AntCheckboxProps;
 
 export const Checkbox = withDataId(({ checked, disabled, dataId, children, ...props }: CheckboxProps) => {

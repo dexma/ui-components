@@ -13,8 +13,11 @@ const CheckboxBasic = ({ text }: { text?: string }) => {
     const handleChange = () => {
         setChecked(!checked);
     };
+    const handleBlur = () => {
+        console.log('blur');
+    }
     return (
-        <Checkbox checked={checked} onChange={handleChange}>
+        <Checkbox checked={checked} onChange={handleChange} onBlur={handleBlur}>
             {text && text}
         </Checkbox>
     );
