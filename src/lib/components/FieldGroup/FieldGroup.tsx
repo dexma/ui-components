@@ -114,7 +114,7 @@ const GenericFieldGroup = <T extends FieldGroupType, V>({
     };
 
     return (
-        <StyledFieldGroup theme={th} size={size} data-testid='field-group' $vertical={!!vertical} variant={variant} data-id={dataId} {...props}>
+        <StyledFieldGroup theme={th} size={size} data-testid='field-group' $vertical={!!vertical} $variant={variant} data-id={dataId} {...props}>
             {uniqueValues.map((item: FieldGroupItem) => {
                 const { uniqueId, value, label, icon, tooltip, isDisabled, iconAriaLabel } = item;
                 const isSelected = isFieldSelected({ type, selectedValues: item }, selectedField);

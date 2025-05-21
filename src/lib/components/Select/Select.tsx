@@ -1,6 +1,6 @@
 import { Select as AntdSelect, type SelectProps as AntdSelectProps } from 'antd';
 import defaultTheme, { type Theme } from '@utils/theme';
-import { MouseEventHandler, ReactElement, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { MouseEventHandler, ReactElement, useContext, useEffect, useRef, useState } from 'react';
 import { get } from 'lodash';
 import { ThemeContext } from 'styled-components';
 
@@ -8,7 +8,7 @@ import { Icon, Tooltip } from '@components';
 import { withDataId } from '@components/DataId/withDataId';
 import { SelectOptionStyle, StyledSelectDropdown, StyledSpanOption, StyledSpanOptionSelected } from '@styles/Select/StyledSelect';
 import { colors } from 'index';
-import { filterOption, findSubstringIndices, getOptionsBySearch, getRegExpBasedOnInput, singleOptionFilter } from './selectUtils';
+import { filterOption, findSubstringIndices, getOptionsBySearch, getRegExpBasedOnInput } from './selectUtils';
 import { ButtonPaginationSelector } from './ButtonPaginationSelector';
 
 const ALL_CHARACTER = '*';
@@ -151,7 +151,7 @@ export const singleOptionsRenderer = (options: Option[], selectedValue: string |
                     aria-label={option.label}
                 >
                     {selectedValue === option.value ? (
-                        <StyledSpanOptionSelected theme={theme} isSingleSelect>
+                        <StyledSpanOptionSelected theme={theme} $isSingleSelect>
                             {option.label}
                         </StyledSpanOptionSelected>
                     ) : (
