@@ -69,8 +69,7 @@ export const Modal = ({ open, title, body, footer, closeModalButtonAriaLabel, on
                             style={{
                                 marginTop: '16px',
                                 display: 'flex',
-                                justifyContent: 'flex-end',
-                                gap: '20px'
+                                justifyContent: 'flex-end'
                             }}>
                             {footer.map((child, index) =>
                                 React.isValidElement(child)
@@ -85,8 +84,7 @@ export const Modal = ({ open, title, body, footer, closeModalButtonAriaLabel, on
                                 style={{
                                     marginTop: '16px',
                                     display: 'flex',
-                                    justifyContent: 'flex-end',
-                                    gap: '20px'
+                                    justifyContent: 'flex-end'
                                 }}
                             >
                                 {footer as ReactNode}
@@ -100,8 +98,8 @@ export const Modal = ({ open, title, body, footer, closeModalButtonAriaLabel, on
                         onClick={onCancel}
                         style={{
                             position: 'absolute',
-                            top: 0,
-                            right: 0,
+                            top: '-16px',
+                            right: '-16px',
                             padding: '8px',
                             background: 'transparent',
                             border: 'none',
