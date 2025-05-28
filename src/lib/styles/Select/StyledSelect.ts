@@ -2,7 +2,7 @@ import styled, { type DefaultTheme, createGlobalStyle, css } from 'styled-compon
 import { get } from 'lodash';
 import { Button, Cell, Icon } from '@components';
 import { Row } from '@components/Row';
-import { type Theme, color, primary } from '@utils/theme';
+import { type Theme, primary } from '@utils/theme';
 import { gray400, primaryColor, white } from '@utils/selectors';
 import { StyledIcon } from '../Icon/StyledIcon';
 
@@ -177,11 +177,11 @@ export const getSelectOptionStyle = (theme: DefaultTheme | Theme) => css`
         box-shadow: ${theme ? `0 0 0 2px ${hexToRGBA(primaryColor(theme), 0.2)}` : `0 0 0 2px ${hexToRGBA(theme, 0.2)}`};
     }
     .ant-select-item-option-active:not(.ant-select-item-option-disabled):not(.ant-select-item-option-selected) {
-        border: ${color.irisBlue} 2px solid;
+        border: ${theme ? primaryColor(theme) : primary} 2px solid;
     }
     .ant-select-item-option-active:not(.ant-select-item-option-disabled).ant-select-item-option-selected {
         filter: brightness(0.95);
-        border: ${color.irisBlue} 2px solid;
+        border: ${theme ? primaryColor(theme) : primary} 2px solid;
     }
 
     .option-select.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
@@ -190,7 +190,7 @@ export const getSelectOptionStyle = (theme: DefaultTheme | Theme) => css`
         }
     }
 
-    .custom-select > .ant-select-selector > .ant-select-selection-item > span {
+    .ant-select-selector > .ant-select-selection-item > span {
         color: black;
     }
 `;
