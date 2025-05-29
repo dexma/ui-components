@@ -320,7 +320,7 @@ export const Select = withDataId(
                 <SelectOptionStyle $theme={th} />
                 {mode === undefined || mode === 'single' ? (
                     <AntdSelect
-                        className={`custom-select ${props.className}`}
+                        className={props.className}
                         data-testid='select'
                         autoClearSearchValue
                         data-id={dataId}
