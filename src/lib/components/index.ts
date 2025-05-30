@@ -37,6 +37,7 @@ export * from './Switch';
 export * from './SwitchPeriodComparative';
 export * from './Select';
 export * from './DatePicker';
+export * from './Tree';
 export { ConfigProvider } from 'antd';
 export { DataIdProvider } from '@components/DataId/DataIdProvider';
 export { withDataId } from '@components/DataId/withDataId';
