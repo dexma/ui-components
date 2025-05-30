@@ -99,11 +99,12 @@ export const Modal = ({ open, title, body, footer, closeModalButtonAriaLabel, on
                         style={{
                             position: 'absolute',
                             top: '-16px',
-                            right: '-16px',
+                            right: '-20px',
                             padding: '8px',
                             background: 'transparent',
                             border: 'none',
                             cursor: 'pointer',
+                            margin: 0,
                         }}
                     >
                         <Icon name='close' color='gray300' size='medium' ariaLabel={closeModalButtonAriaLabel} style={{ fill: '#c9cccf' }} />

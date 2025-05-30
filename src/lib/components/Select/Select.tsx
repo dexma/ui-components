@@ -396,7 +396,7 @@ export const Select = withDataId(
                         aria-expanded={showDropdown}
                         {...props}
                     >
-                        {singleOptionsRenderer(options, selectedValues.length > 0 ? selectedValues[0] : undefined, defaultTheme, dataId)}
+                        {singleOptionsRenderer(options, selectedValues.length > 0 ? selectedValues[0] : undefined, th, dataId)}
                     </AntdSelect >
                 ) : (
                     <AntdSelect
@@ -416,7 +416,7 @@ export const Select = withDataId(
                                         text,
                                         searchValue,
                                         mode,
-                                        defaultTheme,
+                                        th,
                                         pageSize
                                     )
                                 : undefined
@@ -480,7 +480,7 @@ export const Select = withDataId(
                                 }
                             }
                         }}
-                        tagRender={maxTagLength ? (customTagProps: CustomTagProps) => tagRenderButtonPagination(customTagProps, options, maxTagLength, defaultTheme, deleteOptionSelectedAriaLabel || '') : undefined}
+                        tagRender={maxTagLength ? (customTagProps: CustomTagProps) => tagRenderButtonPagination(customTagProps, options, maxTagLength, th, deleteOptionSelectedAriaLabel || '') : undefined}
                         value={selectedValues}
                         dropdownAlign={{ offset: [0, 3] }}
                         onChange={(values, _options) => {
@@ -506,7 +506,7 @@ export const Select = withDataId(
                         aria-expanded={showDropdown}
                         {...props}
                     >
-                        {optionsRenderer(options, selectedValues, searchValue, defaultTheme, dataId, currentPage, pageSize)}
+                        {optionsRenderer(options, selectedValues, searchValue, th, dataId, currentPage, pageSize)}
                     </AntdSelect>
                 )}
             </>

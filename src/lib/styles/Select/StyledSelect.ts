@@ -29,7 +29,7 @@ export const hexToRGBA = (hex: string, a: number) => {
 
 const getColorHover = (theme?: Theme) => (theme ? primaryColor : primary);
 
-export const StyledPaginationPageWrapper = styled(Cell) <{ $disabled?: boolean; theme?: Theme }>`
+export const StyledPaginationPageWrapper = styled(Cell)<{ $disabled?: boolean; theme?: Theme }>`
     cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
     height: 32px !important;
     max-width: 32px;
@@ -96,8 +96,8 @@ export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; 
     margin: 0px;
     font-size: 14px;
     line-height: 14px;
-    background: ${(props) => props.color ? getSpanColor(props.theme, props.color) : (!props.$isSingleSelect && gray400(props.theme))};
-    color: ${(props) => props.$isSingleSelect ? primaryColor(props.theme) : white(props.theme)};
+    background: ${(props) => !props.$isSingleSelect && props.color ? getSpanColor(props.theme, props.color) : (!props.$isSingleSelect && gray400(props.theme))};
+    color: ${(props) => !props.$isSingleSelect ? white(props.theme) : false};
     ${StyledIcon} {
         ${(props) =>
         props.icon &&
