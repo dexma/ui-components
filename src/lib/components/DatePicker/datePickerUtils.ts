@@ -1,48 +1,46 @@
-import { type Locale } from 'antd/lib/locale';
-import 'moment/locale/ca';
 import ca_ES from 'antd/locale/ca_ES';
-import 'moment/locale/de';
+import 'dayjs/locale/ca';
 import de_DE from 'antd/locale/de_DE';
-import en_US from 'antd/locale/en_US';
-import 'moment/locale/es';
+import 'dayjs/locale/de';
+import en_US from 'antd/es/locale/en_US';
+import 'dayjs/locale/en';
 import es_ES from 'antd/locale/es_ES';
-// import eu_ES from 'antd/lib/locale/eu_ES'; There's no such translation on antd
-import 'moment/locale/fr';
+import 'dayjs/locale/es';
 import fr_FR from 'antd/locale/fr_FR';
-import 'moment/locale/it';
+import 'dayjs/locale/fr';
 import it_IT from 'antd/locale/it_IT';
-import 'moment/locale/pt';
+import 'dayjs/locale/it';
 import pt_PT from 'antd/locale/pt_PT';
-import 'moment/locale/tr';
+import 'dayjs/locale/pt';
 import tr_TR from 'antd/locale/tr_TR';
-import 'moment/locale/pt-br';
+import 'dayjs/locale/tr';
 import pt_BR from 'antd/locale/pt_BR';
-import 'moment/locale/el';
+import 'dayjs/locale/pt-br';
 import el_GR from 'antd/locale/el_GR';
-import 'moment/locale/nl';
+import 'dayjs/locale/el';
 import nl_NL from 'antd/locale/nl_NL';
-import 'moment/locale/nl-be';
+import 'dayjs/locale/nl';
 import nl_BE from 'antd/locale/nl_BE';
-import 'moment/locale/pl';
+import 'dayjs/locale/nl-be';
 import pl_PL from 'antd/locale/pl_PL';
-import 'moment/locale/bg';
+import 'dayjs/locale/pl';
 import bg_BG from 'antd/locale/bg_BG';
-import 'moment/locale/da';
+import 'dayjs/locale/bg';
 import da_DK from 'antd/locale/da_DK';
-import 'moment/locale/fi';
+import 'dayjs/locale/da';
 import fi_FI from 'antd/locale/fi_FI';
-// import no_NO from 'antd/lib/locale/no_NO'; There's no such translation on antd
-import 'moment/locale/sl';
+import 'dayjs/locale/fi';
 import sl_SI from 'antd/locale/sl_SI';
-import 'moment/locale/sv';
+import 'dayjs/locale/sl';
 import sv_SE from 'antd/locale/sv_SE';
-import 'moment/locale/zh-cn';
+import 'dayjs/locale/sv';
 import zh_CN from 'antd/locale/zh_CN';
-import 'moment/locale/en-gb';
+import 'dayjs/locale/zh-cn';
 import en_GB from 'antd/locale/en_GB';
+import 'dayjs/locale/en-gb';
 
 // i18n
-export const getLocale = (language: string): Locale => {
+export const getLocale = (language: string) => {
     switch (language) {
         case 'bg':
             return bg_BG;
