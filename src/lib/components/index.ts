@@ -39,6 +39,7 @@ export * from './Select';
 export * from './DatePicker';
 export * from './Tree';
 export * from './TreeSelect';
+export * from './Breadcrumb';
 export { ConfigProvider } from 'antd';
 export { DataIdProvider } from '@components/DataId/DataIdProvider';
 export { withDataId } from '@components/DataId/withDataId';
