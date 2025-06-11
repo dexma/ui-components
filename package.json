@@ -98,8 +98,8 @@
         "@typescript-eslint/eslint-plugin": "^7.14.1",
         "@typescript-eslint/parser": "^7.14.1",
         "@vitejs/plugin-react": "^4.3.1",
-        "@vitest/coverage-v8": "^1.6.0",
-        "@vitest/ui": "^1.6.0",
+        "@vitest/coverage-v8": "^3.2.3",
+        "@vitest/ui": "^3.2.3",
         "eslint": "^8.56.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-airbnb-typescript": "^18.0.0",
@@ -120,10 +120,10 @@
         "semantic-release": "^24.1.0",
         "storybook": "^8.1.10",
         "typescript": "^5.5.2",
-        "vite": "^5.3.1",
+        "vite": "^6.3.5",
         "vite-plugin-dts": "^4.4.0",
         "vite-tsconfig-paths": "^4.3.1",
-        "vitest": "^1.6.0"
+        "vitest": "^3.2.3"
     },
     "peerDependencies": {
         "antd": "5.11.5",
