@@ -65,6 +65,7 @@
         ]
     },
     "dependencies": {
+        "@ant-design/icons": "^6.0.0",
         "@storybook/cli": "^8.1.10",
         "@types/lodash": "^4.14.202",
         "@xmldom/xmldom": "^0.8.10",

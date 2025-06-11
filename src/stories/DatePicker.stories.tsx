@@ -99,7 +99,7 @@ export const LanguageDatePicker = () => (
     <Grid fluid>
         <Row>
             <Paragraph margin='1rem 0 1rem 0'>
-                In this section we include the string values for the languages available for Date Picker component through property <strong>language</strong> and the value that
+                In this section we include the string values for the languages available for Date Picker component through property <strong>lang</strong> and the value that
                 expects regarding the location of that language. When there&apos;s no value specified, it will have by default : <strong>`en`</strong> for English from{' '}
                 <strong>Great Britain (en_GB)</strong>
             </Paragraph>
@@ -167,7 +167,7 @@ export const LanguageDatePicker = () => (
                 <br />
                 <br />
                 <code>
-                    import fr_BE from &apos;antd/lib/locale/fr_BE&apos;;
+                    import fr_BE from &apos;antd/es/date-picker/locale/fr_BE&apos;;
                     <br />
                     &lt;DatePicker locale=&#123;fr_BE&#125;/&gt;
                 </code>
