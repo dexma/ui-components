@@ -88,6 +88,7 @@ export const PickerPresets = () => (
                     ]}
                     aria-label='Dates range'
                     label='Select start and end date'
+                    format="YYYY/MM/DD HH:mm:ss"
                 />
                 <br />
             </Cell>
