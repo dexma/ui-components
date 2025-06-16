@@ -1,5 +1,5 @@
 import { DatePicker as AntdDatePicker } from 'antd';
-import { darken, lighten } from 'polished';
+import { darken } from 'polished';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import { primaryColor } from '@utils/selectors';
 import { AntdDatePickerProps, type AntdRangePickerProps } from '@components/DatePicker';
@@ -48,11 +48,9 @@ const dropdownStyles = () => css`
     }
 
     // Preset Tags
-    .ant-picker-presets > ul > li {
+    .ant-picker-presets > ul > li:hover {
         color: ${(props) => props.theme.primary} !important;
-        background: ${(props) => lighten(0.5, props.theme.primary)} !important;
-        border-color: ${(props) => props.theme.primary} !important;
-        border: 1px solid;
+        border: 1px solid ${(props) => props.theme.primary} !important;
     }
 `;
 
