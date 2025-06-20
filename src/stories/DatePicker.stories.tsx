@@ -14,13 +14,13 @@ export const Basic = () => (
                 <Paragraph margin='1rem 0 1rem 0'>DatePicker provided by Ant Design UI library.</Paragraph>
             </Cell>
             <Cell>
-                <DatePicker type='date' format='DD-MM-YYYY' aria-label='Calendar to selection date' label='Select date' defaultValue={dayjs('01/01/2024')} allowClear clearDateAriaLabel='Clear date selected' />
+                <DatePicker type='date' format='DD-MM-YYYY' aria-label='Calendar to selection date' label='Select date' defaultValue={dayjs('01/01/2024')} allowClear clearDateAriaLabel='Clear date selected' calendarIconAriaLabel='Calendar icon' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
-                <DatePicker type='date' picker='week' aria-label='Calendar to selection week' label='Select week' />
+                <DatePicker type='date' picker='week' aria-label='Calendar to selection week' label='Select week' calendarIconAriaLabel='Calendar icon' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
-                <DatePicker type='date' picker='month' aria-label='Calendar to selection month' label='Select month' />
+                <DatePicker type='date' picker='month' aria-label='Calendar to selection month' label='Select month' calendarIconAriaLabel='Calendar icon' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
-                <DatePicker type='date' picker='year' aria-label='Calendar to selection year' label='Select year' />
+                <DatePicker type='date' picker='year' aria-label='Calendar to selection year' label='Select year' calendarIconAriaLabel='Calendar icon' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
             </Cell>
         </Row>
@@ -34,13 +34,13 @@ export const RangePicker = () => (
                 <Paragraph margin='1rem 0 1rem 0'>RangePicker provided by Ant Design UI library.</Paragraph>
             </Cell>
             <Cell>
-                <DatePicker type='range' format='DD-MM-YYYY' aria-label='Dates range' label='Select start and end date' allowClear defaultValue={[dayjs('2025/01/01', 'YYYY/MM/DD'), dayjs('2025/01/31', 'YYYY/MM/DD')]} />
+                <DatePicker type='range' format='DD-MM-YYYY' aria-label='Dates range' label='Select start and end date' allowClear defaultValue={[dayjs('2025/01/01', 'YYYY/MM/DD'), dayjs('2025/01/31', 'YYYY/MM/DD')]} calendarIconAriaLabel='Calendar icon' toIconAriaLabel='To' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
-                <DatePicker type='range' picker='week' aria-label='Weeks range' label='Select start and end week' />
+                <DatePicker type='range' picker='week' aria-label='Weeks range' label='Select start and end week' calendarIconAriaLabel='Calendar icon' toIconAriaLabel='To' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
-                <DatePicker type='range' picker='month' aria-label='Month range' label='Select start and end month' />
-                <br />
-                <DatePicker type='range' picker='year' aria-label='Years range' label='Select start and end year' />
+                <DatePicker type='range' picker='month' aria-label='Month range' label='Select start and end month' calendarIconAriaLabel='Calendar icon' toIconAriaLabel='To' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
+                <br /> 
+                <DatePicker type='range' picker='year' aria-label='Years range' label='Select start and end year' calendarIconAriaLabel='Calendar icon' toIconAriaLabel='To' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
             </Cell>
         </Row>
@@ -57,9 +57,9 @@ export const DateTimePicker = () => (
                 </Paragraph>
             </Cell>
             <Cell>
-                <DatePicker type='date' showTime format='DD/MM/YYYY HH:mm:ss' aria-label='Select datetime' label='Select datetime' />
+                <DatePicker type='date' showTime format='DD/MM/YYYY HH:mm:ss' aria-label='Select datetime' label='Select datetime' calendarIconAriaLabel='Calendar icon' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
-                <DatePicker type='range' showTime format='DD/MM/YYYY HH:mm:ss' aria-label='Datetime range' label='Select start and end datetime' />
+                <DatePicker type='range' showTime format='DD/MM/YYYY HH:mm:ss' aria-label='Datetime range' label='Select start and end datetime' calendarIconAriaLabel='Calendar icon' toIconAriaLabel='To' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
             </Cell>
         </Row>
@@ -89,6 +89,12 @@ export const PickerPresets = () => (
                     aria-label='Dates range'
                     label='Select start and end date'
                     format="YYYY/MM/DD HH:mm:ss"
+                    calendarIconAriaLabel='Calendar icon'
+                    toIconAriaLabel='To'
+                    prevPageIconAriaLabel='Previous month' 
+                    nextPageIconAriaLabel='Next month' 
+                    superPrevPageIconAriaLabel='Previous year' 
+                    superNextPageIconAriaLabel='Next year'
                 />
                 <br />
             </Cell>
@@ -183,5 +189,11 @@ export const RangePickerDate = () => (
         defaultValue={[dayjs('2024-01-01'), dayjs('2024-12-31')]}
         format="YYYY-MM-DD"
         clearDateAriaLabel="clear Date Aria Label"
+        calendarIconAriaLabel='Calendar icon'
+        toIconAriaLabel='To'
+        prevPageIconAriaLabel='Previous month' 
+        nextPageIconAriaLabel='Next month' 
+        superPrevPageIconAriaLabel='Previous year' 
+        superNextPageIconAriaLabel='Next year'
     />
 )
