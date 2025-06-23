@@ -1,9 +1,15 @@
-import styled from "styled-components";
+import { primaryColor } from "@utils/selectors";
+import { transparentize } from "polished";
+import { createGlobalStyle } from "styled-components";
 
-const StyledTree = styled.div`
-  .ant-tree-checkbox-checked .ant-tree-checkbox-inner {
-    background-color: ${(props) => props.theme.primary};
-    border-color: ${(props) => props.theme.primary};
+const GlobalTreeStyles = createGlobalStyle`
+  .ant-tree .ant-tree-checkbox-checked .ant-tree-checkbox-inner {
+    background-color: ${(props) => primaryColor(props.theme)};
+    border-color: ${(props) => primaryColor(props.theme)};
+  }
+
+  .ant-tree .ant-tree-checkbox-checked:not(ant-tree-checkbox-disabled):hover .ant-tree-checkbox-inner {
+    background-color: ${(props) => transparentize(0.3, primaryColor(props.theme))} !important;
   }
 
   .ant-tree-node-content-wrapper {
@@ -16,4 +22,4 @@ const StyledTree = styled.div`
   }
 `;
 
-export { StyledTree };
+export { GlobalTreeStyles };
