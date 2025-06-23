@@ -71,8 +71,8 @@ describe('Data Id', () => {
                 <>
                     <Button text='Test' />
                     <Chart />
-                    <DatePicker type='date' />
-                    <Input label='input test' type='text'/>
+                    <DatePicker type='date' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />
+                    <Input label='input test' type='text' />
                     <Select showOptionsAriaLabel='Show options' hideOptionsAriaLabel='Hide options' />
                     <TableWithDataId />
                     <Tag />
@@ -109,7 +109,7 @@ describe('Data Id', () => {
                 <>
                     <Button dataId='button.test' text='Test' />
                     <Chart dataId='chart.test' />
-                    <DatePicker type='date' dataId='datepicker.test' />
+                    <DatePicker type='date' dataId='datepicker.test' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />
                     <Input dataId='input.test' label='input test' type='text' />
                     <Select dataId='select.test' showOptionsAriaLabel='Show options' hideOptionsAriaLabel='Hide options' />
                     <TableWithDataId dataId='table.test' />
@@ -148,7 +148,7 @@ describe('Data Id', () => {
                     <>
                         <Button text='Test' />
                         <Chart />
-                        <DatePicker type='date' />
+                        <DatePicker type='date' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />
                         <Input label='input test' type='text' />
                         <Select showOptionsAriaLabel='Show options' hideOptionsAriaLabel='Hide options' />
                         <TableWithDataId />
@@ -188,7 +188,7 @@ describe('Data Id', () => {
                     <>
                         <Button dataId='button.test' text='Test' />
                         <Chart dataId='chart.test' />
-                        <DatePicker type='date' dataId='datepicker.test' />
+                        <DatePicker type='date' dataId='datepicker.test' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />
                         <Input dataId='input.test' label='input test' type='text' />
                         <Select dataId='select.test' showOptionsAriaLabel='Show options' hideOptionsAriaLabel='Hide options' />
                         <TableWithDataId dataId='table.test' />

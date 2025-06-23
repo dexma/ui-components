@@ -7,7 +7,7 @@ import defaultTheme from '@utils/theme';
 describe('<DatePicker>', () => {
     describe('DatePicker', () => {
         it('should render a basic Date picker', () => {
-            render(<DatePicker type='date' />);
+            render(<DatePicker type='date' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
             const dateInput = screen.getByTestId('antd-date-picker');
             expect(dateInput).toBeTruthy();
         });
@@ -15,7 +15,7 @@ describe('<DatePicker>', () => {
             const dateValue = '10-05-2022';
             it('should change Date input value when a value is entered', () => {
                 // Given
-                render(<DatePicker type='date' />);
+                render(<DatePicker type='date' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 const dateInput = screen.getByTestId('antd-date-picker');
                 // When
                 fireEvent.mouseDown(dateInput);
@@ -26,7 +26,7 @@ describe('<DatePicker>', () => {
             it('should execute onChange function once when "Today" preset is clicked', () => {
                 const onChangeFunction = vitest.fn();
                 // Given
-                render(<DatePicker type='date' format='DD/MM/YYYY' onChange={onChangeFunction} />);
+                render(<DatePicker type='date' format='DD/MM/YYYY' onChange={onChangeFunction} calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 const dateInput = screen.getByTestId('antd-date-picker');
                 // When
                 fireEvent.mouseDown(dateInput);
@@ -39,7 +39,7 @@ describe('<DatePicker>', () => {
                 const onChangeFunction = vitest.fn();
                 const daySelected = 15;
                 // Given
-                render(<DatePicker type='date' format='DD/MM/YYYY' onChange={onChangeFunction} />);
+                render(<DatePicker type='date' format='DD/MM/YYYY' onChange={onChangeFunction} calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 const dateInput = screen.getByTestId('antd-date-picker');
                 // When
                 fireEvent.mouseDown(dateInput);
@@ -53,7 +53,7 @@ describe('<DatePicker>', () => {
             const monthValue = '05-2022';
             it('should change Date input value when a value is entered', () => {
                 // Given
-                render(<DatePicker type='date' picker='month' format='MM/YYYY' />);
+                render(<DatePicker type='date' picker='month' format='MM/YYYY' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 const dateInput = screen.getByTestId('antd-date-picker');
                 // When
                 fireEvent.mouseDown(dateInput);
@@ -65,7 +65,7 @@ describe('<DatePicker>', () => {
                 const onChangeFunction = vitest.fn();
                 const currentMonthValue = dayjs().format('MMM');
                 // Given
-                render(<DatePicker type='date' picker='month' onChange={onChangeFunction} format='MM/YYYY' />);
+                render(<DatePicker type='date' picker='month' onChange={onChangeFunction} format='MM/YYYY' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 const dateInput = screen.getByTestId('antd-date-picker');
                 // When
                 fireEvent.mouseDown(dateInput);
@@ -79,7 +79,7 @@ describe('<DatePicker>', () => {
             it('should change Date input value when a value is entered', () => {
                 const yearValue = '2022';
                 // Given
-                render(<DatePicker type='date' picker='year' format='YYYY' />);
+                render(<DatePicker type='date' picker='year' format='YYYY' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 const dateInput = screen.getByTestId('antd-date-picker');
                 // When
                 fireEvent.mouseDown(dateInput);
@@ -91,7 +91,7 @@ describe('<DatePicker>', () => {
                 const onChangeFunction = vitest.fn();
                 const currentYearValue = dayjs().format('YYYY');
                 // Given
-                render(<DatePicker type='date' picker='year' onChange={onChangeFunction} format='YYYY' />);
+                render(<DatePicker type='date' picker='year' onChange={onChangeFunction} format='YYYY' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 const dateInput = screen.getByTestId('antd-date-picker');
                 // When
                 fireEvent.mouseDown(dateInput);
@@ -106,7 +106,7 @@ describe('<DatePicker>', () => {
                 const onChangeFunction = vitest.fn();
                 const todayValue = dayjs().format('DD/MM/YYYY HH:mm');
                 // Given
-                render(<DatePicker type='date' format='DD/MM/YYYY HH:mm' onChange={onChangeFunction} />);
+                render(<DatePicker type='date' format='DD/MM/YYYY HH:mm' onChange={onChangeFunction} calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 // When
                 const startDateInput = screen.getByPlaceholderText('Select date');
                 fireEvent.mouseDown(startDateInput);
@@ -120,7 +120,7 @@ describe('<DatePicker>', () => {
     });
     describe('DateRangePicker', () => {
         it('should render a basic Range picker', () => {
-            render(<DatePicker type='range' theme={defaultTheme} />);
+            render(<DatePicker type='range' theme={defaultTheme} calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
             const dateInput = screen.getByTestId('antd-range-picker');
             expect(dateInput).toBeTruthy();
         });
@@ -129,7 +129,7 @@ describe('<DatePicker>', () => {
                 // Given
                 const startDateValue = '10-05-2022';
                 const endDateValue = '13-05-2022';
-                render(<DatePicker type='range' />);
+                render(<DatePicker type='range' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 // When
                 const startDateInput = screen.getByPlaceholderText('Start date');
                 const endDateInput = screen.getByPlaceholderText('End date');
@@ -155,6 +155,11 @@ describe('<DatePicker>', () => {
                             },
                         ]}
                         onChange={onChangeFunction}
+                        calendarIconAriaLabel='Calendar icon'
+                        nextPageIconAriaLabel='Next month'
+                        prevPageIconAriaLabel='Previous month'
+                        superNextPageIconAriaLabel='Next year'
+                        superPrevPageIconAriaLabel='Previous year'
                     />
                 );
                 // When
@@ -172,7 +177,7 @@ describe('<DatePicker>', () => {
                 const daySelected = 15;
                 const nextDaySelected = 16;
                 // Given
-                render(<DatePicker type='range' onChange={onChangeFunction} format='DD/MM/YYYY' />);
+                render(<DatePicker type='range' onChange={onChangeFunction} format='DD/MM/YYYY' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 // When
                 const startDateInput = screen.getByPlaceholderText('Start date');
                 fireEvent.mouseDown(startDateInput);
@@ -193,7 +198,7 @@ describe('<DatePicker>', () => {
                 // Given
                 const startDateValue = '05-2022';
                 const endDateValue = '06-2022';
-                render(<DatePicker type='range' picker='month' />);
+                render(<DatePicker type='range' picker='month' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 // When
                 const startDateInput = screen.getByPlaceholderText('Start month');
                 const endDateInput = screen.getByPlaceholderText('End month');
@@ -213,7 +218,16 @@ describe('<DatePicker>', () => {
                 const onChangeFunction = vitest.fn();
                 // Given
                 render(
-                    <DatePicker type='range' picker='month' format='MM/YYYY' presets={[{ label: 'Next 2 Months', value: [currentMonth, lastMonth] }]} onChange={onChangeFunction} />
+                    <DatePicker
+                        type='range'
+                        picker='month'
+                        format='MM/YYYY'
+                        presets={[{ label: 'Next 2 Months', value: [currentMonth, lastMonth] }]}
+                        onChange={onChangeFunction}
+                        calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month'
+                        prevPageIconAriaLabel='Previous month'
+                        superNextPageIconAriaLabel='Next year'
+                        superPrevPageIconAriaLabel='Previous year' />
                 );
                 // When
                 const startDateInput = screen.getByPlaceholderText('Start month');
@@ -231,7 +245,7 @@ describe('<DatePicker>', () => {
                 // Given
                 const startDateValue = '2022';
                 const endDateValue = '2023';
-                render(<DatePicker type='range' picker='year' />);
+                render(<DatePicker type='range' picker='year' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 // When
                 const startDateInput = screen.getByPlaceholderText('Start year');
                 const endDateInput = screen.getByPlaceholderText('End year');
@@ -250,7 +264,16 @@ describe('<DatePicker>', () => {
                 const expectedLastYear = lastYear.format('YYYY');
                 const onChangeFunction = vitest.fn();
                 // Given
-                render(<DatePicker type='range' picker='year' format='YYYY' presets={[{ label: 'Next 2 Years', value: [currentYear, lastYear] }]} onChange={onChangeFunction} />);
+                render(<DatePicker
+                    type='range'
+                    picker='year'
+                    format='YYYY'
+                    presets={[{ label: 'Next 2 Years', value: [currentYear, lastYear] }]}
+                    onChange={onChangeFunction}
+                    calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month'
+                    prevPageIconAriaLabel='Previous month'
+                    superNextPageIconAriaLabel='Next year'
+                    superPrevPageIconAriaLabel='Previous year' />);
                 // When
                 const startDateInput = screen.getByPlaceholderText('Start year');
                 fireEvent.mouseDown(startDateInput);
@@ -267,7 +290,7 @@ describe('<DatePicker>', () => {
                 // Given
                 const startDateValue = '10-05-2022 10:30';
                 const endDateValue = '13-05-2022 11:30';
-                render(<DatePicker type='range' format='DD/MM/YYYY HH:mm' />);
+                render(<DatePicker type='range' format='DD/MM/YYYY HH:mm' calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
                 // When
                 const startDateInput = screen.getByPlaceholderText('Start date');
                 const endDateInput = screen.getByPlaceholderText('End date');
@@ -293,6 +316,11 @@ describe('<DatePicker>', () => {
                         ]}
                         format='DD/MM/YYYY HH:mm'
                         onChange={onChangeFunction}
+                        calendarIconAriaLabel='Calendar icon'
+                        nextPageIconAriaLabel='Next month'
+                        prevPageIconAriaLabel='Previous month'
+                        superNextPageIconAriaLabel='Next year'
+                        superPrevPageIconAriaLabel='Previous year'
                     />
                 );
                 // When
