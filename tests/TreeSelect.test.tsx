@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from "vitest";
 
-describe('<Tree>', () => {
+describe('<TreeSelect>', () => {
   const treeData = [
     {
       value: 'parent 1',
