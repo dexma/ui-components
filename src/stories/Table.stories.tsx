@@ -44,7 +44,14 @@ export const Basic = () => (
                 </Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Table dataSource={dataTable} columns={columnsTable} showSizeChanger />
+                <Table
+                    dataSource={dataTable}
+                    columns={columnsTable}
+                    showSizeChanger
+                    prevPageAriaLabel='Previous page'
+                    nextPageAriaLabel='Next page'
+                    prevDotsPageAriaLabel='Jumpt previous 5 pages'
+                    nextDotsPageAriaLabel='Jumpt next 5 pages' />
             </Cell>
         </Row>
     </Grid>
@@ -57,7 +64,7 @@ export const Loading = () => (
                 <Paragraph margin='1rem 0 1rem 0'>Table loading</Paragraph>
             </Cell>
             <Cell xs={12}>
-                <Table dataSource={dataTable} columns={columnsTable} isLoading />
+                <Table dataSource={dataTable} columns={columnsTable} isLoading isPaginated={false} />
             </Cell>
         </Row>
     </Grid>
@@ -73,6 +80,7 @@ export const Error = () => (
                 <Table
                     dataSource={dataTable}
                     columns={columnsTable}
+                    isPaginated={false}
                     showError
                     errorContent={<Result variant={ResultVariants.ERROR} title='Error data' info='Please check and modify the following information before resubmitting.' />}
                 />
@@ -202,7 +210,7 @@ export const ExpandableTable = () => {
         },
     ];
 
-    return <Table columns={columns} dataSource={dataSources} expandable={{}} />;
+    return <Table columns={columns} dataSource={dataSources} expandable={{}} isPaginated={false} />;
 };
 
 export const NestedTable = () => {
@@ -236,7 +244,7 @@ export const NestedTable = () => {
                 saved_total: (i * 1000 + Math.random() * 1000).toFixed(2),
             });
         }
-        return <Table isExpanded columns={columns} dataSource={data} pagination={false} bordered={false} />;
+        return <Table isExpanded columns={columns} dataSource={data} isPaginated={false} bordered={false} />;
     };
 
     const columns = [
@@ -269,7 +277,7 @@ export const NestedTable = () => {
         <Grid fluid>
             <Row>
                 <Cell xs={12}>
-                    <Table isExpanded columns={columns} expandable={{ expandedRowRender }} dataSource={data} pagination={false} />
+                    <Table isExpanded columns={columns} expandable={{ expandedRowRender }} dataSource={data} isPaginated={false} />
                 </Cell>
             </Row>
         </Grid>
