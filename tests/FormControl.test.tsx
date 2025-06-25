@@ -35,7 +35,7 @@ describe('<FormControl>', () => {
     });
     describe('select', () => {
         it('Should render a select', () => {
-            const { getByTestId } = render(<FormControl control='Select' options={options} />);
+            const { getByTestId } = render(<FormControl control='Select' options={options} showSelectOptionsAriaLabel='Show options' hideSelectOptionsAriaLabel='Hide options' />);
             const selectInput = getByTestId('select') as HTMLInputElement;
             expect(selectInput).toBeInTheDocument();
         });
@@ -57,7 +57,15 @@ describe('<FormControl>', () => {
     describe('date picker', () => {
         it('Should call onChange when some date change', () => {
             const mockCallBack = vitest.fn();
-            render(<FormControl control='DatePicker' format='DD-MM-yyyy' onChange={mockCallBack} />);
+            render(<FormControl
+                control='DatePicker'
+                format='DD-MM-YYYY'
+                onChange={mockCallBack}
+                calendarIconAriaLabel='Calendar icon'
+                superPrevPageIconAriaLabel='Prev year'
+                prevPageIconAriaLabel='Prev month'
+                nextPageIconAriaLabel='Next mont'
+                superNextPageIconAriaLabel='Next year' />);
             fireEvent.mouseDown(screen.getByTestId('antd-date-picker'));
             const todayLink = screen.getByText('Today');
             fireEvent.click(todayLink);

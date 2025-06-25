@@ -127,6 +127,10 @@ export type TableProps<RecordType> = {
     pageSize?: number;
     showSizeChanger?: boolean;
     pageSizeOptions?: string[];
+    prevPageAriaLabel?: string;
+    nextPageAriaLabel?: string;
+    prevDotsPageAriaLabel?: string;
+    nextDotsPageAriaLabel?: string;
 } & AntDTableProps<RecordType>;
 
 export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType>) => {
@@ -146,6 +150,10 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
         pageSize = 10,
         showSizeChanger,
         pageSizeOptions = ['5', '10', '20'],
+        prevPageAriaLabel,
+        nextPageAriaLabel,
+        prevDotsPageAriaLabel,
+        nextDotsPageAriaLabel
     } = props;
     useEffect(() => {
         const checkboxes = document.querySelectorAll('.ant-checkbox-inner');
@@ -206,10 +214,10 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                                     total={data.length}
                                     pageSize={pageSize}
                                     current={actualPage}
-                                    previosPageAriaLabel='Previous page'
-                                    nextPageAriaLabel='Next page'
-                                    prevDotsPageAriaLabel='Jumpt previous 5 pages'
-                                    nextDotsPageAriaLabel='Jumpt next 5 pages'
+                                    previousPageAriaLabel={prevPageAriaLabel || ''}
+                                    nextPageAriaLabel={nextPageAriaLabel || ''}
+                                    prevDotsPageAriaLabel={prevDotsPageAriaLabel || ''}
+                                    nextDotsPageAriaLabel={nextDotsPageAriaLabel || ''}
                                     showSizeChanger={showSizeChanger}
                                     pageSizeOptions={pageSizeOptions}
                                     onChange={(page, size) => {

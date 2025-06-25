@@ -36,18 +36,65 @@ type FormControlProps = {
     inputLabel?: string;
     showSelectOptionsAriaLabel?: string;
     hideSelectOptionsAriaLabel?: string;
+    clearDateAriaLabel?: string;
+    toDateIconAriaLabel?: string;
+    calendarIconAriaLabel?: string;
+    prevPageIconAriaLabel?: string;
+    nextPageIconAriaLabel?: string;
+    superPrevPageIconAriaLabel?: string;
+    superNextPageIconAriaLabel?: string;
 };
 
 export const FormControl = withDataId(
-    forwardRef(({ control, value, error, success, message, options, type, dataId, inputLabel, showSelectOptionsAriaLabel, hideSelectOptionsAriaLabel, ...props }: FormControlProps, ref: ForwardedRef<HTMLElement>) => {
+    forwardRef(({
+        control,
+        value,
+        error,
+        success,
+        message,
+        options,
+        type,
+        dataId,
+        inputLabel,
+        showSelectOptionsAriaLabel,
+        hideSelectOptionsAriaLabel,
+        clearDateAriaLabel,
+        toDateIconAriaLabel,
+        calendarIconAriaLabel,
+        prevPageIconAriaLabel,
+        nextPageIconAriaLabel,
+        superPrevPageIconAriaLabel,
+        superNextPageIconAriaLabel,
+        ...props }: FormControlProps, ref: ForwardedRef<HTMLElement>) => {
         const th = useContext(ThemeContext) || defaultTheme;
         return (
             <StyledFormControl theme={th} $error={error} $success={success} data-id={dataId}>
                 {control === 'Input' && <Input type='text' className='form-control-input' title={value as string} ref={ref} {...props} value={value} label={inputLabel || ''} />}
                 {control === 'Checkbox' && <Checkbox className='form-control-checkbox' {...props} />}
                 {control === 'Textarea' && <textarea rows={2} className='form-control-textarea' {...props} value={value} />}
-                {control === 'Select' && <Select className='form-control-select' ref={ref} {...props} value={find(options, { value })} options={options} showOptionsAriaLabel={showSelectOptionsAriaLabel || ''} hideOptionsAriaLabel={hideSelectOptionsAriaLabel || ''} />}
-                {control === 'DatePicker' && <DatePicker className='form-control-date-picker' type={type ?? 'date'} {...props} value={value} />}
+                {control === 'Select' &&
+                    <Select
+                        className='form-control-select'
+                        ref={ref}
+                        {...props}
+                        value={find(options, { value })}
+                        options={options}
+                        showOptionsAriaLabel={showSelectOptionsAriaLabel || ''}
+                        hideOptionsAriaLabel={hideSelectOptionsAriaLabel || ''}
+                    />}
+                {control === 'DatePicker' &&
+                    <DatePicker
+                        className='form-control-date-picker'
+                        type={type ?? 'date'}
+                        {...props}
+                        value={value}
+                        calendarIconAriaLabel={calendarIconAriaLabel || ''}
+                        superPrevPageIconAriaLabel={superPrevPageIconAriaLabel || ''}
+                        prevPageIconAriaLabel={prevPageIconAriaLabel || ''}
+                        nextPageIconAriaLabel={nextPageIconAriaLabel || ''}
+                        superNextPageIconAriaLabel={superNextPageIconAriaLabel || ''}
+                        toIconAriaLabel={toDateIconAriaLabel || ''}
+                    />}
                 {control === 'ColorPicker' && <ColorPicker ref={ref} {...props} value={value} />}
                 {message && <span className='form-control-message'>{message}</span>}
             </StyledFormControl>

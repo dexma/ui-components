@@ -16,6 +16,12 @@ type CommonProps = {
     theme?: Theme;
     label?: string;
     clearDateAriaLabel?: string;
+    toIconAriaLabel?: string;
+    calendarIconAriaLabel: string;
+    prevPageIconAriaLabel: string;
+    nextPageIconAriaLabel: string;
+    superPrevPageIconAriaLabel: string;
+    superNextPageIconAriaLabel: string;
 };
 
 export type AntdDatePickerProps = DatePickerProps & CommonProps;
@@ -34,7 +40,7 @@ const handleOpenChange = (_: boolean, ariaLabel?: string) => {
     }
 };
 
-export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, disabled, allowClear, clearDateAriaLabel, ...props }: AntdDatePickerProps) => {
+export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, format, label, disabled, allowClear, clearDateAriaLabel, calendarIconAriaLabel, prevPageIconAriaLabel, nextPageIconAriaLabel, superPrevPageIconAriaLabel, superNextPageIconAriaLabel, ...props }: AntdDatePickerProps) => {
     const th = useContext(ThemeContext) || theme;
     const id = `antd-date-picker_${Date.now()}`;
     return (
@@ -55,8 +61,10 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
                     data-id={dataId}
                     data-testid='antd-date-picker'
                     format={format ?? 'DD/MM/YYYY'}
-                    nextIcon={<Icon name='chevron_right_l' size={10} color='gray600' ariaLabel='Next page' />}
-                    prevIcon={<Icon name='chevron_left_l' size={10} color='gray600' ariaLabel='Previous page' />}
+                    superPrevIcon={<Icon name='chevron_double_left_l' size={10} color='gray600' ariaLabel={superPrevPageIconAriaLabel} />}
+                    prevIcon={<Icon name='chevron_left_l' size={10} color='gray600' ariaLabel={prevPageIconAriaLabel} />}
+                    nextIcon={<Icon name='chevron_right_l' size={10} color='gray600' ariaLabel={nextPageIconAriaLabel} />}
+                    superNextIcon={<Icon name='chevron_double_right_l' size={10} color='gray600' ariaLabel={superNextPageIconAriaLabel} />}
                     allowClear={allowClear ? {
                         clearIcon: <Icon
                             className='selectable-icon'
@@ -66,10 +74,15 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
                             ariaLabel={clearDateAriaLabel || ''}
                         />
                     } : false}
-                    suffixIcon={<Icon name='calendar_blank' size={18} color='gray600' ariaLabel='Calendar icon' />}
+                    suffixIcon={<Icon name='calendar_blank' size={18} color='gray600' ariaLabel={calendarIconAriaLabel} />}
                     theme={th}
                     aria-disabled={disabled}
                     onOpenChange={(value) => handleOpenChange(value, props['aria-label'])}
+                    calendarIconAriaLabel={calendarIconAriaLabel}
+                    prevPageIconAriaLabel={prevPageIconAriaLabel}
+                    nextPageIconAriaLabel={nextPageIconAriaLabel}
+                    superPrevPageIconAriaLabel={superPrevPageIconAriaLabel}
+                    superNextPageIconAriaLabel={superNextPageIconAriaLabel}
                 />
             </ConfigProvider>
         </>
@@ -78,7 +91,7 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
 
 export type AntdRangePickerProps = RangePickerProps & CommonProps;
 
-export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, label, format, disabled, allowClear, clearDateAriaLabel, ...props }: AntdRangePickerProps) => {
+export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, dataId, label, format, disabled, allowClear, clearDateAriaLabel, toIconAriaLabel, calendarIconAriaLabel, prevPageIconAriaLabel, nextPageIconAriaLabel, superPrevPageIconAriaLabel, superNextPageIconAriaLabel, ...props }: AntdRangePickerProps) => {
     const th = useContext(ThemeContext) || theme;
     const id = `antd-date-picker_${Date.now()}`;
     return (
@@ -99,7 +112,11 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                     data-id={dataId}
                     data-testid='antd-range-picker'
                     format={format ?? 'DD/MM/YYYY'}
-                    separator={<Icon name='arrow_right' size={18} color='gray600' ariaLabel='to' />}
+                    superPrevIcon={<Icon name='chevron_double_left_l' size={10} color='gray600' ariaLabel={superPrevPageIconAriaLabel} />}
+                    prevIcon={<Icon name='chevron_left_l' size={10} color='gray600' ariaLabel={prevPageIconAriaLabel} />}
+                    nextIcon={<Icon name='chevron_right_l' size={10} color='gray600' ariaLabel={nextPageIconAriaLabel} />}
+                    superNextIcon={<Icon name='chevron_double_right_l' size={10} color='gray600' ariaLabel={superNextPageIconAriaLabel} />}
+                    separator={<Icon name='arrow_right' size={18} color='gray600' ariaLabel={toIconAriaLabel || ''} />}
                     allowClear={allowClear ? {
                         clearIcon: <Icon
                             className='selectable-icon'
@@ -109,10 +126,15 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                             ariaLabel={clearDateAriaLabel || ''}
                         />
                     } : false}
-                    suffixIcon={<Icon name='calendar_range' size={18} color='gray600' ariaLabel='Calendar icon' />}
+                    suffixIcon={<Icon name='calendar_range' size={18} color='gray600' ariaLabel={calendarIconAriaLabel} />}
                     theme={th}
                     onOpenChange={(value) => handleOpenChange(value, props['aria-label'])}
                     aria-disabled={(disabled as boolean) || false}
+                    calendarIconAriaLabel={calendarIconAriaLabel}
+                    prevPageIconAriaLabel={prevPageIconAriaLabel}
+                    nextPageIconAriaLabel={nextPageIconAriaLabel}
+                    superPrevPageIconAriaLabel={superPrevPageIconAriaLabel}
+                    superNextPageIconAriaLabel={superNextPageIconAriaLabel}
                 />
             </ConfigProvider>
         </>

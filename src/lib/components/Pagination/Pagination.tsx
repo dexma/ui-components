@@ -17,7 +17,7 @@ export const itemRender = (current: number) => (page: number, type: 'page' | 'pr
 };
 
 export type PaginationProps = {
-    previosPageAriaLabel?: string;
+    previousPageAriaLabel?: string;
     nextPageAriaLabel?: string;
     prevDotsPageAriaLabel?: string;
     nextDotsPageAriaLabel?: string;
@@ -25,7 +25,7 @@ export type PaginationProps = {
 
 export const Pagination = (props: PaginationProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
-    const { previosPageAriaLabel, nextPageAriaLabel, disabled, prevDotsPageAriaLabel, nextDotsPageAriaLabel, defaultCurrent, current, onChange } = props;
+    const { previousPageAriaLabel, nextPageAriaLabel, disabled, prevDotsPageAriaLabel, nextDotsPageAriaLabel, defaultCurrent, current, onChange } = props;
     useEffect(() => {
         const ulElem = document.querySelector('.ant-pagination');
         if (ulElem) {
@@ -33,7 +33,7 @@ export const Pagination = (props: PaginationProps) => {
             const liElements = ulElem.querySelectorAll<HTMLLIElement>('li');
             liElements.forEach((li) => li.setAttribute('role', 'listitem'));
             const prevPageElem = ulElem.querySelector('.ant-pagination-prev');
-            if (prevPageElem && previosPageAriaLabel) prevPageElem.setAttribute('aria-label', previosPageAriaLabel);
+            if (prevPageElem && previousPageAriaLabel) prevPageElem.setAttribute('aria-label', previousPageAriaLabel);
             const nextPageElem = ulElem.querySelector('.ant-pagination-next');
             if (nextPageElem && nextPageAriaLabel) nextPageElem.setAttribute('aria-label', nextPageAriaLabel);
             const jumpPrevPages = ulElem.querySelector('.ant-pagination-jump-prev');
@@ -41,7 +41,7 @@ export const Pagination = (props: PaginationProps) => {
             const jumpNextPages = ulElem.querySelector('.ant-pagination-jump-next');
             if (jumpNextPages && nextDotsPageAriaLabel) jumpNextPages.setAttribute('aria-label', nextDotsPageAriaLabel);
         }
-    }, [previosPageAriaLabel, nextPageAriaLabel, prevDotsPageAriaLabel, nextDotsPageAriaLabel]);
+    }, [previousPageAriaLabel, nextPageAriaLabel, prevDotsPageAriaLabel, nextDotsPageAriaLabel]);
 
 
     const changePage = (page: number) => {

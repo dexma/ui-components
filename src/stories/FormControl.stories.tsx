@@ -38,9 +38,22 @@ export const Basic = () => (
                     <br />
                     <FormControl control='Input' message='Text info caption' error />
                     <br />
-                    <FormControl control='Select' options={options} message='Text info caption' success />
+                    <FormControl
+                        control='Select'
+                        options={options}
+                        message='Text info caption'
+                        success
+                        showSelectOptionsAriaLabel='Show options'
+                        hideSelectOptionsAriaLabel='Hide options' />
                     <br />
-                    <FormControl control='DatePicker' message='Text info caption' />
+                    <FormControl
+                        control='DatePicker'
+                        message='Text info caption'
+                        calendarIconAriaLabel='Calendar icon'
+                        superPrevPageIconAriaLabel='Prev year'
+                        prevPageIconAriaLabel='Prev month'
+                        nextPageIconAriaLabel='Next mont'
+                        superNextPageIconAriaLabel='Next year' />
                 </div>
             </Cell>
         </Row>
@@ -126,13 +139,13 @@ export const Select = () => (
                         marginTop: '30px',
                     }}
                 >
-                    <FormControl control='Select' options={options} />
+                    <FormControl control='Select' options={options} showSelectOptionsAriaLabel='Show options' hideSelectOptionsAriaLabel='Hide options' />
                     <br />
-                    <FormControl control='Select' options={options} message='Text info caption' />
+                    <FormControl control='Select' options={options} message='Text info caption' showSelectOptionsAriaLabel='Show options' hideSelectOptionsAriaLabel='Hide options' />
                     <br />
-                    <FormControl control='Select' options={options} message='Text info caption' error />
+                    <FormControl control='Select' options={options} message='Text info caption' error showSelectOptionsAriaLabel='Show options' hideSelectOptionsAriaLabel='Hide options' />
                     <br />
-                    <FormControl control='Select' options={options} message='Text info caption' success />
+                    <FormControl control='Select' options={options} message='Text info caption' success showSelectOptionsAriaLabel='Show options' hideSelectOptionsAriaLabel='Hide options' />
                 </div>
             </Cell>
         </Row>
@@ -157,9 +170,24 @@ export const DatePicker = () => (
                         marginTop: '30px',
                     }}
                 >
-                    <FormControl control='DatePicker' />
+                    <FormControl
+                        control='DatePicker'
+                        calendarIconAriaLabel='Calendar icon'
+                        superPrevPageIconAriaLabel='Prev year'
+                        prevPageIconAriaLabel='Prev month'
+                        nextPageIconAriaLabel='Next mont'
+                        superNextPageIconAriaLabel='Next year'
+                    />
                     <br />
-                    <FormControl control='DatePicker' type='range' />
+                    <FormControl
+                        control='DatePicker'
+                        type='range'
+                        calendarIconAriaLabel='Calendar icon'
+                        superPrevPageIconAriaLabel='Prev year'
+                        prevPageIconAriaLabel='Prev month'
+                        nextPageIconAriaLabel='Next mont'
+                        superNextPageIconAriaLabel='Next year'
+                        toDateIconAriaLabel='To date' />
                 </div>
             </Cell>
         </Row>
