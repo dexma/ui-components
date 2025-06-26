@@ -426,7 +426,7 @@ export const Select = withDataId(
                         maxTagCount='responsive'
                         maxTagPlaceholder={(displayValue: DisplayValue[]) => {
                             const textOverflow = overflowLength && displayValue.length > overflowLength ? ` ${text?.overflow}` : '';
-                            const valuesToRender = `${displayValue.slice(0, overflowLength).map((value) => ` ${value?.label?.props?.value}`)}${textOverflow}`;
+                            const valuesToRender = `${displayValue.slice(0, overflowLength).map((value) => ` ${value?.label?.props?.children}`)}${textOverflow}`;
                             return <Tooltip title={valuesToRender}>{`+${displayValue.length}`}</Tooltip>;
                         }}
                         menuItemSelectedIcon={<Icon color='white' name='close' size='small' ariaLabel={deleteOptionSelectedAriaLabel || ''} />}
