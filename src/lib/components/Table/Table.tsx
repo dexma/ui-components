@@ -123,10 +123,12 @@ export type TableProps<RecordType> = {
     errorContent?: React.ReactNode;
     rowsCanBeSelectAriaLabel?: string;
     selectAllRowsAriaLabel?: string;
+    totalRegisters?: number;
     currentPage?: number;
     pageSize?: number;
     showSizeChanger?: boolean;
     pageSizeOptions?: string[];
+    onPageChange?: (page: number, pageSize: number) => void;
     prevPageAriaLabel?: string;
     nextPageAriaLabel?: string;
     prevDotsPageAriaLabel?: string;
@@ -146,10 +148,12 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
         dataId,
         rowsCanBeSelectAriaLabel,
         selectAllRowsAriaLabel,
+        totalRegisters,
         currentPage = 1,
         pageSize = 10,
         showSizeChanger,
         pageSizeOptions = ['5', '10', '20'],
+        onPageChange,
         prevPageAriaLabel,
         nextPageAriaLabel,
         prevDotsPageAriaLabel,
@@ -165,7 +169,6 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
     const [actualPage, setActualPage] = useState(currentPage);
     const [pageWidth, setPageWidth] = useState(pageSize);
     const data = dataSource ?? [];
-    const paginatedData = isPaginated ? data.slice((actualPage - 1) * pageWidth, actualPage * pageWidth) : data;
 
     const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable', 'dataSource']);
     const th = useContext(ThemeContext) || defaultTheme;
@@ -205,13 +208,13 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                             }}
                             pagination={false}
                             columns={isExpanded ? getColumnsExpanded() : columns}
-                            dataSource={paginatedData}
+                            dataSource={data}
                             {...tableProps}
                         />
                         {isPaginated &&
                             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                                 <Pagination
-                                    total={data.length}
+                                    total={totalRegisters}
                                     pageSize={pageSize}
                                     current={actualPage}
                                     previousPageAriaLabel={prevPageAriaLabel || ''}
@@ -221,8 +224,10 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                                     showSizeChanger={showSizeChanger}
                                     pageSizeOptions={pageSizeOptions}
                                     onChange={(page, size) => {
-                                        setActualPage(page);
+                                        setActualPage(size !== pageSize ? 1 : page);
                                         setPageWidth(size);
+                                        if (onPageChange)
+                                            onPageChange(size !== pageSize ? 1 : page , size);
                                     }}
                                 />
                             </div>
