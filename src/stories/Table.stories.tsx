@@ -11,6 +11,9 @@ export default {
 
 const Selection = () => {
     const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
+    const [pageSize, setPageSize] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [dataSource, setDataSource] = useState(dataTable.slice((currentPage - 1) * pageSize, currentPage * pageSize));
 
     const onSelectChange = (newSelectedRowKeys: Key[]) => {
         setSelectedRowKeys(newSelectedRowKeys);
@@ -21,13 +24,24 @@ const Selection = () => {
         onChange: onSelectChange,
     };
 
+    const onPageChange = (page: number, size: number) => {
+        console.log(`Page: ${page}, Size: ${size}`);
+        setPageSize(size);
+        setCurrentPage(page);
+        setDataSource(dataTable.slice((page - 1) * size, page * size));
+    }
+
     const TableWithDataId = buildTableWithDataId<User>();
     return (
         <div>
             <TableWithDataId
                 rowSelection={rowSelection}
                 columns={columnsTable}
-                dataSource={dataTable}
+                dataSource={dataSource}
+                currentPage={currentPage}
+                totalRegisters={dataTable.length}
+                pageSize={pageSize}
+                onPageChange={onPageChange}
                 rowsCanBeSelectAriaLabel='Check to select row'
                 selectAllRowsAriaLabel='Select all'
             />
@@ -35,7 +49,17 @@ const Selection = () => {
     );
 };
 
-export const Basic = () => (
+export const Basic = () => {
+    const [pageSize, setPageSize] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [dataSource, setDataSource] = useState(dataTable.slice((currentPage - 1) * pageSize, currentPage * pageSize));
+    const onPageChange = (page: number, size: number) => {
+        console.log(`Page: ${page}, Size: ${size}`);
+        setPageSize(size);
+        setCurrentPage(page);
+        setDataSource(dataTable.slice((page - 1) * size, page * size));
+    }
+    return (
     <Grid fluid>
         <Row>
             <Cell xs={12}>
@@ -45,9 +69,13 @@ export const Basic = () => (
             </Cell>
             <Cell xs={12}>
                 <Table
-                    dataSource={dataTable}
+                    dataSource={dataSource}
                     columns={columnsTable}
+                    totalRegisters={dataTable.length}
+                    pageSize={pageSize}
+                    currentPage={currentPage}
                     showSizeChanger
+                    onPageChange={onPageChange}
                     prevPageAriaLabel='Previous page'
                     nextPageAriaLabel='Next page'
                     prevDotsPageAriaLabel='Jumpt previous 5 pages'
@@ -56,6 +84,7 @@ export const Basic = () => (
         </Row>
     </Grid>
 );
+}
 
 export const Loading = () => (
     <Grid fluid>
