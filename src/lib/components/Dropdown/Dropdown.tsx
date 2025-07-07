@@ -23,6 +23,7 @@ export type DropdownProps = DropDownProps & {
     variant?: string;
     content?: DropdownContent[];
     iconAriaLabel?: string;
+    onMenuClick?: MenuProps['onClick'];
     onItemSelected: (key: number) => void;
 };
 
@@ -38,20 +39,26 @@ export const Dropdown = ({
     open,
     disabled,
     iconAriaLabel,
+    onMenuClick,
     onItemSelected,
 }: DropdownProps) => {
     const [openDropdown, setOpen] = useState(open || false);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const dropdownId = `dropdown-button-${text ? 'text' : 'icon'}_${Date.now()}`;
-    const dropdownButtonKind = text && icon ? 'iconTextButton' : !text && icon ? 'iconButton' : 'button';
+    let dropdownButtonKind: 'button' | 'iconTextButton' | 'iconButton' = 'button';
+    if (text && icon) {
+        dropdownButtonKind = 'iconTextButton';
+    } else if (!text && icon) {
+        dropdownButtonKind = 'iconButton';
+    }
 
-    const handleOpenChange = () => {
-        setOpen((prev) => !prev);
+    const handleOpenChange = (flag: boolean) => {
+        setOpen(flag);
         setTimeout(() => {
             const dropdownElem = document.querySelector('.ant-dropdown');
-            if (dropdownElem && buttonRef) {
+            if (dropdownElem && buttonRef.current) {
                 dropdownElem.setAttribute('role', 'dialog');
-                dropdownElem.setAttribute('aria-labelledby', buttonRef.current?.id || '');
+                dropdownElem.setAttribute('aria-labelledby', buttonRef.current.id);
             }
         }, 0);
     };
@@ -59,13 +66,17 @@ export const Dropdown = ({
     const handleKeyDown = (e: any) => {
         if (e.key === 'Enter' && !open) {
             e.preventDefault();
-            handleOpenChange();
+            handleOpenChange(true);
         }
     };
 
     const getContent = (menuContent?: DropdownContent[]) => {
         if (!menuContent) return null;
-        const itemButtonKind = (textItem?: string, iconItem?: string) => (textItem && iconItem ? 'iconTextButton' : !textItem && iconItem ? 'iconButton' : 'button');
+        const itemButtonKind = (textItem?: string, iconItem?: string) => {
+            if (textItem && iconItem) return 'iconTextButton';
+            if (!textItem && iconItem) return 'iconButton';
+            return 'button';
+        };
 
         const items = menuContent
             ? menuContent.map(
@@ -115,7 +126,6 @@ export const Dropdown = ({
     const menuItems = menu || (getContent(content) as MenuProps);
 
     const handleMenuClick: MenuProps['onClick'] = (e) => {
-        setOpen(false);
         const key = e.key.split('-')[1] as any as number;
         onItemSelected(key);
     };
@@ -124,7 +134,7 @@ export const Dropdown = ({
         <>
             <StyledGlobalDropdown />
             <DropdownAntd
-                menu={{ items: menuItems ? menuItems.items : [], onClick: handleMenuClick }}
+                menu={{ items: menuItems ? menuItems.items : [], onClick: onMenuClick ?? handleMenuClick }}
                 placement={placement}
                 trigger={trigger}
                 open={openDropdown}

@@ -22,7 +22,7 @@ export default {
 };
 
 const onItemDropdownSelected = (key: number) => {
-    const item = innerContent.find((_, index) => index == key);
+    const item = innerContent.find((_, index) => index === key);
     if (item)
         console.log(`Click in ${item.text} option`);
 }
