@@ -223,6 +223,7 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                                     nextDotsPageAriaLabel={nextDotsPageAriaLabel || ''}
                                     showSizeChanger={showSizeChanger}
                                     pageSizeOptions={pageSizeOptions}
+                                    totalBoundaryShowSizeChanger={!showSizeChanger ? Infinity : 50}
                                     onChange={(page, size) => {
                                         setActualPage(size !== pageSize ? 1 : page);
                                         setPageWidth(size);
