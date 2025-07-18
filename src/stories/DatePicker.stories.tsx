@@ -44,7 +44,7 @@ export const RangePicker = () => (
                 <br /> 
                 <DatePicker type='range' picker='year' aria-label='Years range' label='Select start and end year' calendarIconAriaLabel='Calendar icon' toIconAriaLabel='To' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
-                <DatePicker disabled type='range' picker='year' aria-label='Disabled' label='RangePicker disabled' type='range' picker='year' aria-label='Years range' label='Select start and end year' calendarIconAriaLabel='Calendar icon' toIconAriaLabel='To' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
+                <DatePicker disabled type='range' picker='year' aria-label='Disabled' label='RangePicker disabled' calendarIconAriaLabel='Calendar icon' toIconAriaLabel='To' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
             </Cell>
         </Row>
