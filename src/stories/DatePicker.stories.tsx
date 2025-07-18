@@ -22,6 +22,8 @@ export const Basic = () => (
                 <br />
                 <DatePicker type='date' picker='year' aria-label='Calendar to selection year' label='Select year' calendarIconAriaLabel='Calendar icon' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
+                <DatePicker disabled type='date' picker='year' aria-label='Disabled' label='Datepicker disabled' calendarIconAriaLabel='Calendar icon' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
+                <br />
             </Cell>
         </Row>
     </Grid>
@@ -41,6 +43,8 @@ export const RangePicker = () => (
                 <DatePicker type='range' picker='month' aria-label='Month range' label='Select start and end month' calendarIconAriaLabel='Calendar icon' toIconAriaLabel='To' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br /> 
                 <DatePicker type='range' picker='year' aria-label='Years range' label='Select start and end year' calendarIconAriaLabel='Calendar icon' toIconAriaLabel='To' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
+                <br />
+                <DatePicker disabled type='range' picker='year' aria-label='Disabled' label='RangePicker disabled' calendarIconAriaLabel='Calendar icon' toIconAriaLabel='To' prevPageIconAriaLabel='Previous month' nextPageIconAriaLabel='Next month' superPrevPageIconAriaLabel='Previous year' superNextPageIconAriaLabel='Next year' />
                 <br />
             </Cell>
         </Row>
