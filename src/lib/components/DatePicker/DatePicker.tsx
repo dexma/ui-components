@@ -76,6 +76,7 @@ export const AntdDatePicker = withDataId(({ lang = 'en', theme = defaultTheme, d
                     } : false}
                     suffixIcon={<Icon name='calendar_blank' size={18} color='gray600' ariaLabel={calendarIconAriaLabel} />}
                     theme={th}
+                    disabled={disabled}
                     aria-disabled={disabled}
                     onOpenChange={(value) => handleOpenChange(value, props['aria-label'])}
                     calendarIconAriaLabel={calendarIconAriaLabel}
@@ -129,6 +130,7 @@ export const AntdRangePicker = withDataId(({ lang = 'en', theme = defaultTheme, 
                     suffixIcon={<Icon name='calendar_range' size={18} color='gray600' ariaLabel={calendarIconAriaLabel} />}
                     theme={th}
                     onOpenChange={(value) => handleOpenChange(value, props['aria-label'])}
+                    disabled={disabled}
                     aria-disabled={(disabled as boolean) || false}
                     calendarIconAriaLabel={calendarIconAriaLabel}
                     prevPageIconAriaLabel={prevPageIconAriaLabel}
