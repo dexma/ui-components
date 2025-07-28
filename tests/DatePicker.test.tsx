@@ -11,6 +11,11 @@ describe('<DatePicker>', () => {
             const dateInput = screen.getByTestId('antd-date-picker');
             expect(dateInput).toBeTruthy();
         });
+        it('should render a basic Date picker disabled', () => {
+            render(<DatePicker type='date' disabled calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
+            const dateInput = screen.getByTestId('antd-date-picker');
+            expect(dateInput).toBeDisabled();
+        });
         describe('Days', () => {
             const dateValue = '10-05-2022';
             it('should change Date input value when a value is entered', () => {
@@ -123,6 +128,11 @@ describe('<DatePicker>', () => {
             render(<DatePicker type='range' theme={defaultTheme} calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
             const dateInput = screen.getByTestId('antd-range-picker');
             expect(dateInput).toBeTruthy();
+        });
+        it('should render a basic Range picker disabled', () => {
+            render(<DatePicker disabled type='range' theme={defaultTheme} calendarIconAriaLabel='Calendar icon' nextPageIconAriaLabel='Next month' prevPageIconAriaLabel='Previous month' superNextPageIconAriaLabel='Next year' superPrevPageIconAriaLabel='Previous year' />);
+            const dateInput = screen.getByTestId('antd-range-picker');
+            expect(dateInput).toHaveAttribute('aria-disabled', 'true');
         });
         describe('Days', () => {
             it('should change start date input value and end date input value when values are entered', async () => {
