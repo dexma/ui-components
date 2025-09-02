@@ -2,7 +2,7 @@ import { Cell } from '@components/Cell';
 import { Grid } from '@components/Grid';
 import { Paragraph } from '@components/Paragraph';
 import { Row } from '@components/Row';
-import { TagSelect as TagSelectComp } from '@components/TagSelect';
+import { TagSelect as TagSelectComp } from '@components';
 
 export default {
     title: 'TagSelect',
