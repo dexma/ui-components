@@ -40,6 +40,7 @@ export * from './SwitchPeriodComparative';
 export * from './Select';
 export * from './DatePicker';
 export * from './Tree';
+export * from './Upload';
 export * from './TreeSelect';
 export * from './Breadcrumb';
 export { ConfigProvider } from 'antd';
