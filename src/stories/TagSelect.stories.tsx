@@ -19,6 +19,7 @@ export const TagSelect = () => (
             <Cell xs={12}>
                 <TagSelectComp
                     style={{ width: '100%' }}
+                    defaultValue={['Ponchi', 'Momo']}
                     onChange={(newValues) => {
                         console.log(newValues);
                     }}

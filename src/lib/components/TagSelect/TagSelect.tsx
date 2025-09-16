@@ -14,9 +14,10 @@ export type TagSelectProps = {
     disabled?: boolean;
     placeholder?: string;
     style?: React.CSSProperties;
+    defaultValue?: string[];
 };
 
-export const TagSelect = withDataId(({ dataId = 'tagSelect', placeholder = 'Type text and press enter', onChange, disabled, style }: TagSelectProps) => {
+export const TagSelect = withDataId(({ dataId = 'tagSelect', placeholder = 'Type text and press enter', onChange, disabled, style, defaultValue }: TagSelectProps) => {
     const th = useContext(ThemeContext) || defaultTheme;
 
     return (
@@ -27,11 +28,16 @@ export const TagSelect = withDataId(({ dataId = 'tagSelect', placeholder = 'Type
                 data-testid='tagSelect'
                 mode={'tags'}
                 placeholder={placeholder}
+                // options={preselectedOtions}
                 style={style || { width: '100%' }}
                 dropdownAlign={{ offset: [0, 3] }}
                 disabled={disabled}
                 aria-disabled={disabled || false}
-                onChange={onChange}
+                onChange={(value) => {
+                    console.log(value, '!!');
+                    onChange(value);
+                }}
+                defaultValue={defaultValue}
             ></AntdSelect>
         </>
     );

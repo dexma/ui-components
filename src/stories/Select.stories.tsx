@@ -8,45 +8,21 @@ export default {
 };
 
 const singleSelectOptions = [
-    { value: '1', label: '1st Floor' },
     {
-        value: '2',
-        label: '1st Floor [02. Luxemburg Building]'
-    },
-    { value: '3', label: '3rd Floor' },
-    {
-        value: '4',
-        label: '45th Floor [04. Luxemburg Building]'
+        label: <span>manager</span>,
+        title: 'manager',
+        options: [
+            { label: <span>Jack</span>, value: 'Jack' },
+            { label: <span>Lucy</span>, value: 'Lucy' },
+        ],
     },
     {
-        value: '5',
-        label: '1st Floor [05. Luxemburg Building]',
-    },
-    {
-        value: '6',
-        label: '1st Floor [06. Luxemburg Building]',
-    },
-    { value: '7', label: '2nd Floor' },
-    {
-        value: '8',
-        label: '2nd Floor [03. Malaga Building]'
-    },
-    {
-        value: '9',
-        label: '2nd Floor [04. New York Building]'
-    },
-    {
-        value: '10',
-        label: '1st Floor [12. Hong Kong Building]'
-    },
-    {
-        value: '11',
-        label: '3rd Floor [02. Singapur Building]',
-        disabled: true
-    },
-    {
-        value: '12',
-        label: '2nd Floor [16.  Building]'
+        label: <span>engineer</span>,
+        title: 'engineer',
+        options: [
+            { label: <span>Chloe</span>, value: 'Chloe' },
+            { label: <span>Lucas</span>, value: 'Lucas' },
+        ],
     },
 ];
 
@@ -76,7 +52,7 @@ export const Multiple = () => (
                             value: '4',
                             label: '45th Floor [04. Luxemburg Building]',
                             color: 'green',
-                            disabled: true
+                            disabled: true,
                         },
                         {
                             value: '5',
@@ -112,7 +88,7 @@ export const Multiple = () => (
                         {
                             value: '12',
                             label: '2nd Floor [16.  Building]',
-                            color: 'orange'
+                            color: 'orange',
                         },
                     ]}
                     showOptionsAriaLabel='Show options'
@@ -194,12 +170,7 @@ export const SelectNoButton = () => (
     </Grid>
 );
 
-const SingleSelectComponent = (props: any) => (
-        <Select
-
-            {...props}
-        />
-    );
+const SingleSelectComponent = (props: any) => <Select {...props} />;
 
 export const SingleSelect = () => {
     const [selectedValues, setSelectedValue] = useState(['4']);
@@ -210,14 +181,11 @@ export const SingleSelect = () => {
                     <Paragraph margin='1rem 0 1rem 0'>Based on the mode prop, the select can be single or multiple.</Paragraph>
                 </Cell>
                 <Cell xs={12}>
-                    <SingleSelectComponent
-                        defaultValues={selectedValues}
-                        options={singleSelectOptions}
-                    />
+                    <SingleSelectComponent defaultValues={selectedValues} options={singleSelectOptions} />
                 </Cell>
             </Row>
         </Grid>
-    )
+    );
 };
 
 export const SingleSelectAllowClear = () => {
@@ -243,5 +211,5 @@ export const SingleSelectAllowClear = () => {
                 </Cell>
             </Row>
         </Grid>
-    )
+    );
 };
