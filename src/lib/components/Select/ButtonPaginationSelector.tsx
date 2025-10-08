@@ -12,7 +12,7 @@ export const getButtonText = (text: SelectTextProps, currentPage: number, pageSi
     const lastValue = `${
         // eslint-disable-next-line no-nested-ternary
         searchValue !== '' ? ` "${searchValue}"` : pageSize <= numElements ? ` ${text.connector} ${text.content}` : ``
-        } (${numElements})`;
+    } (${numElements})`;
     return (
         <span data-testid='text-pagination-selector'>
             {textValue}
@@ -41,16 +41,7 @@ type ButtonPaginationSelectorProps = {
     searchValue: string;
 };
 
-export const ButtonPaginationSelector = ({
-    handleSelectAll,
-    pageSize,
-    currentPage,
-    options,
-    onPageChange,
-    text,
-    theme,
-    searchValue
-}: ButtonPaginationSelectorProps) => {
+export const ButtonPaginationSelector = ({ handleSelectAll, pageSize, currentPage, options, onPageChange, text, theme, searchValue }: ButtonPaginationSelectorProps) => {
     const ref = useRef(null);
     const [showPagination, setShowPagination] = useState(pageSize !== undefined && pageSize < options.length);
     const totalPages = getTotalPages(pageSize, searchValue, options);
@@ -117,7 +108,6 @@ export const ButtonPaginationSelector = ({
                         data-testid='button-select-all'
                         onClick={() => {
                             handleSelectAll();
-                            if (ref !== null && ref.current !== null) (ref.current as HTMLElement).blur();
                         }}
                         theme={theme}
                         ref={(r: any) => {
