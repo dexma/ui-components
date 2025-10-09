@@ -15,30 +15,38 @@ export type TagSelectProps = {
     placeholder?: string;
     style?: React.CSSProperties;
     defaultValue?: string[];
+    value?: string[];
+    onBlur: () => void;
 };
 
-export const TagSelect = withDataId(({ dataId = 'tagSelect', placeholder = 'Type text and press enter', onChange, disabled, style, defaultValue }: TagSelectProps) => {
-    const th = useContext(ThemeContext) || defaultTheme;
+export const TagSelect = withDataId(
+    ({ dataId = 'tagSelect', placeholder = 'Type text and press enter', onChange, disabled, style, defaultValue, value, onBlur }: TagSelectProps) => {
+        const th = useContext(ThemeContext) || defaultTheme;
 
-    return (
-        <>
-            <SelectOptionStyle $theme={th} />
-            <AntdSelect
-                data-id={dataId}
-                data-testid='tagSelect'
-                mode={'tags'}
-                placeholder={placeholder}
-                // options={preselectedOtions}
-                style={style || { width: '100%' }}
-                dropdownAlign={{ offset: [0, 3] }}
-                disabled={disabled}
-                aria-disabled={disabled || false}
-                onChange={(value) => {
-                    console.log(value, '!!');
-                    onChange(value);
-                }}
-                defaultValue={defaultValue}
-            ></AntdSelect>
-        </>
-    );
-}, 'tagSelect');
+        return (
+            <>
+                <SelectOptionStyle $theme={th} />
+                <AntdSelect
+                    data-id={dataId}
+                    data-testid='tagSelect'
+                    mode={'tags'}
+                    placeholder={placeholder}
+                    // options={preselectedOtions}
+                    style={style || { width: '100%' }}
+                    dropdownAlign={{ offset: [0, 3] }}
+                    disabled={disabled}
+                    aria-disabled={disabled || false}
+                    onChange={(value) => {
+                        onChange(value);
+                    }}
+                    onBlur={() => {
+                        onBlur();
+                    }}
+                    value={value}
+                    defaultValue={defaultValue}
+                ></AntdSelect>
+            </>
+        );
+    },
+    'tagSelect'
+);
