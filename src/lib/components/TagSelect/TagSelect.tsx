@@ -16,7 +16,7 @@ export type TagSelectProps = {
     style?: React.CSSProperties;
     defaultValue?: string[];
     value?: string[];
-    onBlur: () => void;
+    onBlur?: () => void;
 };
 
 export const TagSelect = withDataId(
@@ -39,9 +39,7 @@ export const TagSelect = withDataId(
                     onChange={(value) => {
                         onChange(value);
                     }}
-                    onBlur={() => {
-                        onBlur();
-                    }}
+                    onBlur={onBlur}
                     value={value}
                     defaultValue={defaultValue}
                 ></AntdSelect>
