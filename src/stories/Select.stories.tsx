@@ -9,19 +9,17 @@ export default {
 
 const singleSelectOptions = [
     {
-        label: <span>manager</span>,
-        title: 'manager',
+        label: 'manager',
         options: [
-            { label: <span>Jack</span>, value: 'Jack' },
-            { label: <span>Lucy</span>, value: 'Lucy' },
+            { label: 'Jack', value: 1 },
+            { label: 'Lucy', value: 2 },
         ],
     },
     {
-        label: <span>engineer</span>,
-        title: 'engineer',
+        label: 'engineer',
         options: [
-            { label: <span>Chloe</span>, value: 'Chloe' },
-            { label: <span>Lucas</span>, value: 'Lucas' },
+            { label: 'Chloe', value: 3 },
+            { label: 'Lucas', value: 4 },
         ],
     },
 ];
@@ -35,9 +33,10 @@ export const Multiple = () => (
             <Cell xs={12}>
                 <Select
                     allowClear
+                    open
                     mode='multiple'
                     style={{ width: '100%' }}
-                    pageSize={2}
+                    pageSize={6}
                     defaultValues={['3']}
                     maxTagLength={20}
                     options={[
@@ -51,7 +50,7 @@ export const Multiple = () => (
                         {
                             value: '4',
                             label: '45th Floor [04. Luxemburg Building]',
-                            color: 'green',
+                            color: 'red',
                             disabled: true,
                         },
                         {
@@ -61,7 +60,7 @@ export const Multiple = () => (
                         },
                         {
                             value: '6',
-                            color: 'green',
+                            color: 'gray',
                             label: '1st Floor [06. Luxemburg Building]',
                         },
                         { value: '7', label: '2nd Floor', color: 'blue' },
@@ -122,11 +121,11 @@ export const SelectNoButton = () => (
                         {
                             value: '4',
                             label: '45th Floor [04. Luxemburg Building]',
-                            color: 'green',
+                            color: 'black',
                         },
                         {
                             value: '5',
-                            color: 'blue',
+                            color: 'gray',
                             label: '1st Floor [05. Luxemburg Building]',
                         },
                         {
@@ -172,8 +171,14 @@ export const SelectNoButton = () => (
 
 const SingleSelectComponent = (props: any) => <Select {...props} />;
 
+const optionRender = (option: any, info: { index: number }) => {
+    if (info.index % 2) {
+        return <span data-label={option.label}>{option.label}</span>;
+    }
+    return <strong data-label={option.label}>{option.label}</strong>;
+};
 export const SingleSelect = () => {
-    const [selectedValues, setSelectedValue] = useState(['4']);
+    const [selectedValues, setSelectedValues] = useState([singleSelectOptions[0].options[1].value]);
     return (
         <Grid fluid>
             <Row>
@@ -181,7 +186,7 @@ export const SingleSelect = () => {
                     <Paragraph margin='1rem 0 1rem 0'>Based on the mode prop, the select can be single or multiple.</Paragraph>
                 </Cell>
                 <Cell xs={12}>
-                    <SingleSelectComponent defaultValues={selectedValues} options={singleSelectOptions} />
+                    <SingleSelectComponent defaultValues={selectedValues} options={singleSelectOptions} optionFilterProp='label' optionRender={optionRender} />
                 </Cell>
             </Row>
         </Grid>
@@ -189,7 +194,7 @@ export const SingleSelect = () => {
 };
 
 export const SingleSelectAllowClear = () => {
-    const [selectedValues, setSelectedValue] = useState(['2']);
+    const [selectedValues, setSelectedValue] = useState<number | null>(singleSelectOptions[0].options[1].value);
     const handleChange = (value: any) => setSelectedValue(value);
     return (
         <Grid fluid>
@@ -200,10 +205,10 @@ export const SingleSelectAllowClear = () => {
                 <Cell xs={12}>
                     <SingleSelectComponent
                         allowClear
-                        defaultValues={selectedValues}
+                        defaultValues={[selectedValues]}
                         handleClearAll={() => {
                             console.log('clear all');
-                            setSelectedValue([]);
+                            setSelectedValue(null);
                         }}
                         onChange={handleChange}
                         options={singleSelectOptions}

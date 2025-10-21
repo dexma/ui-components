@@ -74,20 +74,26 @@ export const StyledPaginationSelector = styled.div`
 export const StyledSelectDropdown = styled.div`
     .ant-select-item {
         min-height: auto;
+        background-color: transparent;
     }
     .ant-select-item-option-state {
-        display: flex;
+        position: relative;
+        left: -20px;
         align-items: center;
         padding-right: 8px;
     }
+
+    .ant-select-item-option {
+        right: -26px;
+    }
 `;
 
-const getSpanColor = (theme: Theme, _color: string) => get(theme.color, _color);
+const getSpanColor = (theme: Theme, color: string) => theme.color[color] || color;
 
-export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; closable?: any; color?: string, $isSingleSelect?: boolean }>`
+export const StyledSpanOptionSelected = styled.span<{ value?: string; theme: Theme; icon?: any; closable?: any; color?: string; $isSingleSelect?: boolean }>`
     display: flex;
     align-items: center;
-    padding: 2px 4px;
+    padding: 2px 0px 2px 4px;
     font-weight: 400;
     white-space: nowrap;
     cursor: pointer;
@@ -96,20 +102,20 @@ export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; 
     margin: 0px;
     font-size: 14px;
     line-height: 14px;
-    background: ${(props) => !props.$isSingleSelect && props.color ? getSpanColor(props.theme, props.color) : (!props.$isSingleSelect && gray400(props.theme))};
-    color: ${(props) => !props.$isSingleSelect ? white(props.theme) : false};
+    background: ${(props) => (!props.$isSingleSelect && props.color ? getSpanColor(props.theme, props.color) : !props.$isSingleSelect && gray400(props.theme))};
+    color: ${(props) => (!props.$isSingleSelect ? white(props.theme) : false)};
     ${StyledIcon} {
         ${(props) =>
-        props.icon &&
-        css`
+            props.icon &&
+            css`
                 &.icon {
                     margin-right: 3px;
                     margin-left: -2px;
                 }
             `};
         ${(props) =>
-        props.closable &&
-        css`
+            props.closable &&
+            css`
                 &.icon-close {
                     cursor: pointer;
                     margin-right: -2px;
@@ -120,7 +126,7 @@ export const StyledSpanOptionSelected = styled.span<{ theme: Theme; icon?: any; 
     }
 `;
 
-export const StyledSpanOption = styled.span<{ value: string | null }>`
+export const StyledSpanOption = styled.span<{ value: string }>`
     align-items: center;
     padding: 2px 4px;
     font-weight: 400;

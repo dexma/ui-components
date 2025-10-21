@@ -50,34 +50,7 @@ describe('selectUtils', () => {
             expect(filterOption('***', options[0])).toEqual(true);
             expect(filterOption('  ', options[0])).toEqual(true);
         });
-        // it('should return true if the option matches with the input value', () => {
-        //   const result = filterOption('Test 1', {
-        //     children: { props: { value: 'Test 1' } },
-        //     label: 'Test 1',
-        //   });
-        //   expect(result).toEqual(['Test 1']);
-        // });
-        // it('should return true if the option matches with the substring previous to *', () => {
-        //   const result = filterOption('Random*', {
-        //     children: { props: { value: 'Random Test 1' } },
-        //     label: 'Random Test 1',
-        //   });
-        //   expect(result).toEqual(['Random']);
-        // });
-        // it('should return true if the option matches with the substring after to *', () => {
-        //   const result = filterOption('* 1', {
-        //     children: { props: { value: 'Test 1' } },
-        //     label: 'Test 1',
-        //   });
-        //   expect(result).toEqual([' 1']);
-        // });
-        // it('should return true if the option matches with the substring before and after to *', () => {
-        //   const result = filterOption('t* 1', {
-        //     children: { props: { value: 'Test 1' } },
-        //     label: 'Test 1',
-        //   });
-        //   expect(result).toEqual(['Test 1']);
-        // });
+        
     });
 });
 
@@ -446,7 +419,7 @@ describe('Select', () => {
         expect(screen.getAllByText(regex).length > 0);
         // When
         act(() => {
-            fireEvent.click(screen.getByTestId('select-option-Test1'));
+            fireEvent.click(screen.getByTestId('option-span-Test1'));
         });
         // Then
         expect(onChange).toBeCalled();
@@ -483,7 +456,7 @@ describe('Select', () => {
         expect(screen.getAllByText(regex).length > 0);
         // When
         act(() => {
-            fireEvent.click(screen.getByTestId('select-option-Test1'));
+            fireEvent.click(screen.getByTestId('option-span-Test1'));
         });
         // Then
         expect(onChange).toBeCalled();
