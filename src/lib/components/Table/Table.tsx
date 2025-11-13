@@ -187,7 +187,6 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
     const error = !isLoading && showError && errorContent;
     const showTable = !loading && !error && columns && dataSource;
     if (expandable && !expandable.expandIcon) expandable.expandIcon = getExpandedIcon;
-    const expandIcon = expandable ? expandable.expandIcon : undefined;
     return (
         <ConfigProvider
             theme={{
@@ -202,10 +201,7 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                 {showTable && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                         <TableAntDesign
-                            expandable={{
-                                expandedRowRender: expandable?.expandedRowRender,
-                                expandIcon,
-                            }}
+                            expandable={expandable}
                             pagination={false}
                             columns={isExpanded ? getColumnsExpanded() : columns}
                             dataSource={data}
