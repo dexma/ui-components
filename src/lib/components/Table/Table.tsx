@@ -186,7 +186,12 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
     const loading = isLoading && !showError;
     const error = !isLoading && showError && errorContent;
     const showTable = !loading && !error && columns && dataSource;
-    if (expandable && !expandable.expandIcon) expandable.expandIcon = getExpandedIcon;
+    if (expandable) {
+        if (!expandable.expandIcon) expandable.expandIcon = getExpandedIcon;
+        if (!expandable.columnTitle) {
+            expandable.columnTitle = '\u00A0'; // Non-breaking space
+        }
+    }
     return (
         <ConfigProvider
             theme={{
@@ -224,7 +229,7 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                                         setActualPage(size !== pageSize ? 1 : page);
                                         setPageWidth(size);
                                         if (onPageChange)
-                                            onPageChange(size !== pageSize ? 1 : page , size);
+                                            onPageChange(size !== pageSize ? 1 : page, size);
                                     }}
                                 />
                             </div>
