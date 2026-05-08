@@ -218,3 +218,74 @@ export const SingleSelectAllowClear = () => {
         </Grid>
     );
 };
+
+export const SelectWithImage = () => {
+    const renderDropdownOption = (option: any) => {
+        const optionValue = option.data?.value ?? '';
+
+        return (
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'start',
+                }}
+            >
+                <span>{option.label}</span>
+
+                <img src={optionValue} alt={`Logo for ${optionValue}`} style={{ height: 20, marginLeft: '8px' }} />
+            </div>
+        );
+    };
+
+    const renderSelectedOption = (option: any) => (
+        <div
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'start',
+                width: '100%',
+            }}
+        >
+            <span>{option.label}</span>
+
+            <img src={option.value} alt={`Logo for ${option.label}`} style={{ height: 20, marginLeft: '8px' }} />
+        </div>
+    );
+
+    return (
+        <Grid fluid>
+            <Row>
+                <Cell xs={12}>
+                    <Paragraph margin='1rem 0 1rem 0'> To add an image, or any custom html to the component, use &apos;optionRender&apos; to customize each of the options available, and &apos;selectedOptionRender&apos; to customize the selected option.</Paragraph>
+                </Cell>
+                <Cell xs={12}>
+                    <Select
+                        mode='single'
+                        style={{ width: '100%' }}
+                        optionRender={renderDropdownOption}
+                        selectedOptionRender={renderSelectedOption}
+                        allowClear
+                        options={[
+                            {
+                                value: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIdC8jTXU10v0L8zftHFmYCO5MYGJyjWfyjQ&s',
+                                label: 'Logo sample 1',
+                            },
+                            {
+                                value: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfwz7NI1b8PCMhWJYhMFVZopMkj_I-_wyKQ&s',
+                                label: 'Logo sample 2',
+                            },
+                            {
+                                value: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT83JhrObvY8ljCtbRcSuqbAsQL6PmEZ5Nepw&s',
+                                label: 'Logo sample 3',
+                            },
+                        ]}
+                        showOptionsAriaLabel='Show options'
+                        hideOptionsAriaLabel='Hide options'
+                        clearAllOptionsAriaLabel='Clear option'
+                    />
+                </Cell>
+            </Row>
+        </Grid>
+    );
+};
