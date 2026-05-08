@@ -1,6 +1,6 @@
 import { Select as AntdSelect, type SelectProps as AntdSelectProps } from 'antd';
 import defaultTheme, { type Theme } from '@utils/theme';
-import { MouseEventHandler, ReactElement, useContext, useEffect, useRef, useState } from 'react';
+import { MouseEventHandler, ReactElement, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { get } from 'lodash';
 import { ThemeContext } from 'styled-components';
 
@@ -29,7 +29,8 @@ interface Option extends BaseOptionType {
     label: string;
     color?: string;
     disabled?: boolean;
-};
+    customSelectedLabel?: React.ReactNode;
+}
 
 type DisplayValue = {
     key?: React.Key;
@@ -153,7 +154,7 @@ const multipleSelectRenderOptionGenerator = (selectedValues: Array<string | numb
 
     return (option, info) => {
         const { data } = option;
-        const backgroundColor = selectedValues.includes(data.value) ?  get(theme.color, data.color || '') || colors.gray400 : colors.white;
+        const backgroundColor = selectedValues.includes(data.value) ? get(theme.color, data.color || '') || colors.gray400 : colors.white;
         if (data.value && selectedValues.includes(data.value)) {
             return (
                 <StyledSpanOptionSelected
@@ -205,6 +206,7 @@ export type SelectProps = Omit<AntdSelectProps, 'options' | 'mode'> & {
     overflowLength?: number;
     handleButtonSelectAll?: (values: any[]) => void;
     handleClearAll?: () => void;
+    selectedOptionRender?: (option: Option) => React.ReactNode;
     mode?: 'multiple' | 'single';
     showOptionsAriaLabel: string;
     hideOptionsAriaLabel: string;
@@ -244,6 +246,7 @@ export const Select = withDataId(
         hideOptionsAriaLabel,
         clearAllOptionsAriaLabel,
         deleteOptionSelectedAriaLabel,
+        selectedOptionRender,
         ...props
     }: SelectProps) => {
         const [showDropdown, setShowDropdown] = useState(false);
@@ -253,9 +256,14 @@ export const Select = withDataId(
         const ref = useRef<BaseSelectRef | null>(null);
         const sValue = useRef('');
         const th = useContext(ThemeContext) || defaultTheme;
-        const options = (originalOptions || []).map((option) => ({
-                disabled: isDisabledOption(option, selectedValues, pageSize),
-                ...option}));
+        const options = useMemo(
+            () =>
+                (originalOptions || []).map((option) => ({
+                    disabled: isDisabledOption(option, selectedValues, pageSize),
+                    ...option,
+                })),
+            [originalOptions, selectedValues, pageSize]
+        );
         useEffect(() => {
             setCurrentPage(1);
         }, [searchValue]);
@@ -303,6 +311,17 @@ export const Select = withDataId(
                 ? multipleSelectRenderOptionGenerator(selectedValues, th, props.optionRender)
                 : singleSelectRenderOptionGenerator(selectedValues, th, props.optionRender);
 
+        const transformedOptions = useMemo(
+            () =>
+                selectedOptionRender
+                    ? options.map((option) => ({
+                          ...option,
+                          customSelectedLabel: selectedOptionRender(option),
+                      }))
+                    : options,
+            [options, selectedOptionRender]
+        );
+
         return (
             <>
                 <SelectOptionStyle $theme={th} />
@@ -314,7 +333,8 @@ export const Select = withDataId(
                         data-id={dataId}
                         defaultValue={defaultValues}
                         optionRender={optionRender as (option: FlattenOptionData<BaseOptionType>, info: { index: number }) => React.ReactNode}
-                        options={options}
+                        options={transformedOptions}
+                        optionLabelProp={selectedOptionRender ? 'customSelectedLabel' : undefined}
                         loading={isLoading}
                         open={showDropdown}
                         placeholder={placeholder}
