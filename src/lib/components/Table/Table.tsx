@@ -135,11 +135,17 @@ export type TableProps<RecordType> = {
     nextDotsPageAriaLabel?: string;
 } & AntDTableProps<RecordType>;
 
+const NBSP = '\u00A0';
+
+const normalizeColumnTitles = <RecordType extends AnyObject>(cols?: TableProps<RecordType>['columns']) =>
+    cols?.map((col) => (col.title == null || col.title === '' ? { ...col, title: NBSP } : col));
+
 export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType>) => {
     const {
         isExpanded,
         isPaginated = true,
         expandable,
+        rowSelection,
         columns,
         dataSource,
         isLoading,
@@ -170,7 +176,7 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
     const [pageWidth, setPageWidth] = useState(pageSize);
     const data = dataSource ?? [];
 
-    const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable', 'dataSource']);
+    const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable', 'rowSelection', 'dataSource']);
     const th = useContext(ThemeContext) || defaultTheme;
     const getColumnsExpanded = () => {
         if (columns) {
@@ -189,8 +195,11 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
     if (expandable) {
         if (!expandable.expandIcon) expandable.expandIcon = getExpandedIcon;
         if (!expandable.columnTitle) {
-            expandable.columnTitle = '\u00A0'; // Non-breaking space
+            expandable.columnTitle = NBSP;
         }
+    }
+    if (rowSelection && rowSelection.hideSelectAll && !rowSelection.columnTitle) {
+        rowSelection.columnTitle = NBSP;
     }
     return (
         <ConfigProvider
@@ -207,8 +216,9 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                         <TableAntDesign
                             expandable={expandable}
+                            rowSelection={rowSelection}
                             pagination={false}
-                            columns={isExpanded ? getColumnsExpanded() : columns}
+                            columns={normalizeColumnTitles(isExpanded ? getColumnsExpanded() : columns)}
                             dataSource={data}
                             {...tableProps}
                         />
