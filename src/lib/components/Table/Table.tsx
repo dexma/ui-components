@@ -135,7 +135,7 @@ export type TableProps<RecordType> = {
     nextDotsPageAriaLabel?: string;
 } & AntDTableProps<RecordType>;
 
-const NBSP = ' ';
+const NBSP = '\u00A0';
 
 const normalizeColumnTitles = <RecordType extends AnyObject>(cols?: TableProps<RecordType>['columns']) =>
     cols?.map((col) => (col.title == null || col.title === '' ? { ...col, title: NBSP } : col));
