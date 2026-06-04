@@ -39,6 +39,7 @@ export const Multiple = () => (
                     pageSize={6}
                     defaultValues={['3']}
                     maxTagLength={20}
+                    maxTagCount='responsive'
                     options={[
                         { value: '1', label: '1st Floor' },
                         {
