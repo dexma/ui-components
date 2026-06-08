@@ -203,6 +203,7 @@ export type SelectProps = Omit<AntdSelectProps, 'options' | 'mode'> & {
     theme?: Theme;
     isLoading?: boolean;
     maxTagLength?: number;
+    maxTagCount?: number | string;
     overflowLength?: number;
     handleButtonSelectAll?: (values: any[]) => void;
     handleClearAll?: () => void;
@@ -237,6 +238,7 @@ export const Select = withDataId(
         isLoading,
         onChange,
         maxTagLength = 20,
+        maxTagCount = 'responsive',
         overflowLength = 5,
         handleButtonSelectAll,
         handleClearAll,
@@ -414,7 +416,7 @@ export const Select = withDataId(
                         optionFilterProp='children'
                         optionRender={optionRender as (option: FlattenOptionData<BaseOptionType>, info: { index: number }) => React.ReactNode}
                         filterOption={filterOption}
-                        maxTagCount='responsive'
+                        maxTagCount={maxTagCount}
                         maxTagPlaceholder={(displayValue: DisplayValue[]) => {
                             const textOverflow = overflowLength && displayValue.length > overflowLength ? ` ${text?.overflow}` : '';
                             const valuesToRender = `${displayValue.slice(0, overflowLength).map((value) => ` ${value?.label?.props?.children}`)}${textOverflow}`;
