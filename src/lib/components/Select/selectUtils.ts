@@ -74,16 +74,16 @@ export const filterOption = (input: string, option?: DefaultOptionType) => {
         return true;
     }
     if (![...input].every((char) => char === '*' || char === ' ')) {
-        if (option?.children && (option.children as any).props.value) {
+        if (option?.label) {
             const regex = getRegExpBasedOnInput(input);
             if (regex === false) return false;
-            return (option.children as any).props.value.match(regex);
+            return !!(option.label as string).match(regex);
         }
         return false;
     }
     if (input !== '' && !input.includes('*')) {
-        if (option?.children && (option.children as any).props.value) {
-            return (option.children as any).props.value.toLowerCase().includes(input.toLowerCase());
+        if (option?.label) {
+            return (option.label as string).toLowerCase().includes(input.toLowerCase());
         }
         return false;
     }

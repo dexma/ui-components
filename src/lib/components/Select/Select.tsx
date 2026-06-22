@@ -10,7 +10,7 @@ import { SelectOptionStyle, StyledSelectDropdown, StyledSpanOption, StyledSpanOp
 import { colors } from 'index';
 import { FlattenOptionData } from 'rc-select/lib/interface';
 import { BaseOptionType } from 'rc-select/lib/Select';
-import { filterOption, findSubstringIndices, getOptionsBySearch, getRegExpBasedOnInput } from './selectUtils';
+import { filterOption, findSubstringIndices, getOptionsBySearch, getRegExpBasedOnInput, singleOptionFilter } from './selectUtils';
 import { ButtonPaginationSelector } from './ButtonPaginationSelector';
 
 const ALL_CHARACTER = '*';
@@ -343,6 +343,7 @@ export const Select = withDataId(
                         ref={(r) => {
                             ref.current = r;
                         }}
+                        filterOption={singleOptionFilter}
                         searchValue={sValue.current}
                         showSearch
                         style={{ width: '100%' }}
@@ -413,7 +414,6 @@ export const Select = withDataId(
                                 ? (menu: ReactElement) => dropdownRenderSelect(menu, currentPage, options, handleChangePage, handleSelectAll, text, searchValue, mode, th, pageSize)
                                 : undefined
                         }
-                        optionFilterProp='children'
                         optionRender={optionRender as (option: FlattenOptionData<BaseOptionType>, info: { index: number }) => React.ReactNode}
                         filterOption={filterOption}
                         maxTagCount={maxTagCount}
