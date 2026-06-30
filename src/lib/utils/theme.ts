@@ -51,14 +51,51 @@ export const color = {
     gray: '#9fa3aa',
     white: '#FFFFFF',
     black: '#000000',
+
+    successLighter: '#DBF6ED',
+    successLight: '#6CD0AE',
+    successDefault: '#049967',
+    successDark: '#04724D',
+
+    errorLighter: '#FFE5E5',
+    errorLight: '#F19191',
+    errorDefault: '#EB1212',
+    errorDark: '#AE0808',
+
+    warningLight: '#FFF6D9',
+    warningDefault: '#FFC44B',
+    warningDark: '#C78600',
+    warningDarker: '#754F03',
+
+    infoLighter: '#E5F2FF',
+    infoDefault: '#C7E0F9',
+    infoLight: '#BFC1F3',
+    infoDark: '#0879E2',
+    infoDarker: '#005295',
 };
 
 export const transparent = 'transparent';
 export const primary = color.irisBlue;
-export const success = color.green;
-export const warning = color.amber;
-export const error = color.red;
-export const info = color.blue100;
+export const successLighter = color.successLighter;
+export const successLight = color.successLight;
+export const success = color.successDefault;
+export const successDark = color.successDark;
+
+export const errorLighter = color.errorLighter;
+export const errorLight = color.errorLight;
+export const error = color.errorDefault;
+export const errorDark = color.errorDark;
+
+export const warningLight = color.warningLight;
+export const warning = color.warningDefault;
+export const warningDark = color.warningDark;
+export const warningDarker = color.warningDarker;
+
+export const infoLighter = color.infoLighter;
+export const info = color.infoDefault;
+export const infoLight = color.infoLight;
+export const infoDark = color.infoDark;
+export const infoDarker = color.infoDarker;
 
 // Font
 export const fontSizeNumber = 1;
