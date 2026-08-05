@@ -117,7 +117,7 @@
         "lint-staged": "^15.2.7",
         "prettier": "^3.3.2",
         "prop-types": "15.8.1",
-        "semantic-release": "^24.1.0",
+        "semantic-release": "^25.0.2",
         "storybook": "^8.1.10",
         "typescript": "^5.5.2",
         "vite": "^5.3.1",
