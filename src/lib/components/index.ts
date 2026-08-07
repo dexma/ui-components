@@ -25,6 +25,7 @@ export * from './Pagination';
 export * from './Popover';
 export * from './Progress';
 export * from './Section';
+export * from './Segmented';
 export * from './Result';
 export * from './Row';
 export * from './Tag';
