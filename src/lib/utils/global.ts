@@ -1,5 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { StyledButton } from '@styles/Button/StyledButton';
+import { fontFamily, fontImportUrl } from '@utils/theme';
 
 const getUIComponentsStyle = css`
     input::-ms-clear,
@@ -280,9 +281,10 @@ const getStorybookStyles = css`
 `;
 
 const getGlobalStyle = css`
+    @import url('${fontImportUrl}');
     html {
         font-size: 14px;
-        font-family: sans-serif;
+        font-family: ${fontFamily};
         line-height: 1.15;
     }
     button,
@@ -293,8 +295,7 @@ const getGlobalStyle = css`
     }
     body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif,
-            'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        font-family: ${fontFamily};
         font-variant: tabular-nums;
         line-height: 1.5;
         font-feature-settings: 'tnum';

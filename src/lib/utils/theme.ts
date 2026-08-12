@@ -107,7 +107,8 @@ export const fontWeightLight = 300;
 export const fontWeightNormal = 400;
 export const fontWeightSemiBold = 600;
 export const fontWeightBold = 700;
-export const fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+export const fontFamily = '"Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
+export const fontImportUrl = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap';
 
 const getSize = (size = fontSizeNumber, type = fontSizeType) => `${size}${type}`;
 export const pxToRem = (px: number) => px / 14;
