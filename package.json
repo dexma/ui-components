@@ -10,15 +10,18 @@
             "types": "./dist/index.d.ts",
             "import": "./dist/ui-components.es.js",
             "require": "./dist/ui-components.umd.js"
-        }
+        },
+        "./fonts.css": "./dist/fonts.css",
+        "./fonts/*": "./dist/fonts/*"
     },
     "engines": {
         "node": "18"
     },
     "scripts": {
-        "build": "npm run build-icons && tsc && vite build",
-        "build-storybook": "npm run build-icons && storybook build -o docs",
+        "build": "npm run build-icons && tsc && vite build && npm run build-fonts",
+        "build-storybook": "npm run build-icons && npm run build-fonts && storybook build -o docs",
         "build-icons": "node scripts/buildIconConfig.mjs",
+        "build-fonts": "node scripts/buildFontConfig.mjs",
         "clean-build": "rm -rf dist",
         "coverage": "vitest run --coverage && npx serve coverage",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix",
@@ -31,7 +34,7 @@
         "prepare": "husky install",
         "prepack": "json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\"",
         "semantic-release": "semantic-release",
-        "storybook": "npm run build-icons && storybook dev -p 6006"
+        "storybook": "npm run build-icons && npm run build-fonts && storybook dev -p 6006"
     },
     "publishConfig": {
         "tag": "latest"
@@ -80,6 +83,7 @@
     },
     "devDependencies": {
         "@chromatic-com/storybook": "^1.5.0",
+        "@fontsource-variable/montserrat": "5.3.0",
         "@storybook/addon-essentials": "^8.1.10",
         "@storybook/addon-interactions": "^8.1.10",
         "@storybook/addon-links": "^8.1.10",

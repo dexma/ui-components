@@ -3,6 +3,7 @@ import type { Preview } from '@storybook/react';
 import defaultTheme from '../src/lib/utils/theme';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, StorybookStyles } from '../src/lib/utils/global';
+import '../dist/fonts.css';
 
 const preview: Preview = {
     parameters: {

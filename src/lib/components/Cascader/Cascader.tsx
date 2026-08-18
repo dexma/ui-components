@@ -1,5 +1,6 @@
 import { type MouseEvent, type ReactNode, useContext, useEffect, useRef, useState } from 'react';
-import { Cascader as CascaderAntd, ConfigProvider, type CascaderProps as CascaderAntdProps } from 'antd';
+import { Cascader as CascaderAntd, type CascaderProps as CascaderAntdProps } from 'antd';
+import { ConfigProvider } from '@components/ConfigProvider/ConfigProvider';
 import { type CascaderRef, type DefaultOptionType } from 'antd/es/cascader';
 import { type DefaultTheme, ThemeContext } from 'styled-components';
 

@@ -1,4 +1,5 @@
-import { Breadcrumb as BreadCrumbAntD, BreadcrumbProps, ConfigProvider } from "antd";
+import { Breadcrumb as BreadCrumbAntD, BreadcrumbProps } from "antd";
+import { ConfigProvider } from '@components/ConfigProvider/ConfigProvider';
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import defaultTheme, { color } from '@utils/theme';

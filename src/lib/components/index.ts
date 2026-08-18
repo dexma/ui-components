@@ -44,6 +44,6 @@ export * from './Tree';
 export * from './Upload';
 export * from './TreeSelect';
 export * from './Breadcrumb';
-export { ConfigProvider } from 'antd';
+export * from './ConfigProvider';
 export { DataIdProvider } from '@components/DataId/DataIdProvider';
 export { withDataId } from '@components/DataId/withDataId';

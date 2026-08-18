@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import omit from 'lodash/omit';
-import { Table as TableAntDesign, ConfigProvider, type TableProps as AntDTableProps } from 'antd';
+import { Table as TableAntDesign, type TableProps as AntDTableProps } from 'antd';
+import { ConfigProvider } from '@components/ConfigProvider/ConfigProvider';
 
 import defaultTheme from '@utils/theme';
 import { Button, Pagination } from '@components';

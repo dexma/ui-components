@@ -1,6 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { StyledButton } from '@styles/Button/StyledButton';
-import { fontFamily, fontImportUrl } from '@utils/theme';
+import { fontFamily } from '@utils/theme';
 
 const getUIComponentsStyle = css`
     input::-ms-clear,
@@ -281,7 +281,6 @@ const getStorybookStyles = css`
 `;
 
 const getGlobalStyle = css`
-    @import url('${fontImportUrl}');
     html {
         font-size: 14px;
         font-family: ${fontFamily};
