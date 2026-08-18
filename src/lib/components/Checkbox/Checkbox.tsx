@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { Checkbox as CheckboxAntd, CheckboxProps as AntCheckboxProps, ConfigProvider } from 'antd';
+import { Checkbox as CheckboxAntd, CheckboxProps as AntCheckboxProps } from 'antd';
+import { ConfigProvider } from '@components/ConfigProvider/ConfigProvider';
 import { ThemeContext } from 'styled-components';
 
 import defaultTheme from '@utils/theme';

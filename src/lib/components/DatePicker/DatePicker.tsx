@@ -1,6 +1,7 @@
 import { ReactNode, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
-import { ConfigProvider, type DatePickerProps } from 'antd';
+import { type DatePickerProps } from 'antd';
+import { ConfigProvider } from '@components/ConfigProvider/ConfigProvider';
 import { type RangePickerProps } from 'antd/lib/date-picker';
 
 import defaultTheme, { type Theme } from '@utils/theme';

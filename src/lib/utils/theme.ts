@@ -107,8 +107,14 @@ export const fontWeightLight = 300;
 export const fontWeightNormal = 400;
 export const fontWeightSemiBold = 600;
 export const fontWeightBold = 700;
-export const fontFamily = '"Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
-export const fontImportUrl = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap';
+/**
+ * The single definition of the platform type stack — never redeclare it in an app.
+ * Montserrat is self-hosted by this package; consumers register the faces with
+ * `import '@dexma/ui-components/fonts.css'`. The CJK entries matter: Montserrat has no
+ * CJK glyphs, so zh_CN falls through to a proper system face instead of the generic default.
+ */
+export const fontFamily =
+    '"Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
 const getSize = (size = fontSizeNumber, type = fontSizeType) => `${size}${type}`;
 export const pxToRem = (px: number) => px / 14;

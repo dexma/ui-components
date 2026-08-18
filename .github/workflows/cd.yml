@@ -9,6 +9,7 @@ on:
             - '**/stories/**'
             - '**/components/**'
             - '**/styles/**'
+            - '**/utils/**'
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
