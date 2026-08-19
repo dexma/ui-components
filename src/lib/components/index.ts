@@ -36,6 +36,7 @@ export * from './Table';
 export * from './Theme';
 export * from './Toaster';
 export * from './Tooltip';
+export * from './Typography';
 export * from './Switch';
 export * from './SwitchPeriodComparative';
 export * from './Select';

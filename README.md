@@ -49,7 +49,42 @@ import { Theme, Button } from '@dexma/ui-components';
 </Theme>;
 ```
 
-You can find all the configuration in the theme file [theme.js](https://github.com/dexma/ui-components/blob/master/src/styles/theme.js)
+You can find all the configuration in the theme file [theme.ts](https://github.com/dexma/ui-components/blob/master/src/lib/utils/theme.ts)
+
+## Typography
+
+The platform font is **Montserrat**, self-hosted by this package — there is no Google Fonts (or any
+other CDN) request at runtime.
+
+Every app **must register the font faces once, at its entry point** (one line per webpack/Vite entry):
+
+```typescript
+import '@dexma/ui-components/fonts.css';
+```
+
+Without this import the UI silently renders the fallback system stack — everything works, but nothing
+is Montserrat. `GlobalStyle` applies the font; `fonts.css` provides it. You need both.
+
+The shipped subsets are `latin`, `latin-ext` (pl_PL) and `cyrillic` (bg_BG), each behind a
+`unicode-range` so browsers only download what the locale needs. `zh_CN` is not covered by Montserrat
+and intentionally falls through to the system CJK faces in the stack.
+
+Never write the font stack as a literal in an app. Where a style genuinely cannot inherit the page
+font (shadow-DOM `::part()` rules, canvas/SVG text, server-rendered images), use the exported token:
+
+```typescript
+import { typography } from '@dexma/ui-components';
+
+const Styled = styled.div`
+    font-family: ${typography.fontFamily};
+`;
+```
+
+The binaries come from `@fontsource-variable/montserrat` (SIL OFL 1.1) at build time via
+`scripts/buildFontConfig.mjs` — that script's header documents the full checklist for changing the
+platform font. Repositories that cannot consume this npm package (dexcell, grader-demo, is3frontend,
+anomaly-detection-dash-ui, detect-reports-generator) must self-host the **same version** of the font
+as this package's `@fontsource-variable/montserrat` devDependency, so rendering stays consistent.
 
 ## Installation
 

@@ -1,6 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { StyledButton } from '@styles/Button/StyledButton';
-import { fontFamily } from '@utils/theme';
+import { fontFamily, fontWeightMedium } from '@utils/theme';
 
 const getUIComponentsStyle = css`
     input::-ms-clear,
@@ -45,7 +45,7 @@ const getUIComponentsStyle = css`
     h6 {
         margin-top: 0;
         margin-bottom: 0.5em;
-        font-weight: 500;
+        font-weight: ${fontWeightMedium};
     }
     p {
         margin-top: 0;
@@ -82,7 +82,7 @@ const getUIComponentsStyle = css`
         margin-bottom: 0;
     }
     dt {
-        font-weight: 500;
+        font-weight: ${fontWeightMedium};
     }
     dd {
         margin-bottom: 0.5em;
