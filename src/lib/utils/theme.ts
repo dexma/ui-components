@@ -105,6 +105,7 @@ export const fontColor = color.gray700;
 export const fontColorActive = color.white;
 export const fontWeightLight = 300;
 export const fontWeightNormal = 400;
+export const fontWeightMedium = 500;
 export const fontWeightSemiBold = 600;
 export const fontWeightBold = 700;
 /**
@@ -153,6 +154,7 @@ const base = {
     fontColorActive,
     fontWeightLight,
     fontWeightNormal,
+    fontWeightMedium,
     fontWeightSemiBold,
     fontWeightBold,
     fontFamily,

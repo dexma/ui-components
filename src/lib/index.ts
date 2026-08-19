@@ -1,5 +1,5 @@
 import { GlobalStyle, IsolatedGlobalStyle, UIComponentsStyle } from './utils/global';
-import { color as colors, fontFamily, fontSize, fontWeightLight, fontWeightNormal, fontWeightSemiBold, fontWeightBold } from './utils/theme';
+import { color as colors, fontFamily, fontSize, fontWeightLight, fontWeightNormal, fontWeightMedium, fontWeightSemiBold, fontWeightBold } from './utils/theme';
 
 export * from './components';
 
@@ -16,6 +16,7 @@ export const typography = {
     fontWeight: {
         light: fontWeightLight,
         normal: fontWeightNormal,
+        medium: fontWeightMedium,
         semiBold: fontWeightSemiBold,
         bold: fontWeightBold,
     },

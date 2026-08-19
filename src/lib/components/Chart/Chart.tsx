@@ -108,7 +108,32 @@ export const Chart = withDataId(
             const error = !isLoading && showError && errorContent;
             const showChart = !loading && !error && options;
             const [aggregateOptions, setAggregateOptions] = useState<Highcharts.Options>();
+            const [fontsReady, setFontsReady] = useState(false);
             const { fontFamily, backgroundColor } = useContext(ThemeContext) || defaultTheme;
+
+            // Highcharts measures text to position axis labels. If a chart renders before the
+            // self-hosted webfont resolves, those positions are computed from fallback-font
+            // metrics and `font-display: swap` then swaps the glyphs in WITHOUT re-laying out —
+            // visible as clipped or overlapping labels on a cold cache. Flipping this flag
+            // re-applies the options once the fonts settle, so text is re-measured with the
+            // real metrics. jsdom (tests) has no document.fonts — treat that as ready.
+            useEffect(() => {
+                let cancelled = false;
+
+                if (typeof document === 'undefined' || !document.fonts) {
+                    setFontsReady(true);
+                    return undefined;
+                }
+
+                const markReady = () => {
+                    if (!cancelled) setFontsReady(true);
+                };
+                document.fonts.ready.then(markReady).catch(markReady);
+
+                return () => {
+                    cancelled = true;
+                };
+            }, []);
 
             // NOTE: this setOptions is global to all Charts so everytime it is called these values
             // will be overwritten and the last one will prevail on all rendered charts
@@ -177,7 +202,7 @@ export const Chart = withDataId(
                         },
                     },
                 });
-            }, [options, fontFamily, backgroundColor]);
+            }, [options, fontFamily, backgroundColor, fontsReady]);
 
             return (
                 <StyledChart data-id={dataId} data-testid={dataTestId} theme={th}>
