@@ -101,6 +101,58 @@ export const Multiple = () => (
     </Grid>
 );
 
+export const MultipleWithMaxTagCount = () => (
+    <Grid fluid>
+        <Row>
+            <Cell xs={12}>
+                <Paragraph margin='1rem 0 1rem 0'>
+                    Setting a numeric &apos;maxTagCount&apos; limits the number of tags displayed at once. The remaining selected options are collapsed into a &apos;+N&apos; tag; hovering over it opens a tooltip/popover listing the collapsed option names.
+                </Paragraph>
+            </Cell>
+            <Cell xs={12}>
+                <Select
+                    allowClear
+                    mode='multiple'
+                    style={{ width: '100%' }}
+                    pageSize={6}
+                    defaultValues={['1', '2', '3', '4', '5']}
+                    maxTagCount={3}
+                    overflowLength={5}
+                    options={[
+                        { value: '1', label: '1st Floor' },
+                        {
+                            value: '2',
+                            label: '1st Floor [02. Luxemburg Building]',
+                            color: 'green',
+                        },
+                        { value: '3', label: '3rd Floor', color: 'orange' },
+                        {
+                            value: '4',
+                            label: '45th Floor [04. Luxemburg Building]',
+                            color: 'red',
+                        },
+                        {
+                            value: '5',
+                            color: 'blue',
+                            label: '1st Floor [05. Luxemburg Building]',
+                        },
+                        {
+                            value: '6',
+                            color: 'gray',
+                            label: '1st Floor [06. Luxemburg Building]',
+                        },
+                        { value: '7', label: '2nd Floor', color: 'blue' },
+                    ]}
+                    showOptionsAriaLabel='Show options'
+                    hideOptionsAriaLabel='Hide options'
+                    clearAllOptionsAriaLabel='Clear all options'
+                    deleteOptionSelectedAriaLabel='Delete option'
+                />
+            </Cell>
+        </Row>
+    </Grid>
+);
+
 export const SelectNoButton = () => (
     <Grid fluid>
         <Row>

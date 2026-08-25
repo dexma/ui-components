@@ -1,6 +1,6 @@
 import { Select as AntdSelect, type SelectProps as AntdSelectProps } from 'antd';
 import defaultTheme, { type Theme } from '@utils/theme';
-import { MouseEventHandler, ReactElement, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { isValidElement, MouseEventHandler, ReactElement, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { get } from 'lodash';
 import { ThemeContext } from 'styled-components';
 
@@ -10,7 +10,7 @@ import { SelectOptionStyle, StyledSelectDropdown, StyledSpanOption, StyledSpanOp
 import { colors } from 'index';
 import { FlattenOptionData } from 'rc-select/lib/interface';
 import { BaseOptionType } from 'rc-select/lib/Select';
-import { filterOption, findSubstringIndices, getOptionsBySearch, getRegExpBasedOnInput, singleOptionFilter } from './selectUtils';
+import { filterOption, getOptionsBySearch, singleOptionFilter } from './selectUtils';
 import { ButtonPaginationSelector } from './ButtonPaginationSelector';
 
 const ALL_CHARACTER = '*';
@@ -38,6 +38,15 @@ type DisplayValue = {
     label?: any;
     title?: string | number;
     disabled?: boolean;
+};
+
+const getDisplayValueLabelText = (label: unknown): string => {
+    if (typeof label === 'string' || typeof label === 'number') return String(label);
+    if (isValidElement(label)) {
+        const { children } = label.props as { children?: React.ReactNode };
+        return getDisplayValueLabelText(children);
+    }
+    return '';
 };
 
 export const tagRenderButtonPagination = (props: CustomTagProps, options: Option[], maxTagLength: number, theme: Theme, deleteOptionAriaLabel: string): ReactElement => {
@@ -419,7 +428,10 @@ export const Select = withDataId(
                         maxTagCount={maxTagCount}
                         maxTagPlaceholder={(displayValue: DisplayValue[]) => {
                             const textOverflow = overflowLength && displayValue.length > overflowLength ? ` ${text?.overflow}` : '';
-                            const valuesToRender = `${displayValue.slice(0, overflowLength).map((value) => ` ${value?.label?.props?.children}`)}${textOverflow}`;
+                            const valuesToRender = `${displayValue
+                                .slice(0, overflowLength)
+                                .map((value) => getDisplayValueLabelText(value?.label))
+                                .join(', ')}${textOverflow}`;
                             return <Tooltip title={valuesToRender}>{`+${displayValue.length}`}</Tooltip>;
                         }}
                         menuItemSelectedIcon={<Icon color='white' name='close' size='small' ariaLabel={deleteOptionSelectedAriaLabel || ''} />}
