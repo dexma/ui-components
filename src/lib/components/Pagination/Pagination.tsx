@@ -7,12 +7,12 @@ import defaultTheme from '@utils/theme';
 
 export const itemRender = (current: number) => (page: number, type: 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next', element: React.ReactNode) => {
     if (type === 'prev') {
-        return <Icon name='chevron_left_l' color='gray900' size={12} ariaLabel='' />;
+        return <a role='link'><Icon name='chevron_left_l' color='gray900' size={12} ariaLabel='' /></a>;
     }
     if (type === 'next') {
-        return <Icon name='chevron_right_l' color='gray900' size={12} ariaLabel='' />;
+        return <a role='link'><Icon name='chevron_right_l' color='gray900' size={12} ariaLabel='' /></a>;
     }
-    if (type === 'page') return <span aria-current={current === page ? 'page' : undefined}>{page}</span>;
+    if (type === 'page') return <a role='link' aria-current={current === page ? 'page' : undefined}>{page}</a>;
     return element;
 };
 
@@ -46,12 +46,12 @@ export const Pagination = (props: PaginationProps) => {
 
     const changePage = (page: number) => {
         setTimeout(() => {
-            const liOldCurrentPage = document.querySelector<HTMLSpanElement>(`span[aria-current='page']`);
+            const liOldCurrentPage = document.querySelector<HTMLAnchorElement>(`a[aria-current='page']`);
             if (liOldCurrentPage)
                 liOldCurrentPage.removeAttribute('aria-current');
             const liNewCurrentPage = document.querySelector<HTMLLIElement>(`li[title='${page}']`);
             if (liNewCurrentPage)
-                liNewCurrentPage.querySelector('span')!.setAttribute('aria-current', 'page');
+                liNewCurrentPage.querySelector('a')!.setAttribute('aria-current', 'page');
         }, 0);
     };
 
