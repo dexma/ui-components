@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Grid, Cell, Result, Row, Paragraph, Chart, ResultVariants } from '@components';
-import { mockBasicArea, mockStackedBar, mockStackedBarNegative, mockMixed, mockHeatmap } from '../../tests/mock/Chart';
+import { mockBasicArea, mockStackedBar, mockStackedBarNegative, mockMixed, mockHeatmap, mockSankey } from '../../tests/mock/Chart';
 import mvConsumptionDiscreteChart from '../../tests/mock/mvConsumptionDiscreteChart';
 import mvConsumptionAccumulatedTotalChart from '../../tests/mock/mvConsumptionAccumulatedTotalChart';
 import mvSavingsAccumulatedPercentageChart from '../../tests/mock/mvSavingsAccumulatedPercentageChart';
@@ -168,6 +168,19 @@ export const Heatmap = () => (
             </Cell>
             <Cell xs={12}>
                 <Chart options={mockHeatmap} />
+            </Cell>
+        </Row>
+    </Grid>
+);
+
+export const Sankey = () => (
+    <Grid fluid>
+        <Row>
+            <Cell xs={12}>
+                <Paragraph margin='1rem 0 1rem 0'>Basic sankey diagram.</Paragraph>
+            </Cell>
+            <Cell xs={12}>
+                <Chart options={mockSankey} />
             </Cell>
         </Row>
     </Grid>
