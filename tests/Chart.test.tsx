@@ -3,6 +3,7 @@ import { expect, describe, it, vitest } from 'vitest';
 
 import { Chart, Result, ResultVariants } from '@components';
 import mvConsumptionDiscreteChart from './mock/mvConsumptionDiscreteChart';
+import { mockSankey } from './mock/Chart';
 
 describe('<Chart>', () => {
     it('Should render the chart correct', () => {
@@ -31,6 +32,13 @@ describe('<Chart>', () => {
         expect(screen.getByTestId('chart-error')).toBeTruthy();
         expect(screen.getByText('Error chart')).toBeTruthy();
         expect(screen.getByText('Test info chart error')).toBeTruthy();
+    });
+
+    it('Should render a sankey diagram', () => {
+        render(<Chart options={mockSankey} data-testid='sankey chart' />);
+        expect(screen.getByTestId('sankey chart')).toBeTruthy();
+        expect(screen.getAllByText('Energy flow by consumption point').length).toBeGreaterThan(0);
+        expect(screen.getAllByText('HVAC').length).toBeGreaterThan(0);
     });
 
     it('Should properly handle the callback function', () => {

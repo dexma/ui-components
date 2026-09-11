@@ -430,6 +430,34 @@ export const mockMixed: ChartOptions = {
     ],
 };
 
+export const mockSankey: ChartOptions = {
+    chart: {
+        type: 'sankey',
+    },
+
+    title: {
+        text: 'Energy flow by consumption point',
+    },
+
+    series: [
+        {
+            type: 'sankey',
+            name: 'Energy flow',
+            keys: ['from', 'to', 'weight'],
+            data: [
+                ['Grid', 'Building A', 120],
+                ['Grid', 'Building B', 80],
+                ['Solar', 'Building A', 40],
+                ['Solar', 'Building B', 20],
+                ['Building A', 'HVAC', 90],
+                ['Building A', 'Lighting', 70],
+                ['Building B', 'HVAC', 60],
+                ['Building B', 'Lighting', 40],
+            ],
+        },
+    ],
+};
+
 export const mockHeatmap: ChartOptions = {
     chart: {
         type: 'heatmap',
