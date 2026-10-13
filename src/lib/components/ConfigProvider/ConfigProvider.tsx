@@ -12,7 +12,7 @@ export type ConfigProviderProps = ComponentProps<typeof ConfigProviderAntd>;
  * antd emits its own `font-family` on `.ant-*` class roots from `token.fontFamily` (default: a
  * system stack), so antd-backed components do not inherit the family from `body`. Without this,
  * every Table / Select / DatePicker would keep the old font while the rest of the app renders
- * Montserrat. antd merges tokens into nested providers, so mounting this once at an app root also
+ * the platform font. antd merges tokens into nested providers, so mounting this once at an app root also
  * covers the per-component providers inside the library.
  *
  * A caller-supplied `theme.token.fontFamily` still wins.

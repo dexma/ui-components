@@ -1,4 +1,5 @@
 import { type DefaultTheme } from 'styled-components';
+import { fontFamilyName } from '@config/font';
 
 // Colors (https://dexmatech.atlassian.net/wiki/spaces/design/pages/698253492/Colour)
 export const color = {
@@ -110,12 +111,12 @@ export const fontWeightSemiBold = 600;
 export const fontWeightBold = 700;
 /**
  * The single definition of the platform type stack — never redeclare it in an app.
- * Montserrat is self-hosted by this package; consumers register the faces with
- * `import '@dexma/ui-components/fonts.css'`. The CJK entries matter: Montserrat has no
- * CJK glyphs, so zh_CN falls through to a proper system face instead of the generic default.
+ * The first family is the platform font, whose faces this package embeds and registers from
+ * `GlobalStyle` (see scripts/buildFontConfig.mjs), so consumers only need to render GlobalStyle.
+ * The CJK entries matter: the platform font has no CJK glyphs, so zh_CN falls through to a proper
+ * system face instead of the generic default; bg_BG does the same, as no Cyrillic subset ships.
  */
-export const fontFamily =
-    '"Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+export const fontFamily = `"${fontFamilyName}", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`;
 
 const getSize = (size = fontSizeNumber, type = fontSizeType) => `${size}${type}`;
 export const pxToRem = (px: number) => px / 14;

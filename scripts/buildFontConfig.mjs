@@ -4,64 +4,38 @@ import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 
 /**
  * TO CHANGE THE PLATFORM FONT:
- *   1. `npm i -D @fontsource-variable/<newfont>` (and remove the old devDependency)
- *   2. Point FONT_PACKAGE below at it
- *   3. Update `fontFamily` in src/lib/utils/theme.ts so the new family is first in the stack
- *      (this script fails the build if the two disagree)
- *   4. Update tests/Typography.test.ts, which asserts the canonical stack
- * Everything else — file names, family name, dist/fonts.css, consumer imports — derives
- * automatically from the package's own metadata.
+ *   1. `npm i -D -E @fontsource-variable/<newfont>` (and remove the old devDependency)
+ *   2. Point FONT_PACKAGE below at it; adjust SUBSETS only if the new font covers different scripts
+ *   3. `npm run build-fonts` — family name, weight range, unicode ranges and the embedded binaries
+ *      all regenerate from the package's own metadata
+ *   4. Update tests/Typography.test.tsx (asserts the family name) and the README sentence naming the font
+ * Consumers need nothing but a version bump: GlobalStyle registers the faces, nothing is imported.
  */
-const FONT_PACKAGE = '@fontsource-variable/montserrat';
+const FONT_PACKAGE = '@fontsource-variable/google-sans-flex';
 
 /**
  * Only the subsets the platform ships translations for:
  *   latin      -> en_US, es_ES, ca_ES, de_DE, fr_FR, it_IT, pt_PT
  *   latin-ext  -> pl_PL (Polish diacritics)
- *   cyrillic   -> bg_BG
- * zh_CN is not covered by this font and falls through to the CJK entries of the fontFamily
- * stack via unicode-range. Italics are unused (browsers synthesise the `dfn` reset rule).
+ * Google Sans Flex ships no cyrillic subset, so bg_BG renders in the system fallbacks of the fontFamily
+ * stack, exactly as zh_CN does for CJK: unicode-range leaves those code points to the next family, so
+ * there is no tofu. Italics are unused (browsers synthesise the `dfn` reset rule).
  */
-const SUBSETS = ['latin', 'latin-ext', 'cyrillic'];
+const SUBSETS = ['latin', 'latin-ext'];
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 const fontSourcePath = join(dirname, '../node_modules', FONT_PACKAGE);
-const themePath = join(dirname, '../src/lib/utils/theme.ts');
-const distPath = join(dirname, '../dist');
-const distFontsPath = join(distPath, 'fonts');
-
-// Registered under the plain family name from the package metadata (e.g. 'Montserrat') —
-// deliberately NOT the "<Family> Variable" name that @fontsource-variable's own CSS uses,
-// so it matches the `fontFamily` stack in theme.ts.
-const buildFontFace = (family, id, subset, unicodeRange) =>
-    [
-        `/* ${id}-${subset}-wght-normal */`,
-        '@font-face {',
-        `    font-family: '${family}';`,
-        '    font-style: normal;',
-        '    font-display: swap;',
-        '    font-weight: 100 900;',
-        `    src: url(./fonts/${id}-${subset}-wght-normal.woff2) format('woff2-variations');`,
-        `    unicode-range: ${unicodeRange};`,
-        '}',
-    ].join('\n');
+const exportPath = join(dirname, '../src/lib/config');
+const licensePath = join(dirname, '../FONT-LICENSE');
 
 const main = () => {
-    const { family, id } = JSON.parse(readFileSync(join(fontSourcePath, 'metadata.json'), 'utf8'));
+    const { family, id, variable } = JSON.parse(readFileSync(join(fontSourcePath, 'metadata.json'), 'utf8'));
     const unicodeRanges = JSON.parse(readFileSync(join(fontSourcePath, 'unicode.json'), 'utf8'));
 
-    // Guard: the registered family must be the first entry of the theme stack, or every
-    // consumer would silently render fallbacks. Fails the build instead.
-    const theme = readFileSync(themePath, 'utf8');
-    const stackMatch = theme.match(/export const fontFamily =\s*\n?\s*'([^']+)'/);
-    if (!stackMatch || !stackMatch[1].startsWith(`"${family}"`)) {
-        throw new Error(
-            `Font mismatch: ${FONT_PACKAGE} registers '${family}' but the fontFamily stack in ` +
-                `src/lib/utils/theme.ts does not start with "${family}". Update the stack (see the ` +
-                'checklist at the top of this script).'
-        );
+    if (!variable || !variable.wght) {
+        throw new Error(`${FONT_PACKAGE} declares no variable wght axis in metadata.json; this script only builds variable fonts.`);
     }
 
     const missing = SUBSETS.filter((subset) => !unicodeRanges[subset]);
@@ -69,26 +43,40 @@ const main = () => {
         throw new Error(`Subsets not provided by ${FONT_PACKAGE}: ${missing.join(', ')}. Available: ${Object.keys(unicodeRanges).join(', ')}`);
     }
 
-    mkdirSync(distFontsPath, { recursive: true });
-
-    const fontFaces = SUBSETS.map((subset) => {
+    // The woff2 binaries are embedded as data URIs and registered by GlobalStyle, so a consumer needs no
+    // font file, loader rule or CSS import — a version bump is the whole upgrade. Each face keeps its
+    // unicode-range, so the browser only decodes the subsets a locale actually uses.
+    const faces = SUBSETS.map((subset) => {
         const file = `${id}-${subset}-wght-normal.woff2`;
-        copyFileSync(join(fontSourcePath, 'files', file), join(distFontsPath, file));
+        const base64 = readFileSync(join(fontSourcePath, 'files', file)).toString('base64');
 
-        return buildFontFace(family, id, subset, unicodeRanges[subset]);
+        return { subset, unicodeRange: unicodeRanges[subset], src: `data:font/woff2;base64,${base64}` };
     });
 
-    // SIL OFL: the license text must accompany any redistribution of the font software, and
-    // shipping the woff2 files in the npm package is redistribution.
-    copyFileSync(join(fontSourcePath, 'LICENSE'), join(distFontsPath, 'LICENSE'));
+    const lines = [
+        '/* eslint-disable */',
+        `// Generated by scripts/buildFontConfig.mjs from ${FONT_PACKAGE} — do not edit.`,
+        `// ${family} is licensed under the SIL Open Font License 1.1; the license text ships as FONT-LICENSE.`,
+        `export const fontFamilyName = ${JSON.stringify(family)};`,
+        `export const fontWeightRange = ${JSON.stringify(`${variable.wght.min} ${variable.wght.max}`)};`,
+        'export const fontFaces = [',
+        ...faces.map((face) => `    { subset: ${JSON.stringify(face.subset)}, unicodeRange: ${JSON.stringify(face.unicodeRange)}, src: ${JSON.stringify(face.src)} },`),
+        '];',
+        '',
+    ];
 
-    writeFileSync(join(distPath, 'fonts.css'), `${fontFaces.join('\n\n')}\n`);
+    mkdirSync(exportPath, { recursive: true });
+    writeFileSync(join(exportPath, 'font.ts'), lines.join('\n'));
+
+    // SIL OFL: the license text must accompany any redistribution of the font software, and the embedded
+    // binaries ship inside the npm package (FONT-LICENSE is listed under "files" in package.json).
+    copyFileSync(join(fontSourcePath, 'LICENSE'), licensePath);
 };
 
 try {
     main();
 } catch (err) {
-    // Fail loudly: a zero exit here would let CI publish a package with no fonts in it.
+    // Fail loudly: a zero exit here would let CI publish a package with no font in it.
     console.error(err);
     process.exitCode = 1;
 }

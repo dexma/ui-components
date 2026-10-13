@@ -1,6 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { StyledButton } from '@styles/Button/StyledButton';
 import { fontFamily, fontWeightMedium } from '@utils/theme';
+import { fontFaces, fontFamilyName, fontWeightRange } from '@config/font';
 
 const getUIComponentsStyle = css`
     input::-ms-clear,
@@ -301,15 +302,38 @@ const getGlobalStyle = css`
     }
 `;
 
+/**
+ * The platform font faces, embedded as data URIs by scripts/buildFontConfig.mjs. Registering them
+ * here means any app that renders GlobalStyle (or IsolatedGlobalStyle) gets the font with no file
+ * to serve, no loader rule and no CSS import — a version bump is the whole upgrade. Each face keeps
+ * its unicode-range, so the browser only decodes the subsets a locale actually uses.
+ */
+const getFontFaces = css`
+    ${fontFaces
+        .map(
+            (face) => `
+    @font-face {
+        font-family: "${fontFamilyName}";
+        font-style: normal;
+        font-weight: ${fontWeightRange};
+        src: url("${face.src}") format("woff2-variations");
+        unicode-range: ${face.unicodeRange};
+    }`
+        )
+        .join('\n')}
+`;
+
 export const UIComponentsStyle = createGlobalStyle`
   ${getUIComponentsStyle};
 `;
 
 export const IsolatedGlobalStyle = createGlobalStyle`
+  ${getFontFaces};
   ${getGlobalStyle};
 `;
 
 export const GlobalStyle = createGlobalStyle`
+  ${getFontFaces};
   ${getGlobalStyle};
   ${getUIComponentsStyle};
 `;
