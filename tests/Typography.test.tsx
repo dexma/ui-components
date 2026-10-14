@@ -1,14 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import { render } from '@testing-library/react';
+import { renderToString } from 'react-dom/server';
+import { ServerStyleSheet } from 'styled-components';
 import '@testing-library/jest-dom';
 
-import { Typography, typography } from '../src/lib';
+import { GlobalStyle, Typography, typography } from '../src/lib';
 import defaultTheme, { fontFamily } from '../src/lib/utils/theme';
 
 describe('typography tokens', () => {
-    it('Should expose the canonical font stack, Montserrat first', () => {
+    it('Should expose the canonical font stack, Google Sans Flex first', () => {
         expect(typography.fontFamily).toBe(fontFamily);
-        expect(typography.fontFamily.startsWith('"Montserrat"')).toBe(true);
+        expect(typography.fontFamily.startsWith('"Google Sans Flex"')).toBe(true);
     });
 
     it('Should keep the CJK fallbacks for zh_CN', () => {
@@ -18,6 +20,37 @@ describe('typography tokens', () => {
 
     it('Should expose the weight tokens', () => {
         expect(typography.fontWeight).toEqual({ light: 300, normal: 400, medium: 500, semiBold: 600, bold: 700 });
+    });
+});
+
+describe('<GlobalStyle /> font faces', () => {
+    // styled-components' node build (what vitest resolves) only renders global styles through a server
+    // sheet, never into the jsdom document, so the rules are collected the SSR way.
+    const collectGlobalCss = () => {
+        const sheet = new ServerStyleSheet();
+        try {
+            renderToString(sheet.collectStyles(<GlobalStyle />));
+            return sheet.getStyleTags();
+        } finally {
+            sheet.seal();
+        }
+    };
+
+    it('Should register the embedded platform font faces, one per shipped subset', () => {
+        const css = collectGlobalCss();
+        const faces = css.match(/@font-face\{[^}]*\}/g) || [];
+
+        expect(faces).toHaveLength(2);
+        faces.forEach((face) => {
+            expect(face).toMatch(/font-family:\s*"Google Sans Flex"/);
+            expect(face).toMatch(/font-weight:\s*1 1000/);
+            expect(face).toContain('src:url("data:font/woff2;base64,');
+            expect(face).toContain('unicode-range:');
+        });
+    });
+
+    it('Should apply the platform font to the document', () => {
+        expect(collectGlobalCss()).toMatch(/body\{[^}]*font-family:"Google Sans Flex"/);
     });
 });
 

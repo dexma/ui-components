@@ -60,7 +60,7 @@ export const Weights = {
 };
 
 /**
- * Montserrat's default figures are proportional, so the library sets `font-feature-settings: 'tnum'`
+ * The platform font's default figures are proportional, so the library sets `font-feature-settings: 'tnum'`
  * globally. These columns must stay visually aligned — if they do not, tabular figures were lost.
  */
 export const TabularFigures = {
