@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import icon from '@config/icon';
 import { Icon, Grid, Row, Cell, Paragraph, Input, IconProps } from '@components';
 
+const LEGACY_PREFIX = 'legacy_';
+
 const StyledBoxSearch = styled.div`
     width: 100%;
     .search {
@@ -59,7 +61,7 @@ export const Sizes = () => (
     </Grid>
 );
 
-const SearchIcons = () => {
+const SearchIcons = ({ legacy = false }: { legacy?: boolean }) => {
     const [value, setValue] = useState('');
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
@@ -67,7 +69,7 @@ const SearchIcons = () => {
 
     const getIcons = (searchValue: string) =>
         icon
-            .filter((i: { name: string }) => i.name.includes(searchValue))
+            .filter((i: { name: string }) => i.name.startsWith(LEGACY_PREFIX) === legacy && i.name.includes(searchValue))
             .map((iconItem: { name: string }) => (
                 <Cell key={iconItem.name} xs={2} className='box-icon'>
                     <Icon name={iconItem.name} size={40} ariaLabel={`${iconItem.name} icon`} />
@@ -94,6 +96,17 @@ export const Icons = () => (
                 <Paragraph margin='1rem 0 1rem 0'>An icon is a svg used to represent something else</Paragraph>
             </Cell>
             <SearchIcons />
+        </Row>
+    </Grid>
+);
+
+export const Legacy = () => (
+    <Grid fluid>
+        <Row>
+            <Cell xs={12}>
+                <Paragraph margin='1rem 0 1rem 0'>Former icons that have been replaced and should no longer be used. They are available as legacy_&lt;name&gt;</Paragraph>
+            </Cell>
+            <SearchIcons legacy />
         </Row>
     </Grid>
 );
