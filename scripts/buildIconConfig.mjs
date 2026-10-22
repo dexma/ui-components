@@ -58,11 +58,11 @@ const formatIcon = (icon, name) => {
     };
 };
 
-const getIconElementsFromFiles = async (files) =>
+const getIconElementsFromFiles = async (files, subdir = '', prefix = '') =>
     Promise.all(
         Object.values(files).map((file) => {
-            const iconElement = readFileSync(`./src/lib/assets/icons/${file}`, 'utf8');
-            const iconConfig = formatIcon(iconElement, file.replace('.svg', ''));
+            const iconElement = readFileSync(join(directoryIconsPath, subdir, file), 'utf8');
+            const iconConfig = formatIcon(iconElement, `${prefix}${file.replace('.svg', '')}`);
 
             return new Promise((resolve) => {
                 resolve(iconConfig);
@@ -72,8 +72,9 @@ const getIconElementsFromFiles = async (files) =>
 
 const main = async () => {
     try {
-        const iconFiles = readdirSync(directoryIconsPath);
-        const iconElements = await getIconElementsFromFiles(iconFiles);
+        const iconFiles = readdirSync(directoryIconsPath).filter((file) => file.endsWith('.svg'));
+        const legacyFiles = readdirSync(join(directoryIconsPath, 'legacy')).filter((file) => file.endsWith('.svg'));
+        const iconElements = [...(await getIconElementsFromFiles(iconFiles)), ...(await getIconElementsFromFiles(legacyFiles, 'legacy', 'legacy_'))];
         writeFileSync(`${directoryExportPath}/icon.ts`, `export default${JSON.stringify(iconElements)}`);
         return 'ok';
     } catch (err) {
