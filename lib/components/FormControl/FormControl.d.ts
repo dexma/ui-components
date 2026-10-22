@@ -1,0 +1,44 @@
+import { ReactNode } from '../../../../node_modules/react';
+type FormControlProps = {
+    dataId?: string;
+    control: 'Input' | 'Checkbox' | 'Textarea' | 'Select' | 'ColorPicker' | 'DatePicker';
+    name?: string;
+    error?: boolean;
+    success?: boolean;
+    message?: string;
+    options?: any[];
+    value?: any;
+    children?: ReactNode;
+    disabled?: boolean;
+    isLoading?: boolean;
+    checked?: boolean;
+    type?: 'range' | 'date';
+    showInput?: boolean;
+    format?: string;
+    onChange?: any;
+    onFocus?: any;
+    onBlur?: any;
+    onChangeInput?: any;
+    onChangePicker?: (e: {
+        hex: string;
+    }) => void;
+    onDatesChange?: any;
+    initialColor?: string;
+    placeholder?: string;
+    maxLength?: number;
+    rows?: number;
+    inputLabel?: string;
+    showSelectOptionsAriaLabel?: string;
+    hideSelectOptionsAriaLabel?: string;
+    clearDateAriaLabel?: string;
+    toDateIconAriaLabel?: string;
+    calendarIconAriaLabel?: string;
+    prevPageIconAriaLabel?: string;
+    nextPageIconAriaLabel?: string;
+    superPrevPageIconAriaLabel?: string;
+    superNextPageIconAriaLabel?: string;
+};
+export declare const FormControl: import('../../../../node_modules/react').ForwardRefExoticComponent<Omit<FormControlProps & import('../../../../node_modules/react').RefAttributes<HTMLElement> & {
+    dataId?: string;
+}, "ref"> & import('../../../../node_modules/react').RefAttributes<unknown>>;
+export {};
