@@ -38,7 +38,13 @@
         "tag": "latest"
     },
     "release": {
-        "branch": "master",
+        "branches": [
+            "master",
+            {
+                "name": "feature/upgrade-node-version",
+                "prerelease": "pr206"
+            }
+        ],
         "tagFormat": "v${version}",
         "plugins": [
             [

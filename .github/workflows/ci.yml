@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - master
+            - feature/upgrade-node-version
     pull_request:
         branches:
             - master
