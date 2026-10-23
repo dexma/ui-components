@@ -13,7 +13,7 @@
         }
     },
     "engines": {
-        "node": "18"
+        "node": ">=18"
     },
     "scripts": {
         "build": "npm run build-icons && npm run build-fonts && tsc && vite build",
