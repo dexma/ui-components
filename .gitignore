@@ -30,3 +30,4 @@ docs
 coverage
 
 src/lib/config/icon.ts
+src/lib/config/font.ts
