@@ -93,6 +93,56 @@ export const Basic = () => (
     </Grid>
 );
 
+const tagColors = ['irisBlue', 'blue', 'blueLight', 'red', 'amber', 'orange', 'brown', 'violet', 'green', 'cyan', 'magenta', 'gray', 'success', 'warning', 'error'];
+const tagVariants = ['primary', 'outline', 'filled'] as const;
+
+export const AllColors = () => (
+    <Grid fluid>
+        {(['normal', 'rounded'] as const).map((type) => (
+            <Row key={type}>
+                <Cell xs={12}>
+                    <Paragraph margin='1rem 0 1rem 0'>{type === 'normal' ? 'Radius 4' : 'Radius 100'}: solid, outline and filled.</Paragraph>
+                </Cell>
+                {tagVariants.map((variant) => (
+                    <Cell xs={12} key={variant}>
+                        <TagGroup>
+                            {tagColors.map((color) => (
+                                <Tag key={color} color={color} variant={variant} type={type}>
+                                    Tag
+                                </Tag>
+                            ))}
+                        </TagGroup>
+                    </Cell>
+                ))}
+            </Row>
+        ))}
+    </Grid>
+);
+
+export const Filled = () => (
+    <Grid fluid>
+        <Row>
+            <Cell xs={12}>
+                <Paragraph margin='1rem 0 1rem 0'>Filled tags have a tinted background and no border.</Paragraph>
+                <TagGroup>
+                    <Tag color='irisBlue' variant='filled'>
+                        Global
+                    </Tag>
+                    <Tag color='irisBlue' variant='filled' type='rounded'>
+                        Global
+                    </Tag>
+                    <Tag color='violet' variant='filled' icon='alert'>
+                        Sublocation
+                    </Tag>
+                    <Tag color='#888444' variant='filled'>
+                        Tag with hex
+                    </Tag>
+                </TagGroup>
+            </Cell>
+        </Row>
+    </Grid>
+);
+
 export const Icons = () => (
     <Grid fluid>
         <Row>
