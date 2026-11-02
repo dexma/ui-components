@@ -20,6 +20,10 @@ const GlobalTreeStyles = createGlobalStyle`
     font-weight: 400;
     line-height: 16px;
   }
+
+  .ant-tree input {
+    min-height: 0;
+  }
 `;
 
 export { GlobalTreeStyles };
