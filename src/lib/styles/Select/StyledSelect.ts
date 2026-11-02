@@ -146,6 +146,12 @@ export const getSelectOptionStyle = (theme: DefaultTheme | Theme) => css`
     .ant-select-multiple.ant-select-show-arrow .ant-select-selector {
         padding-right: 60px !important;
     }
+    /* Host pages (e.g. dexcell forms-ext.less) apply "input { min-height: 34px }" globally. antd sizes the
+       multiple-select search input with "height" only, so that minimum wins and multiple selects grow past the
+       32px control height while single selects (absolutely positioned input) do not. Keep both modes equal. */
+    .ant-select-multiple .ant-select-selection-search-input {
+        min-height: 0;
+    }
     .ant-select-item,
     .ant-select-item-empty {
         padding: 3px 14px 3px 8px;
