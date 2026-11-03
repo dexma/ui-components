@@ -4,16 +4,17 @@ import { ThemeContext } from 'styled-components';
 import defaultTheme from '@utils/theme';
 import { Icon } from '@components';
 import { withDataId } from '@components/DataId/withDataId';
-import { StyledTag } from '@styles/Tag/StyledTag';
+import { StyledTag, type TagVariant } from '@styles/Tag/StyledTag';
 
 export type TagProps = {
     dataId?: string;
+    /** Theme colour key, hex value, or a Tag preset: `red`, `green`, `gray`, `success`, `warning`, `error`. */
     color?: string;
     icon?: string;
     closable?: boolean;
     onClose?: () => void;
     type?: 'normal' | 'rounded';
-    variant?: 'primary' | 'outline';
+    variant?: TagVariant;
     iconAriaLabel?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
