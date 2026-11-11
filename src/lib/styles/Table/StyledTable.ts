@@ -809,6 +809,18 @@ const StyledTable = styled.div<StyledTableProps>`
         margin: -8px -8px -9px;
     }
     ${(props) => getStyledPagination(props.theme)};
+    .table-pagination {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    .table-pagination .ant-pagination-options {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 0;
+    }
 
     .expanded-first-column {
         position: relative;
