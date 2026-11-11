@@ -1,6 +1,6 @@
-import { Key, useState } from 'react';
+import { ChangeEvent, Key, useState } from 'react';
 
-import { Result, ResultVariants, Grid, Row, Cell, Paragraph, Table, buildTableWithDataId } from '@components';
+import { Result, ResultVariants, Grid, Row, Cell, Paragraph, Table, Input, buildTableWithDataId } from '@components';
 import { type User, columnsTable, dataTable } from '../../tests/mock/Table';
 
 export default {
@@ -49,15 +49,22 @@ const Selection = () => {
     );
 };
 
+const largeDataTable: User[] = Array.from({ length: 250 }, (_, index) => ({
+    key: index,
+    name: `Edward King ${index}`,
+    age: 20 + (index % 40),
+    address: `London, Park Lane no. ${index}`,
+}));
+
 export const Basic = () => {
-    const [pageSize, setPageSize] = useState(10);
+    const [pageSize, setPageSize] = useState(25);
     const [currentPage, setCurrentPage] = useState(1);
-    const [dataSource, setDataSource] = useState(dataTable.slice((currentPage - 1) * pageSize, currentPage * pageSize));
+    const [dataSource, setDataSource] = useState(largeDataTable.slice((currentPage - 1) * pageSize, currentPage * pageSize));
     const onPageChange = (page: number, size: number) => {
         console.log(`Page: ${page}, Size: ${size}`);
         setPageSize(size);
         setCurrentPage(page);
-        setDataSource(dataTable.slice((page - 1) * size, page * size));
+        setDataSource(largeDataTable.slice((page - 1) * size, page * size));
     }
     return (
     <Grid fluid>
@@ -71,7 +78,7 @@ export const Basic = () => {
                 <Table
                     dataSource={dataSource}
                     columns={columnsTable}
-                    totalRegisters={dataTable.length}
+                    totalRegisters={largeDataTable.length}
                     pageSize={pageSize}
                     currentPage={currentPage}
                     showSizeChanger
@@ -85,6 +92,50 @@ export const Basic = () => {
     </Grid>
 );
 }
+
+export const FilteredPagination = () => {
+    const [filter, setFilter] = useState('');
+    const [pageSize, setPageSize] = useState(25);
+    const [currentPage, setCurrentPage] = useState(1);
+    const filteredData = largeDataTable.filter((user) => user.name.toLowerCase().includes(filter.toLowerCase()));
+    const dataSource = filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+    const onPageChange = (page: number, size: number) => {
+        setPageSize(size);
+        setCurrentPage(page);
+    };
+    const onFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setFilter(event.target.value);
+        setCurrentPage(1);
+    };
+    return (
+        <Grid fluid>
+            <Row>
+                <Cell xs={12}>
+                    <Paragraph margin='1rem 0 1rem 0'>
+                        Pagination reflects the filtered result: filter by name (e.g. "King 1") and the total and pages are recalculated.
+                    </Paragraph>
+                </Cell>
+                <Cell xs={12}>
+                    <Input type='text' label='Filter by name' value={filter} onChange={onFilterChange} />
+                </Cell>
+                <Cell xs={12}>
+                    <Table
+                        dataSource={dataSource}
+                        columns={columnsTable}
+                        totalRegisters={filteredData.length}
+                        pageSize={pageSize}
+                        currentPage={currentPage}
+                        showSizeChanger
+                        onPageChange={onPageChange}
+                        prevPageAriaLabel='Previous page'
+                        nextPageAriaLabel='Next page'
+                        prevDotsPageAriaLabel='Jumpt previous 5 pages'
+                        nextDotsPageAriaLabel='Jumpt next 5 pages' />
+                </Cell>
+            </Row>
+        </Grid>
+    );
+};
 
 export const Loading = () => (
     <Grid fluid>

@@ -65,4 +65,23 @@ describe('<Table>', () => {
         expect(screen.getByText('Error table')).toBeTruthy();
         expect(screen.getByText('Test info table error')).toBeTruthy();
     });
+    it('Should paginate with 25 items per page by default', () => {
+        const rows = Array.from({ length: 60 }, (_, i) => ({ key: String(i), name: `User ${i}`, age: 30, address: 'Street' }));
+        const { container } = render(<Table dataSource={rows.slice(0, 25)} columns={columns} totalRegisters={rows.length} />);
+        expect(container.querySelectorAll('.ant-pagination-item').length).toBe(3);
+    });
+    it('Should reflect the filtered total in the pagination', () => {
+        const rows = Array.from({ length: 60 }, (_, i) => ({ key: String(i), name: `User ${i}`, age: 30, address: 'Street' }));
+        const { container, rerender } = render(<Table dataSource={rows.slice(0, 25)} columns={columns} totalRegisters={60} />);
+        expect(container.querySelectorAll('.ant-pagination-item').length).toBe(3);
+        rerender(<Table dataSource={rows.slice(0, 10)} columns={columns} totalRegisters={10} />);
+        expect(container.querySelectorAll('.ant-pagination-item').length).toBe(1);
+    });
+    it('Should follow currentPage when it changes externally', () => {
+        const rows = Array.from({ length: 60 }, (_, i) => ({ key: String(i), name: `User ${i}`, age: 30, address: 'Street' }));
+        const { container, rerender } = render(<Table dataSource={rows.slice(0, 25)} columns={columns} totalRegisters={60} currentPage={3} />);
+        expect(container.querySelector('.ant-pagination-item-active')?.textContent).toBe('3');
+        rerender(<Table dataSource={rows.slice(0, 25)} columns={columns} totalRegisters={60} currentPage={1} />);
+        expect(container.querySelector('.ant-pagination-item-active')?.textContent).toBe('1');
+    });
 });

@@ -157,9 +157,9 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
         selectAllRowsAriaLabel,
         totalRegisters,
         currentPage = 1,
-        pageSize = 10,
+        pageSize = 25,
         showSizeChanger,
-        pageSizeOptions = ['5', '10', '20'],
+        pageSizeOptions = ['5', '10', '20', '25', '100'],
         onPageChange,
         prevPageAriaLabel,
         nextPageAriaLabel,
@@ -175,6 +175,9 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
     }, [rowsCanBeSelectAriaLabel, selectAllRowsAriaLabel]);
     const [actualPage, setActualPage] = useState(currentPage);
     const [pageWidth, setPageWidth] = useState(pageSize);
+    useEffect(() => {
+        setActualPage(currentPage);
+    }, [currentPage]);
     const data = dataSource ?? [];
 
     const tableProps = omit(props, ['theme', 'columns', 'dataId', 'expandable', 'rowSelection', 'dataSource']);
@@ -224,7 +227,7 @@ export const Table = <RecordType extends AnyObject>(props: TableProps<RecordType
                             {...tableProps}
                         />
                         {isPaginated &&
-                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <div className='table-pagination'>
                                 <Pagination
                                     total={totalRegisters}
                                     pageSize={pageSize}
