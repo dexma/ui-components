@@ -4,6 +4,7 @@ export * from './Input';
 export * from './Alert';
 export * from './Button';
 export * from './Card';
+export * from './Carousel';
 export * from './Cascader';
 export * from './Cell';
 export * from './Chart';
