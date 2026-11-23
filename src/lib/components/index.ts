@@ -24,6 +24,7 @@ export * from './Paragraph';
 export * from './Pagination';
 export * from './Popover';
 export * from './Progress';
+export * from './Radio';
 export * from './Section';
 export * from './Segmented';
 export * from './Result';
