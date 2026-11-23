@@ -80,4 +80,10 @@ describe('<Alert>', () => {
         fireEvent.click(buttonClose);
         expect(mockCallBack).toHaveBeenCalled();
     });
+    it('Should keep the icon from shrinking when a long description shares its row', () => {
+        const description = 'A long description that wraps over several lines and would otherwise squeeze the icon. '.repeat(5);
+        const { getByTestId } = render(<Alert description={description} type='warning' showIcon />);
+        const icon = getByTestId('alert-icon-warning');
+        expect(window.getComputedStyle(icon).flexShrink).toBe('0');
+    });
 });

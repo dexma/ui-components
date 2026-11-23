@@ -125,6 +125,8 @@ const StyledAlert = styled.div<StyledAlertProps>`
     .icon {
         left: 0px;
         margin-right: 10px;
+        /* a long description shares the .message flex row with the icon: keep the icon at its size */
+        flex-shrink: 0;
     }
 
     .icon-close {
