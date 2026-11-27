@@ -33,6 +33,7 @@ export * from './TagSelect';
 export * from './Tabs';
 export * from './TagGroup';
 export * from './Table';
+export * from './TableV2';
 export * from './Theme';
 export * from './Toaster';
 export * from './Tooltip';
